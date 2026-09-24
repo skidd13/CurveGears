@@ -79,7 +79,7 @@ module curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity=0.62,p
     a=axes[0]; b=axes[1];
     D=_cg_ellipse_centre_distance(a,b,samples);
     mate=_cg_ellipse_mate_points(a,b,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,false,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
 /***

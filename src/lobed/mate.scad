@@ -84,7 +84,7 @@ module curve_gear_lobed_mate(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.
     scale=_cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,samples);
     D=_cg_lobed_centre_distance(scale,lobes,lobe_depth,samples);
     mate=_cg_lobed_mate_points(scale,lobes,lobe_depth,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,false,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
 /***

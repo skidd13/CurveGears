@@ -30,7 +30,7 @@ module curve_gear_hypotrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,
     scale=_cg_hypotrochoid_scale(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples);
     D=_cg_hypotrochoid_centre_distance(scale,major_ratio,rolling_ratio,offset_ratio,samples);
     mate=_cg_hypotrochoid_mate_points(scale,major_ratio,rolling_ratio,offset_ratio,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,false,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
 /** @function curve_gear_hypotrochoid_centre_distance

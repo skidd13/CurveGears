@@ -70,7 +70,7 @@ module curve_gear_pascal_mate(modul,tooth_number,width,bore,eccentricity=0.25,pr
     D=_cg_solve_mate_distance(_cg_pascal_motion_radii(scale,eccentricity,samples),_cg_pascal_max_radius(scale,eccentricity)+.01,4*_cg_pascal_max_radius(scale,eccentricity));
     mate=_cg_pascal_mate_points(scale,eccentricity,D,samples);
     radial_root=_cg_pascal_requires_radial_root(eccentricity);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,radial_root,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance);
 }
 
 /***

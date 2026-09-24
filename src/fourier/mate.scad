@@ -85,7 +85,7 @@ module curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients=[[2,.1
     base=modul*tooth_number/2;
     D=_cg_fourier_centre_distance(base,coefficients,samples);
     mate=_cg_fourier_mate_points(base,coefficients,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,false,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
 /***

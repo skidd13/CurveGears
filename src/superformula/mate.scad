@@ -113,7 +113,7 @@ module curve_gear_superformula_mate(modul,tooth_number,width,bore,symmetry=4,a=1
     scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples);
     D=_cg_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,samples);
     mate=_cg_superformula_mate_points(scale,symmetry,a,b,n1,n2,n3,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,false,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
 /***

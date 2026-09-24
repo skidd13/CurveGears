@@ -51,11 +51,12 @@ function _cg_mate_pitch_diagnostics(driver_radii,mid_radii,D,mate_points) =
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
  * @param pressure_angle {angle} Involute pressure angle in degrees.
+ * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
  * @param radial_root {boolean, default false} Use radial-root tooth construction.
  * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
  * @param clearance {undef or >= 0} Additional radial root clearance in mm.
  * @return {geometry} Extruded mate boundary.
  */
-module _cg_mate_boundary_from_pitch_points(mate_points,modul,tooth_number,width,bore,pressure_angle,radial_root=false,backlash=undef,clearance=undef) {
-    _cg_gear_from_pitch_points(mate_points,modul,tooth_number,width,bore,pressure_angle,0,radial_root,backlash,clearance,false);
+module _cg_mate_boundary_from_pitch_points(mate_points,modul,tooth_number,width,bore,pressure_angle,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef) {
+    _cg_gear_from_pitch_points(mate_points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,false);
 }

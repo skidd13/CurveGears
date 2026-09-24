@@ -69,7 +69,7 @@ module curve_gear_bezier_mate(modul,tooth_number,width,bore,control_points=_cg_b
     assert(admissibility=="PASS",str("bezier_gear_mate: mate-admissibility failure code=",admissibility));
     D=_cg_bezier_mate_centre_distance(control_points,scale,samples);
     mate=_cg_bezier_mate_points(control_points,scale,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,false,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
 /**

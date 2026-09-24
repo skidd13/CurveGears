@@ -52,7 +52,7 @@ module curve_gear_cassini_mate(modul,tooth_number,width,bore,focus_ratio=.78,pre
     scale=_cg_cassini_scale(modul,tooth_number,focus_ratio,samples);
     D=_cg_cassini_centre_distance(scale,focus_ratio,samples);
     mate=_cg_cassini_mate_points(scale,focus_ratio,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,false,backlash,clearance);
+    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
 /**
