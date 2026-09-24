@@ -46,13 +46,14 @@ jobs:
           make check-docs
       - name: Render CI-size examples
         run: |
-          mkdir -p build/ci-images
-          for example in examples/*/*.scad; do
-            family=$(basename "$example" .scad)
-            xvfb-run -a --server-args="-screen 0 1280x1024x24" openscad -o "build/ci-images/${family}.png" \
+          make ci-example-manifest
+          while IFS=$'\t' read -r example output; do
+            mkdir -p "$(dirname "$output")"
+            xvfb-run -a --server-args="-screen 0 1280x1024x24" openscad -o "$output" \
               --camera=0,0,0,50,0,40,0 --colorscheme=Nature \
               --projection=o --viewall --autocenter --imgsize=256,256 -q "$example"
-          done
+            test -s "$output"
+          done < build/ci-images/manifest.tsv
       - name: Check repository hygiene
         run: |
           ! find . \( -path './.git' -o -path './build' \) -prune -o -type f \( -name '*.stl' -o -name '*.csg' -o -name '*.log' \) -print -quit | grep -q .

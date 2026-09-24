@@ -16,7 +16,7 @@ ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
 
-.PHONY: all images api-images examples readme docs docs-pages FORCE test test-smoke test-deliberate test-full test-bezier-invalid test-fourier-invalid check check-docs clean
+.PHONY: all images api-images examples ci-example-manifest readme docs docs-pages FORCE test test-smoke test-deliberate test-full test-bezier-invalid test-fourier-invalid check check-docs clean
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
@@ -26,6 +26,8 @@ CORE_IMAGES := images/tooth/construction.png images/tooth/placement.png images/t
 API_EXAMPLES := $(shell find examples/functions -type f -name '*.scad' -print | sort)
 API_GEOMETRY_EXAMPLES := $(filter-out %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(API_EXAMPLES))
 API_IMAGES := $(patsubst examples/%.scad,images/%.png,$(API_GEOMETRY_EXAMPLES))
+CI_EXAMPLES := $(sort $(MAIN_EXAMPLE) $(CORE_EXAMPLES) $(API_EXAMPLES))
+CI_EXAMPLE_MANIFEST := build/ci-images/manifest.tsv
 
 all: images examples readme docs-pages tests/README.md
 
@@ -57,6 +59,16 @@ examples: examples/README.md
 	@test "$(words $(API_EXAMPLES))" -eq 64
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
+
+ci-example-manifest:
+	@mkdir -p "$(@D)"
+	@for example in $(CI_EXAMPLES); do \
+		relative=$${example#examples/}; output=$${relative%.scad}.png; \
+		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
+	done > "$(CI_EXAMPLE_MANIFEST)"
+	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 68
+	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 68
+	@echo 'PASS: CI manifest contains all 68 canonical examples'
 
 readme:
 	@test -s README.md
