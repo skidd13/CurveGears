@@ -59,15 +59,16 @@ function _cg_trim_tooth_boundary(boundary,start_hit,end_hit) =
     );
 
 /***
- * @function _cg_final_outline_from_placements(body, arc, perimeter, placements)
+ * @function _cg_final_outline_from_placements(body, arc, perimeter, placements, tooth_pitch)
  * @brief Replace canonical body intervals with ordered placed teeth.
  * @param body {array} Canonical body boundary points.
  * @param arc {array} Body arc-length table.
  * @param perimeter {number > 0} Body perimeter in mm.
  * @param placements {array} Placement records.
+ * @param tooth_pitch {number > 0} Arc-length pitch used to clip each splice cell.
  * @return {array} Final assembled outline points.
  */
-function _cg_final_outline_from_placements(body,arc,perimeter,placements) =
+function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_pitch=undef) =
     let(placed=[for(p=placements) if(p[0]=="placed") p])
     len(placed)==0 ? body :
     [
@@ -75,8 +76,8 @@ function _cg_final_outline_from_placements(body,arc,perimeter,placements) =
             let(
                 current=placed[i],
                 previous=placed[(i-1+len(placed))%len(placed)],
-                current_interval=_cg_splice_interval(current,perimeter),
-                previous_interval=_cg_splice_interval(previous,perimeter),
+                current_interval=_cg_splice_interval(current,perimeter,tooth_pitch),
+                previous_interval=_cg_splice_interval(previous,perimeter,tooth_pitch),
                 previous_end_raw=previous_interval[1],
                 offset=current_interval[0] <= previous_end_raw ? perimeter : 0,
                 previous_end=previous_end_raw+offset,
@@ -151,6 +152,29 @@ function _cg_assembled_component_failures(outline,placements) =
             ["POLYGON_SELF_INTERSECTION",p[2]]]
     );
 
+/**
+ * @function _cg_adjacent_contact_points
+ * @brief Collect witnesses for accepted compact adjacent contacts.
+ * @param placements {array} Placement records.
+ * @param modul {number > 0} Tooth module in mm.
+ * @return {array} Contact witness points allowed at assembly joins.
+ */
+function _cg_adjacent_contact_points(placements,modul) =
+    let(placed=[for(p=placements) if(p[0]=="placed") p])
+    len(placed)<2 ? [] : [
+        for(i=[0:len(placed)-1])
+            let(j=(i+1)%len(placed),
+                boundary_a=_cg_trim_tooth_boundary(placed[i][6],placed[i][8],placed[i][9]),
+                boundary_b=_cg_trim_tooth_boundary(placed[j][6],placed[j][8],placed[j][9]),
+                hits=_cg_tooth_non_top_collisions(boundary_a,boundary_b))
+            if(j==i+1 || (i==len(placed)-1 && j==0))
+                if(_cg_adjacent_contact_region(hits,modul))
+                    for(hit=hits) hit[2]
+    ];
+
+function _cg_point_near_any(point,points,radius) =
+    len([for(candidate=points) if(_cg_vlen(_cg_vsub(point,candidate))<=radius) 1])>0;
+
 /***
  * @function _cg_gear_2d_from_pitch_points(points, modul, tooth_number, bore, ...)
  * @brief Build and validate one two-dimensional gear boundary from pitch points.
@@ -210,7 +234,8 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         order_failures=_cg_tooth_order_failures(placements);
         assert(len(order_failures)==0,
             str("stage=collision severity=error code=TOOTH_ORDER_CONFLICT message=placement order is not monotone first=",order_failures[0][1]," second=",order_failures[0][2]));
-        splice_failures=_cg_splice_failures(placements,perimeter);
+        tooth_pitch=perimeter/tooth_number;
+        splice_failures=_cg_splice_failures(placements,perimeter,tooth_pitch);
         splice_failure=len(splice_failures)>0 ? splice_failures[0] : ["PASS",[],[]];
         assert(len(splice_failures)==0,
             str("stage=splice severity=error code=",splice_failure[0]," first=",splice_failure[1]," second=",splice_failure[2]," eps_len=",_cg_eps_len()," eps_intersect=",_cg_eps_intersect()));
@@ -219,7 +244,7 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
             echo(str("stage=collision severity=error code=",collisions[0][0]," message=placed tooth pair conflict pair=",collisions[0][1],"/",collisions[0][2]," target=",collisions[0][6],"/",collisions[0][7]," source_distance=",collisions[0][4]," search_radius=",collisions[0][5]," segments=",collisions[0][3][0],"/",collisions[0][3][1]," intersection=",collisions[0][3][2]," eps_intersect=",_cg_eps_intersect()));
         assert(len(collisions)==0,
             str("stage=collision severity=error code=",len(collisions)>0 ? collisions[0][0] : "TOOTH_COLLISION"," message=placed tooth pair conflict eps_intersect=",_cg_eps_intersect()," search_radius=2*tooth_height"));
-        outline=_cg_final_outline_from_placements(body_outline,arc,perimeter,placements);
+        outline=_cg_final_outline_from_placements(body_outline,arc,perimeter,placements,tooth_pitch);
         assembly_failures=_cg_assembled_component_failures(outline,placements);
         assembly_failure=len(assembly_failures)>0 ? assembly_failures[0] : ["PASS"];
         assert(len(assembly_failures)==0,
@@ -230,7 +255,9 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         assert(!_cg_has_immediate_backtrack(outline),"stage=polygon severity=error code=POLYGON_BACKTRACK eps_intersect=1e-7");
         assert(!_cg_has_duplicate_edge(outline),"stage=polygon severity=error code=POLYGON_DUPLICATE_EDGE eps_len=1e-7");
         assert(_cg_polygon_area(outline)>_cg_eps_area(),"stage=polygon severity=error code=POLYGON_ZERO_AREA eps_area=1e-8");
-        final_intersections=_cg_polygon_intersections(outline);
+        allowed_contact_points=_cg_adjacent_contact_points(placements,modul);
+        final_intersections=[for(hit=_cg_polygon_intersections(outline))
+            if(!_cg_point_near_any(hit[2],allowed_contact_points,modul/4)) hit];
         final_intersection=len(final_intersections)>0 ? final_intersections[0] : [0,0,[0,0]];
         assert(len(final_intersections)==0,
             str("stage=polygon severity=error code=POLYGON_SELF_INTERSECTION eps_intersect=",_cg_eps_intersect()," segment=",final_intersection[0],"/",final_intersection[1]," point=",final_intersection[2]));

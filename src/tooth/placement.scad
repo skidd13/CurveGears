@@ -371,16 +371,20 @@ function _cg_arc_near_target(s,target,perimeter) = s+perimeter*floor((target-s)/
 /**
  * @function _cg_splice_interval
  * @brief Return one placed tooth's body replacement interval.
- * @param hit_left {array} Left body intersection record.
- * @param hit_right {array} Right body intersection record.
+ * @param placement {array} Canonical placement record.
+ * @param perimeter {number > 0} Body perimeter in mm.
+ * @param tooth_pitch {number, default undef} Arc-length tooth pitch for cell clipping.
  * @return {array} Ordered body replacement interval.
  */
-function _cg_splice_interval(placement,perimeter) =
+function _cg_splice_interval(placement,perimeter,tooth_pitch=undef) =
     let(
         a=_cg_arc_near_target(placement[8][5],placement[3],perimeter),
-        b=_cg_arc_near_target(placement[9][5],placement[3],perimeter)
+        b=_cg_arc_near_target(placement[9][5],placement[3],perimeter),
+        raw_start=min(a,b),raw_end=max(a,b),
+        cell_start=is_undef(tooth_pitch) ? raw_start : placement[3]-tooth_pitch/2,
+        cell_end=is_undef(tooth_pitch) ? raw_end : placement[3]+tooth_pitch/2
     )
-    [min(a,b),max(a,b),placement[2],placement[3]];
+    [max(raw_start,cell_start),min(raw_end,cell_end),placement[2],placement[3]];
 
 /**
  * @function _cg_splice_relation
@@ -401,8 +405,8 @@ function _cg_splice_relation(a,b) =
  * @param intervals {array} Accepted replacement intervals.
  * @return {array} Splice validation failures.
  */
-function _cg_splice_failures(placements,perimeter) =
-    let(placed=[for(p=placements) if(p[0]=="placed") p],intervals=[for(p=placed) _cg_splice_interval(p,perimeter)])
+function _cg_splice_failures(placements,perimeter,tooth_pitch=undef) =
+    let(placed=[for(p=placements) if(p[0]=="placed") p],intervals=[for(p=placed) _cg_splice_interval(p,perimeter,tooth_pitch)])
     len(intervals)==0 ? [] : concat(
         [for(i=[0:len(intervals)-1])
             if(intervals[i][1]-intervals[i][0] <= _cg_eps_len()) ["SPLICE_INTERVAL_ZERO_LENGTH",intervals[i],[]]],
@@ -637,6 +641,18 @@ function _cg_tooth_non_top_collisions(a,b) = concat(
 );
 
 /**
+ * @function _cg_adjacent_contact_region
+ * @brief Return whether adjacent-tooth witnesses form one compact shared contact.
+ * @param hits {array} Non-top collision witnesses.
+ * @param modul {number > 0} Tooth module in mm.
+ * @return {boolean} True only for one local contact region.
+ */
+function _cg_adjacent_contact_region(hits,modul) =
+    len(hits)>0
+    && len([for(hit=hits)
+        if(_cg_vlen(_cg_vsub(hit[2],hits[0][2])) <= modul/4) 1])==len(hits);
+
+/**
  * @function _cg_final_boundary_collisions
  * @brief Run broad-phase and exact checks for every nearby placed-tooth pair.
  * @param boundaries {array} Placed tooth boundaries.
@@ -659,13 +675,19 @@ function _cg_final_boundary_collisions(placements,modul,clearance=undef) =
     )
     len(placed)<2 ? [] : concat(
         [for(pair=pair_order)
-            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])))
+            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])),
+                adjacent=(j==i+1 || (i==0 && j==len(placed)-1)),
+                boundary_a=len(placed[i][6])<4 ? placed[i][6] : _cg_trim_tooth_boundary(placed[i][6],placed[i][8],placed[i][9]),
+                boundary_b=len(placed[j][6])<4 ? placed[j][6] : _cg_trim_tooth_boundary(placed[j][6],placed[j][8],placed[j][9]),
+                hits=_cg_tooth_non_top_collisions(boundary_a,boundary_b),
+                remaining_hits=adjacent && len(boundary_a)>8 && len(boundary_b)>8 && _cg_adjacent_contact_region(hits,modul) ? [] : hits)
             if(source_distance<=search_radius)
-                let(hits=_cg_tooth_non_top_collisions(placed[i][6],placed[j][6]))
-                for(hit=hits) ["TOOTH_COLLISION",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]],
+                for(hit=remaining_hits) ["TOOTH_COLLISION",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]],
         [for(pair=pair_order)
-            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])))
+            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])),
+                boundary_a=len(placed[i][6])<4 ? placed[i][6] : _cg_trim_tooth_boundary(placed[i][6],placed[i][8],placed[i][9]),
+                boundary_b=len(placed[j][6])<4 ? placed[j][6] : _cg_trim_tooth_boundary(placed[j][6],placed[j][8],placed[j][9]))
             if(source_distance<=search_radius)
-                let(top_hits=_cg_tooth_top_collisions(placed[i][6],placed[j][6]))
+                let(top_hits=_cg_tooth_top_collisions(boundary_a,boundary_b))
                 for(hit=top_hits) ["TOOTH_TOP_OVERLAP",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]]
     );

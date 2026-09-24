@@ -69,10 +69,12 @@ assert(len(collision_hits)>0 && collision_hits[0][0]=="TOOTH_COLLISION",
     "expected TOOTH_COLLISION from the source-point broad phase");
 echo("stage=collision severity=info code=TOOTH_COLLISION_BROAD_PHASE PASS");
 
+adjacent_collision_a=synthetic_collision_placed(0,[0,0],[[-1,0],[1,0]]);
+adjacent_collision_b=synthetic_collision_placed(1,[.1,.1],[[-.5,-1],[-.5,1],[.5,1],[.5,-1]]);
 collision_unrelated=synthetic_collision_placed(9,[100,100],[[99,99],[101,101]]);
-collision_with_unrelated=_cg_final_boundary_collisions([collision_a,collision_b,collision_unrelated],.8);
+collision_with_unrelated=_cg_final_boundary_collisions([adjacent_collision_a,adjacent_collision_b,collision_unrelated],.8);
 assert(len(collision_with_unrelated)>0 && collision_with_unrelated[0][1]==0 && collision_with_unrelated[0][2]==1,
-    "expected the adjacent collision to survive an unrelated placement");
+    "expected multiple adjacent collisions to survive an unrelated placement");
 echo("stage=collision severity=info code=TOOTH_COLLISION_ADJACENT_WITH_UNRELATED PASS");
 
 nonadjacent_collision=_cg_final_boundary_collisions([
