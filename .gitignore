@@ -1,0 +1,36 @@
+# Project-local configuration and generated OpenSCAD output.
+config.local.mk
+build/
+*.stl
+*.csg
+*.log
+*.echo
+
+# Operating-system metadata.
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Editor and temporary files.
+*~
+*.bak
+*.tmp
+*.swp
+*.swo
+.#*
+
+# Python environments, caches, and coverage output.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local IDE metadata.
+.idea/
+.vscode/

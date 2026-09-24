@@ -1,0 +1,17 @@
+# Copy this file to config.local.mk and adjust local tool paths or defaults.
+# config.local.mk is ignored by Git and is loaded automatically by Make.
+
+# Set this only when `openscad` is not on PATH. Keep machine-specific paths
+# in the ignored config.local.mk file, never in tracked examples.
+# OPENSCAD := openscad
+
+# Homebrew or Linux installations normally resolve through PATH:
+# OPENSCAD := openscad
+
+# Optional local overrides:
+# DOCGEN := utils/doxydown/doxydown.pl
+# PYTHON := python3
+# IMAGE_SIZE := 4096,4096
+# COLORSCHEME := Nature
+# CAMERA := 0,0,0,50,0,40,0
+# REGRESSION_FAMILIES := ellipse

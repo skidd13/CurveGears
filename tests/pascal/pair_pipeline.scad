@@ -1,0 +1,7 @@
+// Pascal family: convex pair and standalone mate API through the common assembly.
+include <../../src/pascal/pair.scad>
+
+$fn=96;
+curve_gear_pascal_pair(.8,34,4,4.8,eccentricity=.25,samples=120,phase=11,backlash=.02,clearance=.01);
+translate([70,0,0])
+    curve_gear_pascal_mate(.8,34,4,4.8,eccentricity=.25,samples=120,backlash=.02,clearance=.01);

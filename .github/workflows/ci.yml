@@ -1,0 +1,59 @@
+name: CurveGears CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install OpenSCAD
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes openscad xvfb libgl1-mesa-dri libglu1-mesa
+      - name: Regression tests — shared and core
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=common OPENSCAD=openscad
+      - name: Regression tests — Bézier
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=bezier OPENSCAD=openscad
+      - name: Regression tests — Cassini
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=cassini OPENSCAD=openscad
+      - name: Regression tests — Circle
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=circle OPENSCAD=openscad
+      - name: Regression tests — Ellipse
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=ellipse OPENSCAD=openscad
+      - name: Regression tests — Epitrochoid
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=epitrochoid OPENSCAD=openscad
+      - name: Regression tests — Fourier
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=fourier OPENSCAD=openscad
+      - name: Regression tests — Hypotrochoid
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=hypotrochoid OPENSCAD=openscad
+      - name: Regression tests — Lobed
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=lobed OPENSCAD=openscad
+      - name: Regression tests — Logarithmic spiral
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=logarithmic_spiral OPENSCAD=openscad
+      - name: Regression tests — Pascal
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=pascal OPENSCAD=openscad
+      - name: Regression tests — Superformula
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=superformula OPENSCAD=openscad
+      - name: Validate generated documentation
+        run: |
+          make readme
+          git diff --exit-code -- README.md
+          make check-docs
+      - name: Render CI-size examples
+        run: |
+          mkdir -p build/ci-images
+          for example in examples/*/*.scad; do
+            family=$(basename "$example" .scad)
+            xvfb-run -a --server-args="-screen 0 1280x1024x24" openscad -o "build/ci-images/${family}.png" \
+              --camera=0,0,0,50,0,40,0 --colorscheme=Nature \
+              --projection=o --viewall --autocenter --imgsize=256,256 -q "$example"
+          done
+      - name: Check repository hygiene
+        run: |
+          ! find . \( -path './.git' -o -path './build' \) -prune -o -type f \( -name '*.stl' -o -name '*.csg' -o -name '*.log' \) -print -quit | grep -q .
+          ! rg -n '(^|[<"])(\.\./)*.*gears\.scad' src README.md NOTICE.md
