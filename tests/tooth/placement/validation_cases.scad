@@ -69,6 +69,44 @@ assert(len(collision_hits)>0 && collision_hits[0][0]=="TOOTH_COLLISION",
     "expected TOOTH_COLLISION from the source-point broad phase");
 echo("stage=collision severity=info code=TOOTH_COLLISION_BROAD_PHASE PASS");
 
+collision_unrelated=synthetic_collision_placed(9,[100,100],[[99,99],[101,101]]);
+collision_with_unrelated=_cg_final_boundary_collisions([collision_a,collision_b,collision_unrelated],.8);
+assert(len(collision_with_unrelated)>0 && collision_with_unrelated[0][1]==0 && collision_with_unrelated[0][2]==1,
+    "expected the adjacent collision to survive an unrelated placement");
+echo("stage=collision severity=info code=TOOTH_COLLISION_ADJACENT_WITH_UNRELATED PASS");
+
+nonadjacent_collision=_cg_final_boundary_collisions([
+    synthetic_collision_placed(0,[0,0],[[-1,0],[1,0]]),
+    synthetic_collision_placed(2,[.1,.1],[[0,-1],[0,1]])
+],.8);
+assert(len(nonadjacent_collision)>0 && nonadjacent_collision[0][1]==0 && nonadjacent_collision[0][2]==2,
+    "expected a non-adjacent collision");
+echo("stage=collision severity=info code=TOOTH_COLLISION_NON_ADJACENT PASS");
+
+collinear_hits=_cg_final_boundary_collisions([
+    synthetic_collision_placed(0,[0,0],[[0,0],[2,0]]),
+    synthetic_collision_placed(2,[.1,.1],[[1,0],[3,0]])
+],.8);
+assert(len(collinear_hits)>0 && collinear_hits[0][0]=="TOOTH_COLLISION",
+    "expected collinear tooth overlap");
+echo("stage=collision severity=info code=TOOTH_COLLISION_COLLINEAR PASS");
+
+containment_hits=_cg_final_boundary_collisions([
+    synthetic_collision_placed(0,[0,0],[[-2,-2],[2,-2],[2,2],[-2,2]]),
+    synthetic_collision_placed(2,[.1,.1],[[-.5,-.5],[.5,-.5],[.5,.5],[-.5,.5]])
+],.8);
+assert(len(containment_hits)>0 && containment_hits[0][0]=="TOOTH_COLLISION",
+    "expected contained tooth overlap");
+echo("stage=collision severity=info code=TOOTH_COLLISION_CONTAINMENT PASS");
+
+top_flank_hits=_cg_final_boundary_collisions([
+    synthetic_collision_placed(0,[0,0],[[0,0],[2,2],[4,0],[0,0]]),
+    synthetic_collision_placed(2,[.1,.1],[[1,0],[1,3],[3,3],[3,0]])
+],.8);
+assert(len(top_flank_hits)>0 && top_flank_hits[0][0]=="TOOTH_COLLISION",
+    "expected top-to-flank collision");
+echo("stage=collision severity=info code=TOOTH_COLLISION_TOP_FLANK PASS");
+
 top_a=synthetic_collision_placed(0,[0,0],[[0,0],[-1,1],[1,1],[0,0]]);
 top_b=synthetic_collision_placed(1,[.1,.1],[[0,0],[-1,1],[1,1],[0,0]]);
 top_hits=_cg_final_boundary_collisions([top_a,top_b],.8);

@@ -7,7 +7,9 @@ include <generation.scad>
  * intersections, splice intervals and nearby tooth collision checks. It returns
  * placed, omitted_inaccessible or invalid states; it never silently repairs invalid geometry.
  * Cheap frame and candidate checks precede corridor and body scans. A source-point
- * broad phase limits exact collision checks to plausible non-neighbour contacts.
+ * broad phase limits exact collision checks to plausible tooth pairs; adjacent
+ * pairs are checked as well, with only their explicitly shared boundary contact
+ * permitted.
  */
 
 // Tooth placement owns curve frames, accessibility, body intersections,
@@ -532,9 +534,65 @@ function _cg_tooth_pair_collisions(a,b) = [
     for(i=[0:len(a)-1],j=[0:len(b)-1])
         let(
             p=a[i],q=a[(i+1)%len(a)],r=b[j],s=b[(j+1)%len(b)],
-            hit=_cg_bbox_segments_overlap(p,q,r,s) ? _cg_segment_intersection(p,q,r,s) : [false,[0,0],0,0]
+            crossing=_cg_bbox_segments_overlap(p,q,r,s) ? _cg_segment_intersection(p,q,r,s) : [false,[0,0],0,0],
+            ab=_cg_vsub(q,p),cd=_cg_vsub(s,r),
+            ab2=ab[0]*ab[0]+ab[1]*ab[1],
+            t0=ab2>_cg_eps_len() ? (_cg_vsub(r,p)[0]*ab[0]+_cg_vsub(r,p)[1]*ab[1])/ab2 : 0,
+            t1=ab2>_cg_eps_len() ? (_cg_vsub(s,p)[0]*ab[0]+_cg_vsub(s,p)[1]*ab[1])/ab2 : 0,
+            overlap_start=max(0,min(t0,t1)),overlap_end=min(1,max(t0,t1)),
+            collinear=ab2>_cg_eps_len() && abs(_cg_cross2(ab,cd))<=_cg_eps_intersect()
+                && abs(_cg_cross2(_cg_vsub(r,p),ab))<=_cg_eps_intersect()
+                && overlap_end-overlap_start>_cg_eps_intersect(),
+            hit=crossing[0] ? crossing : collinear ? [true,_cg_vlerp(p,q,(overlap_start+overlap_end)/2),0,0] : [false,[0,0],0,0]
         ) if(hit[0]) [i,j,hit[1]]
 ];
+
+/*** @function _cg_point_on_segment(point, a, b)
+ * @brief Test whether a point lies on a segment within the geometry tolerance.
+ * @param point {point} Candidate point.
+ * @param a {point} Segment start.
+ * @param b {point} Segment end.
+ * @return {boolean} True when the point lies on the segment.
+ */
+function _cg_point_on_segment(point,a,b) =
+    abs(_cg_cross2(_cg_vsub(point,a),_cg_vsub(b,a)))<=_cg_eps_intersect()
+    && point[0]>=min(a[0],b[0])-_cg_eps_intersect() && point[0]<=max(a[0],b[0])+_cg_eps_intersect()
+    && point[1]>=min(a[1],b[1])-_cg_eps_intersect() && point[1]<=max(a[1],b[1])+_cg_eps_intersect();
+
+/*** @function _cg_point_in_polygon_strict(point, polygon_points)
+ * @brief Test strict containment, excluding points on the polygon boundary.
+ * @param point {point} Candidate point.
+ * @param polygon_points {array} Closed polygon.
+ * @return {boolean} True when the point is strictly inside the polygon.
+ */
+function _cg_point_in_polygon_strict(point,polygon_points) =
+    _cg_point_in_polygon(point,polygon_points)
+    && len([for(i=[0:len(polygon_points)-1])
+        if(_cg_point_on_segment(point,polygon_points[i],polygon_points[(i+1)%len(polygon_points)])) 1])==0;
+
+/*** @function _cg_tooth_containment_collisions(a, b)
+ * @brief Detect one tooth boundary contained inside the other.
+ * @param a {array of points} First tooth boundary.
+ * @param b {array of points} Second tooth boundary.
+ * @return {array} Containment witnesses.
+ */
+function _cg_tooth_containment_collisions(a,b) =
+    _cg_point_in_polygon_strict(a[0],b) ? [[-1,-1,a[0]]] :
+    _cg_point_in_polygon_strict(b[0],a) ? [[-1,-1,b[0]]] : [];
+
+/*** @function _cg_tooth_contact_is_permitted(a, b, hit)
+ * @brief Permit only a shared endpoint contact between tooth boundaries.
+ * @param a {array of points} First tooth boundary.
+ * @param b {array of points} Second tooth boundary.
+ * @param hit {array} Segment collision record.
+ * @return {boolean} True only for an endpoint-only shared boundary contact.
+ */
+function _cg_tooth_contact_is_permitted(a,b,hit) =
+    hit[0]>=0 && hit[1]>=0
+    && (_cg_vlen(_cg_vsub(hit[2],a[hit[0]]))<=_cg_eps_intersect()
+        || _cg_vlen(_cg_vsub(hit[2],a[(hit[0]+1)%len(a)]))<=_cg_eps_intersect())
+    && (_cg_vlen(_cg_vsub(hit[2],b[hit[1]]))<=_cg_eps_intersect()
+        || _cg_vlen(_cg_vsub(hit[2],b[(hit[1]+1)%len(b)]))<=_cg_eps_intersect());
 
 /*** @function _cg_tooth_top_collisions(a, b)
  * @brief Find collisions between the top edges of two tooth boundaries.
@@ -550,7 +608,9 @@ function _cg_tooth_top_collisions(a,b) =
         collinear=_cg_bbox_segments_overlap(p,q,r,s)
             && abs(_cg_cross2(_cg_vsub(q,p),_cg_vsub(r,p)))<=_cg_eps_intersect()
             && abs(_cg_cross2(_cg_vsub(q,p),_cg_vsub(s,p)))<=_cg_eps_intersect())
-    (hit[0] || collinear) ? [[top_a,top_b,hit[0] ? hit[1] : _cg_vlerp(p,q,.5)]] : [];
+    (hit[0] || collinear)
+        && !_cg_tooth_contact_is_permitted(a,b,[top_a,top_b,hit[0] ? hit[1] : _cg_vlerp(p,q,.5)])
+        ? [[top_a,top_b,hit[0] ? hit[1] : _cg_vlerp(p,q,.5)]] : [];
 
 /*** @function _cg_tooth_order_failures(placements)
  * @brief Detect non-monotone indices among accepted placements.
@@ -568,15 +628,17 @@ function _cg_tooth_order_failures(placements) =
  * @param b {array} Second tooth boundary.
  * @return {array} Non-top collision records.
  */
-function _cg_tooth_non_top_collisions(a,b) = [
-    for(hit=_cg_tooth_pair_collisions(a,b))
+function _cg_tooth_non_top_collisions(a,b) = concat(
+    [for(hit=_cg_tooth_pair_collisions(a,b))
         if(!(len(a)>=4 && len(b)>=4
-            && (hit[0]==floor((len(a)-1)/2) || hit[1]==floor((len(b)-1)/2)))) hit
-];
+            && hit[0]==floor((len(a)-1)/2) && hit[1]==floor((len(b)-1)/2))
+            && !_cg_tooth_contact_is_permitted(a,b,hit)) hit],
+    _cg_tooth_containment_collisions(a,b)
+);
 
 /**
  * @function _cg_final_boundary_collisions
- * @brief Run broad-phase and exact checks for nearby non-neighbour teeth.
+ * @brief Run broad-phase and exact checks for every nearby placed-tooth pair.
  * @param boundaries {array} Placed tooth boundaries.
  * @param points {array of points} Sampled pitch contour.
  * @param arc {array} Pitch-curve arc-length table.
@@ -588,21 +650,22 @@ function _cg_final_boundary_collisions(placements,modul,clearance=undef) =
     let(
         placed=[for(p=placements) if(p[0]=="placed") p],
         tooth_height=_cg_dedendum(modul,clearance)+_cg_addendum(modul),
-        search_radius=2*tooth_height
+        search_radius=2*tooth_height,
+        pair_order=concat(
+            len(placed)>2 ? [[0,len(placed)-1]] : [],
+            len(placed)>1 ? [for(i=[0:len(placed)-2]) [i,i+1]] : [],
+            len(placed)>3 ? [for(delta=[2:len(placed)-2]) for(i=[0:len(placed)-delta-1]) [i,i+delta]] : []
+        )
     )
     len(placed)<2 ? [] : concat(
-        [for(i=[0:len(placed)-2]) for(j=[i+1:len(placed)-1])
-            let(source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])),
-                index_distance=abs(placed[i][2]-placed[j][2]),
-                adjacent=len(placements)>2 && (index_distance==1 || index_distance==len(placements)-1))
-            if(!adjacent && source_distance<=search_radius)
+        [for(pair=pair_order)
+            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])))
+            if(source_distance<=search_radius)
                 let(hits=_cg_tooth_non_top_collisions(placed[i][6],placed[j][6]))
                 for(hit=hits) ["TOOTH_COLLISION",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]],
-        [for(i=[0:len(placed)-2]) for(j=[i+1:len(placed)-1])
-            let(source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])),
-                index_distance=abs(placed[i][2]-placed[j][2]),
-                adjacent=len(placements)>2 && (index_distance==1 || index_distance==len(placements)-1))
-            if(!adjacent && source_distance<=search_radius)
+        [for(pair=pair_order)
+            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])))
+            if(source_distance<=search_radius)
                 let(top_hits=_cg_tooth_top_collisions(placed[i][6],placed[j][6]))
                 for(hit=top_hits) ["TOOTH_TOP_OVERLAP",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]]
     );
