@@ -21,7 +21,7 @@ Executable examples for the public API and shared construction layers.
 
 **Functions**:
 
-> [`bezier_curve_gear`](#function-bezier_curve_gear): Render a Bézier gear from the documented pitch-curve family.
+> [`bezier_curve_gear`](#function-bezier_curve_gear): Render a smooth asymmetric Bézier gear with a soft teardrop outline.
 
 > [`bezier_curve_gear_alternative`](#function-bezier_curve_gear_alternative): Bézier asymmetric alternative: A visibly non-circular but radially admissible Bézier pitch curve.
 
@@ -33,7 +33,7 @@ Executable examples for the public API and shared construction layers.
 
 > [`bezier_curve_gear_pair_alternative`](#function-bezier_curve_gear_pair_alternative): Bézier asymmetric pair alternative: The same visibly non-circular Bézier curve and its derived mate.
 
-> [`cassini_curve_gear`](#function-cassini_curve_gear): Render a Cassini gear from the documented pitch-curve family.
+> [`cassini_curve_gear`](#function-cassini_curve_gear): Render a thin-waisted peanut-shaped Cassini gear.
 
 > [`cassini_curve_gear_body`](#function-cassini_curve_gear_body): Render the Cassini body before tooth placement.
 
@@ -65,7 +65,7 @@ Executable examples for the public API and shared construction layers.
 
 > [`ellipse_curve_gear_pair`](#function-ellipse_curve_gear_pair): Render a complete Ellipse gear pair with derived conjugate motion.
 
-> [`epitrochoid_curve_gear`](#function-epitrochoid_curve_gear): Render an Epitrochoid gear from the documented pitch-curve family.
+> [`epitrochoid_curve_gear`](#function-epitrochoid_curve_gear): Render a scalloped Epitrochoid gear showing the rolling-pen profile.
 
 > [`epitrochoid_curve_gear_body`](#function-epitrochoid_curve_gear_body): Render the Epitrochoid body before tooth placement.
 
@@ -77,7 +77,7 @@ Executable examples for the public API and shared construction layers.
 
 > [`epitrochoid_curve_gear_pair`](#function-epitrochoid_curve_gear_pair): Render a complete Epitrochoid gear pair with derived conjugate motion.
 
-> [`fourier_curve_gear`](#function-fourier_curve_gear): Render a Fourier gear from the documented pitch-curve family.
+> [`fourier_curve_gear`](#function-fourier_curve_gear): Render a two-harmonic Fourier gear with visibly modulated lobes.
 
 > [`fourier_curve_gear_body`](#function-fourier_curve_gear_body): Render the Fourier body before tooth placement.
 
@@ -89,7 +89,7 @@ Executable examples for the public API and shared construction layers.
 
 > [`fourier_curve_gear_pair`](#function-fourier_curve_gear_pair): Render a complete Fourier gear pair with derived conjugate motion.
 
-> [`hypotrochoid_curve_gear`](#function-hypotrochoid_curve_gear): Render a Hypotrochoid gear from the documented pitch-curve family.
+> [`hypotrochoid_curve_gear`](#function-hypotrochoid_curve_gear): Render a triangular inner-rolling Hypotrochoid form.
 
 > [`hypotrochoid_curve_gear_body`](#function-hypotrochoid_curve_gear_body): Render the Hypotrochoid body before tooth placement.
 
@@ -103,7 +103,7 @@ Executable examples for the public API and shared construction layers.
 
 > [`hypotrochoid_curve_gear_pair_alternative`](#function-hypotrochoid_curve_gear_pair_alternative): curve_gear_hypotrochoid_pair alternative: Executable example for curve gear hypotrochoid pair alternative.
 
-> [`lobed_curve_gear`](#function-lobed_curve_gear): Render a Lobed gear from the documented pitch-curve family.
+> [`lobed_curve_gear`](#function-lobed_curve_gear): Render a square four-lobed gear with a clear radial rhythm.
 
 > [`lobed_curve_gear_body`](#function-lobed_curve_gear_body): Render the Lobed body before tooth placement.
 
@@ -125,7 +125,7 @@ Executable examples for the public API and shared construction layers.
 
 > [`logarithmic_spiral_curve_gear_reference_separation`](#function-logarithmic_spiral_curve_gear_reference_separation): Show the Logarithmic spiral reference-separation calculation.
 
-> [`pascal_curve_gear`](#function-pascal_curve_gear): Render a Pascal gear from the documented pitch-curve family.
+> [`pascal_curve_gear`](#function-pascal_curve_gear): Render a heart-like Pascal gear with a pronounced non-convex waist.
 
 > [`pascal_curve_gear_body`](#function-pascal_curve_gear_body): Render the Pascal body before tooth placement.
 

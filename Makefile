@@ -20,6 +20,7 @@ FAMILIES := bezier cassini circle ellipse epitrochoid fourier hypotrochoid lobed
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
+MAIN_EXAMPLES := $(foreach family,$(FAMILIES),examples/functions/$(family)/curve_gear_$(family).scad)
 CORE_EXAMPLES := examples/tooth/construction.scad examples/tooth/placement.scad examples/tooth/assembly.scad
 CORE_IMAGES := images/tooth/construction.png images/tooth/placement.png images/tooth/assembly.png
 API_EXAMPLES := $(shell find examples/functions -type f -name '*.scad' -print | sort)
@@ -35,7 +36,7 @@ api-images: $(API_IMAGES)
 $(API_IMAGES): IMAGE_SIZE=$(CI_IMAGE_SIZE)
 $(CORE_IMAGES): IMAGE_SIZE=$(CORE_IMAGE_SIZE)
 
-$(MAIN_IMAGE): $(MAIN_EXAMPLE)
+$(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES)
 	@mkdir -p $(@D)
 	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
 

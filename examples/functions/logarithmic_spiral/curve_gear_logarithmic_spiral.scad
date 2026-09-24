@@ -6,4 +6,7 @@
  */
 include <../../../src/logarithmic_spiral/mate.scad>;
 $fn=64;
-curve_gear_logarithmic_spiral(.8,34,4,4.8,sectors=1,growth_rate=1.17,samples=240);
+module _main_example_logarithmic_spiral() {
+    curve_gear_logarithmic_spiral(.8,34,4,4.8,sectors=1,growth_rate=1.17,samples=240);
+}
+_main_example_logarithmic_spiral();

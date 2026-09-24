@@ -4,5 +4,8 @@
  * Source: [`functions/circle/curve_gear_circle.scad`](functions/circle/curve_gear_circle.scad)
  * @image ../images/functions/circle/curve_gear_circle.png curve gear circle preview
  */
-include <../../../src/circle/gear.scad>
-curve_gear_circle(.8,34,4,4.8);
+include <../../../src/circle/gear.scad>;
+module _main_example_circle() {
+    curve_gear_circle(.8,34,4,4.8);
+}
+_main_example_circle();
