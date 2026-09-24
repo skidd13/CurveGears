@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_superformula_body example
- * @brief One-to-one executable example for the documented public API.
+ * @function superformula_curve_gear_body
+ * @brief Render the Superformula body before tooth placement.
+ * Source: [`functions/superformula/curve_gear_superformula_body.scad`](functions/superformula/curve_gear_superformula_body.scad)
+ * @image ../images/functions/superformula/curve_gear_superformula_body.png curve_gear_superformula_body example preview
  */
 include <../../../src/superformula/mate.scad>;
 $fn=64;

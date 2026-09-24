@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_bezier example
- * @brief One-to-one executable example for the documented public API.
+ * @function bezier_curve_gear
+ * @brief Render a Bézier gear from the documented pitch-curve family.
+ * Source: [`functions/bezier/curve_gear_bezier.scad`](functions/bezier/curve_gear_bezier.scad)
+ * @image ../images/functions/bezier/curve_gear_bezier.png curve_gear_bezier example preview
  */
 include <../../../src/bezier/base.scad>;
 $fn=64;

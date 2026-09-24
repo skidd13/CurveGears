@@ -1,4 +1,8 @@
-// Public circle family contract: gear, mate, and pair.
+/***
+ * @function circle_full_pipeline
+ * @brief Verify the complete Circle gear, mate, and pair entry points.
+ * Source: [`circle/full_pipeline.scad`](circle/full_pipeline.scad)
+ */
 include <../../src/circle/gear.scad>
 include <../../src/circle/mate.scad>
 include <../../src/circle/pair.scad>

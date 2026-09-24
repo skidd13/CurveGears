@@ -1,4 +1,8 @@
-// Expected-failure gate for the final polygon self-intersection validator.
+/***
+ * @function tooth_placement_polygon_failure
+ * @brief Expected-failure gate for the final polygon self-intersection validator.
+ * Source: [`tooth/placement/polygon_failure.scad`](tooth/placement/polygon_failure.scad)
+ */
 include <../../../src/common/curve_gears_math.scad>
 
 outline=[[0,0],[4,4],[0,4],[4,0]];

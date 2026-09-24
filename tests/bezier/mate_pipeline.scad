@@ -1,3 +1,8 @@
+/***
+ * @function bezier_mate_pipeline
+ * @brief Verify Bézier mate construction through the shared pair pipeline.
+ * Source: [`bezier/mate_pipeline.scad`](bezier/mate_pipeline.scad)
+ */
 include <../../src/bezier/mate.scad>
 include <../../src/bezier/pair.scad>
 

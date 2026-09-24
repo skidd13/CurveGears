@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_logarithmic_spiral_body example
- * @brief One-to-one executable example for the documented public API.
+ * @function logarithmic_spiral_curve_gear_body
+ * @brief Render the Logarithmic spiral body before tooth placement.
+ * Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad)
+ * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png curve_gear_logarithmic_spiral_body example preview
  */
 include <../../../src/logarithmic_spiral/mate.scad>;
 $fn=64;

@@ -1,11 +1,13 @@
 /***
- * @file Tooth assembly preview
- * @brief Compare placed tooth boundaries with the final assembled outline.
+ * @function tooth_assembly
+ * @brief Tooth assembly preview: Compare placed tooth boundaries with the final assembled outline.
+ * Source: [`tooth/assembly.scad`](tooth/assembly.scad)
  *
  * The left panel keeps the canonical body and accepted placed tooth
  * boundaries separate. The right panel is the single outline returned by
  * _cg_final_outline_from_placements, so the body intervals replaced by teeth
  * can be checked as one continuous polygon.
+ * @image ../images/tooth/assembly.png Tooth assembly preview preview
  */
 include <../../src/common/curve_gears_math.scad>;
 

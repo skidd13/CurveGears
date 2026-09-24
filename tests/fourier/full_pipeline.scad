@@ -1,3 +1,8 @@
+/***
+ * @function fourier_full_pipeline
+ * @brief Verify the complete Fourier gear, mate, and pair entry points.
+ * Source: [`fourier/full_pipeline.scad`](fourier/full_pipeline.scad)
+ */
 include <../../src/fourier/pair.scad>
 $fn=48;
 coefficients=[[2,.10,0],[3,.04,30]];

@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_ellipse_body example
- * @brief One-to-one executable example for the documented public API.
+ * @function ellipse_curve_gear_body
+ * @brief Render the Ellipse body before tooth placement.
+ * Source: [`functions/ellipse/curve_gear_ellipse_body.scad`](functions/ellipse/curve_gear_ellipse_body.scad)
+ * @image ../images/functions/ellipse/curve_gear_ellipse_body.png curve_gear_ellipse_body example preview
  */
 include <../../../src/ellipse/mate.scad>;
 $fn=64;

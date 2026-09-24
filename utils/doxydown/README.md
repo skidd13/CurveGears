@@ -153,12 +153,18 @@ accessed by [this address](https://rspamd.com/doc/lua/ucl.html).
 
 ## Program invocation
 
-	doxydown [-hg] [-e language] [-l language] < input_source > markdown.md
+	doxydown [-hg] [-e language] [-l language] [input_source ...] > markdown.md
 
 * `-h`: help message
 * `-e`: sets default example language (default: lua)
 * `-l`: sets input language (default: c)
 * `-g`: use github flavoured markdown (default: kramdown/pandoc)
+
+Input files may be supplied as positional arguments. They are read in the
+given order as one documentation stream, which permits a small
+`.doxydown_module.md`
+module header to precede a set of source files without a separate shell
+concatenation step.
 
 ## License
 

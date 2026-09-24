@@ -21,151 +21,151 @@ Executable examples for the public API and shared construction layers.
 
 **Functions**:
 
-> [`example_functions_bezier_curve_gear_bezier`](#function-example_functions_bezier_curve_gear_bezier): [`functions/bezier/curve_gear_bezier.scad`](functions/bezier/curve_gear_bezier.scad) — curve_gear_bezier example: One-to-one executable example for the documented public API.
+> [`bezier_curve_gear`](#function-bezier_curve_gear): Render a Bézier gear from the documented pitch-curve family.
 
-> [`example_functions_bezier_curve_gear_bezier_alternative`](#function-example_functions_bezier_curve_gear_bezier_alternative): [`functions/bezier/curve_gear_bezier_alternative.scad`](functions/bezier/curve_gear_bezier_alternative.scad) — Bézier asymmetric alternative: A visibly non-circular but radially admissible Bézier pitch curve.
+> [`bezier_curve_gear_alternative`](#function-bezier_curve_gear_alternative): Bézier asymmetric alternative: A visibly non-circular but radially admissible Bézier pitch curve.
 
-> [`example_functions_bezier_curve_gear_bezier_body`](#function-example_functions_bezier_curve_gear_bezier_body): [`functions/bezier/curve_gear_bezier_body.scad`](functions/bezier/curve_gear_bezier_body.scad) — curve_gear_bezier_body example: One-to-one executable example for the documented public API.
+> [`bezier_curve_gear_body`](#function-bezier_curve_gear_body): Render the Bézier body before tooth placement.
 
-> [`example_functions_bezier_curve_gear_bezier_mate`](#function-example_functions_bezier_curve_gear_bezier_mate): [`functions/bezier/curve_gear_bezier_mate.scad`](functions/bezier/curve_gear_bezier_mate.scad) — curve_gear_bezier_mate example: One-to-one executable example for the admissible Bézier mate API.
+> [`bezier_curve_gear_mate`](#function-bezier_curve_gear_mate): Render the conjugate Bézier mate generated from the driver pitch curve.
 
-> [`example_functions_bezier_curve_gear_bezier_pair`](#function-example_functions_bezier_curve_gear_bezier_pair): [`functions/bezier/curve_gear_bezier_pair.scad`](functions/bezier/curve_gear_bezier_pair.scad) — curve_gear_bezier_pair example: One-to-one executable example for the Bézier pair API.
+> [`bezier_curve_gear_pair`](#function-bezier_curve_gear_pair): Render a complete Bézier gear pair with derived conjugate motion.
 
-> [`example_functions_bezier_curve_gear_bezier_pair_alternative`](#function-example_functions_bezier_curve_gear_bezier_pair_alternative): [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad) — Bézier asymmetric pair alternative: The same visibly non-circular Bézier curve and its derived mate.
+> [`bezier_curve_gear_pair_alternative`](#function-bezier_curve_gear_pair_alternative): Bézier asymmetric pair alternative: The same visibly non-circular Bézier curve and its derived mate.
 
-> [`example_functions_cassini_curve_gear_cassini`](#function-example_functions_cassini_curve_gear_cassini): [`functions/cassini/curve_gear_cassini.scad`](functions/cassini/curve_gear_cassini.scad) — curve_gear_cassini example: One-to-one executable example for the documented public API.
+> [`cassini_curve_gear`](#function-cassini_curve_gear): Render a Cassini gear from the documented pitch-curve family.
 
-> [`example_functions_cassini_curve_gear_cassini_body`](#function-example_functions_cassini_curve_gear_cassini_body): [`functions/cassini/curve_gear_cassini_body.scad`](functions/cassini/curve_gear_cassini_body.scad) — curve_gear_cassini_body example: One-to-one executable example for the documented public API.
+> [`cassini_curve_gear_body`](#function-cassini_curve_gear_body): Render the Cassini body before tooth placement.
 
-> [`example_functions_cassini_curve_gear_cassini_centre_distance`](#function-example_functions_cassini_curve_gear_cassini_centre_distance): [`functions/cassini/curve_gear_cassini_centre_distance.scad`](functions/cassini/curve_gear_cassini_centre_distance.scad) — curve_gear_cassini_centre_distance example: One-to-one executable example for the documented scalar API.
+> [`cassini_curve_gear_centre_distance`](#function-cassini_curve_gear_centre_distance): Show the Cassini centre-distance calculation used for pair placement.
 
-> [`example_functions_cassini_curve_gear_cassini_mate`](#function-example_functions_cassini_curve_gear_cassini_mate): [`functions/cassini/curve_gear_cassini_mate.scad`](functions/cassini/curve_gear_cassini_mate.scad) — curve_gear_cassini_mate example: One-to-one executable example for the documented public API.
+> [`cassini_curve_gear_mate`](#function-cassini_curve_gear_mate): Render the conjugate Cassini mate generated from the driver pitch curve.
 
-> [`example_functions_cassini_curve_gear_cassini_mate_rotation`](#function-example_functions_cassini_curve_gear_cassini_mate_rotation): [`functions/cassini/curve_gear_cassini_mate_rotation.scad`](functions/cassini/curve_gear_cassini_mate_rotation.scad) — curve_gear_cassini_mate_rotation example: One-to-one executable example for the documented scalar API.
+> [`cassini_curve_gear_mate_rotation`](#function-cassini_curve_gear_mate_rotation): Show the Cassini mate-rotation calculation used for pair assembly.
 
-> [`example_functions_cassini_curve_gear_cassini_pair`](#function-example_functions_cassini_curve_gear_cassini_pair): [`functions/cassini/curve_gear_cassini_pair.scad`](functions/cassini/curve_gear_cassini_pair.scad) — curve_gear_cassini_pair example: One-to-one executable example for the documented public API.
+> [`cassini_curve_gear_pair`](#function-cassini_curve_gear_pair): Render a complete Cassini gear pair with derived conjugate motion.
 
-> [`example_functions_circle_curve_gear_circle`](#function-example_functions_circle_curve_gear_circle): [`functions/circle/curve_gear_circle.scad`](functions/circle/curve_gear_circle.scad) — curve gear circle: Executable example for curve gear circle.
+> [`circle_curve_gear`](#function-circle_curve_gear): Render a Circle gear from the documented pitch-curve family.
 
-> [`example_functions_circle_curve_gear_circle_body`](#function-example_functions_circle_curve_gear_circle_body): [`functions/circle/curve_gear_circle_body.scad`](functions/circle/curve_gear_circle_body.scad) — curve gear circle body: Executable example for curve gear circle body.
+> [`circle_curve_gear_body`](#function-circle_curve_gear_body): Render the Circle body before tooth placement.
 
-> [`example_functions_circle_curve_gear_circle_mate`](#function-example_functions_circle_curve_gear_circle_mate): [`functions/circle/curve_gear_circle_mate.scad`](functions/circle/curve_gear_circle_mate.scad) — curve gear circle mate: Executable example for curve gear circle mate.
+> [`circle_curve_gear_mate`](#function-circle_curve_gear_mate): Render the conjugate Circle mate generated from the driver pitch curve.
 
-> [`example_functions_circle_curve_gear_circle_pair`](#function-example_functions_circle_curve_gear_circle_pair): [`functions/circle/curve_gear_circle_pair.scad`](functions/circle/curve_gear_circle_pair.scad) — curve gear circle pair: Executable example for curve gear circle pair.
+> [`circle_curve_gear_pair`](#function-circle_curve_gear_pair): Render a complete Circle gear pair with derived conjugate motion.
 
-> [`example_functions_ellipse_curve_gear_ellipse`](#function-example_functions_ellipse_curve_gear_ellipse): [`functions/ellipse/curve_gear_ellipse.scad`](functions/ellipse/curve_gear_ellipse.scad) — curve_gear_ellipse example: One-to-one executable example for the documented public API.
+> [`ellipse_curve_gear`](#function-ellipse_curve_gear): Render a Ellipse gear from the documented pitch-curve family.
 
-> [`example_functions_ellipse_curve_gear_ellipse_body`](#function-example_functions_ellipse_curve_gear_ellipse_body): [`functions/ellipse/curve_gear_ellipse_body.scad`](functions/ellipse/curve_gear_ellipse_body.scad) — curve_gear_ellipse_body example: One-to-one executable example for the documented public API.
+> [`ellipse_curve_gear_body`](#function-ellipse_curve_gear_body): Render the Ellipse body before tooth placement.
 
-> [`example_functions_ellipse_curve_gear_ellipse_centre_distance`](#function-example_functions_ellipse_curve_gear_ellipse_centre_distance): [`functions/ellipse/curve_gear_ellipse_centre_distance.scad`](functions/ellipse/curve_gear_ellipse_centre_distance.scad) — curve_gear_ellipse_centre_distance example: One-to-one executable example for the documented scalar API.
+> [`ellipse_curve_gear_centre_distance`](#function-ellipse_curve_gear_centre_distance): Show the Ellipse centre-distance calculation used for pair placement.
 
-> [`example_functions_ellipse_curve_gear_ellipse_mate`](#function-example_functions_ellipse_curve_gear_ellipse_mate): [`functions/ellipse/curve_gear_ellipse_mate.scad`](functions/ellipse/curve_gear_ellipse_mate.scad) — curve_gear_ellipse_mate example: One-to-one executable example for the documented public API.
+> [`ellipse_curve_gear_mate`](#function-ellipse_curve_gear_mate): Render the conjugate Ellipse mate generated from the driver pitch curve.
 
-> [`example_functions_ellipse_curve_gear_ellipse_mate_rotation`](#function-example_functions_ellipse_curve_gear_ellipse_mate_rotation): [`functions/ellipse/curve_gear_ellipse_mate_rotation.scad`](functions/ellipse/curve_gear_ellipse_mate_rotation.scad) — curve_gear_ellipse_mate_rotation example: One-to-one executable example for the documented scalar API.
+> [`ellipse_curve_gear_mate_rotation`](#function-ellipse_curve_gear_mate_rotation): Show the Ellipse mate-rotation calculation used for pair assembly.
 
-> [`example_functions_ellipse_curve_gear_ellipse_pair`](#function-example_functions_ellipse_curve_gear_ellipse_pair): [`functions/ellipse/curve_gear_ellipse_pair.scad`](functions/ellipse/curve_gear_ellipse_pair.scad) — curve_gear_ellipse_pair example: One-to-one executable example for the documented public API.
+> [`ellipse_curve_gear_pair`](#function-ellipse_curve_gear_pair): Render a complete Ellipse gear pair with derived conjugate motion.
 
-> [`example_functions_epitrochoid_curve_gear_epitrochoid`](#function-example_functions_epitrochoid_curve_gear_epitrochoid): [`functions/epitrochoid/curve_gear_epitrochoid.scad`](functions/epitrochoid/curve_gear_epitrochoid.scad) — curve_gear_epitrochoid example: One-to-one executable example for the documented public API.
+> [`epitrochoid_curve_gear`](#function-epitrochoid_curve_gear): Render an Epitrochoid gear from the documented pitch-curve family.
 
-> [`example_functions_epitrochoid_curve_gear_epitrochoid_body`](#function-example_functions_epitrochoid_curve_gear_epitrochoid_body): [`functions/epitrochoid/curve_gear_epitrochoid_body.scad`](functions/epitrochoid/curve_gear_epitrochoid_body.scad) — curve_gear_epitrochoid_body example: One-to-one executable example for the documented public API.
+> [`epitrochoid_curve_gear_body`](#function-epitrochoid_curve_gear_body): Render the Epitrochoid body before tooth placement.
 
-> [`example_functions_epitrochoid_curve_gear_epitrochoid_centre_distance`](#function-example_functions_epitrochoid_curve_gear_epitrochoid_centre_distance): [`functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad`](functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad) — curve_gear_epitrochoid_centre_distance example: One-to-one executable example for the documented scalar API.
+> [`epitrochoid_curve_gear_centre_distance`](#function-epitrochoid_curve_gear_centre_distance): Show the Epitrochoid centre-distance calculation used for pair placement.
 
-> [`example_functions_epitrochoid_curve_gear_epitrochoid_mate`](#function-example_functions_epitrochoid_curve_gear_epitrochoid_mate): [`functions/epitrochoid/curve_gear_epitrochoid_mate.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate.scad) — curve_gear_epitrochoid_mate example: One-to-one executable example for the documented public API.
+> [`epitrochoid_curve_gear_mate`](#function-epitrochoid_curve_gear_mate): Render the conjugate Epitrochoid mate generated from the driver pitch curve.
 
-> [`example_functions_epitrochoid_curve_gear_epitrochoid_mate_rotation`](#function-example_functions_epitrochoid_curve_gear_epitrochoid_mate_rotation): [`functions/epitrochoid/curve_gear_epitrochoid_mate_rotation.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate_rotation.scad) — curve_gear_epitrochoid_mate_rotation example: One-to-one executable example for the documented scalar API.
+> [`epitrochoid_curve_gear_mate_rotation`](#function-epitrochoid_curve_gear_mate_rotation): Show the Epitrochoid mate-rotation calculation used for pair assembly.
 
-> [`example_functions_epitrochoid_curve_gear_epitrochoid_pair`](#function-example_functions_epitrochoid_curve_gear_epitrochoid_pair): [`functions/epitrochoid/curve_gear_epitrochoid_pair.scad`](functions/epitrochoid/curve_gear_epitrochoid_pair.scad) — curve_gear_epitrochoid_pair example: One-to-one executable example for the documented public API.
+> [`epitrochoid_curve_gear_pair`](#function-epitrochoid_curve_gear_pair): Render a complete Epitrochoid gear pair with derived conjugate motion.
 
-> [`example_functions_fourier_curve_gear_fourier`](#function-example_functions_fourier_curve_gear_fourier): [`functions/fourier/curve_gear_fourier.scad`](functions/fourier/curve_gear_fourier.scad) — curve_gear_fourier example: One-to-one executable example for the documented public API.
+> [`fourier_curve_gear`](#function-fourier_curve_gear): Render a Fourier gear from the documented pitch-curve family.
 
-> [`example_functions_fourier_curve_gear_fourier_body`](#function-example_functions_fourier_curve_gear_fourier_body): [`functions/fourier/curve_gear_fourier_body.scad`](functions/fourier/curve_gear_fourier_body.scad) — curve_gear_fourier_body example: One-to-one executable example for the documented public API.
+> [`fourier_curve_gear_body`](#function-fourier_curve_gear_body): Render the Fourier body before tooth placement.
 
-> [`example_functions_fourier_curve_gear_fourier_centre_distance`](#function-example_functions_fourier_curve_gear_fourier_centre_distance): [`functions/fourier/curve_gear_fourier_centre_distance.scad`](functions/fourier/curve_gear_fourier_centre_distance.scad) — curve_gear_fourier_centre_distance example: One-to-one executable example for the documented scalar API.
+> [`fourier_curve_gear_centre_distance`](#function-fourier_curve_gear_centre_distance): Show the Fourier centre-distance calculation used for pair placement.
 
-> [`example_functions_fourier_curve_gear_fourier_mate`](#function-example_functions_fourier_curve_gear_fourier_mate): [`functions/fourier/curve_gear_fourier_mate.scad`](functions/fourier/curve_gear_fourier_mate.scad) — curve_gear_fourier_mate example: One-to-one executable example for the documented public API.
+> [`fourier_curve_gear_mate`](#function-fourier_curve_gear_mate): Render the conjugate Fourier mate generated from the driver pitch curve.
 
-> [`example_functions_fourier_curve_gear_fourier_mate_rotation`](#function-example_functions_fourier_curve_gear_fourier_mate_rotation): [`functions/fourier/curve_gear_fourier_mate_rotation.scad`](functions/fourier/curve_gear_fourier_mate_rotation.scad) — curve_gear_fourier_mate_rotation example: One-to-one executable example for the documented scalar API.
+> [`fourier_curve_gear_mate_rotation`](#function-fourier_curve_gear_mate_rotation): Show the Fourier mate-rotation calculation used for pair assembly.
 
-> [`example_functions_fourier_curve_gear_fourier_pair`](#function-example_functions_fourier_curve_gear_fourier_pair): [`functions/fourier/curve_gear_fourier_pair.scad`](functions/fourier/curve_gear_fourier_pair.scad) — curve_gear_fourier_pair example: One-to-one executable example for the documented public API.
+> [`fourier_curve_gear_pair`](#function-fourier_curve_gear_pair): Render a complete Fourier gear pair with derived conjugate motion.
 
-> [`example_functions_hypotrochoid_curve_gear_hypotrochoid`](#function-example_functions_hypotrochoid_curve_gear_hypotrochoid): [`functions/hypotrochoid/curve_gear_hypotrochoid.scad`](functions/hypotrochoid/curve_gear_hypotrochoid.scad) — curve_gear_hypotrochoid example */: Executable example for curve gear hypotrochoid.
+> [`hypotrochoid_curve_gear`](#function-hypotrochoid_curve_gear): Render a Hypotrochoid gear from the documented pitch-curve family.
 
-> [`example_functions_hypotrochoid_curve_gear_hypotrochoid_body`](#function-example_functions_hypotrochoid_curve_gear_hypotrochoid_body): [`functions/hypotrochoid/curve_gear_hypotrochoid_body.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body.scad) — curve_gear_hypotrochoid_body example */: Executable example for curve gear hypotrochoid body.
+> [`hypotrochoid_curve_gear_body`](#function-hypotrochoid_curve_gear_body): Render the Hypotrochoid body before tooth placement.
 
-> [`example_functions_hypotrochoid_curve_gear_hypotrochoid_centre_distance`](#function-example_functions_hypotrochoid_curve_gear_hypotrochoid_centre_distance): [`functions/hypotrochoid/curve_gear_hypotrochoid_centre_distance.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_centre_distance.scad) — curve_gear_hypotrochoid_centre_distance example */: Executable example for curve gear hypotrochoid centre distance.
+> [`hypotrochoid_curve_gear_centre_distance`](#function-hypotrochoid_curve_gear_centre_distance): Show the Hypotrochoid centre-distance calculation used for pair placement.
 
-> [`example_functions_hypotrochoid_curve_gear_hypotrochoid_mate`](#function-example_functions_hypotrochoid_curve_gear_hypotrochoid_mate): [`functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad) — curve_gear_hypotrochoid_mate example */: Executable example for curve gear hypotrochoid mate.
+> [`hypotrochoid_curve_gear_mate`](#function-hypotrochoid_curve_gear_mate): Render the conjugate Hypotrochoid mate generated from the driver pitch curve.
 
-> [`example_functions_hypotrochoid_curve_gear_hypotrochoid_mate_rotation`](#function-example_functions_hypotrochoid_curve_gear_hypotrochoid_mate_rotation): [`functions/hypotrochoid/curve_gear_hypotrochoid_mate_rotation.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate_rotation.scad) — curve_gear_hypotrochoid_mate_rotation example */: Executable example for curve gear hypotrochoid mate rotation.
+> [`hypotrochoid_curve_gear_mate_rotation`](#function-hypotrochoid_curve_gear_mate_rotation): Show the Hypotrochoid mate-rotation calculation used for pair assembly.
 
-> [`example_functions_hypotrochoid_curve_gear_hypotrochoid_pair`](#function-example_functions_hypotrochoid_curve_gear_hypotrochoid_pair): [`functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad) — curve_gear_hypotrochoid_pair example */: Executable example for curve gear hypotrochoid pair.
+> [`hypotrochoid_curve_gear_pair`](#function-hypotrochoid_curve_gear_pair): Render a complete Hypotrochoid gear pair with derived conjugate motion.
 
-> [`example_functions_hypotrochoid_curve_gear_hypotrochoid_pair_alternative`](#function-example_functions_hypotrochoid_curve_gear_hypotrochoid_pair_alternative): [`functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad) — curve_gear_hypotrochoid_pair alternative */: Executable example for curve gear hypotrochoid pair alternative.
+> [`hypotrochoid_curve_gear_pair_alternative`](#function-hypotrochoid_curve_gear_pair_alternative): curve_gear_hypotrochoid_pair alternative: Executable example for curve gear hypotrochoid pair alternative.
 
-> [`example_functions_lobed_curve_gear_lobed`](#function-example_functions_lobed_curve_gear_lobed): [`functions/lobed/curve_gear_lobed.scad`](functions/lobed/curve_gear_lobed.scad) — curve_gear_lobed example: One-to-one executable example for the documented public API.
+> [`lobed_curve_gear`](#function-lobed_curve_gear): Render a Lobed gear from the documented pitch-curve family.
 
-> [`example_functions_lobed_curve_gear_lobed_body`](#function-example_functions_lobed_curve_gear_lobed_body): [`functions/lobed/curve_gear_lobed_body.scad`](functions/lobed/curve_gear_lobed_body.scad) — curve_gear_lobed_body example: One-to-one executable example for the documented public API.
+> [`lobed_curve_gear_body`](#function-lobed_curve_gear_body): Render the Lobed body before tooth placement.
 
-> [`example_functions_lobed_curve_gear_lobed_centre_distance`](#function-example_functions_lobed_curve_gear_lobed_centre_distance): [`functions/lobed/curve_gear_lobed_centre_distance.scad`](functions/lobed/curve_gear_lobed_centre_distance.scad) — curve_gear_lobed_centre_distance example: One-to-one executable example for the documented scalar API.
+> [`lobed_curve_gear_centre_distance`](#function-lobed_curve_gear_centre_distance): Show the Lobed centre-distance calculation used for pair placement.
 
-> [`example_functions_lobed_curve_gear_lobed_mate`](#function-example_functions_lobed_curve_gear_lobed_mate): [`functions/lobed/curve_gear_lobed_mate.scad`](functions/lobed/curve_gear_lobed_mate.scad) — curve_gear_lobed_mate example: One-to-one executable example for the documented public API.
+> [`lobed_curve_gear_mate`](#function-lobed_curve_gear_mate): Render the conjugate Lobed mate generated from the driver pitch curve.
 
-> [`example_functions_lobed_curve_gear_lobed_mate_rotation`](#function-example_functions_lobed_curve_gear_lobed_mate_rotation): [`functions/lobed/curve_gear_lobed_mate_rotation.scad`](functions/lobed/curve_gear_lobed_mate_rotation.scad) — curve_gear_lobed_mate_rotation example: One-to-one executable example for the documented scalar API.
+> [`lobed_curve_gear_mate_rotation`](#function-lobed_curve_gear_mate_rotation): Show the Lobed mate-rotation calculation used for pair assembly.
 
-> [`example_functions_lobed_curve_gear_lobed_pair`](#function-example_functions_lobed_curve_gear_lobed_pair): [`functions/lobed/curve_gear_lobed_pair.scad`](functions/lobed/curve_gear_lobed_pair.scad) — curve_gear_lobed_pair example: One-to-one executable example for the documented public API.
+> [`lobed_curve_gear_pair`](#function-lobed_curve_gear_pair): Render a complete Lobed gear pair with derived conjugate motion.
 
-> [`example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral`](#function-example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral): [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad) — curve_gear_logarithmic_spiral example: One-to-one executable example for the documented public API.
+> [`logarithmic_spiral_curve_gear`](#function-logarithmic_spiral_curve_gear): Render a Logarithmic spiral gear from the documented pitch-curve family.
 
-> [`example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_body`](#function-example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_body): [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad) — curve_gear_logarithmic_spiral_body example: One-to-one executable example for the documented public API.
+> [`logarithmic_spiral_curve_gear_body`](#function-logarithmic_spiral_curve_gear_body): Render the Logarithmic spiral body before tooth placement.
 
-> [`example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_mate`](#function-example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_mate): [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad) — curve_gear_logarithmic_spiral_mate example: One-to-one executable example for the documented public API.
+> [`logarithmic_spiral_curve_gear_mate`](#function-logarithmic_spiral_curve_gear_mate): Render the conjugate Logarithmic spiral mate generated from the driver pitch curve.
 
-> [`example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_pair`](#function-example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_pair): [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad) — curve_gear_logarithmic_spiral_pair example: One-to-one executable example for the documented public API.
+> [`logarithmic_spiral_curve_gear_pair`](#function-logarithmic_spiral_curve_gear_pair): Render a complete Logarithmic spiral gear pair with derived conjugate motion.
 
-> [`example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_reference_separation`](#function-example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_reference_separation): [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_reference_separation.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_reference_separation.scad) — curve_gear_logarithmic_spiral_reference_separation example: One-to-one executable example for the documented scalar API.
+> [`logarithmic_spiral_curve_gear_reference_separation`](#function-logarithmic_spiral_curve_gear_reference_separation): Show the Logarithmic spiral reference-separation calculation.
 
-> [`example_functions_pascal_curve_gear_pascal`](#function-example_functions_pascal_curve_gear_pascal): [`functions/pascal/curve_gear_pascal.scad`](functions/pascal/curve_gear_pascal.scad) — curve_gear_pascal example: One-to-one executable example for the documented public API.
+> [`pascal_curve_gear`](#function-pascal_curve_gear): Render a Pascal gear from the documented pitch-curve family.
 
-> [`example_functions_pascal_curve_gear_pascal_body`](#function-example_functions_pascal_curve_gear_pascal_body): [`functions/pascal/curve_gear_pascal_body.scad`](functions/pascal/curve_gear_pascal_body.scad) — curve_gear_pascal_body example: One-to-one executable example for the documented public API.
+> [`pascal_curve_gear_body`](#function-pascal_curve_gear_body): Render the Pascal body before tooth placement.
 
-> [`example_functions_pascal_curve_gear_pascal_centre_distance`](#function-example_functions_pascal_curve_gear_pascal_centre_distance): [`functions/pascal/curve_gear_pascal_centre_distance.scad`](functions/pascal/curve_gear_pascal_centre_distance.scad) — curve_gear_pascal_centre_distance example: One-to-one executable example for the documented scalar API.
+> [`pascal_curve_gear_centre_distance`](#function-pascal_curve_gear_centre_distance): Show the Pascal centre-distance calculation used for pair placement.
 
-> [`example_functions_pascal_curve_gear_pascal_mate`](#function-example_functions_pascal_curve_gear_pascal_mate): [`functions/pascal/curve_gear_pascal_mate.scad`](functions/pascal/curve_gear_pascal_mate.scad) — curve_gear_pascal_mate example: One-to-one executable example for the documented public API.
+> [`pascal_curve_gear_mate`](#function-pascal_curve_gear_mate): Render the conjugate Pascal mate generated from the driver pitch curve.
 
-> [`example_functions_pascal_curve_gear_pascal_mate_rotation`](#function-example_functions_pascal_curve_gear_pascal_mate_rotation): [`functions/pascal/curve_gear_pascal_mate_rotation.scad`](functions/pascal/curve_gear_pascal_mate_rotation.scad) — curve_gear_pascal_mate_rotation example: One-to-one executable example for the documented scalar API.
+> [`pascal_curve_gear_mate_rotation`](#function-pascal_curve_gear_mate_rotation): Show the Pascal mate-rotation calculation used for pair assembly.
 
-> [`example_functions_pascal_curve_gear_pascal_pair`](#function-example_functions_pascal_curve_gear_pascal_pair): [`functions/pascal/curve_gear_pascal_pair.scad`](functions/pascal/curve_gear_pascal_pair.scad) — curve_gear_pascal_pair example: One-to-one executable example for the documented public API.
+> [`pascal_curve_gear_pair`](#function-pascal_curve_gear_pair): Render a complete Pascal gear pair with derived conjugate motion.
 
-> [`example_functions_superformula_curve_gear_superformula`](#function-example_functions_superformula_curve_gear_superformula): [`functions/superformula/curve_gear_superformula.scad`](functions/superformula/curve_gear_superformula.scad) — curve_gear_superformula example: One-to-one executable example for the documented public API.
+> [`superformula_curve_gear`](#function-superformula_curve_gear): Render a Superformula gear from the documented pitch-curve family.
 
-> [`example_functions_superformula_curve_gear_superformula_body`](#function-example_functions_superformula_curve_gear_superformula_body): [`functions/superformula/curve_gear_superformula_body.scad`](functions/superformula/curve_gear_superformula_body.scad) — curve_gear_superformula_body example: One-to-one executable example for the documented public API.
+> [`superformula_curve_gear_body`](#function-superformula_curve_gear_body): Render the Superformula body before tooth placement.
 
-> [`example_functions_superformula_curve_gear_superformula_centre_distance`](#function-example_functions_superformula_curve_gear_superformula_centre_distance): [`functions/superformula/curve_gear_superformula_centre_distance.scad`](functions/superformula/curve_gear_superformula_centre_distance.scad) — curve_gear_superformula_centre_distance example: One-to-one executable example for the documented scalar API.
+> [`superformula_curve_gear_centre_distance`](#function-superformula_curve_gear_centre_distance): Show the Superformula centre-distance calculation used for pair placement.
 
-> [`example_functions_superformula_curve_gear_superformula_mate`](#function-example_functions_superformula_curve_gear_superformula_mate): [`functions/superformula/curve_gear_superformula_mate.scad`](functions/superformula/curve_gear_superformula_mate.scad) — curve_gear_superformula_mate example: One-to-one executable example for the documented public API.
+> [`superformula_curve_gear_mate`](#function-superformula_curve_gear_mate): Render the conjugate Superformula mate generated from the driver pitch curve.
 
-> [`example_functions_superformula_curve_gear_superformula_mate_rotation`](#function-example_functions_superformula_curve_gear_superformula_mate_rotation): [`functions/superformula/curve_gear_superformula_mate_rotation.scad`](functions/superformula/curve_gear_superformula_mate_rotation.scad) — curve_gear_superformula_mate_rotation example: One-to-one executable example for the documented scalar API.
+> [`superformula_curve_gear_mate_rotation`](#function-superformula_curve_gear_mate_rotation): Show the Superformula mate-rotation calculation used for pair assembly.
 
-> [`example_functions_superformula_curve_gear_superformula_pair`](#function-example_functions_superformula_curve_gear_superformula_pair): [`functions/superformula/curve_gear_superformula_pair.scad`](functions/superformula/curve_gear_superformula_pair.scad) — curve_gear_superformula_pair example: One-to-one executable example for the documented public API.
+> [`superformula_curve_gear_pair`](#function-superformula_curve_gear_pair): Render a complete Superformula gear pair with derived conjugate motion.
 
-> [`example_tooth_construction`](#function-example_tooth_construction): [`tooth/construction.scad`](tooth/construction.scad) — Tooth construction preview: Render one validated cached local tooth candidate.
+> [`tooth_construction`](#function-tooth_construction): Tooth construction preview: Render one validated cached local tooth candidate.
 
-> [`example_tooth_placement`](#function-example_tooth_placement): [`tooth/placement.scad`](tooth/placement.scad) — Tooth placement preview: Render cached teeth placed along a sinusoidal edge of a body.
+> [`tooth_placement`](#function-tooth_placement): Tooth placement preview: Render cached teeth placed along a sinusoidal edge of a body.
 
-> [`example_tooth_assembly`](#function-example_tooth_assembly): [`tooth/assembly.scad`](tooth/assembly.scad) — Tooth assembly preview: Compare placed tooth boundaries with the final assembled outline.
+> [`tooth_assembly`](#function-tooth_assembly): Tooth assembly preview: Compare placed tooth boundaries with the final assembled outline.
 
 
 ## Functions
 
 The module `Executable examples` defines the following functions.
 
-### Function `example_functions_bezier_curve_gear_bezier`
+### Function `bezier_curve_gear`
 
 
 ![curve_gear_bezier example preview](../images/functions/bezier/curve_gear_bezier.png)
 
-[`functions/bezier/curve_gear_bezier.scad`](functions/bezier/curve_gear_bezier.scad) — curve_gear_bezier example: One-to-one executable example for the documented public API.
+Source: [`functions/bezier/curve_gear_bezier.scad`](functions/bezier/curve_gear_bezier.scad)
 
 **Parameters:**
 
@@ -177,12 +177,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_bezier_curve_gear_bezier_alternative`
+### Function `bezier_curve_gear_alternative`
 
 
 ![Bézier asymmetric alternative preview](../images/functions/bezier/curve_gear_bezier_alternative.png)
 
-[`functions/bezier/curve_gear_bezier_alternative.scad`](functions/bezier/curve_gear_bezier_alternative.scad) — Bézier asymmetric alternative: A visibly non-circular but radially admissible Bézier pitch curve.
+Source: [`functions/bezier/curve_gear_bezier_alternative.scad`](functions/bezier/curve_gear_bezier_alternative.scad)
 
 **Parameters:**
 
@@ -194,12 +194,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_bezier_curve_gear_bezier_body`
+### Function `bezier_curve_gear_body`
 
 
 ![curve_gear_bezier_body example preview](../images/functions/bezier/curve_gear_bezier_body.png)
 
-[`functions/bezier/curve_gear_bezier_body.scad`](functions/bezier/curve_gear_bezier_body.scad) — curve_gear_bezier_body example: One-to-one executable example for the documented public API.
+Source: [`functions/bezier/curve_gear_bezier_body.scad`](functions/bezier/curve_gear_bezier_body.scad)
 
 **Parameters:**
 
@@ -211,12 +211,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_bezier_curve_gear_bezier_mate`
+### Function `bezier_curve_gear_mate`
 
 
 ![curve_gear_bezier_mate example preview](../images/functions/bezier/curve_gear_bezier_mate.png)
 
-[`functions/bezier/curve_gear_bezier_mate.scad`](functions/bezier/curve_gear_bezier_mate.scad) — curve_gear_bezier_mate example: One-to-one executable example for the admissible Bézier mate API.
+Source: [`functions/bezier/curve_gear_bezier_mate.scad`](functions/bezier/curve_gear_bezier_mate.scad)
 
 **Parameters:**
 
@@ -228,12 +228,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_bezier_curve_gear_bezier_pair`
+### Function `bezier_curve_gear_pair`
 
 
 ![curve_gear_bezier_pair example preview](../images/functions/bezier/curve_gear_bezier_pair.png)
 
-[`functions/bezier/curve_gear_bezier_pair.scad`](functions/bezier/curve_gear_bezier_pair.scad) — curve_gear_bezier_pair example: One-to-one executable example for the Bézier pair API.
+Source: [`functions/bezier/curve_gear_bezier_pair.scad`](functions/bezier/curve_gear_bezier_pair.scad)
 
 **Parameters:**
 
@@ -245,12 +245,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_bezier_curve_gear_bezier_pair_alternative`
+### Function `bezier_curve_gear_pair_alternative`
 
 
 ![Bézier asymmetric pair alternative preview](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)
 
-[`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad) — Bézier asymmetric pair alternative: The same visibly non-circular Bézier curve and its derived mate.
+Source: [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad)
 
 **Parameters:**
 
@@ -262,12 +262,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_cassini_curve_gear_cassini`
+### Function `cassini_curve_gear`
 
 
 ![curve_gear_cassini example preview](../images/functions/cassini/curve_gear_cassini.png)
 
-[`functions/cassini/curve_gear_cassini.scad`](functions/cassini/curve_gear_cassini.scad) — curve_gear_cassini example: One-to-one executable example for the documented public API.
+Source: [`functions/cassini/curve_gear_cassini.scad`](functions/cassini/curve_gear_cassini.scad)
 
 **Parameters:**
 
@@ -279,12 +279,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_cassini_curve_gear_cassini_body`
+### Function `cassini_curve_gear_body`
 
 
 ![curve_gear_cassini_body example preview](../images/functions/cassini/curve_gear_cassini_body.png)
 
-[`functions/cassini/curve_gear_cassini_body.scad`](functions/cassini/curve_gear_cassini_body.scad) — curve_gear_cassini_body example: One-to-one executable example for the documented public API.
+Source: [`functions/cassini/curve_gear_cassini_body.scad`](functions/cassini/curve_gear_cassini_body.scad)
 
 **Parameters:**
 
@@ -296,10 +296,10 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_cassini_curve_gear_cassini_centre_distance`
+### Function `cassini_curve_gear_centre_distance`
 
 
-[`functions/cassini/curve_gear_cassini_centre_distance.scad`](functions/cassini/curve_gear_cassini_centre_distance.scad) — curve_gear_cassini_centre_distance example: One-to-one executable example for the documented scalar API.
+Source: [`functions/cassini/curve_gear_cassini_centre_distance.scad`](functions/cassini/curve_gear_cassini_centre_distance.scad)
 
 **Parameters:**
 
@@ -311,12 +311,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_cassini_curve_gear_cassini_mate`
+### Function `cassini_curve_gear_mate`
 
 
 ![curve_gear_cassini_mate example preview](../images/functions/cassini/curve_gear_cassini_mate.png)
 
-[`functions/cassini/curve_gear_cassini_mate.scad`](functions/cassini/curve_gear_cassini_mate.scad) — curve_gear_cassini_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/cassini/curve_gear_cassini_mate.scad`](functions/cassini/curve_gear_cassini_mate.scad)
 
 **Parameters:**
 
@@ -328,10 +328,10 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_cassini_curve_gear_cassini_mate_rotation`
+### Function `cassini_curve_gear_mate_rotation`
 
 
-[`functions/cassini/curve_gear_cassini_mate_rotation.scad`](functions/cassini/curve_gear_cassini_mate_rotation.scad) — curve_gear_cassini_mate_rotation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/cassini/curve_gear_cassini_mate_rotation.scad`](functions/cassini/curve_gear_cassini_mate_rotation.scad)
 
 **Parameters:**
 
@@ -343,12 +343,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_cassini_curve_gear_cassini_pair`
+### Function `cassini_curve_gear_pair`
 
 
 ![curve_gear_cassini_pair example preview](../images/functions/cassini/curve_gear_cassini_pair.png)
 
-[`functions/cassini/curve_gear_cassini_pair.scad`](functions/cassini/curve_gear_cassini_pair.scad) — curve_gear_cassini_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/cassini/curve_gear_cassini_pair.scad`](functions/cassini/curve_gear_cassini_pair.scad)
 
 **Parameters:**
 
@@ -360,12 +360,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_circle_curve_gear_circle`
+### Function `circle_curve_gear`
 
 
 ![curve gear circle preview](../images/functions/circle/curve_gear_circle.png)
 
-[`functions/circle/curve_gear_circle.scad`](functions/circle/curve_gear_circle.scad) — curve gear circle: Executable example for curve gear circle.
+Source: [`functions/circle/curve_gear_circle.scad`](functions/circle/curve_gear_circle.scad)
 
 **Parameters:**
 
@@ -377,12 +377,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_circle_curve_gear_circle_body`
+### Function `circle_curve_gear_body`
 
 
 ![curve gear circle body preview](../images/functions/circle/curve_gear_circle_body.png)
 
-[`functions/circle/curve_gear_circle_body.scad`](functions/circle/curve_gear_circle_body.scad) — curve gear circle body: Executable example for curve gear circle body.
+Source: [`functions/circle/curve_gear_circle_body.scad`](functions/circle/curve_gear_circle_body.scad)
 
 **Parameters:**
 
@@ -394,12 +394,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_circle_curve_gear_circle_mate`
+### Function `circle_curve_gear_mate`
 
 
 ![curve gear circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)
 
-[`functions/circle/curve_gear_circle_mate.scad`](functions/circle/curve_gear_circle_mate.scad) — curve gear circle mate: Executable example for curve gear circle mate.
+Source: [`functions/circle/curve_gear_circle_mate.scad`](functions/circle/curve_gear_circle_mate.scad)
 
 **Parameters:**
 
@@ -411,12 +411,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_circle_curve_gear_circle_pair`
+### Function `circle_curve_gear_pair`
 
 
 ![curve gear circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)
 
-[`functions/circle/curve_gear_circle_pair.scad`](functions/circle/curve_gear_circle_pair.scad) — curve gear circle pair: Executable example for curve gear circle pair.
+Source: [`functions/circle/curve_gear_circle_pair.scad`](functions/circle/curve_gear_circle_pair.scad)
 
 **Parameters:**
 
@@ -428,12 +428,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_ellipse_curve_gear_ellipse`
+### Function `ellipse_curve_gear`
 
 
 ![curve_gear_ellipse example preview](../images/functions/ellipse/curve_gear_ellipse.png)
 
-[`functions/ellipse/curve_gear_ellipse.scad`](functions/ellipse/curve_gear_ellipse.scad) — curve_gear_ellipse example: One-to-one executable example for the documented public API.
+Source: [`functions/ellipse/curve_gear_ellipse.scad`](functions/ellipse/curve_gear_ellipse.scad)
 
 **Parameters:**
 
@@ -445,12 +445,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_ellipse_curve_gear_ellipse_body`
+### Function `ellipse_curve_gear_body`
 
 
 ![curve_gear_ellipse_body example preview](../images/functions/ellipse/curve_gear_ellipse_body.png)
 
-[`functions/ellipse/curve_gear_ellipse_body.scad`](functions/ellipse/curve_gear_ellipse_body.scad) — curve_gear_ellipse_body example: One-to-one executable example for the documented public API.
+Source: [`functions/ellipse/curve_gear_ellipse_body.scad`](functions/ellipse/curve_gear_ellipse_body.scad)
 
 **Parameters:**
 
@@ -462,10 +462,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_ellipse_curve_gear_ellipse_centre_distance`
+### Function `ellipse_curve_gear_centre_distance`
 
 
-[`functions/ellipse/curve_gear_ellipse_centre_distance.scad`](functions/ellipse/curve_gear_ellipse_centre_distance.scad) — curve_gear_ellipse_centre_distance example: One-to-one executable example for the documented scalar API.
+Source: [`functions/ellipse/curve_gear_ellipse_centre_distance.scad`](functions/ellipse/curve_gear_ellipse_centre_distance.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -477,12 +480,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_ellipse_curve_gear_ellipse_mate`
+### Function `ellipse_curve_gear_mate`
 
 
 ![curve_gear_ellipse_mate example preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)
 
-[`functions/ellipse/curve_gear_ellipse_mate.scad`](functions/ellipse/curve_gear_ellipse_mate.scad) — curve_gear_ellipse_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/ellipse/curve_gear_ellipse_mate.scad`](functions/ellipse/curve_gear_ellipse_mate.scad)
 
 **Parameters:**
 
@@ -494,10 +497,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_ellipse_curve_gear_ellipse_mate_rotation`
+### Function `ellipse_curve_gear_mate_rotation`
 
 
-[`functions/ellipse/curve_gear_ellipse_mate_rotation.scad`](functions/ellipse/curve_gear_ellipse_mate_rotation.scad) — curve_gear_ellipse_mate_rotation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/ellipse/curve_gear_ellipse_mate_rotation.scad`](functions/ellipse/curve_gear_ellipse_mate_rotation.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -509,12 +515,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_ellipse_curve_gear_ellipse_pair`
+### Function `ellipse_curve_gear_pair`
 
 
 ![curve_gear_ellipse_pair example preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)
 
-[`functions/ellipse/curve_gear_ellipse_pair.scad`](functions/ellipse/curve_gear_ellipse_pair.scad) — curve_gear_ellipse_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/ellipse/curve_gear_ellipse_pair.scad`](functions/ellipse/curve_gear_ellipse_pair.scad)
 
 **Parameters:**
 
@@ -526,12 +532,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_epitrochoid_curve_gear_epitrochoid`
+### Function `epitrochoid_curve_gear`
 
 
 ![curve_gear_epitrochoid example preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)
 
-[`functions/epitrochoid/curve_gear_epitrochoid.scad`](functions/epitrochoid/curve_gear_epitrochoid.scad) — curve_gear_epitrochoid example: One-to-one executable example for the documented public API.
+Source: [`functions/epitrochoid/curve_gear_epitrochoid.scad`](functions/epitrochoid/curve_gear_epitrochoid.scad)
 
 **Parameters:**
 
@@ -543,12 +549,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_epitrochoid_curve_gear_epitrochoid_body`
+### Function `epitrochoid_curve_gear_body`
 
 
 ![curve_gear_epitrochoid_body example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)
 
-[`functions/epitrochoid/curve_gear_epitrochoid_body.scad`](functions/epitrochoid/curve_gear_epitrochoid_body.scad) — curve_gear_epitrochoid_body example: One-to-one executable example for the documented public API.
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_body.scad`](functions/epitrochoid/curve_gear_epitrochoid_body.scad)
 
 **Parameters:**
 
@@ -560,10 +566,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_epitrochoid_curve_gear_epitrochoid_centre_distance`
+### Function `epitrochoid_curve_gear_centre_distance`
 
 
-[`functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad`](functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad) — curve_gear_epitrochoid_centre_distance example: One-to-one executable example for the documented scalar API.
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad`](functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -575,12 +584,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_epitrochoid_curve_gear_epitrochoid_mate`
+### Function `epitrochoid_curve_gear_mate`
 
 
 ![curve_gear_epitrochoid_mate example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)
 
-[`functions/epitrochoid/curve_gear_epitrochoid_mate.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate.scad) — curve_gear_epitrochoid_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_mate.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate.scad)
 
 **Parameters:**
 
@@ -592,10 +601,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_epitrochoid_curve_gear_epitrochoid_mate_rotation`
+### Function `epitrochoid_curve_gear_mate_rotation`
 
 
-[`functions/epitrochoid/curve_gear_epitrochoid_mate_rotation.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate_rotation.scad) — curve_gear_epitrochoid_mate_rotation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_mate_rotation.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate_rotation.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -607,12 +619,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_epitrochoid_curve_gear_epitrochoid_pair`
+### Function `epitrochoid_curve_gear_pair`
 
 
 ![curve_gear_epitrochoid_pair example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)
 
-[`functions/epitrochoid/curve_gear_epitrochoid_pair.scad`](functions/epitrochoid/curve_gear_epitrochoid_pair.scad) — curve_gear_epitrochoid_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_pair.scad`](functions/epitrochoid/curve_gear_epitrochoid_pair.scad)
 
 **Parameters:**
 
@@ -624,12 +636,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_fourier_curve_gear_fourier`
+### Function `fourier_curve_gear`
 
 
 ![curve_gear_fourier example preview](../images/functions/fourier/curve_gear_fourier.png)
 
-[`functions/fourier/curve_gear_fourier.scad`](functions/fourier/curve_gear_fourier.scad) — curve_gear_fourier example: One-to-one executable example for the documented public API.
+Source: [`functions/fourier/curve_gear_fourier.scad`](functions/fourier/curve_gear_fourier.scad)
 
 **Parameters:**
 
@@ -641,12 +653,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_fourier_curve_gear_fourier_body`
+### Function `fourier_curve_gear_body`
 
 
 ![curve_gear_fourier_body example preview](../images/functions/fourier/curve_gear_fourier_body.png)
 
-[`functions/fourier/curve_gear_fourier_body.scad`](functions/fourier/curve_gear_fourier_body.scad) — curve_gear_fourier_body example: One-to-one executable example for the documented public API.
+Source: [`functions/fourier/curve_gear_fourier_body.scad`](functions/fourier/curve_gear_fourier_body.scad)
 
 **Parameters:**
 
@@ -658,10 +670,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_fourier_curve_gear_fourier_centre_distance`
+### Function `fourier_curve_gear_centre_distance`
 
 
-[`functions/fourier/curve_gear_fourier_centre_distance.scad`](functions/fourier/curve_gear_fourier_centre_distance.scad) — curve_gear_fourier_centre_distance example: One-to-one executable example for the documented scalar API.
+Source: [`functions/fourier/curve_gear_fourier_centre_distance.scad`](functions/fourier/curve_gear_fourier_centre_distance.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -673,12 +688,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_fourier_curve_gear_fourier_mate`
+### Function `fourier_curve_gear_mate`
 
 
 ![curve_gear_fourier_mate example preview](../images/functions/fourier/curve_gear_fourier_mate.png)
 
-[`functions/fourier/curve_gear_fourier_mate.scad`](functions/fourier/curve_gear_fourier_mate.scad) — curve_gear_fourier_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/fourier/curve_gear_fourier_mate.scad`](functions/fourier/curve_gear_fourier_mate.scad)
 
 **Parameters:**
 
@@ -690,10 +705,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_fourier_curve_gear_fourier_mate_rotation`
+### Function `fourier_curve_gear_mate_rotation`
 
 
-[`functions/fourier/curve_gear_fourier_mate_rotation.scad`](functions/fourier/curve_gear_fourier_mate_rotation.scad) — curve_gear_fourier_mate_rotation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/fourier/curve_gear_fourier_mate_rotation.scad`](functions/fourier/curve_gear_fourier_mate_rotation.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -705,12 +723,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_fourier_curve_gear_fourier_pair`
+### Function `fourier_curve_gear_pair`
 
 
 ![curve_gear_fourier_pair example preview](../images/functions/fourier/curve_gear_fourier_pair.png)
 
-[`functions/fourier/curve_gear_fourier_pair.scad`](functions/fourier/curve_gear_fourier_pair.scad) — curve_gear_fourier_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/fourier/curve_gear_fourier_pair.scad`](functions/fourier/curve_gear_fourier_pair.scad)
 
 **Parameters:**
 
@@ -722,29 +740,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_hypotrochoid_curve_gear_hypotrochoid`
+### Function `hypotrochoid_curve_gear`
 
 
-![curve_gear_hypotrochoid example */ preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)
+![curve_gear_hypotrochoid example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)
 
-[`functions/hypotrochoid/curve_gear_hypotrochoid.scad`](functions/hypotrochoid/curve_gear_hypotrochoid.scad) — curve_gear_hypotrochoid example */: Executable example for curve gear hypotrochoid.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-executable-examples).
-
-### Function `example_functions_hypotrochoid_curve_gear_hypotrochoid_body`
-
-
-![curve_gear_hypotrochoid_body example */ preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)
-
-[`functions/hypotrochoid/curve_gear_hypotrochoid_body.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body.scad) — curve_gear_hypotrochoid_body example */: Executable example for curve gear hypotrochoid body.
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid.scad`](functions/hypotrochoid/curve_gear_hypotrochoid.scad)
 
 **Parameters:**
 
@@ -756,27 +757,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_hypotrochoid_curve_gear_hypotrochoid_centre_distance`
+### Function `hypotrochoid_curve_gear_body`
 
 
-[`functions/hypotrochoid/curve_gear_hypotrochoid_centre_distance.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_centre_distance.scad) — curve_gear_hypotrochoid_centre_distance example */: Executable example for curve gear hypotrochoid centre distance.
+![curve_gear_hypotrochoid_body example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)
 
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-executable-examples).
-
-### Function `example_functions_hypotrochoid_curve_gear_hypotrochoid_mate`
-
-
-![curve_gear_hypotrochoid_mate example */ preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)
-
-[`functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad) — curve_gear_hypotrochoid_mate example */: Executable example for curve gear hypotrochoid mate.
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body.scad)
 
 **Parameters:**
 
@@ -788,27 +774,10 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_hypotrochoid_curve_gear_hypotrochoid_mate_rotation`
+### Function `hypotrochoid_curve_gear_centre_distance`
 
 
-[`functions/hypotrochoid/curve_gear_hypotrochoid_mate_rotation.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate_rotation.scad) — curve_gear_hypotrochoid_mate_rotation example */: Executable example for curve gear hypotrochoid mate rotation.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-executable-examples).
-
-### Function `example_functions_hypotrochoid_curve_gear_hypotrochoid_pair`
-
-
-![curve_gear_hypotrochoid_pair example */ preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)
-
-[`functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad) — curve_gear_hypotrochoid_pair example */: Executable example for curve gear hypotrochoid pair.
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_centre_distance.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_centre_distance.scad)
 
 **Parameters:**
 
@@ -820,12 +789,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_hypotrochoid_curve_gear_hypotrochoid_pair_alternative`
+### Function `hypotrochoid_curve_gear_mate`
 
 
-![curve_gear_hypotrochoid_pair alternative */ preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)
+![curve_gear_hypotrochoid_mate example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)
 
-[`functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad) — curve_gear_hypotrochoid_pair alternative */: Executable example for curve gear hypotrochoid pair alternative.
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad)
 
 **Parameters:**
 
@@ -837,12 +806,61 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_lobed_curve_gear_lobed`
+### Function `hypotrochoid_curve_gear_mate_rotation`
+
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_mate_rotation.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate_rotation.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `hypotrochoid_curve_gear_pair`
+
+
+![curve_gear_hypotrochoid_pair example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `hypotrochoid_curve_gear_pair_alternative`
+
+
+![curve_gear_hypotrochoid_pair alternative preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `lobed_curve_gear`
 
 
 ![curve_gear_lobed example preview](../images/functions/lobed/curve_gear_lobed.png)
 
-[`functions/lobed/curve_gear_lobed.scad`](functions/lobed/curve_gear_lobed.scad) — curve_gear_lobed example: One-to-one executable example for the documented public API.
+Source: [`functions/lobed/curve_gear_lobed.scad`](functions/lobed/curve_gear_lobed.scad)
 
 **Parameters:**
 
@@ -854,12 +872,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_lobed_curve_gear_lobed_body`
+### Function `lobed_curve_gear_body`
 
 
 ![curve_gear_lobed_body example preview](../images/functions/lobed/curve_gear_lobed_body.png)
 
-[`functions/lobed/curve_gear_lobed_body.scad`](functions/lobed/curve_gear_lobed_body.scad) — curve_gear_lobed_body example: One-to-one executable example for the documented public API.
+Source: [`functions/lobed/curve_gear_lobed_body.scad`](functions/lobed/curve_gear_lobed_body.scad)
 
 **Parameters:**
 
@@ -871,10 +889,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_lobed_curve_gear_lobed_centre_distance`
+### Function `lobed_curve_gear_centre_distance`
 
 
-[`functions/lobed/curve_gear_lobed_centre_distance.scad`](functions/lobed/curve_gear_lobed_centre_distance.scad) — curve_gear_lobed_centre_distance example: One-to-one executable example for the documented scalar API.
+Source: [`functions/lobed/curve_gear_lobed_centre_distance.scad`](functions/lobed/curve_gear_lobed_centre_distance.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -886,12 +907,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_lobed_curve_gear_lobed_mate`
+### Function `lobed_curve_gear_mate`
 
 
 ![curve_gear_lobed_mate example preview](../images/functions/lobed/curve_gear_lobed_mate.png)
 
-[`functions/lobed/curve_gear_lobed_mate.scad`](functions/lobed/curve_gear_lobed_mate.scad) — curve_gear_lobed_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/lobed/curve_gear_lobed_mate.scad`](functions/lobed/curve_gear_lobed_mate.scad)
 
 **Parameters:**
 
@@ -903,10 +924,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_lobed_curve_gear_lobed_mate_rotation`
+### Function `lobed_curve_gear_mate_rotation`
 
 
-[`functions/lobed/curve_gear_lobed_mate_rotation.scad`](functions/lobed/curve_gear_lobed_mate_rotation.scad) — curve_gear_lobed_mate_rotation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/lobed/curve_gear_lobed_mate_rotation.scad`](functions/lobed/curve_gear_lobed_mate_rotation.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -918,12 +942,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_lobed_curve_gear_lobed_pair`
+### Function `lobed_curve_gear_pair`
 
 
 ![curve_gear_lobed_pair example preview](../images/functions/lobed/curve_gear_lobed_pair.png)
 
-[`functions/lobed/curve_gear_lobed_pair.scad`](functions/lobed/curve_gear_lobed_pair.scad) — curve_gear_lobed_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/lobed/curve_gear_lobed_pair.scad`](functions/lobed/curve_gear_lobed_pair.scad)
 
 **Parameters:**
 
@@ -935,12 +959,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral`
+### Function `logarithmic_spiral_curve_gear`
 
 
 ![curve_gear_logarithmic_spiral example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png)
 
-[`functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad) — curve_gear_logarithmic_spiral example: One-to-one executable example for the documented public API.
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad)
 
 **Parameters:**
 
@@ -952,12 +976,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_body`
+### Function `logarithmic_spiral_curve_gear_body`
 
 
 ![curve_gear_logarithmic_spiral_body example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)
 
-[`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad) — curve_gear_logarithmic_spiral_body example: One-to-one executable example for the documented public API.
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad)
 
 **Parameters:**
 
@@ -969,12 +993,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_mate`
+### Function `logarithmic_spiral_curve_gear_mate`
 
 
 ![curve_gear_logarithmic_spiral_mate example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png)
 
-[`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad) — curve_gear_logarithmic_spiral_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad)
 
 **Parameters:**
 
@@ -986,12 +1010,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_pair`
+### Function `logarithmic_spiral_curve_gear_pair`
 
 
 ![curve_gear_logarithmic_spiral_pair example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png)
 
-[`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad) — curve_gear_logarithmic_spiral_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad)
 
 **Parameters:**
 
@@ -1003,10 +1027,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_logarithmic_spiral_curve_gear_logarithmic_spiral_reference_separation`
+### Function `logarithmic_spiral_curve_gear_reference_separation`
 
 
-[`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_reference_separation.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_reference_separation.scad) — curve_gear_logarithmic_spiral_reference_separation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_reference_separation.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_reference_separation.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -1018,12 +1045,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_pascal_curve_gear_pascal`
+### Function `pascal_curve_gear`
 
 
 ![curve_gear_pascal example preview](../images/functions/pascal/curve_gear_pascal.png)
 
-[`functions/pascal/curve_gear_pascal.scad`](functions/pascal/curve_gear_pascal.scad) — curve_gear_pascal example: One-to-one executable example for the documented public API.
+Source: [`functions/pascal/curve_gear_pascal.scad`](functions/pascal/curve_gear_pascal.scad)
 
 **Parameters:**
 
@@ -1035,12 +1062,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_pascal_curve_gear_pascal_body`
+### Function `pascal_curve_gear_body`
 
 
 ![curve_gear_pascal_body example preview](../images/functions/pascal/curve_gear_pascal_body.png)
 
-[`functions/pascal/curve_gear_pascal_body.scad`](functions/pascal/curve_gear_pascal_body.scad) — curve_gear_pascal_body example: One-to-one executable example for the documented public API.
+Source: [`functions/pascal/curve_gear_pascal_body.scad`](functions/pascal/curve_gear_pascal_body.scad)
 
 **Parameters:**
 
@@ -1052,10 +1079,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_pascal_curve_gear_pascal_centre_distance`
+### Function `pascal_curve_gear_centre_distance`
 
 
-[`functions/pascal/curve_gear_pascal_centre_distance.scad`](functions/pascal/curve_gear_pascal_centre_distance.scad) — curve_gear_pascal_centre_distance example: One-to-one executable example for the documented scalar API.
+Source: [`functions/pascal/curve_gear_pascal_centre_distance.scad`](functions/pascal/curve_gear_pascal_centre_distance.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -1067,12 +1097,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_pascal_curve_gear_pascal_mate`
+### Function `pascal_curve_gear_mate`
 
 
 ![curve_gear_pascal_mate example preview](../images/functions/pascal/curve_gear_pascal_mate.png)
 
-[`functions/pascal/curve_gear_pascal_mate.scad`](functions/pascal/curve_gear_pascal_mate.scad) — curve_gear_pascal_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/pascal/curve_gear_pascal_mate.scad`](functions/pascal/curve_gear_pascal_mate.scad)
 
 **Parameters:**
 
@@ -1084,10 +1114,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_pascal_curve_gear_pascal_mate_rotation`
+### Function `pascal_curve_gear_mate_rotation`
 
 
-[`functions/pascal/curve_gear_pascal_mate_rotation.scad`](functions/pascal/curve_gear_pascal_mate_rotation.scad) — curve_gear_pascal_mate_rotation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/pascal/curve_gear_pascal_mate_rotation.scad`](functions/pascal/curve_gear_pascal_mate_rotation.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -1099,12 +1132,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_pascal_curve_gear_pascal_pair`
+### Function `pascal_curve_gear_pair`
 
 
 ![curve_gear_pascal_pair example preview](../images/functions/pascal/curve_gear_pascal_pair.png)
 
-[`functions/pascal/curve_gear_pascal_pair.scad`](functions/pascal/curve_gear_pascal_pair.scad) — curve_gear_pascal_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/pascal/curve_gear_pascal_pair.scad`](functions/pascal/curve_gear_pascal_pair.scad)
 
 **Parameters:**
 
@@ -1116,12 +1149,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_superformula_curve_gear_superformula`
+### Function `superformula_curve_gear`
 
 
 ![curve_gear_superformula example preview](../images/functions/superformula/curve_gear_superformula.png)
 
-[`functions/superformula/curve_gear_superformula.scad`](functions/superformula/curve_gear_superformula.scad) — curve_gear_superformula example: One-to-one executable example for the documented public API.
+Source: [`functions/superformula/curve_gear_superformula.scad`](functions/superformula/curve_gear_superformula.scad)
 
 **Parameters:**
 
@@ -1133,12 +1166,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_superformula_curve_gear_superformula_body`
+### Function `superformula_curve_gear_body`
 
 
 ![curve_gear_superformula_body example preview](../images/functions/superformula/curve_gear_superformula_body.png)
 
-[`functions/superformula/curve_gear_superformula_body.scad`](functions/superformula/curve_gear_superformula_body.scad) — curve_gear_superformula_body example: One-to-one executable example for the documented public API.
+Source: [`functions/superformula/curve_gear_superformula_body.scad`](functions/superformula/curve_gear_superformula_body.scad)
 
 **Parameters:**
 
@@ -1150,10 +1183,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_superformula_curve_gear_superformula_centre_distance`
+### Function `superformula_curve_gear_centre_distance`
 
 
-[`functions/superformula/curve_gear_superformula_centre_distance.scad`](functions/superformula/curve_gear_superformula_centre_distance.scad) — curve_gear_superformula_centre_distance example: One-to-one executable example for the documented scalar API.
+Source: [`functions/superformula/curve_gear_superformula_centre_distance.scad`](functions/superformula/curve_gear_superformula_centre_distance.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -1165,12 +1201,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_superformula_curve_gear_superformula_mate`
+### Function `superformula_curve_gear_mate`
 
 
 ![curve_gear_superformula_mate example preview](../images/functions/superformula/curve_gear_superformula_mate.png)
 
-[`functions/superformula/curve_gear_superformula_mate.scad`](functions/superformula/curve_gear_superformula_mate.scad) — curve_gear_superformula_mate example: One-to-one executable example for the documented public API.
+Source: [`functions/superformula/curve_gear_superformula_mate.scad`](functions/superformula/curve_gear_superformula_mate.scad)
 
 **Parameters:**
 
@@ -1182,10 +1218,13 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_superformula_curve_gear_superformula_mate_rotation`
+### Function `superformula_curve_gear_mate_rotation`
 
 
-[`functions/superformula/curve_gear_superformula_mate_rotation.scad`](functions/superformula/curve_gear_superformula_mate_rotation.scad) — curve_gear_superformula_mate_rotation example: One-to-one executable example for the documented scalar API.
+Source: [`functions/superformula/curve_gear_superformula_mate_rotation.scad`](functions/superformula/curve_gear_superformula_mate_rotation.scad)
+
+The result is deliberately emitted as an OpenSCAD console value because
+this callable returns a number rather than geometry.
 
 **Parameters:**
 
@@ -1197,12 +1236,12 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_functions_superformula_curve_gear_superformula_pair`
+### Function `superformula_curve_gear_pair`
 
 
 ![curve_gear_superformula_pair example preview](../images/functions/superformula/curve_gear_superformula_pair.png)
 
-[`functions/superformula/curve_gear_superformula_pair.scad`](functions/superformula/curve_gear_superformula_pair.scad) — curve_gear_superformula_pair example: One-to-one executable example for the documented public API.
+Source: [`functions/superformula/curve_gear_superformula_pair.scad`](functions/superformula/curve_gear_superformula_pair.scad)
 
 **Parameters:**
 
@@ -1214,12 +1253,16 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_tooth_construction`
+### Function `tooth_construction`
 
 
 ![Tooth construction preview preview](../images/tooth/construction.png)
 
-[`tooth/construction.scad`](tooth/construction.scad) — Tooth construction preview: Render one validated cached local tooth candidate.
+Source: [`tooth/construction.scad`](tooth/construction.scad)
+
+This is the standalone output of tooth/generation.scad. It is intentionally
+local rather than attached to a curve, so the involute flanks and top
+closure can be inspected without placement hiding their shape.
 
 **Parameters:**
 
@@ -1231,12 +1274,19 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_tooth_placement`
+### Function `tooth_placement`
 
 
 ![Tooth placement preview preview](../images/tooth/placement.png)
 
-[`tooth/placement.scad`](tooth/placement.scad) — Tooth placement preview: Render cached teeth placed along a sinusoidal edge of a body.
+Source: [`tooth/placement.scad`](tooth/placement.scad)
+
+This diagnostic deliberately uses a rectangular body with a multi-period
+sine-wave upper edge. Teeth are displayed only on that edge, so changing
+tangents, normals, hills, valleys and source-point spacing can be inspected
+without the rest of a closed gear hiding the placement behaviour. The body
+is inset beneath the source curve, while the production tooth
+boundary is shown in full so each tooth visibly stands on the edge.
 
 **Parameters:**
 
@@ -1248,12 +1298,17 @@ No return
 
 Back to [module description](#module-executable-examples).
 
-### Function `example_tooth_assembly`
+### Function `tooth_assembly`
 
 
 ![Tooth assembly preview preview](../images/tooth/assembly.png)
 
-[`tooth/assembly.scad`](tooth/assembly.scad) — Tooth assembly preview: Compare placed tooth boundaries with the final assembled outline.
+Source: [`tooth/assembly.scad`](tooth/assembly.scad)
+
+The left panel keeps the canonical body and accepted placed tooth
+boundaries separate. The right panel is the single outline returned by
+_cg_final_outline_from_placements, so the body intervals replaced by teeth
+can be checked as one continuous polygon.
 
 **Parameters:**
 

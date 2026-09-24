@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_fourier example
- * @brief One-to-one executable example for the documented public API.
+ * @function fourier_curve_gear
+ * @brief Render a Fourier gear from the documented pitch-curve family.
+ * Source: [`functions/fourier/curve_gear_fourier.scad`](functions/fourier/curve_gear_fourier.scad)
+ * @image ../images/functions/fourier/curve_gear_fourier.png curve_gear_fourier example preview
  */
 include <../../../src/fourier/mate.scad>;
 $fn=64;

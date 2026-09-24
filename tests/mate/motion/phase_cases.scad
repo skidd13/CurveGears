@@ -1,5 +1,7 @@
-/**
- * Shared mate-motion phase regression.
+/***
+ * @function mate_motion_phase_cases
+ * @brief Shared mate-motion phase regression.
+ * Source: [`mate/motion/phase_cases.scad`](mate/motion/phase_cases.scad)
  *
  * This is intentionally a small analytic fixture. It checks that every
  * dynamic family accepts negative, zero, positive and full-turn phases while

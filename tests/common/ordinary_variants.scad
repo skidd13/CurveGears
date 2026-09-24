@@ -1,4 +1,8 @@
-// Ordinary circular cases covering more than one module/tooth-count pair.
+/***
+ * @function common_ordinary_variants
+ * @brief Ordinary circular cases covering more than one module/tooth-count pair.
+ * Source: [`common/ordinary_variants.scad`](common/ordinary_variants.scad)
+ */
 include <../../src/common/curve_gears_math.scad>
 
 $fn=96;

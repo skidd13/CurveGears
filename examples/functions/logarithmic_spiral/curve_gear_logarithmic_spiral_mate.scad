@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_logarithmic_spiral_mate example
- * @brief One-to-one executable example for the documented public API.
+ * @function logarithmic_spiral_curve_gear_mate
+ * @brief Render the conjugate Logarithmic spiral mate generated from the driver pitch curve.
+ * Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad)
+ * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png curve_gear_logarithmic_spiral_mate example preview
  */
 include <../../../src/logarithmic_spiral/mate.scad>;
 $fn=64;

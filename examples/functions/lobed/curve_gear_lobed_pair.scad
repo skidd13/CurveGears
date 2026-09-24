@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_lobed_pair example
- * @brief One-to-one executable example for the documented public API.
+ * @function lobed_curve_gear_pair
+ * @brief Render a complete Lobed gear pair with derived conjugate motion.
+ * Source: [`functions/lobed/curve_gear_lobed_pair.scad`](functions/lobed/curve_gear_lobed_pair.scad)
+ * @image ../images/functions/lobed/curve_gear_lobed_pair.png curve_gear_lobed_pair example preview
  */
 include <../../../src/lobed/pair.scad>;
 $fn=64;

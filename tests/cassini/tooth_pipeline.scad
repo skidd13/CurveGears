@@ -1,4 +1,8 @@
-// Cassini family promotion of the circular tooth pipeline.
+/***
+ * @function cassini_tooth_pipeline
+ * @brief Verify Cassini tooth placement through the shared tooth pipeline.
+ * Source: [`cassini/tooth_pipeline.scad`](cassini/tooth_pipeline.scad)
+ */
 include <../../src/cassini/gear.scad>
 
 $fn=96;

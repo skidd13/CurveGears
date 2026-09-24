@@ -1,5 +1,13 @@
-// Deliberate local and boundary failures.  Each assertion confirms that the
-// expected diagnostic classification is produced rather than repaired away.
+/***
+ * @function tooth_placement_validation_cases
+ * @brief Deliberate local and boundary failures.  Each assertion confirms that the
+ * Source: [`tooth/placement/validation_cases.scad`](tooth/placement/validation_cases.scad)
+ *
+ * expected diagnostic classification is produced rather than repaired away.
+ *
+ * The assertions are the test; the final OpenSCAD export is kept valid so the
+ * fixture can still be rendered normally.
+ */
 include <../../../src/common/curve_gears_math.scad>
 
 reversed_frame=[[0,0],[1,0],[0,1],1];
@@ -80,5 +88,4 @@ echo("stage=placement severity=info code=TOOTH_PHASE_DEGREES PASS");
 
 echo("PASS: deliberate tooth and boundary classifications");
 
-// Keep the OpenSCAD export itself valid; the assertions above are the test.
 cube([0.01,0.01,0.01]);

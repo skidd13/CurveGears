@@ -1,4 +1,8 @@
-// Superformula family: high-curvature single-gear tooth placement.
+/***
+ * @function superformula_tooth_pipeline
+ * @brief Verify Superformula tooth placement through the shared tooth pipeline.
+ * Source: [`superformula/tooth_pipeline.scad`](superformula/tooth_pipeline.scad)
+ */
 include <../../src/superformula/gear.scad>
 
 $fn=96;

@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_epitrochoid_body example
- * @brief One-to-one executable example for the documented public API.
+ * @function epitrochoid_curve_gear_body
+ * @brief Render the Epitrochoid body before tooth placement.
+ * Source: [`functions/epitrochoid/curve_gear_epitrochoid_body.scad`](functions/epitrochoid/curve_gear_epitrochoid_body.scad)
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body.png curve_gear_epitrochoid_body example preview
  */
 include <../../../src/epitrochoid/mate.scad>;
 $fn=64;

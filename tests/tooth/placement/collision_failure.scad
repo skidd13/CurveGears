@@ -1,4 +1,8 @@
-// Expected-failure gate for a complete placed-tooth collision.
+/***
+ * @function tooth_placement_collision_failure
+ * @brief Expected-failure gate for a complete placed-tooth collision.
+ * Source: [`tooth/placement/collision_failure.scad`](tooth/placement/collision_failure.scad)
+ */
 include <../../../src/common/curve_gears_math.scad>
 
 function synthetic_placed(index,source,boundary) =

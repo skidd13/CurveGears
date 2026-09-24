@@ -1,5 +1,10 @@
-// Nautilus wraparound: the final/first placement boundary is exercised with
-// a phase near one full turn and the radial return remains canonical.
+/***
+ * @function logarithmic_spiral_wraparound
+ * @brief Nautilus wraparound: the final/first placement boundary is exercised with
+ * Source: [`logarithmic_spiral/wraparound.scad`](logarithmic_spiral/wraparound.scad)
+ *
+ * a phase near one full turn and the radial return remains canonical.
+ */
 include <../../src/logarithmic_spiral/gear.scad>
 
 $fn=96;

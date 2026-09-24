@@ -1,6 +1,7 @@
 /***
- * @file curve_gear_fourier_mate_rotation example
- * @brief One-to-one executable example for the documented scalar API.
+ * @function fourier_curve_gear_mate_rotation
+ * @brief Show the Fourier mate-rotation calculation used for pair assembly.
+ * Source: [`functions/fourier/curve_gear_fourier_mate_rotation.scad`](functions/fourier/curve_gear_fourier_mate_rotation.scad)
  *
  * The result is deliberately emitted as an OpenSCAD console value because
  * this callable returns a number rather than geometry.

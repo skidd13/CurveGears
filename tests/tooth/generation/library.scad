@@ -1,4 +1,10 @@
-// Focused contract test for the reusable tooth-generation library.
+/***
+ * @function tooth_generation_library
+ * @brief Focused contract test for the reusable tooth-generation library.
+ * Source: [`tooth/generation/library.scad`](tooth/generation/library.scad)
+ *
+ * Exercise both the calculated polygon and the legacy compatibility module.
+ */
 include <../../../src/tooth/generation.scad>
 include <../../../src/tooth/placement.scad>
 
@@ -20,7 +26,6 @@ assert(_cg_polygon_area(polygon_points)>0,"tooth polygon has no area");
 assert(candidate[0],str("reference tooth candidate failed: ",candidate[1]));
 assert(len(candidate[8])>=6,"reference tooth boundary contract failed");
 
-// Exercise both the calculated polygon and the legacy compatibility module.
 linear_extrude(height=4,convexity=4)
     polygon(polygon_points);
 translate([pitch_radius*1.8,0,0])

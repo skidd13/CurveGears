@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_logarithmic_spiral_pair example
- * @brief One-to-one executable example for the documented public API.
+ * @function logarithmic_spiral_curve_gear_pair
+ * @brief Render a complete Logarithmic spiral gear pair with derived conjugate motion.
+ * Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad)
+ * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png curve_gear_logarithmic_spiral_pair example preview
  */
 include <../../../src/logarithmic_spiral/pair.scad>;
 $fn=64;

@@ -1,4 +1,8 @@
-// Logarithmic-spiral family: radial return segments must omit inaccessible teeth.
+/***
+ * @function logarithmic_spiral_tooth_pipeline
+ * @brief Verify Logarithmic spiral tooth placement through the shared tooth pipeline.
+ * Source: [`logarithmic_spiral/tooth_pipeline.scad`](logarithmic_spiral/tooth_pipeline.scad)
+ */
 include <../../src/logarithmic_spiral/gear.scad>
 
 $fn=96;

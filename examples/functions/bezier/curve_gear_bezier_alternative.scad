@@ -1,6 +1,8 @@
 /***
- * @file Bézier asymmetric alternative
- * @brief A visibly non-circular but radially admissible Bézier pitch curve.
+ * @function bezier_curve_gear_alternative
+ * @brief Bézier asymmetric alternative: A visibly non-circular but radially admissible Bézier pitch curve.
+ * Source: [`functions/bezier/curve_gear_bezier_alternative.scad`](functions/bezier/curve_gear_bezier_alternative.scad)
+ * @image ../images/functions/bezier/curve_gear_bezier_alternative.png Bézier asymmetric alternative preview
  */
 include <../../../src/bezier/gear.scad>;
 

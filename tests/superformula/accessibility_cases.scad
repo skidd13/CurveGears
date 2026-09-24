@@ -1,5 +1,10 @@
-// Focused accessibility checks: shallow concavity remains usable, while a
-// deep U-shaped contour deliberately omits blocked source positions.
+/***
+ * @function superformula_accessibility_cases
+ * @brief Focused accessibility checks: shallow concavity remains usable, while a
+ * Source: [`superformula/accessibility_cases.scad`](superformula/accessibility_cases.scad)
+ *
+ * deep U-shaped contour deliberately omits blocked source positions.
+ */
 include <../../src/superformula/gear.scad>
 
 function accessibility_results(points,modul,tooth_number,candidate) =

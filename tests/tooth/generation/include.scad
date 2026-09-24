@@ -1,4 +1,8 @@
-// Direct include smoke test for the standalone tooth-generation layer.
+/***
+ * @function tooth_generation_include
+ * @brief Direct include smoke test for the standalone tooth-generation layer.
+ * Source: [`tooth/generation/include.scad`](tooth/generation/include.scad)
+ */
 include <../../../src/tooth/generation.scad>
 
 $fn=48;

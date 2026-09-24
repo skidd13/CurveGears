@@ -1,4 +1,8 @@
-// Logarithmic spiral family: static/reference pair classification.
+/***
+ * @function logarithmic_spiral_pair_pipeline
+ * @brief Verify Logarithmic spiral pair assembly and conjugate mate placement.
+ * Source: [`logarithmic_spiral/pair_pipeline.scad`](logarithmic_spiral/pair_pipeline.scad)
+ */
 include <../../src/logarithmic_spiral/pair.scad>
 
 $fn=96;

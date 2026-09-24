@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_superformula_mate example
- * @brief One-to-one executable example for the documented public API.
+ * @function superformula_curve_gear_mate
+ * @brief Render the conjugate Superformula mate generated from the driver pitch curve.
+ * Source: [`functions/superformula/curve_gear_superformula_mate.scad`](functions/superformula/curve_gear_superformula_mate.scad)
+ * @image ../images/functions/superformula/curve_gear_superformula_mate.png curve_gear_superformula_mate example preview
  */
 include <../../../src/superformula/mate.scad>;
 $fn=64;

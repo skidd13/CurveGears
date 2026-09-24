@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_superformula_pair example
- * @brief One-to-one executable example for the documented public API.
+ * @function superformula_curve_gear_pair
+ * @brief Render a complete Superformula gear pair with derived conjugate motion.
+ * Source: [`functions/superformula/curve_gear_superformula_pair.scad`](functions/superformula/curve_gear_superformula_pair.scad)
+ * @image ../images/functions/superformula/curve_gear_superformula_pair.png curve_gear_superformula_pair example preview
  */
 include <../../../src/superformula/pair.scad>;
 $fn=64;

@@ -1,4 +1,8 @@
-// Superformula family: moderate pair used for the cached mate boundary.
+/***
+ * @function superformula_pair_pipeline
+ * @brief Verify Superformula pair assembly and conjugate mate placement.
+ * Source: [`superformula/pair_pipeline.scad`](superformula/pair_pipeline.scad)
+ */
 include <../../src/superformula/pair.scad>
 
 $fn=96;

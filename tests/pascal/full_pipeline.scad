@@ -1,3 +1,8 @@
+/***
+ * @function pascal_full_pipeline
+ * @brief Verify the complete Pascal gear, mate, and pair entry points.
+ * Source: [`pascal/full_pipeline.scad`](pascal/full_pipeline.scad)
+ */
 // @regression: manual — the experimental non-convex mate path is covered by test-full, not smoke validation.
 include <../../src/pascal/pair.scad>
 $fn=48;

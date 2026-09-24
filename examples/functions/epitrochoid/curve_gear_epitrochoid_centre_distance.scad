@@ -1,6 +1,7 @@
 /***
- * @file curve_gear_epitrochoid_centre_distance example
- * @brief One-to-one executable example for the documented scalar API.
+ * @function epitrochoid_curve_gear_centre_distance
+ * @brief Show the Epitrochoid centre-distance calculation used for pair placement.
+ * Source: [`functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad`](functions/epitrochoid/curve_gear_epitrochoid_centre_distance.scad)
  *
  * The result is deliberately emitted as an OpenSCAD console value because
  * this callable returns a number rather than geometry.

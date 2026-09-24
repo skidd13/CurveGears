@@ -1,5 +1,7 @@
-/**
- * Direct conjugate-mate construction regression.
+/***
+ * @function mate_motion_direct_cases
+ * @brief Direct conjugate-mate construction regression.
+ * Source: [`mate/motion/direct_cases.scad`](mate/motion/direct_cases.scad)
  *
  * The mate points are generated from driver-angle samples and the integrated
  * rolling increments.  No inverse motion-table lookup is involved.

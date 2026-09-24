@@ -1,4 +1,8 @@
-// Epitrochoid family: corrected sampling and radial-root semantics.
+/***
+ * @function epitrochoid_pair_pipeline
+ * @brief Verify Epitrochoid pair assembly and conjugate mate placement.
+ * Source: [`epitrochoid/pair_pipeline.scad`](epitrochoid/pair_pipeline.scad)
+ */
 include <../../src/epitrochoid/pair.scad>
 
 $fn=96;

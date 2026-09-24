@@ -1,4 +1,8 @@
-// Hypotrochoid family: common pair assembly plus standalone mate API.
+/***
+ * @function hypotrochoid_pair_pipeline
+ * @brief Verify Hypotrochoid pair assembly and conjugate mate placement.
+ * Source: [`hypotrochoid/pair_pipeline.scad`](hypotrochoid/pair_pipeline.scad)
+ */
 include <../../src/hypotrochoid/pair.scad>
 
 $fn=96;

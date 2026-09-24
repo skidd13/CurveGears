@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_lobed_body example
- * @brief One-to-one executable example for the documented public API.
+ * @function lobed_curve_gear_body
+ * @brief Render the Lobed body before tooth placement.
+ * Source: [`functions/lobed/curve_gear_lobed_body.scad`](functions/lobed/curve_gear_lobed_body.scad)
+ * @image ../images/functions/lobed/curve_gear_lobed_body.png curve_gear_lobed_body example preview
  */
 include <../../../src/lobed/mate.scad>;
 $fn=64;

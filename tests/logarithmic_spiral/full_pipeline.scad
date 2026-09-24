@@ -1,3 +1,8 @@
+/***
+ * @function logarithmic_spiral_full_pipeline
+ * @brief Verify the complete Logarithmic spiral gear, mate, and pair entry points.
+ * Source: [`logarithmic_spiral/full_pipeline.scad`](logarithmic_spiral/full_pipeline.scad)
+ */
 include <../../src/logarithmic_spiral/pair.scad>
 $fn=48;
 translate([-100,0,0]) curve_gear_logarithmic_spiral(.8,34,4,4.8,sectors=1,growth_rate=1.17,samples=120);

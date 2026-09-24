@@ -1,3 +1,10 @@
+/***
+ * @function tooth_generation_equivalence
+ * @brief Keep the oracle export non-empty so the regression runner can execute it as
+ * Source: [`tooth/generation/equivalence.scad`](tooth/generation/equivalence.scad)
+ *
+ * an ordinary OpenSCAD case while the assertions remain the actual test.
+ */
 include <../../../src/common/curve_gears_math.scad>
 include <reference.scad>
 
@@ -15,6 +22,4 @@ assert(_cg_tooth_angles(1,34,20,0.1)[3]<_cg_tooth_angles(1,34,20,0)[3],"positive
 assert(_cg_dedendum(1,0.2)>_cg_dedendum(1,0.1),"positive clearance must deepen root");
 echo("PASS: 72 tooth cases; all flank coordinates within 1e-7");
 
-// Keep the oracle export non-empty so the regression runner can execute it as
-// an ordinary OpenSCAD case while the assertions remain the actual test.
 cube([0.01,0.01,0.01]);

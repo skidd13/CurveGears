@@ -1,3 +1,8 @@
+/***
+ * @function epitrochoid_contact
+ * @brief Verify Epitrochoid contact geometry and pitch diagnostics.
+ * Source: [`epitrochoid/contact.scad`](epitrochoid/contact.scad)
+ */
 include <../../src/epitrochoid/pair.scad>
 
 phase=is_undef(test_phase) ? 0 : test_phase;

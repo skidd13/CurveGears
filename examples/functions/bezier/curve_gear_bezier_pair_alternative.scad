@@ -1,6 +1,8 @@
 /***
- * @file Bézier asymmetric pair alternative
- * @brief The same visibly non-circular Bézier curve and its derived mate.
+ * @function bezier_curve_gear_pair_alternative
+ * @brief Bézier asymmetric pair alternative: The same visibly non-circular Bézier curve and its derived mate.
+ * Source: [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad)
+ * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier asymmetric pair alternative preview
  */
 include <../../../src/bezier/pair.scad>;
 

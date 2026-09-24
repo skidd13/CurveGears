@@ -1,3 +1,8 @@
+/***
+ * @function superformula_contact
+ * @brief Verify Superformula contact geometry and pitch diagnostics.
+ * Source: [`superformula/contact.scad`](superformula/contact.scad)
+ */
 include <../../src/superformula/pair.scad>
 
 phase=is_undef(test_phase) ? 0 : test_phase;

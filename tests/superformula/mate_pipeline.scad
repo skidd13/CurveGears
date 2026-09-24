@@ -1,4 +1,8 @@
-// Deliberate high-curvature mate splice failure; the structured diagnostic is expected.
+/***
+ * @function superformula_mate_pipeline
+ * @brief Verify Bézier mate construction through the shared pair pipeline.
+ * Source: [`superformula/mate_pipeline.scad`](superformula/mate_pipeline.scad)
+ */
 include <../../src/superformula/pair.scad>
 
 $fn=96;

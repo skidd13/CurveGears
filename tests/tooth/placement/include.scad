@@ -1,4 +1,8 @@
-// Direct include smoke test for the standalone tooth-placement layer.
+/***
+ * @function tooth_placement_include
+ * @brief Direct include smoke test for the standalone tooth-placement layer.
+ * Source: [`tooth/placement/include.scad`](tooth/placement/include.scad)
+ */
 include <../../../src/tooth/placement.scad>
 
 $fn=48;

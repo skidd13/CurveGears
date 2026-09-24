@@ -1,3 +1,8 @@
+/***
+ * @function superformula_full_pipeline
+ * @brief Verify the complete Superformula gear, mate, and pair entry points.
+ * Source: [`superformula/full_pipeline.scad`](superformula/full_pipeline.scad)
+ */
 include <../../src/superformula/pair.scad>
 $fn=48;
 translate([-100,0,0]) curve_gear_superformula(.8,34,4,4.8,symmetry=4,n1=2.4,n2=2.4,n3=2.4,samples=120);

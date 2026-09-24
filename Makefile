@@ -11,7 +11,7 @@ COLORSCHEME ?= Nature
 REGRESSION_DIR ?= build/regression
 REGRESSION_FAMILIES ?= $(FAMILY)
 REGRESSION_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print)
-REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print)
+REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
@@ -46,6 +46,8 @@ images/%.png: examples/%.scad
 
 NAVIGATION_TEMPLATE := utils/doxydown-support/navigation.md
 FOOTER_TEMPLATE := utils/doxydown-support/footer.md
+EXAMPLES_CATALOGUE_HEADER := examples/.doxydown_module.md
+TESTS_CATALOGUE_HEADER := tests/.doxydown_module.md
 
 examples: examples/README.md
 	@test -s examples/README.md
@@ -62,21 +64,21 @@ readme:
 	done
 	@echo 'PASS: README entry document is present'
 
-examples/README.md: $(API_EXAMPLES) $(CORE_EXAMPLES) $(API_IMAGES) $(CORE_IMAGES) utils/example_catalogue.py $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
+examples/README.md: $(API_EXAMPLES) $(CORE_EXAMPLES) $(EXAMPLES_CATALOGUE_HEADER) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@{ \
 		printf '%s\n\n' '# Executable API examples' '## Documentation navigation'; \
 		sed -e 's|@README@|../README.md|g' -e 's|@DOCS@|../docs/|g' -e 's|@EXAMPLES@||g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)"; \
 		printf '%s\n\n' '' 'Each entry is catalogued as a function in one Doxydown examples module. The source link is authoritative; generated images remain beside the corresponding example.'; \
-		$(PYTHON) utils/example_catalogue.py | $(DOCGEN) -g -e c -l c; \
+		$(DOCGEN) -g -e c -l c "$(EXAMPLES_CATALOGUE_HEADER)" $(API_EXAMPLES) $(CORE_EXAMPLES); \
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
-tests/README.md: $(REGRESSION_TEST_DEPS) utils/test_catalogue.py $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
+tests/README.md: $(REGRESSION_TEST_DEPS) $(TESTS_CATALOGUE_HEADER) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@{ \
 		printf '%s\n\n' '# Test catalogue' '## Documentation navigation'; \
 		sed -e 's|@README@|../README.md|g' -e 's|@DOCS@|../docs/|g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@||g' "$(NAVIGATION_TEMPLATE)"; \
 		printf '%s\n\n' '' 'Each fixture below is catalogued as a function in one Doxydown test module. Make discovers fixtures and assigns mirrored regression outputs automatically; generated meshes and reports remain under the ignored build directory.'; \
-		$(PYTHON) utils/test_catalogue.py | $(DOCGEN) -g -e c -l c; \
+		$(DOCGEN) -g -e c -l c "$(TESTS_CATALOGUE_HEADER)" $(REGRESSION_TEST_DEPS); \
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
@@ -90,7 +92,7 @@ $(1): $(3) $(4) $(5) $(6) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@printf '%s\n' '# $(2)' '' '## Documentation navigation' '' > "$$@"
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
-	@cat "$(3)" "$(4)" "$(5)" "$(6)" | $(DOCGEN) -g -e c -l c >> "$$@"
+	@$(DOCGEN) -g -e c -l c "$(3)" "$(4)" "$(5)" "$(6)" >> "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -100,7 +102,7 @@ $(1): $(3) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@printf '%s\n' '# $(2)' '' '## Documentation navigation' '' > "$$@"
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
-	@$(DOCGEN) -g -e c -l c < "$(3)" >> "$$@"
+	@$(DOCGEN) -g -e c -l c "$(3)" >> "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -110,7 +112,7 @@ $(1): $(3) $(4) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@printf '%s\n' '# $(2)' '' '## Documentation navigation' '' > "$$@"
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n![$(2) preview]($(5))\n\n' >> "$$@"
-	@$(DOCGEN) -g -e c -l c < "$(3)" >> "$$@"
+	@$(DOCGEN) -g -e c -l c "$(3)" >> "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -229,6 +231,10 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test -s examples/README.md
 	@test -s "$(NAVIGATION_TEMPLATE)"
 	@test -s "$(FOOTER_TEMPLATE)"
+	@test -s "$(EXAMPLES_CATALOGUE_HEADER)"
+	@test -s "$(TESTS_CATALOGUE_HEADER)"
+	@test ! -e utils/test_catalogue.py
+	@test ! -e utils/example_catalogue.py
 	@test ! -e utils/doxydown-support/docs-navigation.md
 	@test ! -e utils/doxydown-support/docs-footer.md
 	@test ! -e utils/doxydown-support/readme-navigation.md
@@ -237,10 +243,10 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test -z "$$(rg -n '@(README|DOCS|EXAMPLES|TESTS)@' README.md docs examples/README.md tests/README.md || true)"
 	@test "$$(rg -c '^## Module `Test cases`$$' tests/README.md)" -eq 1
 	@test "$$(rg -c '^## Module ' tests/README.md)" -eq 1
-	@test "$$(rg -c '^### Function `test_' tests/README.md)" -eq "$$(find tests -type f -name '*.scad' -print | wc -l | tr -d ' ')"
+	@test "$$(rg -c '^### Function `' tests/README.md)" -eq "$$(find tests -type f -name '*.scad' -print | wc -l | tr -d ' ')"
 	@test "$$(rg -c '^## Module `Executable examples`$$' examples/README.md)" -eq 1
 	@test "$$(rg -c '^## Module ' examples/README.md)" -eq 1
-	@test "$$(rg -c '^### Function `example_' examples/README.md)" -eq "$(words $(API_EXAMPLES) $(CORE_EXAMPLES))"
+	@test "$$(rg -c '^### Function `' examples/README.md)" -eq "$(words $(API_EXAMPLES) $(CORE_EXAMPLES))"
 	@for source in $$(find src/common src/tooth src/mate src/pair -type f -name '*.scad') src/CurveGears.scad src/CurveGearPairs.scad $$(find src -mindepth 2 -maxdepth 2 -type f -name 'base.scad'); do \
 		head -n 24 "$$source" | grep -Fq '@module' || { echo "missing file-start module header: $$source"; exit 1; }; \
 	done

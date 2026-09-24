@@ -1,4 +1,8 @@
-// Ellipse family promotion of the circular tooth pipeline.
+/***
+ * @function ellipse_tooth_pipeline
+ * @brief Verify Ellipse tooth placement through the shared tooth pipeline.
+ * Source: [`ellipse/tooth_pipeline.scad`](ellipse/tooth_pipeline.scad)
+ */
 include <../../src/ellipse/gear.scad>
 
 $fn=96;

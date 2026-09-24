@@ -1,6 +1,7 @@
 /***
- * @file curve_gear_lobed_centre_distance example
- * @brief One-to-one executable example for the documented scalar API.
+ * @function lobed_curve_gear_centre_distance
+ * @brief Show the Lobed centre-distance calculation used for pair placement.
+ * Source: [`functions/lobed/curve_gear_lobed_centre_distance.scad`](functions/lobed/curve_gear_lobed_centre_distance.scad)
  *
  * The result is deliberately emitted as an OpenSCAD console value because
  * this callable returns a number rather than geometry.

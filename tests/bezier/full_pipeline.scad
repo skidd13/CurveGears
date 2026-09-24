@@ -1,3 +1,8 @@
+/***
+ * @function bezier_full_pipeline
+ * @brief Verify the complete Bezier gear, mate, and pair entry points.
+ * Source: [`bezier/full_pipeline.scad`](bezier/full_pipeline.scad)
+ */
 include <../../src/bezier/gear.scad>
 $fn=48;
 translate([-35,0,0]) curve_gear_bezier(.8,34,4,4.8,samples=360);

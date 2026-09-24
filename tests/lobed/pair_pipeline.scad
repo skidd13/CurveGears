@@ -1,4 +1,8 @@
-// Lobed family: common pair assembly plus standalone mate API.
+/***
+ * @function lobed_pair_pipeline
+ * @brief Verify Lobed pair assembly and conjugate mate placement.
+ * Source: [`lobed/pair_pipeline.scad`](lobed/pair_pipeline.scad)
+ */
 include <../../src/lobed/pair.scad>
 
 $fn=96;

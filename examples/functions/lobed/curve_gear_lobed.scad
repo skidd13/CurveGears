@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_lobed example
- * @brief One-to-one executable example for the documented public API.
+ * @function lobed_curve_gear
+ * @brief Render a Lobed gear from the documented pitch-curve family.
+ * Source: [`functions/lobed/curve_gear_lobed.scad`](functions/lobed/curve_gear_lobed.scad)
+ * @image ../images/functions/lobed/curve_gear_lobed.png curve_gear_lobed example preview
  */
 include <../../../src/lobed/mate.scad>;
 $fn=64;

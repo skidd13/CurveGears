@@ -1,4 +1,8 @@
-// Pascal family: validate one non-convex body with the shared tooth pipeline.
+/***
+ * @function pascal_tooth_pipeline
+ * @brief Verify Pascal tooth placement through the shared tooth pipeline.
+ * Source: [`pascal/tooth_pipeline.scad`](pascal/tooth_pipeline.scad)
+ */
 include <../../src/pascal/gear.scad>
 
 $fn=96;

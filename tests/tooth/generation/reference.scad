@@ -1,6 +1,15 @@
-// Compact mathematical oracle derived from the pinned reference source:
-// https://github.com/chrisspen/gears/tree/15793cf3377773e417f52dc91ea7f28a2d25dde0
-// This project does not vendor the upstream gears.scad repository.
+/***
+ * @function tooth_generation_reference
+ * @brief Compact mathematical oracle derived from the pinned reference source:
+ * Source: [`tooth/generation/reference.scad`](tooth/generation/reference.scad)
+ *
+ * https://github.com/chrisspen/gears/tree/15793cf3377773e417f52dc91ea7f28a2d25dde0
+ * This project does not vendor the upstream gears.scad repository.
+ *
+ * This is a deliberately small, renderable reference tooth. It preserves the
+ * pinned involute equations while leaving the production candidate and its
+ * placement/validation code under test.
+ */
 rad=57.29578; clearance=0.05;
 function grad(a)=a*rad;
 function radian(a)=a/rad;
@@ -30,9 +39,6 @@ function reference_tooth_points(modul,tooth_number,pressure_angle=20,backlash=un
             polar_to_cartesian([ev(rb,rho)[0],tooth_width-ev(rb,rho)[1]])]
     );
 
-// This is a deliberately small, renderable reference tooth.  It preserves
-// the pinned involute equations while leaving the production candidate and
-// its placement/validation code under test.
 module reference_oracle_tooth(modul,tooth_number,width,pressure_angle=20,backlash=undef) {
     assert(modul > 0 && tooth_number >= 3 && width > 0,
         "reference_oracle_tooth: invalid dimensions");

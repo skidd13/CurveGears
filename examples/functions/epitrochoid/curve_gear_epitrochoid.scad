@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_epitrochoid example
- * @brief One-to-one executable example for the documented public API.
+ * @function epitrochoid_curve_gear
+ * @brief Render an Epitrochoid gear from the documented pitch-curve family.
+ * Source: [`functions/epitrochoid/curve_gear_epitrochoid.scad`](functions/epitrochoid/curve_gear_epitrochoid.scad)
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid.png curve_gear_epitrochoid example preview
  */
 include <../../../src/epitrochoid/mate.scad>;
 $fn=64;

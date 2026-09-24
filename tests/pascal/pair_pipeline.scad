@@ -1,4 +1,8 @@
-// Pascal family: convex pair and standalone mate API through the common assembly.
+/***
+ * @function pascal_pair_pipeline
+ * @brief Verify Pascal pair assembly and conjugate mate placement.
+ * Source: [`pascal/pair_pipeline.scad`](pascal/pair_pipeline.scad)
+ */
 include <../../src/pascal/pair.scad>
 
 $fn=96;

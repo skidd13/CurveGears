@@ -1,6 +1,7 @@
 /***
- * @file Tooth placement preview
- * @brief Render cached teeth placed along a sinusoidal edge of a body.
+ * @function tooth_placement
+ * @brief Tooth placement preview: Render cached teeth placed along a sinusoidal edge of a body.
+ * Source: [`tooth/placement.scad`](tooth/placement.scad)
  *
  * This diagnostic deliberately uses a rectangular body with a multi-period
  * sine-wave upper edge. Teeth are displayed only on that edge, so changing
@@ -8,6 +9,7 @@
  * without the rest of a closed gear hiding the placement behaviour. The body
  * is inset beneath the source curve, while the production tooth
  * boundary is shown in full so each tooth visibly stands on the edge.
+ * @image ../images/tooth/placement.png Tooth placement preview preview
  */
 include <../../src/common/curve_gears_math.scad>;
 

@@ -1,3 +1,8 @@
+/***
+ * @function bezier_control_sets
+ * @brief Verify Bézier control sets preserve closure and admissible sampling.
+ * Source: [`bezier/control_sets.scad`](bezier/control_sets.scad)
+ */
 include <../../src/bezier/gear.scad>
 $fn=48;
 circle_controls=[[1,0],[1,.5523],[.5523,1],[0,1],[-.5523,1],[-1,.5523],[-1,0],[-1,-.5523],[-.5523,-1],[0,-1],[.5523,-1],[1,-.5523],[1,0]];

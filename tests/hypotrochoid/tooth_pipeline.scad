@@ -1,4 +1,8 @@
-// Hypotrochoid family promotion of the circular tooth pipeline.
+/***
+ * @function hypotrochoid_tooth_pipeline
+ * @brief Verify Hypotrochoid tooth placement through the shared tooth pipeline.
+ * Source: [`hypotrochoid/tooth_pipeline.scad`](hypotrochoid/tooth_pipeline.scad)
+ */
 include <../../src/hypotrochoid/gear.scad>
 
 $fn=96;

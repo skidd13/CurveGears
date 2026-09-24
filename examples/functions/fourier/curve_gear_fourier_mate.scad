@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_fourier_mate example
- * @brief One-to-one executable example for the documented public API.
+ * @function fourier_curve_gear_mate
+ * @brief Render the conjugate Fourier mate generated from the driver pitch curve.
+ * Source: [`functions/fourier/curve_gear_fourier_mate.scad`](functions/fourier/curve_gear_fourier_mate.scad)
+ * @image ../images/functions/fourier/curve_gear_fourier_mate.png curve_gear_fourier_mate example preview
  */
 include <../../../src/fourier/mate.scad>;
 $fn=64;

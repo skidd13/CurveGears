@@ -1,4 +1,8 @@
-// Cassini family full maintained-entry-point render.
+/***
+ * @function cassini_full_pipeline
+ * @brief Verify the complete Cassini gear, mate, and pair entry points.
+ * Source: [`cassini/full_pipeline.scad`](cassini/full_pipeline.scad)
+ */
 include <../../src/cassini/gear.scad>
 include <../../src/cassini/mate.scad>
 include <../../src/cassini/pair.scad>

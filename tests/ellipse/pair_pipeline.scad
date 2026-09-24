@@ -1,4 +1,8 @@
-// Ellipse family: common pair assembly plus standalone mate API.
+/***
+ * @function ellipse_pair_pipeline
+ * @brief Verify Ellipse pair assembly and conjugate mate placement.
+ * Source: [`ellipse/pair_pipeline.scad`](ellipse/pair_pipeline.scad)
+ */
 include <../../src/ellipse/pair.scad>
 
 $fn=96;

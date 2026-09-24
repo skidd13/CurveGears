@@ -1,6 +1,7 @@
 /***
- * @file curve_gear_pascal_mate_rotation example
- * @brief One-to-one executable example for the documented scalar API.
+ * @function pascal_curve_gear_mate_rotation
+ * @brief Show the Pascal mate-rotation calculation used for pair assembly.
+ * Source: [`functions/pascal/curve_gear_pascal_mate_rotation.scad`](functions/pascal/curve_gear_pascal_mate_rotation.scad)
  *
  * The result is deliberately emitted as an OpenSCAD console value because
  * this callable returns a number rather than geometry.

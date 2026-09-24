@@ -1,4 +1,8 @@
-// Cassini family: common pair assembly plus standalone mate API.
+/***
+ * @function cassini_pair_pipeline
+ * @brief Verify Cassini pair assembly and conjugate mate placement.
+ * Source: [`cassini/pair_pipeline.scad`](cassini/pair_pipeline.scad)
+ */
 include <../../src/cassini/pair.scad>
 
 $fn=96;

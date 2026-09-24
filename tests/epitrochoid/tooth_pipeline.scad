@@ -1,4 +1,8 @@
-// Epitrochoid family: regular non-cusped profile through the shared pipeline.
+/***
+ * @function epitrochoid_tooth_pipeline
+ * @brief Verify Epitrochoid tooth placement through the shared tooth pipeline.
+ * Source: [`epitrochoid/tooth_pipeline.scad`](epitrochoid/tooth_pipeline.scad)
+ */
 include <../../src/epitrochoid/gear.scad>
 
 $fn=96;

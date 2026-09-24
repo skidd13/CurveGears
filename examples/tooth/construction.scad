@@ -1,10 +1,12 @@
 /***
- * @file Tooth construction preview
- * @brief Render one validated cached local tooth candidate.
+ * @function tooth_construction
+ * @brief Tooth construction preview: Render one validated cached local tooth candidate.
+ * Source: [`tooth/construction.scad`](tooth/construction.scad)
  *
  * This is the standalone output of tooth/generation.scad. It is intentionally
  * local rather than attached to a curve, so the involute flanks and top
  * closure can be inspected without placement hiding their shape.
+ * @image ../images/tooth/construction.png Tooth construction preview preview
  */
 include <../../src/common/curve_gears_math.scad>;
 

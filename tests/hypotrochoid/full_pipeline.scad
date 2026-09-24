@@ -1,4 +1,8 @@
-// Hypotrochoid family full maintained-entry-point render.
+/***
+ * @function hypotrochoid_full_pipeline
+ * @brief Verify the complete Hypotrochoid gear, mate, and pair entry points.
+ * Source: [`hypotrochoid/full_pipeline.scad`](hypotrochoid/full_pipeline.scad)
+ */
 include <../../src/hypotrochoid/gear.scad>
 include <../../src/hypotrochoid/mate.scad>
 include <../../src/hypotrochoid/pair.scad>

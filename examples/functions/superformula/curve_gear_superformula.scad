@@ -1,6 +1,8 @@
 /***
- * @file curve_gear_superformula example
- * @brief One-to-one executable example for the documented public API.
+ * @function superformula_curve_gear
+ * @brief Render a Superformula gear from the documented pitch-curve family.
+ * Source: [`functions/superformula/curve_gear_superformula.scad`](functions/superformula/curve_gear_superformula.scad)
+ * @image ../images/functions/superformula/curve_gear_superformula.png curve_gear_superformula example preview
  */
 include <../../../src/superformula/mate.scad>;
 $fn=64;
