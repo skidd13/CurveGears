@@ -235,7 +235,8 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         assert(len(order_failures)==0,
             str("stage=collision severity=error code=TOOTH_ORDER_CONFLICT message=placement order is not monotone first=",order_failures[0][1]," second=",order_failures[0][2]));
         tooth_pitch=perimeter/tooth_number;
-        splice_failures=_cg_splice_failures(placements,perimeter,tooth_pitch);
+        splice_pitch=radial_root ? undef : tooth_pitch;
+        splice_failures=_cg_splice_failures(placements,perimeter,splice_pitch);
         splice_failure=len(splice_failures)>0 ? splice_failures[0] : ["PASS",[],[]];
         assert(len(splice_failures)==0,
             str("stage=splice severity=error code=",splice_failure[0]," first=",splice_failure[1]," second=",splice_failure[2]," eps_len=",_cg_eps_len()," eps_intersect=",_cg_eps_intersect()));
@@ -244,7 +245,7 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
             echo(str("stage=collision severity=error code=",collisions[0][0]," message=placed tooth pair conflict pair=",collisions[0][1],"/",collisions[0][2]," target=",collisions[0][6],"/",collisions[0][7]," source_distance=",collisions[0][4]," search_radius=",collisions[0][5]," segments=",collisions[0][3][0],"/",collisions[0][3][1]," intersection=",collisions[0][3][2]," eps_intersect=",_cg_eps_intersect()));
         assert(len(collisions)==0,
             str("stage=collision severity=error code=",len(collisions)>0 ? collisions[0][0] : "TOOTH_COLLISION"," message=placed tooth pair conflict eps_intersect=",_cg_eps_intersect()," search_radius=2*tooth_height"));
-        outline=_cg_final_outline_from_placements(body_outline,arc,perimeter,placements,tooth_pitch);
+        outline=_cg_final_outline_from_placements(body_outline,arc,perimeter,placements,splice_pitch);
         assembly_failures=_cg_assembled_component_failures(outline,placements);
         assembly_failure=len(assembly_failures)>0 ? assembly_failures[0] : ["PASS"];
         assert(len(assembly_failures)==0,

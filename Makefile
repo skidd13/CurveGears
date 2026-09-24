@@ -12,6 +12,7 @@ REGRESSION_DIR ?= build/regression
 REGRESSION_FAMILIES ?= $(FAMILY)
 REGRESSION_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print)
 REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print | sort)
+PREVIEW_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
@@ -38,11 +39,11 @@ api-images: $(API_IMAGES)
 $(API_IMAGES): IMAGE_SIZE=$(CI_IMAGE_SIZE)
 $(CORE_IMAGES): IMAGE_SIZE=$(CORE_IMAGE_SIZE)
 
-$(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES)
+$(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES) $(PREVIEW_SOURCE_DEPS)
 	@mkdir -p $(@D)
 	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
 
-images/%.png: examples/%.scad
+images/%.png: examples/%.scad $(PREVIEW_SOURCE_DEPS)
 	@mkdir -p $(@D)
 	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
 

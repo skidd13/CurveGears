@@ -66,6 +66,7 @@ Build one mate from its canonical sampled pitch boundary.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {angle} Involute pressure angle in degrees.
+- `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `radial_root`: {boolean, default false} Use radial-root tooth construction.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0} Additional radial root clearance in mm.

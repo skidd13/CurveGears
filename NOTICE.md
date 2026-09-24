@@ -4,7 +4,7 @@ The common involute construction derives from Dr Jörg Janssen (janssen86),
 Keith Emery and Chris Spencer's Gears Library, originally published through
 Thingiverse and maintained at chrisspen/gears. The supplied reference identifies
 Creative Commons Attribution–NonCommercial–ShareAlike; this project uses
-CC BY-NC-SA 3.0. The reference library is not a runtime dependency.
+CC BY-NC-SA 4.0. The reference library is not a runtime dependency.
 
 The supplied non-circular candidate and its exact vendor identities are recorded
 in the pinned reference fixture under tests/tooth/generation. Local

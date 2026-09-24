@@ -17,7 +17,9 @@ This layer owns arc-length frames, winding-aware normals, accessibility, body
 intersections, splice intervals and nearby tooth collision checks. It returns
 placed, omitted_inaccessible or invalid states; it never silently repairs invalid geometry.
 Cheap frame and candidate checks precede corridor and body scans. A source-point
-broad phase limits exact collision checks to plausible non-neighbour contacts.
+broad phase limits exact collision checks to plausible tooth pairs; adjacent
+pairs are checked as well, with only their explicitly shared boundary contact
+permitted.
 
 ### Brief content:
 
@@ -87,13 +89,23 @@ broad phase limits exact collision checks to plausible non-neighbour contacts.
 
 > [`_cg_tooth_pair_collisions(a, b)`](#function-_cg_tooth_pair_collisionsa-b): Find all segment intersections between two tooth boundaries.
 
+> [`_cg_point_on_segment(point, a, b)`](#function-_cg_point_on_segmentpoint-a-b): Test whether a point lies on a segment within the geometry tolerance.
+
+> [`_cg_point_in_polygon_strict(point, polygon_points)`](#function-_cg_point_in_polygon_strictpoint-polygon_points): Test strict containment, excluding points on the polygon boundary.
+
+> [`_cg_tooth_containment_collisions(a, b)`](#function-_cg_tooth_containment_collisionsa-b): Detect one tooth boundary contained inside the other.
+
+> [`_cg_tooth_contact_is_permitted(a, b, hit)`](#function-_cg_tooth_contact_is_permitteda-b-hit): Permit only a shared endpoint contact between tooth boundaries.
+
 > [`_cg_tooth_top_collisions(a, b)`](#function-_cg_tooth_top_collisionsa-b): Find collisions between the top edges of two tooth boundaries.
 
 > [`_cg_tooth_order_failures(placements)`](#function-_cg_tooth_order_failuresplacements): Detect non-monotone indices among accepted placements.
 
 > [`_cg_tooth_non_top_collisions(a, b)`](#function-_cg_tooth_non_top_collisionsa-b): Filter top-edge contacts from complete tooth-pair collisions.
 
-> [`_cg_final_boundary_collisions`](#function-_cg_final_boundary_collisions): Run broad-phase and exact checks for nearby non-neighbour teeth.
+> [`_cg_adjacent_contact_region`](#function-_cg_adjacent_contact_region): Return whether adjacent-tooth witnesses form one compact shared contact.
+
+> [`_cg_final_boundary_collisions`](#function-_cg_final_boundary_collisions): Run broad-phase and exact checks for every nearby placed-tooth pair.
 
 
 ## Functions
@@ -517,8 +529,9 @@ Return one placed tooth's body replacement interval.
 
 **Parameters:**
 
-- `hit_left`: {array} Left body intersection record.
-- `hit_right`: {array} Right body intersection record.
+- `placement`: {array} Canonical placement record.
+- `perimeter`: {number > 0} Body perimeter in mm.
+- `tooth_pitch`: {number, default undef} Arc-length tooth pitch for cell clipping.
 
 **Returns:**
 
@@ -667,6 +680,72 @@ Find all segment intersections between two tooth boundaries.
 
 Back to [module description](#module-tooth-placement).
 
+### Function `_cg_point_on_segment(point, a, b)`
+
+
+Test whether a point lies on a segment within the geometry tolerance.
+
+**Parameters:**
+
+- `point`: {point} Candidate point.
+- `a`: {point} Segment start.
+- `b`: {point} Segment end.
+
+**Returns:**
+
+- `{boolean}`: True when the point lies on the segment.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_point_in_polygon_strict(point, polygon_points)`
+
+
+Test strict containment, excluding points on the polygon boundary.
+
+**Parameters:**
+
+- `point`: {point} Candidate point.
+- `polygon_points`: {array} Closed polygon.
+
+**Returns:**
+
+- `{boolean}`: True when the point is strictly inside the polygon.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_tooth_containment_collisions(a, b)`
+
+
+Detect one tooth boundary contained inside the other.
+
+**Parameters:**
+
+- `a`: {array of points} First tooth boundary.
+- `b`: {array of points} Second tooth boundary.
+
+**Returns:**
+
+- `{array}`: Containment witnesses.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_tooth_contact_is_permitted(a, b, hit)`
+
+
+Permit only a shared endpoint contact between tooth boundaries.
+
+**Parameters:**
+
+- `a`: {array of points} First tooth boundary.
+- `b`: {array of points} Second tooth boundary.
+- `hit`: {array} Segment collision record.
+
+**Returns:**
+
+- `{boolean}`: True only for an endpoint-only shared boundary contact.
+
+Back to [module description](#module-tooth-placement).
+
 ### Function `_cg_tooth_top_collisions(a, b)`
 
 
@@ -714,10 +793,26 @@ Filter top-edge contacts from complete tooth-pair collisions.
 
 Back to [module description](#module-tooth-placement).
 
+### Function `_cg_adjacent_contact_region`
+
+
+Return whether adjacent-tooth witnesses form one compact shared contact.
+
+**Parameters:**
+
+- `hits`: {array} Non-top collision witnesses.
+- `modul`: {number > 0} Tooth module in mm.
+
+**Returns:**
+
+- `{boolean}`: True only for one local contact region.
+
+Back to [module description](#module-tooth-placement).
+
 ### Function `_cg_final_boundary_collisions`
 
 
-Run broad-phase and exact checks for nearby non-neighbour teeth.
+Run broad-phase and exact checks for every nearby placed-tooth pair.
 
 **Parameters:**
 

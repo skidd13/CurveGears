@@ -89,6 +89,8 @@ Executable regression and contract test fixtures.
 
 > [`mate_motion_phase_cases`](#function-mate_motion_phase_cases): Shared mate-motion phase regression.
 
+> [`mate_phase_forwarding`](#function-mate_phase_forwarding): Verify that mate tooth phase reaches the shared placement engine.
+
 > [`pascal_full_pipeline`](#function-pascal_full_pipeline): Verify the complete Pascal gear, mate, and pair entry points.
 
 > [`pascal_pair_pipeline`](#function-pascal_pair_pipeline): Verify Pascal pair assembly and conjugate mate placement.
@@ -650,6 +652,21 @@ No parameters
 **Returns:**
 
 No return
+
+Back to [module description](#module-test-cases).
+
+### Function `mate_phase_forwarding`
+
+
+Verify that mate tooth phase reaches the shared placement engine.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+- `{geometry}`: Small validation solid.
 
 Back to [module description](#module-test-cases).
 
