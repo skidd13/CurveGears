@@ -55,7 +55,7 @@ module _cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pr
     assert(abs(closure_error) < 0.08,"elliptical_gear_pair: conjugate closure error too large");
     driver=[for(i=[0:samples-1]) _cg_ellipse_driver_point(a,b,360*i/samples)];
     mate=_cg_ellipse_mate_points_from_driver(a,b,D,samples);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_ellipse(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

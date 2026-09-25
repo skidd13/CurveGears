@@ -32,7 +32,7 @@ module curve_gear_fourier_pair(modul,tooth_number,width,bore,coefficients=[[2,.1
     assert(abs(closure_error)<.08,"fourier_gear_pair: conjugate closure error too large");
     driver=[for(i=[0:samples-1]) _cg_fourier_point(base,coefficients,360*i/samples)];
     mate=_cg_fourier_mate_points_from_driver(base,coefficients,D,samples);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_fourier(modul,tooth_number,width,bore,coefficients,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

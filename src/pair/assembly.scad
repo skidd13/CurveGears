@@ -29,11 +29,19 @@ function _cg_pair_display_separation(driver_extent,mate_extent,modul) =
  * @param driver_extent {number > 0} Display extent of the driver from its origin.
  * @param mate_extent {number > 0} Display extent of the mate from its origin.
  * @param modul {number > 0} Tooth module used for the explicit display gap.
+ * @param driver_points {array of points, optional} Driver pitch curve for common state construction.
+ * @param mate_points {array of points, optional} Mate pitch curve for common state construction.
+ * @param tooth_number {integer >= 3, optional} Shared tooth count.
  * @return {geometry} The two child modules in meshed or separated placement.
  */
-module _cg_pair_assembly(centre_distance,motion,phase=0,together_built=true,driver_extent=1,mate_extent=1,modul=1) {
+module _cg_pair_assembly(centre_distance,motion,phase=0,together_built=true,driver_extent=1,mate_extent=1,modul=1,driver_points=undef,mate_points=undef,tooth_number=undef,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef) {
     mate_rotation=_cg_mate_rotation_for_phase(motion,phase);
     display_distance=_cg_pair_display_separation(driver_extent,mate_extent,modul);
+    gap_failures=together_built && !is_undef(driver_points) && !is_undef(mate_points)
+        ? _cg_pair_gap_failures(driver_points,mate_points,modul,tooth_number,pressure_angle,centre_distance,phase,mate_rotation,tooth_phase,backlash,clearance)
+        : [];
+    assert(len(gap_failures)==0,
+        str("stage=collision severity=error code=MATE_TOOTH_GAP_INSUFFICIENT pair=",len(gap_failures)>0 ? gap_failures[0][1] : -1,"/",len(gap_failures)>0 ? gap_failures[0][2] : -1," hit=",len(gap_failures)>0 ? gap_failures[0][3] : []," distance=",len(gap_failures)>0 ? gap_failures[0][4] : -1));
     if(together_built) {
         translate([-centre_distance/2,0,0]) rotate([0,0,phase]) children(0);
         translate([ centre_distance/2,0,0]) rotate([0,0,mate_rotation]) children(1);

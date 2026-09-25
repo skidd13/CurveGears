@@ -107,6 +107,10 @@ permitted.
 
 > [`_cg_final_boundary_collisions`](#function-_cg_final_boundary_collisions): Run broad-phase and exact checks for every nearby placed-tooth pair.
 
+> [`_cg_pair_transform_point`](#function-_cg_pair_transform_point): Transform a local point into a pair placement.
+
+> [`_cg_pair_gap_failures`](#function-_cg_pair_gap_failures): Check opposing placed teeth while reusing common collision tests.
+
 
 ## Functions
 
@@ -825,6 +829,40 @@ Run broad-phase and exact checks for every nearby placed-tooth pair.
 **Returns:**
 
 - `{array}`: Boundary collision records.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_pair_transform_point`
+
+
+Transform a local point into a pair placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_pair_gap_failures`
+
+
+
+Intended pitch contact is permitted within a small module-scaled
+neighbourhood of the opposing pitch-point midpoint. Any additional
+boundary interference is a failure.
+
+**Parameters:**
+
+- `driver_points`: {array of points} Driver pitch curve.
+- `mate_points`: {array of points} Mate pitch curve.
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-tooth-placement).
 

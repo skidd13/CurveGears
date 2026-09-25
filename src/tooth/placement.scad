@@ -691,3 +691,43 @@ function _cg_final_boundary_collisions(placements,modul,clearance=undef) =
                 let(top_hits=_cg_tooth_top_collisions(boundary_a,boundary_b))
                 for(hit=top_hits) ["TOOTH_TOP_OVERLAP",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]]
     );
+
+/**
+ * @function _cg_pair_transform_point
+ * @brief Transform a local point into a pair placement.
+ */
+function _cg_pair_transform_point(point,centre,rotation) =
+    [centre[0]+point[0]*cos(rotation)-point[1]*sin(rotation),
+     centre[1]+point[0]*sin(rotation)+point[1]*cos(rotation)];
+
+/**
+ * @function _cg_pair_gap_failures
+ * @brief Check opposing placed teeth while reusing common collision tests.
+ *
+ * Intended pitch contact is permitted within a small module-scaled
+ * neighbourhood of the opposing pitch-point midpoint. Any additional
+ * boundary interference is a failure.
+ * @param driver_points {array of points} Driver pitch curve.
+ * @param mate_points {array of points} Mate pitch curve.
+ */
+function _cg_pair_gap_failures(driver_points,mate_points,modul,tooth_number,pressure_angle,centre_distance,driver_rotation=0,mate_rotation=180,tooth_phase=0,backlash=undef,clearance=undef) =
+    let(
+        da=_cg_polyline_arc_table(driver_points),ma=_cg_polyline_arc_table(mate_points),
+        dp=da[len(da)-1][1],mp=ma[len(ma)-1][1],
+        db=_cg_canonical_body_polyline(driver_points,da,dp,_cg_dedendum(modul,clearance),false),
+        mb=_cg_canonical_body_polyline(mate_points,ma,mp,_cg_dedendum(modul,clearance),false),
+        candidate=_cg_reference_tooth_candidate(modul*tooth_number/2,modul,tooth_number,pressure_angle,backlash,clearance,false),
+        d=[for(i=[0:tooth_number-1]) _cg_placement_result(driver_points,da,dp,db,modul,tooth_number,i,candidate,pressure_angle,tooth_phase,false,backlash,clearance)],
+        m=[for(i=[0:tooth_number-1]) _cg_placement_result(mate_points,ma,mp,mb,modul,tooth_number,i,candidate,pressure_angle,tooth_phase,false,backlash,clearance)],
+        placed_d=[for(p=d) if(p[0]=="placed") p],placed_m=[for(p=m) if(p[0]=="placed") p],
+        pairs=[for(a=placed_d,b=placed_m)
+            let(ap=_cg_pair_transform_point(a[4][0],[-centre_distance/2,0],driver_rotation),bp=_cg_pair_transform_point(b[4][0],[centre_distance/2,0],mate_rotation))
+            if(_cg_vlen(_cg_vsub(ap,bp))<=2*(_cg_dedendum(modul,clearance)+_cg_addendum(modul))) [a,b,ap,bp]],
+        failures=[for(pair=pairs)
+            let(a=pair[0],b=pair[1],contact=_cg_vlerp(pair[2],pair[3],.5),
+                ab=[for(p=a[6]) _cg_pair_transform_point(p,[-centre_distance/2,0],driver_rotation)],
+                bb=[for(p=b[6]) _cg_pair_transform_point(p,[centre_distance/2,0],mate_rotation)],
+                hits=_cg_tooth_non_top_collisions(ab,bb),
+                remaining=[for(hit=hits) if(_cg_vlen(_cg_vsub(hit[2],contact))>1.1*modul) hit])
+            for(hit=remaining) ["MATE_TOOTH_GAP_INSUFFICIENT",a[2],b[2],hit,_cg_vlen(_cg_vsub(hit[2],contact)),contact]])
+    failures;

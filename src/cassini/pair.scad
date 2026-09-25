@@ -32,7 +32,7 @@ module _cg_cassini_pair_build(modul,tooth_number,width,bore,focus_ratio=.78,pres
     assert(abs(closure_error) < .08,"cassini_gear_pair: conjugate closure error too large");
     driver=_cg_cassini_points(scale,focus_ratio,samples);
     mate=_cg_cassini_mate_points_from_driver(scale,focus_ratio,D,samples);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_cassini(modul,tooth_number,width,bore,focus_ratio,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_cassini_mate(modul,tooth_number,width,bore,focus_ratio,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

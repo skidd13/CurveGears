@@ -25,7 +25,7 @@ module curve_gear_circle_pair(modul,tooth_number,width,bore,pressure_angle=20,sa
     distance=curve_gear_circle_centre_distance(modul,tooth_number);
     motion=[for(i=[0:samples]) [360*i/samples,360*i/samples]];
     points=_cg_circle_points(modul,tooth_number,samples);
-    _cg_pair_assembly(distance,motion,phase,together_built,radius,radius,modul) {
+    _cg_pair_assembly(distance,motion,phase,together_built,radius,radius,modul,points,points,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_circle(modul,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_circle_mate(modul,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

@@ -57,7 +57,7 @@ module _cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.1
     assert(abs(closure_error) < 0.08,"lobed_gear_pair: conjugate closure error too large");
     driver=[for(i=[0:samples-1]) _cg_lobed_point(scale,lobes,lobe_depth,360*i/samples)];
     mate=_cg_lobed_mate_points_from_driver(scale,lobes,lobe_depth,D,samples);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_lobed(modul,tooth_number,width,bore,lobes,lobe_depth,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_lobed_mate(modul,tooth_number,width,bore,lobes,lobe_depth,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

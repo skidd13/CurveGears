@@ -35,7 +35,7 @@ module curve_gear_bezier_pair(modul,tooth_number,width,bore,control_points=_cg_b
     D=_cg_solve_mate_distance(mid_radii,mx+.01,4*mx);
     motion=_cg_motion_table_from_radius_samples(driver_radii,mid_radii,D);
     mate=_cg_mate_points_from_radius_samples(driver_radii,mid_radii,D);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_bezier(modul,tooth_number,width,bore,control_points,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_bezier_mate(modul,tooth_number,width,bore,control_points,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

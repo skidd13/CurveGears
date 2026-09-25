@@ -66,7 +66,7 @@ module _cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pre
     if(eccentricity >= 0.5)
         echo("pascal_gear_pair: non-convex Pascal pair uses the direct calculated mate boundary; dense validation is required for new parameter sets");
 
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_pascal(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_pascal_mate(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

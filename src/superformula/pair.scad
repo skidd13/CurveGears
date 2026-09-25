@@ -66,7 +66,7 @@ module _cg_superformula_pair_build(modul,tooth_number,width,bore,symmetry=4,a=1,
     assert(abs(closure_error) < 0.08,"superformula_gear_pair: conjugate closure error too large");
     driver=_cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,samples);
     mate=_cg_superformula_mate_points_from_driver(scale,symmetry,a,b,n1,n2,n3,D,samples);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_superformula(modul,tooth_number,width,bore,symmetry,a,b,n1,n2,n3,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_superformula_mate(modul,tooth_number,width,bore,symmetry,a,b,n1,n2,n3,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

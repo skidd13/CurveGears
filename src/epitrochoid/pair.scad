@@ -34,7 +34,7 @@ module curve_gear_epitrochoid_pair(modul,tooth_number,width,bore,major_ratio=3,r
     driver=_cg_epitrochoid_points_scaled(scale,major_ratio,rolling_ratio,offset_ratio,samples);
     mate=_cg_epitrochoid_mate_points_from_driver(scale,major_ratio,rolling_ratio,offset_ratio,D,samples);
     assert(abs(motion[len(motion)-1][1]-360) < 0.08,"epitrochoid pair: rolling closure error too large");
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul) {
+    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
         color(driver_color) curve_gear_epitrochoid(modul,tooth_number,width,bore,major_ratio,rolling_ratio,offset_ratio,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio,rolling_ratio,offset_ratio,pressure_angle,tooth_phase,backlash,clearance,samples);
     }

@@ -65,6 +65,9 @@ Applies driver phase, conjugate mate rotation and pair translation to two child 
 - `driver_extent`: {number > 0} Display extent of the driver from its origin.
 - `mate_extent`: {number > 0} Display extent of the mate from its origin.
 - `modul`: {number > 0} Tooth module used for the explicit display gap.
+- `driver_points`: {array of points, optional} Driver pitch curve for common state construction.
+- `mate_points`: {array of points, optional} Mate pitch curve for common state construction.
+- `tooth_number`: {integer >= 3, optional} Shared tooth count.
 
 **Returns:**
 
