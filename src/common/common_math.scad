@@ -87,6 +87,34 @@ function _cg_sum(v,i=0,acc=0) = i >= len(v) ? acc : _cg_sum(v,i+1,acc+v[i]);
 function _cg_prefix_sums(v,i=0,acc=0,out=[0]) =
     i >= len(v) ? out : _cg_prefix_sums(v,i+1,acc+v[i],concat(out,[acc+v[i]]));
 
+/*** @function _cg_closed_polyline_perimeter(points)
+ * @brief Calculate the perimeter of a closed sampled point list.
+ * @param points {array of points} Closed Cartesian polyline.
+ * @return {number} Perimeter in the input coordinate units.
+ */
+function _cg_closed_polyline_perimeter(points) =
+    _cg_sum([for(i=[0:len(points)-1])
+        _cg_vlen(_cg_vsub(points[(i+1)%len(points)],points[i]))]);
+
+/*** @function _cg_pitch_scale_from_points(modul, tooth_number, unit_points, circumference)
+ * @brief Calculate pitch scaling from an existing unit-curve sample.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Requested tooth count.
+ * @param unit_points {array of points} Closed unit-curve sample.
+ * @param circumference {number > 0, default _cg_pi} Family-selected circumference constant.
+ * @return {number} Scale factor for the sampled unit curve.
+ */
+function _cg_pitch_scale_from_points(modul,tooth_number,unit_points,circumference=_cg_pi) =
+    circumference*modul*tooth_number/_cg_closed_polyline_perimeter(unit_points);
+
+/*** @function _cg_scale_points(scale, points)
+ * @brief Multiply every sampled point by one scalar.
+ * @param scale {number} Point scale factor.
+ * @param points {array of points} Cartesian point list.
+ * @return {array of points} Scaled Cartesian point list.
+ */
+function _cg_scale_points(scale,points) = [for(p=points) [scale*p[0],scale*p[1]]];
+
 /*** @function _cg_interp_x_for_y(tab, target, i)
  * @brief Interpolate an x value at a monotonic y target in a two-column table.
  * @param tab {array} Table of `[x, y]` samples.

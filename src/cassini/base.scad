@@ -62,8 +62,7 @@ function _cg_cassini_points(scale,focus_ratio,n=720) =
  * @return {number} Curve scale in mm.
  */
 function _cg_cassini_scale(modul,tooth_number,focus_ratio,n=720) =
-    let(points=_cg_cassini_points(1,focus_ratio,n),arc=_cg_polyline_arc_table(points),P=arc[len(arc)-1][1])
-    _cg_pi*modul*tooth_number/P;
+    _cg_pitch_scale_from_points(modul,tooth_number,_cg_cassini_points(1,focus_ratio,n),_cg_pi);
 
 /**
  * @function _cg_cassini_radius
@@ -77,11 +76,12 @@ function _cg_cassini_radius(scale,focus_ratio,theta) = scale*_cg_cassini_unit_ra
 
 /**
  * @function _cg_cassini_max_radius
- * @brief Estimate the maximum scaled Cassini radius.
+ * @brief Calculate the exact maximum scaled radius on the supported branch.
  * @param scale {number > 0} Curve scale in mm.
  * @param focus_ratio {0 <= number < 1} Ratio `c/b`.
- * @param n {integer >= 1, default 1440} Number of samples.
- * @return {number} Maximum sampled radius in mm.
+ * @param n {integer >= 1, default 1440} Retained for internal call compatibility; the exact maximum needs no sampling.
+ * @return {number} Maximum radius in mm.
  */
+// On the supported q<1 branch, squared radius increases with cos(2*theta); its maximum is at theta=0.
 function _cg_cassini_max_radius(scale,focus_ratio,n=1440) =
-    max([for(i=[0:n-1]) _cg_cassini_radius(scale,focus_ratio,360*i/n)]);
+    scale*sqrt(1+focus_ratio*focus_ratio);

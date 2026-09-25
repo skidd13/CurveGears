@@ -46,8 +46,7 @@ function _cg_pascal_points(scale,eccentricity,n=720) = [for(i=[0:n-1]) _cg_pasca
  * @return {number} Mean pitch-radius scale in mm.
  */
 function _cg_pascal_scale(modul,tooth_number,eccentricity,n=720) =
-    let(points=_cg_pascal_points(1,eccentricity,n),arc=_cg_polyline_arc_table(points),P=arc[len(arc)-1][1])
-    _cg_pi*modul*tooth_number/P;
+    _cg_pitch_scale_from_points(modul,tooth_number,_cg_pascal_points(1,eccentricity,n),_cg_pi);
 /***
  * @function _cg_pascal_radius(scale, eccentricity, phi)
  * @brief Evaluate a scaled Pascal pitch-curve radius.

@@ -42,11 +42,12 @@ module _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure
     // Dimension Calculations
     assert(eccentricity >= 0 && eccentricity < 1,"pascal_gear: eccentricity must satisfy 0 <= eccentricity < 1");
 
-    scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples);
+    unit_points=_cg_pascal_points(1,eccentricity,samples);
+    scale=_cg_pitch_scale_from_points(modul,tooth_number,unit_points,_cg_pi);
     min_r=_cg_pascal_min_radius(scale,eccentricity);
     if(bore > 0)
         assert(min_r > bore/2,"pascal_gear: bore exceeds the minimum pitch radius; reduce bore or eccentricity");
-    points=_cg_pascal_points(scale,eccentricity,samples);
+    points=_cg_scale_points(scale,unit_points);
     if(eccentricity >= 0.5)
         echo("pascal_gear: non-convex Pascal geometry is experimental; full-cycle physical meshing remains unproven");
 

@@ -37,8 +37,9 @@ function _cg_bezier_segment_count(control_points) = (len(control_points)-1)/3;
  * @return {point} Evaluated Cartesian point.
  */
 function _cg_bezier_point(p0,p1,p2,p3,t) =
-    [pow(1-t,3)*p0[0]+3*pow(1-t,2)*t*p1[0]+3*(1-t)*t*t*p2[0]+t*t*t*p3[0],
-     pow(1-t,3)*p0[1]+3*pow(1-t,2)*t*p1[1]+3*(1-t)*t*t*p2[1]+t*t*t*p3[1]];
+    let(u=1-t,u2=u*u,t2=t*t,b0=u2*u,b1=3*u2*t,b2=3*u*t2,b3=t2*t)
+    [b0*p0[0]+b1*p1[0]+b2*p2[0]+b3*p3[0],
+     b0*p0[1]+b1*p1[1]+b2*p2[1]+b3*p3[1]];
 
 /**
  * @function _cg_bezier_controls_valid

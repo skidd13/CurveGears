@@ -12,8 +12,7 @@ include <../common/curve_gears_math.scad>
  * @brief Scale a sampled unit curve to the requested tooth pitch.
  */
 function _cg_trochoid_scale_from_points(modul,tooth_number,points) =
-    let(arc=_cg_polyline_arc_table(points),P=arc[len(arc)-1][1])
-    _cg_circle_pi*modul*tooth_number/P;
+    _cg_pitch_scale_from_points(modul,tooth_number,points,_cg_circle_pi);
 
 /** @function _cg_trochoid_radius_from_point
  * @brief Evaluate the radial distance of a unit-curve point.
@@ -26,4 +25,4 @@ function _cg_trochoid_curve_radius_from_point(scale,point) = scale*_cg_trochoid_
 /** @function _cg_trochoid_points_scaled_from_points
  * @brief Scale sampled unit-curve points.
  */
-function _cg_trochoid_points_scaled_from_points(scale,points) = [for(p=points) [scale*p[0],scale*p[1]]];
+function _cg_trochoid_points_scaled_from_points(scale,points) = _cg_scale_points(scale,points);

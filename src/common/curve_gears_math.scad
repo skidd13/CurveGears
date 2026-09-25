@@ -29,14 +29,31 @@ function _cg_tooth_phase_fraction(tooth_phase) = tooth_phase/360;
  * @param end_s {number} End arc position in mm.
  * @return {array} Body vertices inside the requested interval.
  */
+function _cg_arc_segment_lower_bound(tab,target,lo,hi) =
+    lo>=hi ? lo :
+    let(mid=floor((lo+hi)/2))
+    tab[mid+1][1]>=target
+        ? _cg_arc_segment_lower_bound(tab,target,lo,mid)
+        : _cg_arc_segment_lower_bound(tab,target,mid+1,hi);
+
+function _cg_interp_x_for_y_binary(tab,target) =
+    _cg_interp_x_for_y(tab,target,_cg_arc_segment_lower_bound(tab,target,0,len(tab)-2));
+
 function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
     let(
+        n=len(body),
         wrapped_start=start_s-perimeter*floor(start_s/perimeter),
-        start_u=_cg_interp_x_for_y(arc,wrapped_start),
-        start_index=min(len(body)-1,max(0,floor(start_u)))
+        wrapped_end=end_s-perimeter*floor(end_s/perimeter),
+        start_cycle=floor(start_s/perimeter),
+        end_cycle=floor(end_s/perimeter),
+        start_u=_cg_interp_x_for_y_binary(arc,wrapped_start),
+        end_u=_cg_interp_x_for_y_binary(arc,wrapped_end),
+        start_index=min(n-1,max(0,floor(start_u))),
+        end_u_unwrapped=end_u+(end_cycle-start_cycle)*n,
+        candidate_count=max(0,min(n,floor(end_u_unwrapped)-start_index))
     )
-    [for(q=[0:len(body)-1])
-        let(k=(start_index+1+q)%len(body),base=arc[k][1],
+    candidate_count==0 ? [] : [for(q=[0:candidate_count-1])
+        let(k=(start_index+1+q)%n,base=arc[k][1],
             shifted=base+perimeter*ceil((start_s-base+_cg_eps_len())/perimeter))
         if(shifted>start_s+_cg_eps_len() && shifted<end_s-_cg_eps_len())
             _cg_point_for_closed_arc(body,arc,shifted)];
@@ -124,7 +141,9 @@ function _cg_same_edge(a,b,c,d) =
 function _cg_has_duplicate_edge(points) =
     len(points)<4 ? false : max([for(i=[0:len(points)-2]) for(j=[i+1:len(points)-1])
         let(adjacent=j==i+1 || (i==0 && j==len(points)-1),
-            duplicate=!adjacent && _cg_same_edge(points[i],points[(i+1)%len(points)],points[j],points[(j+1)%len(points)]))
+            duplicate=!adjacent
+                && _cg_bbox_segments_overlap(points[i],points[(i+1)%len(points)],points[j],points[(j+1)%len(points)])
+                && _cg_same_edge(points[i],points[(i+1)%len(points)],points[j],points[(j+1)%len(points)]))
         duplicate ? 1 : 0]) == 1;
 /*** @function _cg_merge_point_count(points, target)
  * @brief Count points that coincide with a target within the merge tolerance.
@@ -142,12 +161,18 @@ function _cg_merge_point_count(points,target) = len([for(p=points) if(_cg_vlen(_
  * @return {array} Assembly failure records, or an empty array.
  */
 function _cg_assembled_component_failures(outline,placements) =
+    let(
+        placed=[for(p=placements) if(p[0]=="placed") p],
+        merge_counts=[for(p=placed) _cg_merge_point_count(outline,p[8][0])],
+        missing=len(placed)==0 ? [] : [for(i=[0:len(placed)-1]) if(merge_counts[i]==0)
+            ["MERGE_MISSING_TOOTH",placed[i][2],placed[i][8][0]]],
+        duplicate=len(placed)==0 ? [] : [for(i=[0:len(placed)-1]) if(merge_counts[i]>1)
+            ["MERGE_DUPLICATE_TOOTH",placed[i][2],placed[i][8][0]]]
+    )
     concat(
         _cg_has_immediate_backtrack(outline) ? [["POLYGON_BACKTRACK"]] : [],
-        [for(p=placements) if(p[0]=="placed" && _cg_merge_point_count(outline,p[8][0])==0)
-            ["MERGE_MISSING_TOOTH",p[2],p[8][0]]],
-        [for(p=placements) if(p[0]=="placed" && _cg_merge_point_count(outline,p[8][0])>1)
-            ["MERGE_DUPLICATE_TOOTH",p[2],p[8][0]]],
+        missing,
+        duplicate,
         [for(p=placements) if(p[0]=="placed" && len(_cg_polygon_intersections(_cg_trim_tooth_boundary(p[6],p[8],p[9])))>0)
             ["POLYGON_SELF_INTERSECTION",p[2]]]
     );

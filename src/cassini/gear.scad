@@ -22,8 +22,9 @@ include <base.scad>
 module _cg_cassini_build(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
     assert(_cg_cassini_focus_ratio_valid(focus_ratio),"cassini_gear: focus_ratio must satisfy 0 <= focus_ratio < 1");
     assert(samples >= 120 && floor(samples)==samples,"cassini_gear: samples must be an integer >= 120");
-    scale=_cg_cassini_scale(modul,tooth_number,focus_ratio,samples);
-    points=_cg_cassini_points(scale,focus_ratio,samples);
+    unit_points=_cg_cassini_points(1,focus_ratio,samples);
+    scale=_cg_pitch_scale_from_points(modul,tooth_number,unit_points,_cg_pi);
+    points=_cg_scale_points(scale,unit_points);
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
 }
 

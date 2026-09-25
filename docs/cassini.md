@@ -36,7 +36,7 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`_cg_cassini_radius`](#function-_cg_cassini_radius): Evaluate a scaled Cassini radius.
 
-> [`_cg_cassini_max_radius`](#function-_cg_cassini_max_radius): Estimate the maximum scaled Cassini radius.
+> [`_cg_cassini_max_radius`](#function-_cg_cassini_max_radius): Calculate the exact maximum scaled radius on the supported branch.
 
 > [`curve_gear_cassini`](#function-curve_gear_cassini): Build a single-loop Cassini non-circular gear.
 
@@ -170,17 +170,17 @@ Back to [module description](#module-cassini).
 ### Function `_cg_cassini_max_radius`
 
 
-Estimate the maximum scaled Cassini radius.
+Calculate the exact maximum scaled radius on the supported branch.
 
 **Parameters:**
 
 - `scale`: {number > 0} Curve scale in mm.
 - `focus_ratio`: {0 <= number < 1} Ratio `c/b`.
-- `n`: {integer >= 1, default 1440} Number of samples.
+- `n`: {integer >= 1, default 1440} Retained for internal call compatibility; the exact maximum needs no sampling.
 
 **Returns:**
 
-- `{number}`: Maximum sampled radius in mm.
+- `{number}`: Maximum radius in mm.
 
 Back to [module description](#module-cassini).
 

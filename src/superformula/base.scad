@@ -73,8 +73,7 @@ function _cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,n=360) =
  * @return {number} Mean pitch-radius scale in mm.
  */
 function _cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,n=360) =
-    let(points=_cg_superformula_points(1,symmetry,a,b,n1,n2,n3,n),arc=_cg_polyline_arc_table(points),P=arc[len(arc)-1][1])
-    _cg_pi*modul*tooth_number/P;
+    _cg_pitch_scale_from_points(modul,tooth_number,_cg_superformula_points(1,symmetry,a,b,n1,n2,n3,n),_cg_pi);
 /***
  * @function _cg_superformula_radius(scale, symmetry, a, b, n1, n2, n3, theta)
  * @brief Evaluate a scaled superformula radius.

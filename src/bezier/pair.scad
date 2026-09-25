@@ -28,7 +28,7 @@ module curve_gear_bezier_pair(modul,tooth_number,width,bore,control_points=_cg_b
     admissibility=_cg_bezier_mate_admissibility(control_points,scale,samples);
     assert(admissibility=="PASS",str("bezier_gear_pair: mate-admissibility failure code=",admissibility));
     table=_cg_bezier_polar_table(control_points,scale,samples);
-    driver=[for(i=[0:samples-1]) _cg_bezier_points(control_points,scale,samples)[i]];
+    driver=_cg_bezier_points(control_points,scale,samples);
     driver_radii=_cg_bezier_driver_radii_from_table(table,samples);
     mid_radii=_cg_bezier_mid_radii_from_table(table,samples);
     mx=max(mid_radii);
