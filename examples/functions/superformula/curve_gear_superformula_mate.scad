@@ -6,4 +6,4 @@
  */
 include <../../../src/superformula/mate.scad>;
 $fn=64;
-curve_gear_superformula_mate(.8,34,4,4.8,symmetry=5,n1=2.4,n2=3.4,n3=3.4,samples=360);
+curve_gear_superformula_mate(.5,80,4,4.8,symmetry=5,n1=.9,n2=3.4,n3=3.4,samples=240);

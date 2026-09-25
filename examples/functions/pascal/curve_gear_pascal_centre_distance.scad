@@ -7,4 +7,4 @@
  * this callable returns a number rather than geometry.
  */
 include <../../../src/pascal/mate.scad>;
-echo("curve_gear_pascal_centre_distance", curve_gear_pascal_centre_distance(.8,34,.35,240));
+echo("curve_gear_pascal_centre_distance", curve_gear_pascal_centre_distance(.8,34,.60,240));

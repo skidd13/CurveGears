@@ -6,4 +6,4 @@
  */
 include <../../../src/pascal/pair.scad>;
 $fn=64;
-curve_gear_pascal_pair(.8,34,4,4.8,eccentricity=.35,samples=240,phase=37);
+curve_gear_pascal_pair(.8,34,4,2.0,eccentricity=.60,samples=240,phase=37,experimental_nonconvex=true);

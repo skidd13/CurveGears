@@ -14,7 +14,7 @@ jobs:
       - name: Install OpenSCAD
         run: |
           sudo apt-get update
-          sudo apt-get install --yes openscad xvfb libgl1-mesa-dri libglu1-mesa
+          sudo apt-get install --yes openscad ripgrep xvfb libgl1-mesa-dri libglu1-mesa
       - name: Regression tests — shared and core
         run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=common OPENSCAD=openscad
       - name: Regression tests — Bézier

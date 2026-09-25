@@ -22,38 +22,40 @@ $fn=64;
 
 module _showcase_label(label) {
     color("Black")
-        translate([0,-29,4.5])
+        translate([0,-38,5])
             linear_extrude(height=.35)
-                text(label,size=5,halign="center",valign="center");
+                text(label,size=3.8,halign="center",valign="center");
 }
 
 module _showcase_item(x,y,label,colour) {
     translate([x,y,0]) {
-        color(colour) children();
+        scale([1.35,1.35,1]) color(colour) children();
         _showcase_label(label);
     }
 }
 
-_showcase_item(-120,50,"ELLIPSE","SteelBlue")
-    _main_example_ellipse();
-_showcase_item(-40,50,"LOBED","Crimson")
-    _main_example_lobed();
-_showcase_item(40,50,"SUPERFORMULA","Orange")
-    _main_example_superformula();
-_showcase_item(120,50,"PASCAL","Purple")
-    _main_example_pascal();
-
-_showcase_item(-120,-50,"FOURIER","Teal")
-    _main_example_fourier();
-_showcase_item(-40,-50,"BEZIER","DarkGreen")
+// Alphabetical family order, arranged as a centred 3-3-3-2 grid with label clearance.
+_showcase_item(-85,120,"BEZIER","DarkGreen")
     _main_example_bezier();
-_showcase_item(40,-50,"LOG SPIRAL","Gold")
-    _main_example_logarithmic_spiral();
-_showcase_item(120,-50,"EPITROCHOID","Tomato")
-    _main_example_epitrochoid();
-_showcase_item(-45,-125,"CASSINI","DarkSlateBlue")
+_showcase_item(0,120,"CASSINI","DarkSlateBlue")
     _main_example_cassini();
-_showcase_item(45,-125,"HYPOTROCHOID","IndianRed")
-    _main_example_hypotrochoid();
-_showcase_item(0,-175,"CIRCLE","DimGray")
+_showcase_item(85,120,"CIRCLE","DimGray")
     _main_example_circle();
+_showcase_item(-85,40,"ELLIPSE","SteelBlue")
+    _main_example_ellipse();
+
+_showcase_item(0,40,"EPITROCHOID","Tomato")
+    _main_example_epitrochoid();
+_showcase_item(85,40,"FOURIER","Teal")
+    _main_example_fourier();
+_showcase_item(-85,-40,"HYPOTROCHOID","IndianRed")
+    _main_example_hypotrochoid();
+_showcase_item(0,-40,"LOBED","Crimson")
+    _main_example_lobed();
+
+_showcase_item(85,-40,"LOG SPIRAL","Gold")
+    _main_example_logarithmic_spiral();
+_showcase_item(-85,-120,"PASCAL","Purple")
+    _main_example_pascal();
+_showcase_item(0,-120,"SUPERFORMULA","Orange")
+    _main_example_superformula();

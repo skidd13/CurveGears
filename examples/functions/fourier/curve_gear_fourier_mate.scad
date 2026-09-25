@@ -6,4 +6,4 @@
  */
 include <../../../src/fourier/mate.scad>;
 $fn=64;
-curve_gear_fourier_mate(.8,34,4,4.8,coefficients=[[2,.10,0],[3,.04,30]],samples=240);
+curve_gear_fourier_mate(.8,34,4,4.8,coefficients=[[2,.22,0],[3,.08,30]],samples=240);

@@ -6,4 +6,4 @@
  */
 include <../../../src/pascal/mate.scad>;
 $fn=64;
-curve_gear_pascal_body(.8,34,4,2.0,eccentricity=.85,samples=240);
+curve_gear_pascal_body(.8,34,4,2.0,eccentricity=.60,samples=240);

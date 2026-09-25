@@ -7,4 +7,4 @@
  * this callable returns a number rather than geometry.
  */
 include <../../../src/pascal/mate.scad>;
-echo("curve_gear_pascal_mate_rotation", curve_gear_pascal_mate_rotation(.8,34,.35,240,37));
+echo("curve_gear_pascal_mate_rotation", curve_gear_pascal_mate_rotation(.8,34,.60,240,37));

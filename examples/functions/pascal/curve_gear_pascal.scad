@@ -7,6 +7,6 @@
 include <../../../src/pascal/mate.scad>;
 $fn=64;
 module _main_example_pascal() {
-    curve_gear_pascal(.8,34,4,2.0,eccentricity=.85,samples=240);
+    curve_gear_pascal(.8,34,4,2.0,eccentricity=.60,samples=240);
 }
 _main_example_pascal();
