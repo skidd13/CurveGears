@@ -7,6 +7,6 @@
 include <../../../src/epitrochoid/mate.scad>;
 $fn=64;
 module _main_example_epitrochoid() {
-    curve_gear_epitrochoid(.8,34,4,4.8,major_ratio=4,rolling_ratio=1,offset_ratio=.72,samples=240);
+curve_gear_epitrochoid(.8,34,4,4.8,major_ratio=4,rolling_ratio=1,offset_ratio=.5,samples=240);
 }
 _main_example_epitrochoid();
