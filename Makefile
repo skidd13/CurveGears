@@ -71,7 +71,7 @@ examples: examples/README.md
 	@echo 'PASS: every documented public callable has one API example'
 
 ci-example-manifest:
-	@mkdir -p "$(@D)"
+	@mkdir -p "$(dir $(CI_EXAMPLE_MANIFEST))"
 	@for example in $(CI_EXAMPLES); do \
 		relative=$${example#examples/}; output=$${relative%.scad}.png; \
 		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
