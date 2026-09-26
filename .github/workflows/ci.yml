@@ -15,8 +15,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes openscad ripgrep xvfb libgl1-mesa-dri libglu1-mesa
-      - name: Regression tests — shared and core
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=common OPENSCAD=openscad
+      - name: Regression tests — common mathematics
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=common_math OPENSCAD=openscad
+      - name: Regression tests — tooth generation
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=tooth_generation OPENSCAD=openscad
+      - name: Regression tests — tooth placement and validation
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=tooth_placement OPENSCAD=openscad
+      - name: Regression tests — mate motion and phase
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=mate_motion OPENSCAD=openscad
       - name: Regression tests — Bézier
         run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=bezier OPENSCAD=openscad
       - name: Regression tests — Cassini

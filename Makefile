@@ -51,7 +51,16 @@ images/%.png: examples/%.scad $(PREVIEW_SOURCE_DEPS)
 NAVIGATION_TEMPLATE := utils/doxydown-support/navigation.md
 FOOTER_TEMPLATE := utils/doxydown-support/footer.md
 EXAMPLES_CATALOGUE_HEADER := examples/.doxydown_module.md
-TESTS_CATALOGUE_HEADER := tests/.doxydown_module.md
+TEST_COMMON_MATH_HEADER := tests/.doxydown_common_math.md
+TEST_TOOTH_GENERATION_HEADER := tests/.doxydown_tooth_generation.md
+TEST_TOOTH_PLACEMENT_HEADER := tests/.doxydown_tooth_placement.md
+TEST_MATE_MOTION_HEADER := tests/.doxydown_mate_motion.md
+TEST_FAMILY_HEADER := tests/.doxydown_family_integration.md
+TEST_COMMON_MATH_SOURCES := tests/common/ordinary_variants.scad
+TEST_TOOTH_GENERATION_SOURCES := $(shell find tests/tooth/generation -type f -name '*.scad' -print | sort)
+TEST_TOOTH_PLACEMENT_SOURCES := $(shell find tests/tooth/placement -type f -name '*.scad' -print | sort)
+TEST_MATE_MOTION_SOURCES := $(shell find tests/mate -type f -name '*.scad' -print | sort)
+TEST_FAMILY_SOURCES := $(filter-out $(TEST_COMMON_MATH_SOURCES) $(TEST_TOOTH_GENERATION_SOURCES) $(TEST_TOOTH_PLACEMENT_SOURCES) $(TEST_MATE_MOTION_SOURCES),$(REGRESSION_TEST_DEPS))
 
 examples: examples/README.md
 	@test -s examples/README.md
@@ -87,12 +96,16 @@ examples/README.md: $(API_EXAMPLES) $(CORE_EXAMPLES) $(EXAMPLES_CATALOGUE_HEADER
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
-tests/README.md: $(REGRESSION_TEST_DEPS) $(TESTS_CATALOGUE_HEADER) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
+tests/README.md: $(REGRESSION_TEST_DEPS) $(TEST_COMMON_MATH_HEADER) $(TEST_TOOTH_GENERATION_HEADER) $(TEST_TOOTH_PLACEMENT_HEADER) $(TEST_MATE_MOTION_HEADER) $(TEST_FAMILY_HEADER) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@{ \
 		printf '%s\n\n' '# Test catalogue' '## Documentation navigation'; \
 		sed -e 's|@README@|../README.md|g' -e 's|@DOCS@|../docs/|g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@||g' "$(NAVIGATION_TEMPLATE)"; \
-		printf '%s\n\n' '' 'Each fixture below is catalogued as a function in one Doxydown test module. Make discovers fixtures and assigns mirrored regression outputs automatically; generated meshes and reports remain under the ignored build directory.'; \
-		$(DOCGEN) -g -e c -l c "$(TESTS_CATALOGUE_HEADER)" $(REGRESSION_TEST_DEPS); \
+		printf '%s\n\n' '' 'Fixtures are catalogued by responsibility: shared mathematics, tooth generation, tooth placement and validation, mate motion and phase, and family integration. Make discovers fixtures and assigns mirrored regression outputs automatically; generated meshes and reports remain under the ignored build directory.'; \
+		$(DOCGEN) -g -e c -l c "$(TEST_COMMON_MATH_HEADER)" $(TEST_COMMON_MATH_SOURCES); \
+		$(DOCGEN) -g -e c -l c "$(TEST_TOOTH_GENERATION_HEADER)" $(TEST_TOOTH_GENERATION_SOURCES); \
+		$(DOCGEN) -g -e c -l c "$(TEST_TOOTH_PLACEMENT_HEADER)" $(TEST_TOOTH_PLACEMENT_SOURCES); \
+		$(DOCGEN) -g -e c -l c "$(TEST_MATE_MOTION_HEADER)" $(TEST_MATE_MOTION_SOURCES); \
+		$(DOCGEN) -g -e c -l c "$(TEST_FAMILY_HEADER)" $(TEST_FAMILY_SOURCES); \
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
@@ -156,8 +169,12 @@ REGRESSION_SMOKE_SOURCES := $(shell find tests -type f -name '*.scad' \
 	! -name 'equivalence.scad' ! -name 'accessibility_cases.scad' ! -path 'tests/superformula/mate_pipeline.scad' \
 	! -name 'contact.scad' ! -name 'reference.scad' ! -exec rg -q '^// @regression: manual' {} \; -print | sort)
 REGRESSION_SMOKE_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.stl,$(REGRESSION_SMOKE_SOURCES))
-REGRESSION_SMOKE_common := $(filter $(REGRESSION_DIR)/smoke/common/% $(REGRESSION_DIR)/smoke/tooth/% $(REGRESSION_DIR)/smoke/mate/%,$(REGRESSION_SMOKE_ALL))
-REGRESSION_SMOKE_OUTPUTS := $(if $(strip $(REGRESSION_FAMILIES)),$(foreach family,$(REGRESSION_FAMILIES),$(if $(filter common,$(family)),$(REGRESSION_SMOKE_common),$(filter $(REGRESSION_DIR)/smoke/$(family)/%,$(REGRESSION_SMOKE_ALL)))),$(REGRESSION_SMOKE_ALL))
+REGRESSION_SELECTED_FAMILIES := $(foreach family,$(REGRESSION_FAMILIES),$(if $(filter common,$(family)),common_math tooth_generation tooth_placement mate_motion,$(family)))
+REGRESSION_SMOKE_common_math := $(filter $(REGRESSION_DIR)/smoke/common/%,$(REGRESSION_SMOKE_ALL))
+REGRESSION_SMOKE_tooth_generation := $(filter $(REGRESSION_DIR)/smoke/tooth/generation/%,$(REGRESSION_SMOKE_ALL))
+REGRESSION_SMOKE_tooth_placement := $(filter $(REGRESSION_DIR)/smoke/tooth/placement/%,$(REGRESSION_SMOKE_ALL))
+REGRESSION_SMOKE_mate_motion := $(filter $(REGRESSION_DIR)/smoke/mate/%,$(REGRESSION_SMOKE_ALL))
+REGRESSION_SMOKE_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(foreach family,$(REGRESSION_SELECTED_FAMILIES),$(if $(filter common_math tooth_generation tooth_placement mate_motion,$(family)),$(REGRESSION_SMOKE_$(family)),$(filter $(REGRESSION_DIR)/smoke/$(family)/%,$(REGRESSION_SMOKE_ALL)))),$(REGRESSION_SMOKE_ALL))
 REGRESSION_SMOKE_MANIFEST := $(REGRESSION_DIR)/smoke_manifest.tsv
 
 $(REGRESSION_SMOKE_MANIFEST): $(REGRESSION_SMOKE_SOURCES) FORCE
@@ -171,10 +188,13 @@ $(REGRESSION_DIR)/smoke/%.stl: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REGRESSI
 	@mkdir -p "$(@D)"
 	$(OPENSCAD) -o "$@" "$<" > "$(@:.stl=.log)" 2>&1
 
-REGRESSION_DELIBERATE_common := $(REGRESSION_DIR)/tooth_validation_cases_deliberate.ok $(REGRESSION_DIR)/tooth_equivalence_deliberate.ok $(REGRESSION_DIR)/collision_failure_deliberate.failed $(REGRESSION_DIR)/polygon_failure_deliberate.failed
+REGRESSION_DELIBERATE_tooth_generation := $(REGRESSION_DIR)/tooth_equivalence_deliberate.ok
+REGRESSION_DELIBERATE_tooth_placement := $(REGRESSION_DIR)/tooth_validation_cases_deliberate.ok $(REGRESSION_DIR)/collision_failure_deliberate.failed $(REGRESSION_DIR)/polygon_failure_deliberate.failed
+REGRESSION_DELIBERATE_common_math :=
+REGRESSION_DELIBERATE_mate_motion :=
 REGRESSION_DELIBERATE_superformula := $(REGRESSION_DIR)/splice_validation_deliberate.failed $(REGRESSION_DIR)/accessibility_cases_deliberate.ok
-REGRESSION_DELIBERATE_ALL := $(REGRESSION_DELIBERATE_common) $(REGRESSION_DELIBERATE_superformula)
-REGRESSION_DELIBERATE_OUTPUTS := $(if $(strip $(REGRESSION_FAMILIES)),$(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DELIBERATE_$(family))),$(REGRESSION_DELIBERATE_ALL))
+REGRESSION_DELIBERATE_ALL := $(REGRESSION_DELIBERATE_tooth_generation) $(REGRESSION_DELIBERATE_tooth_placement) $(REGRESSION_DELIBERATE_common_math) $(REGRESSION_DELIBERATE_mate_motion) $(REGRESSION_DELIBERATE_superformula)
+REGRESSION_DELIBERATE_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(foreach family,$(REGRESSION_SELECTED_FAMILIES),$(REGRESSION_DELIBERATE_$(family))),$(REGRESSION_DELIBERATE_ALL))
 
 define REGRESSION_EXPECT_SUCCESS
 $(REGRESSION_DIR)/$(1)_deliberate.ok: $(2) $(REGRESSION_SOURCE_DEPS) $(REGRESSION_TEST_DEPS)
@@ -209,13 +229,13 @@ $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REG
 	@touch "$@"
 
 test: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
-	$(PYTHON) -m utils.regression.check $(foreach family,$(REGRESSION_FAMILIES),--family $(family))
+	$(PYTHON) -m utils.regression.check $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
 test-smoke: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST)
-	$(PYTHON) -m utils.regression.check --smoke-only $(foreach family,$(REGRESSION_FAMILIES),--family $(family))
+	$(PYTHON) -m utils.regression.check --smoke-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
 test-deliberate: $(REGRESSION_DELIBERATE_OUTPUTS)
-	$(PYTHON) -m utils.regression.check --deliberate-only $(foreach family,$(REGRESSION_FAMILIES),--family $(family))
+	$(PYTHON) -m utils.regression.check --deliberate-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
 FULL_PIPELINE_OUTPUTS := $(foreach family,$(FAMILIES),$(REGRESSION_DIR)/full_$(family).stl)
 
@@ -246,7 +266,11 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test -s "$(NAVIGATION_TEMPLATE)"
 	@test -s "$(FOOTER_TEMPLATE)"
 	@test -s "$(EXAMPLES_CATALOGUE_HEADER)"
-	@test -s "$(TESTS_CATALOGUE_HEADER)"
+	@test -s "$(TEST_COMMON_MATH_HEADER)"
+	@test -s "$(TEST_TOOTH_GENERATION_HEADER)"
+	@test -s "$(TEST_TOOTH_PLACEMENT_HEADER)"
+	@test -s "$(TEST_MATE_MOTION_HEADER)"
+	@test -s "$(TEST_FAMILY_HEADER)"
 	@test ! -e utils/test_catalogue.py
 	@test ! -e utils/example_catalogue.py
 	@test ! -e utils/doxydown-support/docs-navigation.md
@@ -255,8 +279,12 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test ! -e utils/doxydown-support/examples-navigation.md
 	@test ! -e utils/doxydown-support/examples-footer.md
 	@test -z "$$(rg -n '@(README|DOCS|EXAMPLES|TESTS)@' README.md docs examples/README.md tests/README.md || true)"
-	@test "$$(rg -c '^## Module `Test cases`$$' tests/README.md)" -eq 1
-	@test "$$(rg -c '^## Module ' tests/README.md)" -eq 1
+	@test "$$(rg -c '^## Module `Common mathematics`$$' tests/README.md)" -eq 1
+	@test "$$(rg -c '^## Module `Tooth generation`$$' tests/README.md)" -eq 1
+	@test "$$(rg -c '^## Module `Tooth placement and validation`$$' tests/README.md)" -eq 1
+	@test "$$(rg -c '^## Module `Mate motion and phase`$$' tests/README.md)" -eq 1
+	@test "$$(rg -c '^## Module `Family integration`$$' tests/README.md)" -eq 1
+	@test "$$(rg -c '^## Module ' tests/README.md)" -eq 5
 	@test "$$(rg -c '^### Function `' tests/README.md)" -eq "$$(find tests -type f -name '*.scad' -print | wc -l | tr -d ' ')"
 	@test "$$(rg -c '^## Module `Executable examples`$$' examples/README.md)" -eq 1
 	@test "$$(rg -c '^## Module ' examples/README.md)" -eq 1

@@ -23,8 +23,12 @@ def load(path: Path, root: Path) -> list[tuple[str, Path, Path]]:
         outputs.add(output)
         relative = source.relative_to(root / "tests")
         family = relative.parts[0]
-        if family in {"tooth", "mate"}:
-            family = "common"
+        if family == "common":
+            family = "common_math"
+        elif family == "tooth":
+            family = "_".join(relative.parts[:2])
+        elif family == "mate":
+            family = "mate_motion"
         cases.append((family, source, output))
     return cases
 

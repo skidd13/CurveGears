@@ -24,18 +24,12 @@ SMOKE_MANIFEST = BUILD / "smoke_manifest.tsv"
 
 
 DELIBERATE_CASES = {
-    "common": [
+    "tooth_placement": [
         (
             "tooth_validation_cases",
             ROOT / "tests/tooth/placement/validation_cases.scad",
             True,
             ["FRAME_NORMAL_REVERSED", "FLANK_CROSSING", "FLANK_ORDER_INVALID", "BODY_INTERSECTION_AMBIGUOUS", "POLYGON_SELF_INTERSECTION", "SPLICE_INTERVAL_OVERLAP", "SPLICE_INTERVAL_INTERLEAVED", "TOOTH_COLLISION_BROAD_PHASE", "TOOTH_TOP_OVERLAP", "TOOTH_ORDER_CONFLICT"],
-        ),
-        (
-            "tooth_equivalence",
-            ROOT / "tests/tooth/generation/equivalence.scad",
-            True,
-            ["PASS: 72 tooth cases"],
         ),
         (
             "collision_failure",
@@ -48,6 +42,14 @@ DELIBERATE_CASES = {
             ROOT / "tests/tooth/placement/polygon_failure.scad",
             False,
             ["POLYGON_SELF_INTERSECTION", "segment=0/2", "point="],
+        ),
+    ],
+    "tooth_generation": [
+        (
+            "tooth_equivalence",
+            ROOT / "tests/tooth/generation/equivalence.scad",
+            True,
+            ["PASS: 72 tooth cases"],
         ),
     ],
     "superformula": [
@@ -64,6 +66,8 @@ DELIBERATE_CASES = {
             ["SHALLOW_ACCESSIBLE", "DEEP_U_OMITTED", "DEEP_U_MIXED", "REMOTE_CORRIDOR_OBSTRUCTION"],
         ),
     ],
+    "common_math": [],
+    "mate_motion": [],
 }
 
 def _portable_result_metadata() -> dict:

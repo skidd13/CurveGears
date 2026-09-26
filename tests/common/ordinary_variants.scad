@@ -14,6 +14,23 @@ assert(_cg_scale_points(2,sampled_square)==[[2,0],[0,2],[-2,0],[0,-2]],"common p
 assert(abs(_cg_pitch_scale_from_points(2,8,sampled_square,_cg_circle_pi)-_cg_circle_pi*16/sampled_square_perimeter)<1e-12,
     "common pitch scale must use the supplied circumference constant");
 sampled_square_arc=_cg_polyline_arc_table(sampled_square);
+function _cg_linear_x_for_y(tab,target,i=0) =
+    i>=len(tab)-1 ? tab[len(tab)-1][0] :
+    (tab[i][1]<=target && tab[i+1][1]>=target && tab[i+1][1]>tab[i][1]
+        ? let(f=(target-tab[i][1])/(tab[i+1][1]-tab[i][1]))
+          _cg_lerp(tab[i][0],tab[i+1][0],f)
+        : _cg_linear_x_for_y(tab,target,i+1));
+function _cg_linear_y_for_x(tab,target,i=0) =
+    i>=len(tab)-1 ? tab[len(tab)-1][1] :
+    (tab[i][0]<=target && tab[i+1][0]>=target && tab[i+1][0]>tab[i][0]
+        ? let(f=(target-tab[i][0])/(tab[i+1][0]-tab[i][0]))
+          _cg_lerp(tab[i][1],tab[i+1][1],f)
+        : _cg_linear_y_for_x(tab,target,i+1));
+assert(max([for(i=[0:16]) abs(_cg_interp_x_for_y(sampled_square_arc,4*i/16)-_cg_linear_x_for_y(sampled_square_arc,4*i/16))])<1e-12,
+    "binary x/y interpolation changed arc values");
+motion_reference=[[0,0],[90,100],[180,210],[270,315],[360,360]];
+assert(max([for(i=[0:16]) abs(_cg_interp_y_for_x(motion_reference,360*i/16)-_cg_linear_y_for_x(motion_reference,360*i/16))])<1e-12,
+    "binary x/y interpolation changed motion values");
 function _cg_reference_body_interval(body,arc,perimeter,start_s,end_s) =
     let(wrapped_start=start_s-perimeter*floor(start_s/perimeter),
         start_u=_cg_interp_x_for_y(arc,wrapped_start),

@@ -10,7 +10,8 @@ dependency and should not contain CurveGears-specific page structure.
 - `footer.md` is the single footer template appended to generated pages.
 
 SCAD module comment blocks remain the canonical source for page content. The
-catalogue headers live beside their source streams as `examples/.doxydown_module.md`
-and `tests/.doxydown_module.md`. Doxydown accepts the module header and source files as positional
-inputs and concatenates them in argument order while parsing. These support
-templates contain only page-level structure and navigation.
+example catalogue header lives at `examples/.doxydown_module.md`; the test
+catalogue uses one header per logical section under `tests/.doxydown_*.md`.
+Doxydown accepts each module header and its source files as positional inputs
+and concatenates the resulting module streams in argument order while parsing.
+These support templates contain only page-level structure and navigation.
