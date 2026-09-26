@@ -15,7 +15,7 @@ include <base.scad>
  * @param samples {integer >= 120, default 480} Circular pitch-curve sampling density.
  */
 module curve_gear_circle(modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480) {
-    assert(samples >= 120 && floor(samples)==samples,"circle_gear: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"circle_gear: samples must be an integer >= 120");
     _cg_gear_from_pitch_points(_cg_circle_points(modul,tooth_number,samples),modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,false);
 }
 
@@ -30,6 +30,6 @@ module curve_gear_circle(modul,tooth_number,width,bore,pressure_angle=20,tooth_p
  * @param samples {integer >= 120, default 480} Circular pitch-curve sampling density.
  */
 module curve_gear_circle_body(modul,tooth_number,width,bore,samples=480) {
-    assert(samples >= 120 && floor(samples)==samples,"circle_gear_body: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"circle_gear_body: samples must be an integer >= 120");
     _cg_gear_from_pitch_points(_cg_circle_points(modul,tooth_number,samples),modul,tooth_number,width,bore,20,0,false,undef,undef,true);
 }

@@ -48,7 +48,7 @@ function _cg_cassini_mate_points(scale,focus_ratio,D,n=720) = _cg_cassini_mate_p
  */
 module curve_gear_cassini_mate(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     assert(_cg_cassini_focus_ratio_valid(focus_ratio),"cassini_gear_mate: focus_ratio must satisfy 0 <= focus_ratio < 1");
-    assert(samples >= 120 && floor(samples)==samples,"cassini_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"cassini_gear_mate: samples must be an integer >= 120");
     scale=_cg_cassini_scale(modul,tooth_number,focus_ratio,samples);
     D=_cg_cassini_centre_distance(scale,focus_ratio,samples);
     mate=_cg_cassini_mate_points(scale,focus_ratio,D,samples);

@@ -14,10 +14,9 @@
 ## Module `Pair assembly`
 
 
-This file deliberately contains no family equations and no tooth
-construction. The caller supplies two children: driver first, mate
-second. Meshed placement uses the mathematical centre distance exactly;
-separated display placement uses an explicit visual gap.
+This file deliberately contains no family equations. Meshed placement uses
+the mathematical centre distance exactly; separated display placement uses
+an explicit visual gap.
 
 ### Brief content:
 
@@ -25,9 +24,7 @@ separated display placement uses an explicit visual gap.
 
 > [`_cg_pair_display_separation(driver_extent, mate_extent, modul)`](#function-_cg_pair_display_separationdriver_extent-mate_extent-modul): Return the explicit non-meshed display separation for two extents.
 
-> [`_cg_pair_assembly(centre_distance, motion, phase, together_built, ...)`](#function-_cg_pair_assemblycentre_distance-motion-phase-together_built-): Applies driver phase, conjugate mate rotation and pair translation to two child modules.
-
-> [`_cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)`](#function-_cg_static_pair_assemblyreference_distance-together_built-driver_rotation-mate_rotation-): Places a statically classified reference pair without implying conjugate motion.
+> [`_cg_pair_point_extent`](#function-_cg_pair_point_extent): Return the maximum radial extent of a sampled pitch curve.
 
 
 ## Functions
@@ -51,29 +48,66 @@ Return the explicit non-meshed display separation for two extents.
 
 Back to [module description](#module-pair-assembly).
 
-### Function `_cg_pair_assembly(centre_distance, motion, phase, together_built, ...)`
+### Function `_cg_pair_point_extent`
 
 
-Applies driver phase, conjugate mate rotation and pair translation to two child modules.
+Return the maximum radial extent of a sampled pitch curve.
 
 **Parameters:**
 
-- `centre_distance`: {number > 0} Mathematical centre distance used by the meshed pair.
-- `motion`: {motion table} Family motion table used to derive mate rotation.
-- `phase`: {angle, default 0} Driver motion phase.
-- `together_built`: {boolean, default true} Use meshed placement when true, display placement otherwise.
-- `driver_extent`: {number > 0} Display extent of the driver from its origin.
-- `mate_extent`: {number > 0} Display extent of the mate from its origin.
-- `modul`: {number > 0} Tooth module used for the explicit display gap.
-- `driver_points`: {array of points, optional} Driver pitch curve for common state construction.
-- `mate_points`: {array of points, optional} Mate pitch curve for common state construction.
-- `tooth_number`: {integer >= 3, optional} Shared tooth count.
+- `points`: {array of points} Sampled pitch curve.
 
 **Returns:**
 
-- `{geometry}`: The two child modules in meshed or separated placement.
+- `{number}`: Maximum distance from the curve origin.
 
 Back to [module description](#module-pair-assembly).
+
+
+Back to [top](#).
+
+## Module `_cg_assert_pair_gap_failures`
+
+@param failures {array} Pair gap failure records.
+
+### Brief content:
+
+
+Back to [top](#).
+
+## Module `_cg_pair_assembly`
+
+@param centre_distance {number > 0} Mathematical centre distance.
+@param motion {motion table} Family motion table.
+@param phase {angle, default 0} Driver motion phase.
+@param together_built {boolean, default true} Use meshed placement when true.
+@param driver_extent {number > 0} Driver display extent.
+@param mate_extent {number > 0} Mate display extent.
+@param modul {number > 0} Tooth module.
+@param driver_points {array of points} Driver pitch curve.
+@param mate_points {array of points} Mate pitch curve.
+@param tooth_number {integer >= 3} Shared tooth count.
+@param width {number > 0} Extrusion width.
+@param bore {number >= 0} Centre bore diameter.
+@param pressure_angle {angle, default 20} Involute pressure angle.
+@param tooth_phase {angle, default 0} Tooth placement phase.
+@param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+@param clearance {undef or >= 0} Additional radial root clearance.
+@param driver_radial_root {boolean, default false} Driver radial-root construction.
+@param mate_radial_root {boolean, default false} Mate radial-root construction.
+@param driver_color {OpenSCAD colour, default SteelBlue} Driver colour.
+@param mate_color {OpenSCAD colour, default Gold} Mate colour.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)`](#function-_cg_static_pair_assemblyreference_distance-together_built-driver_rotation-mate_rotation-): Places a statically classified reference pair without implying conjugate motion.
+
+
+## Functions
+
+The module `_cg_pair_assembly` defines the following functions.
 
 ### Function `_cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)`
 
@@ -94,7 +128,7 @@ Places a statically classified reference pair without implying conjugate motion.
 
 - `{geometry}`: The two child modules in reference or separated placement.
 
-Back to [module description](#module-pair-assembly).
+Back to [module description](#module-_cg_pair_assembly).
 
 
 Back to [top](#).

@@ -76,7 +76,7 @@ module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],
     assert(modul>0 && width>0 && bore>=0,"fourier_gear: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"fourier_gear: tooth_number must be an integer >= 3");
     assert(_cg_fourier_coefficients_valid(coefficients),"fourier_gear: coefficients must be [positive_integer_harmonic, amplitude, phase] with sum(abs(amplitude)) < 0.9");
-    assert(samples>=120 && floor(samples)==samples,"fourier_gear: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"fourier_gear: samples must be an integer >= 120");
     points=_cg_fourier_points(modul*tooth_number/2,coefficients,samples);
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
 }

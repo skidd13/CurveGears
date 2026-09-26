@@ -30,6 +30,8 @@ These equations define pitch geometry, not exact tooth-flank geometry.
 
 > [`_cg_motion_values_from_mid_radii(mid_radii, D)`](#function-_cg_motion_values_from_mid_radiimid_radii-d): Integrate one revolution from midpoint radii at a candidate centre distance.
 
+> [`_cg_motion_integration_state`](#function-_cg_motion_integration_state): Build the shared incremental values, cumulative angles and motion table once.
+
 > [`_cg_motion_table_from_mid_radii(mid_radii, D)`](#function-_cg_motion_table_from_mid_radiimid_radii-d): Build a phase-to-phase motion table from midpoint radii.
 
 > [`_cg_motion_closure_error_from_mid_radii(mid_radii, D)`](#function-_cg_motion_closure_error_from_mid_radiimid_radii-d): Return the one-turn closure error for midpoint-radius integration.
@@ -40,11 +42,15 @@ These equations define pitch geometry, not exact tooth-flank geometry.
 
 > [`_cg_mate_points_from_radius_samples`](#function-_cg_mate_points_from_radius_samples): Construct mate pitch points directly while advancing driver angle.
 
+> [`_cg_mate_points_from_radius_samples_with_state`](#function-_cg_mate_points_from_radius_samples_with_state): Construct mate points from a previously integrated motion state.
+
 > [`_cg_mate_point_from_radius(radius, D, phi)`](#function-_cg_mate_point_from_radiusradius-d-phi): Map a driver phase and evaluated driver radius to its opposed mate pitch point.
 
 > [`_cg_motion_y_unwrapped(tab, angle)`](#function-_cg_motion_y_unwrappedtab-angle): Return the continuous mate angle for a driver angle from a motion table.
 
 > [`_cg_mate_rotation_for_phase(tab, phase)`](#function-_cg_mate_rotation_for_phasetab-phase): Convert a motion-table phase into the mate display rotation.
+
+> [`_cg_motion_closure_error`](#function-_cg_motion_closure_error): Return the final accumulated mate-angle error in degrees.
 
 
 ## Functions
@@ -64,6 +70,23 @@ Integrate one revolution from midpoint radii at a candidate centre distance.
 **Returns:**
 
 - `{array}`: Incremental mate-angle values in degrees.
+
+Back to [module description](#module-mate-motion).
+
+### Function `_cg_motion_integration_state`
+
+
+Build the shared incremental values, cumulative angles and motion table once.
+
+**Parameters:**
+
+- `driver_radii`: {array of number} Driver radii at output angles, or `undef`.
+- `mid_radii`: {array of number} Driver radii at interval midpoints.
+- `D`: {number > 0} Centre distance in mm.
+
+**Returns:**
+
+- `{array}`: `[values, cumulative, motion]` integration state.
 
 Back to [module description](#module-mate-motion).
 
@@ -157,6 +180,23 @@ This is the primary mate-construction path for all radial families.
 
 Back to [module description](#module-mate-motion).
 
+### Function `_cg_mate_points_from_radius_samples_with_state`
+
+
+Construct mate points from a previously integrated motion state.
+
+**Parameters:**
+
+- `driver_radii`: {array of number} Driver radii at output angles.
+- `D`: {number > 0} Centre distance in mm.
+- `integration_state`: {array} State returned by `_cg_motion_integration_state`.
+
+**Returns:**
+
+- `{array of points}`: Directly generated Cartesian mate pitch points.
+
+Back to [module description](#module-mate-motion).
+
 ### Function `_cg_mate_point_from_radius(radius, D, phi)`
 
 
@@ -203,6 +243,21 @@ Convert a motion-table phase into the mate display rotation.
 **Returns:**
 
 - `{angle}`: Mate display rotation in degrees.
+
+Back to [module description](#module-mate-motion).
+
+### Function `_cg_motion_closure_error`
+
+
+Return the final accumulated mate-angle error in degrees.
+
+**Parameters:**
+
+- `motion`: {motion table} Shared driver-to-mate motion table.
+
+**Returns:**
+
+- `{number}`: Difference between the final mate angle and one turn.
 
 Back to [module description](#module-mate-motion).
 

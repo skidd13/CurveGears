@@ -80,7 +80,7 @@ function _cg_lobed_mate_points(scale,lobes,lobe_depth,D,n=360) = _cg_lobed_mate_
 module curve_gear_lobed_mate(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     assert(lobes >= 2 && floor(lobes)==lobes,"lobed_gear_mate: lobes must be an integer >= 2");
     assert(lobe_depth > 0 && lobe_depth < 0.5,"lobed_gear_mate: lobe_depth must satisfy 0 < lobe_depth < 0.5");
-    assert(samples >= 120 && floor(samples)==samples,"lobed_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"lobed_gear_mate: samples must be an integer >= 120");
     scale=_cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,samples);
     D=_cg_lobed_centre_distance(scale,lobes,lobe_depth,samples);
     mate=_cg_lobed_mate_points(scale,lobes,lobe_depth,D,samples);

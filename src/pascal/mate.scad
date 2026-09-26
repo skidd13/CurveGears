@@ -65,7 +65,7 @@ function _cg_pascal_mate_points(scale,eccentricity,D,n=360) = _cg_pascal_mate_po
  */
 module curve_gear_pascal_mate(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360) {
     assert(eccentricity >= 0 && eccentricity < 1,"pascal_gear_mate: eccentricity must satisfy 0 <= e < 1");
-    assert(samples >= 120 && floor(samples)==samples,"pascal_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"pascal_gear_mate: samples must be an integer >= 120");
     scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples);
     D=_cg_solve_mate_distance(_cg_pascal_motion_radii(scale,eccentricity,samples),_cg_pascal_max_radius(scale,eccentricity)+.01,4*_cg_pascal_max_radius(scale,eccentricity));
     mate=_cg_pascal_mate_points(scale,eccentricity,D,samples);

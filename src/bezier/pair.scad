@@ -23,7 +23,7 @@ include <../pair/assembly.scad>
  * @param mate_color {colour, default Gold} Mate gear colour.
  */
 module curve_gear_bezier_pair(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
-    assert(samples>=120 && floor(samples)==samples,"bezier_gear_pair: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"bezier_gear_pair: samples must be an integer >= 120");
     scale=modul*tooth_number/2;
     admissibility=_cg_bezier_mate_admissibility(control_points,scale,samples);
     assert(admissibility=="PASS",str("bezier_gear_pair: mate-admissibility failure code=",admissibility));
@@ -33,10 +33,8 @@ module curve_gear_bezier_pair(modul,tooth_number,width,bore,control_points=_cg_b
     mid_radii=_cg_bezier_mid_radii_from_table(table,samples);
     mx=max(mid_radii);
     D=_cg_solve_mate_distance(mid_radii,mx+.01,4*mx);
-    motion=_cg_motion_table_from_radius_samples(driver_radii,mid_radii,D);
-    mate=_cg_mate_points_from_radius_samples(driver_radii,mid_radii,D);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
-        color(driver_color) curve_gear_bezier(modul,tooth_number,width,bore,control_points,pressure_angle,tooth_phase,backlash,clearance,samples);
-        color(mate_color) curve_gear_bezier_mate(modul,tooth_number,width,bore,control_points,pressure_angle,tooth_phase,backlash,clearance,samples);
-    }
+    integration_state=_cg_motion_integration_state(driver_radii,mid_radii,D);
+    motion=integration_state[2];
+    mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
+    _cg_pair_assembly(D,motion,phase,together_built,_cg_pair_point_extent(driver),_cg_pair_point_extent(mate),modul,driver,mate,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,false,false,driver_color,mate_color);
 }

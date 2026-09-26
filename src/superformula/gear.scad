@@ -59,7 +59,7 @@ module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n
     scale=_cg_pitch_scale_from_points(modul,tooth_number,unit_points,_cg_pi);
     points=_cg_scale_points(scale,unit_points);
 
-    assert(samples >= 120 && floor(samples)==samples,"samples must be an integer >= 120");
+    _cg_assert_samples(samples);
     // Drawing
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
 }

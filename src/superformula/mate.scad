@@ -109,7 +109,7 @@ module curve_gear_superformula_mate(modul,tooth_number,width,bore,symmetry=4,a=1
     assert(symmetry >= 2 && floor(symmetry)==symmetry,"superformula_gear_mate: symmetry must be an integer >= 2");
     assert(a>0 && b>0 && n1>0 && n2>0 && n3>0,"superformula_gear_mate: a,b,n1,n2,n3 must be positive");
     assert(_cg_superformula_odd_valid(symmetry,a,b,n2,n3),"superformula_gear_mate: odd symmetry requires a=b and n2=n3 for 360-degree continuity");
-    assert(samples >= 120 && floor(samples)==samples,"superformula_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"superformula_gear_mate: samples must be an integer >= 120");
     scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples);
     D=_cg_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,samples);
     mate=_cg_superformula_mate_points(scale,symmetry,a,b,n1,n2,n3,D,samples);

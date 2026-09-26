@@ -86,7 +86,7 @@ function _cg_epitrochoid_mate_points(scale,R,r,d,D,n=360) = _cg_epitrochoid_mate
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  */
 module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
-    assert(samples >= 120 && floor(samples)==samples,"epitrochoid_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"epitrochoid_gear_mate: samples must be an integer >= 120");
     scale=_cg_epitrochoid_scale(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples);
     D=_cg_epitrochoid_centre_distance(scale,major_ratio,rolling_ratio,offset_ratio,samples);
     mate=_cg_epitrochoid_mate_points(scale,major_ratio,rolling_ratio,offset_ratio,D,samples);

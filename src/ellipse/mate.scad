@@ -74,7 +74,7 @@ function _cg_ellipse_mate_points(a,b,D,n=480) = _cg_ellipse_mate_points_from_dri
  */
 module curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480) {
     assert(eccentricity >= 0 && eccentricity < 1,"elliptical_gear_mate: eccentricity must satisfy 0 <= e < 1");
-    assert(samples >= 120 && floor(samples)==samples,"elliptical_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"elliptical_gear_mate: samples must be an integer >= 120");
     axes=_cg_ellipse_axes(modul,tooth_number,eccentricity);
     a=axes[0]; b=axes[1];
     D=_cg_ellipse_centre_distance(a,b,samples);

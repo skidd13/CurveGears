@@ -81,7 +81,7 @@ function _cg_fourier_mate_points(base,coefficients,D,n=360) = _cg_fourier_mate_p
  */
 module curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360) {
     assert(_cg_fourier_coefficients_valid(coefficients),"fourier_gear_mate: invalid coefficients");
-    assert(samples>=120 && floor(samples)==samples,"fourier_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"fourier_gear_mate: samples must be an integer >= 120");
     base=modul*tooth_number/2;
     D=_cg_fourier_centre_distance(base,coefficients,samples);
     mate=_cg_fourier_mate_points(base,coefficients,D,samples);

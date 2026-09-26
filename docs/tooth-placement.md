@@ -33,6 +33,8 @@ permitted.
 
 > [`_cg_open_arc_table(points)`](#function-_cg_open_arc_tablepoints): Build a cumulative arc-length table for an open polyline.
 
+> [`_cg_closed_arc_sample(points, arc, target)`](#function-_cg_closed_arc_samplepoints-arc-target): Resolve one wrapped closed-curve arc position into point and tangent.
+
 > [`_cg_point_for_closed_arc(points, arc, target)`](#function-_cg_point_for_closed_arcpoints-arc-target): Interpolate a Cartesian point at a wrapped closed-curve arc position.
 
 > [`_cg_tangent_for_closed_arc(points, arc, target)`](#function-_cg_tangent_for_closed_arcpoints-arc-target): Interpolate a centred tangent at a wrapped closed-curve arc position.
@@ -87,6 +89,10 @@ permitted.
 
 > [`_cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)`](#function-_cg_placement_resultpoints-arc-perimeter-body-modul-tooth_number-tooth_index-candidate-): Classify one candidate as placed, omitted or invalid.
 
+> [`_cg_tooth_placement_state`](#function-_cg_tooth_placement_state): Build the shared tooth candidate and placement records for prepared geometry.
+
+> [`_cg_tooth_geometry_state`](#function-_cg_tooth_geometry_state): Build the reusable pitch, body, candidate, and placement state.
+
 > [`_cg_tooth_pair_collisions(a, b)`](#function-_cg_tooth_pair_collisionsa-b): Find all segment intersections between two tooth boundaries.
 
 > [`_cg_point_on_segment(point, a, b)`](#function-_cg_point_on_segmentpoint-a-b): Test whether a point lies on a segment within the geometry tolerance.
@@ -109,7 +115,7 @@ permitted.
 
 > [`_cg_pair_transform_point`](#function-_cg_pair_transform_point): Transform a local point into a pair placement.
 
-> [`_cg_pair_gap_failures`](#function-_cg_pair_gap_failures): Check opposing placed teeth while reusing common collision tests.
+> [`_cg_pair_gap_failures_from_states`](#function-_cg_pair_gap_failures_from_states): Check opposing placed teeth while reusing common collision tests.
 
 
 ## Functions
@@ -175,6 +181,23 @@ Build a cumulative arc-length table for an open polyline.
 **Returns:**
 
 - `{array}`: Table of `[point index, cumulative length]` rows.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_closed_arc_sample(points, arc, target)`
+
+
+Resolve one wrapped closed-curve arc position into point and tangent.
+
+**Parameters:**
+
+- `points`: {array} Closed curve points.
+- `arc`: {array} Closed-curve arc-length table.
+- `target`: {number} Target arc length in mm.
+
+**Returns:**
+
+- `{array}`: `[point, unnormalised tangent]` at the target.
 
 Back to [module description](#module-tooth-placement).
 
@@ -668,6 +691,55 @@ Classify one candidate as placed, omitted or invalid.
 
 Back to [module description](#module-tooth-placement).
 
+### Function `_cg_tooth_placement_state`
+
+
+Build the shared tooth candidate and placement records for prepared geometry.
+
+**Parameters:**
+
+- `points`: {array of points} Sampled closed pitch contour.
+- `arc`: {array} Cumulative closed-contour arc-length table.
+- `perimeter`: {number > 0} Total contour perimeter in mm.
+- `body`: {array of points} Canonical body boundary.
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `pressure_angle`: {angle, default 20} Involute pressure angle.
+- `tooth_phase`: {angle, default 0} Tooth placement phase.
+- `radial_root`: {boolean, default false} Use radial-root construction.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+
+**Returns:**
+
+- `{array}`: `[candidate, placements]` shared placement state.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_tooth_geometry_state`
+
+
+Build the reusable pitch, body, candidate, and placement state.
+
+**Parameters:**
+
+- `points`: {array of points} Sampled closed pitch contour.
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `pressure_angle`: {angle, default 20} Involute pressure angle.
+- `tooth_phase`: {angle, default 0} Tooth placement phase.
+- `radial_root`: {boolean, default false} Use radial-root construction.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `body_only`: {boolean, default false} Omit tooth placement records.
+- `prepare_final`: {boolean, default false} Cache final boundary checks for pair rendering.
+
+**Returns:**
+
+- `{array}`: `[points, arc, perimeter, body, candidate, placements, ...]`.
+
+Back to [module description](#module-tooth-placement).
+
 ### Function `_cg_tooth_pair_collisions(a, b)`
 
 
@@ -847,7 +919,7 @@ No return
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_pair_gap_failures`
+### Function `_cg_pair_gap_failures_from_states`
 
 
 
@@ -857,8 +929,9 @@ boundary interference is a failure.
 
 **Parameters:**
 
-- `driver_points`: {array of points} Driver pitch curve.
-- `mate_points`: {array of points} Mate pitch curve.
+- `driver_state`: {array} Prepared driver geometry state.
+- `mate_state`: {array} Prepared mate geometry state.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
 
 **Returns:**
 

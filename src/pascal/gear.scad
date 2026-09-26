@@ -51,7 +51,7 @@ module _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure
     if(eccentricity >= 0.5)
         echo("pascal_gear: non-convex Pascal geometry is experimental; full-cycle physical meshing remains unproven");
 
-    assert(samples >= 120 && floor(samples)==samples,"samples must be an integer >= 120");
+    _cg_assert_samples(samples);
     // Drawing
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,_cg_pascal_requires_radial_root(eccentricity),backlash,clearance,body_only);
 }

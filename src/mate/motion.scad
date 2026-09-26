@@ -25,6 +25,18 @@ function _cg_motion_values_from_mid_radii(mid_radii,D) =
     [for(i=[0:len(mid_radii)-1])
         let(step=360/len(mid_radii),r=mid_radii[i]) step*r/(D-r)];
 
+/**
+ * @function _cg_motion_integration_state
+ * @brief Build the shared incremental values, cumulative angles and motion table once.
+ * @param driver_radii {array of number} Driver radii at output angles, or `undef`.
+ * @param mid_radii {array of number} Driver radii at interval midpoints.
+ * @param D {number > 0} Centre distance in mm.
+ * @return {array} `[values, cumulative, motion]` integration state.
+ */
+function _cg_motion_integration_state(driver_radii,mid_radii,D) =
+    let(values=_cg_motion_values_from_mid_radii(mid_radii,D),cumulative=_cg_prefix_sums(values),n=is_undef(driver_radii) ? len(mid_radii) : len(driver_radii))
+    [values,cumulative,[for(i=[0:n]) [360*i/n,cumulative[i]]]];
+
 /***
  * @function _cg_motion_table_from_mid_radii(mid_radii, D)
  * @brief Build a phase-to-phase motion table from midpoint radii.
@@ -33,8 +45,7 @@ function _cg_motion_values_from_mid_radii(mid_radii,D) =
  * @return {array} Table of `[driver phase, mate phase]` pairs in degrees.
  */
 function _cg_motion_table_from_mid_radii(mid_radii,D) =
-    let(values=_cg_motion_values_from_mid_radii(mid_radii,D),cumulative=_cg_prefix_sums(values),n=len(mid_radii))
-    [for(i=[0:n]) [360*i/n,cumulative[i]]];
+    _cg_motion_integration_state(undef,mid_radii,D)[2];
 
 /***
  * @function _cg_motion_closure_error_from_mid_radii(mid_radii, D)
@@ -44,7 +55,7 @@ function _cg_motion_table_from_mid_radii(mid_radii,D) =
  * @return {number} Closure error in degrees.
  */
 function _cg_motion_closure_error_from_mid_radii(mid_radii,D) =
-    _cg_sum(_cg_motion_values_from_mid_radii(mid_radii,D))-360;
+    let(state=_cg_motion_integration_state(undef,mid_radii,D)) state[1][len(state[1])-1]-360;
 
 /**
  * @function _cg_motion_table_from_radius_samples
@@ -59,8 +70,7 @@ function _cg_motion_closure_error_from_mid_radii(mid_radii,D) =
  * reconstruction of the mate.
  */
 function _cg_motion_table_from_radius_samples(driver_radii,mid_radii,D) =
-    let(values=_cg_motion_values_from_mid_radii(mid_radii,D),cumulative=_cg_prefix_sums(values),n=len(driver_radii))
-    [for(i=[0:n]) [360*i/n,cumulative[i]]];
+    _cg_motion_integration_state(driver_radii,mid_radii,D)[2];
 
 /***
  * @function _cg_solve_mate_distance(mid_radii, lo, hi)
@@ -90,8 +100,18 @@ function _cg_solve_mate_distance(mid_radii,lo,hi,i=0) =
  * This is the primary mate-construction path for all radial families.
  */
 function _cg_mate_points_from_radius_samples(driver_radii,mid_radii,D) =
-    let(values=_cg_motion_values_from_mid_radii(mid_radii,D),cumulative=_cg_prefix_sums(values),n=len(driver_radii))
-    [for(i=[0:n-1]) _cg_mate_point_from_radius(driver_radii[i],D,cumulative[i])];
+    _cg_mate_points_from_radius_samples_with_state(driver_radii,D,_cg_motion_integration_state(driver_radii,mid_radii,D));
+
+/**
+ * @function _cg_mate_points_from_radius_samples_with_state
+ * @brief Construct mate points from a previously integrated motion state.
+ * @param driver_radii {array of number} Driver radii at output angles.
+ * @param D {number > 0} Centre distance in mm.
+ * @param integration_state {array} State returned by `_cg_motion_integration_state`.
+ * @return {array of points} Directly generated Cartesian mate pitch points.
+ */
+function _cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state) =
+    [for(i=[0:len(driver_radii)-1]) _cg_mate_point_from_radius(driver_radii[i],D,integration_state[1][i])];
 
 /***
  * @function _cg_mate_point_from_radius(radius, D, phi)
@@ -124,3 +144,11 @@ function _cg_motion_y_unwrapped(tab,angle) =
  * @return {angle} Mate display rotation in degrees.
  */
 function _cg_mate_rotation_for_phase(tab,phase) = 180 - _cg_motion_y_unwrapped(tab,phase);
+
+/**
+ * @function _cg_motion_closure_error
+ * @brief Return the final accumulated mate-angle error in degrees.
+ * @param motion {motion table} Shared driver-to-mate motion table.
+ * @return {number} Difference between the final mate angle and one turn.
+ */
+function _cg_motion_closure_error(motion) = motion[len(motion)-1][1]-360;

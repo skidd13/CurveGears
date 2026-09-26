@@ -115,6 +115,13 @@ function _cg_pitch_scale_from_points(modul,tooth_number,unit_points,circumferenc
  */
 function _cg_scale_points(scale,points) = [for(p=points) [scale*p[0],scale*p[1]]];
 
+function _cg_upper_bound_column(tab,target,column,lo,hi) =
+    lo>=hi ? max(0,lo) :
+    let(mid=floor((lo+hi+1)/2))
+    tab[mid][column] <= target
+        ? _cg_upper_bound_column(tab,target,column,mid,hi)
+        : _cg_upper_bound_column(tab,target,column,lo,mid-1);
+
 /*** @function _cg_interp_x_for_y(tab, target, i)
  * @brief Interpolate an x value at a monotonic y target in a two-column table.
  * @param tab {array} Table of `[x, y]` samples.
@@ -123,11 +130,11 @@ function _cg_scale_points(scale,points) = [for(p=points) [scale*p[0],scale*p[1]]
  * @return {number} Interpolated x value.
  */
 function _cg_interp_x_for_y(tab,target,i=0) =
-    i >= len(tab)-1 ? tab[len(tab)-1][0] :
-    (tab[i][1] <= target && tab[i+1][1] >= target && tab[i+1][1] > tab[i][1]
-        ? let(y0=tab[i][1], y1=tab[i+1][1], f=(target-y0)/(y1-y0))
-          _cg_lerp(tab[i][0],tab[i+1][0],f)
-        : _cg_interp_x_for_y(tab,target,i+1));
+    target < tab[0][1] ? tab[len(tab)-1][0] :
+    let(segment=min(len(tab)-2,max(0,_cg_upper_bound_column(tab,target,1,0,len(tab)-1))),
+        y0=tab[segment][1],y1=tab[segment+1][1])
+    y1>y0 ? _cg_lerp(tab[segment][0],tab[segment+1][0],(target-y0)/(y1-y0)) :
+    tab[len(tab)-1][0];
 
 /*** @function _cg_interp_y_for_x(tab, target, i)
  * @brief Interpolate a y value at a monotonic x target in a two-column table.
@@ -137,11 +144,11 @@ function _cg_interp_x_for_y(tab,target,i=0) =
  * @return {number} Interpolated y value.
  */
 function _cg_interp_y_for_x(tab,target,i=0) =
-    i >= len(tab)-1 ? tab[len(tab)-1][1] :
-    (tab[i][0] <= target && tab[i+1][0] >= target && tab[i+1][0] > tab[i][0]
-        ? let(x0=tab[i][0], x1=tab[i+1][0], f=(target-x0)/(x1-x0))
-          _cg_lerp(tab[i][1],tab[i+1][1],f)
-        : _cg_interp_y_for_x(tab,target,i+1));
+    target < tab[0][0] ? tab[len(tab)-1][1] :
+    let(segment=min(len(tab)-2,max(0,_cg_upper_bound_column(tab,target,0,0,len(tab)-1))),
+        x0=tab[segment][0],x1=tab[segment+1][0])
+    x1>x0 ? _cg_lerp(tab[segment][1],tab[segment+1][1],(target-x0)/(x1-x0)) :
+    tab[len(tab)-1][1];
 /***
  * @module Mathematical References
  * @brief Mathematical sources used by the CurveGears families.

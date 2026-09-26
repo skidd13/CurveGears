@@ -46,7 +46,7 @@ module _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling
     assert(modul > 0 && width > 0 && bore >= 0,"epitrochoid: module, width and bore must be valid");
     assert(tooth_number >= 3 && floor(tooth_number)==tooth_number,"epitrochoid: tooth number must be an integer >= 3");
     assert(major_ratio > rolling_ratio && rolling_ratio > 0 && offset_ratio > 0 && offset_ratio < rolling_ratio,"epitrochoid: require major_ratio > rolling_ratio > 0 and 0 < offset_ratio < rolling_ratio");
-    assert(samples >= 120 && floor(samples)==samples,"epitrochoid: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"epitrochoid: samples must be an integer >= 120");
     unit_points=_cg_epitrochoid_points(major_ratio,rolling_ratio,offset_ratio,samples);
     scale=_cg_trochoid_scale_from_points(modul,tooth_number,unit_points);
     points=_cg_trochoid_points_scaled_from_points(scale,unit_points);

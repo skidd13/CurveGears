@@ -11,6 +11,28 @@ include <../tooth/placement.scad>
 // placement are separately includable; this file owns body assembly and the
 // public one-extrusion boundary contract.
 
+/**
+ * @module _cg_assert_gear_inputs
+ * @brief Validate common pitch-to-gear inputs before geometry construction.
+ * @param points {array of points} Sampled closed pitch contour.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param pressure_angle {angle} Involute pressure angle in degrees.
+ * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param mate_points {undef or array of points} Optional second pitch contour for pair validation.
+ */
+module _cg_assert_gear_inputs(points,modul,tooth_number,bore,pressure_angle,clearance=undef,mate_points=undef) {
+    assert(modul > 0,"module must be positive");
+    assert(bore >= 0,"bore must be non-negative");
+    assert(pressure_angle > 0 && pressure_angle < 90,"pressure angle must be between 0 and 90");
+    assert(is_undef(clearance) || clearance >= 0,"clearance must be non-negative");
+    assert(len(points) >= 8,"_cg_gear_2d_from_pitch_points: at least 8 pitch samples are required");
+    if(!is_undef(mate_points))
+        assert(len(mate_points) >= 8,"_cg_gear_2d_from_pitch_points: at least 8 pitch samples are required");
+    assert(tooth_number >= 3 && floor(tooth_number)==tooth_number,"_cg_gear_2d_from_pitch_points: tooth_number must be an integer >= 3");
+}
+
 /***
  * @function _cg_tooth_phase_fraction(tooth_phase)
  * @brief Convert a public tooth phase in degrees to one contour-turn fraction.
@@ -29,16 +51,6 @@ function _cg_tooth_phase_fraction(tooth_phase) = tooth_phase/360;
  * @param end_s {number} End arc position in mm.
  * @return {array} Body vertices inside the requested interval.
  */
-function _cg_arc_segment_lower_bound(tab,target,lo,hi) =
-    lo>=hi ? lo :
-    let(mid=floor((lo+hi)/2))
-    tab[mid+1][1]>=target
-        ? _cg_arc_segment_lower_bound(tab,target,lo,mid)
-        : _cg_arc_segment_lower_bound(tab,target,mid+1,hi);
-
-function _cg_interp_x_for_y_binary(tab,target) =
-    _cg_interp_x_for_y(tab,target,_cg_arc_segment_lower_bound(tab,target,0,len(tab)-2));
-
 function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
     let(
         n=len(body),
@@ -46,8 +58,8 @@ function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
         wrapped_end=end_s-perimeter*floor(end_s/perimeter),
         start_cycle=floor(start_s/perimeter),
         end_cycle=floor(end_s/perimeter),
-        start_u=_cg_interp_x_for_y_binary(arc,wrapped_start),
-        end_u=_cg_interp_x_for_y_binary(arc,wrapped_end),
+        start_u=_cg_interp_x_for_y(arc,wrapped_start),
+        end_u=_cg_interp_x_for_y(arc,wrapped_end),
         start_index=min(n-1,max(0,floor(start_u))),
         end_u_unwrapped=end_u+(end_cycle-start_cycle)*n,
         candidate_count=max(0,min(n,floor(end_u_unwrapped)-start_index))
@@ -161,6 +173,7 @@ function _cg_merge_point_count(points,target) = len([for(p=points) if(_cg_vlen(_
  * @return {array} Assembly failure records, or an empty array.
  */
 function _cg_assembled_component_failures(outline,placements) =
+    _cg_has_immediate_backtrack(outline) ? [["POLYGON_BACKTRACK"]] :
     let(
         placed=[for(p=placements) if(p[0]=="placed") p],
         merge_counts=[for(p=placed) _cg_merge_point_count(outline,p[8][0])],
@@ -170,7 +183,6 @@ function _cg_assembled_component_failures(outline,placements) =
             ["MERGE_DUPLICATE_TOOTH",placed[i][2],placed[i][8][0]]]
     )
     concat(
-        _cg_has_immediate_backtrack(outline) ? [["POLYGON_BACKTRACK"]] : [],
         missing,
         duplicate,
         [for(p=placements) if(p[0]=="placed" && len(_cg_polygon_intersections(_cg_trim_tooth_boundary(p[6],p[8],p[9])))>0)
@@ -215,25 +227,19 @@ function _cg_point_near_any(point,points,radius) =
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Validated two-dimensional gear boundary.
  */
-module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false) {
-    assert(modul > 0,"module must be positive");
-    assert(bore >= 0,"bore must be non-negative");
-    assert(pressure_angle > 0 && pressure_angle < 90,"pressure angle must be between 0 and 90");
-    assert(is_undef(clearance) || clearance >= 0,"clearance must be non-negative");
-    n=len(points);
-    assert(n >= 8,"_cg_gear_2d_from_pitch_points: at least 8 pitch samples are required");
-    assert(tooth_number >= 3 && floor(tooth_number)==tooth_number,"_cg_gear_2d_from_pitch_points: tooth_number must be an integer >= 3");
-    dedendum=_cg_dedendum(modul,clearance);
-    arc=_cg_polyline_arc_table(points);
+module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepared_state=undef) {
+    _cg_assert_gear_inputs(points,modul,tooth_number,bore,pressure_angle,clearance);
+    state=prepared_state;
+    arc=is_undef(state) ? _cg_polyline_arc_table(points) : state[1];
     perimeter=arc[len(arc)-1][1];
+    body_outline=is_undef(state) ? _cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul,clearance),radial_root) : state[3];
     assert(perimeter > 0,"_cg_gear_2d_from_pitch_points: pitch perimeter must be positive");
-    body_outline=_cg_canonical_body_polyline(points,arc,perimeter,dedendum,radial_root);
     assert(_cg_polyline_finite(body_outline),"stage=body severity=error code=BODY_NONFINITE_GEOMETRY eps_len=1e-7");
     assert(len(body_outline)>=3,"stage=body severity=error code=BODY_OPEN effective_points<3");
     assert(!_cg_has_zero_edge(body_outline),"stage=body severity=error code=BODY_DUPLICATE_SEGMENT eps_len=1e-7");
     assert(!_cg_has_duplicate_edge(body_outline),"stage=body severity=error code=BODY_DUPLICATE_SEGMENT eps_len=1e-7");
     assert(_cg_polygon_area(body_outline)>_cg_eps_area(),"stage=body severity=error code=BODY_ZERO_AREA eps_area=1e-8");
-    body_collisions=_cg_polygon_intersections(body_outline);
+    body_collisions=!is_undef(state) && len(state)>=12 ? state[6] : _cg_polygon_intersections(body_outline);
     body_collision=len(body_collisions)>0 ? body_collisions[0] : [0,0,[0,0]];
     assert(len(body_collisions)==0,
         str("stage=body severity=error code=BODY_SELF_INTERSECTION eps_intersect=",_cg_eps_intersect()," segment=",body_collision[0],"/",body_collision[1]," point=",body_collision[2]));
@@ -244,10 +250,9 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
             if (bore > 0) circle(d=bore);
         }
     } else {
-        reference_pitch_radius=modul*tooth_number/2;
-        candidate=_cg_reference_tooth_candidate(reference_pitch_radius,modul,tooth_number,pressure_angle,backlash,clearance,radial_root);
-        placements=[for(j=[0:tooth_number-1])
-            _cg_placement_result(points,arc,perimeter,body_outline,modul,tooth_number,j,candidate,pressure_angle,tooth_phase,radial_root,backlash,clearance)];
+        placement_state=is_undef(state) ? _cg_tooth_placement_state(points,arc,perimeter,body_outline,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance) : [state[4],state[5]];
+        candidate=placement_state[0];
+        placements=placement_state[1];
         invalid=[for(p=placements) if(p[0]=="invalid") p];
         placed_count=len([for(p=placements) if(p[0]=="placed") p]);
         inaccessible_count=len([for(p=placements) if(p[0]=="omitted_inaccessible") p]);
@@ -265,13 +270,14 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         splice_failure=len(splice_failures)>0 ? splice_failures[0] : ["PASS",[],[]];
         assert(len(splice_failures)==0,
             str("stage=splice severity=error code=",splice_failure[0]," first=",splice_failure[1]," second=",splice_failure[2]," eps_len=",_cg_eps_len()," eps_intersect=",_cg_eps_intersect()));
-        collisions=_cg_final_boundary_collisions(placements,modul,clearance);
+        cached_final=!is_undef(state) && len(state)>=12;
+        collisions=cached_final ? state[8] : _cg_final_boundary_collisions(placements,modul,clearance);
         if (len(collisions)>0)
             echo(str("stage=collision severity=error code=",collisions[0][0]," message=placed tooth pair conflict pair=",collisions[0][1],"/",collisions[0][2]," target=",collisions[0][6],"/",collisions[0][7]," source_distance=",collisions[0][4]," search_radius=",collisions[0][5]," segments=",collisions[0][3][0],"/",collisions[0][3][1]," intersection=",collisions[0][3][2]," eps_intersect=",_cg_eps_intersect()));
         assert(len(collisions)==0,
             str("stage=collision severity=error code=",len(collisions)>0 ? collisions[0][0] : "TOOTH_COLLISION"," message=placed tooth pair conflict eps_intersect=",_cg_eps_intersect()," search_radius=2*tooth_height"));
-        outline=_cg_final_outline_from_placements(body_outline,arc,perimeter,placements,splice_pitch);
-        assembly_failures=_cg_assembled_component_failures(outline,placements);
+        outline=cached_final ? state[7] : _cg_final_outline_from_placements(body_outline,arc,perimeter,placements,splice_pitch);
+        assembly_failures=cached_final ? state[9] : _cg_assembled_component_failures(outline,placements);
         assembly_failure=len(assembly_failures)>0 ? assembly_failures[0] : ["PASS"];
         assert(len(assembly_failures)==0,
             str("stage=polygon severity=error code=",assembly_failure[0]," tooth=",len(assembly_failure)>1 ? assembly_failure[1] : -1," eps_intersect=",_cg_eps_intersect()));
@@ -282,12 +288,12 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         assert(!_cg_has_duplicate_edge(outline),"stage=polygon severity=error code=POLYGON_DUPLICATE_EDGE eps_len=1e-7");
         assert(_cg_polygon_area(outline)>_cg_eps_area(),"stage=polygon severity=error code=POLYGON_ZERO_AREA eps_area=1e-8");
         allowed_contact_points=_cg_adjacent_contact_points(placements,modul);
-        final_intersections=[for(hit=_cg_polygon_intersections(outline))
+        final_intersections=cached_final ? state[10] : [for(hit=_cg_polygon_intersections(outline))
             if(!_cg_point_near_any(hit[2],allowed_contact_points,modul/4)) hit];
         final_intersection=len(final_intersections)>0 ? final_intersections[0] : [0,0,[0,0]];
         assert(len(final_intersections)==0,
             str("stage=polygon severity=error code=POLYGON_SELF_INTERSECTION eps_intersect=",_cg_eps_intersect()," segment=",final_intersection[0],"/",final_intersection[1]," point=",final_intersection[2]));
-        final_signed_area=_cg_signed_area(outline);
+        final_signed_area=cached_final ? state[11] : _cg_signed_area(outline);
         final_winding=final_signed_area>_cg_eps_area() ? 1 : final_signed_area < -_cg_eps_area() ? -1 : 0;
         assert(final_winding!=0,
             str("stage=polygon severity=error code=POLYGON_WINDING_INVALID signed_area=",final_signed_area," eps_area=",_cg_eps_area()));
@@ -314,10 +320,29 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Extruded gear.
  */
-module _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false) {
+module _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepared_state=undef) {
     assert(width > _cg_eps_len(),
         str("stage=extrusion severity=error code=EXTRUSION_HEIGHT_INVALID message=width must be positive width=",width," eps_len=",_cg_eps_len()));
     let($fn=$fn==0 ? _cg_default_fn : $fn)
     linear_extrude(height=width,convexity=10)
-        _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only);
+        _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only,prepared_state);
+}
+
+/**
+ * @module _cg_gear_from_state
+ * @brief Extrude a gear from an already prepared common geometry state.
+ * @param state {array} Shared pitch, body, candidate, and placement state.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in mm.
+ * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param pressure_angle {angle, default 20} Involute pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param radial_root {boolean, default false} Use radial-root construction.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param body_only {boolean, default false} Emit the body without teeth.
+ */
+module _cg_gear_from_state(state,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false) {
+    _cg_gear_from_pitch_points(state[0],modul,tooth_number,width,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only,state);
 }

@@ -24,7 +24,7 @@ module _cg_hypotrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rollin
     assert(modul>0 && width>0 && bore>=0,"hypotrochoid: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"hypotrochoid: tooth number must be an integer >= 3");
     assert(major_ratio>rolling_ratio && rolling_ratio>0 && offset_ratio>0 && offset_ratio<rolling_ratio,"hypotrochoid: require major_ratio > rolling_ratio > 0 and 0 < offset_ratio < rolling_ratio");
-    assert(samples>=120 && floor(samples)==samples,"hypotrochoid: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"hypotrochoid: samples must be an integer >= 120");
     unit_points=_cg_hypotrochoid_points(major_ratio,rolling_ratio,offset_ratio,samples);
     scale=_cg_trochoid_scale_from_points(modul,tooth_number,unit_points);
     points=_cg_trochoid_points_scaled_from_points(scale,unit_points);

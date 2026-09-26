@@ -48,17 +48,17 @@ module _cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pr
     assert(eccentricity >= 0 && eccentricity < 1,"elliptical_gear_pair: eccentricity must satisfy 0 <= e < 1");
     axes=_cg_ellipse_axes(modul,tooth_number,eccentricity);
     a=axes[0]; b=axes[1];
-    assert(samples >= 120 && floor(samples)==samples,"elliptical_gear_pair: samples must be an integer >= 120");
-    D=_cg_ellipse_centre_distance(a,b,samples);
-    motion=_cg_ellipse_motion_table(a,b,D,samples);
-    closure_error=motion[len(motion)-1][1]-360;
+    _cg_assert_samples(samples,"elliptical_gear_pair: samples must be an integer >= 120");
+    mid_radii=_cg_ellipse_motion_radii(a,b,samples);
+    D=_cg_solve_mate_distance(mid_radii,a+.01,3*a);
+    driver_radii=_cg_ellipse_driver_radii(a,b,samples);
+    integration_state=_cg_motion_integration_state(driver_radii,mid_radii,D);
+    motion=integration_state[2];
+    closure_error=_cg_motion_closure_error(motion);
     assert(abs(closure_error) < 0.08,"elliptical_gear_pair: conjugate closure error too large");
     driver=[for(i=[0:samples-1]) _cg_ellipse_driver_point(a,b,360*i/samples)];
-    mate=_cg_ellipse_mate_points_from_driver(a,b,D,samples);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
-        color(driver_color) curve_gear_ellipse(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples);
-        color(mate_color) curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples);
-    }
+    mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
+    _cg_pair_assembly(D,motion,phase,together_built,_cg_pair_point_extent(driver),_cg_pair_point_extent(mate),modul,driver,mate,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,false,false,driver_color,mate_color);
 }
 
 module curve_gear_ellipse_pair(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {

@@ -50,7 +50,7 @@ module _cg_logarithmic_spiral_pair_build(modul,tooth_number,width,bore,sectors=1
     rmin=_cg_logspiral_rmin(modul,tooth_number,sectors,growth_rate);
     rmax=_cg_logspiral_rmax(modul,tooth_number,sectors,growth_rate);
     reference_distance=rmin+rmax+assembly_clearance;
-    assert(samples >= 120 && floor(samples)==samples,"logarithmic_spiral_pair: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"logarithmic_spiral_pair: samples must be an integer >= 120");
     assert(assembly_clearance >= 0,"logarithmic_spiral_pair: assembly_clearance must be non-negative");
 
     // Drawing

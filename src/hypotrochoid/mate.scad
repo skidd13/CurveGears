@@ -26,7 +26,7 @@ function _cg_hypotrochoid_mate_points(scale,R,r,d,D,n=720) = _cg_hypotrochoid_ma
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  */
 module curve_gear_hypotrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
-    assert(samples>=120 && floor(samples)==samples,"hypotrochoid_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"hypotrochoid_gear_mate: samples must be an integer >= 120");
     scale=_cg_hypotrochoid_scale(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples);
     D=_cg_hypotrochoid_centre_distance(scale,major_ratio,rolling_ratio,offset_ratio,samples);
     mate=_cg_hypotrochoid_mate_points(scale,major_ratio,rolling_ratio,offset_ratio,D,samples);

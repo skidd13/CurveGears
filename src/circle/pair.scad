@@ -20,13 +20,10 @@ include <../pair/assembly.scad>
  * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
  */
 module curve_gear_circle_pair(modul,tooth_number,width,bore,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
-    assert(samples >= 120 && floor(samples)==samples,"circle_gear_pair: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"circle_gear_pair: samples must be an integer >= 120");
     radius=_cg_circle_radius(modul,tooth_number);
     distance=curve_gear_circle_centre_distance(modul,tooth_number);
     motion=[for(i=[0:samples]) [360*i/samples,360*i/samples]];
     points=_cg_circle_points(modul,tooth_number,samples);
-    _cg_pair_assembly(distance,motion,phase,together_built,radius,radius,modul,points,points,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
-        color(driver_color) curve_gear_circle(modul,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,samples);
-        color(mate_color) curve_gear_circle_mate(modul,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,samples);
-    }
+    _cg_pair_assembly(distance,motion,phase,together_built,radius,radius,modul,points,points,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,false,false,driver_color,mate_color);
 }

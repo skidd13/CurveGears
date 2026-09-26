@@ -49,7 +49,7 @@ module _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,grow
 
     rmin=_cg_logspiral_rmin(modul,tooth_number,sectors,growth_rate);
 
-    assert(samples >= 120 && floor(samples)==samples,"samples must be an integer >= 120");
+    _cg_assert_samples(samples);
     // The shared builder keeps the spiral and its radial returns in one
     // canonical 2D boundary.  Long return segments are evaluated as
     // inaccessible tooth corridors, so no ordinary tooth is placed there.

@@ -63,7 +63,7 @@ function _cg_bezier_mate_centre_distance(control_points,scale,n) =
 module curve_gear_bezier_mate(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     assert(modul>0 && width>0 && bore>=0,"bezier_gear_mate: dimensions must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"bezier_gear_mate: tooth_number must be an integer >= 3");
-    assert(samples>=120 && floor(samples)==samples,"bezier_gear_mate: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"bezier_gear_mate: samples must be an integer >= 120");
     scale=modul*tooth_number/2;
     admissibility=_cg_bezier_mate_admissibility(control_points,scale,samples);
     assert(admissibility=="PASS",str("bezier_gear_mate: mate-admissibility failure code=",admissibility));

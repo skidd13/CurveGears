@@ -90,7 +90,7 @@ module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_
     assert(modul>0 && width>0 && bore>=0,"bezier_gear: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"bezier_gear: tooth_number must be an integer >= 3");
     assert(_cg_bezier_controls_valid(control_points),"bezier_gear: control points must form closed cubic segments with forward tangent continuity");
-    assert(samples>=120 && floor(samples)==samples,"bezier_gear: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"bezier_gear: samples must be an integer >= 120");
     scale=modul*tooth_number/2;
     points=_cg_bezier_points(control_points,scale,samples);
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);

@@ -63,6 +63,19 @@ function _cg_open_arc_table(points) =
     )
     [for(i=[0:n-1]) [i,cumulative[i]]];
 
+/*** @function _cg_closed_arc_sample(points, arc, target)
+ * @brief Resolve one wrapped closed-curve arc position into point and tangent.
+ * @param points {array} Closed curve points.
+ * @param arc {array} Closed-curve arc-length table.
+ * @param target {number} Target arc length in mm.
+ * @return {array} `[point, unnormalised tangent]` at the target.
+ */
+function _cg_closed_arc_sample(points,arc,target) =
+    let(perimeter=arc[len(arc)-1][1],wrapped=target-perimeter*floor(target/perimeter),
+        n=len(points),u=_cg_interp_x_for_y(arc,wrapped),i=floor(u),f=u-i,
+        t0=_cg_curve_tangent(points,i%n),t1=_cg_curve_tangent(points,(i+1)%n))
+    [_cg_vlerp(points[i%n],points[(i+1)%n],f),_cg_vlerp(t0,t1,f)];
+
 /*** @function _cg_point_for_closed_arc(points, arc, target)
  * @brief Interpolate a Cartesian point at a wrapped closed-curve arc position.
  * @param points {array} Closed curve points.
@@ -71,9 +84,7 @@ function _cg_open_arc_table(points) =
  * @return {array} Interpolated Cartesian point.
  */
 function _cg_point_for_closed_arc(points,arc,target) =
-    let(perimeter=arc[len(arc)-1][1],wrapped=target-perimeter*floor(target/perimeter),
-        n=len(points),u=_cg_interp_x_for_y(arc,wrapped),i=floor(u),f=u-i)
-    _cg_vlerp(points[i%n],points[(i+1)%n],f);
+    _cg_closed_arc_sample(points,arc,target)[0];
 
 /*** @function _cg_tangent_for_closed_arc(points, arc, target)
  * @brief Interpolate a centred tangent at a wrapped closed-curve arc position.
@@ -83,17 +94,7 @@ function _cg_point_for_closed_arc(points,arc,target) =
  * @return {array} Unnormalised tangent vector.
  */
 function _cg_tangent_for_closed_arc(points,arc,target) =
-    let(
-        perimeter=arc[len(arc)-1][1],
-        wrapped=target-perimeter*floor(target/perimeter),
-        n=len(points),
-        u=_cg_interp_x_for_y(arc,wrapped),
-        i=floor(u),
-        f=u-i,
-        t0=_cg_curve_tangent(points,i%n),
-        t1=_cg_curve_tangent(points,(i+1)%n)
-    )
-    _cg_vlerp(t0,t1,f);
+    _cg_closed_arc_sample(points,arc,target)[1];
 
 /**
  * @function _cg_local_frame_for_closed_arc
@@ -106,9 +107,9 @@ function _cg_tangent_for_closed_arc(points,arc,target) =
  */
 function _cg_local_frame_for_closed_arc(points,arc,perimeter,target) =
     let(
-        wrapped=target-perimeter*floor(target/perimeter),
-        point=_cg_point_for_closed_arc(points,arc,wrapped),
-        tangent=_cg_vunit(_cg_tangent_for_closed_arc(points,arc,wrapped)),
+        sample=_cg_closed_arc_sample(points,arc,target),
+        point=sample[0],
+        tangent=_cg_vunit(sample[1]),
         normal=_cg_outward_normal(points,tangent),
         winding=_cg_signed_area(points) >= 0 ? 1 : -1
     )
@@ -163,11 +164,11 @@ function _cg_profile_point_at_frame(local_point,pitch_point,normal,tangent,pitch
  * @return {point} Inward body point.
  */
 function _cg_canonical_body_point_at_arc(points,arc,perimeter,target,dedendum,radial_root=false) =
-    let(
-        frame=_cg_local_frame_for_closed_arc(points,arc,perimeter,target),
-        p=frame[0],normal=frame[2],radius=_cg_vlen(p),radial=_cg_vunit(p),
-        root_radius=max(radius-dedendum,.02*dedendum)
-    )
+    _cg_canonical_body_point_from_frame(_cg_local_frame_for_closed_arc(points,arc,perimeter,target),dedendum,radial_root);
+
+function _cg_canonical_body_point_from_frame(frame,dedendum,radial_root=false) =
+    let(p=frame[0],normal=frame[2],radius=_cg_vlen(p),radial=_cg_vunit(p),
+        root_radius=max(radius-dedendum,.02*dedendum))
     radial_root
         ? [radial[0]*root_radius,radial[1]*root_radius]
         : [p[0]-dedendum*normal[0],p[1]-dedendum*normal[1]];
@@ -288,7 +289,7 @@ function _cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,m
     let(
         frame=_cg_local_frame_for_closed_arc(points,arc,perimeter,target),
         dedendum=_cg_dedendum(modul,clearance),
-        base=_cg_canonical_body_point_at_arc(points,arc,perimeter,target,dedendum,radial_root),
+        base=_cg_canonical_body_point_from_frame(frame,dedendum,radial_root),
         tangent=frame[1],normal=frame[2],
         half_width=max(candidate[2]/2,.25*modul)+.25*modul,
         required_clearance=dedendum+_cg_addendum(modul)+.25*modul,
@@ -528,6 +529,65 @@ function _cg_placement_result(points,arc,perimeter,body,modul,tooth_number,tooth
     !candidate[0] ? _cg_placement_invalid(tooth_index,target,frame,candidate,candidate[1]) :
     _cg_placement_after_preflight(points,arc,perimeter,body,modul,tooth_number,tooth_index,candidate,pressure_angle,tooth_phase,radial_root,backlash,clearance,frame,tooth_pitch,target);
 
+/**
+ * @function _cg_tooth_placement_state
+ * @brief Build the shared tooth candidate and placement records for prepared geometry.
+ * @param points {array of points} Sampled closed pitch contour.
+ * @param arc {array} Cumulative closed-contour arc-length table.
+ * @param perimeter {number > 0} Total contour perimeter in mm.
+ * @param body {array of points} Canonical body boundary.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param pressure_angle {angle, default 20} Involute pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param radial_root {boolean, default false} Use radial-root construction.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @return {array} `[candidate, placements]` shared placement state.
+ */
+function _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef) =
+    let(
+        reference_pitch_radius=modul*tooth_number/2,
+        candidate=_cg_reference_tooth_candidate(reference_pitch_radius,modul,tooth_number,pressure_angle,backlash,clearance,radial_root),
+        placements=[for(j=[0:tooth_number-1])
+            _cg_placement_result(points,arc,perimeter,body,modul,tooth_number,j,candidate,pressure_angle,tooth_phase,radial_root,backlash,clearance)]
+    ) [candidate,placements];
+
+/**
+ * @function _cg_tooth_geometry_state
+ * @brief Build the reusable pitch, body, candidate, and placement state.
+ * @param points {array of points} Sampled closed pitch contour.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param pressure_angle {angle, default 20} Involute pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param radial_root {boolean, default false} Use radial-root construction.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param body_only {boolean, default false} Omit tooth placement records.
+ * @param prepare_final {boolean, default false} Cache final boundary checks for pair rendering.
+ * @return {array} `[points, arc, perimeter, body, candidate, placements, ...]`.
+ */
+function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepare_final=false) =
+    let(
+        arc=_cg_polyline_arc_table(points),
+        perimeter=arc[len(arc)-1][1],
+        body=_cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul,clearance),radial_root),
+        placement_state=body_only ? [undef,[]] : _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance),
+        placements=placement_state[1],
+        tooth_pitch=perimeter/tooth_number,
+        splice_pitch=radial_root ? undef : tooth_pitch,
+        body_collisions=prepare_final ? _cg_polygon_intersections(body) : [],
+        collisions=prepare_final ? _cg_final_boundary_collisions(placements,modul,clearance) : [],
+        outline=prepare_final ? _cg_final_outline_from_placements(body,arc,perimeter,placements,splice_pitch) : [],
+        assembly_failures=prepare_final ? _cg_assembled_component_failures(outline,placements) : [],
+        allowed_contact_points=prepare_final ? _cg_adjacent_contact_points(placements,modul) : [],
+        final_intersections=prepare_final ? [for(hit=_cg_polygon_intersections(outline))
+            if(!_cg_point_near_any(hit[2],allowed_contact_points,modul/4)) hit] : [],
+        final_signed_area=prepare_final ? _cg_signed_area(outline) : 0
+    ) concat([points,arc,perimeter,body,placement_state[0],placement_state[1]],
+        prepare_final ? [body_collisions,outline,collisions,assembly_failures,final_intersections,final_signed_area] : []);
+
 /*** @function _cg_tooth_pair_collisions(a, b)
  * @brief Find all segment intersections between two tooth boundaries.
  * @param a {array} First tooth boundary.
@@ -671,24 +731,25 @@ function _cg_final_boundary_collisions(placements,modul,clearance=undef) =
             len(placed)>2 ? [[0,len(placed)-1]] : [],
             len(placed)>1 ? [for(i=[0:len(placed)-2]) [i,i+1]] : [],
             len(placed)>3 ? [for(delta=[2:len(placed)-2]) for(i=[0:len(placed)-delta-1]) [i,i+delta]] : []
-        )
-    )
-    len(placed)<2 ? [] : concat(
-        [for(pair=pair_order)
+        ),
+        pair_results=[for(pair=pair_order)
             let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])),
                 adjacent=(j==i+1 || (i==0 && j==len(placed)-1)),
                 boundary_a=len(placed[i][6])<4 ? placed[i][6] : _cg_trim_tooth_boundary(placed[i][6],placed[i][8],placed[i][9]),
                 boundary_b=len(placed[j][6])<4 ? placed[j][6] : _cg_trim_tooth_boundary(placed[j][6],placed[j][8],placed[j][9]),
                 hits=_cg_tooth_non_top_collisions(boundary_a,boundary_b),
-                remaining_hits=adjacent && len(boundary_a)>8 && len(boundary_b)>8 && _cg_adjacent_contact_region(hits,modul) ? [] : hits)
+                remaining_hits=adjacent && len(boundary_a)>8 && len(boundary_b)>8 && _cg_adjacent_contact_region(hits,modul) ? [] : hits,
+                top_hits=_cg_tooth_top_collisions(boundary_a,boundary_b))
+            [i,j,source_distance,remaining_hits,top_hits]]
+    )
+    len(placed)<2 ? [] : concat(
+        [for(result=pair_results)
+            let(i=result[0],j=result[1],source_distance=result[2],remaining_hits=result[3])
             if(source_distance<=search_radius)
                 for(hit=remaining_hits) ["TOOTH_COLLISION",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]],
-        [for(pair=pair_order)
-            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])),
-                boundary_a=len(placed[i][6])<4 ? placed[i][6] : _cg_trim_tooth_boundary(placed[i][6],placed[i][8],placed[i][9]),
-                boundary_b=len(placed[j][6])<4 ? placed[j][6] : _cg_trim_tooth_boundary(placed[j][6],placed[j][8],placed[j][9]))
+        [for(result=pair_results)
+            let(i=result[0],j=result[1],source_distance=result[2],top_hits=result[4])
             if(source_distance<=search_radius)
-                let(top_hits=_cg_tooth_top_collisions(boundary_a,boundary_b))
                 for(hit=top_hits) ["TOOTH_TOP_OVERLAP",placed[i][2],placed[j][2],hit,source_distance,search_radius,placed[i][3],placed[j][3]]]
     );
 
@@ -701,24 +762,19 @@ function _cg_pair_transform_point(point,centre,rotation) =
      centre[1]+point[0]*sin(rotation)+point[1]*cos(rotation)];
 
 /**
- * @function _cg_pair_gap_failures
+ * @function _cg_pair_gap_failures_from_states
  * @brief Check opposing placed teeth while reusing common collision tests.
  *
  * Intended pitch contact is permitted within a small module-scaled
  * neighbourhood of the opposing pitch-point midpoint. Any additional
  * boundary interference is a failure.
- * @param driver_points {array of points} Driver pitch curve.
- * @param mate_points {array of points} Mate pitch curve.
+ * @param driver_state {array} Prepared driver geometry state.
+ * @param mate_state {array} Prepared mate geometry state.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
  */
-function _cg_pair_gap_failures(driver_points,mate_points,modul,tooth_number,pressure_angle,centre_distance,driver_rotation=0,mate_rotation=180,tooth_phase=0,backlash=undef,clearance=undef) =
+function _cg_pair_gap_failures_from_states(driver_state,mate_state,modul,centre_distance,driver_rotation=0,mate_rotation=180,clearance=undef) =
     let(
-        da=_cg_polyline_arc_table(driver_points),ma=_cg_polyline_arc_table(mate_points),
-        dp=da[len(da)-1][1],mp=ma[len(ma)-1][1],
-        db=_cg_canonical_body_polyline(driver_points,da,dp,_cg_dedendum(modul,clearance),false),
-        mb=_cg_canonical_body_polyline(mate_points,ma,mp,_cg_dedendum(modul,clearance),false),
-        candidate=_cg_reference_tooth_candidate(modul*tooth_number/2,modul,tooth_number,pressure_angle,backlash,clearance,false),
-        d=[for(i=[0:tooth_number-1]) _cg_placement_result(driver_points,da,dp,db,modul,tooth_number,i,candidate,pressure_angle,tooth_phase,false,backlash,clearance)],
-        m=[for(i=[0:tooth_number-1]) _cg_placement_result(mate_points,ma,mp,mb,modul,tooth_number,i,candidate,pressure_angle,tooth_phase,false,backlash,clearance)],
+        d=driver_state[5],m=mate_state[5],
         placed_d=[for(p=d) if(p[0]=="placed") p],placed_m=[for(p=m) if(p[0]=="placed") p],
         pairs=[for(a=placed_d,b=placed_m)
             let(ap=_cg_pair_transform_point(a[4][0],[-centre_distance/2,0],driver_rotation),bp=_cg_pair_transform_point(b[4][0],[centre_distance/2,0],mate_rotation))

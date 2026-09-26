@@ -45,7 +45,7 @@ module _cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressur
     a=axes[0]; b=axes[1];
     points=[for(i=[0:samples-1]) _cg_ellipse_driver_point(a,b,360*i/samples)];
 
-    assert(samples >= 120 && floor(samples)==samples,"samples must be an integer >= 120");
+    _cg_assert_samples(samples);
     // Drawing
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
 }

@@ -58,18 +58,19 @@ module _cg_superformula_pair_build(modul,tooth_number,width,bore,symmetry=4,a=1,
     assert(symmetry >= 2 && floor(symmetry)==symmetry,"superformula_gear_pair: symmetry must be an integer >= 2");
     assert(a>0 && b>0 && n1>0 && n2>0 && n3>0,"superformula_gear_pair: a,b,n1,n2,n3 must be positive");
     assert(_cg_superformula_odd_valid(symmetry,a,b,n2,n3),"superformula_gear_pair: odd symmetry requires a=b and n2=n3 for 360-degree continuity");
-    assert(samples >= 120 && floor(samples)==samples,"superformula_gear_pair: samples must be an integer >= 120");
+    _cg_assert_samples(samples,"superformula_gear_pair: samples must be an integer >= 120");
     scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples);
-    D=_cg_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,samples);
-    motion=_cg_superformula_motion_table(scale,symmetry,a,b,n1,n2,n3,D,samples);
-    closure_error=motion[len(motion)-1][1]-360;
+    mid_radii=_cg_superformula_motion_radii(scale,symmetry,a,b,n1,n2,n3,samples);
+    mx=_cg_superformula_max_radius(scale,symmetry,a,b,n1,n2,n3,720);
+    D=_cg_solve_mate_distance(mid_radii,mx+.01,4*mx);
+    driver_radii=_cg_superformula_driver_radii(scale,symmetry,a,b,n1,n2,n3,samples);
+    integration_state=_cg_motion_integration_state(driver_radii,mid_radii,D);
+    motion=integration_state[2];
+    closure_error=_cg_motion_closure_error(motion);
     assert(abs(closure_error) < 0.08,"superformula_gear_pair: conjugate closure error too large");
     driver=_cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,samples);
-    mate=_cg_superformula_mate_points_from_driver(scale,symmetry,a,b,n1,n2,n3,D,samples);
-    _cg_pair_assembly(D,motion,phase,together_built,max([for(p=driver) _cg_vlen(p)]),max([for(p=mate) _cg_vlen(p)]),modul,driver,mate,tooth_number,pressure_angle,tooth_phase,backlash,clearance) {
-        color(driver_color) curve_gear_superformula(modul,tooth_number,width,bore,symmetry,a,b,n1,n2,n3,pressure_angle,tooth_phase,backlash,clearance,samples);
-        color(mate_color) curve_gear_superformula_mate(modul,tooth_number,width,bore,symmetry,a,b,n1,n2,n3,pressure_angle,tooth_phase,backlash,clearance,samples);
-    }
+    mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
+    _cg_pair_assembly(D,motion,phase,together_built,_cg_pair_point_extent(driver),_cg_pair_point_extent(mate),modul,driver,mate,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,false,false,driver_color,mate_color);
 }
 
 module curve_gear_superformula_pair(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,samples=360,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
