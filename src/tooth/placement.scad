@@ -754,14 +754,16 @@ function _cg_final_boundary_collisions(placements,modul,clearance=undef) =
             len(placed)>3 ? [for(delta=[2:len(placed)-2]) for(i=[0:len(placed)-delta-1]) [i,i+delta]] : []
         ),
         pair_results=[for(pair=pair_order)
-            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])),
-                adjacent=(j==i+1 || (i==0 && j==len(placed)-1)),
+            let(i=pair[0],j=pair[1],source_distance=_cg_vlen(_cg_vsub(placed[i][4][0],placed[j][4][0])))
+            source_distance<=search_radius
+            ? let(adjacent=(j==i+1 || (i==0 && j==len(placed)-1)),
                 boundary_a=len(placed[i][6])<4 ? placed[i][6] : _cg_trim_tooth_boundary(placed[i][6],placed[i][8],placed[i][9]),
                 boundary_b=len(placed[j][6])<4 ? placed[j][6] : _cg_trim_tooth_boundary(placed[j][6],placed[j][8],placed[j][9]),
                 hits=_cg_tooth_non_top_collisions(boundary_a,boundary_b),
                 remaining_hits=adjacent && len(boundary_a)>8 && len(boundary_b)>8 && _cg_adjacent_contact_region(hits,modul) ? [] : hits,
                 top_hits=_cg_tooth_top_collisions(boundary_a,boundary_b))
-            [i,j,source_distance,remaining_hits,top_hits]]
+                [i,j,source_distance,remaining_hits,top_hits]
+            : [i,j,source_distance,[],[]]]
     )
     len(placed)<2 ? [] : concat(
         [for(result=pair_results)
