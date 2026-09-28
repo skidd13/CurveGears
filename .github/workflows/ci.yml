@@ -17,9 +17,17 @@ jobs:
           sudo apt-get install --yes openscad ripgrep xvfb libgl1-mesa-dri libglu1-mesa
       - name: Regression tests
         run: |
+          failed=0
+          echo '## Regression group results' >> "$GITHUB_STEP_SUMMARY"
           for family in $(make ci-regression-groups); do
-            xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY="$family" OPENSCAD=openscad
+            if xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY="$family" OPENSCAD=openscad; then
+              echo "- [x] `$family`" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- [ ] `$family` — failed" >> "$GITHUB_STEP_SUMMARY"
+              failed=1
+            fi
           done
+          exit "$failed"
       - name: Validate generated documentation
         run: |
           make readme

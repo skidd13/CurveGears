@@ -4,4 +4,4 @@
  * Source: [`cusp/curve_gear_cusp_body.scad`](cusp/curve_gear_cusp_body.scad)
  */
 use <../../../src/cusp/gear.scad>
-curve_gear_cusp_body(1.2,36,4,0);
+curve_gear_cusp_body(1.2,36,4,4.8);
