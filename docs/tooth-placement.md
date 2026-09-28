@@ -27,6 +27,8 @@ permitted.
 
 > [`_cg_outward_normal`](#function-_cg_outward_normal): Return the contour-winding outward normal.
 
+> [`_cg_outward_normal_from_winding(tangent, winding)`](#function-_cg_outward_normal_from_windingtangent-winding): Return the outward normal for a tangent and known contour winding.
+
 > [`_cg_curve_tangent(points, i)`](#function-_cg_curve_tangentpoints-i): Estimate a centred tangent vector at a closed-curve point index.
 
 > [`_cg_polyline_arc_table(points)`](#function-_cg_polyline_arc_tablepoints): Build a cumulative arc-length table for a closed polyline.
@@ -133,6 +135,22 @@ Return the contour-winding outward normal.
 
 - `points`: {array of points} Closed contour.
 - `tangent`: {vector} Local tangent vector.
+
+**Returns:**
+
+- `{vector}`: Winding-aware outward normal.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_outward_normal_from_winding(tangent, winding)`
+
+
+Return the outward normal for a tangent and known contour winding.
+
+**Parameters:**
+
+- `tangent`: {vector} Local tangent vector.
+- `winding`: {-1 or 1} Signed contour winding.
 
 **Returns:**
 
@@ -332,8 +350,6 @@ Build the closed canonical body before teeth merge.
 **Parameters:**
 
 - `points`: {array of points} Closed pitch contour.
-- `arc`: {array} Cumulative arc-length table.
-- `perimeter`: {number > 0} Total contour perimeter.
 - `dedendum`: {number >= 0} Radial inward offset.
 - `radial_root`: {boolean, default false} Use radial rather than normal offset.
 

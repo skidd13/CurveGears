@@ -22,7 +22,7 @@ points=[for(i=[0:samples-1])
     [pitch_radius*cos(360*i/samples),pitch_radius*sin(360*i/samples)]];
 arc=_cg_polyline_arc_table(points);
 perimeter=arc[len(arc)-1][1];
-body=_cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul),false);
+body=_cg_canonical_body_polyline(points,_cg_dedendum(modul),false);
 candidate=_cg_reference_tooth_candidate(pitch_radius,modul,tooth_number,20);
 placements=[for(j=[0:tooth_number-1])
     _cg_placement_result(points,arc,perimeter,body,modul,tooth_number,j,candidate,20,0,false,undef,undef)];

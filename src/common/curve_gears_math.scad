@@ -232,7 +232,7 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
     state=prepared_state;
     arc=is_undef(state) ? _cg_polyline_arc_table(points) : state[1];
     perimeter=arc[len(arc)-1][1];
-    body_outline=is_undef(state) ? _cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul,clearance),radial_root) : state[3];
+    body_outline=is_undef(state) ? _cg_canonical_body_polyline(points,_cg_dedendum(modul,clearance),radial_root) : state[3];
     assert(perimeter > 0,"_cg_gear_2d_from_pitch_points: pitch perimeter must be positive");
     assert(_cg_polyline_finite(body_outline),"stage=body severity=error code=BODY_NONFINITE_GEOMETRY eps_len=1e-7");
     assert(len(body_outline)>=3,"stage=body severity=error code=BODY_OPEN effective_points<3");

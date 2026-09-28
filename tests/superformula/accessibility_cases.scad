@@ -11,7 +11,7 @@ function accessibility_results(points,modul,tooth_number,candidate) =
     let(
         arc=_cg_polyline_arc_table(points),
         perimeter=arc[len(arc)-1][1],
-        body=_cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul),false)
+        body=_cg_canonical_body_polyline(points,_cg_dedendum(modul),false)
     )
     [for(i=[0:tooth_number-1])
         let(target=perimeter*(i+.25)/tooth_number,

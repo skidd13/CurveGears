@@ -11,7 +11,7 @@ tooth_number=34;
 points=[for(i=[0:samples-1]) [10*cos(360*i/samples),10*sin(360*i/samples)]];
 arc=_cg_polyline_arc_table(points);
 perimeter=arc[len(arc)-1][1];
-body=_cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul));
+body=_cg_canonical_body_polyline(points,_cg_dedendum(modul));
 candidate=_cg_reference_tooth_candidate(modul*tooth_number/2,modul,tooth_number,20);
 zero=_cg_placement_result(points,arc,perimeter,body,modul,tooth_number,7,candidate,20,0,false,undef,undef);
 phased=_cg_placement_result(points,arc,perimeter,body,modul,tooth_number,7,candidate,20,90,false,undef,undef);

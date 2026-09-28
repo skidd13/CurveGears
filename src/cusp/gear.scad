@@ -99,7 +99,7 @@ function _cg_cusp_anchor_placement(points,arc,perimeter,body,modul,tooth_number,
 function _cg_cusp_prepared_state(points,modul,tooth_number,pressure_angle,backlash,clearance,tip_candidate,phase=-90) =
     let(
         arc=_cg_polyline_arc_table(points),perimeter=arc[len(arc)-1][1],
-        body=_cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul,clearance),true),
+        body=_cg_canonical_body_polyline(points,_cg_dedendum(modul,clearance),true),
         cusps=_cg_cusp_indices(tooth_number),
         standard=_cg_reference_tooth_candidate(modul*tooth_number/2,modul,tooth_number,pressure_angle,backlash,clearance,true),
         ordinary=[for(i=[0:tooth_number-1]) if(len([for(c=cusps) if(c==i) 1])==0)

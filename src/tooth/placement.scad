@@ -24,7 +24,16 @@ include <generation.scad>
  * @return {vector} Winding-aware outward normal.
  */
 function _cg_outward_normal(points,tangent) =
-    _cg_signed_area(points) >= 0
+    _cg_outward_normal_from_winding(tangent,_cg_signed_area(points) >= 0 ? 1 : -1);
+
+/*** @function _cg_outward_normal_from_winding(tangent, winding)
+ * @brief Return the outward normal for a tangent and known contour winding.
+ * @param tangent {vector} Local tangent vector.
+ * @param winding {-1 or 1} Signed contour winding.
+ * @return {vector} Winding-aware outward normal.
+ */
+function _cg_outward_normal_from_winding(tangent,winding) =
+    winding >= 0
         ? [tangent[1],-tangent[0]]
         : [-tangent[1],tangent[0]];
 
@@ -110,8 +119,8 @@ function _cg_local_frame_for_closed_arc(points,arc,perimeter,target) =
         sample=_cg_closed_arc_sample(points,arc,target),
         point=sample[0],
         tangent=_cg_vunit(sample[1]),
-        normal=_cg_outward_normal(points,tangent),
-        winding=_cg_signed_area(points) >= 0 ? 1 : -1
+        winding=_cg_signed_area(points) >= 0 ? 1 : -1,
+        normal=_cg_outward_normal_from_winding(tangent,winding)
     )
     [point,tangent,normal,winding];
 
@@ -177,15 +186,19 @@ function _cg_canonical_body_point_from_frame(frame,dedendum,radial_root=false) =
  * @function _cg_canonical_body_polyline
  * @brief Build the closed canonical body before teeth merge.
  * @param points {array of points} Closed pitch contour.
- * @param arc {array} Cumulative arc-length table.
- * @param perimeter {number > 0} Total contour perimeter.
  * @param dedendum {number >= 0} Radial inward offset.
  * @param radial_root {boolean, default false} Use radial rather than normal offset.
  * @return {array of points} Closed canonical body polyline.
  */
-function _cg_canonical_body_polyline(points,arc,perimeter,dedendum,radial_root=false) =
+function _cg_canonical_body_polyline(points,dedendum,radial_root=false) =
+    let(winding=_cg_signed_area(points) >= 0 ? 1 : -1)
     [for(i=[0:len(points)-1])
-        _cg_canonical_body_point_at_arc(points,arc,perimeter,arc[i][1],dedendum,radial_root)];
+        let(
+            point=points[i],
+            tangent=_cg_vunit(_cg_curve_tangent(points,i)),
+            normal=_cg_outward_normal_from_winding(tangent,winding),
+            frame=[point,tangent,normal,winding]
+        ) _cg_canonical_body_point_from_frame(frame,dedendum,radial_root)];
 
 /*** @function _cg_arc_mean_segment_length(arc)
  * @brief Calculate the mean segment length represented by an arc table.
@@ -573,7 +586,7 @@ function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,to
     let(
         arc=_cg_polyline_arc_table(points),
         perimeter=arc[len(arc)-1][1],
-        body=_cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul,clearance),radial_root),
+        body=_cg_canonical_body_polyline(points,_cg_dedendum(modul,clearance),radial_root),
         placement_state=body_only ? [undef,[]] : is_undef(prepared_placement_state)
             ? _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance)
             : prepared_placement_state,
