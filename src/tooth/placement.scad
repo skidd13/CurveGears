@@ -296,11 +296,12 @@ function _cg_segment_hits_polygon(a,b,polygon_points) =
  * @param candidate {array} Local tooth candidate.
  * @param radial_root {boolean, default false} Use radial root geometry.
  * @param clearance {number, default undef} Additional corridor clearance.
+ * @param prepared_frame {array or undef} Reuse a frame already resolved for this target.
  * @return {array} Accessibility result and diagnostic data.
  */
-function _cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,modul,candidate,radial_root=false,clearance=undef) =
+function _cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,modul,candidate,radial_root=false,clearance=undef,prepared_frame=undef) =
     let(
-        frame=_cg_local_frame_for_closed_arc(points,arc,perimeter,target),
+        frame=is_undef(prepared_frame) ? _cg_local_frame_for_closed_arc(points,arc,perimeter,target) : prepared_frame,
         dedendum=_cg_dedendum(modul,clearance),
         base=_cg_canonical_body_point_from_frame(frame,dedendum,radial_root),
         tangent=frame[1],normal=frame[2],
@@ -480,7 +481,7 @@ function _cg_placement_invalid(index,target,frame,candidate,code) =
 function _cg_placement_after_preflight(points,arc,perimeter,body,modul,tooth_number,tooth_index,candidate,pressure_angle,tooth_phase,radial_root,backlash,clearance,frame,tooth_pitch,target) =
     let(
         reference_pitch_radius=modul*tooth_number/2,
-        accessibility=_cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,modul,candidate,radial_root,clearance),
+        accessibility=_cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,modul,candidate,radial_root,clearance,frame),
         accessible=!accessibility[0],
         boundary=accessible ? [for(p=[0:len(candidate[8])-1]) _cg_profile_point_at_frame(candidate[8][p],frame[0],frame[2],frame[1],reference_pitch_radius)] : [],
         hits=boundary==[] ? [] : _cg_unique_hits(_cg_tooth_body_intersections(boundary,body)),

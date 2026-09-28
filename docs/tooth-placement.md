@@ -477,6 +477,7 @@ Test the outward engagement corridor against remote body segments.
 - `candidate`: {array} Local tooth candidate.
 - `radial_root`: {boolean, default false} Use radial root geometry.
 - `clearance`: {number, default undef} Additional corridor clearance.
+- `prepared_frame`: {array or undef} Reuse a frame already resolved for this target.
 
 **Returns:**
 
