@@ -20,7 +20,7 @@
  * curve_gear_cassini_pair(1, 24, 4, 8);
  */
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 /***
  * @function _cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")

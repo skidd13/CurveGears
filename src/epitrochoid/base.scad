@@ -6,12 +6,12 @@
  * `x=(R+r)cos(theta)-d cos((R+r)theta/r)` and
  * `y=(R+r)sin(theta)-d sin((R+r)theta/r)`. The documented ratio constraints
  * reject cusp and loop cases; high curvature may require more samples.
+ * Family-specific helper names preserve internal contracts consumed by mate
+ * generation.
  * Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
  */
-include <../trochoid/base.scad>
+include <../common/trochoid/base.scad>
 
-// Public-family aliases over the shared trochoid implementation. Keeping the
-// family names here preserves the internal contracts used by mate generation.
 /***
  * @function _cg_epitrochoid_point(R, r, d, theta)
  * @brief Evaluate one point on the unit rolling-circle epitrochoid.

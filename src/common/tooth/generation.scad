@@ -1,4 +1,4 @@
-include <../common/common_math.scad>
+include <../common_math.scad>
 
 /***
  * @module Tooth Generation
@@ -10,13 +10,8 @@ include <../common/common_math.scad>
  * ordering, top geometry, crossings, then the expensive boundary scan.
  */
 
-// Tooth generation is deliberately independent of curve-family placement.
-// This file owns the pinned reference equations, one reusable local tooth,
-// and the cheap-to-expensive validation pipeline for that candidate.
-
-// Local circular-involute approximation, derived from the pinned reference.
 /*** @function _cg_involute(r, rho)
- * @brief Evaluate one point of the local circular involute approximation.
+ * @brief Evaluate one point of the local circular involute approximation derived from the pinned reference involute equations.
  * @param r {number > 0} Base radius in mm.
  * @param rho {angle} Involute parameter in degrees.
  * @return {array} `[radius, angle]` polar point.
@@ -77,11 +72,9 @@ function _cg_tooth_polygon(modul,z,pressure_angle=20,backlash=undef) =
         [_cg_polar(_cg_involute(a[0],a[2]))],
         [for(rho=[a[2]:-step:0]) _cg_polar([_cg_involute(a[0],rho)[0],a[3]-_cg_involute(a[0],rho)[1]])]);
 
-// Compatibility oracle module. Production family gears use the calculated
-// 2D candidate below; this module remains available for legacy consumers.
 /***
  * @function _cg_involute_tooth(modul, tooth_number, pressure_angle, backlash)
- * @brief Render the legacy compatibility involute-tooth module.
+ * @brief Render the bounded legacy compatibility involute-tooth module; production family gears use the calculated 2D candidate, while this module remains available to legacy consumers.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param pressure_angle {angle, default 20} Involute pressure angle in degrees.
@@ -324,7 +317,7 @@ function _cg_reference_involute_local_point(base_radius,rho,start_angle,end_angl
 
 /**
  * @function _cg_reference_tooth_local_flanks
- * @brief Build one cached local tooth flank pair.
+ * @brief Build one cached local tooth flank pair; the reference Boolean cutter's centre sentinel becomes a false inward spoke in a curved frame, so bounded normal extensions establish the body splices.
  * @param modul {number > 0} Tooth module.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param pressure_angle {number} Involute pressure angle in degrees.
@@ -345,9 +338,6 @@ function _cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressu
         root_x=min([left_involute[0][0],right_involute[0][0],pitch_radius-root_depth])
     )
     [
-        // The reference Boolean cutter used a centre sentinel. In a curved
-        // frame that sentinel becomes a false inward spoke, so use only the
-        // bounded normal extension needed to establish body splices.
         concat(root_x < left_involute[0][0]-_cg_eps_len() ? [[root_x,left_involute[0][1]]] : [],left_involute),
         concat(root_x < right_involute[0][0]-_cg_eps_len() ? [[root_x,right_involute[0][1]]] : [],right_involute)
     ];
@@ -394,11 +384,8 @@ function _cg_validate_candidate_boundary(left,right,left_top,right_top,top_width
     )
     _cg_candidate_record(code=="PASS",code,top_width,tip_normal_error,left,right,left_top,right_top,code=="PASS" ? boundary : [],left_hits,right_hits);
 
-// Stage 4: exact top/flank crossings and the most expensive local polygon scan.
-// Keep the scan in a separate function: OpenSCAD then evaluates it only after
-// the cheap top/flank crossing test has passed.
 /*** @function _cg_validate_candidate_top_geometry(left, right, left_top, right_top, top_width, tip_normal_error, left_hits, right_hits)
- * @brief Check top-line crossings before the final boundary scan.
+ * @brief Check top-line crossings before the final boundary scan (stage 4); the expensive scan stays separate so OpenSCAD evaluates it only after the top/flank crossing checks pass.
  * @param left {array} Left flank points.
  * @param right {array} Right flank points.
  * @param left_top {array} Left top point.
@@ -415,10 +402,8 @@ function _cg_validate_candidate_top_geometry(left,right,left_top,right_top,top_w
         ? _cg_candidate_record(false,"TOOTH_POLYGON_SELF_INTERSECTION",top_width,tip_normal_error,left,right,left_top,right_top,[],left_hits,right_hits)
         : _cg_validate_candidate_boundary(left,right,left_top,right_top,top_width,tip_normal_error,left_hits,right_hits);
 
-// Stage 3: top-line intersections and order. Do not scan crossings until the
-// cheap cardinality, width, endpoint and tangency conditions have passed.
 /*** @function _cg_validate_candidate_top(left, right)
- * @brief Validate top intersections, width, endpoint order and tangency.
+ * @brief Validate top intersections, width, endpoint order and tangency (stage 3), after flank cardinality checks and before crossing scans.
  * @param left {array} Left flank points.
  * @param right {array} Right flank points.
  * @return {array} Validated or failed candidate record.
@@ -447,9 +432,8 @@ function _cg_validate_candidate_top(left,right) =
     endpoint_code!="PASS" ? _cg_candidate_record(false,endpoint_code,top_width,tip_normal_error,left,right,left_top,right_top,[],left_top_hits,right_top_hits) :
     _cg_validate_candidate_top_geometry(left,right,left_top,right_top,top_width,tip_normal_error,left_top_hits,right_top_hits);
 
-// Stage 2: cheap flank structure before top intersections or crossings.
 /*** @function _cg_validate_candidate_flanks(flanks)
- * @brief Validate finite and ordered flanks before top and boundary checks.
+ * @brief Validate finite, ordered flanks (stage 2) before top intersections or crossing scans.
  * @param flanks {array} Pair of left and right flank point lists.
  * @return {array} Validated or failed candidate record.
  */

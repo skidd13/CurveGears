@@ -39,7 +39,6 @@ module _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(eccentricity >= 0 && eccentricity < 1,"pascal_gear: eccentricity must satisfy 0 <= eccentricity < 1");
 
     unit_points=_cg_pascal_points(1,eccentricity,samples);
@@ -52,11 +51,9 @@ module _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure
         echo("pascal_gear: non-convex Pascal geometry is experimental; full-cycle physical meshing remains unproven");
 
     _cg_assert_samples(samples);
-    // Drawing
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,_cg_pascal_requires_radial_root(eccentricity),backlash,clearance,body_only);
 }
 
-// Single gear; mm dimensions, degree angles, Z=0 lower face.
 module curve_gear_pascal(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_pascal_build(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false);
 }
@@ -79,7 +76,6 @@ module curve_gear_pascal(modul,tooth_number,width,bore,eccentricity=0.25,pressur
  * @example c
  * curve_gear_pascal_body(1, 24, 4, 8);
  */
-// Body solid without teeth.
 module curve_gear_pascal_body(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_pascal_build(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
 }

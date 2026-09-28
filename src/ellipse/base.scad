@@ -10,10 +10,9 @@
  */
 include <../common/curve_gears_math.scad>
 
-// Centred ellipse: r=ab/sqrt(b² cos²θ+a² sin²θ); Ramanujan perimeter approximation.
 /***
  * @function _cg_ellipse_axes(modul, tooth_number, eccentricity)
- * @brief Calculate the ellipse semi-axes for a requested module and tooth count.
+ * @brief Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param eccentricity {0 <= e < 1} Ellipse eccentricity.

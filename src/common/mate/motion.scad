@@ -12,7 +12,7 @@
  * derive both radii from a displacement law before entering this same core.
  * These equations define pitch geometry, not exact tooth-flank geometry.
  */
-include <../common/common_math.scad>
+include <../common_math.scad>
 
 /***
  * @function _cg_motion_values_from_mid_radii(mid_radii, D)

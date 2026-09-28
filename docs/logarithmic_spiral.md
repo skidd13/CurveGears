@@ -23,7 +23,7 @@ Reference: https://mathshistory.st-andrews.ac.uk/Curves/Equiangular/.
 
 **Functions**:
 
-> [`_cg_logspiral_radius(rmin, growth_rate, t)`](#function-_cg_logspiral_radiusrmin-growth_rate-t): Evaluate the logarithmic-spiral radius at a sector parameter.
+> [`_cg_logspiral_radius(rmin, growth_rate, t)`](#function-_cg_logspiral_radiusrmin-growth_rate-t): Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; radial returns are broad transitions, not ordinary teeth.
 
 > [`_cg_logspiral_angle(sectors, sector, t)`](#function-_cg_logspiral_anglesectors-sector-t): Convert a spiral sector parameter to a polar angle.
 
@@ -43,7 +43,7 @@ Reference: https://mathshistory.st-andrews.ac.uk/Curves/Equiangular/.
 
 > [`curve_gear_logarithmic_spiral(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiralmodul-tooth_number-width-bore-): Build a logarithmic-spiral non-circular gear.
 
-> [`_cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false)`](#function-_cg_logarithmic_spiral_buildmodultooth_numberwidthboresectors1growth_rate117pressure_angle20tooth_phase0backlashundefclearanceundefsamples360orientation0body_onlyfalse): Internal logarithmic spiral construction dispatcher.
+> [`_cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false)`](#function-_cg_logarithmic_spiral_buildmodultooth_numberwidthboresectors1growth_rate117pressure_angle20tooth_phase0backlashundefclearanceundefsamples360orientation0body_onlyfalse): Dispatch logarithmic-spiral construction, building its spiral and radial returns as one canonical 2D boundary; long return segments form inaccessible tooth corridors, so ordinary teeth are omitted there.
 
 > [`curve_gear_logarithmic_spiral_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiral_bodymodul-tooth_number-width-bore-): Build the logarithmic-spiral body solid without teeth.
 
@@ -63,7 +63,7 @@ The module `Logarithmic Spiral` defines the following functions.
 ### Function `_cg_logspiral_radius(rmin, growth_rate, t)`
 
 
-Evaluate the logarithmic-spiral radius at a sector parameter.
+Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; radial returns are broad transitions, not ordinary teeth.
 
 **Parameters:**
 
@@ -262,7 +262,7 @@ Back to [module description](#module-logarithmic-spiral).
 ### Function `_cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false)`
 
 
-Internal logarithmic spiral construction dispatcher.
+Dispatch logarithmic-spiral construction, building its spiral and radial returns as one canonical 2D boundary; long return segments form inaccessible tooth corridors, so ordinary teeth are omitted there.
 
 **Parameters:**
 

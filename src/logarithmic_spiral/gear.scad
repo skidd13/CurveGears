@@ -25,7 +25,7 @@ include <base.scad>
 module _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false) {
 /***
  * @function _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false)
- * @brief Internal logarithmic spiral construction dispatcher.
+ * @brief Dispatch logarithmic-spiral construction, building its spiral and radial returns as one canonical 2D boundary; long return segments form inaccessible tooth corridors, so ordinary teeth are omitted there.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
  * @param width {number} Extrusion width in mm.
@@ -41,7 +41,6 @@ module _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,grow
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(sectors >= 1 && floor(sectors)==sectors,"logarithmic_spiral_gear: sectors must be an integer >= 1");
     assert(tooth_number >= 3 && floor(tooth_number)==tooth_number,"logarithmic_spiral_gear: tooth_number must be an integer >= 3");
     assert(tooth_number % sectors == 0,"logarithmic_spiral_gear: tooth_number must be divisible by sectors");
@@ -50,15 +49,11 @@ module _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,grow
     rmin=_cg_logspiral_rmin(modul,tooth_number,sectors,growth_rate);
 
     _cg_assert_samples(samples);
-    // The shared builder keeps the spiral and its radial returns in one
-    // canonical 2D boundary.  Long return segments are evaluated as
-    // inaccessible tooth corridors, so no ordinary tooth is placed there.
     points=_cg_logspiral_pitch_points(rmin,growth_rate,sectors,samples);
     rotate([0,0,orientation])
         _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,true,backlash,clearance,body_only);
 }
 
-// Single gear; mm dimensions, degree angles, Z=0 lower face.
 module curve_gear_logarithmic_spiral(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0) {
     _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors,growth_rate,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false);
 }
@@ -82,7 +77,6 @@ module curve_gear_logarithmic_spiral(modul,tooth_number,width,bore,sectors=1,gro
  * @example c
  * curve_gear_logarithmic_spiral_body(1, 24, 4, 8);
  */
-// Body solid without teeth.
 module curve_gear_logarithmic_spiral_body(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0) {
     _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors,growth_rate,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
 }

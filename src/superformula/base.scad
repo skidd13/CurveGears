@@ -6,10 +6,12 @@
  * |sin(m theta/4)/b|^n3)^(-1/n1)`. Odd symmetry requires `a=b` and `n2=n3`
  * for full-turn continuity; sharp or concave profiles require sufficient
  * sampling and clearance. Reference: https://pubmed.ncbi.nlm.nih.gov/21659124/.
+ * Introduced by Johan Gielis, “A generic geometric transformation that
+ * unifies a wide range of natural and abstract shapes,” American Journal of
+ * Botany 90 (2003), 333–338.
  */
 include <../common/curve_gears_math.scad>
 
-// Johan Gielis, A generic geometric transformation that unifies a wide range of natural and abstract shapes, American Journal of Botany 90 (2003), 333–338.
 /***
  * @function _cg_superformula_unit_radius(symmetry, a, b, n1, n2, n3, theta)
  * @brief Evaluate the unit Gielis superformula radius.

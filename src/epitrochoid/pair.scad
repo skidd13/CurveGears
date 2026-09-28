@@ -24,7 +24,7 @@
  * curve_gear_epitrochoid_pair(1, 24, 4, 8);
  */
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 module curve_gear_epitrochoid_pair(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
     assert(major_ratio > rolling_ratio && rolling_ratio > 0 && offset_ratio > 0 && offset_ratio < rolling_ratio,"epitrochoid: require major_ratio > rolling_ratio > 0 and 0 < offset_ratio < rolling_ratio");

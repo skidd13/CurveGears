@@ -9,10 +9,9 @@
  */
 include <../common/curve_gears_math.scad>
 
-// Logarithmic spiral: r=rmin*g^(2*pi*t). Radial returns are broad transitions, not ordinary teeth.
 /***
  * @function _cg_logspiral_radius(rmin, growth_rate, t)
- * @brief Evaluate the logarithmic-spiral radius at a sector parameter.
+ * @brief Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; radial returns are broad transitions, not ordinary teeth.
  * @param rmin {number > 0} Minimum radius in mm.
  * @param growth_rate {number > 1} Exponential growth base in the sector formula.
  * @param t {number} Normalised sector parameter.

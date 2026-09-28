@@ -53,7 +53,7 @@ are documented together below.
 
 > [`_cg_cusp_threefold_radii(outline, samples, midpoint, pitch_offset)`](#function-_cg_cusp_threefold_radiioutline-samples-midpoint-pitch_offset): Sample outline radii for all three repeated deltoid sectors.
 
-> [`_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`](#function-_cg_cusp_pair_motion_geometrymodul-tooth_number-pressure_angle-backlash-clearance-samples): Build the validated driver, radial motion data, distance, and motion table.
+> [`_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`](#function-_cg_cusp_pair_motion_geometrymodul-tooth_number-pressure_angle-backlash-clearance-samples): Build the validated driver, radial motion data, solved distance, and motion table using the unmodified deltoid pitch curve for rolling and passing its tooth outline separately to the swept-envelope mate builder.
 
 > [`_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_cusp_buildmodul-tooth_number-width-bore-pressure_angle20-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct the validated cusp body or complete gear.
 
@@ -336,7 +336,7 @@ Back to [module description](#module-cusp).
 ### Function `_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`
 
 
-Build the validated driver, radial motion data, distance, and motion table.
+Build the validated driver, radial motion data, solved distance, and motion table using the unmodified deltoid pitch curve for rolling and passing its tooth outline separately to the swept-envelope mate builder.
 
 **Parameters:**
 

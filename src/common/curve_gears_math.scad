@@ -3,13 +3,10 @@
  * @brief Shared body assembly and boundary construction helpers.
  *
  * This layer connects pitch-curve placement to the public one-extrusion gear
- * contract. Its functions and modules are internal implementation primitives.
+ * contract. Tooth generation and placement remain separately includable; the
+ * functions and modules here are internal implementation primitives.
  */
-include <../tooth/placement.scad>
-
-// Gear-layer responsibilities begin here. Tooth generation and tooth
-// placement are separately includable; this file owns body assembly and the
-// public one-extrusion boundary contract.
+include <tooth/placement.scad>
 
 /**
  * @module _cg_assert_gear_inputs

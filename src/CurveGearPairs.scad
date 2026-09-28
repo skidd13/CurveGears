@@ -4,7 +4,6 @@
  *
  * Prefer direct family imports when only one pair implementation is needed.
  */
-// Optional pair convenience imports.
 include <circle/pair.scad>
 include <cusp/pair.scad>
 include <ellipse/pair.scad>

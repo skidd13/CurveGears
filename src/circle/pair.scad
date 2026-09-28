@@ -1,5 +1,5 @@
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 /***
  * @function curve_gear_circle_pair(modul, tooth_number, width, bore, ...)

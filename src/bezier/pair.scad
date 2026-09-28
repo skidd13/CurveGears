@@ -1,10 +1,9 @@
-// Meshed pair using the admissible Bézier radial mate adapter.
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 /**
  * @function curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)
- * @brief Build a meshed or separated pair from an admissible Bézier curve.
+ * @brief Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
  * @image ../images/functions/bezier/curve_gear_bezier_pair.png Bézier pair preview
  * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier asymmetric alternative pair
  * @param modul {number > 0} Tooth module in mm.

@@ -41,7 +41,6 @@ module _cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pre
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(lobes >= 2 && floor(lobes)==lobes,"lobed_gear: lobes must be an integer >= 2");
     assert(lobe_depth > 0 && lobe_depth < 0.5,"lobed_gear: lobe_depth must satisfy 0 < lobe_depth < 0.5");
 
@@ -50,11 +49,9 @@ module _cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pre
     points=_cg_scale_points(scale,unit_points);
 
     _cg_assert_samples(samples);
-    // Drawing
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
 }
 
-// Single gear; mm dimensions, degree angles, Z=0 lower face.
 module curve_gear_lobed(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_lobed_build(modul,tooth_number,width,bore,lobes,lobe_depth,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false);
 }
@@ -78,7 +75,6 @@ module curve_gear_lobed(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pr
  * @example c
  * curve_gear_lobed_body(1, 24, 4, 8);
  */
-// Body solid without teeth.
 module curve_gear_lobed_body(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_lobed_build(modul,tooth_number,width,bore,lobes,lobe_depth,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
 }

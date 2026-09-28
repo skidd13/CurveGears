@@ -9,10 +9,9 @@
  */
 include <../common/curve_gears_math.scad>
 
-// Harmonic polar curve: r=s(1+d cos(kθ)); arc-length tooth placement.
 /***
  * @function _cg_lobed_unit_radius(lobes, lobe_depth, theta)
- * @brief Evaluate the unit radial modulation of a lobed pitch curve.
+ * @brief Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
  * @param lobes {integer >= 1} Number of radial lobes.
  * @param lobe_depth {0 <= d < 1} Radial modulation depth.
  * @param theta {angle} Polar angle in degrees.

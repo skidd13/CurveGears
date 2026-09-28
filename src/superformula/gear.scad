@@ -50,7 +50,6 @@ module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(symmetry >= 2 && floor(symmetry)==symmetry,"superformula_gear: symmetry must be an integer >= 2");
     assert(a>0 && b>0 && n1>0 && n2>0 && n3>0,"superformula_gear: a,b,n1,n2,n3 must be positive");
     assert(_cg_superformula_odd_valid(symmetry,a,b,n2,n3),"superformula_gear: odd symmetry requires a=b and n2=n3 for 360-degree continuity");
@@ -60,11 +59,9 @@ module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n
     points=_cg_scale_points(scale,unit_points);
 
     _cg_assert_samples(samples);
-    // Drawing
     rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
 }
 
-// Single gear; mm dimensions, degree angles, Z=0 lower face.
 module curve_gear_superformula(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_superformula_build(modul,tooth_number,width,bore,symmetry,a,b,n1,n2,n3,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false);
 }
@@ -92,7 +89,6 @@ module curve_gear_superformula(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,
  * @example c
  * curve_gear_superformula_body(1, 24, 4, 8);
  */
-// Body solid without teeth.
 module curve_gear_superformula_body(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_superformula_build(modul,tooth_number,width,bore,symmetry,a,b,n1,n2,n3,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
 }

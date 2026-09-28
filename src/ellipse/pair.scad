@@ -22,7 +22,7 @@
  * curve_gear_ellipse_pair(1, 24, 4, 8);
  */
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 module _cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
 /***
@@ -44,7 +44,6 @@ module _cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pr
  * @param mate_color {string, default "Gold"} Mate display colour.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(eccentricity >= 0 && eccentricity < 1,"elliptical_gear_pair: eccentricity must satisfy 0 <= e < 1");
     axes=_cg_ellipse_axes(modul,tooth_number,eccentricity);
     a=axes[0]; b=axes[1];

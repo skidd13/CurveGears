@@ -23,7 +23,7 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 **Functions**:
 
-> [`_cg_lobed_unit_radius(lobes, lobe_depth, theta)`](#function-_cg_lobed_unit_radiuslobes-lobe_depth-theta): Evaluate the unit radial modulation of a lobed pitch curve.
+> [`_cg_lobed_unit_radius(lobes, lobe_depth, theta)`](#function-_cg_lobed_unit_radiuslobes-lobe_depth-theta): Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
 
 > [`_cg_lobed_point(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_pointscale-lobes-lobe_depth-theta): Evaluate one Cartesian point on a scaled lobed pitch curve.
 
@@ -69,7 +69,7 @@ The module `Lobed` defines the following functions.
 ### Function `_cg_lobed_unit_radius(lobes, lobe_depth, theta)`
 
 
-Evaluate the unit radial modulation of a lobed pitch curve.
+Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
 
 **Parameters:**
 

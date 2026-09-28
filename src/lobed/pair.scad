@@ -23,7 +23,7 @@
  * curve_gear_lobed_pair(1, 24, 4, 8);
  */
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 module _cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
 /***
@@ -46,7 +46,6 @@ module _cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.1
  * @param mate_color {string, default "Gold"} Mate display colour.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(lobes >= 2 && floor(lobes)==lobes,"lobed_gear_pair: lobes must be an integer >= 2");
     assert(lobe_depth > 0 && lobe_depth < 0.5,"lobed_gear_pair: lobe_depth must satisfy 0 < lobe_depth < 0.5");
     _cg_assert_samples(samples,"lobed_gear_pair: samples must be an integer >= 120");

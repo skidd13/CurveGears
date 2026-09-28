@@ -85,7 +85,7 @@ permitted.
 
 > [`_cg_placement_after_preflight(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, pressure_angle, tooth_phase, radial_root, backlash, clearance, frame, tooth_pitch, target)`](#function-_cg_placement_after_preflightpoints-arc-perimeter-body-modul-tooth_number-tooth_index-candidate-pressure_angle-tooth_phase-radial_root-backlash-clearance-frame-tooth_pitch-target): Evaluate accessibility and body intersections after cheap placement checks.
 
-> [`_cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)`](#function-_cg_placement_resultpoints-arc-perimeter-body-modul-tooth_number-tooth_index-candidate-): Classify one candidate as placed, omitted or invalid.
+> [`_cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)`](#function-_cg_placement_resultpoints-arc-perimeter-body-modul-tooth_number-tooth_index-candidate-): Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
 
 > [`_cg_tooth_placement_state`](#function-_cg_tooth_placement_state): Build the shared tooth candidate and placement records for prepared geometry.
 
@@ -649,7 +649,7 @@ Back to [module description](#module-tooth-placement).
 
 ![Tooth placement result preview](../images/tooth/placement.png)
 
-Classify one candidate as placed, omitted or invalid.
+Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
 
 **Parameters:**
 

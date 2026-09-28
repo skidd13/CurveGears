@@ -1,6 +1,6 @@
 include <gear.scad>
-include <../mate/motion.scad>
-include <../mate/placement.scad>
+include <../common/mate/motion.scad>
+include <../common/mate/placement.scad>
 
 /**
  * @function _cg_cassini_motion_radii(scale, focus_ratio, n=720)

@@ -3,7 +3,7 @@
  * constructs the receiver from the complete validated driver outline.
  */
 include <gear.scad>
-include <../mate/envelope.scad>
+include <../common/mate/envelope.scad>
 
 /***
  * @function _cg_cusp_envelope_driver_outline(state)

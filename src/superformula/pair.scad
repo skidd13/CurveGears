@@ -27,7 +27,7 @@
  * curve_gear_superformula_pair(1, 24, 4, 8);
  */
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 module _cg_superformula_pair_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,samples=360,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
 /***
@@ -54,7 +54,6 @@ module _cg_superformula_pair_build(modul,tooth_number,width,bore,symmetry=4,a=1,
  * @param mate_color {string, default "Gold"} Mate display colour.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(symmetry >= 2 && floor(symmetry)==symmetry,"superformula_gear_pair: symmetry must be an integer >= 2");
     assert(a>0 && b>0 && n1>0 && n2>0 && n3>0,"superformula_gear_pair: a,b,n1,n2,n3 must be positive");
     assert(_cg_superformula_odd_valid(symmetry,a,b,n2,n3),"superformula_gear_pair: odd symmetry requires a=b and n2=n3 for 360-degree continuity");

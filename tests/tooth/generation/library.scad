@@ -5,8 +5,8 @@
  *
  * Exercise both the calculated polygon and the legacy compatibility module.
  */
-include <../../../src/tooth/generation.scad>
-include <../../../src/tooth/placement.scad>
+include <../../../src/common/tooth/generation.scad>
+include <../../../src/common/tooth/placement.scad>
 
 $fn=64;
 modul=.8;

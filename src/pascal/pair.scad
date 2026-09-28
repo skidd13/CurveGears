@@ -23,7 +23,7 @@
  * curve_gear_pascal_pair(1, 24, 4, 8);
  */
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 module _cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,samples=360,phase=0,together_built=true,experimental_nonconvex=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
 /***
@@ -46,7 +46,6 @@ module _cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pre
  * @param mate_color {string, default "Gold"} Mate display colour.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     assert(eccentricity >= 0 && eccentricity < 1,"pascal_gear_pair: eccentricity must satisfy 0 <= eccentricity < 1");
     assert(eccentricity < 0.5 || experimental_nonconvex,"pascal_gear_pair: eccentricity >= 0.5 requires experimental_nonconvex=true");
     _cg_assert_samples(samples,"pascal_gear_pair: samples must be an integer >= 120");

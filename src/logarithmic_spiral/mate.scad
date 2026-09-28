@@ -1,6 +1,6 @@
 include <gear.scad>
-include <../mate/motion.scad>
-include <../mate/placement.scad>
+include <../common/mate/motion.scad>
+include <../common/mate/placement.scad>
 
 /***
  * @function curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)

@@ -10,7 +10,7 @@
  * are documented together below.
  */
 include <../common/curve_gears_math.scad>
-include <../mate/motion.scad>
+include <../common/mate/motion.scad>
 
 /***
  * @function _cg_cusp_scale(modul, tooth_number)

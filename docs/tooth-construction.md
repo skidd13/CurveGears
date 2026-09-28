@@ -23,7 +23,7 @@ ordering, top geometry, crossings, then the expensive boundary scan.
 
 **Functions**:
 
-> [`_cg_involute(r, rho)`](#function-_cg_involuter-rho): Evaluate one point of the local circular involute approximation.
+> [`_cg_involute(r, rho)`](#function-_cg_involuter-rho): Evaluate one point of the local circular involute approximation derived from the pinned reference involute equations.
 
 > [`_cg_addendum(modul)`](#function-_cg_addendummodul): Calculate the reference addendum for a module.
 
@@ -37,7 +37,7 @@ ordering, top geometry, crossings, then the expensive boundary scan.
 
 > [`_cg_tooth_polygon(modul, z, pressure_angle, backlash)`](#function-_cg_tooth_polygonmodul-z-pressure_angle-backlash): Build the local polygon for one reference tooth.
 
-> [`_cg_involute_tooth(modul, tooth_number, pressure_angle, backlash)`](#function-_cg_involute_toothmodul-tooth_number-pressure_angle-backlash): Render the legacy compatibility involute-tooth module.
+> [`_cg_involute_tooth(modul, tooth_number, pressure_angle, backlash)`](#function-_cg_involute_toothmodul-tooth_number-pressure_angle-backlash): Render the bounded legacy compatibility involute-tooth module; production family gears use the calculated 2D candidate, while this module remains available to legacy consumers.
 
 > [`_cg_eps_len`](#function-_cg_eps_len): Return the shared positional tolerance for tooth checks.
 
@@ -77,17 +77,17 @@ ordering, top geometry, crossings, then the expensive boundary scan.
 
 > [`_cg_reference_involute_local_point`](#function-_cg_reference_involute_local_point): Evaluate one reference involute point.
 
-> [`_cg_reference_tooth_local_flanks`](#function-_cg_reference_tooth_local_flanks): Build one cached local tooth flank pair.
+> [`_cg_reference_tooth_local_flanks`](#function-_cg_reference_tooth_local_flanks): Build one cached local tooth flank pair; the reference Boolean cutter's centre sentinel becomes a false inward spoke in a curved frame, so bounded normal extensions establish the body splices.
 
 > [`_cg_candidate_record(valid, code, top_width, tip_normal_error, left, right, left_top, right_top, boundary, left_hits, right_hits)`](#function-_cg_candidate_recordvalid-code-top_width-tip_normal_error-left-right-left_top-right_top-boundary-left_hits-right_hits): Package the validated local-tooth candidate state.
 
 > [`_cg_validate_candidate_boundary(left, right, left_top, right_top, top_width, tip_normal_error, left_hits, right_hits)`](#function-_cg_validate_candidate_boundaryleft-right-left_top-right_top-top_width-tip_normal_error-left_hits-right_hits): Perform the final local tooth polygon self-intersection check.
 
-> [`_cg_validate_candidate_top_geometry(left, right, left_top, right_top, top_width, tip_normal_error, left_hits, right_hits)`](#function-_cg_validate_candidate_top_geometryleft-right-left_top-right_top-top_width-tip_normal_error-left_hits-right_hits): Check top-line crossings before the final boundary scan.
+> [`_cg_validate_candidate_top_geometry(left, right, left_top, right_top, top_width, tip_normal_error, left_hits, right_hits)`](#function-_cg_validate_candidate_top_geometryleft-right-left_top-right_top-top_width-tip_normal_error-left_hits-right_hits): Check top-line crossings before the final boundary scan (stage 4); the expensive scan stays separate so OpenSCAD evaluates it only after the top/flank crossing checks pass.
 
-> [`_cg_validate_candidate_top(left, right)`](#function-_cg_validate_candidate_topleft-right): Validate top intersections, width, endpoint order and tangency.
+> [`_cg_validate_candidate_top(left, right)`](#function-_cg_validate_candidate_topleft-right): Validate top intersections, width, endpoint order and tangency (stage 3), after flank cardinality checks and before crossing scans.
 
-> [`_cg_validate_candidate_flanks(flanks)`](#function-_cg_validate_candidate_flanksflanks): Validate finite and ordered flanks before top and boundary checks.
+> [`_cg_validate_candidate_flanks(flanks)`](#function-_cg_validate_candidate_flanksflanks): Validate finite, ordered flanks (stage 2) before top intersections or crossing scans.
 
 > [`_cg_reference_tooth_candidate(pitch_radius, modul, tooth_number, ...)`](#function-_cg_reference_tooth_candidatepitch_radius-modul-tooth_number-): Return one cached, validated local candidate tooth.
 
@@ -99,7 +99,7 @@ The module `Tooth Generation` defines the following functions.
 ### Function `_cg_involute(r, rho)`
 
 
-Evaluate one point of the local circular involute approximation.
+Evaluate one point of the local circular involute approximation derived from the pinned reference involute equations.
 
 **Parameters:**
 
@@ -212,7 +212,7 @@ Back to [module description](#module-tooth-generation).
 ### Function `_cg_involute_tooth(modul, tooth_number, pressure_angle, backlash)`
 
 
-Render the legacy compatibility involute-tooth module.
+Render the bounded legacy compatibility involute-tooth module; production family gears use the calculated 2D candidate, while this module remains available to legacy consumers.
 
 **Parameters:**
 
@@ -536,7 +536,7 @@ Back to [module description](#module-tooth-generation).
 ### Function `_cg_reference_tooth_local_flanks`
 
 
-Build one cached local tooth flank pair.
+Build one cached local tooth flank pair; the reference Boolean cutter's centre sentinel becomes a false inward spoke in a curved frame, so bounded normal extensions establish the body splices.
 
 **Parameters:**
 
@@ -602,7 +602,7 @@ Back to [module description](#module-tooth-generation).
 ### Function `_cg_validate_candidate_top_geometry(left, right, left_top, right_top, top_width, tip_normal_error, left_hits, right_hits)`
 
 
-Check top-line crossings before the final boundary scan.
+Check top-line crossings before the final boundary scan (stage 4); the expensive scan stays separate so OpenSCAD evaluates it only after the top/flank crossing checks pass.
 
 **Parameters:**
 
@@ -624,7 +624,7 @@ Back to [module description](#module-tooth-generation).
 ### Function `_cg_validate_candidate_top(left, right)`
 
 
-Validate top intersections, width, endpoint order and tangency.
+Validate top intersections, width, endpoint order and tangency (stage 3), after flank cardinality checks and before crossing scans.
 
 **Parameters:**
 
@@ -640,7 +640,7 @@ Back to [module description](#module-tooth-generation).
 ### Function `_cg_validate_candidate_flanks(flanks)`
 
 
-Validate finite and ordered flanks before top and boundary checks.
+Validate finite, ordered flanks (stage 2) before top intersections or crossing scans.
 
 **Parameters:**
 

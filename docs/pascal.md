@@ -23,7 +23,7 @@ https://mathshistory.st-andrews.ac.uk/Curves/Limacon/.
 
 **Functions**:
 
-> [`_cg_pascal_unit_radius(eccentricity, phi)`](#function-_cg_pascal_unit_radiuseccentricity-phi): Evaluate the unit radial form of the Pascal limaçon.
+> [`_cg_pascal_unit_radius(eccentricity, phi)`](#function-_cg_pascal_unit_radiuseccentricity-phi): Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-convex cases remain experimental.
 
 > [`_cg_pascal_point(scale, eccentricity, phi)`](#function-_cg_pascal_pointscale-eccentricity-phi): Evaluate one Cartesian point on a scaled Pascal curve.
 
@@ -75,7 +75,7 @@ The module `Pascal` defines the following functions.
 ### Function `_cg_pascal_unit_radius(eccentricity, phi)`
 
 
-Evaluate the unit radial form of the Pascal limaçon.
+Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-convex cases remain experimental.
 
 **Parameters:**
 

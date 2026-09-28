@@ -12,10 +12,6 @@ include <generation.scad>
  * permitted.
  */
 
-// Tooth placement owns curve frames, accessibility, body intersections,
-// replacement intervals and complete tooth-set collision validation. The gear
-// layer remains responsible for the canonical final outline and extrusion.
-
 /*** @function _cg_outward_normal_from_winding(tangent, winding)
  * @brief Return the outward normal for a tangent and known contour winding.
  * @param tangent {vector} Local tangent vector.
@@ -437,8 +433,6 @@ function _cg_tooth_body_intersections(tooth_boundary,body) =
         let(hit=_cg_segment_intersection(tooth_boundary[ti],tooth_boundary[(ti+1)%len(tooth_boundary)],body[bi],body[(bi+1)%len(body)]))
         if(hit[0]) [hit[1],ti,bi,hit[2],hit[3]]];
 
-// Cheap placement preflight. Expensive accessibility and body scans happen
-// only after the local frame and cached tooth candidate have passed.
 /*** @function _cg_placement_invalid(index, target, frame, candidate, code)
  * @brief Construct the canonical invalid placement record.
  * @param index {integer} Tooth index.
@@ -508,7 +502,7 @@ function _cg_placement_after_preflight(points,arc,perimeter,body,modul,tooth_num
 
 /**
  * @function _cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)
- * @brief Classify one candidate as placed, omitted or invalid.
+ * @brief Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
  * @image ../images/tooth/placement.png Tooth placement result preview
  * @param points {array of points} Sampled closed pitch contour.
  * @param arc {array} Cumulative closed-contour arc-length table.

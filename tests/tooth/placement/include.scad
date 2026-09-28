@@ -3,7 +3,7 @@
  * @brief Direct include smoke test for the standalone tooth-placement layer.
  * Source: [`tooth/placement/include.scad`](tooth/placement/include.scad)
  */
-include <../../../src/tooth/placement.scad>
+include <../../../src/common/tooth/placement.scad>
 
 $fn=48;
 modul=.8;

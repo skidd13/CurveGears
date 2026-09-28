@@ -23,7 +23,7 @@
  * curve_gear_logarithmic_spiral_pair(1, 24, 4, 8);
  */
 include <mate.scad>
-include <../pair/assembly.scad>
+include <../common/pair/assembly.scad>
 
 module _cg_logarithmic_spiral_pair_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,samples=360,together_built=true,assembly_clearance=0,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
 /***
@@ -46,14 +46,12 @@ module _cg_logarithmic_spiral_pair_build(modul,tooth_number,width,bore,sectors=1
  * @param mate_color {string, default "Gold"} Mate display colour.
  * @return {geometry} Constructed family geometry.
  */
-    // Dimension Calculations
     rmin=_cg_logspiral_rmin(modul,tooth_number,sectors,growth_rate);
     rmax=_cg_logspiral_rmax(modul,tooth_number,sectors,growth_rate);
     reference_distance=rmin+rmax+assembly_clearance;
     _cg_assert_samples(samples,"logarithmic_spiral_pair: samples must be an integer >= 120");
     assert(assembly_clearance >= 0,"logarithmic_spiral_pair: assembly_clearance must be non-negative");
 
-    // Drawing
     _cg_static_pair_assembly(reference_distance,together_built,0,180,rmax,rmax,modul) {
         color(driver_color) curve_gear_logarithmic_spiral(modul,tooth_number,width,bore,sectors,growth_rate,pressure_angle,tooth_phase,backlash,clearance,samples);
         color(mate_color) curve_gear_logarithmic_spiral_mate(modul,tooth_number,width,bore,sectors,growth_rate,pressure_angle,tooth_phase,backlash,clearance,samples);

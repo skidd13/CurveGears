@@ -6,9 +6,9 @@
  * The mate points are generated from driver-angle samples and the integrated
  * rolling increments.  No inverse motion-table lookup is involved.
  */
-include <../../../src/mate/motion.scad>
+include <../../../src/common/mate/motion.scad>
 include <../../../src/common/curve_gears_math.scad>
-include <../../../src/mate/placement.scad>
+include <../../../src/common/mate/placement.scad>
 
 n=240;
 driver=[for(i=[0:n-1]) 10+2*cos(360*i/n)];

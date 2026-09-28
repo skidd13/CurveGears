@@ -6,7 +6,7 @@
  * `epitrochoid/` and `hypotrochoid/`; the rolling equations remain in those
  * family modules. This layer contains only the shared curve post-processing.
  */
-include <../common/curve_gears_math.scad>
+include <../curve_gears_math.scad>
 
 /** @function _cg_trochoid_scale_from_points
  * @brief Scale a sampled unit curve to the requested tooth pitch.

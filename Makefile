@@ -9,15 +9,16 @@ CORE_IMAGE_SIZE ?= 1024,1024
 CAMERA ?= 0,0,0,50,0,40,0
 COLORSCHEME ?= Nature
 REGRESSION_DIR ?= build/regression
-REGRESSION_FAMILIES ?= $(FAMILY)
+REGRESSION_FAMILIES ?= $(if $(family),$(family),$(FAMILY))
 REGRESSION_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print)
 REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print | sort)
 PREVIEW_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
+CI_REGRESSION_GROUPS := common_math tooth_generation tooth_placement mate_motion $(FAMILIES)
 
-.PHONY: all images api-images examples ci-example-manifest readme docs docs-pages FORCE test test-smoke test-deliberate test-full test-cusp-envelope test-bezier-invalid test-fourier-invalid check check-docs clean
+.PHONY: all help images api-images examples ci-example-manifest ci-regression-groups readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
@@ -31,6 +32,33 @@ CI_EXAMPLES := $(sort $(MAIN_EXAMPLE) $(CORE_EXAMPLES) $(API_EXAMPLES))
 CI_EXAMPLE_MANIFEST := build/ci-images/manifest.tsv
 
 all: images examples readme docs-pages tests/README.md
+
+ci-regression-groups:
+	@printf '%s\n' $(CI_REGRESSION_GROUPS)
+
+help:
+	@printf '%s\n' \
+	  'CurveGears Make targets:' \
+	  '  all                 Build images, examples, README and documentation pages' \
+	  '  images              Render the main image, API examples and common examples' \
+	  '  api-images          Render family function example images' \
+	  '  ci-regression-groups Print the regression groups consumed by GitHub Actions' \
+	  '  examples            Generate the example index' \
+	  '  readme              Generate the main README and navigation' \
+	  '  docs                Generate documentation, examples and images' \
+	  '  docs-pages          Generate Doxydown documentation pages' \
+	  '  check-docs          Check documentation, example indexes and links' \
+	  '  test                Run smoke, deliberate and invalid-input regressions' \
+	  '  test-smoke          Run family smoke pipelines and manifest checks' \
+	  '  test-deliberate     Run deliberate geometry regression cases' \
+	  '  test-full           Run full family pipelines' \
+	  '  check               Run tests and documentation checks' \
+	  '  clean               Remove generated build and image artifacts' \
+	  'Test selection: make test family=cusp runs cusp checks; omit family to run all families.' \
+	  'OPENSCAD=<path> selects the OpenSCAD executable; PYTHON=<path> selects Python 3.' \
+	  'IMAGE_SIZE=<w,h> sets general image pixels; CI_IMAGE_SIZE and CORE_IMAGE_SIZE set smaller CI and common-example renders.' \
+	  'CAMERA=<x,y,z,distance,rotation-x,rotation-y,rotation-z> and COLORSCHEME=<name> set image view and palette.' \
+	  'REGRESSION_DIR=<path> changes test outputs; FAMILY=<name> is the uppercase alias for family=<name>.'
 
 images: $(MAIN_IMAGE) api-images $(CORE_IMAGES)
 
@@ -155,11 +183,11 @@ $(eval $(call DOXYDOC_PAGE,docs/cassini.md,Cassini,src/cassini/base.scad,src/cas
 $(eval $(call DOXYDOC_PAGE,docs/hypotrochoid.md,Hypotrochoid,src/hypotrochoid/base.scad,src/hypotrochoid/gear.scad,src/hypotrochoid/mate.scad,src/hypotrochoid/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/logarithmic_spiral.md,Logarithmic Spiral,src/logarithmic_spiral/base.scad,src/logarithmic_spiral/gear.scad,src/logarithmic_spiral/mate.scad,src/logarithmic_spiral/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/epitrochoid.md,Epitrochoid,src/epitrochoid/base.scad,src/epitrochoid/gear.scad,src/epitrochoid/mate.scad,src/epitrochoid/pair.scad))
-$(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-construction.md,Tooth construction,src/tooth/generation.scad))
-$(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-placement.md,Tooth placement,src/tooth/placement.scad))
-$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-motion.md,Mate motion,src/mate/motion.scad))
-$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-generation.md,Mate generation,src/mate/placement.scad))
-$(eval $(call DOXYDOC_SINGLE_PAGE,docs/pair-assembly.md,Pair assembly,src/pair/assembly.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-construction.md,Tooth construction,src/common/tooth/generation.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-placement.md,Tooth placement,src/common/tooth/placement.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-motion.md,Mate motion,src/common/mate/motion.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-generation.md,Mate generation,src/common/mate/placement.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/pair-assembly.md,Pair assembly,src/common/pair/assembly.scad))
 
 docs-pages: $(DOC_PAGES)
 
@@ -230,9 +258,20 @@ $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REG
 	@touch "$@"
 
 test: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
+	@if printf '%s\n' "$(REGRESSION_FAMILIES)" | grep -qw cusp; then \
+		mkdir -p "$(REGRESSION_DIR)/cusp"; \
+		for phase in 0.25 30.25; do \
+			log="$(REGRESSION_DIR)/cusp/envelope_$${phase}.log"; output="$(REGRESSION_DIR)/cusp/envelope_$${phase}.stl"; \
+			rm -f "$$log" "$$output"; \
+			$(OPENSCAD) -o "$$output" -D "phase=$$phase" tests/cusp/envelope_solver_collision_probe.scad > "$$log" 2>&1 || true; \
+			grep -Fq 'Current top level object is empty.' "$$log" || { cat "$$log"; echo "cusp envelope collision at driver phase $$phase"; exit 1; }; \
+			! grep -q 'ERROR:' "$$log" || { cat "$$log"; exit 1; }; \
+		done; \
+		echo 'PASS: cusp swept envelope clears the driver at intermediate phases'; \
+	fi
 	$(PYTHON) -m utils.regression.check $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
-test-smoke: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(if $(filter cusp,$(REGRESSION_FAMILIES)),test-cusp-envelope)
+test-smoke: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST)
 	$(PYTHON) -m utils.regression.check --smoke-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
 test-deliberate: $(REGRESSION_DELIBERATE_OUTPUTS)
@@ -251,23 +290,6 @@ $(foreach family,$(FAMILIES),$(eval $(call FULL_PIPELINE_RENDER,$(family))))
 
 test-full: $(if $(strip $(REGRESSION_FAMILIES)),$(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DIR)/full_$(family).stl),$(FULL_PIPELINE_OUTPUTS))
 	@echo 'PASS: full maintained family renders'
-
-test-cusp-envelope:
-	@mkdir -p "$(REGRESSION_DIR)/cusp"
-	@for phase in 0.25 30.25; do \
-		log="$(REGRESSION_DIR)/cusp/envelope_$${phase}.log"; output="$(REGRESSION_DIR)/cusp/envelope_$${phase}.stl"; \
-		rm -f "$$log" "$$output"; \
-		$(OPENSCAD) -o "$$output" -D "phase=$$phase" tests/cusp/envelope_solver_collision_probe.scad > "$$log" 2>&1 || true; \
-		grep -Fq 'Current top level object is empty.' "$$log" || { cat "$$log"; echo "cusp envelope collision at driver phase $$phase"; exit 1; }; \
-		! grep -q 'ERROR:' "$$log" || { cat "$$log"; exit 1; }; \
-	done
-	@echo 'PASS: cusp swept envelope clears the driver at intermediate phases'
-
-test-bezier-invalid: $(filter $(REGRESSION_DIR)/invalid/bezier/%,$(REGRESSION_INVALID_ALL))
-	@echo 'PASS: Bézier invalid closure and tangent cases rejected'
-
-test-fourier-invalid: $(filter $(REGRESSION_DIR)/invalid/fourier/%,$(REGRESSION_INVALID_ALL))
-	@echo 'PASS: Fourier invalid coefficient envelope rejected'
 
 check: test check-docs
 
@@ -301,7 +323,7 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test "$$(rg -c '^## Module `Executable examples`$$' examples/README.md)" -eq 1
 	@test "$$(rg -c '^## Module ' examples/README.md)" -eq 1
 	@test "$$(rg -c '^### Function `' examples/README.md)" -eq "$(words $(API_EXAMPLES) $(CORE_EXAMPLES))"
-	@for source in $$(find src/common src/tooth src/mate src/pair -type f -name '*.scad') src/CurveGears.scad src/CurveGearPairs.scad $$(find src -mindepth 2 -maxdepth 2 -type f -name 'base.scad'); do \
+	@for source in $$(find src/common -type f -name '*.scad') src/CurveGears.scad src/CurveGearPairs.scad $$(find src -mindepth 2 -maxdepth 2 -type f -name 'base.scad'); do \
 		head -n 24 "$$source" | grep -Fq '@module' || { echo "missing file-start module header: $$source"; exit 1; }; \
 	done
 	@test -z "$$(rg -n -uu -g '*.md' -g '!examples/README.md' -e '\\]\\([^)]*\\.scad\\)' .)" || { echo 'individual example links found outside examples/README.md'; exit 1; }

@@ -15,36 +15,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes openscad ripgrep xvfb libgl1-mesa-dri libglu1-mesa
-      - name: Regression tests — common mathematics
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=common_math OPENSCAD=openscad
-      - name: Regression tests — tooth generation
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=tooth_generation OPENSCAD=openscad
-      - name: Regression tests — tooth placement and validation
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=tooth_placement OPENSCAD=openscad
-      - name: Regression tests — mate motion and phase
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=mate_motion OPENSCAD=openscad
-      - name: Regression tests — Bézier
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=bezier OPENSCAD=openscad
-      - name: Regression tests — Cassini
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=cassini OPENSCAD=openscad
-      - name: Regression tests — Circle
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=circle OPENSCAD=openscad
-      - name: Regression tests — Ellipse
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=ellipse OPENSCAD=openscad
-      - name: Regression tests — Epitrochoid
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=epitrochoid OPENSCAD=openscad
-      - name: Regression tests — Fourier
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=fourier OPENSCAD=openscad
-      - name: Regression tests — Hypotrochoid
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=hypotrochoid OPENSCAD=openscad
-      - name: Regression tests — Lobed
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=lobed OPENSCAD=openscad
-      - name: Regression tests — Logarithmic spiral
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=logarithmic_spiral OPENSCAD=openscad
-      - name: Regression tests — Pascal
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=pascal OPENSCAD=openscad
-      - name: Regression tests — Superformula
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY=superformula OPENSCAD=openscad
+      - name: Regression tests
+        run: |
+          for family in $(make ci-regression-groups); do
+            xvfb-run -a --server-args="-screen 0 1280x1024x24" make test FAMILY="$family" OPENSCAD=openscad
+          done
       - name: Validate generated documentation
         run: |
           make readme

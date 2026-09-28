@@ -1,6 +1,6 @@
 include <gear.scad>
-include <../mate/motion.scad>
-include <../mate/placement.scad>
+include <../common/mate/motion.scad>
+include <../common/mate/placement.scad>
 
 /***
  * @function _cg_hypotrochoid_motion_radii(scale, R, r, d, n=720)

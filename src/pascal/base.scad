@@ -9,10 +9,9 @@
  */
 include <../common/curve_gears_math.scad>
 
-// Pascal limaçon: r=s(1+e cosθ). Non-convex cases remain experimental.
 /***
  * @function _cg_pascal_unit_radius(eccentricity, phi)
- * @brief Evaluate the unit radial form of the Pascal limaçon.
+ * @brief Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-convex cases remain experimental.
  * @param eccentricity {0 <= e < 1} Pascal curve eccentricity.
  * @param phi {angle} Polar angle in degrees.
  * @return {number} Unit radius at the requested angle.

@@ -185,7 +185,7 @@ function _cg_cusp_threefold_radii(outline,samples,midpoint,pitch_offset) =
     concat(sector,sector,sector);
 /***
  * @function _cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)
- * @brief Build the validated driver, radial motion data, distance, and motion table.
+ * @brief Build the validated driver, radial motion data, solved distance, and motion table using the unmodified deltoid pitch curve for rolling and passing its tooth outline separately to the swept-envelope mate builder.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3, divisible by 3} Number of teeth.
  * @param pressure_angle {0 < angle < 90} Standard-flank pressure angle.
@@ -201,8 +201,6 @@ function _cg_cusp_pair_motion_geometry(modul,tooth_number,pressure_angle,backlas
         "cusp_gear: samples must be an integer >= 120 and divisible by 3")
     let(
         scale=_cg_cusp_scale(modul,tooth_number),driver_state=_cg_cusp_state(modul,tooth_number,pressure_angle,backlash,clearance,samples),
-        // The rolling law uses the unmodified deltoid pitch curve; the tooth
-        // outline is passed separately to the swept-envelope mate builder.
         pitch_curve=_cg_cusp_points(scale,samples),
         driver_radii=_cg_cusp_threefold_radii(pitch_curve,samples,false,0),
         mid_radii=_cg_cusp_threefold_radii(pitch_curve,samples,true,0),

@@ -8,8 +8,8 @@
  * condition instead of inventing mate kinematics.
  */
 include <gear.scad>
-include <../mate/motion.scad>
-include <../mate/placement.scad>
+include <../common/mate/motion.scad>
+include <../common/mate/placement.scad>
 
 /***
  * @function _cg_bezier_polar_samples(control_points, scale, n)

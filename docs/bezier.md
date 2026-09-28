@@ -68,7 +68,7 @@ https://www.cs.sjsu.edu/~bruce/fall_2016_cs_116a_lecture_splines.html.
 
 > [`curve_gear_bezier_mate_rotation(modul, tooth_number, ...)`](#function-curve_gear_bezier_mate_rotationmodul-tooth_number-): Return the conjugate mate rotation for a driver phase.
 
-> [`curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_pairmodul-tooth_number-width-bore-): Build a meshed or separated pair from an admissible Bézier curve.
+> [`curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_pairmodul-tooth_number-width-bore-): Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
 
 
 ## Functions
@@ -449,7 +449,7 @@ Back to [module description](#module-bezier).
 
 ![Bézier asymmetric alternative pair](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)
 
-Build a meshed or separated pair from an admissible Bézier curve.
+Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
 
 **Parameters:**
 

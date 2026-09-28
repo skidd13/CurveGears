@@ -3,7 +3,7 @@
  * @brief Direct include smoke test for the standalone tooth-generation layer.
  * Source: [`tooth/generation/include.scad`](tooth/generation/include.scad)
  */
-include <../../../src/tooth/generation.scad>
+include <../../../src/common/tooth/generation.scad>
 
 $fn=48;
 modul=.8;

@@ -24,7 +24,7 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 **Functions**:
 
-> [`_cg_ellipse_axes(modul, tooth_number, eccentricity)`](#function-_cg_ellipse_axesmodul-tooth_number-eccentricity): Calculate the ellipse semi-axes for a requested module and tooth count.
+> [`_cg_ellipse_axes(modul, tooth_number, eccentricity)`](#function-_cg_ellipse_axesmodul-tooth_number-eccentricity): Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
 
 > [`_cg_ellipse_radius(a, b, theta)`](#function-_cg_ellipse_radiusa-b-theta): Evaluate the ellipse radius at an angular position.
 
@@ -66,7 +66,7 @@ The module `Ellipse` defines the following functions.
 ### Function `_cg_ellipse_axes(modul, tooth_number, eccentricity)`
 
 
-Calculate the ellipse semi-axes for a requested module and tooth count.
+Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
 
 **Parameters:**
 
