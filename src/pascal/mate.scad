@@ -11,8 +11,13 @@ include <../mate/placement.scad>
  * @return {array of number} Sampled radii in angular order.
  */
 function _cg_pascal_motion_radii(scale,eccentricity,n=360) = [for(i=[0:n-1]) _cg_pascal_radius(scale,eccentricity,360*(i+.5)/n)];
-/** @function _cg_pascal_driver_radii
+/**
+ * @function _cg_pascal_driver_radii(scale, eccentricity, n=360)
  * @brief Evaluate Pascal radii at direct mate-construction angles.
+ * @param scale {number > 0} Base radial scale in millimetres.
+ * @param eccentricity {number} Pascal curve eccentricity.
+ * @param n {integer >= 1, default 360} Number of boundary intervals.
+ * @return {array of number} Driver radii in angular order.
  */
 function _cg_pascal_driver_radii(scale,eccentricity,n=360) = [for(i=[0:n-1]) _cg_pascal_radius(scale,eccentricity,360*i/n)];
 /**
@@ -31,7 +36,6 @@ function _cg_pascal_motion_table(scale,eccentricity,D,n=360) = _cg_motion_table_
  * @param scale {number > 0} Base radial scale.
  * @param eccentricity {number} Pascal curve eccentricity.
  * @param D {number > 0} Driver-to-mate centre distance.
- * @param motion {array} Shared driver-to-mate phase-motion table.
  * @param n {integer >= 1, default 360} Number of output points.
  * @return {array of points} Cartesian mate pitch points.
  */

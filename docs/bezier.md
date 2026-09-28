@@ -44,6 +44,24 @@ https://www.cs.sjsu.edu/~bruce/fall_2016_cs_116a_lecture_splines.html.
 
 > [`curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_bodymodul-tooth_number-width-bore-): Build the closed Bézier body without teeth.
 
+> [`_cg_bezier_polar_samples(control_points, scale, n)`](#function-_cg_bezier_polar_samplescontrol_points-scale-n): Convert sampled Bézier points to polar angle and radius pairs.
+
+> [`_cg_bezier_polar_table(control_points, scale, n)`](#function-_cg_bezier_polar_tablecontrol_points-scale-n): Build a closed polar interpolation table for a Bézier curve.
+
+> [`_cg_bezier_polar_monotonic(samples, i=0)`](#function-_cg_bezier_polar_monotonicsamples-i0): Check that polar sample angles increase strictly through the table.
+
+> [`_cg_bezier_mate_admissibility(control_points, scale, n)`](#function-_cg_bezier_mate_admissibilitycontrol_points-scale-n): Return the first failed radial-curve condition for mate construction.
+
+> [`_cg_bezier_radius_from_polar_table(table, theta)`](#function-_cg_bezier_radius_from_polar_tabletable-theta): Interpolate a Bézier pitch radius at one polar angle.
+
+> [`_cg_bezier_driver_radii_from_table(table, n)`](#function-_cg_bezier_driver_radii_from_tabletable-n): Sample Bézier pitch radii at driver-phase boundaries.
+
+> [`_cg_bezier_mid_radii_from_table(table, n)`](#function-_cg_bezier_mid_radii_from_tabletable-n): Sample Bézier pitch radii at phase-interval midpoints.
+
+> [`_cg_bezier_mate_points(control_points, scale, D, n)`](#function-_cg_bezier_mate_pointscontrol_points-scale-d-n): Construct conjugate mate pitch points for an admissible Bézier curve.
+
+> [`_cg_bezier_mate_centre_distance(control_points, scale, n)`](#function-_cg_bezier_mate_centre_distancecontrol_points-scale-n): Solve the fixed centre distance for an admissible Bézier curve.
+
 > [`curve_gear_bezier_mate`](#function-curve_gear_bezier_mate): Build a conjugate mate for an admissible radial Bézier pitch curve.
 
 > [`curve_gear_bezier_mate_centre_distance(modul, tooth_number, ...)`](#function-curve_gear_bezier_mate_centre_distancemodul-tooth_number-): Return the conjugate centre distance for an admissible Bézier curve.
@@ -208,6 +226,156 @@ Build the closed Bézier body without teeth.
 **Returns:**
 
 No return
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_polar_samples(control_points, scale, n)`
+
+
+Convert sampled Bézier points to polar angle and radius pairs.
+
+**Parameters:**
+
+- `control_points`: {array of points} Bézier control points.
+- `scale`: {number > 0} Pitch-curve scale in millimetres.
+- `n`: {integer >= 1} Number of samples.
+
+**Returns:**
+
+- `{array}`: Polar samples as `[angle, radius]` pairs.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_polar_table(control_points, scale, n)`
+
+
+Build a closed polar interpolation table for a Bézier curve.
+
+**Parameters:**
+
+- `control_points`: {array of points} Bézier control points.
+- `scale`: {number > 0} Pitch-curve scale in millimetres.
+- `n`: {integer >= 1} Number of samples.
+
+**Returns:**
+
+- `{array}`: Polar table spanning zero through 360 degrees.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_polar_monotonic(samples, i=0)`
+
+
+Check that polar sample angles increase strictly through the table.
+
+**Parameters:**
+
+- `samples`: {array} Polar samples ordered by traversal.
+- `i`: {integer >= 0, default 0} Current sample index.
+
+**Returns:**
+
+- `{boolean}`: True when the angular traversal is monotonic.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_mate_admissibility(control_points, scale, n)`
+
+
+Return the first failed radial-curve condition for mate construction.
+
+**Parameters:**
+
+- `control_points`: {array of points} Bézier control points.
+- `scale`: {number > 0} Pitch-curve scale in millimetres.
+- `n`: {integer >= 1} Number of samples used for checks.
+
+**Returns:**
+
+- `{string}`: `PASS` or the failed admissibility condition code.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_radius_from_polar_table(table, theta)`
+
+
+Interpolate a Bézier pitch radius at one polar angle.
+
+**Parameters:**
+
+- `table`: {array} Closed angle-radius interpolation table.
+- `theta`: {angle} Polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Interpolated pitch radius.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_driver_radii_from_table(table, n)`
+
+
+Sample Bézier pitch radii at driver-phase boundaries.
+
+**Parameters:**
+
+- `table`: {array} Closed angle-radius interpolation table.
+- `n`: {integer >= 1} Number of phase intervals.
+
+**Returns:**
+
+- `{array of number}`: Driver radii in angular order.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_mid_radii_from_table(table, n)`
+
+
+Sample Bézier pitch radii at phase-interval midpoints.
+
+**Parameters:**
+
+- `table`: {array} Closed angle-radius interpolation table.
+- `n`: {integer >= 1} Number of phase intervals.
+
+**Returns:**
+
+- `{array of number}`: Midpoint radii in angular order.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_mate_points(control_points, scale, D, n)`
+
+
+Construct conjugate mate pitch points for an admissible Bézier curve.
+
+**Parameters:**
+
+- `control_points`: {array of points} Bézier control points.
+- `scale`: {number > 0} Pitch-curve scale in millimetres.
+- `D`: {number > 0} Fixed centre distance in millimetres.
+- `n`: {integer >= 1} Number of pitch and motion samples.
+
+**Returns:**
+
+- `{array of points}`: Mate pitch curve in millimetres.
+
+Back to [module description](#module-bezier).
+
+### Function `_cg_bezier_mate_centre_distance(control_points, scale, n)`
+
+
+Solve the fixed centre distance for an admissible Bézier curve.
+
+**Parameters:**
+
+- `control_points`: {array of points} Bézier control points.
+- `scale`: {number > 0} Pitch-curve scale in millimetres.
+- `n`: {integer >= 1} Number of motion samples.
+
+**Returns:**
+
+- `{number}`: Solved centre distance in millimetres.
 
 Back to [module description](#module-bezier).
 

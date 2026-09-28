@@ -41,7 +41,7 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`_cg_lobed_motion_radii`](#function-_cg_lobed_motion_radii): Evaluate lobed radii at integration midpoints.
 
-> [`_cg_lobed_driver_radii`](#function-_cg_lobed_driver_radii): Evaluate lobed radii at direct mate-construction angles.
+> [`_cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)`](#function-_cg_lobed_driver_radiiscale-lobes-lobe_depth-n360): Evaluate lobed radii at direct mate-construction angles.
 
 > [`_cg_lobed_centre_distance`](#function-_cg_lobed_centre_distance): Solve the lobed conjugate centre distance.
 
@@ -270,18 +270,21 @@ Evaluate lobed radii at integration midpoints.
 
 Back to [module description](#module-lobed).
 
-### Function `_cg_lobed_driver_radii`
+### Function `_cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)`
 
 
 Evaluate lobed radii at direct mate-construction angles.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Base radial scale in millimetres.
+- `lobes`: {integer >= 2} Number of radial lobes.
+- `lobe_depth`: {number} Normalised lobe amplitude.
+- `n`: {integer >= 1, default 360} Number of boundary intervals.
 
 **Returns:**
 
-No return
+- `{array of number}`: Driver radii in angular order.
 
 Back to [module description](#module-lobed).
 
@@ -295,6 +298,7 @@ Solve the lobed conjugate centre distance.
 - `scale`: {number > 0} Base radial scale.
 - `lobes`: {integer >= 2} Number of radial lobes.
 - `lobe_depth`: {number} Normalised lobe amplitude.
+- `n`: {integer >= 1, default 360} Number of motion intervals.
 
 **Returns:**
 
@@ -332,7 +336,6 @@ Build lobed mate pitch points by advancing driver angle directly.
 - `lobes`: {integer >= 2} Number of radial lobes.
 - `lobe_depth`: {number} Normalised lobe amplitude.
 - `D`: {number > 0} Driver-to-mate centre distance.
-- `motion`: {array} Shared driver-to-mate phase-motion table.
 - `n`: {integer >= 1, default 360} Number of output points.
 
 **Returns:**

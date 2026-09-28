@@ -14,30 +14,67 @@
 ## Module `Circle`
 
 
-The circle family exists primarily for testing and reference purposes. It
-is the constant-radius control case used to exercise the same public gear,
-mate, and pair contracts as every curved family.
+Circle is the constant-radius reference family. Its public gear, body,
+mate, centre-distance, and pair APIs provide the control case for the same
+construction contracts used by the non-circular families.
 
 ### Brief content:
 
 **Functions**:
 
-> [`curve_gear_circle`](#function-curve_gear_circle): Build a circular reference gear.
+> [`_cg_circle_radius(modul, tooth_number)`](#function-_cg_circle_radiusmodul-tooth_number): Calculate the circular pitch radius from module and tooth count.
 
-> [`curve_gear_circle_body`](#function-curve_gear_circle_body): Build the circular reference body without teeth.
+> [`_cg_circle_points(modul, tooth_number, samples=480)`](#function-_cg_circle_pointsmodul-tooth_number-samples480): Sample the circular pitch curve in angular order.
 
-> [`curve_gear_circle_centre_distance`](#function-curve_gear_circle_centre_distance): Return the reference centre distance for a circular pair.
+> [`curve_gear_circle(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circlemodul-tooth_number-width-bore-): Build a circular reference gear.
 
-> [`curve_gear_circle_mate`](#function-curve_gear_circle_mate): Build the circular reference mate boundary at the origin.
+> [`curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`](#function-curve_gear_circle_bodymodul-tooth_number-width-bore-samples480): Build the circular reference body without teeth.
 
-> [`curve_gear_circle_pair`](#function-curve_gear_circle_pair): Build a meshed or separated circular reference pair.
+> [`curve_gear_circle_centre_distance(modul, tooth_number)`](#function-curve_gear_circle_centre_distancemodul-tooth_number): Return the reference centre distance for a circular pair.
+
+> [`curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circle_matemodul-tooth_number-width-bore-): Build the circular reference mate boundary at the origin.
+
+> [`curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circle_pairmodul-tooth_number-width-bore-): Build a meshed or separated circular reference pair.
 
 
 ## Functions
 
 The module `Circle` defines the following functions.
 
-### Function `curve_gear_circle`
+### Function `_cg_circle_radius(modul, tooth_number)`
+
+
+Calculate the circular pitch radius from module and tooth count.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in millimetres.
+- `tooth_number`: {integer >= 3} Number of teeth.
+
+**Returns:**
+
+- `{number}`: Pitch radius in millimetres.
+
+Back to [module description](#module-circle).
+
+### Function `_cg_circle_points(modul, tooth_number, samples=480)`
+
+
+Sample the circular pitch curve in angular order.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in millimetres.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `samples`: {integer >= 1, default 480} Number of pitch-curve samples.
+
+**Returns:**
+
+- `{array of points}`: Closed circular pitch curve in millimetres.
+
+Back to [module description](#module-circle).
+
+### Function `curve_gear_circle(modul, tooth_number, width, bore, ...)`
 
 
 ![Circle gear preview](../images/functions/circle/curve_gear_circle.png)
@@ -62,7 +99,7 @@ No return
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_body`
+### Function `curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`
 
 
 ![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)
@@ -83,7 +120,7 @@ No return
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_centre_distance`
+### Function `curve_gear_circle_centre_distance(modul, tooth_number)`
 
 
 Return the reference centre distance for a circular pair.
@@ -99,7 +136,7 @@ Return the reference centre distance for a circular pair.
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_mate`
+### Function `curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`
 
 
 ![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)
@@ -124,7 +161,7 @@ No return
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_pair`
+### Function `curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`
 
 
 ![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)

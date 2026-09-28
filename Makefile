@@ -79,11 +79,12 @@ ci-example-manifest:
 	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 74
 	@echo 'PASS: CI manifest contains all 74 canonical examples'
 
-readme:
+readme: README.md $(NAVIGATION_TEMPLATE) FORCE
 	@test -s README.md
-	@sed -e 's|@README@||g' -e 's|@DOCS@|docs/|g' -e 's|@EXAMPLES@|examples/|g' -e 's|@TESTS@|tests/|g' "$(NAVIGATION_TEMPLATE)" | tail -n +2 | while IFS= read -r navigation_line; do \
-		test -z "$$navigation_line" || grep -Fq -- "$$navigation_line" README.md || { echo "missing README navigation line: $$navigation_line"; exit 1; }; \
-	done
+	@mkdir -p build
+	@awk -v navigation_file="$(NAVIGATION_TEMPLATE)" '$$0 == "<!-- BEGIN GENERATED DOCUMENTATION NAVIGATION -->" { print; menu_line=0; while ((getline line < navigation_file) > 0) { menu_line++; if (menu_line == 1 && line == "- [README](@README@)") continue; gsub(/@README@/, "README.md", line); gsub(/@DOCS@/, "docs/", line); gsub(/@EXAMPLES@/, "examples/", line); gsub(/@TESTS@/, "tests/", line); print line; } close(navigation_file); inside=1; next; } $$0 == "<!-- END GENERATED DOCUMENTATION NAVIGATION -->" { inside=0; print; next; } inside { next; } { print; }' README.md > build/README.md.tmp
+	@mv build/README.md.tmp README.md
+	@! rg -n '(^|[[:space:](])/(Users|home|Applications|private|tmp)/' README.md || { echo 'machine-specific absolute path found in README.md'; exit 1; }
 	@echo 'PASS: README entry document is present'
 
 examples/README.md: $(API_EXAMPLES) $(CORE_EXAMPLES) $(EXAMPLES_CATALOGUE_HEADER) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
@@ -113,12 +114,12 @@ DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/cusp.md docs/ell
 FORCE:
 
 define DOXYDOC_PAGE
-$(1): $(3) $(4) $(5) $(6) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
+$(1): $(3) $(4) $(5) $(6) $(7) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@mkdir -p "$$(@D)"
 	@printf '%s\n' '# $(2)' '' '## Documentation navigation' '' > "$$@"
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
-	@$(DOCGEN) -g -e c -l c "$(3)" "$(4)" "$(5)" "$(6)" >> "$$@"
+	@$(DOCGEN) -g -e c -l c "$(3)" "$(4)" "$(5)" "$(6)" $(if $(7),"$(7)") >> "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -143,7 +144,7 @@ $(1): $(3) $(4) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 endef
 
 $(eval $(call DOXYDOC_PAGE,docs/circle.md,Circle,src/circle/base.scad,src/circle/gear.scad,src/circle/mate.scad,src/circle/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/cusp.md,Cusp,src/cusp/base.scad,src/cusp/gear.scad,src/cusp/mate.scad,src/cusp/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/cusp.md,Cusp,src/cusp/base.scad,src/cusp/gear.scad,src/cusp/mate.scad,src/cusp/pair.scad,src/cusp/envelope_mate.scad))
 $(eval $(call DOXYDOC_PAGE,docs/ellipse.md,Ellipse,src/ellipse/base.scad,src/ellipse/gear.scad,src/ellipse/mate.scad,src/ellipse/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/lobed.md,Lobed,src/lobed/base.scad,src/lobed/gear.scad,src/lobed/mate.scad,src/lobed/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/superformula.md,Superformula,src/superformula/base.scad,src/superformula/gear.scad,src/superformula/mate.scad,src/superformula/pair.scad))

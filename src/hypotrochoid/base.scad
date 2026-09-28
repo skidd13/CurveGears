@@ -7,9 +7,67 @@
  */
 include <../trochoid/base.scad>
 
+/***
+ * @function _cg_hypotrochoid_point(R, r, d, theta)
+ * @brief Evaluate one point on the inner-rolling hypotrochoid.
+ * @param R {number > 0} Fixed-circle radius ratio.
+ * @param r {number > 0} Rolling-circle radius ratio.
+ * @param d {number >= 0} Pen offset ratio.
+ * @param theta {angle} Rolling parameter in degrees.
+ * @return {array} Cartesian point in the curve's unit scale.
+ */
 function _cg_hypotrochoid_point(R,r,d,theta) = [(R-r)*cos(theta)+d*cos((R-r)/r*theta),(R-r)*sin(theta)-d*sin((R-r)/r*theta)];
+/***
+ * @function _cg_hypotrochoid_points(R, r, d, n=720)
+ * @brief Sample a complete hypotrochoid curve.
+ * @param R {number > 0} Fixed-circle radius ratio.
+ * @param r {number > 0} Rolling-circle radius ratio.
+ * @param d {number >= 0} Pen offset ratio.
+ * @param n {integer >= 1, default 720} Number of curve samples.
+ * @return {array of points} Sampled unit-scale hypotrochoid.
+ */
 function _cg_hypotrochoid_points(R,r,d,n=720) = [for(i=[0:n-1]) _cg_hypotrochoid_point(R,r,d,360*i/n)];
+/***
+ * @function _cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720)
+ * @brief Scale the hypotrochoid to the requested module and tooth count.
+ * @param modul {number > 0} Tooth module in millimetres.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param R {number > r, default 3} Fixed-circle radius ratio.
+ * @param r {number > 0, default 1} Rolling-circle radius ratio.
+ * @param d {0 < d < r, default 0.35} Pen offset ratio.
+ * @param n {integer >= 1, default 720} Number of scale samples.
+ * @return {number} Curve scale in millimetres.
+ */
 function _cg_hypotrochoid_scale(modul,tooth_number,R=3,r=1,d=.35,n=720) = _cg_trochoid_scale_from_points(modul,tooth_number,_cg_hypotrochoid_points(R,r,d,n));
+/***
+ * @function _cg_hypotrochoid_radius(R, r, d, theta)
+ * @brief Evaluate the unit-scale hypotrochoid radius at an angle.
+ * @param R {number > 0} Fixed-circle radius ratio.
+ * @param r {number > 0} Rolling-circle radius ratio.
+ * @param d {number >= 0} Pen offset ratio.
+ * @param theta {angle} Polar angle in degrees.
+ * @return {number} Unit-scale radius.
+ */
 function _cg_hypotrochoid_radius(R,r,d,theta) = _cg_trochoid_radius_from_point(_cg_hypotrochoid_point(R,r,d,theta));
+/***
+ * @function _cg_hypotrochoid_curve_radius(scale, R, r, d, theta)
+ * @brief Evaluate the scaled hypotrochoid radius at a polar angle.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param R {number > 0} Fixed-circle radius ratio.
+ * @param r {number > 0} Rolling-circle radius ratio.
+ * @param d {number >= 0} Pen offset ratio.
+ * @param theta {angle} Polar angle in degrees.
+ * @return {number} Scaled pitch radius in millimetres.
+ */
 function _cg_hypotrochoid_curve_radius(scale,R,r,d,theta) = _cg_trochoid_curve_radius_from_point(scale,_cg_hypotrochoid_point(R,r,d,theta));
+/***
+ * @function _cg_hypotrochoid_points_scaled(scale, R, r, d, n=720)
+ * @brief Sample a hypotrochoid at the requested physical scale.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param R {number > 0} Fixed-circle radius ratio.
+ * @param r {number > 0} Rolling-circle radius ratio.
+ * @param d {number >= 0} Pen offset ratio.
+ * @param n {integer >= 1, default 720} Number of samples.
+ * @return {array of points} Scaled hypotrochoid in millimetres.
+ */
 function _cg_hypotrochoid_points_scaled(scale,R,r,d,n=720) = _cg_trochoid_points_scaled_from_points(scale,_cg_hypotrochoid_points(R,r,d,n));

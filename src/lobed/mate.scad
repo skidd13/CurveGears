@@ -12,8 +12,14 @@ include <../mate/placement.scad>
  * @return {array of number} Sampled radii in angular order.
  */
 function _cg_lobed_motion_radii(scale,lobes,lobe_depth,n=360) = [for(i=[0:n-1]) _cg_lobed_radius(scale,lobes,lobe_depth,360*(i+.5)/n)];
-/** @function _cg_lobed_driver_radii
+/**
+ * @function _cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)
  * @brief Evaluate lobed radii at direct mate-construction angles.
+ * @param scale {number > 0} Base radial scale in millimetres.
+ * @param lobes {integer >= 2} Number of radial lobes.
+ * @param lobe_depth {number} Normalised lobe amplitude.
+ * @param n {integer >= 1, default 360} Number of boundary intervals.
+ * @return {array of number} Driver radii in angular order.
  */
 function _cg_lobed_driver_radii(scale,lobes,lobe_depth,n=360) = [for(i=[0:n-1]) _cg_lobed_radius(scale,lobes,lobe_depth,360*i/n)];
 /**
@@ -22,6 +28,7 @@ function _cg_lobed_driver_radii(scale,lobes,lobe_depth,n=360) = [for(i=[0:n-1]) 
  * @param scale {number > 0} Base radial scale.
  * @param lobes {integer >= 2} Number of radial lobes.
  * @param lobe_depth {number} Normalised lobe amplitude.
+ * @param n {integer >= 1, default 360} Number of motion intervals.
  * @return {number} Conjugate centre distance.
  */
 function _cg_lobed_centre_distance(scale,lobes,lobe_depth,n=360) = _cg_solve_mate_distance(_cg_lobed_motion_radii(scale,lobes,lobe_depth,n),scale*(1+lobe_depth)+0.01,3*scale);
@@ -43,7 +50,6 @@ function _cg_lobed_motion_table(scale,lobes,lobe_depth,D,n=360) = _cg_motion_tab
  * @param lobes {integer >= 2} Number of radial lobes.
  * @param lobe_depth {number} Normalised lobe amplitude.
  * @param D {number > 0} Driver-to-mate centre distance.
- * @param motion {array} Shared driver-to-mate phase-motion table.
  * @param n {integer >= 1, default 360} Number of output points.
  * @return {array of points} Cartesian mate pitch points.
  */

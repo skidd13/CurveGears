@@ -19,6 +19,22 @@
  */
 include <base.scad>
 
+/***
+ * @function _cg_cassini_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)
+ * @brief Construct a validated Cassini body, gear, or mate boundary.
+ * @param modul {number > 0} Tooth module in millimetres.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in millimetres.
+ * @param bore {number >= 0} Centre bore diameter in millimetres.
+ * @param focus_ratio {0 <= number < 1, default 0.78} Cassini focal ratio.
+ * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param samples {integer >= 120, default 720} Pitch-curve sample count.
+ * @param orientation {angle, default 0} Display rotation in degrees.
+ * @param body_only {boolean, default false} Emit the body without teeth.
+ */
 module _cg_cassini_build(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
     assert(_cg_cassini_focus_ratio_valid(focus_ratio),"cassini_gear: focus_ratio must satisfy 0 <= focus_ratio < 1");
     _cg_assert_samples(samples,"cassini_gear: samples must be an integer >= 120");

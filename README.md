@@ -50,30 +50,26 @@ required. Gears are centred on X=0,Y=0, start at Z=0, and extrude in positive
 Z. Dimensions use millimetres and angles use degrees, as documented by each
 callable.
 
-## Families at a glance
+## Available families
 
-- **[Circle](docs/circle.md)** — constant-radius reference family for testing and regression purposes, with the standard gear, mate, and pair APIs.
-- **[Cusp](docs/cusp.md)** — three-cusp deltoid with sampled cusp-tip teeth and a receiver cut from the driver swept envelope.
+The family list and shared documentation links below are rendered from the
+same navigation menu used by the generated documentation pages.
+
+<!-- BEGIN GENERATED DOCUMENTATION NAVIGATION -->
+- Families
+  - [Bézier](docs/bezier.md) · [Cassini](docs/cassini.md) · [Circle](docs/circle.md) · [Cusp](docs/cusp.md) · [Ellipse](docs/ellipse.md) · [Epitrochoid](docs/epitrochoid.md)
+  - [Fourier](docs/fourier.md) · [Hypotrochoid](docs/hypotrochoid.md) · [Lobed](docs/lobed.md) · [Logarithmic spiral](docs/logarithmic_spiral.md) · [Pascal](docs/pascal.md) · [Superformula](docs/superformula.md)
+- Shared
+  - [Examples catalogue](examples/README.md) · [Test layout](tests/README.md)
+  - [Tooth construction](docs/tooth-construction.md) · [Tooth placement](docs/tooth-placement.md) · [Mate motion](docs/mate-motion.md) · [Mate generation](docs/mate-generation.md) · [Pair assembly](docs/pair-assembly.md)
+<!-- END GENERATED DOCUMENTATION NAVIGATION -->
+
 Most families follow the same API shape:
 
 - `curve_gear_<family>` — complete gear
 - `curve_gear_<family>_body` — body only
 - `curve_gear_<family>_mate` — conjugate mate
 - `curve_gear_<family>_pair` — assembled pair
-
-The available families are:
-
-- **[Bézier](docs/bezier.md)** — arbitrary Cartesian control curves; single and body APIs are always available, while the mate adapter accepts only closed paths that are positive, single-valued in polar angle, continuously traversed and free of self-intersection.
-- **[Cassini](docs/cassini.md)** — single-loop oval and peanut-shaped pitch curves with a dynamically conjugate mate; the lemniscate and two-loop regimes are rejected.
-- **[Circle](docs/circle.md)** — constant-radius reference family for testing and regression purposes, with the standard gear, mate, and pair APIs.
-- **[Ellipse](docs/ellipse.md)** — smooth, continuously varying transmission ratio.
-- **[Epitrochoid](docs/epitrochoid.md)** — rolling-circle geometry with controlled curvature.
-- **[Fourier](docs/fourier.md)** — user-defined harmonic polar profiles.
-- **[Hypotrochoid](docs/hypotrochoid.md)** — inner-rolling trochoidal pitch curves with conjugate mate support.
-- **[Lobed](docs/lobed.md)** — harmonic radial modulation with repeated lobes.
-- **[Logarithmic spiral](docs/logarithmic_spiral.md)** — experimental growth curves with radial returns.
-- **[Pascal](docs/pascal.md)** — limaçon-based curves, including deliberately non-convex forms.
-- **[Superformula](docs/superformula.md)** — highly adjustable symmetric and polygon-like forms.
 
 ## Executable API examples
 
@@ -85,14 +81,8 @@ previews under `images/functions`; scalar functions print their result with
 ## Detailed API documentation
 
 Source comments are canonical. `make docs-pages` merges them into the focused
-pages below; do not edit generated pages directly.
-
-- Families
-  - [Bézier](docs/bezier.md) · [Cassini](docs/cassini.md) · [Circle](docs/circle.md) · [Cusp](docs/cusp.md) · [Ellipse](docs/ellipse.md) · [Epitrochoid](docs/epitrochoid.md)
-  - [Fourier](docs/fourier.md) · [Hypotrochoid](docs/hypotrochoid.md) · [Lobed](docs/lobed.md) · [Logarithmic spiral](docs/logarithmic_spiral.md) · [Pascal](docs/pascal.md) · [Superformula](docs/superformula.md)
-- Shared
-  - [Examples catalogue](examples/README.md) · [Test layout](tests/README.md)
-  - [Tooth construction](docs/tooth-construction.md) · [Tooth placement](docs/tooth-placement.md) · [Mate motion](docs/mate-motion.md) · [Mate generation](docs/mate-generation.md) · [Pair assembly](docs/pair-assembly.md)
+pages; do not edit generated pages directly. The family pages linked above
+include the complete Doxydown reference, including documented private helpers.
 
 ## Implementation notes
 

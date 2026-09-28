@@ -40,19 +40,21 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`curve_gear_cassini`](#function-curve_gear_cassini): Build a single-loop Cassini non-circular gear.
 
+> [`_cg_cassini_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_cassini_buildmodul-tooth_number-width-bore-focus_ratio078-pressure_angle20-tooth_phase0-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct a validated Cassini body, gear, or mate boundary.
+
 > [`curve_gear_cassini_body`](#function-curve_gear_cassini_body): Build the Cassini body solid without teeth.
 
-> [`_cg_cassini_motion_radii`](#function-_cg_cassini_motion_radii): Evaluate Cassini radii at integration midpoints.
+> [`_cg_cassini_motion_radii(scale, focus_ratio, n=720)`](#function-_cg_cassini_motion_radiiscale-focus_ratio-n720): Evaluate Cassini radii at integration midpoints.
 
-> [`_cg_cassini_driver_radii`](#function-_cg_cassini_driver_radii): Evaluate Cassini radii at direct mate-construction angles.
+> [`_cg_cassini_driver_radii(scale, focus_ratio, n=720)`](#function-_cg_cassini_driver_radiiscale-focus_ratio-n720): Evaluate Cassini radii at direct mate-construction angles.
 
-> [`_cg_cassini_centre_distance`](#function-_cg_cassini_centre_distance): Solve the Cassini conjugate centre distance.
+> [`_cg_cassini_centre_distance(scale, focus_ratio, n=720)`](#function-_cg_cassini_centre_distancescale-focus_ratio-n720): Solve the Cassini conjugate centre distance.
 
-> [`_cg_cassini_motion_table`](#function-_cg_cassini_motion_table): Build the shared Cassini phase-motion table.
+> [`_cg_cassini_motion_table(scale, focus_ratio, D, n=720)`](#function-_cg_cassini_motion_tablescale-focus_ratio-d-n720): Build the shared Cassini phase-motion table.
 
-> [`_cg_cassini_mate_points_from_driver`](#function-_cg_cassini_mate_points_from_driver): Build Cassini mate pitch points by advancing driver angle directly.
+> [`_cg_cassini_mate_points_from_driver(scale, focus_ratio, D, n=720)`](#function-_cg_cassini_mate_points_from_driverscale-focus_ratio-d-n720): Build Cassini mate pitch points from driver-phase samples.
 
-> [`_cg_cassini_mate_points`](#function-_cg_cassini_mate_points): Build Cassini mate pitch points.
+> [`_cg_cassini_mate_points(scale, focus_ratio, D, n=720)`](#function-_cg_cassini_mate_pointsscale-focus_ratio-d-n720): Build Cassini mate pitch points and their motion data.
 
 > [`curve_gear_cassini_mate`](#function-curve_gear_cassini_mate): Build the standalone conjugate mate for a Cassini driver.
 
@@ -61,6 +63,8 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 > [`curve_gear_cassini_mate_rotation`](#function-curve_gear_cassini_mate_rotation): Return the conjugate Cassini mate rotation for a driver phase.
 
 > [`curve_gear_cassini_pair`](#function-curve_gear_cassini_pair): Build a meshed or separated Cassini driver/mate pair.
+
+> [`_cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")`](#function-_cg_cassini_pair_buildmodul-tooth_number-width-bore-focus_ratio078-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-tooth_phase0-driver_colorsteelblue-mate_colorgold): Construct the Cassini driver and its conjugate mate as a pair.
 
 
 ## Functions
@@ -170,7 +174,9 @@ Back to [module description](#module-cassini).
 ### Function `_cg_cassini_max_radius`
 
 
-Calculate the exact maximum scaled radius on the supported branch.
+
+On the supported `focus_ratio < 1` branch, squared radius increases with
+`cos(2*theta)`, so its maximum occurs at `theta=0`.
 
 **Parameters:**
 
@@ -217,6 +223,32 @@ curve_gear_cassini(1, 24, 4, 8);
 
 Back to [module description](#module-cassini).
 
+### Function `_cg_cassini_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`
+
+
+Construct a validated Cassini body, gear, or mate boundary.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in millimetres.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `width`: {number > 0} Extrusion width in millimetres.
+- `bore`: {number >= 0} Centre bore diameter in millimetres.
+- `focus_ratio`: {0 <= number < 1, default 0.78} Cassini focal ratio.
+- `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
+- `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `samples`: {integer >= 120, default 720} Pitch-curve sample count.
+- `orientation`: {angle, default 0} Display rotation in degrees.
+- `body_only`: {boolean, default false} Emit the body without teeth.
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-cassini).
+
 ### Function `curve_gear_cassini_body`
 
 
@@ -250,93 +282,108 @@ curve_gear_cassini_body(1, 24, 4, 8);
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_motion_radii`
+### Function `_cg_cassini_motion_radii(scale, focus_ratio, n=720)`
 
 
 Evaluate Cassini radii at integration midpoints.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Curve scale in millimetres.
+- `focus_ratio`: {0 <= number < 1} Cassini focal ratio.
+- `n`: {integer >= 1, default 720} Number of motion intervals.
 
 **Returns:**
 
-No return
+- `{array of number}`: Midpoint radii in angular order.
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_driver_radii`
+### Function `_cg_cassini_driver_radii(scale, focus_ratio, n=720)`
 
 
 Evaluate Cassini radii at direct mate-construction angles.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Curve scale in millimetres.
+- `focus_ratio`: {0 <= number < 1} Cassini focal ratio.
+- `n`: {integer >= 1, default 720} Number of boundary intervals.
 
 **Returns:**
 
-No return
+- `{array of number}`: Driver radii in angular order.
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_centre_distance`
+### Function `_cg_cassini_centre_distance(scale, focus_ratio, n=720)`
 
 
 Solve the Cassini conjugate centre distance.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Curve scale in millimetres.
+- `focus_ratio`: {0 <= number < 1} Cassini focal ratio.
+- `n`: {integer >= 1, default 720} Number of motion intervals.
 
 **Returns:**
 
-No return
+- `{number}`: Conjugate centre distance in millimetres.
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_motion_table`
+### Function `_cg_cassini_motion_table(scale, focus_ratio, D, n=720)`
 
 
 Build the shared Cassini phase-motion table.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Curve scale in millimetres.
+- `focus_ratio`: {0 <= number < 1} Cassini focal ratio.
+- `D`: {number > 0} Fixed centre distance in millimetres.
+- `n`: {integer >= 1, default 720} Number of motion intervals.
 
 **Returns:**
 
-No return
+- `{array}`: Integrated driver-to-mate phase table.
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_mate_points_from_driver`
+### Function `_cg_cassini_mate_points_from_driver(scale, focus_ratio, D, n=720)`
 
 
-Build Cassini mate pitch points by advancing driver angle directly.
+Build Cassini mate pitch points from driver-phase samples.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Curve scale in millimetres.
+- `focus_ratio`: {0 <= number < 1} Cassini focal ratio.
+- `D`: {number > 0} Fixed centre distance in millimetres.
+- `n`: {integer >= 1, default 720} Number of phase intervals.
 
 **Returns:**
 
-No return
+- `{array of points}`: Conjugate mate pitch points.
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_mate_points`
+### Function `_cg_cassini_mate_points(scale, focus_ratio, D, n=720)`
 
 
-Build Cassini mate pitch points.
+Build Cassini mate pitch points and their motion data.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Curve scale in millimetres.
+- `focus_ratio`: {0 <= number < 1} Cassini focal ratio.
+- `D`: {number > 0} Fixed centre distance in millimetres.
+- `n`: {integer >= 1, default 720} Number of phase intervals.
 
 **Returns:**
 
-No return
+- `{array of points}`: Conjugate mate pitch points.
 
 Back to [module description](#module-cassini).
 
@@ -436,6 +483,34 @@ No return
 ~~~c
 curve_gear_cassini_pair(1, 24, 4, 8);
 ~~~
+
+Back to [module description](#module-cassini).
+
+### Function `_cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")`
+
+
+Construct the Cassini driver and its conjugate mate as a pair.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in millimetres.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `width`: {number > 0} Extrusion width in millimetres.
+- `bore`: {number >= 0} Centre bore diameter in millimetres.
+- `focus_ratio`: {0 <= number < 1, default 0.78} Cassini focal ratio.
+- `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
+- `samples`: {integer >= 120, default 720} Pitch and motion sample count.
+- `phase`: {angle, default 0} Driver motion phase in degrees.
+- `together_built`: {boolean, default true} Mesh the pair when true.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
+- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-cassini).
 

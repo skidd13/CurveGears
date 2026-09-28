@@ -45,7 +45,7 @@ sampling and clearance. Reference: https://pubmed.ncbi.nlm.nih.gov/21659124/.
 
 > [`_cg_superformula_motion_radii`](#function-_cg_superformula_motion_radii): Evaluate superformula radii at integration midpoints.
 
-> [`_cg_superformula_driver_radii`](#function-_cg_superformula_driver_radii): Evaluate superformula radii at direct mate-construction angles.
+> [`_cg_superformula_driver_radii(scale, symmetry, a, b, n1, n2, n3, n=240)`](#function-_cg_superformula_driver_radiiscale-symmetry-a-b-n1-n2-n3-n240): Evaluate superformula radii at direct mate-construction angles.
 
 > [`_cg_superformula_centre_distance`](#function-_cg_superformula_centre_distance): Solve the superformula conjugate centre distance.
 
@@ -354,18 +354,25 @@ Evaluate superformula radii at integration midpoints.
 
 Back to [module description](#module-superformula).
 
-### Function `_cg_superformula_driver_radii`
+### Function `_cg_superformula_driver_radii(scale, symmetry, a, b, n1, n2, n3, n=240)`
 
 
 Evaluate superformula radii at direct mate-construction angles.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Overall radial scale.
+- `symmetry`: {integer >= 2} Number of repeated sectors.
+- `a`: {number > 0} Superformula radial parameter.
+- `b`: {number > 0} Superformula radial parameter.
+- `n1`: {number > 0} Superformula exponent.
+- `n2`: {number > 0} Superformula exponent.
+- `n3`: {number > 0} Superformula exponent.
+- `n`: {integer >= 1, default 240} Number of boundary intervals.
 
 **Returns:**
 
-No return
+- `{array of number}`: Driver radii in angular order.
 
 Back to [module description](#module-superformula).
 
@@ -383,6 +390,7 @@ Solve the superformula conjugate centre distance.
 - `n1`: {number > 0} Superformula exponent.
 - `n2`: {number > 0} Superformula exponent.
 - `n3`: {number > 0} Superformula exponent.
+- `n`: {integer >= 1, default 240} Number of motion intervals.
 
 **Returns:**
 
@@ -428,7 +436,6 @@ Build superformula mate pitch points by advancing driver angle directly.
 - `n2`: {number > 0} Superformula exponent.
 - `n3`: {number > 0} Superformula exponent.
 - `D`: {number > 0} Driver-to-mate centre distance.
-- `motion`: {array} Shared driver-to-mate phase-motion table.
 - `n`: {integer >= 1, default 360} Number of output points.
 
 **Returns:**

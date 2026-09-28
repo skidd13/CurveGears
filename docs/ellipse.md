@@ -38,7 +38,7 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 > [`_cg_ellipse_motion_radii`](#function-_cg_ellipse_motion_radii): Evaluate ellipse radii at integration midpoints.
 
-> [`_cg_ellipse_driver_radii`](#function-_cg_ellipse_driver_radii): Evaluate ellipse radii at direct mate-construction angles.
+> [`_cg_ellipse_driver_radii(a, b, n=480)`](#function-_cg_ellipse_driver_radiia-b-n480): Evaluate ellipse radii at direct mate-construction angles.
 
 > [`_cg_ellipse_centre_distance`](#function-_cg_ellipse_centre_distance): Solve the ellipse conjugate centre distance.
 
@@ -225,18 +225,20 @@ Evaluate ellipse radii at integration midpoints.
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_driver_radii`
+### Function `_cg_ellipse_driver_radii(a, b, n=480)`
 
 
 Evaluate ellipse radii at direct mate-construction angles.
 
 **Parameters:**
 
-No parameters
+- `a`: {number > 0} Ellipse semi-major scale in millimetres.
+- `b`: {number > 0} Ellipse semi-minor scale in millimetres.
+- `n`: {integer >= 1, default 480} Number of boundary intervals.
 
 **Returns:**
 
-No return
+- `{array of number}`: Driver radii in angular order.
 
 Back to [module description](#module-ellipse).
 
@@ -249,6 +251,7 @@ Solve the ellipse conjugate centre distance.
 
 - `a`: {number > 0} Ellipse semi-major scale.
 - `b`: {number > 0} Ellipse semi-minor scale.
+- `n`: {integer >= 1, default 360} Number of motion intervals.
 
 **Returns:**
 
@@ -284,7 +287,6 @@ Build ellipse mate pitch points by advancing driver angle directly.
 - `a`: {number > 0} Ellipse semi-major scale.
 - `b`: {number > 0} Ellipse semi-minor scale.
 - `D`: {number > 0} Driver-to-mate centre distance.
-- `motion`: {array} Shared driver-to-mate phase-motion table.
 - `n`: {integer >= 1, default 480} Number of output points.
 
 **Returns:**

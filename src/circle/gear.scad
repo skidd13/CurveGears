@@ -1,7 +1,7 @@
 include <base.scad>
 
 /***
- * @function curve_gear_circle
+ * @function curve_gear_circle(modul, tooth_number, width, bore, ...)
  * @brief Build a circular reference gear.
  * @image ../images/functions/circle/curve_gear_circle.png Circle gear preview
  * @param modul {number > 0} Tooth module in mm.
@@ -20,7 +20,7 @@ module curve_gear_circle(modul,tooth_number,width,bore,pressure_angle=20,tooth_p
 }
 
 /***
- * @function curve_gear_circle_body
+ * @function curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)
  * @brief Build the circular reference body without teeth.
  * @image ../images/functions/circle/curve_gear_circle_body.png Circle body preview
  * @param modul {number > 0} Tooth module in mm.

@@ -16,8 +16,18 @@ include <../mate/placement.scad>
  * @return {array of number} Sampled radii in angular order.
  */
 function _cg_superformula_motion_radii(scale,symmetry,a,b,n1,n2,n3,n=240) = [for(i=[0:n-1]) _cg_superformula_radius(scale,symmetry,a,b,n1,n2,n3,360*(i+.5)/n)];
-/** @function _cg_superformula_driver_radii
+/**
+ * @function _cg_superformula_driver_radii(scale, symmetry, a, b, n1, n2, n3, n=240)
  * @brief Evaluate superformula radii at direct mate-construction angles.
+ * @param scale {number > 0} Overall radial scale.
+ * @param symmetry {integer >= 2} Number of repeated sectors.
+ * @param a {number > 0} Superformula radial parameter.
+ * @param b {number > 0} Superformula radial parameter.
+ * @param n1 {number > 0} Superformula exponent.
+ * @param n2 {number > 0} Superformula exponent.
+ * @param n3 {number > 0} Superformula exponent.
+ * @param n {integer >= 1, default 240} Number of boundary intervals.
+ * @return {array of number} Driver radii in angular order.
  */
 function _cg_superformula_driver_radii(scale,symmetry,a,b,n1,n2,n3,n=240) = [for(i=[0:n-1]) _cg_superformula_radius(scale,symmetry,a,b,n1,n2,n3,360*i/n)];
 /**
@@ -30,6 +40,7 @@ function _cg_superformula_driver_radii(scale,symmetry,a,b,n1,n2,n3,n=240) = [for
  * @param n1 {number > 0} Superformula exponent.
  * @param n2 {number > 0} Superformula exponent.
  * @param n3 {number > 0} Superformula exponent.
+ * @param n {integer >= 1, default 240} Number of motion intervals.
  * @return {number} Conjugate centre distance.
  */
 function _cg_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,n=240) =
@@ -61,7 +72,6 @@ function _cg_superformula_motion_table(scale,symmetry,a,b,n1,n2,n3,D,n=360) = _c
  * @param n2 {number > 0} Superformula exponent.
  * @param n3 {number > 0} Superformula exponent.
  * @param D {number > 0} Driver-to-mate centre distance.
- * @param motion {array} Shared driver-to-mate phase-motion table.
  * @param n {integer >= 1, default 360} Number of output points.
  * @return {array of points} Cartesian mate pitch points.
  */

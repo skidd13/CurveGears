@@ -1,11 +1,25 @@
-/***
- * @module Cusp pair
- * @brief Build the cusp pair using a sampled swept-envelope mate.
- * The mate's cavities are generated from the driver's complete placed outline and closed motion table.
- */
 include <mate.scad>
 include <../pair/assembly.scad>
 
+/***
+ * @function _cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08)
+ * @brief Construct the cusp driver and swept-envelope mate as a pair.
+ * @param modul {number > 0} Tooth module in millimetres.
+ * @param tooth_number {integer >= 3, divisible by 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in millimetres.
+ * @param bore {number >= 0} Centre bore diameter in millimetres.
+ * @param pressure_angle {0 < angle < 90, default 20} Standard-flank pressure angle.
+ * @param samples {integer >= 720, divisible by 3, default 720} Pitch and motion sample count.
+ * @param phase {angle, default 0} Driver motion phase in degrees.
+ * @param together_built {boolean, default true} Mesh the pair when true.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
+ * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
+ * @param sweep_steps {integer >= 36, default 360} Base driver-phase intervals.
+ * @param max_pose_step {number > 0, default 0.5} Maximum member pose step in degrees.
+ * @param sweep_clearance {number > 0, default 0.08} Cutter clearance as a module fraction.
+ */
 module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,driver_color="SteelBlue",mate_color="Gold",sweep_steps=360,max_pose_step=.5,sweep_clearance=.08) {
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number && tooth_number%3==0,
         "cusp_gear_pair: tooth_number must be an integer divisible by 3");

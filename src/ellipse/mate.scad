@@ -12,8 +12,12 @@ include <../mate/placement.scad>
  */
 function _cg_ellipse_motion_radii(a,b,n=360) = [for(i=[0:n-1]) _cg_ellipse_radius(a,b,360*(i+.5)/n)];
 /**
- * @function _cg_ellipse_driver_radii
+ * @function _cg_ellipse_driver_radii(a, b, n=480)
  * @brief Evaluate ellipse radii at direct mate-construction angles.
+ * @param a {number > 0} Ellipse semi-major scale in millimetres.
+ * @param b {number > 0} Ellipse semi-minor scale in millimetres.
+ * @param n {integer >= 1, default 480} Number of boundary intervals.
+ * @return {array of number} Driver radii in angular order.
  */
 function _cg_ellipse_driver_radii(a,b,n=480) = [for(i=[0:n-1]) _cg_ellipse_radius(a,b,360*i/n)];
 /**
@@ -21,6 +25,7 @@ function _cg_ellipse_driver_radii(a,b,n=480) = [for(i=[0:n-1]) _cg_ellipse_radiu
  * @brief Solve the ellipse conjugate centre distance.
  * @param a {number > 0} Ellipse semi-major scale.
  * @param b {number > 0} Ellipse semi-minor scale.
+ * @param n {integer >= 1, default 360} Number of motion intervals.
  * @return {number} Conjugate centre distance.
  */
 function _cg_ellipse_centre_distance(a,b,n=360) = _cg_solve_mate_distance(_cg_ellipse_motion_radii(a,b,n),a+0.01,3*a);
@@ -40,7 +45,6 @@ function _cg_ellipse_motion_table(a,b,D,n=480) = _cg_motion_table_from_mid_radii
  * @param a {number > 0} Ellipse semi-major scale.
  * @param b {number > 0} Ellipse semi-minor scale.
  * @param D {number > 0} Driver-to-mate centre distance.
- * @param motion {array} Shared driver-to-mate phase-motion table.
  * @param n {integer >= 1, default 480} Number of output points.
  * @return {array of points} Cartesian mate pitch points.
  */

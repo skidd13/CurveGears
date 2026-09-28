@@ -22,6 +22,24 @@
 include <mate.scad>
 include <../pair/assembly.scad>
 
+/***
+ * @function _cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")
+ * @brief Construct the Cassini driver and its conjugate mate as a pair.
+ * @param modul {number > 0} Tooth module in millimetres.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in millimetres.
+ * @param bore {number >= 0} Centre bore diameter in millimetres.
+ * @param focus_ratio {0 <= number < 1, default 0.78} Cassini focal ratio.
+ * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
+ * @param samples {integer >= 120, default 720} Pitch and motion sample count.
+ * @param phase {angle, default 0} Driver motion phase in degrees.
+ * @param together_built {boolean, default true} Mesh the pair when true.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
+ * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
+ * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
+ */
 module _cg_cassini_pair_build(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
     assert(_cg_cassini_focus_ratio_valid(focus_ratio),"cassini_gear_pair: focus_ratio must satisfy 0 <= focus_ratio < 1");
     _cg_assert_samples(samples,"cassini_gear_pair: samples must be an integer >= 120");

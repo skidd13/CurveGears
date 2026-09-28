@@ -2,7 +2,7 @@ include <mate.scad>
 include <../pair/assembly.scad>
 
 /***
- * @function curve_gear_circle_pair
+ * @function curve_gear_circle_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated circular reference pair.
  * @image ../images/functions/circle/curve_gear_circle_pair.png Circle pair preview
  * @param modul {number > 0} Tooth module in mm.

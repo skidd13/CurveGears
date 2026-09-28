@@ -81,7 +81,9 @@ function _cg_cassini_radius(scale,focus_ratio,theta) = scale*_cg_cassini_unit_ra
  * @param focus_ratio {0 <= number < 1} Ratio `c/b`.
  * @param n {integer >= 1, default 1440} Retained for internal call compatibility; the exact maximum needs no sampling.
  * @return {number} Maximum radius in mm.
+ *
+ * On the supported `focus_ratio < 1` branch, squared radius increases with
+ * `cos(2*theta)`, so its maximum occurs at `theta=0`.
  */
-// On the supported q<1 branch, squared radius increases with cos(2*theta); its maximum is at theta=0.
 function _cg_cassini_max_radius(scale,focus_ratio,n=1440) =
     scale*sqrt(1+focus_ratio*focus_ratio);

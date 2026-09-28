@@ -11,8 +11,13 @@ include <../mate/placement.scad>
  * @return {array of number} Sampled radii in angular order.
  */
 function _cg_fourier_motion_radii(base,coefficients,n=360) = [for(i=[0:n-1]) _cg_fourier_radius(base,coefficients,360*(i+.5)/n)];
-/** @function _cg_fourier_driver_radii
+/**
+ * @function _cg_fourier_driver_radii(base, coefficients, n=360)
  * @brief Evaluate Fourier radii at direct mate-construction angles.
+ * @param base {number > 0} Base polar radius.
+ * @param coefficients {array of [integer, number, angle]} Polar harmonics.
+ * @param n {integer >= 1, default 360} Number of boundary samples.
+ * @return {array of number} Driver radii in angular order.
  */
 function _cg_fourier_driver_radii(base,coefficients,n=360) = [for(i=[0:n-1]) _cg_fourier_radius(base,coefficients,360*i/n)];
 /**
@@ -29,6 +34,7 @@ function _cg_fourier_max_radius(base,coefficients,n=720) = max(_cg_fourier_motio
  * @brief Solve the Fourier conjugate centre distance.
  * @param base {number > 0} Base polar radius.
  * @param coefficients {array of [integer, number, angle]} Polar harmonics.
+ * @param n {integer >= 1, default 360} Number of motion intervals.
  * @return {number} Conjugate centre distance.
  */
 function _cg_fourier_centre_distance(base,coefficients,n=360) = let(mx=_cg_fourier_max_radius(base,coefficients,max(720,n))) _cg_solve_mate_distance(_cg_fourier_motion_radii(base,coefficients,n),mx+.01,4*mx);
@@ -48,7 +54,6 @@ function _cg_fourier_motion_table(base,coefficients,D,n=360) = _cg_motion_table_
  * @param base {number > 0} Base polar radius.
  * @param coefficients {array of [integer, number, angle]} Polar harmonics.
  * @param D {number > 0} Driver-to-mate centre distance.
- * @param motion {array} Shared driver-to-mate phase-motion table.
  * @param n {integer >= 1, default 360} Number of output points.
  * @return {array of points} Cartesian mate pitch points.
  */

@@ -20,6 +20,24 @@
  */
 include <base.scad>
 
+/***
+ * @function _cg_hypotrochoid_build(modul, tooth_number, width, bore, major_ratio=3, rolling_ratio=1, offset_ratio=0.35, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)
+ * @brief Construct a validated hypotrochoid body, gear, or mate boundary.
+ * @param modul {number > 0} Tooth module in millimetres.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in millimetres.
+ * @param bore {number >= 0} Centre bore diameter in millimetres.
+ * @param major_ratio {number > rolling_ratio, default 3} Fixed-circle radius ratio.
+ * @param rolling_ratio {number > 0, default 1} Rolling-circle radius ratio.
+ * @param offset_ratio {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+ * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param samples {integer >= 120, default 720} Pitch-curve sample count.
+ * @param orientation {angle, default 0} Display rotation in degrees.
+ * @param body_only {boolean, default false} Emit the body without teeth.
+ */
 module _cg_hypotrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
     assert(modul>0 && width>0 && bore>=0,"hypotrochoid: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"hypotrochoid: tooth number must be an integer >= 3");

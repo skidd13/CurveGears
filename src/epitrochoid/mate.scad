@@ -13,8 +13,15 @@ include <../mate/placement.scad>
  * @return {array of number} Sampled radii in angular order.
  */
 function _cg_epitrochoid_motion_radii(scale,R,r,d,n=240) = [for(i=[0:n-1]) _cg_epitrochoid_curve_radius(scale,R,r,d,360*(i+.5)/n)];
-/** @function _cg_epitrochoid_driver_radii
+/**
+ * @function _cg_epitrochoid_driver_radii(scale, R, r, d, n=240)
  * @brief Evaluate epitrochoid radii at direct mate-construction angles.
+ * @param scale {number > 0} Overall curve scale in millimetres.
+ * @param R {number > 0} Fixed-circle radius ratio.
+ * @param r {number > 0} Rolling-circle radius ratio.
+ * @param d {number > 0} Pen offset ratio.
+ * @param n {integer >= 1, default 240} Number of boundary intervals.
+ * @return {array of number} Driver radii in angular order.
  */
 function _cg_epitrochoid_driver_radii(scale,R,r,d,n=240) = [for(i=[0:n-1]) _cg_epitrochoid_curve_radius(scale,R,r,d,360*i/n)];
 /**
@@ -24,6 +31,7 @@ function _cg_epitrochoid_driver_radii(scale,R,r,d,n=240) = [for(i=[0:n-1]) _cg_e
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
  * @param d {number > 0} Pen offset ratio.
+ * @param n {integer >= 1, default 240} Number of motion intervals.
  * @return {number} Conjugate centre distance.
  */
 function _cg_epitrochoid_centre_distance(scale,R,r,d,n=240) =
@@ -49,7 +57,6 @@ function _cg_epitrochoid_motion_table(scale,R,r,d,D,n=360) = _cg_motion_table_fr
  * @param r {number > 0} Rolling-circle radius ratio.
  * @param d {number > 0} Pen offset ratio.
  * @param D {number > 0} Driver-to-mate centre distance.
- * @param motion {array} Shared driver-to-mate phase-motion table.
  * @param n {integer >= 1, default 360} Number of output points.
  * @return {array of points} Cartesian mate pitch points.
  */

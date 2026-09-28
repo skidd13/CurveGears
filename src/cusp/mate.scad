@@ -1,7 +1,3 @@
-/***
- * @module Cusp mate
- * @brief Construct the swept-envelope mate for the deltoid driver.
- */
 include <gear.scad>
 include <envelope_mate.scad>
 

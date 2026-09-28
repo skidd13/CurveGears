@@ -49,7 +49,7 @@ https://mathshistory.st-andrews.ac.uk/Curves/Limacon/.
 
 > [`_cg_pascal_motion_radii`](#function-_cg_pascal_motion_radii): Evaluate Pascal radii at integration midpoints.
 
-> [`_cg_pascal_driver_radii`](#function-_cg_pascal_driver_radii): Evaluate Pascal radii at direct mate-construction angles.
+> [`_cg_pascal_driver_radii(scale, eccentricity, n=360)`](#function-_cg_pascal_driver_radiiscale-eccentricity-n360): Evaluate Pascal radii at direct mate-construction angles.
 
 > [`_cg_pascal_motion_table`](#function-_cg_pascal_motion_table): Build the shared Pascal phase-motion table.
 
@@ -331,18 +331,20 @@ Evaluate Pascal radii at integration midpoints.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_driver_radii`
+### Function `_cg_pascal_driver_radii(scale, eccentricity, n=360)`
 
 
 Evaluate Pascal radii at direct mate-construction angles.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Base radial scale in millimetres.
+- `eccentricity`: {number} Pascal curve eccentricity.
+- `n`: {integer >= 1, default 360} Number of boundary intervals.
 
 **Returns:**
 
-No return
+- `{array of number}`: Driver radii in angular order.
 
 Back to [module description](#module-pascal).
 
@@ -374,7 +376,6 @@ Build Pascal mate pitch points by advancing driver angle directly.
 - `scale`: {number > 0} Base radial scale.
 - `eccentricity`: {number} Pascal curve eccentricity.
 - `D`: {number > 0} Driver-to-mate centre distance.
-- `motion`: {array} Shared driver-to-mate phase-motion table.
 - `n`: {integer >= 1, default 360} Number of output points.
 
 **Returns:**

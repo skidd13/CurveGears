@@ -44,7 +44,7 @@ Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
 
 > [`_cg_epitrochoid_motion_radii`](#function-_cg_epitrochoid_motion_radii): Evaluate epitrochoid radii at integration midpoints.
 
-> [`_cg_epitrochoid_driver_radii`](#function-_cg_epitrochoid_driver_radii): Evaluate epitrochoid radii at direct mate-construction angles.
+> [`_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`](#function-_cg_epitrochoid_driver_radiiscale-r-r-d-n240): Evaluate epitrochoid radii at direct mate-construction angles.
 
 > [`_cg_epitrochoid_centre_distance`](#function-_cg_epitrochoid_centre_distance): Solve the epitrochoid conjugate centre distance.
 
@@ -298,18 +298,22 @@ Evaluate epitrochoid radii at integration midpoints.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_driver_radii`
+### Function `_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`
 
 
 Evaluate epitrochoid radii at direct mate-construction angles.
 
 **Parameters:**
 
-No parameters
+- `scale`: {number > 0} Overall curve scale in millimetres.
+- `R`: {number > 0} Fixed-circle radius ratio.
+- `r`: {number > 0} Rolling-circle radius ratio.
+- `d`: {number > 0} Pen offset ratio.
+- `n`: {integer >= 1, default 240} Number of boundary intervals.
 
 **Returns:**
 
-No return
+- `{array of number}`: Driver radii in angular order.
 
 Back to [module description](#module-epitrochoid).
 
@@ -324,6 +328,7 @@ Solve the epitrochoid conjugate centre distance.
 - `R`: {number > 0} Fixed-circle radius ratio.
 - `r`: {number > 0} Rolling-circle radius ratio.
 - `d`: {number > 0} Pen offset ratio.
+- `n`: {integer >= 1, default 240} Number of motion intervals.
 
 **Returns:**
 
@@ -363,7 +368,6 @@ Build epitrochoid mate pitch points by advancing driver angle directly.
 - `r`: {number > 0} Rolling-circle radius ratio.
 - `d`: {number > 0} Pen offset ratio.
 - `D`: {number > 0} Driver-to-mate centre distance.
-- `motion`: {array} Shared driver-to-mate phase-motion table.
 - `n`: {integer >= 1, default 360} Number of output points.
 
 **Returns:**

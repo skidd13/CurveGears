@@ -2,32 +2,65 @@ include <gear.scad>
 include <../mate/motion.scad>
 include <../mate/placement.scad>
 
-/** @function _cg_cassini_motion_radii
+/**
+ * @function _cg_cassini_motion_radii(scale, focus_ratio, n=720)
  * @brief Evaluate Cassini radii at integration midpoints.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param focus_ratio {0 <= number < 1} Cassini focal ratio.
+ * @param n {integer >= 1, default 720} Number of motion intervals.
+ * @return {array of number} Midpoint radii in angular order.
  */
 function _cg_cassini_motion_radii(scale,focus_ratio,n=720) = [for(i=[0:n-1]) _cg_cassini_radius(scale,focus_ratio,360*(i+.5)/n)];
-/** @function _cg_cassini_driver_radii
+/**
+ * @function _cg_cassini_driver_radii(scale, focus_ratio, n=720)
  * @brief Evaluate Cassini radii at direct mate-construction angles.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param focus_ratio {0 <= number < 1} Cassini focal ratio.
+ * @param n {integer >= 1, default 720} Number of boundary intervals.
+ * @return {array of number} Driver radii in angular order.
  */
 function _cg_cassini_driver_radii(scale,focus_ratio,n=720) = [for(i=[0:n-1]) _cg_cassini_radius(scale,focus_ratio,360*i/n)];
-/** @function _cg_cassini_centre_distance
+/**
+ * @function _cg_cassini_centre_distance(scale, focus_ratio, n=720)
  * @brief Solve the Cassini conjugate centre distance.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param focus_ratio {0 <= number < 1} Cassini focal ratio.
+ * @param n {integer >= 1, default 720} Number of motion intervals.
+ * @return {number} Conjugate centre distance in millimetres.
  */
 function _cg_cassini_centre_distance(scale,focus_ratio,n=720) =
     let(mx=_cg_cassini_max_radius(scale,focus_ratio,max(1440,n)))
     _cg_solve_mate_distance(_cg_cassini_motion_radii(scale,focus_ratio,n),mx+.01,4*mx);
-/** @function _cg_cassini_motion_table
+/**
+ * @function _cg_cassini_motion_table(scale, focus_ratio, D, n=720)
  * @brief Build the shared Cassini phase-motion table.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param focus_ratio {0 <= number < 1} Cassini focal ratio.
+ * @param D {number > 0} Fixed centre distance in millimetres.
+ * @param n {integer >= 1, default 720} Number of motion intervals.
+ * @return {array} Integrated driver-to-mate phase table.
  */
 function _cg_cassini_motion_table(scale,focus_ratio,D,n=720) =
     _cg_motion_table_from_mid_radii(_cg_cassini_motion_radii(scale,focus_ratio,n),D);
-/** @function _cg_cassini_mate_points_from_driver
- * @brief Build Cassini mate pitch points by advancing driver angle directly.
+/**
+ * @function _cg_cassini_mate_points_from_driver(scale, focus_ratio, D, n=720)
+ * @brief Build Cassini mate pitch points from driver-phase samples.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param focus_ratio {0 <= number < 1} Cassini focal ratio.
+ * @param D {number > 0} Fixed centre distance in millimetres.
+ * @param n {integer >= 1, default 720} Number of phase intervals.
+ * @return {array of points} Conjugate mate pitch points.
  */
 function _cg_cassini_mate_points_from_driver(scale,focus_ratio,D,n=720) =
     _cg_mate_points_from_radius_samples(_cg_cassini_driver_radii(scale,focus_ratio,n),_cg_cassini_motion_radii(scale,focus_ratio,n),D);
-/** @function _cg_cassini_mate_points
- * @brief Build Cassini mate pitch points.
+/**
+ * @function _cg_cassini_mate_points(scale, focus_ratio, D, n=720)
+ * @brief Build Cassini mate pitch points and their motion data.
+ * @param scale {number > 0} Curve scale in millimetres.
+ * @param focus_ratio {0 <= number < 1} Cassini focal ratio.
+ * @param D {number > 0} Fixed centre distance in millimetres.
+ * @param n {integer >= 1, default 720} Number of phase intervals.
+ * @return {array of points} Conjugate mate pitch points.
  */
 function _cg_cassini_mate_points(scale,focus_ratio,D,n=720) = _cg_cassini_mate_points_from_driver(scale,focus_ratio,D,n);
 
