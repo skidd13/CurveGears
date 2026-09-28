@@ -122,28 +122,26 @@ function _cg_upper_bound_column(tab,target,column,lo,hi) =
         ? _cg_upper_bound_column(tab,target,column,mid,hi)
         : _cg_upper_bound_column(tab,target,column,lo,mid-1);
 
-/*** @function _cg_interp_x_for_y(tab, target, i)
+/*** @function _cg_interp_x_for_y(tab, target)
  * @brief Interpolate an x value at a monotonic y target in a two-column table.
  * @param tab {array} Table of `[x, y]` samples.
  * @param target {number} Target y value.
- * @param i {integer, default 0} Search index.
  * @return {number} Interpolated x value.
  */
-function _cg_interp_x_for_y(tab,target,i=0) =
+function _cg_interp_x_for_y(tab,target) =
     target < tab[0][1] ? tab[len(tab)-1][0] :
     let(segment=min(len(tab)-2,max(0,_cg_upper_bound_column(tab,target,1,0,len(tab)-1))),
         y0=tab[segment][1],y1=tab[segment+1][1])
     y1>y0 ? _cg_lerp(tab[segment][0],tab[segment+1][0],(target-y0)/(y1-y0)) :
     tab[len(tab)-1][0];
 
-/*** @function _cg_interp_y_for_x(tab, target, i)
+/*** @function _cg_interp_y_for_x(tab, target)
  * @brief Interpolate a y value at a monotonic x target in a two-column table.
  * @param tab {array} Table of `[x, y]` samples.
  * @param target {number} Target x value.
- * @param i {integer, default 0} Search index.
  * @return {number} Interpolated y value.
  */
-function _cg_interp_y_for_x(tab,target,i=0) =
+function _cg_interp_y_for_x(tab,target) =
     target < tab[0][0] ? tab[len(tab)-1][1] :
     let(segment=min(len(tab)-2,max(0,_cg_upper_bound_column(tab,target,0,0,len(tab)-1))),
         x0=tab[segment][0],x1=tab[segment+1][0])
