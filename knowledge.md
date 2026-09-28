@@ -60,6 +60,13 @@ Fourier, Hypotrochoid, Lobed, Logarithmic spiral, Pascal, and Superformula.
   full-pipeline baseline runs were 43.730 s and 43.460 s (43.595 s median); the
   final source ran in 42.479 s and produced the same STL SHA-256 as above. This
   is a modest single-run result for that fixture, not a general guarantee.
+- `_cg_accessibility_result` checks many body segments against the same
+  corridor polygon. Prepare its bounds and longest edge once, then pass them
+  into `_cg_segment_hits_polygon`; standalone calls still calculate their own
+  bounds. Preserve the segment-length-scaled tolerance and exact tests. On
+  2026-09-28, the Superformula full-pipeline render took 42.418 s before and
+  42.097 s twice after; the STL SHA-256 remained identical. This is a small,
+  fixture-specific timing difference, not a broad performance guarantee.
 - Pre-transforming every mate tooth boundary before applying the existing
   pitch-distance filter was slower: the Superformula pair render measured
   45.935 s and 45.970 s at baseline, then 46.230 s with the candidate. Its STL

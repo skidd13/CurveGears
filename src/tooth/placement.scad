@@ -270,24 +270,36 @@ function _cg_point_in_polygon(point,polygon_points) =
         if((a[1]>point[1])!=(b[1]>point[1])
             && point[0] < (b[0]-a[0])*(point[1]-a[1])/(b[1]-a[1])+a[0]) 1]) % 2 == 1;
 
-/*** @function _cg_segment_hits_polygon(a, b, polygon_points)
+/*** @function _cg_polygon_segment_bounds(polygon_points)
+ * @brief Return bounds and longest edge used by segment-polygon broad-phase checks.
+ * @param polygon_points {array} Polygon vertices.
+ * @return {array} Polygon minimum, maximum and longest edge length.
+ */
+function _cg_polygon_segment_bounds(polygon_points) =
+    [
+        [min([for(p=polygon_points) p[0]]),min([for(p=polygon_points) p[1]])],
+        [max([for(p=polygon_points) p[0]]),max([for(p=polygon_points) p[1]])],
+        max([for(i=[0:len(polygon_points)-1])
+            _cg_vlen(_cg_vsub(polygon_points[(i+1)%len(polygon_points)],polygon_points[i]))])
+    ];
+
+/*** @function _cg_segment_hits_polygon(a, b, polygon_points, prepared_bounds)
  * @brief Test whether a segment enters or intersects a polygon.
  * @param a {array} Segment start point.
  * @param b {array} Segment end point.
  * @param polygon_points {array} Polygon vertices.
+ * @param prepared_bounds {array or undef} Reusable bounds from _cg_polygon_segment_bounds.
  * @return {boolean} True when the segment hits or lies inside the polygon.
  */
-function _cg_segment_hits_polygon(a,b,polygon_points) =
+function _cg_segment_hits_polygon(a,b,polygon_points,prepared_bounds=undef) =
     len(polygon_points)<3
         ? _cg_point_in_polygon(a,polygon_points) || _cg_point_in_polygon(b,polygon_points)
             || len([for(i=[0:len(polygon_points)-1])
                 let(hit=_cg_segment_intersection(a,b,polygon_points[i],polygon_points[(i+1)%len(polygon_points)]))
                 if(hit[0]) 1]) > 0
         : let(
-            polygon_min=[min([for(p=polygon_points) p[0]]),min([for(p=polygon_points) p[1]])],
-            polygon_max=[max([for(p=polygon_points) p[0]]),max([for(p=polygon_points) p[1]])],
-            longest_edge=max([for(i=[0:len(polygon_points)-1])
-                _cg_vlen(_cg_vsub(polygon_points[(i+1)%len(polygon_points)],polygon_points[i]))]),
+            bounds=is_undef(prepared_bounds) ? _cg_polygon_segment_bounds(polygon_points) : prepared_bounds,
+            polygon_min=bounds[0],polygon_max=bounds[1],longest_edge=bounds[2],
             margin=_cg_eps_intersect()*(1+_cg_vlen(_cg_vsub(b,a))+longest_edge),
             expanded_min=[polygon_min[0]-margin,polygon_min[1]-margin],
             expanded_max=[polygon_max[0]+margin,polygon_max[1]+margin]
@@ -329,6 +341,7 @@ function _cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,m
             [outer[0]+tangent[0]*half_width,outer[1]+tangent[1]*half_width],
             [outer[0]-tangent[0]*half_width,outer[1]-tangent[1]*half_width]
         ],
+        corridor_bounds=_cg_polygon_segment_bounds(corridor),
         return_segments=[for(k=[0:8])
             let(return_target=target+(k/8-.5)*tooth_pitch)
             if(_cg_arc_segment_is_discrete_return(arc,perimeter,return_target))
@@ -338,7 +351,7 @@ function _cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,m
                 s0=arc[i][1],s1=arc[i+1][1],mid=(s0+s1)/2,
                 delta=(mid-target)-perimeter*floor((mid-target)/perimeter+.5),
                 remote=abs(delta)>1.5*tooth_pitch,
-                blocked=remote && _cg_segment_hits_polygon(body[i],body[(i+1)%len(body)],corridor)
+                blocked=remote && _cg_segment_hits_polygon(body[i],body[(i+1)%len(body)],corridor,corridor_bounds)
             ) if(blocked) [i,body[i]]]
     )
     [

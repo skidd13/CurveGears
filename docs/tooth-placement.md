@@ -63,7 +63,9 @@ permitted.
 
 > [`_cg_point_in_polygon(point, polygon_points)`](#function-_cg_point_in_polygonpoint-polygon_points): Test point inclusion using an even-odd polygon crossing rule.
 
-> [`_cg_segment_hits_polygon(a, b, polygon_points)`](#function-_cg_segment_hits_polygona-b-polygon_points): Test whether a segment enters or intersects a polygon.
+> [`_cg_polygon_segment_bounds(polygon_points)`](#function-_cg_polygon_segment_boundspolygon_points): Return bounds and longest edge used by segment-polygon broad-phase checks.
+
+> [`_cg_segment_hits_polygon(a, b, polygon_points, prepared_bounds)`](#function-_cg_segment_hits_polygona-b-polygon_points-prepared_bounds): Test whether a segment enters or intersects a polygon.
 
 > [`_cg_accessibility_result`](#function-_cg_accessibility_result): Test the outward engagement corridor against remote body segments.
 
@@ -443,7 +445,22 @@ Test point inclusion using an even-odd polygon crossing rule.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_segment_hits_polygon(a, b, polygon_points)`
+### Function `_cg_polygon_segment_bounds(polygon_points)`
+
+
+Return bounds and longest edge used by segment-polygon broad-phase checks.
+
+**Parameters:**
+
+- `polygon_points`: {array} Polygon vertices.
+
+**Returns:**
+
+- `{array}`: Polygon minimum, maximum and longest edge length.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_segment_hits_polygon(a, b, polygon_points, prepared_bounds)`
 
 
 Test whether a segment enters or intersects a polygon.
@@ -453,6 +470,7 @@ Test whether a segment enters or intersects a polygon.
 - `a`: {array} Segment start point.
 - `b`: {array} Segment end point.
 - `polygon_points`: {array} Polygon vertices.
+- `prepared_bounds`: {array or undef} Reusable bounds from _cg_polygon_segment_bounds.
 
 **Returns:**
 
