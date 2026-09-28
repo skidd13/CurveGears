@@ -16,16 +16,6 @@ include <generation.scad>
 // replacement intervals and complete tooth-set collision validation. The gear
 // layer remains responsible for the canonical final outline and extrusion.
 
-/**
- * @function _cg_outward_normal
- * @brief Return the contour-winding outward normal.
- * @param points {array of points} Closed contour.
- * @param tangent {vector} Local tangent vector.
- * @return {vector} Winding-aware outward normal.
- */
-function _cg_outward_normal(points,tangent) =
-    _cg_outward_normal_from_winding(tangent,_cg_signed_area(points) >= 0 ? 1 : -1);
-
 /*** @function _cg_outward_normal_from_winding(tangent, winding)
  * @brief Return the outward normal for a tangent and known contour winding.
  * @param tangent {vector} Local tangent vector.
@@ -95,16 +85,6 @@ function _cg_closed_arc_sample(points,arc,target) =
 function _cg_point_for_closed_arc(points,arc,target) =
     _cg_closed_arc_sample(points,arc,target)[0];
 
-/*** @function _cg_tangent_for_closed_arc(points, arc, target)
- * @brief Interpolate a centred tangent at a wrapped closed-curve arc position.
- * @param points {array} Closed curve points.
- * @param arc {array} Closed-curve arc-length table.
- * @param target {number} Target arc length in mm.
- * @return {array} Unnormalised tangent vector.
- */
-function _cg_tangent_for_closed_arc(points,arc,target) =
-    _cg_closed_arc_sample(points,arc,target)[1];
-
 /**
  * @function _cg_local_frame_for_closed_arc
  * @brief Return point, tangent, outward normal and winding at an arc position.
@@ -160,20 +140,6 @@ function _cg_profile_point_at_frame(local_point,pitch_point,normal,tangent,pitch
         pitch_point[0]+normal[0]*(local_point[0]-pitch_radius)+tangent[0]*local_point[1],
         pitch_point[1]+normal[1]*(local_point[0]-pitch_radius)+tangent[1]*local_point[1]
     ];
-
-/**
- * @function _cg_canonical_body_point_at_arc
- * @brief Return a body point inward from the pitch contour.
- * @param points {array of points} Closed pitch contour.
- * @param arc {array} Cumulative arc-length table.
- * @param perimeter {number > 0} Total contour perimeter.
- * @param target {number} Target arc length.
- * @param dedendum {number >= 0} Radial inward offset.
- * @param radial_root {boolean, default false} Use radial rather than normal offset.
- * @return {point} Inward body point.
- */
-function _cg_canonical_body_point_at_arc(points,arc,perimeter,target,dedendum,radial_root=false) =
-    _cg_canonical_body_point_from_frame(_cg_local_frame_for_closed_arc(points,arc,perimeter,target),dedendum,radial_root);
 
 function _cg_canonical_body_point_from_frame(frame,dedendum,radial_root=false) =
     let(p=frame[0],normal=frame[2],radius=_cg_vlen(p),radial=_cg_vunit(p),

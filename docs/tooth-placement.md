@@ -25,8 +25,6 @@ permitted.
 
 **Functions**:
 
-> [`_cg_outward_normal`](#function-_cg_outward_normal): Return the contour-winding outward normal.
-
 > [`_cg_outward_normal_from_winding(tangent, winding)`](#function-_cg_outward_normal_from_windingtangent-winding): Return the outward normal for a tangent and known contour winding.
 
 > [`_cg_curve_tangent(points, i)`](#function-_cg_curve_tangentpoints-i): Estimate a centred tangent vector at a closed-curve point index.
@@ -39,8 +37,6 @@ permitted.
 
 > [`_cg_point_for_closed_arc(points, arc, target)`](#function-_cg_point_for_closed_arcpoints-arc-target): Interpolate a Cartesian point at a wrapped closed-curve arc position.
 
-> [`_cg_tangent_for_closed_arc(points, arc, target)`](#function-_cg_tangent_for_closed_arcpoints-arc-target): Interpolate a centred tangent at a wrapped closed-curve arc position.
-
 > [`_cg_local_frame_for_closed_arc`](#function-_cg_local_frame_for_closed_arc): Return point, tangent, outward normal and winding at an arc position.
 
 > [`_cg_frame_failure_code`](#function-_cg_frame_failure_code): Validate frame finiteness, scale, orthogonality and winding.
@@ -48,8 +44,6 @@ permitted.
 > [`_cg_frame_valid(frame)`](#function-_cg_frame_validframe): Check whether a local curve frame passes all frame invariants.
 
 > [`_cg_profile_point_at_frame`](#function-_cg_profile_point_at_frame): Map local normal/tangent coordinates into a gear frame.
-
-> [`_cg_canonical_body_point_at_arc`](#function-_cg_canonical_body_point_at_arc): Return a body point inward from the pitch contour.
 
 > [`_cg_canonical_body_polyline`](#function-_cg_canonical_body_polyline): Build the closed canonical body before teeth merge.
 
@@ -131,22 +125,6 @@ permitted.
 ## Functions
 
 The module `Tooth Placement` defines the following functions.
-
-### Function `_cg_outward_normal`
-
-
-Return the contour-winding outward normal.
-
-**Parameters:**
-
-- `points`: {array of points} Closed contour.
-- `tangent`: {vector} Local tangent vector.
-
-**Returns:**
-
-- `{vector}`: Winding-aware outward normal.
-
-Back to [module description](#module-tooth-placement).
 
 ### Function `_cg_outward_normal_from_winding(tangent, winding)`
 
@@ -244,23 +222,6 @@ Interpolate a Cartesian point at a wrapped closed-curve arc position.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tangent_for_closed_arc(points, arc, target)`
-
-
-Interpolate a centred tangent at a wrapped closed-curve arc position.
-
-**Parameters:**
-
-- `points`: {array} Closed curve points.
-- `arc`: {array} Closed-curve arc-length table.
-- `target`: {number} Target arc length in mm.
-
-**Returns:**
-
-- `{array}`: Unnormalised tangent vector.
-
-Back to [module description](#module-tooth-placement).
-
 ### Function `_cg_local_frame_for_closed_arc`
 
 
@@ -325,26 +286,6 @@ Map local normal/tangent coordinates into a gear frame.
 **Returns:**
 
 - `{point}`: Transformed Cartesian point.
-
-Back to [module description](#module-tooth-placement).
-
-### Function `_cg_canonical_body_point_at_arc`
-
-
-Return a body point inward from the pitch contour.
-
-**Parameters:**
-
-- `points`: {array of points} Closed pitch contour.
-- `arc`: {array} Cumulative arc-length table.
-- `perimeter`: {number > 0} Total contour perimeter.
-- `target`: {number} Target arc length.
-- `dedendum`: {number >= 0} Radial inward offset.
-- `radial_root`: {boolean, default false} Use radial rather than normal offset.
-
-**Returns:**
-
-- `{point}`: Inward body point.
 
 Back to [module description](#module-tooth-placement).
 
