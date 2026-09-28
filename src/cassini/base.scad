@@ -53,16 +53,17 @@ function _cg_cassini_points(scale,focus_ratio,n=720) =
     [for(i=[0:n-1]) _cg_cassini_point(scale,focus_ratio,360*i/n)];
 
 /**
- * @function _cg_cassini_scale
+ * @function _cg_cassini_scale(modul, tooth_number, focus_ratio, n=720, unit_points=undef)
  * @brief Scale a Cassini curve to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param focus_ratio {0 <= number < 1} Ratio `c/b`.
  * @param n {integer >= 1, default 720} Number of perimeter samples.
+ * @param unit_points {array of points, default undef} Optional pre-sampled unit curve.
  * @return {number} Curve scale in mm.
  */
-function _cg_cassini_scale(modul,tooth_number,focus_ratio,n=720) =
-    _cg_pitch_scale_from_points(modul,tooth_number,_cg_cassini_points(1,focus_ratio,n),_cg_pi);
+function _cg_cassini_scale(modul,tooth_number,focus_ratio,n=720,unit_points=undef) =
+    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_cassini_points(1,focus_ratio,n) : unit_points,_cg_pi);
 
 /**
  * @function _cg_cassini_radius

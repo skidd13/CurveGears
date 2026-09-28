@@ -29,7 +29,7 @@ sampling and clearance. Reference: https://pubmed.ncbi.nlm.nih.gov/21659124/.
 
 > [`_cg_superformula_points(scale, symmetry, a, b, n1, n2, n3, n)`](#function-_cg_superformula_pointsscale-symmetry-a-b-n1-n2-n3-n): Sample a complete scaled superformula pitch curve.
 
-> [`_cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n)`](#function-_cg_superformula_scalemodul-tooth_number-symmetry-a-b-n1-n2-n3-n): Scale a superformula curve to the requested tooth pitch.
+> [`_cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n, unit_points=undef)`](#function-_cg_superformula_scalemodul-tooth_number-symmetry-a-b-n1-n2-n3-n-unit_pointsundef): Scale a superformula curve to the requested tooth pitch.
 
 > [`_cg_superformula_radius(scale, symmetry, a, b, n1, n2, n3, theta)`](#function-_cg_superformula_radiusscale-symmetry-a-b-n1-n2-n3-theta): Evaluate a scaled superformula radius.
 
@@ -135,7 +135,7 @@ Sample a complete scaled superformula pitch curve.
 
 Back to [module description](#module-superformula).
 
-### Function `_cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n)`
+### Function `_cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n, unit_points=undef)`
 
 
 Scale a superformula curve to the requested tooth pitch.
@@ -151,6 +151,7 @@ Scale a superformula curve to the requested tooth pitch.
 - `n2`: {number > 0} Superformula exponent.
 - `n3`: {number > 0} Superformula exponent.
 - `n`: {integer >= 1, default 360} Number of samples used for arc length.
+- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
 
 **Returns:**
 

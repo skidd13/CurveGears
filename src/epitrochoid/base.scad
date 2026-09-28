@@ -33,7 +33,7 @@ function _cg_epitrochoid_point(R,r,d,theta) = [(R+r)*cos(theta)-d*cos((R+r)/r*th
  */
 function _cg_epitrochoid_points(R,r,d,n=720) = [for(i=[0:n-1]) _cg_epitrochoid_point(R,r,d,360*i/n)];
 /***
- * @function _cg_epitrochoid_scale(modul, tooth_number, R, r, d, n)
+ * @function _cg_epitrochoid_scale(modul, tooth_number, R, r, d, n, unit_points=undef)
  * @brief Scale an epitrochoid to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -41,9 +41,10 @@ function _cg_epitrochoid_points(R,r,d,n=720) = [for(i=[0:n-1]) _cg_epitrochoid_p
  * @param r {number > 0, default 1} Rolling-circle ratio.
  * @param d {number >= 0, default 2} Pen offset ratio in the unit model.
  * @param n {integer >= 1, default 720} Number of samples used for arc length.
+ * @param unit_points {array of points, default undef} Optional pre-sampled unit curve.
  * @return {number} Curve scale in mm.
  */
-function _cg_epitrochoid_scale(modul,tooth_number,R=3,r=1,d=2,n=720) = _cg_trochoid_scale_from_points(modul,tooth_number,_cg_epitrochoid_points(R,r,d,n));
+function _cg_epitrochoid_scale(modul,tooth_number,R=3,r=1,d=2,n=720,unit_points=undef) = _cg_trochoid_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_epitrochoid_points(R,r,d,n) : unit_points);
 /***
  * @function _cg_epitrochoid_radius(R, r, d, theta)
  * @brief Evaluate the radial distance of the unit epitrochoid.

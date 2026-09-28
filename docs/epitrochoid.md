@@ -28,7 +28,7 @@ Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
 
 > [`_cg_epitrochoid_points(R, r, d, n)`](#function-_cg_epitrochoid_pointsr-r-d-n): Sample one complete unit epitrochoid curve.
 
-> [`_cg_epitrochoid_scale(modul, tooth_number, R, r, d, n)`](#function-_cg_epitrochoid_scalemodul-tooth_number-r-r-d-n): Scale an epitrochoid to the requested tooth pitch.
+> [`_cg_epitrochoid_scale(modul, tooth_number, R, r, d, n, unit_points=undef)`](#function-_cg_epitrochoid_scalemodul-tooth_number-r-r-d-n-unit_pointsundef): Scale an epitrochoid to the requested tooth pitch.
 
 > [`_cg_epitrochoid_radius(R, r, d, theta)`](#function-_cg_epitrochoid_radiusr-r-d-theta): Evaluate the radial distance of the unit epitrochoid.
 
@@ -103,7 +103,7 @@ Sample one complete unit epitrochoid curve.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_scale(modul, tooth_number, R, r, d, n)`
+### Function `_cg_epitrochoid_scale(modul, tooth_number, R, r, d, n, unit_points=undef)`
 
 
 Scale an epitrochoid to the requested tooth pitch.
@@ -116,6 +116,7 @@ Scale an epitrochoid to the requested tooth pitch.
 - `r`: {number > 0, default 1} Rolling-circle ratio.
 - `d`: {number >= 0, default 2} Pen offset ratio in the unit model.
 - `n`: {integer >= 1, default 720} Number of samples used for arc length.
+- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
 
 **Returns:**
 

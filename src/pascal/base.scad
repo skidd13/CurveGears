@@ -37,16 +37,17 @@ function _cg_pascal_point(scale,eccentricity,phi) = let(r=scale*_cg_pascal_unit_
  */
 function _cg_pascal_points(scale,eccentricity,n=720) = [for(i=[0:n-1]) _cg_pascal_point(scale,eccentricity,360*i/n)];
 /***
- * @function _cg_pascal_scale(modul, tooth_number, eccentricity, n)
+ * @function _cg_pascal_scale(modul, tooth_number, eccentricity, n, unit_points=undef)
  * @brief Scale a Pascal curve to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param eccentricity {0 <= e < 1} Pascal curve eccentricity.
  * @param n {integer >= 1, default 720} Number of samples used for arc length.
+ * @param unit_points {array of points, default undef} Optional pre-sampled unit curve.
  * @return {number} Mean pitch-radius scale in mm.
  */
-function _cg_pascal_scale(modul,tooth_number,eccentricity,n=720) =
-    _cg_pitch_scale_from_points(modul,tooth_number,_cg_pascal_points(1,eccentricity,n),_cg_pi);
+function _cg_pascal_scale(modul,tooth_number,eccentricity,n=720,unit_points=undef) =
+    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_pascal_points(1,eccentricity,n) : unit_points,_cg_pi);
 /***
  * @function _cg_pascal_radius(scale, eccentricity, phi)
  * @brief Evaluate a scaled Pascal pitch-curve radius.

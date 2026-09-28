@@ -39,17 +39,18 @@ function _cg_lobed_point(scale,lobes,lobe_depth,theta) = let(r=scale*_cg_lobed_u
  */
 function _cg_lobed_unit_points(lobes,lobe_depth,n=720) = [for(i=[0:n-1]) _cg_lobed_point(1,lobes,lobe_depth,360*i/n)];
 /***
- * @function _cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n)
+ * @function _cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n, unit_points=undef)
  * @brief Scale a unit lobed curve to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param lobes {integer >= 1} Number of radial lobes.
  * @param lobe_depth {0 <= d < 1} Radial modulation depth.
  * @param n {integer >= 1, default 720} Number of samples used for arc length.
+ * @param unit_points {array of points, default undef} Optional pre-sampled unit curve.
  * @return {number} Mean pitch-radius scale in mm.
  */
-function _cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,n=720) =
-    _cg_pitch_scale_from_points(modul,tooth_number,_cg_lobed_unit_points(lobes,lobe_depth,n),_cg_pi);
+function _cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,n=720,unit_points=undef) =
+    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_lobed_unit_points(lobes,lobe_depth,n) : unit_points,_cg_pi);
 /***
  * @function _cg_lobed_radius(scale, lobes, lobe_depth, theta)
  * @brief Evaluate a scaled lobed pitch-curve radius.

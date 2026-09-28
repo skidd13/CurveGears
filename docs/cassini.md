@@ -32,7 +32,7 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`_cg_cassini_points`](#function-_cg_cassini_points): Sample one complete single-loop Cassini pitch curve.
 
-> [`_cg_cassini_scale`](#function-_cg_cassini_scale): Scale a Cassini curve to the requested tooth pitch.
+> [`_cg_cassini_scale(modul, tooth_number, focus_ratio, n=720, unit_points=undef)`](#function-_cg_cassini_scalemodul-tooth_number-focus_ratio-n720-unit_pointsundef): Scale a Cassini curve to the requested tooth pitch.
 
 > [`_cg_cassini_radius`](#function-_cg_cassini_radius): Evaluate a scaled Cassini radius.
 
@@ -136,7 +136,7 @@ Sample one complete single-loop Cassini pitch curve.
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_scale`
+### Function `_cg_cassini_scale(modul, tooth_number, focus_ratio, n=720, unit_points=undef)`
 
 
 Scale a Cassini curve to the requested tooth pitch.
@@ -147,6 +147,7 @@ Scale a Cassini curve to the requested tooth pitch.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `focus_ratio`: {0 <= number < 1} Ratio `c/b`.
 - `n`: {integer >= 1, default 720} Number of perimeter samples.
+- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
 
 **Returns:**
 

@@ -50,7 +50,8 @@ module _cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pre
     assert(eccentricity >= 0 && eccentricity < 1,"pascal_gear_pair: eccentricity must satisfy 0 <= eccentricity < 1");
     assert(eccentricity < 0.5 || experimental_nonconvex,"pascal_gear_pair: eccentricity >= 0.5 requires experimental_nonconvex=true");
     _cg_assert_samples(samples,"pascal_gear_pair: samples must be an integer >= 120");
-    scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples);
+    unit_points=_cg_pascal_points(1,eccentricity,samples);
+    scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples,unit_points);
     min_r=_cg_pascal_min_radius(scale,eccentricity);
     if(bore > 0)
         assert(min_r > bore/2,"pascal_gear_pair: bore exceeds the minimum driver pitch radius; reduce bore or eccentricity");
@@ -62,7 +63,7 @@ module _cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pre
     motion=integration_state[2];
     closure_error=_cg_motion_closure_error(motion);
     assert(abs(closure_error) < 0.08,"pascal_gear_pair: conjugate closure error too large");
-    driver=_cg_pascal_points(scale,eccentricity,samples);
+    driver=_cg_scale_points(scale,unit_points);
     mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
     radial_root=_cg_pascal_requires_radial_root(eccentricity);
 

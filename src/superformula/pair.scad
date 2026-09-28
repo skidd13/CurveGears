@@ -59,7 +59,8 @@ module _cg_superformula_pair_build(modul,tooth_number,width,bore,symmetry=4,a=1,
     assert(a>0 && b>0 && n1>0 && n2>0 && n3>0,"superformula_gear_pair: a,b,n1,n2,n3 must be positive");
     assert(_cg_superformula_odd_valid(symmetry,a,b,n2,n3),"superformula_gear_pair: odd symmetry requires a=b and n2=n3 for 360-degree continuity");
     _cg_assert_samples(samples,"superformula_gear_pair: samples must be an integer >= 120");
-    scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples);
+    unit_points=_cg_superformula_points(1,symmetry,a,b,n1,n2,n3,samples);
+    scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples,unit_points);
     mid_radii=_cg_superformula_motion_radii(scale,symmetry,a,b,n1,n2,n3,samples);
     mx=_cg_superformula_max_radius(scale,symmetry,a,b,n1,n2,n3,720);
     D=_cg_solve_mate_distance(mid_radii,mx+.01,4*mx);
@@ -68,7 +69,7 @@ module _cg_superformula_pair_build(modul,tooth_number,width,bore,symmetry=4,a=1,
     motion=integration_state[2];
     closure_error=_cg_motion_closure_error(motion);
     assert(abs(closure_error) < 0.08,"superformula_gear_pair: conjugate closure error too large");
-    driver=_cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,samples);
+    driver=_cg_scale_points(scale,unit_points);
     mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
     _cg_pair_assembly(D,motion,phase,together_built,_cg_pair_point_extent(driver),_cg_pair_point_extent(mate),modul,driver,mate,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,false,false,driver_color,mate_color);
 }

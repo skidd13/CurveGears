@@ -25,7 +25,7 @@ circle. The documented ratio constraints reject cusp and loop cases.
 
 > [`_cg_hypotrochoid_points(R, r, d, n=720)`](#function-_cg_hypotrochoid_pointsr-r-d-n720): Sample a complete hypotrochoid curve.
 
-> [`_cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720)`](#function-_cg_hypotrochoid_scalemodul-tooth_number-r3-r1-d035-n720): Scale the hypotrochoid to the requested module and tooth count.
+> [`_cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720, unit_points=undef)`](#function-_cg_hypotrochoid_scalemodul-tooth_number-r3-r1-d035-n720-unit_pointsundef): Scale the hypotrochoid to the requested module and tooth count.
 
 > [`_cg_hypotrochoid_radius(R, r, d, theta)`](#function-_cg_hypotrochoid_radiusr-r-d-theta): Evaluate the unit-scale hypotrochoid radius at an angle.
 
@@ -100,7 +100,7 @@ Sample a complete hypotrochoid curve.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720)`
+### Function `_cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720, unit_points=undef)`
 
 
 Scale the hypotrochoid to the requested module and tooth count.
@@ -113,6 +113,7 @@ Scale the hypotrochoid to the requested module and tooth count.
 - `r`: {number > 0, default 1} Rolling-circle radius ratio.
 - `d`: {0 < d < r, default 0.35} Pen offset ratio.
 - `n`: {integer >= 1, default 720} Number of scale samples.
+- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
 
 **Returns:**
 

@@ -59,7 +59,7 @@ function _cg_superformula_point(scale,symmetry,a,b,n1,n2,n3,theta) =
 function _cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,n=360) =
     [for(i=[0:n-1]) _cg_superformula_point(scale,symmetry,a,b,n1,n2,n3,360*i/n)];
 /***
- * @function _cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n)
+ * @function _cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n, unit_points=undef)
  * @brief Scale a superformula curve to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -70,10 +70,11 @@ function _cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,n=360) =
  * @param n2 {number > 0} Superformula exponent.
  * @param n3 {number > 0} Superformula exponent.
  * @param n {integer >= 1, default 360} Number of samples used for arc length.
+ * @param unit_points {array of points, default undef} Optional pre-sampled unit curve.
  * @return {number} Mean pitch-radius scale in mm.
  */
-function _cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,n=360) =
-    _cg_pitch_scale_from_points(modul,tooth_number,_cg_superformula_points(1,symmetry,a,b,n1,n2,n3,n),_cg_pi);
+function _cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,n=360,unit_points=undef) =
+    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_superformula_points(1,symmetry,a,b,n1,n2,n3,n) : unit_points,_cg_pi);
 /***
  * @function _cg_superformula_radius(scale, symmetry, a, b, n1, n2, n3, theta)
  * @brief Evaluate a scaled superformula radius.

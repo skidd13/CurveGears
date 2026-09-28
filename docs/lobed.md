@@ -29,7 +29,7 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`_cg_lobed_unit_points(lobes, lobe_depth, n)`](#function-_cg_lobed_unit_pointslobes-lobe_depth-n): Sample one complete unit lobed pitch curve.
 
-> [`_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n)`](#function-_cg_lobed_scalemodul-tooth_number-lobes-lobe_depth-n): Scale a unit lobed curve to the requested tooth pitch.
+> [`_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n, unit_points=undef)`](#function-_cg_lobed_scalemodul-tooth_number-lobes-lobe_depth-n-unit_pointsundef): Scale a unit lobed curve to the requested tooth pitch.
 
 > [`_cg_lobed_radius(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_radiusscale-lobes-lobe_depth-theta): Evaluate a scaled lobed pitch-curve radius.
 
@@ -118,7 +118,7 @@ Sample one complete unit lobed pitch curve.
 
 Back to [module description](#module-lobed).
 
-### Function `_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n)`
+### Function `_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n, unit_points=undef)`
 
 
 Scale a unit lobed curve to the requested tooth pitch.
@@ -130,6 +130,7 @@ Scale a unit lobed curve to the requested tooth pitch.
 - `lobes`: {integer >= 1} Number of radial lobes.
 - `lobe_depth`: {0 <= d < 1} Radial modulation depth.
 - `n`: {integer >= 1, default 720} Number of samples used for arc length.
+- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
 
 **Returns:**
 

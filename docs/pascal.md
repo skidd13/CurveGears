@@ -29,7 +29,7 @@ https://mathshistory.st-andrews.ac.uk/Curves/Limacon/.
 
 > [`_cg_pascal_points(scale, eccentricity, n)`](#function-_cg_pascal_pointsscale-eccentricity-n): Sample one complete Pascal pitch curve.
 
-> [`_cg_pascal_scale(modul, tooth_number, eccentricity, n)`](#function-_cg_pascal_scalemodul-tooth_number-eccentricity-n): Scale a Pascal curve to the requested tooth pitch.
+> [`_cg_pascal_scale(modul, tooth_number, eccentricity, n, unit_points=undef)`](#function-_cg_pascal_scalemodul-tooth_number-eccentricity-n-unit_pointsundef): Scale a Pascal curve to the requested tooth pitch.
 
 > [`_cg_pascal_radius(scale, eccentricity, phi)`](#function-_cg_pascal_radiusscale-eccentricity-phi): Evaluate a scaled Pascal pitch-curve radius.
 
@@ -122,7 +122,7 @@ Sample one complete Pascal pitch curve.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_scale(modul, tooth_number, eccentricity, n)`
+### Function `_cg_pascal_scale(modul, tooth_number, eccentricity, n, unit_points=undef)`
 
 
 Scale a Pascal curve to the requested tooth pitch.
@@ -133,6 +133,7 @@ Scale a Pascal curve to the requested tooth pitch.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `eccentricity`: {0 <= e < 1} Pascal curve eccentricity.
 - `n`: {integer >= 1, default 720} Number of samples used for arc length.
+- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
 
 **Returns:**
 
