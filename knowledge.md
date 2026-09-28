@@ -41,3 +41,27 @@ Fourier, Hypotrochoid, Lobed, Logarithmic spiral, Pascal, and Superformula.
 - Pair builders can pass a pre-sampled unit curve to their existing common
   scaling helpers. Keep scaling in the shared math layer; the Superformula
   pair render showed no measurable end-to-end speedup from sample reuse alone.
+- `_cg_placement_result` already resolves the frame for a tooth target. Forward
+  that same frame into `_cg_accessibility_result` through its optional prepared
+  frame argument, while keeping the standalone fallback for direct callers.
+  Superformula full-pipeline runs measured 44.146 s and 44.116 s before, then
+  43.897 s and 43.905 s after. The STL stayed byte-identical, but the roughly
+  0.5% timing difference is within run-to-run variation; do not claim a measured
+  full-render gain from this reuse alone.
+- `_cg_final_boundary_collisions` now trims each placed boundary once and reuses
+  it across nearby pair checks. In the same Superformula full-pipeline render,
+  timings were 43.897 s and 43.905 s before this change, then 43.730 s and
+  43.460 s after; the STL remained byte-identical. The possible gain is small
+  and should be remeasured at larger tooth counts before making a broad claim.
+- `_cg_segment_hits_polygon` can reject segments whose bounding boxes cannot
+  touch the polygon before point-in-polygon and exact edge tests. Expand the
+  polygon bounds by a segment-length-scaled intersection tolerance so the
+  broad phase preserves the exact test's endpoint allowance. Superformula
+  full-pipeline baseline runs were 43.730 s and 43.460 s (43.595 s median); the
+  final source ran in 42.479 s and produced the same STL SHA-256 as above. This
+  is a modest single-run result for that fixture, not a general guarantee.
+- Pre-transforming every mate tooth boundary before applying the existing
+  pitch-distance filter was slower: the Superformula pair render measured
+  45.935 s and 45.970 s at baseline, then 46.230 s with the candidate. Its STL
+  was identical; the extra work on distant pairs outweighed reuse, so the
+  candidate was discarded.

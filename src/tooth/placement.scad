@@ -278,10 +278,25 @@ function _cg_point_in_polygon(point,polygon_points) =
  * @return {boolean} True when the segment hits or lies inside the polygon.
  */
 function _cg_segment_hits_polygon(a,b,polygon_points) =
-    _cg_point_in_polygon(a,polygon_points) || _cg_point_in_polygon(b,polygon_points)
-    || len([for(i=[0:len(polygon_points)-1])
-        let(hit=_cg_segment_intersection(a,b,polygon_points[i],polygon_points[(i+1)%len(polygon_points)]))
-        if(hit[0]) 1]) > 0;
+    len(polygon_points)<3
+        ? _cg_point_in_polygon(a,polygon_points) || _cg_point_in_polygon(b,polygon_points)
+            || len([for(i=[0:len(polygon_points)-1])
+                let(hit=_cg_segment_intersection(a,b,polygon_points[i],polygon_points[(i+1)%len(polygon_points)]))
+                if(hit[0]) 1]) > 0
+        : let(
+            polygon_min=[min([for(p=polygon_points) p[0]]),min([for(p=polygon_points) p[1]])],
+            polygon_max=[max([for(p=polygon_points) p[0]]),max([for(p=polygon_points) p[1]])],
+            longest_edge=max([for(i=[0:len(polygon_points)-1])
+                _cg_vlen(_cg_vsub(polygon_points[(i+1)%len(polygon_points)],polygon_points[i]))]),
+            margin=_cg_eps_intersect()*(1+_cg_vlen(_cg_vsub(b,a))+longest_edge),
+            expanded_min=[polygon_min[0]-margin,polygon_min[1]-margin],
+            expanded_max=[polygon_max[0]+margin,polygon_max[1]+margin]
+        )
+        _cg_bbox_segments_overlap(a,b,expanded_min,expanded_max)
+        && (_cg_point_in_polygon(a,polygon_points) || _cg_point_in_polygon(b,polygon_points)
+            || len([for(i=[0:len(polygon_points)-1])
+                let(hit=_cg_segment_intersection(a,b,polygon_points[i],polygon_points[(i+1)%len(polygon_points)]))
+                if(hit[0]) 1]) > 0);
 
 /**
  * @function _cg_accessibility_result
