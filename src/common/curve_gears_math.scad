@@ -71,23 +71,6 @@ function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
             _cg_point_for_closed_arc(body,arc,shifted)];
 
 /***
- * @function _cg_trim_tooth_boundary(boundary, start_hit, end_hit)
- * @brief Trim a placed tooth boundary to its selected body intersections.
- * @param boundary {array} Placed tooth boundary points.
- * @param start_hit {array} First body intersection record.
- * @param end_hit {array} Second body intersection record.
- * @return {array} Trimmed tooth boundary.
- */
-function _cg_trim_tooth_boundary(boundary,start_hit,end_hit) =
-    concat(
-        [start_hit[0]],
-        [for(i=[start_hit[1]+1:end_hit[1]])
-            if(_cg_vlen(_cg_vsub(boundary[i],start_hit[0])) > _cg_eps_len()
-                && _cg_vlen(_cg_vsub(boundary[i],end_hit[0])) > _cg_eps_len()) boundary[i]],
-        [end_hit[0]]
-    );
-
-/***
  * @function _cg_final_outline_from_placements(body, arc, perimeter, placements, tooth_pitch, prepared_boundaries)
  * @brief Replace canonical body intervals with ordered placed teeth.
  * @param body {array} Canonical body boundary points.

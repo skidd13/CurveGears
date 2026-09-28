@@ -776,6 +776,22 @@ function _cg_adjacent_contact_region(hits,modul) =
     && len([for(hit=hits)
         if(_cg_vlen(_cg_vsub(hit[2],hits[0][2])) <= modul/4) 1])==len(hits);
 
+/*** @function _cg_trim_tooth_boundary(boundary, start_hit, end_hit)
+ * @brief Trim a placed tooth boundary to its selected body intersections.
+ * @param boundary {array} Placed tooth boundary points.
+ * @param start_hit {array} First body intersection record.
+ * @param end_hit {array} Second body intersection record.
+ * @return {array} Trimmed tooth boundary.
+ */
+function _cg_trim_tooth_boundary(boundary,start_hit,end_hit) =
+    concat(
+        [start_hit[0]],
+        [for(i=[start_hit[1]+1:end_hit[1]])
+            if(_cg_vlen(_cg_vsub(boundary[i],start_hit[0])) > _cg_eps_len()
+                && _cg_vlen(_cg_vsub(boundary[i],end_hit[0])) > _cg_eps_len()) boundary[i]],
+        [end_hit[0]]
+    );
+
 /*** @function _cg_trimmed_tooth_boundaries(placements)
  * @brief Build the trimmed boundaries for all placed teeth once per validation pass.
  * @param placements {array} Tooth placement records.

@@ -117,6 +117,8 @@ permitted.
 
 > [`_cg_adjacent_contact_region`](#function-_cg_adjacent_contact_region): Return whether adjacent-tooth witnesses form one compact shared contact.
 
+> [`_cg_trim_tooth_boundary(boundary, start_hit, end_hit)`](#function-_cg_trim_tooth_boundaryboundary-start_hit-end_hit): Trim a placed tooth boundary to its selected body intersections.
+
 > [`_cg_trimmed_tooth_boundaries(placements)`](#function-_cg_trimmed_tooth_boundariesplacements): Build the trimmed boundaries for all placed teeth once per validation pass.
 
 > [`_cg_final_boundary_collisions`](#function-_cg_final_boundary_collisions): Run broad-phase and exact checks for every nearby placed-tooth pair.
@@ -937,6 +939,23 @@ Return whether adjacent-tooth witnesses form one compact shared contact.
 **Returns:**
 
 - `{boolean}`: True only for one local contact region.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_trim_tooth_boundary(boundary, start_hit, end_hit)`
+
+
+Trim a placed tooth boundary to its selected body intersections.
+
+**Parameters:**
+
+- `boundary`: {array} Placed tooth boundary points.
+- `start_hit`: {array} First body intersection record.
+- `end_hit`: {array} Second body intersection record.
+
+**Returns:**
+
+- `{array}`: Trimmed tooth boundary.
 
 Back to [module description](#module-tooth-placement).
 

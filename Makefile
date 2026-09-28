@@ -337,4 +337,4 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@echo 'PASS: README, showcase images, generated documentation pages and navigation links are present'
 
 clean:
-	find images -type f -name '*.png' -delete
+	rm -rf build
