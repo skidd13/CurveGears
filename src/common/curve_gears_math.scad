@@ -88,17 +88,19 @@ function _cg_trim_tooth_boundary(boundary,start_hit,end_hit) =
     );
 
 /***
- * @function _cg_final_outline_from_placements(body, arc, perimeter, placements, tooth_pitch)
+ * @function _cg_final_outline_from_placements(body, arc, perimeter, placements, tooth_pitch, prepared_boundaries)
  * @brief Replace canonical body intervals with ordered placed teeth.
  * @param body {array} Canonical body boundary points.
  * @param arc {array} Body arc-length table.
  * @param perimeter {number > 0} Body perimeter in mm.
  * @param placements {array} Placement records.
  * @param tooth_pitch {number > 0} Arc-length pitch used to clip each splice cell.
+ * @param prepared_boundaries {array or undef} Reusable placed-tooth boundaries.
  * @return {array} Final assembled outline points.
  */
-function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_pitch=undef) =
-    let(placed=[for(p=placements) if(p[0]=="placed") p])
+function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_pitch=undef,prepared_boundaries=undef) =
+    let(placed=[for(p=placements) if(p[0]=="placed") p],
+        boundaries=is_undef(prepared_boundaries) ? _cg_trimmed_tooth_boundaries(placements) : prepared_boundaries)
     len(placed)==0 ? body :
     [
         for(i=[0:len(placed)-1])
@@ -112,7 +114,7 @@ function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_p
                 previous_end=previous_end_raw+offset,
                 start_s=current_interval[0]+offset,
                 body_interval=_cg_body_interval_before(body,arc,perimeter,previous_end,start_s),
-                tooth_interval=_cg_trim_tooth_boundary(current[6],current[8],current[9]),
+                tooth_interval=boundaries[i],
                 interval=concat(body_interval,tooth_interval)
             )
             for(p=interval) p
@@ -166,16 +168,18 @@ function _cg_has_duplicate_edge(points) =
 function _cg_merge_point_count(points,target) = len([for(p=points) if(_cg_vlen(_cg_vsub(p,target))<=_cg_eps_len()) 1]);
 
 /***
- * @function _cg_assembled_component_failures(outline, placements)
+ * @function _cg_assembled_component_failures(outline, placements, prepared_boundaries)
  * @brief Check tooth/body ownership before final polygon scans.
  * @param outline {array} Assembled outline points.
  * @param placements {array} Placement records.
+ * @param prepared_boundaries {array or undef} Reusable placed-tooth boundaries.
  * @return {array} Assembly failure records, or an empty array.
  */
-function _cg_assembled_component_failures(outline,placements) =
+function _cg_assembled_component_failures(outline,placements,prepared_boundaries=undef) =
     _cg_has_immediate_backtrack(outline) ? [["POLYGON_BACKTRACK"]] :
     let(
         placed=[for(p=placements) if(p[0]=="placed") p],
+        boundaries=is_undef(prepared_boundaries) ? _cg_trimmed_tooth_boundaries(placements) : prepared_boundaries,
         merge_counts=[for(p=placed) _cg_merge_point_count(outline,p[8][0])],
         missing=len(placed)==0 ? [] : [for(i=[0:len(placed)-1]) if(merge_counts[i]==0)
             ["MERGE_MISSING_TOOTH",placed[i][2],placed[i][8][0]]],
@@ -185,8 +189,8 @@ function _cg_assembled_component_failures(outline,placements) =
     concat(
         missing,
         duplicate,
-        [for(p=placements) if(p[0]=="placed" && len(_cg_polygon_intersections(_cg_trim_tooth_boundary(p[6],p[8],p[9])))>0)
-            ["POLYGON_SELF_INTERSECTION",p[2]]]
+        [for(i=[0:len(placed)-1])
+            if(len(_cg_polygon_intersections(boundaries[i]))>0) ["POLYGON_SELF_INTERSECTION",placed[i][2]]]
     );
 
 /**
@@ -194,15 +198,17 @@ function _cg_assembled_component_failures(outline,placements) =
  * @brief Collect witnesses for accepted compact adjacent contacts.
  * @param placements {array} Placement records.
  * @param modul {number > 0} Tooth module in mm.
+ * @param prepared_boundaries {array or undef} Reusable placed-tooth boundaries.
  * @return {array} Contact witness points allowed at assembly joins.
  */
-function _cg_adjacent_contact_points(placements,modul) =
-    let(placed=[for(p=placements) if(p[0]=="placed") p])
+function _cg_adjacent_contact_points(placements,modul,prepared_boundaries=undef) =
+    let(placed=[for(p=placements) if(p[0]=="placed") p],
+        boundaries=is_undef(prepared_boundaries) ? _cg_trimmed_tooth_boundaries(placements) : prepared_boundaries)
     len(placed)<2 ? [] : [
         for(i=[0:len(placed)-1])
             let(j=(i+1)%len(placed),
-                boundary_a=_cg_trim_tooth_boundary(placed[i][6],placed[i][8],placed[i][9]),
-                boundary_b=_cg_trim_tooth_boundary(placed[j][6],placed[j][8],placed[j][9]),
+                boundary_a=boundaries[i],
+                boundary_b=boundaries[j],
                 hits=_cg_tooth_non_top_collisions(boundary_a,boundary_b))
             if(j==i+1 || (i==len(placed)-1 && j==0))
                 if(_cg_adjacent_contact_region(hits,modul))
@@ -253,6 +259,8 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         placement_state=is_undef(state) ? _cg_tooth_placement_state(points,arc,perimeter,body_outline,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance) : [state[4],state[5]];
         candidate=placement_state[0];
         placements=placement_state[1];
+        cached_final=!is_undef(state) && len(state)>=12;
+        trimmed_boundaries=cached_final && len(state)>=13 ? state[12] : _cg_trimmed_tooth_boundaries(placements);
         invalid=[for(p=placements) if(p[0]=="invalid") p];
         placed_count=len([for(p=placements) if(p[0]=="placed") p]);
         inaccessible_count=len([for(p=placements) if(p[0]=="omitted_inaccessible") p]);
@@ -270,14 +278,13 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         splice_failure=len(splice_failures)>0 ? splice_failures[0] : ["PASS",[],[]];
         assert(len(splice_failures)==0,
             str("stage=splice severity=error code=",splice_failure[0]," first=",splice_failure[1]," second=",splice_failure[2]," eps_len=",_cg_eps_len()," eps_intersect=",_cg_eps_intersect()));
-        cached_final=!is_undef(state) && len(state)>=12;
-        collisions=cached_final ? state[8] : _cg_final_boundary_collisions(placements,modul,clearance);
+        collisions=cached_final ? state[8] : _cg_final_boundary_collisions(placements,modul,clearance,trimmed_boundaries);
         if (len(collisions)>0)
             echo(str("stage=collision severity=error code=",collisions[0][0]," message=placed tooth pair conflict pair=",collisions[0][1],"/",collisions[0][2]," target=",collisions[0][6],"/",collisions[0][7]," source_distance=",collisions[0][4]," search_radius=",collisions[0][5]," segments=",collisions[0][3][0],"/",collisions[0][3][1]," intersection=",collisions[0][3][2]," eps_intersect=",_cg_eps_intersect()));
         assert(len(collisions)==0,
             str("stage=collision severity=error code=",len(collisions)>0 ? collisions[0][0] : "TOOTH_COLLISION"," message=placed tooth pair conflict eps_intersect=",_cg_eps_intersect()," search_radius=2*tooth_height"));
-        outline=cached_final ? state[7] : _cg_final_outline_from_placements(body_outline,arc,perimeter,placements,splice_pitch);
-        assembly_failures=cached_final ? state[9] : _cg_assembled_component_failures(outline,placements);
+        outline=cached_final ? state[7] : _cg_final_outline_from_placements(body_outline,arc,perimeter,placements,splice_pitch,trimmed_boundaries);
+        assembly_failures=cached_final ? state[9] : _cg_assembled_component_failures(outline,placements,trimmed_boundaries);
         assembly_failure=len(assembly_failures)>0 ? assembly_failures[0] : ["PASS"];
         assert(len(assembly_failures)==0,
             str("stage=polygon severity=error code=",assembly_failure[0]," tooth=",len(assembly_failure)>1 ? assembly_failure[1] : -1," eps_intersect=",_cg_eps_intersect()));
@@ -287,7 +294,7 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
         assert(!_cg_has_immediate_backtrack(outline),"stage=polygon severity=error code=POLYGON_BACKTRACK eps_intersect=1e-7");
         assert(!_cg_has_duplicate_edge(outline),"stage=polygon severity=error code=POLYGON_DUPLICATE_EDGE eps_len=1e-7");
         assert(_cg_polygon_area(outline)>_cg_eps_area(),"stage=polygon severity=error code=POLYGON_ZERO_AREA eps_area=1e-8");
-        allowed_contact_points=_cg_adjacent_contact_points(placements,modul);
+        allowed_contact_points=_cg_adjacent_contact_points(placements,modul,trimmed_boundaries);
         final_intersections=cached_final ? state[10] : [for(hit=_cg_polygon_intersections(outline))
             if(!_cg_point_near_any(hit[2],allowed_contact_points,modul/4)) hit];
         final_intersection=len(final_intersections)>0 ? final_intersections[0] : [0,0,[0,0]];

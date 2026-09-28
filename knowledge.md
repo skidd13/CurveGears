@@ -67,6 +67,19 @@ Fourier, Hypotrochoid, Lobed, Logarithmic spiral, Pascal, and Superformula.
   2026-09-28, the Superformula full-pipeline render took 42.418 s before and
   42.097 s twice after; the STL SHA-256 remained identical. This is a small,
   fixture-specific timing difference, not a broad performance guarantee.
+- The prepared tooth state trims each placed boundary once and shares those
+  boundaries with outline assembly, nearby-pair checks, tooth self-intersection
+  checks, and adjacent-contact checks. Keep helper fallbacks for standalone
+  calls and the cusp tip-only outline. Superformula full-pipeline timings were
+  42.362 s and 42.629 s before, then 41.775 s and 42.052 s after; the STL
+  SHA-256 remained identical. The full cusp render and common regression group
+  passed. This measured about a 1.4% median improvement for the Superformula
+  fixture; remeasure other families before generalising.
+- Directly summing the mate-motion closure increments instead of building a
+  cumulative table on each centre-distance solver iteration preserved the
+  Superformula STL but showed no measurable full-render improvement: baseline
+  timings were 42.362 s and 42.629 s, candidate timings 42.743 s and 42.163 s.
+  The candidate was discarded.
 - Pre-transforming every mate tooth boundary before applying the existing
   pitch-distance filter was slower: the Superformula pair render measured
   45.935 s and 45.970 s at baseline, then 46.230 s with the candidate. Its STL

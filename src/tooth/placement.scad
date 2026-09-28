@@ -620,18 +620,19 @@ function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,to
             ? _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance)
             : prepared_placement_state,
         placements=placement_state[1],
+        trimmed_boundaries=prepare_final ? _cg_trimmed_tooth_boundaries(placements) : [],
         tooth_pitch=perimeter/tooth_number,
         splice_pitch=radial_root ? undef : tooth_pitch,
         body_collisions=prepare_final ? _cg_polygon_intersections(body) : [],
-        collisions=prepare_final ? _cg_final_boundary_collisions(placements,modul,clearance) : [],
-        outline=prepare_final ? _cg_final_outline_from_placements(body,arc,perimeter,placements,splice_pitch) : [],
-        assembly_failures=prepare_final ? _cg_assembled_component_failures(outline,placements) : [],
-        allowed_contact_points=prepare_final ? _cg_adjacent_contact_points(placements,modul) : [],
+        collisions=prepare_final ? _cg_final_boundary_collisions(placements,modul,clearance,trimmed_boundaries) : [],
+        outline=prepare_final ? _cg_final_outline_from_placements(body,arc,perimeter,placements,splice_pitch,trimmed_boundaries) : [],
+        assembly_failures=prepare_final ? _cg_assembled_component_failures(outline,placements,trimmed_boundaries) : [],
+        allowed_contact_points=prepare_final ? _cg_adjacent_contact_points(placements,modul,trimmed_boundaries) : [],
         final_intersections=prepare_final ? [for(hit=_cg_polygon_intersections(outline))
             if(!_cg_point_near_any(hit[2],allowed_contact_points,modul/4)) hit] : [],
         final_signed_area=prepare_final ? _cg_signed_area(outline) : 0
     ) concat([points,arc,perimeter,body,placement_state[0],placement_state[1]],
-        prepare_final ? [body_collisions,outline,collisions,assembly_failures,final_intersections,final_signed_area] : []);
+        prepare_final ? [body_collisions,outline,collisions,assembly_failures,final_intersections,final_signed_area,trimmed_boundaries] : []);
 
 /***
  * @function _cg_tooth_geometry_state_valid(state)
@@ -775,22 +776,30 @@ function _cg_adjacent_contact_region(hits,modul) =
     && len([for(hit=hits)
         if(_cg_vlen(_cg_vsub(hit[2],hits[0][2])) <= modul/4) 1])==len(hits);
 
+/*** @function _cg_trimmed_tooth_boundaries(placements)
+ * @brief Build the trimmed boundaries for all placed teeth once per validation pass.
+ * @param placements {array} Tooth placement records.
+ * @return {array of boundaries} Placed-tooth boundaries in placement order.
+ */
+function _cg_trimmed_tooth_boundaries(placements) =
+    [for(p=placements) if(p[0]=="placed")
+        len(p[6])<4 ? p[6] : _cg_trim_tooth_boundary(p[6],p[8],p[9])];
+
 /**
  * @function _cg_final_boundary_collisions
  * @brief Run broad-phase and exact checks for every nearby placed-tooth pair.
- * @param boundaries {array} Placed tooth boundaries.
- * @param points {array of points} Sampled pitch contour.
- * @param arc {array} Pitch-curve arc-length table.
- * @param perimeter {number > 0} Pitch-curve perimeter.
- * @param tooth_pitch {number > 0} Arc distance between teeth.
+ * @param placements {array} Placement records.
+ * @param modul {number > 0} Tooth module.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param prepared_boundaries {array or undef} Reusable placed-tooth boundaries.
  * @return {array} Boundary collision records.
  */
-function _cg_final_boundary_collisions(placements,modul,clearance=undef) =
+function _cg_final_boundary_collisions(placements,modul,clearance=undef,prepared_boundaries=undef) =
     let(
         placed=[for(p=placements) if(p[0]=="placed") p],
         tooth_height=_cg_dedendum(modul,clearance)+_cg_addendum(modul),
         search_radius=2*tooth_height,
-        boundaries=[for(p=placed) len(p[6])<4 ? p[6] : _cg_trim_tooth_boundary(p[6],p[8],p[9])],
+        boundaries=is_undef(prepared_boundaries) ? _cg_trimmed_tooth_boundaries(placements) : prepared_boundaries,
         pair_order=concat(
             len(placed)>2 ? [[0,len(placed)-1]] : [],
             len(placed)>1 ? [for(i=[0:len(placed)-2]) [i,i+1]] : [],

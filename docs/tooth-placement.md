@@ -117,6 +117,8 @@ permitted.
 
 > [`_cg_adjacent_contact_region`](#function-_cg_adjacent_contact_region): Return whether adjacent-tooth witnesses form one compact shared contact.
 
+> [`_cg_trimmed_tooth_boundaries(placements)`](#function-_cg_trimmed_tooth_boundariesplacements): Build the trimmed boundaries for all placed teeth once per validation pass.
+
 > [`_cg_final_boundary_collisions`](#function-_cg_final_boundary_collisions): Run broad-phase and exact checks for every nearby placed-tooth pair.
 
 > [`_cg_pair_transform_point`](#function-_cg_pair_transform_point): Transform a local point into a pair placement.
@@ -938,6 +940,21 @@ Return whether adjacent-tooth witnesses form one compact shared contact.
 
 Back to [module description](#module-tooth-placement).
 
+### Function `_cg_trimmed_tooth_boundaries(placements)`
+
+
+Build the trimmed boundaries for all placed teeth once per validation pass.
+
+**Parameters:**
+
+- `placements`: {array} Tooth placement records.
+
+**Returns:**
+
+- `{array of boundaries}`: Placed-tooth boundaries in placement order.
+
+Back to [module description](#module-tooth-placement).
+
 ### Function `_cg_final_boundary_collisions`
 
 
@@ -945,11 +962,10 @@ Run broad-phase and exact checks for every nearby placed-tooth pair.
 
 **Parameters:**
 
-- `boundaries`: {array} Placed tooth boundaries.
-- `points`: {array of points} Sampled pitch contour.
-- `arc`: {array} Pitch-curve arc-length table.
-- `perimeter`: {number > 0} Pitch-curve perimeter.
-- `tooth_pitch`: {number > 0} Arc distance between teeth.
+- `placements`: {array} Placement records.
+- `modul`: {number > 0} Tooth module.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `prepared_boundaries`: {array or undef} Reusable placed-tooth boundaries.
 
 **Returns:**
 
