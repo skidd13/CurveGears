@@ -4,8 +4,8 @@
 
 - [README](../README.md)
 - Families
-  - [Bézier](bezier.md) · [Cassini](cassini.md) · [Circle](circle.md) · [Ellipse](ellipse.md) · [Epitrochoid](epitrochoid.md) · [Fourier](fourier.md)
-  - [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Pascal](pascal.md) · [Superformula](superformula.md)
+  - [Bézier](bezier.md) · [Cassini](cassini.md) · [Circle](circle.md) · [Cusp](cusp.md) · [Ellipse](ellipse.md) · [Epitrochoid](epitrochoid.md)
+  - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Pascal](pascal.md) · [Superformula](superformula.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
   - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
@@ -92,6 +92,8 @@ permitted.
 > [`_cg_tooth_placement_state`](#function-_cg_tooth_placement_state): Build the shared tooth candidate and placement records for prepared geometry.
 
 > [`_cg_tooth_geometry_state`](#function-_cg_tooth_geometry_state): Build the reusable pitch, body, candidate, and placement state.
+
+> [`_cg_tooth_geometry_state_valid(state)`](#function-_cg_tooth_geometry_state_validstate): Validate a prepared tooth state using the common body, placement and outline rules.
 
 > [`_cg_tooth_pair_collisions(a, b)`](#function-_cg_tooth_pair_collisionsa-b): Find all segment intersections between two tooth boundaries.
 
@@ -733,10 +735,26 @@ Build the reusable pitch, body, candidate, and placement state.
 - `clearance`: {undef or >= 0} Additional radial root clearance in mm.
 - `body_only`: {boolean, default false} Omit tooth placement records.
 - `prepare_final`: {boolean, default false} Cache final boundary checks for pair rendering.
+- `prepared_placement_state`: {array or undef} Reuse a family-prepared `[candidate, placements]` pair.
 
 **Returns:**
 
 - `{array}`: `[points, arc, perimeter, body, candidate, placements, ...]`.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_tooth_geometry_state_valid(state)`
+
+
+Validate a prepared tooth state using the common body, placement and outline rules.
+
+**Parameters:**
+
+- `state`: {array} Prepared state returned by `_cg_tooth_geometry_state(..., prepare_final=true)`.
+
+**Returns:**
+
+- `{boolean}`: True when the complete common gear validation passes.
 
 Back to [module description](#module-tooth-placement).
 

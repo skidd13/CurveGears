@@ -4,8 +4,8 @@
 
 - [README](../README.md)
 - Families
-  - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md) · [Fourier](../docs/fourier.md)
-  - [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md)
+  - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
+  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](README.md)
   - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
@@ -370,6 +370,14 @@ Family-specific pipeline, contract and invalid-input fixtures.
 
 > [`circle_full_pipeline`](#function-circle_full_pipeline): Verify the complete Circle gear, mate, and pair entry points.
 
+> [`cusp_envelope_collision_probe`](#function-cusp_envelope_collision_probe): Check that sampled intermediate driver poses clear the swept-envelope mate.
+
+> [`cusp_full_pipeline`](#function-cusp_full_pipeline): Render the cusp gear, body, swept-envelope mate, and separated pair.
+
+> [`cusp_pair_pipeline`](#function-cusp_pair_pipeline): Render and validate the swept-envelope mate for a deltoid cusp driver.
+
+> [`cusp_tooth_pipeline`](#function-cusp_tooth_pipeline): Assert the cusp tip uses a validated, bounded regular-tooth profile.
+
 > [`ellipse_full_pipeline`](#function-ellipse_full_pipeline): Verify the complete Ellipse gear, mate, and pair entry points.
 
 > [`ellipse_pair_pipeline`](#function-ellipse_pair_pipeline): Verify Ellipse pair assembly and conjugate mate placement.
@@ -576,6 +584,66 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`circle/full_pipeline.scad`](circle/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_envelope_collision_probe`
+
+
+Source: [`cusp/envelope_solver_collision_probe.scad`](cusp/envelope_solver_collision_probe.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_full_pipeline`
+
+
+Source: [`cusp/full_pipeline.scad`](cusp/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_pair_pipeline`
+
+
+Source: [`cusp/pair_pipeline.scad`](cusp/pair_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_tooth_pipeline`
+
+
+Source: [`cusp/tooth_pipeline.scad`](cusp/tooth_pipeline.scad)
 
 **Parameters:**
 

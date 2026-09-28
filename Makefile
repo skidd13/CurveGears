@@ -15,9 +15,9 @@ REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print | sort)
 PREVIEW_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
-FAMILIES := bezier cassini circle ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
+FAMILIES := bezier cassini circle cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
 
-.PHONY: all images api-images examples ci-example-manifest readme docs docs-pages FORCE test test-smoke test-deliberate test-full test-bezier-invalid test-fourier-invalid check check-docs clean
+.PHONY: all images api-images examples ci-example-manifest readme docs docs-pages FORCE test test-smoke test-deliberate test-full test-cusp-envelope test-bezier-invalid test-fourier-invalid check check-docs clean
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
@@ -47,7 +47,6 @@ images/%.png: examples/%.scad $(PREVIEW_SOURCE_DEPS)
 	@mkdir -p $(@D)
 	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
 
-
 NAVIGATION_TEMPLATE := utils/doxydown-support/navigation.md
 FOOTER_TEMPLATE := utils/doxydown-support/footer.md
 EXAMPLES_CATALOGUE_HEADER := examples/.doxydown_module.md
@@ -66,7 +65,7 @@ examples: examples/README.md
 	@test -s examples/README.md
 	@test -s "$(MAIN_EXAMPLE)"
 	@for example in $(CORE_EXAMPLES); do test -s "$$example" || { echo "missing core example: $$example"; exit 1; }; done
-	@test "$(words $(API_EXAMPLES))" -eq 64
+	@test "$(words $(API_EXAMPLES))" -eq 70
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
 
@@ -76,9 +75,9 @@ ci-example-manifest:
 		relative=$${example#examples/}; output=$${relative%.scad}.png; \
 		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
 	done > "$(CI_EXAMPLE_MANIFEST)"
-	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 68
-	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 68
-	@echo 'PASS: CI manifest contains all 68 canonical examples'
+	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 74
+	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 74
+	@echo 'PASS: CI manifest contains all 74 canonical examples'
 
 readme:
 	@test -s README.md
@@ -109,7 +108,7 @@ tests/README.md: $(REGRESSION_TEST_DEPS) $(TEST_COMMON_MATH_HEADER) $(TEST_TOOTH
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
-DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/ellipse.md docs/epitrochoid.md docs/fourier.md docs/hypotrochoid.md docs/lobed.md docs/logarithmic_spiral.md docs/pascal.md docs/superformula.md docs/tooth-construction.md docs/tooth-placement.md docs/mate-motion.md docs/mate-generation.md docs/pair-assembly.md
+DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/cusp.md docs/ellipse.md docs/epitrochoid.md docs/fourier.md docs/hypotrochoid.md docs/lobed.md docs/logarithmic_spiral.md docs/pascal.md docs/superformula.md docs/tooth-construction.md docs/tooth-placement.md docs/mate-motion.md docs/mate-generation.md docs/pair-assembly.md
 
 FORCE:
 
@@ -144,6 +143,7 @@ $(1): $(3) $(4) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 endef
 
 $(eval $(call DOXYDOC_PAGE,docs/circle.md,Circle,src/circle/base.scad,src/circle/gear.scad,src/circle/mate.scad,src/circle/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/cusp.md,Cusp,src/cusp/base.scad,src/cusp/gear.scad,src/cusp/mate.scad,src/cusp/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/ellipse.md,Ellipse,src/ellipse/base.scad,src/ellipse/gear.scad,src/ellipse/mate.scad,src/ellipse/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/lobed.md,Lobed,src/lobed/base.scad,src/lobed/gear.scad,src/lobed/mate.scad,src/lobed/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/superformula.md,Superformula,src/superformula/base.scad,src/superformula/gear.scad,src/superformula/mate.scad,src/superformula/pair.scad))
@@ -231,7 +231,7 @@ $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REG
 test: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
 	$(PYTHON) -m utils.regression.check $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
-test-smoke: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST)
+test-smoke: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(if $(filter cusp,$(REGRESSION_FAMILIES)),test-cusp-envelope)
 	$(PYTHON) -m utils.regression.check --smoke-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
 test-deliberate: $(REGRESSION_DELIBERATE_OUTPUTS)
@@ -250,6 +250,17 @@ $(foreach family,$(FAMILIES),$(eval $(call FULL_PIPELINE_RENDER,$(family))))
 
 test-full: $(if $(strip $(REGRESSION_FAMILIES)),$(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DIR)/full_$(family).stl),$(FULL_PIPELINE_OUTPUTS))
 	@echo 'PASS: full maintained family renders'
+
+test-cusp-envelope:
+	@mkdir -p "$(REGRESSION_DIR)/cusp"
+	@for phase in 0.25 30.25; do \
+		log="$(REGRESSION_DIR)/cusp/envelope_$${phase}.log"; output="$(REGRESSION_DIR)/cusp/envelope_$${phase}.stl"; \
+		rm -f "$$log" "$$output"; \
+		$(OPENSCAD) -o "$$output" -D "phase=$$phase" tests/cusp/envelope_solver_collision_probe.scad > "$$log" 2>&1 || true; \
+		grep -Fq 'Current top level object is empty.' "$$log" || { cat "$$log"; echo "cusp envelope collision at driver phase $$phase"; exit 1; }; \
+		! grep -q 'ERROR:' "$$log" || { cat "$$log"; exit 1; }; \
+	done
+	@echo 'PASS: cusp swept envelope clears the driver at intermediate phases'
 
 test-bezier-invalid: $(filter $(REGRESSION_DIR)/invalid/bezier/%,$(REGRESSION_INVALID_ALL))
 	@echo 'PASS: Bézier invalid closure and tangent cases rejected'

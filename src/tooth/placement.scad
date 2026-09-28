@@ -566,14 +566,17 @@ function _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,
  * @param clearance {undef or >= 0} Additional radial root clearance in mm.
  * @param body_only {boolean, default false} Omit tooth placement records.
  * @param prepare_final {boolean, default false} Cache final boundary checks for pair rendering.
+ * @param prepared_placement_state {array or undef} Reuse a family-prepared `[candidate, placements]` pair.
  * @return {array} `[points, arc, perimeter, body, candidate, placements, ...]`.
  */
-function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepare_final=false) =
+function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepare_final=false,prepared_placement_state=undef) =
     let(
         arc=_cg_polyline_arc_table(points),
         perimeter=arc[len(arc)-1][1],
         body=_cg_canonical_body_polyline(points,arc,perimeter,_cg_dedendum(modul,clearance),radial_root),
-        placement_state=body_only ? [undef,[]] : _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance),
+        placement_state=body_only ? [undef,[]] : is_undef(prepared_placement_state)
+            ? _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance)
+            : prepared_placement_state,
         placements=placement_state[1],
         tooth_pitch=perimeter/tooth_number,
         splice_pitch=radial_root ? undef : tooth_pitch,
@@ -587,6 +590,24 @@ function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,to
         final_signed_area=prepare_final ? _cg_signed_area(outline) : 0
     ) concat([points,arc,perimeter,body,placement_state[0],placement_state[1]],
         prepare_final ? [body_collisions,outline,collisions,assembly_failures,final_intersections,final_signed_area] : []);
+
+/***
+ * @function _cg_tooth_geometry_state_valid(state)
+ * @brief Validate a prepared tooth state using the common body, placement and outline rules.
+ * @param state {array} Prepared state returned by `_cg_tooth_geometry_state(..., prepare_final=true)`.
+ * @return {boolean} True when the complete common gear validation passes.
+ */
+function _cg_tooth_geometry_state_valid(state) = len(state)<12 ? false :
+    state[4][0]
+    && len([for(p=state[5]) if(p[0]=="invalid") 1])==0
+    && _cg_polyline_finite(state[3]) && len(state[3])>=3
+    && !_cg_has_zero_edge(state[3]) && !_cg_has_duplicate_edge(state[3])
+    && _cg_polygon_area(state[3])>_cg_eps_area() && len(state[6])==0
+    && len(state[8])==0 && len(state[9])==0 && len(state[10])==0
+    && _cg_polyline_finite(state[7]) && len(state[7])>=3
+    && !_cg_has_zero_edge(state[7]) && !_cg_has_immediate_backtrack(state[7])
+    && !_cg_has_duplicate_edge(state[7]) && _cg_polygon_area(state[7])>_cg_eps_area()
+    && abs(state[11])>_cg_eps_area();
 
 /*** @function _cg_tooth_pair_collisions(a, b)
  * @brief Find all segment intersections between two tooth boundaries.

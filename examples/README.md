@@ -4,8 +4,8 @@
 
 - [README](../README.md)
 - Families
-  - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md) · [Fourier](../docs/fourier.md)
-  - [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md)
+  - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
+  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md)
 - Shared
   - [Examples catalogue](README.md) · [Test layout](../tests/README.md)
   - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
@@ -52,6 +52,18 @@ Executable examples for the public API and shared construction layers.
 > [`circle_curve_gear_mate`](#function-circle_curve_gear_mate): Render the conjugate Circle mate generated from the driver pitch curve.
 
 > [`circle_curve_gear_pair`](#function-circle_curve_gear_pair): Render a complete Circle gear pair with derived conjugate motion.
+
+> [`cusp_curve_gear`](#function-cusp_curve_gear): Render the three-cusp gear with radial teeth whose roots follow the cusp branches.
+
+> [`cusp_curve_gear_body`](#function-cusp_curve_gear_body): Render the three-cusp deltoid body with its integrated cusp-tip teeth.
+
+> [`cusp_curve_gear_centre_distance`](#function-cusp_curve_gear_centre_distance): Show the solved centre distance for the deltoid cusp pair.
+
+> [`cusp_curve_gear_mate`](#function-cusp_curve_gear_mate): Render the standalone deltoid cusp gear mate.
+
+> [`cusp_curve_gear_mate_rotation`](#function-cusp_curve_gear_mate_rotation): Show the calculated mate rotation at 45 degrees of driver motion.
+
+> [`cusp_curve_gear_pair`](#function-cusp_curve_gear_pair): Render the deltoid cusp gear with its conjugate motion mate.
 
 > [`ellipse_curve_gear`](#function-ellipse_curve_gear): Render a Ellipse gear from the documented pitch-curve family.
 
@@ -417,6 +429,96 @@ Back to [module description](#module-executable-examples).
 ![curve gear circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)
 
 Source: [`functions/circle/curve_gear_circle_pair.scad`](functions/circle/curve_gear_circle_pair.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_curve_gear`
+
+
+Source: [`cusp/curve_gear_cusp.scad`](cusp/curve_gear_cusp.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_curve_gear_body`
+
+
+Source: [`cusp/curve_gear_cusp_body.scad`](cusp/curve_gear_cusp_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_curve_gear_centre_distance`
+
+
+Source: [`cusp/curve_gear_cusp_centre_distance.scad`](cusp/curve_gear_cusp_centre_distance.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_curve_gear_mate`
+
+
+Source: [`cusp/curve_gear_cusp_mate.scad`](cusp/curve_gear_cusp_mate.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_curve_gear_mate_rotation`
+
+
+Source: [`cusp/curve_gear_cusp_mate_rotation.scad`](cusp/curve_gear_cusp_mate_rotation.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_curve_gear_pair`
+
+
+Source: [`cusp/curve_gear_cusp_pair.scad`](cusp/curve_gear_cusp_pair.scad)
 
 **Parameters:**
 

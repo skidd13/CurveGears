@@ -6,6 +6,7 @@
  */
 // Optional pair convenience imports.
 include <circle/pair.scad>
+include <cusp/pair.scad>
 include <ellipse/pair.scad>
 include <lobed/pair.scad>
 include <superformula/pair.scad>

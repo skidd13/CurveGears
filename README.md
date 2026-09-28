@@ -4,7 +4,7 @@
 
 What happens when a gear no longer has to be round?
 
-CurveGears explores that question in OpenSCAD. Ellipses, lobes, superformulae,
+CurveGears explores that question in OpenSCAD. Ellipses, deltoid cusps, lobes, superformulae,
 Fourier curves, Bézier paths, Cassini ovals, spirals and epitrochoids become pitch curves;
 teeth follow those curves; and, where the geometry permits it, a conjugate mate
 is derived from the motion rather than guessed from a second outline.
@@ -30,7 +30,7 @@ printer and mechanism before relying on any generated gear.
 
 ## A tour of the families
 
-The image below places one canonical gear from every maintained family together.
+The image below places one canonical gear from each maintained family together.
 It is a quick glimpse of the different geometric languages available in the
 library; the generated image is kept in `images/`:
 
@@ -53,6 +53,7 @@ callable.
 ## Families at a glance
 
 - **[Circle](docs/circle.md)** — constant-radius reference family for testing and regression purposes, with the standard gear, mate, and pair APIs.
+- **[Cusp](docs/cusp.md)** — three-cusp deltoid with sampled cusp-tip teeth and a receiver cut from the driver swept envelope.
 Most families follow the same API shape:
 
 - `curve_gear_<family>` — complete gear
@@ -87,8 +88,8 @@ Source comments are canonical. `make docs-pages` merges them into the focused
 pages below; do not edit generated pages directly.
 
 - Families
-  - [Bézier](docs/bezier.md) · [Cassini](docs/cassini.md) · [Circle](docs/circle.md) · [Ellipse](docs/ellipse.md) · [Epitrochoid](docs/epitrochoid.md) · [Fourier](docs/fourier.md)
-  - [Hypotrochoid](docs/hypotrochoid.md) · [Lobed](docs/lobed.md) · [Logarithmic spiral](docs/logarithmic_spiral.md) · [Pascal](docs/pascal.md) · [Superformula](docs/superformula.md)
+  - [Bézier](docs/bezier.md) · [Cassini](docs/cassini.md) · [Circle](docs/circle.md) · [Cusp](docs/cusp.md) · [Ellipse](docs/ellipse.md) · [Epitrochoid](docs/epitrochoid.md)
+  - [Fourier](docs/fourier.md) · [Hypotrochoid](docs/hypotrochoid.md) · [Lobed](docs/lobed.md) · [Logarithmic spiral](docs/logarithmic_spiral.md) · [Pascal](docs/pascal.md) · [Superformula](docs/superformula.md)
 - Shared
   - [Examples catalogue](examples/README.md) · [Test layout](tests/README.md)
   - [Tooth construction](docs/tooth-construction.md) · [Tooth placement](docs/tooth-placement.md) · [Mate motion](docs/mate-motion.md) · [Mate generation](docs/mate-generation.md) · [Pair assembly](docs/pair-assembly.md)

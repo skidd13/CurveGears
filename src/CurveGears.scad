@@ -6,6 +6,7 @@
  */
 // Convenience import; direct family imports avoid unrelated code.
 include <circle/gear.scad>
+include <cusp/gear.scad>
 include <ellipse/gear.scad>
 include <lobed/gear.scad>
 include <superformula/gear.scad>
