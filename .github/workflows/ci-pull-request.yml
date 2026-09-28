@@ -1,0 +1,8 @@
+name: CurveGears CI (pull request)
+
+on:
+  pull_request:
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci-common.yml

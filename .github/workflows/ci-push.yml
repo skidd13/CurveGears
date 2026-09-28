@@ -1,0 +1,8 @@
+name: CurveGears CI (push)
+
+on:
+  push:
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci-common.yml

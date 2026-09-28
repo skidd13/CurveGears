@@ -17,8 +17,9 @@ ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
 CI_REGRESSION_GROUPS := common_math tooth_generation tooth_placement mate_motion $(FAMILIES)
+CI_WORKFLOW := .github/workflows/ci-common.yml
 
-.PHONY: all help images api-images examples ci-example-manifest ci-regression-groups readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
+.PHONY: all help images api-images examples ci-example-manifest ci-regression-groups ci-update readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
@@ -36,6 +37,27 @@ all: images examples readme docs-pages tests/README.md
 ci-regression-groups:
 	@printf '%s\n' $(CI_REGRESSION_GROUPS)
 
+ci-update:
+	@set -eu; \
+	workflow="$(CI_WORKFLOW)"; \
+	test "$$(grep -c '^      # BEGIN MAKE-GENERATED REGRESSION STEPS$$' "$$workflow")" -eq 1; \
+	test "$$(grep -c '^      # END MAKE-GENERATED REGRESSION STEPS$$' "$$workflow")" -eq 1; \
+	tmp=$$(mktemp); trap 'rm -f "$$tmp"' EXIT; \
+	{ \
+		sed -n '1,/^      # BEGIN MAKE-GENERATED REGRESSION STEPS$$/p' "$$workflow"; \
+		for group in $(CI_REGRESSION_GROUPS); do \
+			printf '      - name: Regression (%s)\n        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test family=%s OPENSCAD=openscad\n' "$$group" "$$group"; \
+		done; \
+		sed -n '/^      # END MAKE-GENERATED REGRESSION STEPS$$/,$$p' "$$workflow"; \
+	} > "$$tmp"; \
+	if cmp -s "$$tmp" "$$workflow"; then \
+		echo 'PASS: Make-generated CI regression steps are current'; \
+		rm -f "$$tmp"; \
+	else \
+		mv "$$tmp" "$$workflow"; \
+		echo 'UPDATED: GitHub Actions regression steps from Make groups'; \
+	fi
+
 help:
 	@printf '%s\n' \
 	  'CurveGears Make targets:' \
@@ -43,6 +65,7 @@ help:
 	  '  images              Render the main image, API examples and common examples' \
 	  '  api-images          Render family function example images' \
 	  '  ci-regression-groups Print the regression groups consumed by GitHub Actions' \
+	  '  ci-update           Update named GitHub Actions regression steps from Make groups' \
 	  '  examples            Generate the example index' \
 	  '  readme              Generate the main README and navigation' \
 	  '  docs                Generate documentation, examples and images' \
@@ -257,7 +280,7 @@ $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REG
 	@set +e; $(OPENSCAD) -o "$(@:.failed=.stl)" "$<" > "$(@:.failed=.log)" 2>&1; status=$$?; test $$status -ne 0
 	@touch "$@"
 
-test: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
+test: ci-update $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
 	@if printf '%s\n' "$(REGRESSION_FAMILIES)" | grep -qw cusp; then \
 		mkdir -p "$(REGRESSION_DIR)/cusp"; \
 		for phase in 0.25 30.25; do \
