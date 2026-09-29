@@ -6,13 +6,16 @@ PYTHON ?= python3
 IMAGE_SIZE ?= 4096,4096
 CI_IMAGE_SIZE ?= 256,256
 CORE_IMAGE_SIZE ?= 1024,1024
+_DEFAULT_IMAGE_SIZE := $(IMAGE_SIZE)
+MAIN_IMAGE_SIZE ?= $(_DEFAULT_IMAGE_SIZE)
 CAMERA ?= 0,0,0,50,0,40,0
 COLORSCHEME ?= Nature
 REGRESSION_DIR ?= build/regression
 REGRESSION_FAMILIES ?= $(if $(family),$(family),$(FAMILY))
 REGRESSION_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print)
 REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print | sort)
-PREVIEW_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print | sort)
+PREVIEW_SHARED_SOURCE_DEPS := $(shell find src/common -type f -name '*.scad' -print | sort)
+PREVIEW_ALL_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
@@ -24,6 +27,7 @@ CI_WORKFLOW := .github/workflows/ci-common.yml
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
 MAIN_EXAMPLES := $(foreach family,$(FAMILIES),examples/functions/$(family)/curve_gear_$(family).scad)
+MAIN_EXAMPLE_IMAGES := $(patsubst examples/%.scad,images/%.png,$(MAIN_EXAMPLES))
 CORE_EXAMPLES := examples/tooth/construction.scad examples/tooth/placement.scad examples/tooth/assembly.scad
 CORE_IMAGES := images/tooth/construction.png images/tooth/placement.png images/tooth/assembly.png
 API_EXAMPLES := $(shell find examples/functions -type f -name '*.scad' -print | sort)
@@ -79,7 +83,7 @@ help:
 	  '  clean               Remove generated build and image artifacts' \
 	  'Test selection: make test family=cusp runs cusp checks; omit family to run all families.' \
 	  'OPENSCAD=<path> selects the OpenSCAD executable; PYTHON=<path> selects Python 3.' \
-	  'IMAGE_SIZE=<w,h> sets general image pixels; CI_IMAGE_SIZE and CORE_IMAGE_SIZE set smaller CI and common-example renders.' \
+	  'IMAGE_SIZE=<w,h> sets general image pixels; MAIN_IMAGE_SIZE overrides the overview; CI_IMAGE_SIZE and CORE_IMAGE_SIZE set smaller renders.' \
 	  'CAMERA=<x,y,z,distance,rotation-x,rotation-y,rotation-z> and COLORSCHEME=<name> set image view and palette.' \
 	  'REGRESSION_DIR=<path> changes test outputs; FAMILY=<name> is the uppercase alias for family=<name>.'
 
@@ -89,12 +93,25 @@ api-images: $(API_IMAGES)
 
 $(API_IMAGES): IMAGE_SIZE=$(CI_IMAGE_SIZE)
 $(CORE_IMAGES): IMAGE_SIZE=$(CORE_IMAGE_SIZE)
+$(API_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
+$(CORE_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 
-$(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES) $(PREVIEW_SOURCE_DEPS)
+define FAMILY_API_IMAGE_SOURCE_DEPS
+$(filter images/functions/$(1)/%,$(API_IMAGES)): $(shell find src/$(1) -type f -name '*.scad' -print | sort)
+endef
+$(foreach family,$(FAMILIES),$(eval $(call FAMILY_API_IMAGE_SOURCE_DEPS,$(family))))
+
+$(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES) $(PREVIEW_ALL_SOURCE_DEPS)
 	@mkdir -p $(@D)
-	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
+	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(MAIN_IMAGE_SIZE) -q "$<"
 
-images/%.png: examples/%.scad $(PREVIEW_SOURCE_DEPS)
+# A canonical single-gear example is also an input to the family overview.
+# Order-only keeps a canonical image request checking the overview first, while
+# avoiding invalidating every family PNG just because the overview was rendered.
+# Its resolution must not inherit the smaller per-target API image size.
+$(MAIN_EXAMPLE_IMAGES): | $(MAIN_IMAGE)
+
+images/%.png: examples/%.scad
 	@mkdir -p $(@D)
 	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
 
