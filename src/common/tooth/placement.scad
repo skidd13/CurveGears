@@ -430,7 +430,10 @@ function _cg_splice_failures(placements,perimeter,tooth_pitch=undef) =
  */
 function _cg_tooth_body_intersections(tooth_boundary,body) =
     [for(ti=[0:len(tooth_boundary)-1],bi=[0:len(body)-1])
-        let(hit=_cg_segment_intersection(tooth_boundary[ti],tooth_boundary[(ti+1)%len(tooth_boundary)],body[bi],body[(bi+1)%len(body)]))
+        let(a=tooth_boundary[ti],b=tooth_boundary[(ti+1)%len(tooth_boundary)],
+            c=body[bi],d=body[(bi+1)%len(body)])
+        if(_cg_bbox_segments_overlap(a,b,c,d))
+        let(hit=_cg_segment_intersection(a,b,c,d))
         if(hit[0]) [hit[1],ti,bi,hit[2],hit[3]]];
 
 /*** @function _cg_placement_invalid(index, target, frame, candidate, code)
