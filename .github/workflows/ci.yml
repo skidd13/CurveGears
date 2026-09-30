@@ -1,0 +1,70 @@
+name: CurveGears CI shared
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  base_validate:
+    name: Base validation
+    runs-on: ubuntu-22.04
+    outputs:
+      family_matrix: ${{ steps.family_matrix.outputs.families || '[]' }}
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install OpenSCAD
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes openscad ripgrep xvfb libgl1-mesa-dri libglu1-mesa
+      - name: Export family matrix from Make
+        id: family_matrix
+        run: echo "families=$(make -s ci-family-matrix)" >> "$GITHUB_OUTPUT"
+      - name: Common regressions
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test family=common OPENSCAD=openscad
+      - name: Render CI examples (core)
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-render-examples group=core OPENSCAD=openscad
+
+  family_validate:
+    name: Family validation (${{ matrix.family }})
+    needs: base_validate
+    if: ${{ needs.base_validate.result == 'success' }}
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        family: ${{ fromJSON(needs.base_validate.outputs.family_matrix) }}
+    env:
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install OpenSCAD
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes openscad ripgrep xvfb libgl1-mesa-dri libglu1-mesa
+      - name: Regression (${{ matrix.family }})
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test family=${{ matrix.family }} OPENSCAD=openscad
+      - name: Render CI examples (${{ matrix.family }})
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-render-examples group=${{ matrix.family }} OPENSCAD=openscad
+
+  common_end_check:
+    name: Common end check
+    if: ${{ always() }}
+    needs: [base_validate, family_validate]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate generated documentation
+        run: |
+          make readme
+          git diff --exit-code -- README.md
+          make check-docs
+      - name: Check repository hygiene
+        run: |
+          ! find . \( -path './.git' -o -path './build' \) -prune -o -type f \( -name '*.stl' -o -name '*.csg' -o -name '*.log' \) -print -quit | grep -q .
+          ! rg -n '(^|[<"])(\.\./)*.*gears\.scad' src README.md NOTICE.md
+      - name: Require successful validation jobs
+        if: ${{ always() && (needs.base_validate.result != 'success' || needs.family_validate.result != 'success' || failure()) }}
+        run: exit 1

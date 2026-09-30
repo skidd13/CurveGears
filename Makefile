@@ -20,9 +20,9 @@ ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
 CI_REGRESSION_GROUPS := common_math tooth_generation tooth_placement mate_motion $(FAMILIES)
-CI_WORKFLOW := .github/workflows/ci-common.yml
+CI_EXAMPLE_RENDER_GROUPS := core $(FAMILIES)
 
-.PHONY: all help images api-images examples ci-example-manifest ci-regression-groups ci-update readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
+.PHONY: all help images api-images examples ci-example-manifest ci-render-examples ci-family-matrix ci-regression-groups readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
@@ -41,26 +41,15 @@ all: images examples readme docs-pages tests/README.md
 ci-regression-groups:
 	@printf '%s\n' $(CI_REGRESSION_GROUPS)
 
-ci-update:
+ci-family-matrix:
 	@set -eu; \
-	workflow="$(CI_WORKFLOW)"; \
-	test "$$(grep -c '^      # BEGIN MAKE-GENERATED REGRESSION STEPS$$' "$$workflow")" -eq 1; \
-	test "$$(grep -c '^      # END MAKE-GENERATED REGRESSION STEPS$$' "$$workflow")" -eq 1; \
-	tmp=$$(mktemp); trap 'rm -f "$$tmp"' EXIT; \
-	{ \
-		sed -n '1,/^      # BEGIN MAKE-GENERATED REGRESSION STEPS$$/p' "$$workflow"; \
-		for group in $(CI_REGRESSION_GROUPS); do \
-			printf '      - name: Regression (%s)\n        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test family=%s OPENSCAD=openscad\n' "$$group" "$$group"; \
-		done; \
-		sed -n '/^      # END MAKE-GENERATED REGRESSION STEPS$$/,$$p' "$$workflow"; \
-	} > "$$tmp"; \
-	if cmp -s "$$tmp" "$$workflow"; then \
-		echo 'PASS: Make-generated CI regression steps are current'; \
-		rm -f "$$tmp"; \
-	else \
-		mv "$$tmp" "$$workflow"; \
-		echo 'UPDATED: GitHub Actions regression steps from Make groups'; \
-	fi
+	separator=; \
+	printf '['; \
+	for family in $(FAMILIES); do \
+		printf '%s"%s"' "$$separator" "$$family"; \
+		separator=,; \
+	done; \
+	printf ']\n'
 
 help:
 	@printf '%s\n' \
@@ -68,8 +57,10 @@ help:
 	  '  all                 Build images, examples, README and documentation pages' \
 	  '  images              Render the main image, API examples and common examples' \
 	  '  api-images          Render family function example images' \
+	  '  ci-example-manifest Write the canonical CI example manifest' \
+	  '  ci-render-examples  Render one CI-size example group (group=<core|family>)' \
+	  '  ci-family-matrix    Print the JSON family matrix used by GitHub Actions' \
 	  '  ci-regression-groups Print the regression groups consumed by GitHub Actions' \
-	  '  ci-update           Update named GitHub Actions regression steps from Make groups' \
 	  '  examples            Generate the example index' \
 	  '  readme              Generate the main README and navigation' \
 	  '  docs                Generate documentation, examples and images' \
@@ -146,6 +137,24 @@ ci-example-manifest:
 	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 74
 	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 74
 	@echo 'PASS: CI manifest contains all 74 canonical examples'
+
+ci-render-examples: ci-example-manifest
+	@set -eu; \
+	group="$(group)"; \
+	case " $(CI_EXAMPLE_RENDER_GROUPS) " in *" $$group "*) ;; *) echo "unknown CI example render group: $$group"; exit 2 ;; esac; \
+	group_manifest="$(dir $(CI_EXAMPLE_MANIFEST))manifest-$$group.tsv"; \
+	awk -F '\t' -v group="$$group" ' \
+		$$1 == "examples/main_curved_gear.scad" || $$1 ~ /^examples\/tooth\// { if (group == "core") print; next; } \
+		$$1 ~ /^examples\/functions\// { path = $$1; sub(/^examples\/functions\//, "", path); split(path, part, "/"); if (part[1] == group) print; } \
+	' "$(CI_EXAMPLE_MANIFEST)" > "$$group_manifest"; \
+	test -s "$$group_manifest" || { echo "CI example render group is empty: $$group"; exit 1; }; \
+	tab=$$(printf '\t'); \
+	while IFS="$$tab" read -r example output; do \
+		mkdir -p "$$(dirname "$$output")"; \
+		echo "Rendering $$example"; \
+		$(OPENSCAD) -o "$$output" --camera=0,0,0,50,0,40,0 --colorscheme=Nature --projection=o --viewall --autocenter --imgsize=$(CI_IMAGE_SIZE) -q "$$example"; \
+		test -s "$$output"; \
+	done < "$$group_manifest"
 
 readme: README.md $(NAVIGATION_TEMPLATE) FORCE
 	@test -s README.md
@@ -297,7 +306,7 @@ $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REG
 	@set +e; $(OPENSCAD) -o "$(@:.failed=.stl)" "$<" > "$(@:.failed=.log)" 2>&1; status=$$?; test $$status -ne 0
 	@touch "$@"
 
-test: ci-update $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
+test: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
 	@if printf '%s\n' "$(REGRESSION_FAMILIES)" | grep -qw cusp; then \
 		mkdir -p "$(REGRESSION_DIR)/cusp"; \
 		for phase in 0.25 30.25; do \
