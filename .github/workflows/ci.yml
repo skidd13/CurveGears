@@ -56,6 +56,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v7
+      - name: Install common end-check tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep
       - name: Validate generated documentation
         run: |
           make readme
@@ -65,6 +69,12 @@ jobs:
         run: |
           ! find . \( -path './.git' -o -path './build' \) -prune -o -type f \( -name '*.stl' -o -name '*.csg' -o -name '*.log' \) -print -quit | grep -q .
           ! rg -n '(^|[<"])(\.\./)*.*gears\.scad' src README.md NOTICE.md
+      - name: Install OpenSCAD for overview render
+        if: ${{ needs.base_validate.result == 'success' && needs.family_validate.result == 'success' }}
+        run: sudo apt-get install --yes openscad xvfb libgl1-mesa-dri libglu1-mesa
+      - name: Render main overview
+        if: ${{ needs.base_validate.result == 'success' && needs.family_validate.result == 'success' }}
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-render-examples group=overview OPENSCAD=openscad
       - name: Require successful validation jobs
         if: ${{ always() && (needs.base_validate.result != 'success' || needs.family_validate.result != 'success' || failure()) }}
         run: exit 1

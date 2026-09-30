@@ -20,7 +20,7 @@ ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := bezier cassini circle cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral pascal superformula
 CI_REGRESSION_GROUPS := common_math tooth_generation tooth_placement mate_motion $(FAMILIES)
-CI_EXAMPLE_RENDER_GROUPS := core $(FAMILIES)
+CI_EXAMPLE_RENDER_GROUPS := core overview $(FAMILIES)
 
 .PHONY: all help images api-images examples ci-example-manifest ci-render-examples ci-family-matrix ci-regression-groups readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
 
@@ -58,7 +58,7 @@ help:
 	  '  images              Render the main image, API examples and common examples' \
 	  '  api-images          Render family function example images' \
 	  '  ci-example-manifest Write the canonical CI example manifest' \
-	  '  ci-render-examples  Render one CI-size example group (group=<core|family>)' \
+	  '  ci-render-examples  Render one CI-size example group (group=<core|overview|family>)' \
 	  '  ci-family-matrix    Print the JSON family matrix used by GitHub Actions' \
 	  '  ci-regression-groups Print the regression groups consumed by GitHub Actions' \
 	  '  examples            Generate the example index' \
@@ -144,7 +144,8 @@ ci-render-examples: ci-example-manifest
 	case " $(CI_EXAMPLE_RENDER_GROUPS) " in *" $$group "*) ;; *) echo "unknown CI example render group: $$group"; exit 2 ;; esac; \
 	group_manifest="$(dir $(CI_EXAMPLE_MANIFEST))manifest-$$group.tsv"; \
 	awk -F '\t' -v group="$$group" ' \
-		$$1 == "examples/main_curved_gear.scad" || $$1 ~ /^examples\/tooth\// { if (group == "core") print; next; } \
+		$$1 == "examples/main_curved_gear.scad" { if (group == "overview") print; next; } \
+		$$1 ~ /^examples\/tooth\// { if (group == "core") print; next; } \
 		$$1 ~ /^examples\/functions\// { path = $$1; sub(/^examples\/functions\//, "", path); split(path, part, "/"); if (part[1] == group) print; } \
 	' "$(CI_EXAMPLE_MANIFEST)" > "$$group_manifest"; \
 	test -s "$$group_manifest" || { echo "CI example render group is empty: $$group"; exit 1; }; \
