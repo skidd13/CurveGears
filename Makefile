@@ -212,7 +212,7 @@ $(1): $(3) $(4) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 endef
 
 $(eval $(call DOXYDOC_PAGE,docs/circle.md,Circle,src/circle/base.scad,src/circle/gear.scad,src/circle/mate.scad,src/circle/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/cusp.md,Cusp,src/cusp/base.scad,src/cusp/gear.scad,src/cusp/mate.scad,src/cusp/pair.scad,src/cusp/envelope_mate.scad))
+$(eval $(call DOXYDOC_PAGE,docs/cusp.md,Cusp,src/cusp/base.scad,src/cusp/gear.scad,src/cusp/mate.scad,src/cusp/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/ellipse.md,Ellipse,src/ellipse/base.scad,src/ellipse/gear.scad,src/ellipse/mate.scad,src/ellipse/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/lobed.md,Lobed,src/lobed/base.scad,src/lobed/gear.scad,src/lobed/mate.scad,src/lobed/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/superformula.md,Superformula,src/superformula/base.scad,src/superformula/gear.scad,src/superformula/mate.scad,src/superformula/pair.scad))

@@ -37,7 +37,7 @@ are documented together below.
 
 > [`_cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance)`](#function-_cg_cusp_tip_candidatemodul-tooth_number-pressure_angle-backlash-clearance): Prepare the standard tooth profile and cusp-anchor dimensions.
 
-> [`_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90)`](#function-_cg_cusp_anchor_placementpoints-arc-perimeter-body-modul-tooth_number-index-candidate-phase-90): Place a standard tooth at a cusp and trim the local curve around it.
+> [`_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90)`](#function-_cg_cusp_anchor_placementpoints-arc-perimeter-body-modul-tooth_number-index-candidate-phase-90): Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
 
 > [`_cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90)`](#function-_cg_cusp_prepared_statepoints-modul-tooth_number-pressure_angle-backlash-clearance-tip_candidate-phase-90): Assemble ordinary and cusp-anchor teeth into one validated state.
 
@@ -53,13 +53,19 @@ are documented together below.
 
 > [`_cg_cusp_threefold_radii(outline, samples, midpoint, pitch_offset)`](#function-_cg_cusp_threefold_radiioutline-samples-midpoint-pitch_offset): Sample outline radii for all three repeated deltoid sectors.
 
-> [`_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`](#function-_cg_cusp_pair_motion_geometrymodul-tooth_number-pressure_angle-backlash-clearance-samples): Build the validated driver, radial motion data, solved distance, and motion table using the unmodified deltoid pitch curve for rolling and passing its tooth outline separately to the swept-envelope mate builder.
+> [`_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`](#function-_cg_cusp_pair_motion_geometrymodul-tooth_number-pressure_angle-backlash-clearance-samples): Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified deltoid pitch curve.
 
 > [`_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_cusp_buildmodul-tooth_number-width-bore-pressure_angle20-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct the validated cusp body or complete gear.
 
 > [`curve_gear_cusp(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cuspmodul-tooth_number-width-bore-): Build the three-cusp deltoid gear with regular radial teeth at its cusps.
 
 > [`curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_bodymodul-tooth_number-width-bore-): Build the three-cusp deltoid body with its integrated cusp-tip teeth.
+
+> [`_cg_cusp_envelope_driver_outline(state)`](#function-_cg_cusp_envelope_driver_outlinestate): Extract the complete placed driver outline from its validated state.
+
+> [`_cg_cusp_envelope_mate_outer_radius(geometry, modul)`](#function-_cg_cusp_envelope_mate_outer_radiusgeometry-modul): Calculate the swept-envelope mate's outer blank radius.
+
+> [`_cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)`](#function-_cg_cusp_envelope_mate_from_geometrygeometry-modul-width-bore-sweep_steps360-max_pose_step05-sweep_clearance008-phase0): Build the cusp mate by sweeping the complete validated driver outline.
 
 > [`curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_matemodul-tooth_number-width-bore-): Build the standalone swept-envelope mate for a cusp gear.
 
@@ -70,12 +76,6 @@ are documented together below.
 > [`_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08)`](#function-_cg_cusp_pair_buildmodul-tooth_number-width-bore-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-driver_colorsteelblue-mate_colorgold-sweep_steps360-max_pose_step05-sweep_clearance008): Construct the cusp driver and swept-envelope mate as a pair.
 
 > [`curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_pairmodul-tooth_number-width-bore-): Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
-
-> [`_cg_cusp_envelope_driver_outline(state)`](#function-_cg_cusp_envelope_driver_outlinestate): Extract the complete placed driver outline from its validated state.
-
-> [`_cg_cusp_envelope_mate_outer_radius(geometry, modul)`](#function-_cg_cusp_envelope_mate_outer_radiusgeometry-modul): Calculate the swept-envelope mate's outer blank radius.
-
-> [`_cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)`](#function-_cg_cusp_envelope_mate_from_geometrygeometry-modul-width-bore-sweep_steps360-max_pose_step05-sweep_clearance008-phase0): Build the cusp mate by sweeping the complete validated driver outline.
 
 
 ## Functions
@@ -188,7 +188,7 @@ Back to [module description](#module-cusp).
 ### Function `_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90)`
 
 
-Place a standard tooth at a cusp and trim the local curve around it.
+Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
 
 **Parameters:**
 
@@ -336,7 +336,7 @@ Back to [module description](#module-cusp).
 ### Function `_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`
 
 
-Build the validated driver, radial motion data, solved distance, and motion table using the unmodified deltoid pitch curve for rolling and passing its tooth outline separately to the swept-envelope mate builder.
+Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified deltoid pitch curve.
 
 **Parameters:**
 
@@ -418,6 +418,59 @@ Build the three-cusp deltoid body with its integrated cusp-tip teeth.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `samples`: {integer >= 720, divisible by 3, default 720} Pitch-curve sampling density for validated cusp geometry.
 - `orientation`: {angle, default 0} Whole-body display rotation.
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-cusp).
+
+### Function `_cg_cusp_envelope_driver_outline(state)`
+
+
+Extract the complete placed driver outline from its validated state.
+
+**Parameters:**
+
+- `state`: {array} Validated cusp tooth-geometry state.
+
+**Returns:**
+
+- `{array of points}`: Closed outline in millimetres.
+
+Back to [module description](#module-cusp).
+
+### Function `_cg_cusp_envelope_mate_outer_radius(geometry, modul)`
+
+
+Calculate the swept-envelope mate's outer blank radius.
+
+**Parameters:**
+
+- `geometry`: {array} Cusp pitch and motion geometry state.
+- `modul`: {number > 0} Tooth module in millimetres.
+
+**Returns:**
+
+- `{number}`: Mate blank radius in millimetres.
+
+Back to [module description](#module-cusp).
+
+### Function `_cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)`
+
+
+Build the cusp mate by sweeping the complete validated driver outline.
+
+**Parameters:**
+
+- `geometry`: {array} Validated cusp pitch and motion state.
+- `modul`: {number > 0} Tooth module in millimetres.
+- `width`: {number > 0} Extrusion width in millimetres.
+- `bore`: {number >= 0} Centre bore diameter in millimetres.
+- `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals.
+- `max_pose_step`: {number > 0, default 0.5} Maximum member pose step in degrees.
+- `sweep_clearance`: {number > 0, default 0.08} Cutter clearance as a module fraction.
+- `phase`: {angle, default 0} Driver phase in degrees.
 
 **Returns:**
 
@@ -541,59 +594,6 @@ Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
 - `max_pose_step`: {number > 0, default 0.5} Maximum angular step of either member in degrees.
 - `sweep_clearance`: {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-cusp).
-
-### Function `_cg_cusp_envelope_driver_outline(state)`
-
-
-Extract the complete placed driver outline from its validated state.
-
-**Parameters:**
-
-- `state`: {array} Validated cusp tooth-geometry state.
-
-**Returns:**
-
-- `{array of points}`: Closed outline in millimetres.
-
-Back to [module description](#module-cusp).
-
-### Function `_cg_cusp_envelope_mate_outer_radius(geometry, modul)`
-
-
-Calculate the swept-envelope mate's outer blank radius.
-
-**Parameters:**
-
-- `geometry`: {array} Cusp pitch and motion geometry state.
-- `modul`: {number > 0} Tooth module in millimetres.
-
-**Returns:**
-
-- `{number}`: Mate blank radius in millimetres.
-
-Back to [module description](#module-cusp).
-
-### Function `_cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)`
-
-
-Build the cusp mate by sweeping the complete validated driver outline.
-
-**Parameters:**
-
-- `geometry`: {array} Validated cusp pitch and motion state.
-- `modul`: {number > 0} Tooth module in millimetres.
-- `width`: {number > 0} Extrusion width in millimetres.
-- `bore`: {number >= 0} Centre bore diameter in millimetres.
-- `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals.
-- `max_pose_step`: {number > 0, default 0.5} Maximum member pose step in degrees.
-- `sweep_clearance`: {number > 0, default 0.08} Cutter clearance as a module fraction.
-- `phase`: {angle, default 0} Driver phase in degrees.
 
 **Returns:**
 

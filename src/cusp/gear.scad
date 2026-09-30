@@ -62,7 +62,7 @@ function _cg_cusp_tip_candidate(modul,tooth_number,pressure_angle,backlash,clear
 
 /***
  * @function _cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90)
- * @brief Place a standard tooth at a cusp and trim the local curve around it.
+ * @brief Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
  * @param points {array of points} Sampled deltoid pitch curve.
  * @param arc {array} Pitch-curve arc-length table.
  * @param perimeter {number > 0} Pitch-curve perimeter in millimetres.
@@ -75,8 +75,18 @@ function _cg_cusp_tip_candidate(modul,tooth_number,pressure_angle,backlash,clear
  * @return {array} Validated cusp-anchor tooth placement record.
  */
 function _cg_cusp_anchor_placement(points,arc,perimeter,body,modul,tooth_number,index,candidate,phase=-90) =
-    let(target=perimeter*(index+.25+phase/360)/tooth_number,source_frame=_cg_local_frame_for_closed_arc(points,arc,perimeter,target),
-        frame=[_cg_vsub(source_frame[0],[source_frame[2][0]*candidate[11][1],source_frame[2][1]*candidate[11][1]]),source_frame[1],source_frame[2],source_frame[3]],
+    let(
+        target=perimeter*(index+.25+phase/360)/tooth_number,
+        cusp_point=_cg_point_for_closed_arc(points,arc,target),
+        winding=_cg_signed_area(points)>=0 ? 1 : -1,
+        // The tangent is singular at a cusp; derive its radial frame from the
+        // cusp index instead of constructing a sampled local frame.
+        cusp_angle=360*index/tooth_number,
+        cusp_normal=[cos(cusp_angle),sin(cusp_angle)],
+        cusp_tangent=[-sin(cusp_angle),cos(cusp_angle)],
+        inset=candidate[11][1],
+        tooth_origin=_cg_vsub(cusp_point,[cusp_normal[0]*inset,cusp_normal[1]*inset]),
+        frame=[tooth_origin,cusp_tangent,cusp_normal,winding],
         branch_arc=candidate[11][2],boundary=[for(p=candidate[8]) _cg_profile_point_at_frame(p,frame[0],frame[2],frame[1],modul*tooth_number/2)],
         left_s=target-branch_arc,right_s=target+branch_arc,
         left=[_cg_point_for_closed_arc(body,arc,left_s),0,_cg_arc_segment_index(arc,perimeter,left_s),1,0,left_s],
@@ -185,7 +195,7 @@ function _cg_cusp_threefold_radii(outline,samples,midpoint,pitch_offset) =
     concat(sector,sector,sector);
 /***
  * @function _cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)
- * @brief Build the validated driver, radial motion data, solved distance, and motion table using the unmodified deltoid pitch curve for rolling and passing its tooth outline separately to the swept-envelope mate builder.
+ * @brief Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified deltoid pitch curve.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3, divisible by 3} Number of teeth.
  * @param pressure_angle {0 < angle < 90} Standard-flank pressure angle.

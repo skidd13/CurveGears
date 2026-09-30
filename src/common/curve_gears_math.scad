@@ -91,7 +91,10 @@ function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_p
                 previous_interval=_cg_splice_interval(previous,perimeter,tooth_pitch),
                 previous_end_raw=previous_interval[1],
                 offset=current_interval[0] <= previous_end_raw ? perimeter : 0,
-                previous_end=previous_end_raw+offset,
+                // On the closed-curve seam, unwrap the current interval after
+                // the previous one. Shifting both endpoints reverses this
+                // body span and leaves polygon() to close it with a chord.
+                previous_end=previous_end_raw,
                 start_s=current_interval[0]+offset,
                 body_interval=_cg_body_interval_before(body,arc,perimeter,previous_end,start_s),
                 tooth_interval=boundaries[i],
