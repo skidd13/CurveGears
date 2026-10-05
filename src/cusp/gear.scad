@@ -233,7 +233,7 @@ function _cg_cusp_pair_motion_geometry(modul,tooth_number,pressure_angle,backlas
  * @param orientation {angle, default 0} Display rotation in degrees.
  * @param body_only {boolean, default false} Emit the integrated body without ordinary teeth.
  */
-module _cg_cusp_build(modul,tooth_number,width,bore,pressure_angle=20,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
+module _cg_cusp_build(modul,tooth_number,width,bore,pressure_angle=20,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number && tooth_number%3==0,
         "cusp_gear: tooth_number must be an integer divisible by 3 so each cusp aligns with a tooth");
     _cg_assert_samples(samples,"cusp_gear: samples must be an integer >= 720 for the validated cusp teeth",720);
@@ -250,13 +250,23 @@ module _cg_cusp_build(modul,tooth_number,width,bore,pressure_angle=20,backlash=u
                 "stage=polygon severity=error code=CUSP_BODY_TIP_OUTLINE_INVALID");
             assert(len(_cg_polygon_intersections(outline))==0,
                 "stage=polygon severity=error code=CUSP_BODY_TIP_OUTLINE_SELF_INTERSECTION");
-            linear_extrude(height=width,center=true,convexity=10)
+            if(is_2d)
                 difference() {
-                    polygon(points=outline);
+                    if(body_offset==0) polygon(points=outline);
+                    else offset(delta=body_offset) polygon(points=outline);
                     if(bore>0) circle(d=bore);
                 }
+            else
+                linear_extrude(height=width,center=true,convexity=10)
+                    difference() {
+                        polygon(points=outline);
+                        if(bore>0) circle(d=bore);
+                    }
         } else {
-            _cg_gear_from_state(state,modul,tooth_number,width,bore,pressure_angle,-90,true,backlash,clearance,false);
+            if(is_2d)
+                _cg_gear_2d_from_pitch_points(state[0],modul,tooth_number,bore,pressure_angle,-90,true,backlash,clearance,false,state);
+            else
+                _cg_gear_from_state(state,modul,tooth_number,width,bore,pressure_angle,-90,true,backlash,clearance,false);
         }
     }
 }
@@ -294,4 +304,40 @@ module curve_gear_cusp(modul,tooth_number,width,bore,pressure_angle=20,backlash=
  */
 module curve_gear_cusp_body(modul,tooth_number,width,bore,samples=720,orientation=0) {
     _cg_cusp_build(modul,tooth_number,width,bore,20,undef,undef,samples,orientation,true);
+}
+
+/***
+ * @function curve_gear_cusp_2d(modul, tooth_number, bore, ...)
+ * @brief Emit the complete cusp gear profile as 2D geometry.
+ * @image ../images/functions/cusp/curve_gear_cusp_2d.png Cusp 2D gear and body preview
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3, divisible by 3} Tooth count.
+ * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param pressure_angle {angle, default 20} Standard-flank pressure angle.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param samples {integer >= 720, divisible by 3} Deltoid curve sampling density.
+ * @param orientation {angle, default 0} Whole-gear rotation in degrees.
+ * @example c
+ * curve_gear_cusp_2d(0.8, 36, 4.8);
+ */
+module curve_gear_cusp_2d(modul,tooth_number,bore,pressure_angle=20,backlash=undef,clearance=undef,samples=720,orientation=0) {
+    _cg_cusp_build(modul,tooth_number,0,bore,pressure_angle,backlash,clearance,samples,orientation,false,true,0);
+}
+
+/***
+ * @function curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)
+ * @brief Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
+ * @image ../images/functions/cusp/curve_gear_cusp_body_2d.png Cusp 2D body preview
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3, divisible by 3} Tooth count.
+ * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param samples {integer >= 720, divisible by 3} Deltoid curve sampling density.
+ * @param orientation {angle, default 0} Whole-body rotation in degrees.
+ * @param body_offset {number, default 0} Signed offset in mm; negative shrinks the outer contour and preserves the bore.
+ * @example c
+ * curve_gear_cusp_body_2d(0.8, 36, 4.8, body_offset=-2);
+ */
+module curve_gear_cusp_body_2d(modul,tooth_number,bore,samples=720,orientation=0,body_offset=0) {
+    _cg_cusp_build(modul,tooth_number,0,bore,20,undef,undef,samples,orientation,true,true,body_offset);
 }

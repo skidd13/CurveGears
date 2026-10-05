@@ -35,13 +35,18 @@ include <base.scad>
  * @param orientation {angle, default 0} Display rotation in degrees.
  * @param body_only {boolean, default false} Emit the body without teeth.
  */
-module _cg_cassini_build(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
+module _cg_cassini_build(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
     assert(_cg_cassini_focus_ratio_valid(focus_ratio),"cassini_gear: focus_ratio must satisfy 0 <= focus_ratio < 1");
     _cg_assert_samples(samples,"cassini_gear: samples must be an integer >= 120");
     unit_points=_cg_cassini_points(1,focus_ratio,samples);
     scale=_cg_pitch_scale_from_points(modul,tooth_number,unit_points,_cg_pi);
     points=_cg_scale_points(scale,unit_points);
-    rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
+    rotate([0,0,orientation]) {
+        if (is_2d)
+            _cg_gear_2d_from_pitch_points(points, modul, tooth_number, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only, undef, body_offset);
+        else
+            _cg_gear_from_pitch_points(points, modul, tooth_number, width, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only);
+    }
 }
 
 module curve_gear_cassini(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
@@ -68,4 +73,47 @@ module curve_gear_cassini(modul,tooth_number,width,bore,focus_ratio=.78,pressure
  */
 module curve_gear_cassini_body(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_cassini_build(modul,tooth_number,width,bore,focus_ratio,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
+}
+
+/***
+ * @function curve_gear_cassini_2d
+ * @brief Emit the complete cassini gear profile as 2D geometry.
+ * @image ../images/functions/cassini/curve_gear_cassini_2d.png cassini 2D gear and body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param focus_ratio {value} Same family-specific parameter as curve_gear_cassini.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_cassini.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_cassini.
+ * @param backlash {value} Same family-specific parameter as curve_gear_cassini.
+ * @param clearance {value} Same family-specific parameter as curve_gear_cassini.
+ * @param samples {value} Same family-specific parameter as curve_gear_cassini.
+ * @param orientation {value} Rotation in degrees.
+ * @example c
+ * curve_gear_cassini_2d(0.8, 34, 4.8);
+ */
+module curve_gear_cassini_2d(modul, tooth_number, bore, focus_ratio=.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0) {
+    _cg_cassini_build(modul, tooth_number, 0, bore, focus_ratio, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, false, true, 0);
+}
+
+/***
+ * @function curve_gear_cassini_body_2d
+ * @brief Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
+ * @image ../images/functions/cassini/curve_gear_cassini_body_2d.png cassini 2D body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param focus_ratio {value} Same family-specific parameter as curve_gear_cassini_body.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_cassini_body.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_cassini_body.
+ * @param backlash {value} Same family-specific parameter as curve_gear_cassini_body.
+ * @param clearance {value} Same family-specific parameter as curve_gear_cassini_body.
+ * @param samples {value} Same family-specific parameter as curve_gear_cassini_body.
+ * @param orientation {value} Rotation in degrees.
+ * @param body_offset {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+ * @example c
+ * curve_gear_cassini_body_2d(0.8, 34, 4.8, body_offset=-2);
+ */
+module curve_gear_cassini_body_2d(modul, tooth_number, bore, focus_ratio=.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_offset=0) {
+    _cg_cassini_build(modul, tooth_number, 0, bore, focus_ratio, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, true, true, body_offset);
 }

@@ -47,6 +47,10 @@ Reference: https://mathshistory.st-andrews.ac.uk/Curves/Equiangular/.
 
 > [`curve_gear_logarithmic_spiral_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiral_bodymodul-tooth_number-width-bore-): Build the logarithmic-spiral body solid without teeth.
 
+> [`curve_gear_logarithmic_spiral_2d`](#function-curve_gear_logarithmic_spiral_2d): Emit the complete logarithmic_spiral gear profile as 2D geometry.
+
+> [`curve_gear_logarithmic_spiral_body_2d`](#function-curve_gear_logarithmic_spiral_body_2d): Emit the logarithmic_spiral body as 2D geometry with an optional signed outer-contour offset.
+
 > [`curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiral_matemodul-tooth_number-width-bore-): Build the standalone static reference mate boundary at the origin.
 
 > [`curve_gear_logarithmic_spiral_reference_separation(modul, tooth_number, sectors, growth_rate, assembly_clearance)`](#function-curve_gear_logarithmic_spiral_reference_separationmodul-tooth_number-sectors-growth_rate-assembly_clearance): Return the explicit static reference separation for a spiral pair.
@@ -316,6 +320,73 @@ No return
 
 ~~~c
 curve_gear_logarithmic_spiral_body(1, 24, 4, 8);
+~~~
+
+Back to [module description](#module-logarithmic-spiral).
+
+### Function `curve_gear_logarithmic_spiral_2d`
+
+
+![logarithmic_spiral 2D gear and body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)
+
+Emit the complete logarithmic_spiral gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `sectors`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `growth_rate`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `backlash`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `clearance`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `samples`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_logarithmic_spiral_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-logarithmic-spiral).
+
+### Function `curve_gear_logarithmic_spiral_body_2d`
+
+
+![logarithmic_spiral 2D body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)
+
+Emit the logarithmic_spiral body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `sectors`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `growth_rate`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_logarithmic_spiral_body_2d(0.8, 34, 4.8, body_offset=-2);
 ~~~
 
 Back to [module description](#module-logarithmic-spiral).

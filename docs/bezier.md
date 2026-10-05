@@ -44,6 +44,10 @@ https://www.cs.sjsu.edu/~bruce/fall_2016_cs_116a_lecture_splines.html.
 
 > [`curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_bodymodul-tooth_number-width-bore-): Build the closed Bézier body without teeth.
 
+> [`curve_gear_bezier_2d`](#function-curve_gear_bezier_2d): Emit the complete bezier gear profile as 2D geometry.
+
+> [`curve_gear_bezier_body_2d`](#function-curve_gear_bezier_body_2d): Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_bezier_polar_samples(control_points, scale, n)`](#function-_cg_bezier_polar_samplescontrol_points-scale-n): Convert sampled Bézier points to polar angle and radius pairs.
 
 > [`_cg_bezier_polar_table(control_points, scale, n)`](#function-_cg_bezier_polar_tablecontrol_points-scale-n): Build a closed polar interpolation table for a Bézier curve.
@@ -226,6 +230,71 @@ Build the closed Bézier body without teeth.
 **Returns:**
 
 No return
+
+Back to [module description](#module-bezier).
+
+### Function `curve_gear_bezier_2d`
+
+
+![bezier 2D gear and body preview](../images/functions/bezier/curve_gear_bezier_2d.png)
+
+Emit the complete bezier gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `control_points`: {value} Same family-specific parameter as curve_gear_bezier.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_bezier.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_bezier.
+- `backlash`: {value} Same family-specific parameter as curve_gear_bezier.
+- `clearance`: {value} Same family-specific parameter as curve_gear_bezier.
+- `samples`: {value} Same family-specific parameter as curve_gear_bezier.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_bezier_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-bezier).
+
+### Function `curve_gear_bezier_body_2d`
+
+
+![bezier 2D body preview](../images/functions/bezier/curve_gear_bezier_body_2d.png)
+
+Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `control_points`: {value} Same family-specific parameter as curve_gear_bezier_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_bezier_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_bezier_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_bezier_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_bezier_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_bezier_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_bezier_body_2d(0.8, 34, 4.8, body_offset=-2);
+~~~
 
 Back to [module description](#module-bezier).
 

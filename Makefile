@@ -75,7 +75,7 @@ help:
 	  'Test selection: make test family=cusp runs cusp checks; omit family to run all families.' \
 	  'OPENSCAD=<path> selects the OpenSCAD executable; PYTHON=<path> selects Python 3.' \
 	  'IMAGE_SIZE=<w,h> sets general image pixels; MAIN_IMAGE_SIZE overrides the overview; CI_IMAGE_SIZE and CORE_IMAGE_SIZE set smaller renders.' \
-	  'CAMERA=<x,y,z,distance,rotation-x,rotation-y,rotation-z> and COLORSCHEME=<name> set image view and palette.' \
+	  'CAMERA=<translate-x,translate-y,translate-z,rotation-x,rotation-y,rotation-z,distance> and COLORSCHEME=<name> set image view and palette.' \
 	  'REGRESSION_DIR=<path> changes test outputs; FAMILY=<name> is the uppercase alias for family=<name>.'
 
 images: $(MAIN_IMAGE) api-images $(CORE_IMAGES)
@@ -84,6 +84,7 @@ api-images: $(API_IMAGES)
 
 $(API_IMAGES): IMAGE_SIZE=$(CI_IMAGE_SIZE)
 $(CORE_IMAGES): IMAGE_SIZE=$(CORE_IMAGE_SIZE)
+$(filter %_2d.png,$(API_IMAGES)): CAMERA=0,0,0,0,0,0,0
 $(API_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 $(CORE_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 
@@ -94,7 +95,7 @@ $(foreach family,$(FAMILIES),$(eval $(call FAMILY_API_IMAGE_SOURCE_DEPS,$(family
 
 $(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES) $(PREVIEW_ALL_SOURCE_DEPS)
 	@mkdir -p $(@D)
-	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(MAIN_IMAGE_SIZE) -q "$<"
+	$(OPENSCAD) -o "$@" --render --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(MAIN_IMAGE_SIZE) -q "$<"
 
 # A canonical single-gear example is also an input to the family overview.
 # Order-only keeps a canonical image request checking the overview first, while
@@ -104,7 +105,7 @@ $(MAIN_EXAMPLE_IMAGES): | $(MAIN_IMAGE)
 
 images/%.png: examples/%.scad
 	@mkdir -p $(@D)
-	$(OPENSCAD) -o "$@" --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
+	$(OPENSCAD) -o "$@" --render --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
 
 NAVIGATION_TEMPLATE := utils/doxydown-support/navigation.md
 FOOTER_TEMPLATE := utils/doxydown-support/footer.md
@@ -124,7 +125,7 @@ examples: examples/README.md
 	@test -s examples/README.md
 	@test -s "$(MAIN_EXAMPLE)"
 	@for example in $(CORE_EXAMPLES); do test -s "$$example" || { echo "missing core example: $$example"; exit 1; }; done
-	@test "$(words $(API_EXAMPLES))" -eq 70
+	@test "$(words $(API_EXAMPLES))" -eq 94
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
 
@@ -134,9 +135,9 @@ ci-example-manifest:
 		relative=$${example#examples/}; output=$${relative%.scad}.png; \
 		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
 	done > "$(CI_EXAMPLE_MANIFEST)"
-	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 74
-	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 74
-	@echo 'PASS: CI manifest contains all 74 canonical examples'
+	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 98
+	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 98
+	@echo 'PASS: CI manifest contains all 98 canonical examples'
 
 ci-render-examples: ci-example-manifest
 	@set -eu; \
@@ -153,7 +154,9 @@ ci-render-examples: ci-example-manifest
 	while IFS="$$tab" read -r example output; do \
 		mkdir -p "$$(dirname "$$output")"; \
 		echo "Rendering $$example"; \
-		$(OPENSCAD) -o "$$output" --camera=0,0,0,50,0,40,0 --colorscheme=Nature --projection=o --viewall --autocenter --imgsize=$(CI_IMAGE_SIZE) -q "$$example"; \
+		camera=0,0,0,50,0,40,0; \
+		case "$$example" in *_2d.scad) camera=0,0,0,0,0,0,0 ;; esac; \
+		$(OPENSCAD) -o "$$output" --render --camera="$$camera" --colorscheme=Nature --projection=o --viewall --autocenter --imgsize=$(CI_IMAGE_SIZE) -q "$$example"; \
 		test -s "$$output"; \
 	done < "$$group_manifest"
 

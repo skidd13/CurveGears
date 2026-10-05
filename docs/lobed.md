@@ -39,6 +39,10 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_bodymodul-tooth_number-width-bore-): Build the lobed body solid without teeth.
 
+> [`curve_gear_lobed_2d`](#function-curve_gear_lobed_2d): Emit the complete lobed gear profile as 2D geometry.
+
+> [`curve_gear_lobed_body_2d`](#function-curve_gear_lobed_body_2d): Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_lobed_motion_radii`](#function-_cg_lobed_motion_radii): Evaluate lobed radii at integration midpoints.
 
 > [`_cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)`](#function-_cg_lobed_driver_radiiscale-lobes-lobe_depth-n360): Evaluate lobed radii at direct mate-construction angles.
@@ -249,6 +253,73 @@ No return
 
 ~~~c
 curve_gear_lobed_body(1, 24, 4, 8);
+~~~
+
+Back to [module description](#module-lobed).
+
+### Function `curve_gear_lobed_2d`
+
+
+![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)
+
+Emit the complete lobed gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `lobes`: {value} Same family-specific parameter as curve_gear_lobed.
+- `lobe_depth`: {value} Same family-specific parameter as curve_gear_lobed.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_lobed.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_lobed.
+- `backlash`: {value} Same family-specific parameter as curve_gear_lobed.
+- `clearance`: {value} Same family-specific parameter as curve_gear_lobed.
+- `samples`: {value} Same family-specific parameter as curve_gear_lobed.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_lobed_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-lobed).
+
+### Function `curve_gear_lobed_body_2d`
+
+
+![lobed 2D body preview](../images/functions/lobed/curve_gear_lobed_body_2d.png)
+
+Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `lobes`: {value} Same family-specific parameter as curve_gear_lobed_body.
+- `lobe_depth`: {value} Same family-specific parameter as curve_gear_lobed_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_lobed_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_lobed_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_lobed_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_lobed_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_lobed_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_lobed_body_2d(0.8, 34, 4.8, body_offset=-2);
 ~~~
 
 Back to [module description](#module-lobed).

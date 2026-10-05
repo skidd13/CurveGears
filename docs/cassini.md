@@ -44,6 +44,10 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`curve_gear_cassini_body`](#function-curve_gear_cassini_body): Build the Cassini body solid without teeth.
 
+> [`curve_gear_cassini_2d`](#function-curve_gear_cassini_2d): Emit the complete cassini gear profile as 2D geometry.
+
+> [`curve_gear_cassini_body_2d`](#function-curve_gear_cassini_body_2d): Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_cassini_motion_radii(scale, focus_ratio, n=720)`](#function-_cg_cassini_motion_radiiscale-focus_ratio-n720): Evaluate Cassini radii at integration midpoints.
 
 > [`_cg_cassini_driver_radii(scale, focus_ratio, n=720)`](#function-_cg_cassini_driver_radiiscale-focus_ratio-n720): Evaluate Cassini radii at direct mate-construction angles.
@@ -279,6 +283,71 @@ No return
 
 ~~~c
 curve_gear_cassini_body(1, 24, 4, 8);
+~~~
+
+Back to [module description](#module-cassini).
+
+### Function `curve_gear_cassini_2d`
+
+
+![cassini 2D gear and body preview](../images/functions/cassini/curve_gear_cassini_2d.png)
+
+Emit the complete cassini gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `focus_ratio`: {value} Same family-specific parameter as curve_gear_cassini.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_cassini.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_cassini.
+- `backlash`: {value} Same family-specific parameter as curve_gear_cassini.
+- `clearance`: {value} Same family-specific parameter as curve_gear_cassini.
+- `samples`: {value} Same family-specific parameter as curve_gear_cassini.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_cassini_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-cassini).
+
+### Function `curve_gear_cassini_body_2d`
+
+
+![cassini 2D body preview](../images/functions/cassini/curve_gear_cassini_body_2d.png)
+
+Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `focus_ratio`: {value} Same family-specific parameter as curve_gear_cassini_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_cassini_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_cassini_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_cassini_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_cassini_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_cassini_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_cassini_body_2d(0.8, 34, 4.8, body_offset=-2);
 ~~~
 
 Back to [module description](#module-cassini).

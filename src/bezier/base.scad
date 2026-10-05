@@ -69,7 +69,7 @@ function _cg_bezier_points(control_points,scale,samples) =
         let(u=i*segments/samples,s=min(segments-1,floor(u)),t=u-floor(u),j=3*s,p=_cg_bezier_point(control_points[j],control_points[j+1],control_points[j+2],control_points[j+3],t))
         [scale*p[0],scale*p[1]]];
 
-module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
+module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
  * @function _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
  * @brief Internal bezier construction dispatcher.
@@ -87,13 +87,18 @@ module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Constructed family geometry.
  */
-    assert(modul>0 && width>0 && bore>=0,"bezier_gear: module, width and bore must be valid");
+    assert(modul>0 && (is_2d || width>0) && bore>=0,"bezier_gear: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"bezier_gear: tooth_number must be an integer >= 3");
     assert(_cg_bezier_controls_valid(control_points),"bezier_gear: control points must form closed cubic segments with forward tangent continuity");
     _cg_assert_samples(samples,"bezier_gear: samples must be an integer >= 120");
     scale=modul*tooth_number/2;
     points=_cg_bezier_points(control_points,scale,samples);
-    rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
+    rotate([0,0,orientation]) {
+        if (is_2d)
+            _cg_gear_2d_from_pitch_points(points, modul, tooth_number, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only, undef, body_offset);
+        else
+            _cg_gear_from_pitch_points(points, modul, tooth_number, width, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only);
+    }
 }
 
 /***
@@ -137,4 +142,47 @@ module curve_gear_bezier(modul,tooth_number,width,bore,control_points=_cg_bezier
  */
 module curve_gear_bezier_body(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_bezier_build(modul,tooth_number,width,bore,control_points,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
+}
+
+/***
+ * @function curve_gear_bezier_2d
+ * @brief Emit the complete bezier gear profile as 2D geometry.
+ * @image ../images/functions/bezier/curve_gear_bezier_2d.png bezier 2D gear and body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param control_points {value} Same family-specific parameter as curve_gear_bezier.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_bezier.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_bezier.
+ * @param backlash {value} Same family-specific parameter as curve_gear_bezier.
+ * @param clearance {value} Same family-specific parameter as curve_gear_bezier.
+ * @param samples {value} Same family-specific parameter as curve_gear_bezier.
+ * @param orientation {value} Rotation in degrees.
+ * @example c
+ * curve_gear_bezier_2d(0.8, 34, 4.8);
+ */
+module curve_gear_bezier_2d(modul, tooth_number, bore, control_points=_cg_bezier_default_control_points, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0) {
+    _cg_bezier_build(modul, tooth_number, 0, bore, control_points, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, false, true, 0);
+}
+
+/***
+ * @function curve_gear_bezier_body_2d
+ * @brief Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
+ * @image ../images/functions/bezier/curve_gear_bezier_body_2d.png bezier 2D body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param control_points {value} Same family-specific parameter as curve_gear_bezier_body.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_bezier_body.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_bezier_body.
+ * @param backlash {value} Same family-specific parameter as curve_gear_bezier_body.
+ * @param clearance {value} Same family-specific parameter as curve_gear_bezier_body.
+ * @param samples {value} Same family-specific parameter as curve_gear_bezier_body.
+ * @param orientation {value} Rotation in degrees.
+ * @param body_offset {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+ * @example c
+ * curve_gear_bezier_body_2d(0.8, 34, 4.8, body_offset=-2);
+ */
+module curve_gear_bezier_body_2d(modul, tooth_number, bore, control_points=_cg_bezier_default_control_points, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_offset=0) {
+    _cg_bezier_build(modul, tooth_number, 0, bore, control_points, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, true, true, body_offset);
 }

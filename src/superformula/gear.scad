@@ -27,7 +27,7 @@
  */
 include <base.scad>
 
-module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
+module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
  * @function _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
  * @brief Internal superformula construction dispatcher.
@@ -59,7 +59,12 @@ module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n
     points=_cg_scale_points(scale,unit_points);
 
     _cg_assert_samples(samples);
-    rotate([0,0,orientation]) _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
+    rotate([0,0,orientation]) {
+        if (is_2d)
+            _cg_gear_2d_from_pitch_points(points, modul, tooth_number, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only, undef, body_offset);
+        else
+            _cg_gear_from_pitch_points(points, modul, tooth_number, width, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only);
+    }
 }
 
 module curve_gear_superformula(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
@@ -91,4 +96,57 @@ module curve_gear_superformula(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,
  */
 module curve_gear_superformula_body(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_superformula_build(modul,tooth_number,width,bore,symmetry,a,b,n1,n2,n3,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
+}
+
+/***
+ * @function curve_gear_superformula_2d
+ * @brief Emit the complete superformula gear profile as 2D geometry.
+ * @image ../images/functions/superformula/curve_gear_superformula_2d.png superformula 2D gear and body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param symmetry {value} Same family-specific parameter as curve_gear_superformula.
+ * @param a {value} Same family-specific parameter as curve_gear_superformula.
+ * @param b {value} Same family-specific parameter as curve_gear_superformula.
+ * @param n1 {value} Same family-specific parameter as curve_gear_superformula.
+ * @param n2 {value} Same family-specific parameter as curve_gear_superformula.
+ * @param n3 {value} Same family-specific parameter as curve_gear_superformula.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_superformula.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_superformula.
+ * @param backlash {value} Same family-specific parameter as curve_gear_superformula.
+ * @param clearance {value} Same family-specific parameter as curve_gear_superformula.
+ * @param samples {value} Same family-specific parameter as curve_gear_superformula.
+ * @param orientation {value} Rotation in degrees.
+ * @example c
+ * curve_gear_superformula_2d(0.8, 34, 4.8);
+ */
+module curve_gear_superformula_2d(modul, tooth_number, bore, symmetry=4, a=1, b=1, n1=2.4, n2=2.4, n3=2.4, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0) {
+    _cg_superformula_build(modul, tooth_number, 0, bore, symmetry, a, b, n1, n2, n3, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, false, true, 0);
+}
+
+/***
+ * @function curve_gear_superformula_body_2d
+ * @brief Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
+ * @image ../images/functions/superformula/curve_gear_superformula_body_2d.png superformula 2D body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param symmetry {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param a {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param b {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param n1 {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param n2 {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param n3 {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param backlash {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param clearance {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param samples {value} Same family-specific parameter as curve_gear_superformula_body.
+ * @param orientation {value} Rotation in degrees.
+ * @param body_offset {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+ * @example c
+ * curve_gear_superformula_body_2d(0.8, 34, 4.8, body_offset=-2);
+ */
+module curve_gear_superformula_body_2d(modul, tooth_number, bore, symmetry=4, a=1, b=1, n1=2.4, n2=2.4, n3=2.4, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_offset=0) {
+    _cg_superformula_build(modul, tooth_number, 0, bore, symmetry, a, b, n1, n2, n3, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, true, true, body_offset);
 }

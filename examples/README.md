@@ -23,9 +23,13 @@ Executable examples for the public API and shared construction layers.
 
 > [`bezier_curve_gear`](#function-bezier_curve_gear): Render a smooth asymmetric Bézier gear with a soft teardrop outline.
 
+> [`curve_gear_bezier_2d`](#function-curve_gear_bezier_2d): Render the complete bezier gear profile as flat 2D geometry.
+
 > [`bezier_curve_gear_alternative`](#function-bezier_curve_gear_alternative): Bézier asymmetric alternative: A visibly non-circular but radially admissible Bézier pitch curve.
 
 > [`bezier_curve_gear_body`](#function-bezier_curve_gear_body): Render the Bézier body before tooth placement.
+
+> [`curve_gear_bezier_body_2d`](#function-curve_gear_bezier_body_2d): Render the bezier body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`bezier_curve_gear_mate`](#function-bezier_curve_gear_mate): Render the conjugate Bézier mate generated from the driver pitch curve.
 
@@ -35,7 +39,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`cassini_curve_gear`](#function-cassini_curve_gear): Render a thin-waisted peanut-shaped Cassini gear.
 
+> [`curve_gear_cassini_2d`](#function-curve_gear_cassini_2d): Render the complete cassini gear profile as flat 2D geometry.
+
 > [`cassini_curve_gear_body`](#function-cassini_curve_gear_body): Render the Cassini body before tooth placement.
+
+> [`curve_gear_cassini_body_2d`](#function-curve_gear_cassini_body_2d): Render the cassini body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`cassini_curve_gear_centre_distance`](#function-cassini_curve_gear_centre_distance): Show the Cassini centre-distance calculation used for pair placement.
 
@@ -47,7 +55,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`circle_curve_gear`](#function-circle_curve_gear): Render a Circle gear from the documented pitch-curve family.
 
+> [`curve_gear_circle_2d`](#function-curve_gear_circle_2d): Render the complete circle gear profile as flat 2D geometry.
+
 > [`circle_curve_gear_body`](#function-circle_curve_gear_body): Render the Circle body before tooth placement.
+
+> [`curve_gear_circle_body_2d`](#function-curve_gear_circle_body_2d): Render the circle body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`circle_curve_gear_mate`](#function-circle_curve_gear_mate): Render the conjugate Circle mate generated from the driver pitch curve.
 
@@ -55,7 +67,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`cusp_curve_gear`](#function-cusp_curve_gear): Render the three-cusp gear with radial teeth whose roots follow the cusp branches.
 
+> [`curve_gear_cusp_2d`](#function-curve_gear_cusp_2d): Render the complete cusp gear profile as flat 2D geometry.
+
 > [`cusp_curve_gear_body`](#function-cusp_curve_gear_body): Render the three-cusp deltoid body with its integrated cusp-tip teeth.
+
+> [`curve_gear_cusp_body_2d`](#function-curve_gear_cusp_body_2d): Render the cusp body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`cusp_curve_gear_centre_distance`](#function-cusp_curve_gear_centre_distance): Show the solved centre distance for the deltoid cusp pair.
 
@@ -67,7 +83,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`ellipse_curve_gear`](#function-ellipse_curve_gear): Render a Ellipse gear from the documented pitch-curve family.
 
+> [`curve_gear_ellipse_2d`](#function-curve_gear_ellipse_2d): Render the complete ellipse gear profile as flat 2D geometry.
+
 > [`ellipse_curve_gear_body`](#function-ellipse_curve_gear_body): Render the Ellipse body before tooth placement.
+
+> [`curve_gear_ellipse_body_2d`](#function-curve_gear_ellipse_body_2d): Render the ellipse body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`ellipse_curve_gear_centre_distance`](#function-ellipse_curve_gear_centre_distance): Show the Ellipse centre-distance calculation used for pair placement.
 
@@ -79,7 +99,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`epitrochoid_curve_gear`](#function-epitrochoid_curve_gear): Render a scalloped Epitrochoid gear showing the rolling-pen profile.
 
+> [`curve_gear_epitrochoid_2d`](#function-curve_gear_epitrochoid_2d): Render the complete epitrochoid gear profile as flat 2D geometry.
+
 > [`epitrochoid_curve_gear_body`](#function-epitrochoid_curve_gear_body): Render the Epitrochoid body before tooth placement.
+
+> [`curve_gear_epitrochoid_body_2d`](#function-curve_gear_epitrochoid_body_2d): Render the epitrochoid body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`epitrochoid_curve_gear_centre_distance`](#function-epitrochoid_curve_gear_centre_distance): Show the Epitrochoid centre-distance calculation used for pair placement.
 
@@ -91,7 +115,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`fourier_curve_gear`](#function-fourier_curve_gear): Render a two-harmonic Fourier gear with visibly modulated lobes.
 
+> [`curve_gear_fourier_2d`](#function-curve_gear_fourier_2d): Render the complete fourier gear profile as flat 2D geometry.
+
 > [`fourier_curve_gear_body`](#function-fourier_curve_gear_body): Render the Fourier body before tooth placement.
+
+> [`curve_gear_fourier_body_2d`](#function-curve_gear_fourier_body_2d): Render the fourier body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`fourier_curve_gear_centre_distance`](#function-fourier_curve_gear_centre_distance): Show the Fourier centre-distance calculation used for pair placement.
 
@@ -103,7 +131,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`hypotrochoid_curve_gear`](#function-hypotrochoid_curve_gear): Render a triangular inner-rolling Hypotrochoid form.
 
+> [`curve_gear_hypotrochoid_2d`](#function-curve_gear_hypotrochoid_2d): Render the complete hypotrochoid gear profile as flat 2D geometry.
+
 > [`hypotrochoid_curve_gear_body`](#function-hypotrochoid_curve_gear_body): Render the Hypotrochoid body before tooth placement.
+
+> [`curve_gear_hypotrochoid_body_2d`](#function-curve_gear_hypotrochoid_body_2d): Render the hypotrochoid body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`hypotrochoid_curve_gear_centre_distance`](#function-hypotrochoid_curve_gear_centre_distance): Show the Hypotrochoid centre-distance calculation used for pair placement.
 
@@ -117,7 +149,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`lobed_curve_gear`](#function-lobed_curve_gear): Render a square four-lobed gear with a clear radial rhythm.
 
+> [`curve_gear_lobed_2d`](#function-curve_gear_lobed_2d): Render the complete lobed gear profile as flat 2D geometry.
+
 > [`lobed_curve_gear_body`](#function-lobed_curve_gear_body): Render the Lobed body before tooth placement.
+
+> [`curve_gear_lobed_body_2d`](#function-curve_gear_lobed_body_2d): Render the lobed body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`lobed_curve_gear_centre_distance`](#function-lobed_curve_gear_centre_distance): Show the Lobed centre-distance calculation used for pair placement.
 
@@ -129,7 +165,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`logarithmic_spiral_curve_gear`](#function-logarithmic_spiral_curve_gear): Render a Logarithmic spiral gear from the documented pitch-curve family.
 
+> [`curve_gear_logarithmic_spiral_2d`](#function-curve_gear_logarithmic_spiral_2d): Render the complete logarithmic_spiral gear profile as flat 2D geometry.
+
 > [`logarithmic_spiral_curve_gear_body`](#function-logarithmic_spiral_curve_gear_body): Render the Logarithmic spiral body before tooth placement.
+
+> [`curve_gear_logarithmic_spiral_body_2d`](#function-curve_gear_logarithmic_spiral_body_2d): Render the logarithmic_spiral body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`logarithmic_spiral_curve_gear_mate`](#function-logarithmic_spiral_curve_gear_mate): Render the conjugate Logarithmic spiral mate generated from the driver pitch curve.
 
@@ -139,7 +179,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`pascal_curve_gear`](#function-pascal_curve_gear): Render a heart-like Pascal gear with a pronounced non-convex waist.
 
+> [`curve_gear_pascal_2d`](#function-curve_gear_pascal_2d): Render the complete pascal gear profile as flat 2D geometry.
+
 > [`pascal_curve_gear_body`](#function-pascal_curve_gear_body): Render the Pascal body before tooth placement.
+
+> [`curve_gear_pascal_body_2d`](#function-curve_gear_pascal_body_2d): Render the pascal body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`pascal_curve_gear_centre_distance`](#function-pascal_curve_gear_centre_distance): Show the Pascal centre-distance calculation used for pair placement.
 
@@ -151,7 +195,11 @@ Executable examples for the public API and shared construction layers.
 
 > [`superformula_curve_gear`](#function-superformula_curve_gear): Render a Superformula gear from the documented pitch-curve family.
 
+> [`curve_gear_superformula_2d`](#function-curve_gear_superformula_2d): Render the complete superformula gear profile as flat 2D geometry.
+
 > [`superformula_curve_gear_body`](#function-superformula_curve_gear_body): Render the Superformula body before tooth placement.
+
+> [`curve_gear_superformula_body_2d`](#function-curve_gear_superformula_body_2d): Render the superformula body as flat 2D geometry with a 2 mm inward outer-contour shrink.
 
 > [`superformula_curve_gear_centre_distance`](#function-superformula_curve_gear_centre_distance): Show the Superformula centre-distance calculation used for pair placement.
 
@@ -189,6 +237,23 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_bezier_2d`
+
+
+![bezier 2D gear profile](../images/functions/bezier/curve_gear_bezier_2d.png)
+
+Source: [`functions/bezier/curve_gear_bezier_2d.scad`](functions/bezier/curve_gear_bezier_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `bezier_curve_gear_alternative`
 
 
@@ -212,6 +277,23 @@ Back to [module description](#module-executable-examples).
 ![curve_gear_bezier_body example preview](../images/functions/bezier/curve_gear_bezier_body.png)
 
 Source: [`functions/bezier/curve_gear_bezier_body.scad`](functions/bezier/curve_gear_bezier_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_bezier_body_2d`
+
+
+![bezier 2D body profile](../images/functions/bezier/curve_gear_bezier_body_2d.png)
+
+Source: [`functions/bezier/curve_gear_bezier_body_2d.scad`](functions/bezier/curve_gear_bezier_body_2d.scad)
 
 **Parameters:**
 
@@ -291,12 +373,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_cassini_2d`
+
+
+![cassini 2D gear profile](../images/functions/cassini/curve_gear_cassini_2d.png)
+
+Source: [`functions/cassini/curve_gear_cassini_2d.scad`](functions/cassini/curve_gear_cassini_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `cassini_curve_gear_body`
 
 
 ![curve_gear_cassini_body example preview](../images/functions/cassini/curve_gear_cassini_body.png)
 
 Source: [`functions/cassini/curve_gear_cassini_body.scad`](functions/cassini/curve_gear_cassini_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cassini_body_2d`
+
+
+![cassini 2D body profile](../images/functions/cassini/curve_gear_cassini_body_2d.png)
+
+Source: [`functions/cassini/curve_gear_cassini_body_2d.scad`](functions/cassini/curve_gear_cassini_body_2d.scad)
 
 **Parameters:**
 
@@ -389,12 +505,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_circle_2d`
+
+
+![circle 2D gear profile](../images/functions/circle/curve_gear_circle_2d.png)
+
+Source: [`functions/circle/curve_gear_circle_2d.scad`](functions/circle/curve_gear_circle_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `circle_curve_gear_body`
 
 
 ![curve gear circle body preview](../images/functions/circle/curve_gear_circle_body.png)
 
 Source: [`functions/circle/curve_gear_circle_body.scad`](functions/circle/curve_gear_circle_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_circle_body_2d`
+
+
+![circle 2D body profile](../images/functions/circle/curve_gear_circle_body_2d.png)
+
+Source: [`functions/circle/curve_gear_circle_body_2d.scad`](functions/circle/curve_gear_circle_body_2d.scad)
 
 **Parameters:**
 
@@ -455,10 +605,44 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_cusp_2d`
+
+
+![cusp 2D gear profile](../images/functions/cusp/curve_gear_cusp_2d.png)
+
+Source: [`functions/cusp/curve_gear_cusp_2d.scad`](functions/cusp/curve_gear_cusp_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `cusp_curve_gear_body`
 
 
 Source: [`cusp/curve_gear_cusp_body.scad`](cusp/curve_gear_cusp_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cusp_body_2d`
+
+
+![cusp 2D body profile](../images/functions/cusp/curve_gear_cusp_body_2d.png)
+
+Source: [`functions/cusp/curve_gear_cusp_body_2d.scad`](functions/cusp/curve_gear_cusp_body_2d.scad)
 
 **Parameters:**
 
@@ -547,12 +731,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_ellipse_2d`
+
+
+![ellipse 2D gear profile](../images/functions/ellipse/curve_gear_ellipse_2d.png)
+
+Source: [`functions/ellipse/curve_gear_ellipse_2d.scad`](functions/ellipse/curve_gear_ellipse_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `ellipse_curve_gear_body`
 
 
 ![curve_gear_ellipse_body example preview](../images/functions/ellipse/curve_gear_ellipse_body.png)
 
 Source: [`functions/ellipse/curve_gear_ellipse_body.scad`](functions/ellipse/curve_gear_ellipse_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_ellipse_body_2d`
+
+
+![ellipse 2D body profile](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)
+
+Source: [`functions/ellipse/curve_gear_ellipse_body_2d.scad`](functions/ellipse/curve_gear_ellipse_body_2d.scad)
 
 **Parameters:**
 
@@ -651,12 +869,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_epitrochoid_2d`
+
+
+![epitrochoid 2D gear profile](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)
+
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_2d.scad`](functions/epitrochoid/curve_gear_epitrochoid_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `epitrochoid_curve_gear_body`
 
 
 ![curve_gear_epitrochoid_body example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid_body.scad`](functions/epitrochoid/curve_gear_epitrochoid_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_epitrochoid_body_2d`
+
+
+![epitrochoid 2D body profile](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)
+
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_body_2d.scad`](functions/epitrochoid/curve_gear_epitrochoid_body_2d.scad)
 
 **Parameters:**
 
@@ -755,12 +1007,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_fourier_2d`
+
+
+![fourier 2D gear profile](../images/functions/fourier/curve_gear_fourier_2d.png)
+
+Source: [`functions/fourier/curve_gear_fourier_2d.scad`](functions/fourier/curve_gear_fourier_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `fourier_curve_gear_body`
 
 
 ![curve_gear_fourier_body example preview](../images/functions/fourier/curve_gear_fourier_body.png)
 
 Source: [`functions/fourier/curve_gear_fourier_body.scad`](functions/fourier/curve_gear_fourier_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_fourier_body_2d`
+
+
+![fourier 2D body profile](../images/functions/fourier/curve_gear_fourier_body_2d.png)
+
+Source: [`functions/fourier/curve_gear_fourier_body_2d.scad`](functions/fourier/curve_gear_fourier_body_2d.scad)
 
 **Parameters:**
 
@@ -859,12 +1145,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_hypotrochoid_2d`
+
+
+![hypotrochoid 2D gear profile](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_2d.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `hypotrochoid_curve_gear_body`
 
 
 ![curve_gear_hypotrochoid_body example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_hypotrochoid_body_2d`
+
+
+![hypotrochoid 2D body profile](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.scad)
 
 **Parameters:**
 
@@ -974,12 +1294,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_lobed_2d`
+
+
+![lobed 2D gear profile](../images/functions/lobed/curve_gear_lobed_2d.png)
+
+Source: [`functions/lobed/curve_gear_lobed_2d.scad`](functions/lobed/curve_gear_lobed_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `lobed_curve_gear_body`
 
 
 ![curve_gear_lobed_body example preview](../images/functions/lobed/curve_gear_lobed_body.png)
 
 Source: [`functions/lobed/curve_gear_lobed_body.scad`](functions/lobed/curve_gear_lobed_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_lobed_body_2d`
+
+
+![lobed 2D body profile](../images/functions/lobed/curve_gear_lobed_body_2d.png)
+
+Source: [`functions/lobed/curve_gear_lobed_body_2d.scad`](functions/lobed/curve_gear_lobed_body_2d.scad)
 
 **Parameters:**
 
@@ -1078,12 +1432,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_logarithmic_spiral_2d`
+
+
+![logarithmic_spiral 2D gear profile](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)
+
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `logarithmic_spiral_curve_gear_body`
 
 
 ![curve_gear_logarithmic_spiral_body example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logarithmic_spiral_body_2d`
+
+
+![logarithmic_spiral 2D body profile](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)
+
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.scad)
 
 **Parameters:**
 
@@ -1164,12 +1552,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_pascal_2d`
+
+
+![pascal 2D gear profile](../images/functions/pascal/curve_gear_pascal_2d.png)
+
+Source: [`functions/pascal/curve_gear_pascal_2d.scad`](functions/pascal/curve_gear_pascal_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `pascal_curve_gear_body`
 
 
 ![curve_gear_pascal_body example preview](../images/functions/pascal/curve_gear_pascal_body.png)
 
 Source: [`functions/pascal/curve_gear_pascal_body.scad`](functions/pascal/curve_gear_pascal_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_pascal_body_2d`
+
+
+![pascal 2D body profile](../images/functions/pascal/curve_gear_pascal_body_2d.png)
+
+Source: [`functions/pascal/curve_gear_pascal_body_2d.scad`](functions/pascal/curve_gear_pascal_body_2d.scad)
 
 **Parameters:**
 
@@ -1268,12 +1690,46 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `curve_gear_superformula_2d`
+
+
+![superformula 2D gear profile](../images/functions/superformula/curve_gear_superformula_2d.png)
+
+Source: [`functions/superformula/curve_gear_superformula_2d.scad`](functions/superformula/curve_gear_superformula_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `superformula_curve_gear_body`
 
 
 ![curve_gear_superformula_body example preview](../images/functions/superformula/curve_gear_superformula_body.png)
 
 Source: [`functions/superformula/curve_gear_superformula_body.scad`](functions/superformula/curve_gear_superformula_body.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_superformula_body_2d`
+
+
+![superformula 2D body profile](../images/functions/superformula/curve_gear_superformula_body_2d.png)
+
+Source: [`functions/superformula/curve_gear_superformula_body_2d.scad`](functions/superformula/curve_gear_superformula_body_2d.scad)
 
 **Parameters:**
 

@@ -1,0 +1,8 @@
+/***
+ * @function curve_gear_circle_2d
+ * @brief Render the complete circle gear profile as flat 2D geometry.
+ * Source: [`functions/circle/curve_gear_circle_2d.scad`](functions/circle/curve_gear_circle_2d.scad)
+ * @image ../images/functions/circle/curve_gear_circle_2d.png circle 2D gear profile
+ */
+include <../../../src/circle/gear.scad>;
+curve_gear_circle_2d(0.8, 34, 4.8);

@@ -41,6 +41,10 @@ https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`curve_gear_fourier_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_fourier_bodymodul-tooth_number-width-bore-): Build the Fourier body without teeth.
 
+> [`curve_gear_fourier_2d`](#function-curve_gear_fourier_2d): Emit the complete fourier gear profile as 2D geometry.
+
+> [`curve_gear_fourier_body_2d`](#function-curve_gear_fourier_body_2d): Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_fourier_motion_radii`](#function-_cg_fourier_motion_radii): Evaluate Fourier radii at integration midpoints.
 
 > [`_cg_fourier_driver_radii(base, coefficients, n=360)`](#function-_cg_fourier_driver_radiibase-coefficients-n360): Evaluate Fourier radii at direct mate-construction angles.
@@ -217,6 +221,71 @@ Build the Fourier body without teeth.
 **Returns:**
 
 No return
+
+Back to [module description](#module-fourier).
+
+### Function `curve_gear_fourier_2d`
+
+
+![fourier 2D gear and body preview](../images/functions/fourier/curve_gear_fourier_2d.png)
+
+Emit the complete fourier gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `coefficients`: {value} Same family-specific parameter as curve_gear_fourier.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_fourier.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_fourier.
+- `backlash`: {value} Same family-specific parameter as curve_gear_fourier.
+- `clearance`: {value} Same family-specific parameter as curve_gear_fourier.
+- `samples`: {value} Same family-specific parameter as curve_gear_fourier.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_fourier_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-fourier).
+
+### Function `curve_gear_fourier_body_2d`
+
+
+![fourier 2D body preview](../images/functions/fourier/curve_gear_fourier_body_2d.png)
+
+Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `coefficients`: {value} Same family-specific parameter as curve_gear_fourier_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_fourier_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_fourier_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_fourier_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_fourier_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_fourier_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_fourier_body_2d(0.8, 34, 4.8, body_offset=-2);
+~~~
 
 Back to [module description](#module-fourier).
 

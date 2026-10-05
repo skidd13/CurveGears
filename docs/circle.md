@@ -30,6 +30,10 @@ construction contracts used by the non-circular families.
 
 > [`curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`](#function-curve_gear_circle_bodymodul-tooth_number-width-bore-samples480): Build the circular reference body without teeth.
 
+> [`curve_gear_circle_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_circle_2dmodul-tooth_number-bore-): Emit the complete circular gear profile as 2D geometry.
+
+> [`curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`](#function-curve_gear_circle_body_2dmodul-tooth_number-bore-samples480-body_offset0): Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
+
 > [`curve_gear_circle_centre_distance(modul, tooth_number)`](#function-curve_gear_circle_centre_distancemodul-tooth_number): Return the reference centre distance for a circular pair.
 
 > [`curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circle_matemodul-tooth_number-width-bore-): Build the circular reference mate boundary at the origin.
@@ -117,6 +121,63 @@ Build the circular reference body without teeth.
 **Returns:**
 
 No return
+
+Back to [module description](#module-circle).
+
+### Function `curve_gear_circle_2d(modul, tooth_number, bore, ...)`
+
+
+![Circle 2D gear and body preview](../images/functions/circle/curve_gear_circle_2d.png)
+
+Emit the complete circular gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `bore`: {number >= 0} Centre bore diameter in mm.
+- `pressure_angle`: {angle, default 20} Involute pressure angle.
+- `tooth_phase`: {angle, default 0} Tooth placement phase.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `samples`: {integer >= 120, default 480} Pitch-curve sampling density.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_circle_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-circle).
+
+### Function `curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`
+
+
+![Circle 2D body preview](../images/functions/circle/curve_gear_circle_body_2d.png)
+
+Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `bore`: {number >= 0} Centre bore diameter in mm.
+- `samples`: {integer >= 120, default 480} Pitch-curve sampling density.
+- `body_offset`: {number, default 0} Signed outer-contour offset in mm; the bore is preserved.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_circle_body_2d(0.8, 34, 4.8, body_offset=-2);
+~~~
 
 Back to [module description](#module-circle).
 

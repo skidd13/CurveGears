@@ -214,9 +214,10 @@ function _cg_point_near_any(point,points,radius) =
  * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
  * @param clearance {undef or >= 0} Additional radial root clearance in mm.
  * @param body_only {boolean, default false} Emit the body without teeth.
+ * @param body_offset {number, default 0} Signed 2D body outer-contour offset; negative values shrink while preserving the centre bore.
  * @return {geometry} Validated two-dimensional gear boundary.
  */
-module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepared_state=undef) {
+module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepared_state=undef,body_offset=0) {
     _cg_assert_gear_inputs(points,modul,tooth_number,bore,pressure_angle,clearance);
     state=prepared_state;
     arc=is_undef(state) ? _cg_polyline_arc_table(points) : state[1];
@@ -235,7 +236,8 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
 
     if (body_only) {
         difference() {
-            polygon(body_outline);
+            if (body_offset == 0) polygon(body_outline);
+            else offset(delta=body_offset) polygon(body_outline);
             if (bore > 0) circle(d=bore);
         }
     } else {
@@ -310,12 +312,12 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Extruded gear.
  */
-module _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepared_state=undef) {
+module _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepared_state=undef,body_offset=0) {
     assert(width > _cg_eps_len(),
         str("stage=extrusion severity=error code=EXTRUSION_HEIGHT_INVALID message=width must be positive width=",width," eps_len=",_cg_eps_len()));
     let($fn=$fn==0 ? _cg_default_fn : $fn)
     linear_extrude(height=width,convexity=10)
-        _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only,prepared_state);
+        _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only,prepared_state,body_offset);
 }
 
 /**

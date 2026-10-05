@@ -46,6 +46,10 @@ Botany 90 (2003), 333–338.
 
 > [`curve_gear_superformula_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_superformula_bodymodul-tooth_number-width-bore-): Build the superformula body solid without teeth.
 
+> [`curve_gear_superformula_2d`](#function-curve_gear_superformula_2d): Emit the complete superformula gear profile as 2D geometry.
+
+> [`curve_gear_superformula_body_2d`](#function-curve_gear_superformula_body_2d): Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_superformula_motion_radii`](#function-_cg_superformula_motion_radii): Evaluate superformula radii at integration midpoints.
 
 > [`_cg_superformula_driver_radii(scale, symmetry, a, b, n1, n2, n3, n=240)`](#function-_cg_superformula_driver_radiiscale-symmetry-a-b-n1-n2-n3-n240): Evaluate superformula radii at direct mate-construction angles.
@@ -332,6 +336,81 @@ No return
 
 ~~~c
 curve_gear_superformula_body(1, 24, 4, 8);
+~~~
+
+Back to [module description](#module-superformula).
+
+### Function `curve_gear_superformula_2d`
+
+
+![superformula 2D gear and body preview](../images/functions/superformula/curve_gear_superformula_2d.png)
+
+Emit the complete superformula gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `symmetry`: {value} Same family-specific parameter as curve_gear_superformula.
+- `a`: {value} Same family-specific parameter as curve_gear_superformula.
+- `b`: {value} Same family-specific parameter as curve_gear_superformula.
+- `n1`: {value} Same family-specific parameter as curve_gear_superformula.
+- `n2`: {value} Same family-specific parameter as curve_gear_superformula.
+- `n3`: {value} Same family-specific parameter as curve_gear_superformula.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_superformula.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_superformula.
+- `backlash`: {value} Same family-specific parameter as curve_gear_superformula.
+- `clearance`: {value} Same family-specific parameter as curve_gear_superformula.
+- `samples`: {value} Same family-specific parameter as curve_gear_superformula.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_superformula_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-superformula).
+
+### Function `curve_gear_superformula_body_2d`
+
+
+![superformula 2D body preview](../images/functions/superformula/curve_gear_superformula_body_2d.png)
+
+Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `symmetry`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `a`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `b`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `n1`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `n2`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `n3`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_superformula_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_superformula_body_2d(0.8, 34, 4.8, body_offset=-2);
 ~~~
 
 Back to [module description](#module-superformula).

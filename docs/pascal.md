@@ -47,6 +47,10 @@ https://mathshistory.st-andrews.ac.uk/Curves/Limacon/.
 
 > [`curve_gear_pascal_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_pascal_bodymodul-tooth_number-width-bore-): Build the Pascal body solid without teeth.
 
+> [`curve_gear_pascal_2d`](#function-curve_gear_pascal_2d): Emit the complete pascal gear profile as 2D geometry.
+
+> [`curve_gear_pascal_body_2d`](#function-curve_gear_pascal_body_2d): Emit the pascal body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_pascal_motion_radii`](#function-_cg_pascal_motion_radii): Evaluate Pascal radii at integration midpoints.
 
 > [`_cg_pascal_driver_radii(scale, eccentricity, n=360)`](#function-_cg_pascal_driver_radiiscale-eccentricity-n360): Evaluate Pascal radii at direct mate-construction angles.
@@ -311,6 +315,71 @@ No return
 
 ~~~c
 curve_gear_pascal_body(1, 24, 4, 8);
+~~~
+
+Back to [module description](#module-pascal).
+
+### Function `curve_gear_pascal_2d`
+
+
+![pascal 2D gear and body preview](../images/functions/pascal/curve_gear_pascal_2d.png)
+
+Emit the complete pascal gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `eccentricity`: {value} Same family-specific parameter as curve_gear_pascal.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_pascal.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_pascal.
+- `backlash`: {value} Same family-specific parameter as curve_gear_pascal.
+- `clearance`: {value} Same family-specific parameter as curve_gear_pascal.
+- `samples`: {value} Same family-specific parameter as curve_gear_pascal.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_pascal_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-pascal).
+
+### Function `curve_gear_pascal_body_2d`
+
+
+![pascal 2D body preview](../images/functions/pascal/curve_gear_pascal_body_2d.png)
+
+Emit the pascal body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `eccentricity`: {value} Same family-specific parameter as curve_gear_pascal_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_pascal_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_pascal_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_pascal_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_pascal_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_pascal_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_pascal_body_2d(0.8, 34, 4.8, body_offset=-2);
 ~~~
 
 Back to [module description](#module-pascal).

@@ -44,6 +44,10 @@ Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
 
 > [`curve_gear_epitrochoid_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_epitrochoid_bodymodul-tooth_number-width-bore-): Build the epitrochoid body solid without teeth.
 
+> [`curve_gear_epitrochoid_2d`](#function-curve_gear_epitrochoid_2d): Emit the complete epitrochoid gear profile as 2D geometry.
+
+> [`curve_gear_epitrochoid_body_2d`](#function-curve_gear_epitrochoid_body_2d): Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_epitrochoid_motion_radii`](#function-_cg_epitrochoid_motion_radii): Evaluate epitrochoid radii at integration midpoints.
 
 > [`_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`](#function-_cg_epitrochoid_driver_radiiscale-r-r-d-n240): Evaluate epitrochoid radii at direct mate-construction angles.
@@ -278,6 +282,75 @@ No return
 
 ~~~c
 curve_gear_epitrochoid_body(1, 24, 4, 8);
+~~~
+
+Back to [module description](#module-epitrochoid).
+
+### Function `curve_gear_epitrochoid_2d`
+
+
+![epitrochoid 2D gear and body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)
+
+Emit the complete epitrochoid gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `major_ratio`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `rolling_ratio`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `offset_ratio`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `backlash`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `clearance`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `samples`: {value} Same family-specific parameter as curve_gear_epitrochoid.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_epitrochoid_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-epitrochoid).
+
+### Function `curve_gear_epitrochoid_body_2d`
+
+
+![epitrochoid 2D body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)
+
+Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `major_ratio`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `rolling_ratio`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `offset_ratio`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_epitrochoid_body_2d(0.8, 34, 4.8, body_offset=-2);
 ~~~
 
 Back to [module description](#module-epitrochoid).

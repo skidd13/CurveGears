@@ -36,6 +36,10 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 > [`curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_bodymodul-tooth_number-width-bore-): Build the elliptical body solid without teeth.
 
+> [`curve_gear_ellipse_2d`](#function-curve_gear_ellipse_2d): Emit the complete ellipse gear profile as 2D geometry.
+
+> [`curve_gear_ellipse_body_2d`](#function-curve_gear_ellipse_body_2d): Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
+
 > [`_cg_ellipse_motion_radii`](#function-_cg_ellipse_motion_radii): Evaluate ellipse radii at integration midpoints.
 
 > [`_cg_ellipse_driver_radii(a, b, n=480)`](#function-_cg_ellipse_driver_radiia-b-n480): Evaluate ellipse radii at direct mate-construction angles.
@@ -204,6 +208,71 @@ No return
 
 ~~~c
 curve_gear_ellipse_body(1, 24, 4, 8);
+~~~
+
+Back to [module description](#module-ellipse).
+
+### Function `curve_gear_ellipse_2d`
+
+
+![ellipse 2D gear and body preview](../images/functions/ellipse/curve_gear_ellipse_2d.png)
+
+Emit the complete ellipse gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `eccentricity`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `backlash`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `clearance`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `samples`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `orientation`: {value} Rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_ellipse_2d(0.8, 34, 4.8);
+~~~
+
+Back to [module description](#module-ellipse).
+
+### Function `curve_gear_ellipse_body_2d`
+
+
+![ellipse 2D body preview](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)
+
+Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
+
+**Parameters:**
+
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `eccentricity`: {value} Same family-specific parameter as curve_gear_ellipse_body.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_ellipse_body.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_ellipse_body.
+- `backlash`: {value} Same family-specific parameter as curve_gear_ellipse_body.
+- `clearance`: {value} Same family-specific parameter as curve_gear_ellipse_body.
+- `samples`: {value} Same family-specific parameter as curve_gear_ellipse_body.
+- `orientation`: {value} Rotation in degrees.
+- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_ellipse_body_2d(0.8, 34, 4.8, body_offset=-2);
 ~~~
 
 Back to [module description](#module-ellipse).

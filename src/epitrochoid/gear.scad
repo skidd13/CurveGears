@@ -23,7 +23,7 @@
  */
 include <base.scad>
 
-module _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false) {
+module _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
  * @function _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
  * @brief Internal epitrochoid construction dispatcher.
@@ -43,15 +43,19 @@ module _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling
  * @param body_only {boolean, default false} Emit the body without teeth.
  * @return {geometry} Constructed family geometry.
  */
-    assert(modul > 0 && width > 0 && bore >= 0,"epitrochoid: module, width and bore must be valid");
+    assert(modul > 0 && (is_2d || width > 0) && bore >= 0,"epitrochoid: module, width and bore must be valid");
     assert(tooth_number >= 3 && floor(tooth_number)==tooth_number,"epitrochoid: tooth number must be an integer >= 3");
     assert(major_ratio > rolling_ratio && rolling_ratio > 0 && offset_ratio > 0 && offset_ratio < rolling_ratio,"epitrochoid: require major_ratio > rolling_ratio > 0 and 0 < offset_ratio < rolling_ratio");
     _cg_assert_samples(samples,"epitrochoid: samples must be an integer >= 120");
     unit_points=_cg_epitrochoid_points(major_ratio,rolling_ratio,offset_ratio,samples);
     scale=_cg_trochoid_scale_from_points(modul,tooth_number,unit_points);
     points=_cg_trochoid_points_scaled_from_points(scale,unit_points);
-    rotate([0,0,orientation])
-        _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
+    rotate([0,0,orientation]) {
+        if (is_2d)
+            _cg_gear_2d_from_pitch_points(points, modul, tooth_number, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only, undef, body_offset);
+        else
+            _cg_gear_from_pitch_points(points, modul, tooth_number, width, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only);
+    }
 }
 
 module curve_gear_epitrochoid(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
@@ -80,4 +84,51 @@ module curve_gear_epitrochoid(modul,tooth_number,width,bore,major_ratio=3,rollin
  */
 module curve_gear_epitrochoid_body(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio,rolling_ratio,offset_ratio,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
+}
+
+/***
+ * @function curve_gear_epitrochoid_2d
+ * @brief Emit the complete epitrochoid gear profile as 2D geometry.
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png epitrochoid 2D gear and body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param major_ratio {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param rolling_ratio {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param offset_ratio {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param backlash {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param clearance {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param samples {value} Same family-specific parameter as curve_gear_epitrochoid.
+ * @param orientation {value} Rotation in degrees.
+ * @example c
+ * curve_gear_epitrochoid_2d(0.8, 34, 4.8);
+ */
+module curve_gear_epitrochoid_2d(modul, tooth_number, bore, major_ratio=3, rolling_ratio=1, offset_ratio=.35, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0) {
+    _cg_epitrochoid_build(modul, tooth_number, 0, bore, major_ratio, rolling_ratio, offset_ratio, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, false, true, 0);
+}
+
+/***
+ * @function curve_gear_epitrochoid_body_2d
+ * @brief Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png epitrochoid 2D body preview
+ * @param modul {value} Tooth module in mm.
+ * @param tooth_number {value} Number of teeth.
+ * @param bore {value} Centre bore diameter in mm.
+ * @param major_ratio {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param rolling_ratio {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param offset_ratio {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param pressure_angle {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param tooth_phase {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param backlash {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param clearance {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param samples {value} Same family-specific parameter as curve_gear_epitrochoid_body.
+ * @param orientation {value} Rotation in degrees.
+ * @param body_offset {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+ * @example c
+ * curve_gear_epitrochoid_body_2d(0.8, 34, 4.8, body_offset=-2);
+ */
+module curve_gear_epitrochoid_body_2d(modul, tooth_number, bore, major_ratio=3, rolling_ratio=1, offset_ratio=.35, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_offset=0) {
+    _cg_epitrochoid_build(modul, tooth_number, 0, bore, major_ratio, rolling_ratio, offset_ratio, pressure_angle, tooth_phase, backlash, clearance, samples, orientation, true, true, body_offset);
 }

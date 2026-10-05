@@ -61,6 +61,10 @@ are documented together below.
 
 > [`curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_bodymodul-tooth_number-width-bore-): Build the three-cusp deltoid body with its integrated cusp-tip teeth.
 
+> [`curve_gear_cusp_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_2dmodul-tooth_number-bore-): Emit the complete cusp gear profile as 2D geometry.
+
+> [`curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_body_2dmodul-tooth_number-bore-): Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
+
 > [`_cg_cusp_envelope_driver_outline(state)`](#function-_cg_cusp_envelope_driver_outlinestate): Extract the complete placed driver outline from its validated state.
 
 > [`_cg_cusp_envelope_mate_outer_radius(geometry, modul)`](#function-_cg_cusp_envelope_mate_outer_radiusgeometry-modul): Calculate the swept-envelope mate's outer blank radius.
@@ -422,6 +426,64 @@ Build the three-cusp deltoid body with its integrated cusp-tip teeth.
 **Returns:**
 
 No return
+
+Back to [module description](#module-cusp).
+
+### Function `curve_gear_cusp_2d(modul, tooth_number, bore, ...)`
+
+
+![Cusp 2D gear and body preview](../images/functions/cusp/curve_gear_cusp_2d.png)
+
+Emit the complete cusp gear profile as 2D geometry.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3, divisible by 3} Tooth count.
+- `bore`: {number >= 0} Centre bore diameter in mm.
+- `pressure_angle`: {angle, default 20} Standard-flank pressure angle.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `samples`: {integer >= 720, divisible by 3} Deltoid curve sampling density.
+- `orientation`: {angle, default 0} Whole-gear rotation in degrees.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_cusp_2d(0.8, 36, 4.8);
+~~~
+
+Back to [module description](#module-cusp).
+
+### Function `curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`
+
+
+![Cusp 2D body preview](../images/functions/cusp/curve_gear_cusp_body_2d.png)
+
+Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3, divisible by 3} Tooth count.
+- `bore`: {number >= 0} Centre bore diameter in mm.
+- `samples`: {integer >= 720, divisible by 3} Deltoid curve sampling density.
+- `orientation`: {angle, default 0} Whole-body rotation in degrees.
+- `body_offset`: {number, default 0} Signed offset in mm; negative shrinks the outer contour and preserves the bore.
+
+**Returns:**
+
+No return
+
+### Example:
+
+~~~c
+curve_gear_cusp_body_2d(0.8, 36, 4.8, body_offset=-2);
+~~~
 
 Back to [module description](#module-cusp).
 
