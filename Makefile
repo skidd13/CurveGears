@@ -4,12 +4,13 @@ OPENSCAD ?= $(shell command -v openscad 2>/dev/null || printf '%s' openscad)
 DOCGEN ?= utils/doxydown/doxydown.pl
 PYTHON ?= python3
 IMAGE_SIZE ?= 4096,4096
+API_2D_IMAGE_SIZE ?= 512,512
 CI_IMAGE_SIZE ?= 256,256
-CORE_IMAGE_SIZE ?= 1024,1024
 _DEFAULT_IMAGE_SIZE := $(IMAGE_SIZE)
 MAIN_IMAGE_SIZE ?= $(_DEFAULT_IMAGE_SIZE)
 CAMERA ?= 0,0,0,50,0,40,0
 COLORSCHEME ?= Nature
+API_2D_COLORSCHEME ?= White Outline
 REGRESSION_DIR ?= build/regression
 REGRESSION_FAMILIES ?= $(if $(family),$(family),$(FAMILY))
 REGRESSION_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print)
@@ -74,17 +75,18 @@ help:
 	  '  clean               Remove generated build and image artifacts' \
 	  'Test selection: make test family=cusp runs cusp checks; omit family to run all families.' \
 	  'OPENSCAD=<path> selects the OpenSCAD executable; PYTHON=<path> selects Python 3.' \
-	  'IMAGE_SIZE=<w,h> sets general image pixels; MAIN_IMAGE_SIZE overrides the overview; CI_IMAGE_SIZE and CORE_IMAGE_SIZE set smaller renders.' \
-	  'CAMERA=<translate-x,translate-y,translate-z,rotation-x,rotation-y,rotation-z,distance> and COLORSCHEME=<name> set image view and palette.' \
+	  'IMAGE_SIZE=<w,h> sets documentation images; API_2D_IMAGE_SIZE overrides outlined 2D renders; MAIN_IMAGE_SIZE overrides the overview; CI_IMAGE_SIZE sets smaller CI renders.' \
+	  'CAMERA=<translate-x,translate-y,translate-z,rotation-x,rotation-y,rotation-z,distance> and COLORSCHEME=<name> set image view; API_2D_COLORSCHEME=<name> selects the 2D outline palette.' \
 	  'REGRESSION_DIR=<path> changes test outputs; FAMILY=<name> is the uppercase alias for family=<name>.'
 
 images: $(MAIN_IMAGE) api-images $(CORE_IMAGES)
 
 api-images: $(API_IMAGES)
 
-$(API_IMAGES): IMAGE_SIZE=$(CI_IMAGE_SIZE)
-$(CORE_IMAGES): IMAGE_SIZE=$(CORE_IMAGE_SIZE)
 $(filter %_2d.png,$(API_IMAGES)): CAMERA=0,0,0,0,0,0,0
+$(filter %_2d.png,$(API_IMAGES)): COLORSCHEME=$(API_2D_COLORSCHEME)
+$(filter %_2d.png,$(API_IMAGES)): IMAGE_SIZE=$(API_2D_IMAGE_SIZE)
+$(filter %_2d.png,$(API_IMAGES)): utils/openscad/white-outline.json
 $(API_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 $(CORE_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 
@@ -95,17 +97,16 @@ $(foreach family,$(FAMILIES),$(eval $(call FAMILY_API_IMAGE_SOURCE_DEPS,$(family
 
 $(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES) $(PREVIEW_ALL_SOURCE_DEPS)
 	@mkdir -p $(@D)
-	$(OPENSCAD) -o "$@" --render --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(MAIN_IMAGE_SIZE) -q "$<"
+	$(OPENSCAD) -o "$@" --render --camera=$(CAMERA) --colorscheme="$(COLORSCHEME)" --projection=o --viewall --autocenter --imgsize=$(MAIN_IMAGE_SIZE) -q "$<"
 
 # A canonical single-gear example is also an input to the family overview.
 # Order-only keeps a canonical image request checking the overview first, while
 # avoiding invalidating every family PNG just because the overview was rendered.
-# Its resolution must not inherit the smaller per-target API image size.
 $(MAIN_EXAMPLE_IMAGES): | $(MAIN_IMAGE)
 
 images/%.png: examples/%.scad
 	@mkdir -p $(@D)
-	$(OPENSCAD) -o "$@" --render --camera=$(CAMERA) --colorscheme=$(COLORSCHEME) --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
+	$(OPENSCAD) -o "$@" --render --camera=$(CAMERA) --colorscheme="$(COLORSCHEME)" --projection=o --viewall --autocenter --imgsize=$(IMAGE_SIZE) -q "$<"
 
 NAVIGATION_TEMPLATE := utils/doxydown-support/navigation.md
 FOOTER_TEMPLATE := utils/doxydown-support/footer.md

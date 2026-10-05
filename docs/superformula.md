@@ -232,8 +232,10 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Superformula gear preview](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) |   |
 
-![Superformula gear preview](../images/functions/superformula/curve_gear_superformula.png)
 
 Public single-gear construction for the superformula family.
 Odd symmetry requires a=b and n2=n3 for full-turn continuity.
@@ -304,8 +306,10 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_body(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Superformula body preview](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) |   |
 
-![Superformula body preview](../images/functions/superformula/curve_gear_superformula_body.png)
 
 Build the superformula body solid without teeth.
 
@@ -342,8 +346,10 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_2d`
 
+|  |  |
+| --- | --- |
+| [![superformula 2D gear and body preview](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) |   |
 
-![superformula 2D gear and body preview](../images/functions/superformula/curve_gear_superformula_2d.png)
 
 Emit the complete superformula gear profile as 2D geometry.
 
@@ -379,8 +385,10 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_body_2d`
 
+|  |  |
+| --- | --- |
+| [![superformula 2D body preview](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) |   |
 
-![superformula 2D body preview](../images/functions/superformula/curve_gear_superformula_body_2d.png)
 
 Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
 
@@ -552,8 +560,10 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_mate(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Superformula mate preview](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) |   |
 
-![Superformula mate preview](../images/functions/superformula/curve_gear_superformula_mate.png)
 
 Build the standalone superformula mate boundary at the origin.
 
@@ -630,8 +640,10 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Superformula pair preview](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) |   |
 
-![Superformula pair preview](../images/functions/superformula/curve_gear_superformula_pair.png)
 
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_superformula`](#f-curve_gear_superformula)

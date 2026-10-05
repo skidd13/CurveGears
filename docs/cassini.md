@@ -197,8 +197,10 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini`
 
+|  |  |
+| --- | --- |
+| [![Cassini gear preview](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) |   |
 
-![Cassini gear preview](../images/functions/cassini/curve_gear_cassini.png)
 
 The supported branch is a positive single loop. `focus_ratio >= 1` is rejected.
 
@@ -256,8 +258,10 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_body`
 
+|  |  |
+| --- | --- |
+| [![Cassini body preview](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) |   |
 
-![Cassini body preview](../images/functions/cassini/curve_gear_cassini_body.png)
 
 Build the Cassini body solid without teeth.
 
@@ -289,8 +293,10 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_2d`
 
+|  |  |
+| --- | --- |
+| [![cassini 2D gear and body preview](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) |   |
 
-![cassini 2D gear and body preview](../images/functions/cassini/curve_gear_cassini_2d.png)
 
 Emit the complete cassini gear profile as 2D geometry.
 
@@ -321,8 +327,10 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_body_2d`
 
+|  |  |
+| --- | --- |
+| [![cassini 2D body preview](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) |   |
 
-![cassini 2D body preview](../images/functions/cassini/curve_gear_cassini_body_2d.png)
 
 Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
 
@@ -459,8 +467,10 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_mate`
 
+|  |  |
+| --- | --- |
+| [![Cassini mate preview](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) |   |
 
-![Cassini mate preview](../images/functions/cassini/curve_gear_cassini_mate.png)
 
 Build the standalone conjugate mate for a Cassini driver.
 
@@ -522,8 +532,10 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_pair`
 
+|  |  |
+| --- | --- |
+| [![Cassini pair preview](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) |   |
 
-![Cassini pair preview](../images/functions/cassini/curve_gear_cassini_pair.png)
 
 Build a meshed or separated Cassini driver/mate pair.
 

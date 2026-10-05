@@ -654,8 +654,10 @@ Back to [module description](#module-tooth-generation).
 
 ### Function `_cg_reference_tooth_candidate(pitch_radius, modul, tooth_number, ...)`
 
+|  |  |
+| --- | --- |
+| [![Validated tooth candidate preview](../images/tooth/construction.png)](../images/tooth/construction.png) |   |
 
-![Validated tooth candidate preview](../images/tooth/construction.png)
 
 Return one cached, validated local candidate tooth.
 

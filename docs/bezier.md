@@ -173,10 +173,10 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Bézier gear preview](../images/functions/bezier/curve_gear_bezier.png)](../images/functions/bezier/curve_gear_bezier.png) | [![Bézier asymmetric alternative](../images/functions/bezier/curve_gear_bezier_alternative.png)](../images/functions/bezier/curve_gear_bezier_alternative.png) |
 
-![Bézier gear preview](../images/functions/bezier/curve_gear_bezier.png)
-
-![Bézier asymmetric alternative](../images/functions/bezier/curve_gear_bezier_alternative.png)
 
 Build a closed cubic Bézier gear from user-controlled normalised points.
 
@@ -208,8 +208,10 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) |   |
 
-![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)
 
 Build the closed Bézier body without teeth.
 
@@ -235,8 +237,10 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_2d`
 
+|  |  |
+| --- | --- |
+| [![bezier 2D gear and body preview](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) |   |
 
-![bezier 2D gear and body preview](../images/functions/bezier/curve_gear_bezier_2d.png)
 
 Emit the complete bezier gear profile as 2D geometry.
 
@@ -267,8 +271,10 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body_2d`
 
+|  |  |
+| --- | --- |
+| [![bezier 2D body preview](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) |   |
 
-![bezier 2D body preview](../images/functions/bezier/curve_gear_bezier_body_2d.png)
 
 Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
 
@@ -450,8 +456,10 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_mate`
 
+|  |  |
+| --- | --- |
+| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) |   |
 
-![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)
 
 Build a conjugate mate for an admissible radial Bézier pitch curve.
 
@@ -513,10 +521,10 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Bézier pair preview](../images/functions/bezier/curve_gear_bezier_pair.png)](../images/functions/bezier/curve_gear_bezier_pair.png) | [![Bézier asymmetric alternative pair](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)](../images/functions/bezier/curve_gear_bezier_pair_alternative.png) |
 
-![Bézier pair preview](../images/functions/bezier/curve_gear_bezier_pair.png)
-
-![Bézier asymmetric alternative pair](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)
 
 Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
 

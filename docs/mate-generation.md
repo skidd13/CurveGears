@@ -53,8 +53,10 @@ Back to [module description](#module-mate-generation).
 
 ### Function `_cg_mate_boundary_from_pitch_points(mate_points, modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Mate boundary assembly preview](../images/tooth/assembly.png)](../images/tooth/assembly.png) |   |
 
-![Mate boundary assembly preview](../images/tooth/assembly.png)
 
 Build one mate from its canonical sampled pitch boundary.
 

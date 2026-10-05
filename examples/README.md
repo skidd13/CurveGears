@@ -222,8 +222,10 @@ The module `Executable examples` defines the following functions.
 
 ### Function `bezier_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_bezier example preview](../images/functions/bezier/curve_gear_bezier.png)](../images/functions/bezier/curve_gear_bezier.png) |   |
 
-![curve_gear_bezier example preview](../images/functions/bezier/curve_gear_bezier.png)
 
 Source: [`functions/bezier/curve_gear_bezier.scad`](functions/bezier/curve_gear_bezier.scad)
 
@@ -239,8 +241,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_bezier_2d`
 
+|  |  |
+| --- | --- |
+| [![bezier 2D gear profile](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) |   |
 
-![bezier 2D gear profile](../images/functions/bezier/curve_gear_bezier_2d.png)
 
 Source: [`functions/bezier/curve_gear_bezier_2d.scad`](functions/bezier/curve_gear_bezier_2d.scad)
 
@@ -256,8 +260,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `bezier_curve_gear_alternative`
 
+|  |  |
+| --- | --- |
+| [![Bézier asymmetric alternative preview](../images/functions/bezier/curve_gear_bezier_alternative.png)](../images/functions/bezier/curve_gear_bezier_alternative.png) |   |
 
-![Bézier asymmetric alternative preview](../images/functions/bezier/curve_gear_bezier_alternative.png)
 
 Source: [`functions/bezier/curve_gear_bezier_alternative.scad`](functions/bezier/curve_gear_bezier_alternative.scad)
 
@@ -273,8 +279,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `bezier_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_bezier_body example preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) |   |
 
-![curve_gear_bezier_body example preview](../images/functions/bezier/curve_gear_bezier_body.png)
 
 Source: [`functions/bezier/curve_gear_bezier_body.scad`](functions/bezier/curve_gear_bezier_body.scad)
 
@@ -290,8 +298,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_bezier_body_2d`
 
+|  |  |
+| --- | --- |
+| [![bezier 2D body profile](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) |   |
 
-![bezier 2D body profile](../images/functions/bezier/curve_gear_bezier_body_2d.png)
 
 Source: [`functions/bezier/curve_gear_bezier_body_2d.scad`](functions/bezier/curve_gear_bezier_body_2d.scad)
 
@@ -307,8 +317,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `bezier_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_bezier_mate example preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) |   |
 
-![curve_gear_bezier_mate example preview](../images/functions/bezier/curve_gear_bezier_mate.png)
 
 Source: [`functions/bezier/curve_gear_bezier_mate.scad`](functions/bezier/curve_gear_bezier_mate.scad)
 
@@ -324,8 +336,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `bezier_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_bezier_pair example preview](../images/functions/bezier/curve_gear_bezier_pair.png)](../images/functions/bezier/curve_gear_bezier_pair.png) |   |
 
-![curve_gear_bezier_pair example preview](../images/functions/bezier/curve_gear_bezier_pair.png)
 
 Source: [`functions/bezier/curve_gear_bezier_pair.scad`](functions/bezier/curve_gear_bezier_pair.scad)
 
@@ -341,8 +355,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `bezier_curve_gear_pair_alternative`
 
+|  |  |
+| --- | --- |
+| [![Bézier asymmetric pair alternative preview](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)](../images/functions/bezier/curve_gear_bezier_pair_alternative.png) |   |
 
-![Bézier asymmetric pair alternative preview](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)
 
 Source: [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad)
 
@@ -358,8 +374,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `cassini_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_cassini example preview](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) |   |
 
-![curve_gear_cassini example preview](../images/functions/cassini/curve_gear_cassini.png)
 
 Source: [`functions/cassini/curve_gear_cassini.scad`](functions/cassini/curve_gear_cassini.scad)
 
@@ -375,8 +393,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cassini_2d`
 
+|  |  |
+| --- | --- |
+| [![cassini 2D gear profile](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) |   |
 
-![cassini 2D gear profile](../images/functions/cassini/curve_gear_cassini_2d.png)
 
 Source: [`functions/cassini/curve_gear_cassini_2d.scad`](functions/cassini/curve_gear_cassini_2d.scad)
 
@@ -392,8 +412,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `cassini_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_cassini_body example preview](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) |   |
 
-![curve_gear_cassini_body example preview](../images/functions/cassini/curve_gear_cassini_body.png)
 
 Source: [`functions/cassini/curve_gear_cassini_body.scad`](functions/cassini/curve_gear_cassini_body.scad)
 
@@ -409,8 +431,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cassini_body_2d`
 
+|  |  |
+| --- | --- |
+| [![cassini 2D body profile](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) |   |
 
-![cassini 2D body profile](../images/functions/cassini/curve_gear_cassini_body_2d.png)
 
 Source: [`functions/cassini/curve_gear_cassini_body_2d.scad`](functions/cassini/curve_gear_cassini_body_2d.scad)
 
@@ -441,8 +465,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `cassini_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_cassini_mate example preview](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) |   |
 
-![curve_gear_cassini_mate example preview](../images/functions/cassini/curve_gear_cassini_mate.png)
 
 Source: [`functions/cassini/curve_gear_cassini_mate.scad`](functions/cassini/curve_gear_cassini_mate.scad)
 
@@ -473,8 +499,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `cassini_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_cassini_pair example preview](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) |   |
 
-![curve_gear_cassini_pair example preview](../images/functions/cassini/curve_gear_cassini_pair.png)
 
 Source: [`functions/cassini/curve_gear_cassini_pair.scad`](functions/cassini/curve_gear_cassini_pair.scad)
 
@@ -490,8 +518,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `circle_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve gear circle preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) |   |
 
-![curve gear circle preview](../images/functions/circle/curve_gear_circle.png)
 
 Source: [`functions/circle/curve_gear_circle.scad`](functions/circle/curve_gear_circle.scad)
 
@@ -507,8 +537,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_circle_2d`
 
+|  |  |
+| --- | --- |
+| [![circle 2D gear profile](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) |   |
 
-![circle 2D gear profile](../images/functions/circle/curve_gear_circle_2d.png)
 
 Source: [`functions/circle/curve_gear_circle_2d.scad`](functions/circle/curve_gear_circle_2d.scad)
 
@@ -524,8 +556,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `circle_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve gear circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) |   |
 
-![curve gear circle body preview](../images/functions/circle/curve_gear_circle_body.png)
 
 Source: [`functions/circle/curve_gear_circle_body.scad`](functions/circle/curve_gear_circle_body.scad)
 
@@ -541,8 +575,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_circle_body_2d`
 
+|  |  |
+| --- | --- |
+| [![circle 2D body profile](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) |   |
 
-![circle 2D body profile](../images/functions/circle/curve_gear_circle_body_2d.png)
 
 Source: [`functions/circle/curve_gear_circle_body_2d.scad`](functions/circle/curve_gear_circle_body_2d.scad)
 
@@ -558,8 +594,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `circle_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve gear circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) |   |
 
-![curve gear circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)
 
 Source: [`functions/circle/curve_gear_circle_mate.scad`](functions/circle/curve_gear_circle_mate.scad)
 
@@ -575,8 +613,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `circle_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve gear circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) |   |
 
-![curve gear circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)
 
 Source: [`functions/circle/curve_gear_circle_pair.scad`](functions/circle/curve_gear_circle_pair.scad)
 
@@ -607,8 +647,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cusp_2d`
 
+|  |  |
+| --- | --- |
+| [![cusp 2D gear profile](../images/functions/cusp/curve_gear_cusp_2d.png)](../images/functions/cusp/curve_gear_cusp_2d.png) |   |
 
-![cusp 2D gear profile](../images/functions/cusp/curve_gear_cusp_2d.png)
 
 Source: [`functions/cusp/curve_gear_cusp_2d.scad`](functions/cusp/curve_gear_cusp_2d.scad)
 
@@ -639,8 +681,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cusp_body_2d`
 
+|  |  |
+| --- | --- |
+| [![cusp 2D body profile](../images/functions/cusp/curve_gear_cusp_body_2d.png)](../images/functions/cusp/curve_gear_cusp_body_2d.png) |   |
 
-![cusp 2D body profile](../images/functions/cusp/curve_gear_cusp_body_2d.png)
 
 Source: [`functions/cusp/curve_gear_cusp_body_2d.scad`](functions/cusp/curve_gear_cusp_body_2d.scad)
 
@@ -716,8 +760,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `ellipse_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_ellipse example preview](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) |   |
 
-![curve_gear_ellipse example preview](../images/functions/ellipse/curve_gear_ellipse.png)
 
 Source: [`functions/ellipse/curve_gear_ellipse.scad`](functions/ellipse/curve_gear_ellipse.scad)
 
@@ -733,8 +779,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_ellipse_2d`
 
+|  |  |
+| --- | --- |
+| [![ellipse 2D gear profile](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) |   |
 
-![ellipse 2D gear profile](../images/functions/ellipse/curve_gear_ellipse_2d.png)
 
 Source: [`functions/ellipse/curve_gear_ellipse_2d.scad`](functions/ellipse/curve_gear_ellipse_2d.scad)
 
@@ -750,8 +798,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `ellipse_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_ellipse_body example preview](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) |   |
 
-![curve_gear_ellipse_body example preview](../images/functions/ellipse/curve_gear_ellipse_body.png)
 
 Source: [`functions/ellipse/curve_gear_ellipse_body.scad`](functions/ellipse/curve_gear_ellipse_body.scad)
 
@@ -767,8 +817,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_ellipse_body_2d`
 
+|  |  |
+| --- | --- |
+| [![ellipse 2D body profile](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) |   |
 
-![ellipse 2D body profile](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)
 
 Source: [`functions/ellipse/curve_gear_ellipse_body_2d.scad`](functions/ellipse/curve_gear_ellipse_body_2d.scad)
 
@@ -802,8 +854,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `ellipse_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_ellipse_mate example preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) |   |
 
-![curve_gear_ellipse_mate example preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)
 
 Source: [`functions/ellipse/curve_gear_ellipse_mate.scad`](functions/ellipse/curve_gear_ellipse_mate.scad)
 
@@ -837,8 +891,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `ellipse_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_ellipse_pair example preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) |   |
 
-![curve_gear_ellipse_pair example preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)
 
 Source: [`functions/ellipse/curve_gear_ellipse_pair.scad`](functions/ellipse/curve_gear_ellipse_pair.scad)
 
@@ -854,8 +910,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `epitrochoid_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_epitrochoid example preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) |   |
 
-![curve_gear_epitrochoid example preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid.scad`](functions/epitrochoid/curve_gear_epitrochoid.scad)
 
@@ -871,8 +929,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_epitrochoid_2d`
 
+|  |  |
+| --- | --- |
+| [![epitrochoid 2D gear profile](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) |   |
 
-![epitrochoid 2D gear profile](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid_2d.scad`](functions/epitrochoid/curve_gear_epitrochoid_2d.scad)
 
@@ -888,8 +948,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `epitrochoid_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_epitrochoid_body example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) |   |
 
-![curve_gear_epitrochoid_body example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid_body.scad`](functions/epitrochoid/curve_gear_epitrochoid_body.scad)
 
@@ -905,8 +967,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_epitrochoid_body_2d`
 
+|  |  |
+| --- | --- |
+| [![epitrochoid 2D body profile](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) |   |
 
-![epitrochoid 2D body profile](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid_body_2d.scad`](functions/epitrochoid/curve_gear_epitrochoid_body_2d.scad)
 
@@ -940,8 +1004,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `epitrochoid_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_epitrochoid_mate example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) |   |
 
-![curve_gear_epitrochoid_mate example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid_mate.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate.scad)
 
@@ -975,8 +1041,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `epitrochoid_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_epitrochoid_pair example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) |   |
 
-![curve_gear_epitrochoid_pair example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid_pair.scad`](functions/epitrochoid/curve_gear_epitrochoid_pair.scad)
 
@@ -992,8 +1060,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `fourier_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_fourier example preview](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) |   |
 
-![curve_gear_fourier example preview](../images/functions/fourier/curve_gear_fourier.png)
 
 Source: [`functions/fourier/curve_gear_fourier.scad`](functions/fourier/curve_gear_fourier.scad)
 
@@ -1009,8 +1079,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_fourier_2d`
 
+|  |  |
+| --- | --- |
+| [![fourier 2D gear profile](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) |   |
 
-![fourier 2D gear profile](../images/functions/fourier/curve_gear_fourier_2d.png)
 
 Source: [`functions/fourier/curve_gear_fourier_2d.scad`](functions/fourier/curve_gear_fourier_2d.scad)
 
@@ -1026,8 +1098,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `fourier_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_fourier_body example preview](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) |   |
 
-![curve_gear_fourier_body example preview](../images/functions/fourier/curve_gear_fourier_body.png)
 
 Source: [`functions/fourier/curve_gear_fourier_body.scad`](functions/fourier/curve_gear_fourier_body.scad)
 
@@ -1043,8 +1117,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_fourier_body_2d`
 
+|  |  |
+| --- | --- |
+| [![fourier 2D body profile](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) |   |
 
-![fourier 2D body profile](../images/functions/fourier/curve_gear_fourier_body_2d.png)
 
 Source: [`functions/fourier/curve_gear_fourier_body_2d.scad`](functions/fourier/curve_gear_fourier_body_2d.scad)
 
@@ -1078,8 +1154,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `fourier_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_fourier_mate example preview](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) |   |
 
-![curve_gear_fourier_mate example preview](../images/functions/fourier/curve_gear_fourier_mate.png)
 
 Source: [`functions/fourier/curve_gear_fourier_mate.scad`](functions/fourier/curve_gear_fourier_mate.scad)
 
@@ -1113,8 +1191,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `fourier_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_fourier_pair example preview](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) |   |
 
-![curve_gear_fourier_pair example preview](../images/functions/fourier/curve_gear_fourier_pair.png)
 
 Source: [`functions/fourier/curve_gear_fourier_pair.scad`](functions/fourier/curve_gear_fourier_pair.scad)
 
@@ -1130,8 +1210,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `hypotrochoid_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_hypotrochoid example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) |   |
 
-![curve_gear_hypotrochoid example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid.scad`](functions/hypotrochoid/curve_gear_hypotrochoid.scad)
 
@@ -1147,8 +1229,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_hypotrochoid_2d`
 
+|  |  |
+| --- | --- |
+| [![hypotrochoid 2D gear profile](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) |   |
 
-![hypotrochoid 2D gear profile](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_2d.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_2d.scad)
 
@@ -1164,8 +1248,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `hypotrochoid_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_hypotrochoid_body example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) |   |
 
-![curve_gear_hypotrochoid_body example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body.scad)
 
@@ -1181,8 +1267,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_hypotrochoid_body_2d`
 
+|  |  |
+| --- | --- |
+| [![hypotrochoid 2D body profile](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) |   |
 
-![hypotrochoid 2D body profile](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.scad)
 
@@ -1213,8 +1301,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `hypotrochoid_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_hypotrochoid_mate example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) |   |
 
-![curve_gear_hypotrochoid_mate example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad)
 
@@ -1245,8 +1335,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `hypotrochoid_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_hypotrochoid_pair example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png) |   |
 
-![curve_gear_hypotrochoid_pair example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad)
 
@@ -1262,8 +1354,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `hypotrochoid_curve_gear_pair_alternative`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_hypotrochoid_pair alternative preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png) |   |
 
-![curve_gear_hypotrochoid_pair alternative preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad)
 
@@ -1279,8 +1373,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `lobed_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_lobed example preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) |   |
 
-![curve_gear_lobed example preview](../images/functions/lobed/curve_gear_lobed.png)
 
 Source: [`functions/lobed/curve_gear_lobed.scad`](functions/lobed/curve_gear_lobed.scad)
 
@@ -1296,8 +1392,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_lobed_2d`
 
+|  |  |
+| --- | --- |
+| [![lobed 2D gear profile](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) |   |
 
-![lobed 2D gear profile](../images/functions/lobed/curve_gear_lobed_2d.png)
 
 Source: [`functions/lobed/curve_gear_lobed_2d.scad`](functions/lobed/curve_gear_lobed_2d.scad)
 
@@ -1313,8 +1411,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `lobed_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_lobed_body example preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) |   |
 
-![curve_gear_lobed_body example preview](../images/functions/lobed/curve_gear_lobed_body.png)
 
 Source: [`functions/lobed/curve_gear_lobed_body.scad`](functions/lobed/curve_gear_lobed_body.scad)
 
@@ -1330,8 +1430,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_lobed_body_2d`
 
+|  |  |
+| --- | --- |
+| [![lobed 2D body profile](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) |   |
 
-![lobed 2D body profile](../images/functions/lobed/curve_gear_lobed_body_2d.png)
 
 Source: [`functions/lobed/curve_gear_lobed_body_2d.scad`](functions/lobed/curve_gear_lobed_body_2d.scad)
 
@@ -1365,8 +1467,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `lobed_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_lobed_mate example preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) |   |
 
-![curve_gear_lobed_mate example preview](../images/functions/lobed/curve_gear_lobed_mate.png)
 
 Source: [`functions/lobed/curve_gear_lobed_mate.scad`](functions/lobed/curve_gear_lobed_mate.scad)
 
@@ -1400,8 +1504,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `lobed_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_lobed_pair example preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) |   |
 
-![curve_gear_lobed_pair example preview](../images/functions/lobed/curve_gear_lobed_pair.png)
 
 Source: [`functions/lobed/curve_gear_lobed_pair.scad`](functions/lobed/curve_gear_lobed_pair.scad)
 
@@ -1417,8 +1523,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `logarithmic_spiral_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_logarithmic_spiral example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png) |   |
 
-![curve_gear_logarithmic_spiral example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png)
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad)
 
@@ -1434,8 +1542,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logarithmic_spiral_2d`
 
+|  |  |
+| --- | --- |
+| [![logarithmic_spiral 2D gear profile](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png) |   |
 
-![logarithmic_spiral 2D gear profile](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.scad)
 
@@ -1451,8 +1561,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `logarithmic_spiral_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_logarithmic_spiral_body example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png) |   |
 
-![curve_gear_logarithmic_spiral_body example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad)
 
@@ -1468,8 +1580,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logarithmic_spiral_body_2d`
 
+|  |  |
+| --- | --- |
+| [![logarithmic_spiral 2D body profile](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png) |   |
 
-![logarithmic_spiral 2D body profile](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.scad)
 
@@ -1485,8 +1599,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `logarithmic_spiral_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_logarithmic_spiral_mate example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png) |   |
 
-![curve_gear_logarithmic_spiral_mate example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png)
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad)
 
@@ -1502,8 +1618,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `logarithmic_spiral_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_logarithmic_spiral_pair example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png) |   |
 
-![curve_gear_logarithmic_spiral_pair example preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png)
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad)
 
@@ -1537,8 +1655,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `pascal_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_pascal example preview](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) |   |
 
-![curve_gear_pascal example preview](../images/functions/pascal/curve_gear_pascal.png)
 
 Source: [`functions/pascal/curve_gear_pascal.scad`](functions/pascal/curve_gear_pascal.scad)
 
@@ -1554,8 +1674,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_pascal_2d`
 
+|  |  |
+| --- | --- |
+| [![pascal 2D gear profile](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) |   |
 
-![pascal 2D gear profile](../images/functions/pascal/curve_gear_pascal_2d.png)
 
 Source: [`functions/pascal/curve_gear_pascal_2d.scad`](functions/pascal/curve_gear_pascal_2d.scad)
 
@@ -1571,8 +1693,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `pascal_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_pascal_body example preview](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) |   |
 
-![curve_gear_pascal_body example preview](../images/functions/pascal/curve_gear_pascal_body.png)
 
 Source: [`functions/pascal/curve_gear_pascal_body.scad`](functions/pascal/curve_gear_pascal_body.scad)
 
@@ -1588,8 +1712,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_pascal_body_2d`
 
+|  |  |
+| --- | --- |
+| [![pascal 2D body profile](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) |   |
 
-![pascal 2D body profile](../images/functions/pascal/curve_gear_pascal_body_2d.png)
 
 Source: [`functions/pascal/curve_gear_pascal_body_2d.scad`](functions/pascal/curve_gear_pascal_body_2d.scad)
 
@@ -1623,8 +1749,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `pascal_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_pascal_mate example preview](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) |   |
 
-![curve_gear_pascal_mate example preview](../images/functions/pascal/curve_gear_pascal_mate.png)
 
 Source: [`functions/pascal/curve_gear_pascal_mate.scad`](functions/pascal/curve_gear_pascal_mate.scad)
 
@@ -1658,8 +1786,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `pascal_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_pascal_pair example preview](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) |   |
 
-![curve_gear_pascal_pair example preview](../images/functions/pascal/curve_gear_pascal_pair.png)
 
 Source: [`functions/pascal/curve_gear_pascal_pair.scad`](functions/pascal/curve_gear_pascal_pair.scad)
 
@@ -1675,8 +1805,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `superformula_curve_gear`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_superformula example preview](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) |   |
 
-![curve_gear_superformula example preview](../images/functions/superformula/curve_gear_superformula.png)
 
 Source: [`functions/superformula/curve_gear_superformula.scad`](functions/superformula/curve_gear_superformula.scad)
 
@@ -1692,8 +1824,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_superformula_2d`
 
+|  |  |
+| --- | --- |
+| [![superformula 2D gear profile](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) |   |
 
-![superformula 2D gear profile](../images/functions/superformula/curve_gear_superformula_2d.png)
 
 Source: [`functions/superformula/curve_gear_superformula_2d.scad`](functions/superformula/curve_gear_superformula_2d.scad)
 
@@ -1709,8 +1843,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `superformula_curve_gear_body`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_superformula_body example preview](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) |   |
 
-![curve_gear_superformula_body example preview](../images/functions/superformula/curve_gear_superformula_body.png)
 
 Source: [`functions/superformula/curve_gear_superformula_body.scad`](functions/superformula/curve_gear_superformula_body.scad)
 
@@ -1726,8 +1862,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_superformula_body_2d`
 
+|  |  |
+| --- | --- |
+| [![superformula 2D body profile](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) |   |
 
-![superformula 2D body profile](../images/functions/superformula/curve_gear_superformula_body_2d.png)
 
 Source: [`functions/superformula/curve_gear_superformula_body_2d.scad`](functions/superformula/curve_gear_superformula_body_2d.scad)
 
@@ -1761,8 +1899,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `superformula_curve_gear_mate`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_superformula_mate example preview](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) |   |
 
-![curve_gear_superformula_mate example preview](../images/functions/superformula/curve_gear_superformula_mate.png)
 
 Source: [`functions/superformula/curve_gear_superformula_mate.scad`](functions/superformula/curve_gear_superformula_mate.scad)
 
@@ -1796,8 +1936,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `superformula_curve_gear_pair`
 
+|  |  |
+| --- | --- |
+| [![curve_gear_superformula_pair example preview](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) |   |
 
-![curve_gear_superformula_pair example preview](../images/functions/superformula/curve_gear_superformula_pair.png)
 
 Source: [`functions/superformula/curve_gear_superformula_pair.scad`](functions/superformula/curve_gear_superformula_pair.scad)
 
@@ -1813,8 +1955,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `tooth_construction`
 
+|  |  |
+| --- | --- |
+| [![Tooth construction preview preview](../images/tooth/construction.png)](../images/tooth/construction.png) |   |
 
-![Tooth construction preview preview](../images/tooth/construction.png)
 
 Source: [`tooth/construction.scad`](tooth/construction.scad)
 
@@ -1834,8 +1978,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `tooth_placement`
 
+|  |  |
+| --- | --- |
+| [![Tooth placement preview preview](../images/tooth/placement.png)](../images/tooth/placement.png) |   |
 
-![Tooth placement preview preview](../images/tooth/placement.png)
 
 Source: [`tooth/placement.scad`](tooth/placement.scad)
 
@@ -1858,8 +2004,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `tooth_assembly`
 
+|  |  |
+| --- | --- |
+| [![Tooth assembly preview preview](../images/tooth/assembly.png)](../images/tooth/assembly.png) |   |
 
-![Tooth assembly preview preview](../images/tooth/assembly.png)
 
 Source: [`tooth/assembly.scad`](tooth/assembly.scad)
 

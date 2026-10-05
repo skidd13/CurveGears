@@ -80,8 +80,10 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Circle gear preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) |   |
 
-![Circle gear preview](../images/functions/circle/curve_gear_circle.png)
 
 Build a circular reference gear.
 
@@ -105,8 +107,10 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`
 
+|  |  |
+| --- | --- |
+| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) |   |
 
-![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)
 
 Build the circular reference body without teeth.
 
@@ -126,8 +130,10 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_2d(modul, tooth_number, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Circle 2D gear and body preview](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) |   |
 
-![Circle 2D gear and body preview](../images/functions/circle/curve_gear_circle_2d.png)
 
 Emit the complete circular gear profile as 2D geometry.
 
@@ -156,8 +162,10 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`
 
+|  |  |
+| --- | --- |
+| [![Circle 2D body preview](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) |   |
 
-![Circle 2D body preview](../images/functions/circle/curve_gear_circle_body_2d.png)
 
 Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
 
@@ -199,8 +207,10 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) |   |
 
-![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)
 
 Build the circular reference mate boundary at the origin.
 
@@ -224,8 +234,10 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) |   |
 
-![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)
 
 Build a meshed or separated circular reference pair.
 

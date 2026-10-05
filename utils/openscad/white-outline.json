@@ -1,0 +1,19 @@
+{
+    "name": "White Outline",
+    "index": 4091,
+    "show-in-gui": true,
+    "colors": {
+        "background": "#ffffff",
+        "background-stop": "#ffffff",
+        "axes-color": "#ffffff",
+        "opencsg-face-front": "#ffffff",
+        "opencsg-face-back": "#ffffff",
+        "cgal-face-front": "#ffffff",
+        "cgal-face-back": "#ffffff",
+        "cgal-face-2d": "#ffffff",
+        "cgal-edge-front": "#147d78",
+        "cgal-edge-back": "#147d78",
+        "cgal-edge-2d": "#147d78",
+        "crosshair": "#ffffff"
+    }
+}

@@ -162,8 +162,10 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) |   |
 
-![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)
 
 Public single-gear construction for the lobed family.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
@@ -225,8 +227,10 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) |   |
 
-![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)
 
 Build the lobed body solid without teeth.
 
@@ -259,8 +263,10 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_2d`
 
+|  |  |
+| --- | --- |
+| [![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) |   |
 
-![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)
 
 Emit the complete lobed gear profile as 2D geometry.
 
@@ -292,8 +298,10 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body_2d`
 
+|  |  |
+| --- | --- |
+| [![lobed 2D body preview](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) |   |
 
-![lobed 2D body preview](../images/functions/lobed/curve_gear_lobed_body_2d.png)
 
 Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
 
@@ -437,8 +445,10 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) |   |
 
-![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)
 
 Build the standalone lobed mate boundary at the origin.
 
@@ -503,8 +513,10 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) |   |
 
-![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)
 
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_lobed`](#f-curve_gear_lobed)

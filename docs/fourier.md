@@ -166,8 +166,10 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Fourier gear preview](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) |   |
 
-![Fourier gear preview](../images/functions/fourier/curve_gear_fourier.png)
 
 Build a coefficient-driven Fourier gear.
 
@@ -199,8 +201,10 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_body(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Fourier body preview](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) |   |
 
-![Fourier body preview](../images/functions/fourier/curve_gear_fourier_body.png)
 
 Build the Fourier body without teeth.
 
@@ -226,8 +230,10 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_2d`
 
+|  |  |
+| --- | --- |
+| [![fourier 2D gear and body preview](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) |   |
 
-![fourier 2D gear and body preview](../images/functions/fourier/curve_gear_fourier_2d.png)
 
 Emit the complete fourier gear profile as 2D geometry.
 
@@ -258,8 +264,10 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_body_2d`
 
+|  |  |
+| --- | --- |
+| [![fourier 2D body preview](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) |   |
 
-![fourier 2D body preview](../images/functions/fourier/curve_gear_fourier_body_2d.png)
 
 Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
 
@@ -413,8 +421,10 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_mate(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Fourier mate preview](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) |   |
 
-![Fourier mate preview](../images/functions/fourier/curve_gear_fourier_mate.png)
 
 Build the standalone dynamically conjugate Fourier mate.
 
@@ -476,8 +486,10 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Fourier pair preview](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) |   |
 
-![Fourier pair preview](../images/functions/fourier/curve_gear_fourier_pair.png)
 
 Build a meshed or separated Fourier pair using one shared motion table.
 

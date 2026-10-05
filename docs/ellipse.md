@@ -120,8 +120,10 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Ellipse gear preview](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) |   |
 
-![Ellipse gear preview](../images/functions/ellipse/curve_gear_ellipse.png)
 
 Public single-gear construction for the ellipse family.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
@@ -181,8 +183,10 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Ellipse body preview](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) |   |
 
-![Ellipse body preview](../images/functions/ellipse/curve_gear_ellipse_body.png)
 
 Build the elliptical body solid without teeth.
 
@@ -214,8 +218,10 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_2d`
 
+|  |  |
+| --- | --- |
+| [![ellipse 2D gear and body preview](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) |   |
 
-![ellipse 2D gear and body preview](../images/functions/ellipse/curve_gear_ellipse_2d.png)
 
 Emit the complete ellipse gear profile as 2D geometry.
 
@@ -246,8 +252,10 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_body_2d`
 
+|  |  |
+| --- | --- |
+| [![ellipse 2D body preview](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) |   |
 
-![ellipse 2D body preview](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)
 
 Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
 
@@ -384,8 +392,10 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Ellipse mate preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) |   |
 
-![Ellipse mate preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)
 
 Build the standalone elliptical mate boundary at the origin.
 
@@ -447,8 +457,10 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Ellipse pair preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) |   |
 
-![Ellipse pair preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)
 
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_ellipse`](#f-curve_gear_ellipse)

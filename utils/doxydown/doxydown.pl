@@ -43,6 +43,29 @@ my $struct_re = qr/^\s*\@(table|struct)\s*(\S.+)$/oi;
 my $module_re = qr/^\s*\@(?:module|file)\s*(\S.+)$/oi;
 my $language;
 
+sub print_images_markdown {
+    my ( $images, $default_alt ) = @_;
+    return unless $images && scalar @$images > 0;
+
+    print "|  |  |\n| --- | --- |\n";
+    for ( my $index = 0; $index < scalar @$images; $index += 2 ) {
+        my @cells;
+        for my $offset ( 0, 1 ) {
+            my $image = $images->[$index + $offset];
+            if ( $image ) {
+                my $src = $image->{'path'} || $image->{'image'};
+                my $alt = $image->{'alt'} || $default_alt;
+                $alt =~ s/([\\\[\]])/\\$1/g;
+                push @cells, "[![$alt]($src)]($src)";
+            } else {
+                push @cells, " ";
+            }
+        }
+        print "| $cells[0] | $cells[1] |\n";
+    }
+    print "\n";
+}
+
 # /function print_module_markdown
 sub print_module_markdown {
     my ( $mname, $m ) = @_;
@@ -52,9 +75,10 @@ sub print_module_markdown {
     if ( $m->{'source'} ) {
         print "**Source:** [`$m->{'source'}`]($m->{'source'})\n\n";
     }
-    if ( $m->{'image'} ) {
-        print "![" . ($m->{'image_alt'} || "$mname preview") . "]($m->{'image'})\n\n";
-    }
+    print_images_markdown(
+        [ { image => $m->{'image'}, alt => $m->{'image_alt'} } ],
+        "$mname preview"
+    ) if $m->{'image'};
     print "$m->{'data'}\n";
     if ( $m->{'example'} ) {
         print <<EOD;
@@ -144,11 +168,12 @@ sub print_function_markdown {
     print "### $type `$fname`$idline\n\n";
 
     if ( $f->{'images'} && scalar @{ $f->{'images'} } > 0 ) {
-        foreach my $image ( @{ $f->{'images'} } ) {
-            print "\n![" . ($image->{'alt'} || "$fname preview") . "]($image->{'path'})\n";
-        }
+        print_images_markdown( $f->{'images'}, "$fname preview" );
     } elsif ( $f->{'image'} ) {
-        print "\n![" . ($f->{'image_alt'} || "$fname preview") . "]($f->{'image'})\n";
+        print_images_markdown(
+            [ { image => $f->{'image'}, alt => $f->{'image_alt'} } ],
+            "$fname preview"
+        );
     }
 
     print "\n$f->{'data'}\n";

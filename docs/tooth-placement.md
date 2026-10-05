@@ -646,8 +646,10 @@ Back to [module description](#module-tooth-placement).
 
 ### Function `_cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)`
 
+|  |  |
+| --- | --- |
+| [![Tooth placement result preview](../images/tooth/placement.png)](../images/tooth/placement.png) |   |
 
-![Tooth placement result preview](../images/tooth/placement.png)
 
 Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
 

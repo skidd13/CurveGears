@@ -183,8 +183,10 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) |   |
 
-![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)
 
 Build a hypotrochoid non-circular gear.
 
@@ -246,8 +248,10 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body`
 
+|  |  |
+| --- | --- |
+| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) |   |
 
-![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)
 
 Build the hypotrochoid body solid without teeth.
 
@@ -275,8 +279,10 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_2d`
 
+|  |  |
+| --- | --- |
+| [![hypotrochoid 2D gear and body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) |   |
 
-![hypotrochoid 2D gear and body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)
 
 Emit the complete hypotrochoid gear profile as 2D geometry.
 
@@ -309,8 +315,10 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body_2d`
 
+|  |  |
+| --- | --- |
+| [![hypotrochoid 2D body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) |   |
 
-![hypotrochoid 2D body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)
 
 Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
 
@@ -461,8 +469,10 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_mate`
 
+|  |  |
+| --- | --- |
+| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) |   |
 
-![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)
 
 Build the standalone conjugate mate for a hypotrochoid driver.
 
@@ -530,10 +540,10 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_pair`
 
+|  |  |
+| --- | --- |
+| [![Hypotrochoid pair preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png) | [![Hypotrochoid separated-pair alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png) |
 
-![Hypotrochoid pair preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)
-
-![Hypotrochoid separated-pair alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)
 
 
 The separated display alternative uses `together_built=false`; its curated

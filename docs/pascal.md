@@ -227,8 +227,10 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Pascal gear preview](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) |   |
 
-![Pascal gear preview](../images/functions/pascal/curve_gear_pascal.png)
 
 Public single-gear construction for the pascal family.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
@@ -288,8 +290,10 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_body(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Pascal body preview](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) |   |
 
-![Pascal body preview](../images/functions/pascal/curve_gear_pascal_body.png)
 
 Build the Pascal body solid without teeth.
 
@@ -321,8 +325,10 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_2d`
 
+|  |  |
+| --- | --- |
+| [![pascal 2D gear and body preview](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) |   |
 
-![pascal 2D gear and body preview](../images/functions/pascal/curve_gear_pascal_2d.png)
 
 Emit the complete pascal gear profile as 2D geometry.
 
@@ -353,8 +359,10 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_body_2d`
 
+|  |  |
+| --- | --- |
+| [![pascal 2D body preview](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) |   |
 
-![pascal 2D body preview](../images/functions/pascal/curve_gear_pascal_body_2d.png)
 
 Emit the pascal body as 2D geometry with an optional signed outer-contour offset.
 
@@ -474,8 +482,10 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_mate(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Pascal mate preview](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) |   |
 
-![Pascal mate preview](../images/functions/pascal/curve_gear_pascal_mate.png)
 
 Build the standalone Pascal mate boundary at the origin.
 
@@ -537,8 +547,10 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Pascal pair preview](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) |   |
 
-![Pascal pair preview](../images/functions/pascal/curve_gear_pascal_pair.png)
 
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_pascal`](#f-curve_gear_pascal)

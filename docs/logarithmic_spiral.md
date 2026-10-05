@@ -229,8 +229,10 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Logarithmic spiral gear preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png) |   |
 
-![Logarithmic spiral gear preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png)
 
 Public single-gear construction for the logarithmic spiral family.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
@@ -292,8 +294,10 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_body(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Logarithmic spiral body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png) |   |
 
-![Logarithmic spiral body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)
 
 Build the logarithmic-spiral body solid without teeth.
 
@@ -326,8 +330,10 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_2d`
 
+|  |  |
+| --- | --- |
+| [![logarithmic_spiral 2D gear and body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png) |   |
 
-![logarithmic_spiral 2D gear and body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)
 
 Emit the complete logarithmic_spiral gear profile as 2D geometry.
 
@@ -359,8 +365,10 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_body_2d`
 
+|  |  |
+| --- | --- |
+| [![logarithmic_spiral 2D body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png) |   |
 
-![logarithmic_spiral 2D body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)
 
 Emit the logarithmic_spiral body as 2D geometry with an optional signed outer-contour offset.
 
@@ -393,8 +401,10 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Logarithmic spiral mate preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png) |   |
 
-![Logarithmic spiral mate preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png)
 
 A fixed 180-degree placement is applied by the static pair assembly; this
 module does not claim dynamic conjugacy.
@@ -440,8 +450,10 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_pair(modul, tooth_number, width, bore, ...)`
 
+|  |  |
+| --- | --- |
+| [![Logarithmic spiral pair preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png) |   |
 
-![Logarithmic spiral pair preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png)
 
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_logarithmic_spiral`](#f-curve_gear_logarithmic_spiral)
