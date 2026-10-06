@@ -43,33 +43,33 @@ module _showcase_item(x,y,label,colour) {
 // Alphabetical family order, arranged as a centred four-column grid.
 _showcase_item(-82.5,120,"BEZIER","DarkGreen")
     _main_example_bezier();
-_showcase_item(-27.5,120,"CASSINI","DarkSlateBlue")
+_showcase_item(-27.5,120,"CASSINI","MediumPurple")
     _main_example_cassini();
 _showcase_item(27.5,120,"CIRCLE","DimGray")
     _main_example_circle();
-_showcase_item(82.5,120,"CUSP","DarkOrange")
-    _main_example_cusp();
-_showcase_item(-82.5,40,"ELLIPSE","SteelBlue")
-    _main_example_ellipse();
-_showcase_item(-27.5,40,"EPITROCHOID","Tomato")
-    _main_example_epitrochoid();
-_showcase_item(27.5,40,"FOURIER","Teal")
-    _main_example_fourier();
-_showcase_item(82.5,40,"HYPOTROCHOID","IndianRed")
-    _main_example_hypotrochoid();
-_showcase_item(-82.5,-40,"LOBED","Crimson")
-    _main_example_lobed();
-_showcase_item(-27.5,-40,"LOG SPIRAL","Gold")
-    _main_example_logarithmic_spiral();
-_showcase_item(27.5,-40,"LOGISTIC DWELL","DarkViolet")
-    _main_example_logistic_dwell();
-_showcase_item(82.5,-40,"PASCAL","Purple")
-    _main_example_pascal();
-_showcase_item(-82.5,-120,"SUPERFORMULA","Orange")
-    _main_example_superformula();
-_showcase_item(-27.5,-120,"TANH TRIAD","SeaGreen")
-    _main_example_tanh_triad();
-_showcase_item(27.5,-120,"TEMPLE FAY","HotPink")
-    _main_example_temple_fay();
-_showcase_item(82.5,-120,"COSINE QUINTIC","RoyalBlue")
+_showcase_item(82.5,120,"COSINE QUINTIC","DodgerBlue")
     _main_example_cosine_quintic();
+_showcase_item(-82.5,40,"CUSP","DarkOrange")
+    _main_example_cusp();
+_showcase_item(-27.5,40,"ELLIPSE","LightSkyBlue")
+    _main_example_ellipse();
+_showcase_item(27.5,40,"EPITROCHOID","Tomato")
+    _main_example_epitrochoid();
+_showcase_item(82.5,40,"FOURIER","Teal")
+    _main_example_fourier();
+_showcase_item(-82.5,-40,"HYPOTROCHOID","IndianRed")
+    _main_example_hypotrochoid();
+_showcase_item(-27.5,-40,"LOBED","Crimson")
+    _main_example_lobed();
+_showcase_item(27.5,-40,"LOG SPIRAL","Gold")
+    _main_example_logarithmic_spiral();
+_showcase_item(82.5,-40,"LOGISTIC DWELL","Indigo")
+    _main_example_logistic_dwell();
+_showcase_item(-82.5,-120,"PASCAL","Magenta")
+    _main_example_pascal();
+_showcase_item(-27.5,-120,"SUPERFORMULA","Orange")
+    _main_example_superformula();
+_showcase_item(27.5,-120,"TANH TRIAD","SeaGreen")
+    _main_example_tanh_triad();
+_showcase_item(82.5,-120,"TEMPLE FAY","HotPink")
+    _main_example_temple_fay();
