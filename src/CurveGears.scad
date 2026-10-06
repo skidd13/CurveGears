@@ -15,3 +15,4 @@ include <epitrochoid/gear.scad>
 include <bezier/mate.scad>
 include <cassini/gear.scad>
 include <hypotrochoid/gear.scad>
+include <tanh_triad/gear.scad>

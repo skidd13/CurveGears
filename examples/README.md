@@ -5,7 +5,7 @@
 - [README](../README.md)
 - Families
   - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
-  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md)
+  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md)
 - Shared
   - [Examples catalogue](README.md) · [Test layout](../tests/README.md)
   - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
@@ -100,6 +100,22 @@ Executable examples for the public API and shared construction layers.
 > [`curve_gear_superformula_2d`](#function-curve_gear_superformula_2d): Render the complete superformula gear profile as flat 2D geometry.
 
 > [`curve_gear_superformula_body_2d`](#function-curve_gear_superformula_body_2d): Render the superformula body as flat 2D geometry with a 2 mm inward outer-contour shrink.
+
+> [`curve_gear_tanh_triad_2d_example`](#function-curve_gear_tanh_triad_2d_example): Tanh Triad 2D example.
+
+> [`curve_gear_tanh_triad_body_2d_example`](#function-curve_gear_tanh_triad_body_2d_example): Tanh Triad body 2D example.
+
+> [`curve_gear_tanh_triad_body_example`](#function-curve_gear_tanh_triad_body_example): Tanh Triad body example.
+
+> [`curve_gear_tanh_triad_centre_distance_example`](#function-curve_gear_tanh_triad_centre_distance_example): Tanh Triad centre-distance example.
+
+> [`curve_gear_tanh_triad_example`](#function-curve_gear_tanh_triad_example): Tanh Triad gear example.
+
+> [`curve_gear_tanh_triad_mate_example`](#function-curve_gear_tanh_triad_mate_example): Tanh Triad mate example.
+
+> [`curve_gear_tanh_triad_mate_rotation_example`](#function-curve_gear_tanh_triad_mate_rotation_example): Tanh Triad mate-rotation example.
+
+> [`curve_gear_tanh_triad_pair_example`](#function-curve_gear_tanh_triad_pair_example): Tanh Triad pair example.
 
 > [`cusp_curve_gear`](#function-cusp_curve_gear): Render the three-cusp gear with radial teeth whose roots follow the cusp branches.
 
@@ -961,6 +977,126 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/superformula/curve_gear_superformula_body_2d.scad`](functions/superformula/curve_gear_superformula_body_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_2d_example`
+
+
+Tanh Triad 2D example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_body_2d_example`
+
+
+Tanh Triad body 2D example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_body_example`
+
+
+Tanh Triad body example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_centre_distance_example`
+
+
+Tanh Triad centre-distance example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_example`
+
+
+Tanh Triad gear example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_mate_example`
+
+
+Tanh Triad mate example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_mate_rotation_example`
+
+
+Tanh Triad mate-rotation example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_tanh_triad_pair_example`
+
+
+Tanh Triad pair example.
 
 **Parameters:**
 

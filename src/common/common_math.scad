@@ -7,6 +7,13 @@
  */
 include <common_params.scad>
 
+/** @function _cg_tanh
+ * @brief Hyperbolic tangent expressed through OpenSCAD's exponential primitive.
+ * @param x {number} Input value.
+ * @return {number} Hyperbolic tangent of `x`.
+ */
+function _cg_tanh(x) = (exp(2*x)-1)/(exp(2*x)+1);
+
 /*** @function _cg_degrees(angle)
  * @brief Convert radians to degrees.
  * @param angle {number} Angle in radians.

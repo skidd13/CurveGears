@@ -5,7 +5,7 @@
 - [README](../README.md)
 - Families
   - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
-  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md)
+  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](README.md)
   - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
@@ -437,6 +437,8 @@ Family-specific pipeline, contract and invalid-input fixtures.
 > [`superformula_pair_pipeline`](#function-superformula_pair_pipeline): Verify Superformula pair assembly and conjugate mate placement.
 
 > [`superformula_tooth_pipeline`](#function-superformula_tooth_pipeline): Verify Superformula tooth placement through the shared tooth pipeline.
+
+> [`tanh_triad_full_pipeline`](#function-tanh_triad_full_pipeline): Verify the complete Tanh Triad gear, mate and pair entry points.
 
 
 ## Functions
@@ -1098,6 +1100,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`superformula/tooth_pipeline.scad`](superformula/tooth_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `tanh_triad_full_pipeline`
+
+
+Source: [`tanh_triad/full_pipeline.scad`](tanh_triad/full_pipeline.scad)
 
 **Parameters:**
 

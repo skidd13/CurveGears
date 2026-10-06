@@ -15,3 +15,4 @@ include <epitrochoid/pair.scad>
 include <bezier/pair.scad>
 include <cassini/pair.scad>
 include <hypotrochoid/pair.scad>
+include <tanh_triad/pair.scad>
