@@ -23,6 +23,22 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 **Functions**:
 
+> [`curve_gear_lobed(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobedmodul-tooth_number-width-bore-): Build a lobed non-circular gear.
+
+> [`curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_bodymodul-tooth_number-width-bore-): Build the lobed body solid without teeth.
+
+> [`curve_gear_lobed_2d`](#function-curve_gear_lobed_2d): Emit the complete lobed gear profile as 2D geometry.
+
+> [`curve_gear_lobed_body_2d`](#function-curve_gear_lobed_body_2d): Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
+
+> [`curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_matemodul-tooth_number-width-bore-): Build the standalone lobed mate boundary at the origin.
+
+> [`curve_gear_lobed_centre_distance(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_centre_distancemodul-tooth_number-lobes-lobe_depth-): Return the mathematical centre distance for a lobed pair.
+
+> [`curve_gear_lobed_mate_rotation(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_mate_rotationmodul-tooth_number-lobes-lobe_depth-): Return the conjugate lobed mate rotation for a driver phase.
+
+> [`curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_pairmodul-tooth_number-width-bore-): Build a meshed or separated lobed pair.
+
 > [`_cg_lobed_unit_radius(lobes, lobe_depth, theta)`](#function-_cg_lobed_unit_radiuslobes-lobe_depth-theta): Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
 
 > [`_cg_lobed_point(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_pointscale-lobes-lobe_depth-theta): Evaluate one Cartesian point on a scaled lobed pitch curve.
@@ -33,15 +49,7 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`_cg_lobed_radius(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_radiusscale-lobes-lobe_depth-theta): Evaluate a scaled lobed pitch-curve radius.
 
-> [`curve_gear_lobed(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobedmodul-tooth_number-width-bore-): Build a lobed non-circular gear.
-
 > [`_cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_lobed_buildmodultooth_numberwidthborelobes4lobe_depth013pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal lobed construction dispatcher.
-
-> [`curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_bodymodul-tooth_number-width-bore-): Build the lobed body solid without teeth.
-
-> [`curve_gear_lobed_2d`](#function-curve_gear_lobed_2d): Emit the complete lobed gear profile as 2D geometry.
-
-> [`curve_gear_lobed_body_2d`](#function-curve_gear_lobed_body_2d): Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
 
 > [`_cg_lobed_motion_radii`](#function-_cg_lobed_motion_radii): Evaluate lobed radii at integration midpoints.
 
@@ -54,14 +62,6 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 > [`_cg_lobed_mate_points_from_driver`](#function-_cg_lobed_mate_points_from_driver): Build lobed mate pitch points by advancing driver angle directly.
 
 > [`_cg_lobed_mate_points`](#function-_cg_lobed_mate_points): Build lobed mate pitch points and their shared motion table.
-
-> [`curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_matemodul-tooth_number-width-bore-): Build the standalone lobed mate boundary at the origin.
-
-> [`curve_gear_lobed_centre_distance(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_centre_distancemodul-tooth_number-lobes-lobe_depth-): Return the mathematical centre distance for a lobed pair.
-
-> [`curve_gear_lobed_mate_rotation(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_mate_rotationmodul-tooth_number-lobes-lobe_depth-): Return the conjugate lobed mate rotation for a driver phase.
-
-> [`curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_pairmodul-tooth_number-width-bore-): Build a meshed or separated lobed pair.
 
 > [`_cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_lobed_pair_buildmodultooth_numberwidthborelobes4lobe_depth013pressure_angle20samples720phase0together_builttruebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal lobed pair construction dispatcher.
 
@@ -162,9 +162,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Lobed gear preview | Full size |
 | --- | --- |
-| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) |   |
+| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed.png) ![](../images/table-spacer.png) |
 
 
 Public single-gear construction for the lobed family.
@@ -227,9 +227,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Lobed body preview | Full size |
 | --- | --- |
-| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) |   |
+| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_body.png) ![](../images/table-spacer.png) |
 
 
 Build the lobed body solid without teeth.
@@ -263,9 +263,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_2d`
 
-|  |  |
+| lobed 2D gear and body preview | Full size |
 | --- | --- |
-| [![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) |   |
+| [![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the complete lobed gear profile as 2D geometry.
@@ -298,9 +298,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body_2d`
 
-|  |  |
+| lobed 2D body preview | Full size |
 | --- | --- |
-| [![lobed 2D body preview](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) |   |
+| [![lobed 2D body preview](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_body_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
@@ -445,9 +445,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Lobed mate preview | Full size |
 | --- | --- |
-| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) |   |
+| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_mate.png) ![](../images/table-spacer.png) |
 
 
 Build the standalone lobed mate boundary at the origin.
@@ -513,9 +513,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Lobed pair preview | Full size |
 | --- | --- |
-| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) |   |
+| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_pair.png) ![](../images/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

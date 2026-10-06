@@ -30,6 +30,22 @@ https://www.cs.sjsu.edu/~bruce/fall_2016_cs_116a_lecture_splines.html.
 
 **Functions**:
 
+> [`curve_gear_bezier(modul, tooth_number, width, bore, ...)`](#function-curve_gear_beziermodul-tooth_number-width-bore-): Build a closed cubic Bézier gear from user-controlled normalised points.
+
+> [`curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_bodymodul-tooth_number-width-bore-): Build the closed Bézier body without teeth.
+
+> [`curve_gear_bezier_2d`](#function-curve_gear_bezier_2d): Emit the complete bezier gear profile as 2D geometry.
+
+> [`curve_gear_bezier_body_2d`](#function-curve_gear_bezier_body_2d): Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
+
+> [`curve_gear_bezier_mate`](#function-curve_gear_bezier_mate): Build a conjugate mate for an admissible radial Bézier pitch curve.
+
+> [`curve_gear_bezier_mate_centre_distance(modul, tooth_number, ...)`](#function-curve_gear_bezier_mate_centre_distancemodul-tooth_number-): Return the conjugate centre distance for an admissible Bézier curve.
+
+> [`curve_gear_bezier_mate_rotation(modul, tooth_number, ...)`](#function-curve_gear_bezier_mate_rotationmodul-tooth_number-): Return the conjugate mate rotation for a driver phase.
+
+> [`curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_pairmodul-tooth_number-width-bore-): Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
+
 > [`_cg_bezier_segment_count`](#function-_cg_bezier_segment_count): Return the number of cubic segments in a closed control-point list.
 
 > [`_cg_bezier_point`](#function-_cg_bezier_point): Evaluate one cubic Bézier segment.
@@ -39,14 +55,6 @@ https://www.cs.sjsu.edu/~bruce/fall_2016_cs_116a_lecture_splines.html.
 > [`_cg_bezier_points`](#function-_cg_bezier_points): Sample a closed Bézier pitch curve into the shared tooth engine.
 
 > [`_cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_bezier_buildmodultooth_numberwidthborecontrol_points_cg_bezier_default_control_pointspressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal bezier construction dispatcher.
-
-> [`curve_gear_bezier(modul, tooth_number, width, bore, ...)`](#function-curve_gear_beziermodul-tooth_number-width-bore-): Build a closed cubic Bézier gear from user-controlled normalised points.
-
-> [`curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_bodymodul-tooth_number-width-bore-): Build the closed Bézier body without teeth.
-
-> [`curve_gear_bezier_2d`](#function-curve_gear_bezier_2d): Emit the complete bezier gear profile as 2D geometry.
-
-> [`curve_gear_bezier_body_2d`](#function-curve_gear_bezier_body_2d): Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
 
 > [`_cg_bezier_polar_samples(control_points, scale, n)`](#function-_cg_bezier_polar_samplescontrol_points-scale-n): Convert sampled Bézier points to polar angle and radius pairs.
 
@@ -65,14 +73,6 @@ https://www.cs.sjsu.edu/~bruce/fall_2016_cs_116a_lecture_splines.html.
 > [`_cg_bezier_mate_points(control_points, scale, D, n)`](#function-_cg_bezier_mate_pointscontrol_points-scale-d-n): Construct conjugate mate pitch points for an admissible Bézier curve.
 
 > [`_cg_bezier_mate_centre_distance(control_points, scale, n)`](#function-_cg_bezier_mate_centre_distancecontrol_points-scale-n): Solve the fixed centre distance for an admissible Bézier curve.
-
-> [`curve_gear_bezier_mate`](#function-curve_gear_bezier_mate): Build a conjugate mate for an admissible radial Bézier pitch curve.
-
-> [`curve_gear_bezier_mate_centre_distance(modul, tooth_number, ...)`](#function-curve_gear_bezier_mate_centre_distancemodul-tooth_number-): Return the conjugate centre distance for an admissible Bézier curve.
-
-> [`curve_gear_bezier_mate_rotation(modul, tooth_number, ...)`](#function-curve_gear_bezier_mate_rotationmodul-tooth_number-): Return the conjugate mate rotation for a driver phase.
-
-> [`curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_bezier_pairmodul-tooth_number-width-bore-): Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
 
 
 ## Functions
@@ -173,7 +173,7 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Bézier gear preview | Bézier asymmetric alternative |
 | --- | --- |
 | [![Bézier gear preview](../images/functions/bezier/curve_gear_bezier.png)](../images/functions/bezier/curve_gear_bezier.png) | [![Bézier asymmetric alternative](../images/functions/bezier/curve_gear_bezier_alternative.png)](../images/functions/bezier/curve_gear_bezier_alternative.png) |
 
@@ -208,9 +208,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Bézier body preview | Full size |
 | --- | --- |
-| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) |   |
+| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_body.png) ![](../images/table-spacer.png) |
 
 
 Build the closed Bézier body without teeth.
@@ -237,9 +237,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_2d`
 
-|  |  |
+| bezier 2D gear and body preview | Full size |
 | --- | --- |
-| [![bezier 2D gear and body preview](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) |   |
+| [![bezier 2D gear and body preview](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the complete bezier gear profile as 2D geometry.
@@ -271,9 +271,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body_2d`
 
-|  |  |
+| bezier 2D body preview | Full size |
 | --- | --- |
-| [![bezier 2D body preview](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) |   |
+| [![bezier 2D body preview](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_body_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
@@ -456,9 +456,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_mate`
 
-|  |  |
+| Bézier mate preview | Full size |
 | --- | --- |
-| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) |   |
+| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_mate.png) ![](../images/table-spacer.png) |
 
 
 Build a conjugate mate for an admissible radial Bézier pitch curve.
@@ -521,7 +521,7 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Bézier pair preview | Bézier asymmetric alternative pair |
 | --- | --- |
 | [![Bézier pair preview](../images/functions/bezier/curve_gear_bezier_pair.png)](../images/functions/bezier/curve_gear_bezier_pair.png) | [![Bézier asymmetric alternative pair](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)](../images/functions/bezier/curve_gear_bezier_pair_alternative.png) |
 

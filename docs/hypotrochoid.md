@@ -21,6 +21,22 @@ circle. The documented ratio constraints reject cusp and loop cases.
 
 **Functions**:
 
+> [`curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)`](#function-curve_gear_hypotrochoidmodul-tooth_number-width-bore-): Build a hypotrochoid non-circular gear.
+
+> [`curve_gear_hypotrochoid_body`](#function-curve_gear_hypotrochoid_body): Build the hypotrochoid body solid without teeth.
+
+> [`curve_gear_hypotrochoid_2d`](#function-curve_gear_hypotrochoid_2d): Emit the complete hypotrochoid gear profile as 2D geometry.
+
+> [`curve_gear_hypotrochoid_body_2d`](#function-curve_gear_hypotrochoid_body_2d): Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
+
+> [`curve_gear_hypotrochoid_mate`](#function-curve_gear_hypotrochoid_mate): Build the standalone conjugate mate for a hypotrochoid driver.
+
+> [`curve_gear_hypotrochoid_centre_distance`](#function-curve_gear_hypotrochoid_centre_distance): Return the mathematical centre distance for a hypotrochoid pair.
+
+> [`curve_gear_hypotrochoid_mate_rotation`](#function-curve_gear_hypotrochoid_mate_rotation): Return the conjugate hypotrochoid mate rotation for a driver phase.
+
+> [`curve_gear_hypotrochoid_pair`](#function-curve_gear_hypotrochoid_pair): Build a meshed or separated hypotrochoid driver/mate pair.
+
 > [`_cg_hypotrochoid_point(R, r, d, theta)`](#function-_cg_hypotrochoid_pointr-r-d-theta): Evaluate one point on the inner-rolling hypotrochoid.
 
 > [`_cg_hypotrochoid_points(R, r, d, n=720)`](#function-_cg_hypotrochoid_pointsr-r-d-n720): Sample a complete hypotrochoid curve.
@@ -33,15 +49,7 @@ circle. The documented ratio constraints reject cusp and loop cases.
 
 > [`_cg_hypotrochoid_points_scaled(scale, R, r, d, n=720)`](#function-_cg_hypotrochoid_points_scaledscale-r-r-d-n720): Sample a hypotrochoid at the requested physical scale.
 
-> [`curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)`](#function-curve_gear_hypotrochoidmodul-tooth_number-width-bore-): Build a hypotrochoid non-circular gear.
-
 > [`_cg_hypotrochoid_build(modul, tooth_number, width, bore, major_ratio=3, rolling_ratio=1, offset_ratio=0.35, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_hypotrochoid_buildmodul-tooth_number-width-bore-major_ratio3-rolling_ratio1-offset_ratio035-pressure_angle20-tooth_phase0-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct a validated hypotrochoid body, gear, or mate boundary.
-
-> [`curve_gear_hypotrochoid_body`](#function-curve_gear_hypotrochoid_body): Build the hypotrochoid body solid without teeth.
-
-> [`curve_gear_hypotrochoid_2d`](#function-curve_gear_hypotrochoid_2d): Emit the complete hypotrochoid gear profile as 2D geometry.
-
-> [`curve_gear_hypotrochoid_body_2d`](#function-curve_gear_hypotrochoid_body_2d): Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
 
 > [`_cg_hypotrochoid_motion_radii(scale, R, r, d, n=720)`](#function-_cg_hypotrochoid_motion_radiiscale-r-r-d-n720): Sample hypotrochoid radii at motion-integration midpoints.
 
@@ -54,14 +62,6 @@ circle. The documented ratio constraints reject cusp and loop cases.
 > [`_cg_hypotrochoid_mate_points_from_driver(scale, R, r, d, D, n=720)`](#function-_cg_hypotrochoid_mate_points_from_driverscale-r-r-d-d-n720): Generate mate pitch points from driver phase samples.
 
 > [`_cg_hypotrochoid_mate_points(scale, R, r, d, D, n=720)`](#function-_cg_hypotrochoid_mate_pointsscale-r-r-d-d-n720): Return the conjugate mate pitch points for a hypotrochoid.
-
-> [`curve_gear_hypotrochoid_mate`](#function-curve_gear_hypotrochoid_mate): Build the standalone conjugate mate for a hypotrochoid driver.
-
-> [`curve_gear_hypotrochoid_centre_distance`](#function-curve_gear_hypotrochoid_centre_distance): Return the mathematical centre distance for a hypotrochoid pair.
-
-> [`curve_gear_hypotrochoid_mate_rotation`](#function-curve_gear_hypotrochoid_mate_rotation): Return the conjugate hypotrochoid mate rotation for a driver phase.
-
-> [`curve_gear_hypotrochoid_pair`](#function-curve_gear_hypotrochoid_pair): Build a meshed or separated hypotrochoid driver/mate pair.
 
 
 ## Functions
@@ -183,9 +183,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Hypotrochoid gear preview | Full size |
 | --- | --- |
-| [![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) |   |
+| [![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) ![](../images/table-spacer.png) |
 
 
 Build a hypotrochoid non-circular gear.
@@ -248,9 +248,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body`
 
-|  |  |
+| Hypotrochoid body preview | Full size |
 | --- | --- |
-| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) |   |
+| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) ![](../images/table-spacer.png) |
 
 
 Build the hypotrochoid body solid without teeth.
@@ -279,9 +279,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_2d`
 
-|  |  |
+| hypotrochoid 2D gear and body preview | Full size |
 | --- | --- |
-| [![hypotrochoid 2D gear and body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) |   |
+| [![hypotrochoid 2D gear and body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the complete hypotrochoid gear profile as 2D geometry.
@@ -315,9 +315,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body_2d`
 
-|  |  |
+| hypotrochoid 2D body preview | Full size |
 | --- | --- |
-| [![hypotrochoid 2D body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) |   |
+| [![hypotrochoid 2D body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
@@ -469,9 +469,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_mate`
 
-|  |  |
+| Hypotrochoid mate preview | Full size |
 | --- | --- |
-| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) |   |
+| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) ![](../images/table-spacer.png) |
 
 
 Build the standalone conjugate mate for a hypotrochoid driver.
@@ -540,7 +540,7 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_pair`
 
-|  |  |
+| Hypotrochoid pair preview | Hypotrochoid separated-pair alternative |
 | --- | --- |
 | [![Hypotrochoid pair preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png) | [![Hypotrochoid separated-pair alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png) |
 

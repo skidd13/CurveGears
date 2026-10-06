@@ -3,8 +3,8 @@
 OPENSCAD ?= $(shell command -v openscad 2>/dev/null || printf '%s' openscad)
 DOCGEN ?= utils/doxydown/doxydown.pl
 PYTHON ?= python3
-IMAGE_SIZE ?= 4096,4096
-API_2D_IMAGE_SIZE ?= 512,512
+IMAGE_SIZE ?= 1024,1024
+API_2D_IMAGE_SIZE ?= 1024,1024
 CI_IMAGE_SIZE ?= 256,256
 _DEFAULT_IMAGE_SIZE := $(IMAGE_SIZE)
 MAIN_IMAGE_SIZE ?= $(_DEFAULT_IMAGE_SIZE)

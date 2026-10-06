@@ -24,6 +24,22 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 **Functions**:
 
+> [`curve_gear_cassini`](#function-curve_gear_cassini): Build a single-loop Cassini non-circular gear.
+
+> [`curve_gear_cassini_body`](#function-curve_gear_cassini_body): Build the Cassini body solid without teeth.
+
+> [`curve_gear_cassini_2d`](#function-curve_gear_cassini_2d): Emit the complete cassini gear profile as 2D geometry.
+
+> [`curve_gear_cassini_body_2d`](#function-curve_gear_cassini_body_2d): Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
+
+> [`curve_gear_cassini_mate`](#function-curve_gear_cassini_mate): Build the standalone conjugate mate for a Cassini driver.
+
+> [`curve_gear_cassini_centre_distance`](#function-curve_gear_cassini_centre_distance): Return the mathematical centre distance for a Cassini pair.
+
+> [`curve_gear_cassini_mate_rotation`](#function-curve_gear_cassini_mate_rotation): Return the conjugate Cassini mate rotation for a driver phase.
+
+> [`curve_gear_cassini_pair`](#function-curve_gear_cassini_pair): Build a meshed or separated Cassini driver/mate pair.
+
 > [`_cg_cassini_focus_ratio_valid`](#function-_cg_cassini_focus_ratio_valid): Check the supported single-loop Cassini parameter range.
 
 > [`_cg_cassini_unit_radius`](#function-_cg_cassini_unit_radius): Evaluate the normalised positive Cassini polar branch.
@@ -38,15 +54,7 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`_cg_cassini_max_radius`](#function-_cg_cassini_max_radius): Calculate the exact maximum scaled radius on the supported branch.
 
-> [`curve_gear_cassini`](#function-curve_gear_cassini): Build a single-loop Cassini non-circular gear.
-
 > [`_cg_cassini_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_cassini_buildmodul-tooth_number-width-bore-focus_ratio078-pressure_angle20-tooth_phase0-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct a validated Cassini body, gear, or mate boundary.
-
-> [`curve_gear_cassini_body`](#function-curve_gear_cassini_body): Build the Cassini body solid without teeth.
-
-> [`curve_gear_cassini_2d`](#function-curve_gear_cassini_2d): Emit the complete cassini gear profile as 2D geometry.
-
-> [`curve_gear_cassini_body_2d`](#function-curve_gear_cassini_body_2d): Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
 
 > [`_cg_cassini_motion_radii(scale, focus_ratio, n=720)`](#function-_cg_cassini_motion_radiiscale-focus_ratio-n720): Evaluate Cassini radii at integration midpoints.
 
@@ -59,14 +67,6 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 > [`_cg_cassini_mate_points_from_driver(scale, focus_ratio, D, n=720)`](#function-_cg_cassini_mate_points_from_driverscale-focus_ratio-d-n720): Build Cassini mate pitch points from driver-phase samples.
 
 > [`_cg_cassini_mate_points(scale, focus_ratio, D, n=720)`](#function-_cg_cassini_mate_pointsscale-focus_ratio-d-n720): Build Cassini mate pitch points and their motion data.
-
-> [`curve_gear_cassini_mate`](#function-curve_gear_cassini_mate): Build the standalone conjugate mate for a Cassini driver.
-
-> [`curve_gear_cassini_centre_distance`](#function-curve_gear_cassini_centre_distance): Return the mathematical centre distance for a Cassini pair.
-
-> [`curve_gear_cassini_mate_rotation`](#function-curve_gear_cassini_mate_rotation): Return the conjugate Cassini mate rotation for a driver phase.
-
-> [`curve_gear_cassini_pair`](#function-curve_gear_cassini_pair): Build a meshed or separated Cassini driver/mate pair.
 
 > [`_cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")`](#function-_cg_cassini_pair_buildmodul-tooth_number-width-bore-focus_ratio078-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-tooth_phase0-driver_colorsteelblue-mate_colorgold): Construct the Cassini driver and its conjugate mate as a pair.
 
@@ -197,9 +197,9 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini`
 
-|  |  |
+| Cassini gear preview | Full size |
 | --- | --- |
-| [![Cassini gear preview](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) |   |
+| [![Cassini gear preview](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) | [Open full-size image](../images/functions/cassini/curve_gear_cassini.png) ![](../images/table-spacer.png) |
 
 
 The supported branch is a positive single loop. `focus_ratio >= 1` is rejected.
@@ -258,9 +258,9 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_body`
 
-|  |  |
+| Cassini body preview | Full size |
 | --- | --- |
-| [![Cassini body preview](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) |   |
+| [![Cassini body preview](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) | [Open full-size image](../images/functions/cassini/curve_gear_cassini_body.png) ![](../images/table-spacer.png) |
 
 
 Build the Cassini body solid without teeth.
@@ -293,9 +293,9 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_2d`
 
-|  |  |
+| cassini 2D gear and body preview | Full size |
 | --- | --- |
-| [![cassini 2D gear and body preview](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) |   |
+| [![cassini 2D gear and body preview](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) | [Open full-size image](../images/functions/cassini/curve_gear_cassini_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the complete cassini gear profile as 2D geometry.
@@ -327,9 +327,9 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_body_2d`
 
-|  |  |
+| cassini 2D body preview | Full size |
 | --- | --- |
-| [![cassini 2D body preview](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) |   |
+| [![cassini 2D body preview](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) | [Open full-size image](../images/functions/cassini/curve_gear_cassini_body_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
@@ -467,9 +467,9 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_mate`
 
-|  |  |
+| Cassini mate preview | Full size |
 | --- | --- |
-| [![Cassini mate preview](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) |   |
+| [![Cassini mate preview](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) | [Open full-size image](../images/functions/cassini/curve_gear_cassini_mate.png) ![](../images/table-spacer.png) |
 
 
 Build the standalone conjugate mate for a Cassini driver.
@@ -532,9 +532,9 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_pair`
 
-|  |  |
+| Cassini pair preview | Full size |
 | --- | --- |
-| [![Cassini pair preview](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) |   |
+| [![Cassini pair preview](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) | [Open full-size image](../images/functions/cassini/curve_gear_cassini_pair.png) ![](../images/table-spacer.png) |
 
 
 Build a meshed or separated Cassini driver/mate pair.

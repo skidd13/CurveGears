@@ -47,23 +47,30 @@ sub print_images_markdown {
     my ( $images, $default_alt ) = @_;
     return unless $images && scalar @$images > 0;
 
-    print "|  |  |\n| --- | --- |\n";
     for ( my $index = 0; $index < scalar @$images; $index += 2 ) {
+        my $last_index = $index + 1 < scalar @$images ? $index + 1 : $index;
+        my @pair = @$images[ $index .. $last_index ];
         my @cells;
-        for my $offset ( 0, 1 ) {
-            my $image = $images->[$index + $offset];
-            if ( $image ) {
-                my $src = $image->{'path'} || $image->{'image'};
-                my $alt = $image->{'alt'} || $default_alt;
-                $alt =~ s/([\\\[\]])/\\$1/g;
-                push @cells, "[![$alt]($src)]($src)";
-            } else {
-                push @cells, " ";
-            }
+        my @headers;
+        for my $image (@pair) {
+            my $src = $image->{'path'} || $image->{'image'};
+            my $alt = $image->{'alt'} || $default_alt;
+            my $header = $alt;
+            $header =~ s/\|/\\|/g;
+            $alt =~ s/([\\\[\]])/\\$1/g;
+            push @headers, $header;
+            push @cells, "[![$alt]($src)]($src)";
         }
-        print "| $cells[0] | $cells[1] |\n";
+        if ( @pair == 1 ) {
+            my $src = $pair[0]->{'path'} || $pair[0]->{'image'};
+            my ($image_root) = $src =~ m{^(.*?/images/)};
+            my $spacer = $image_root ? "${image_root}table-spacer.png" : "";
+            push @headers, "Full size";
+            push @cells, "[Open full-size image]($src)" . ($spacer ? " ![]($spacer)" : "");
+        }
+        print "| $headers[0] | $headers[1] |\n| --- | --- |\n";
+        print "| $cells[0] | $cells[1] |\n\n";
     }
-    print "\n";
 }
 
 # /function print_module_markdown
@@ -123,8 +130,13 @@ EOD
         if (scalar(@{ $m->{'functions'} }) > 0) {
             print "**Functions**:\n\n";
  
-            foreach ( @{ $m->{'functions'} } ) {
-                print_func($_);
+            foreach my $function (
+                sort {
+                    (($a->{'name'} =~ /^_/) ? 1 : 0)
+                        <=> (($b->{'name'} =~ /^_/) ? 1 : 0)
+                } @{ $m->{'functions'} }
+            ) {
+                print_func($function);
             }
         }
     }

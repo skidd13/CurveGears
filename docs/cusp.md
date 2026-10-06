@@ -25,6 +25,22 @@ are documented together below.
 
 **Functions**:
 
+> [`curve_gear_cusp(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cuspmodul-tooth_number-width-bore-): Build the three-cusp deltoid gear with regular radial teeth at its cusps.
+
+> [`curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_bodymodul-tooth_number-width-bore-): Build the three-cusp deltoid body with its integrated cusp-tip teeth.
+
+> [`curve_gear_cusp_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_2dmodul-tooth_number-bore-): Emit the complete cusp gear profile as 2D geometry.
+
+> [`curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_body_2dmodul-tooth_number-bore-): Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
+
+> [`curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_matemodul-tooth_number-width-bore-): Build the standalone swept-envelope mate for a cusp gear.
+
+> [`curve_gear_cusp_centre_distance(modul, tooth_number, samples=720)`](#function-curve_gear_cusp_centre_distancemodul-tooth_number-samples720): Return the solved pitch-curve centre distance for a cusp pair.
+
+> [`curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0)`](#function-curve_gear_cusp_mate_rotationmodul-tooth_number-samples720-phase0): Return the integrated mate angle at one driver phase.
+
+> [`curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_pairmodul-tooth_number-width-bore-): Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
+
 > [`_cg_cusp_scale(modul, tooth_number)`](#function-_cg_cusp_scalemodul-tooth_number): Scale the deltoid to the requested module and tooth count.
 
 > [`_cg_cusp_points(a, samples=720)`](#function-_cg_cusp_pointsa-samples720): Sample one closed three-cusp deltoid pitch curve.
@@ -57,29 +73,13 @@ are documented together below.
 
 > [`_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_cusp_buildmodul-tooth_number-width-bore-pressure_angle20-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct the validated cusp body or complete gear.
 
-> [`curve_gear_cusp(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cuspmodul-tooth_number-width-bore-): Build the three-cusp deltoid gear with regular radial teeth at its cusps.
-
-> [`curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_bodymodul-tooth_number-width-bore-): Build the three-cusp deltoid body with its integrated cusp-tip teeth.
-
-> [`curve_gear_cusp_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_2dmodul-tooth_number-bore-): Emit the complete cusp gear profile as 2D geometry.
-
-> [`curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_body_2dmodul-tooth_number-bore-): Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
-
 > [`_cg_cusp_envelope_driver_outline(state)`](#function-_cg_cusp_envelope_driver_outlinestate): Extract the complete placed driver outline from its validated state.
 
 > [`_cg_cusp_envelope_mate_outer_radius(geometry, modul)`](#function-_cg_cusp_envelope_mate_outer_radiusgeometry-modul): Calculate the swept-envelope mate's outer blank radius.
 
 > [`_cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)`](#function-_cg_cusp_envelope_mate_from_geometrygeometry-modul-width-bore-sweep_steps360-max_pose_step05-sweep_clearance008-phase0): Build the cusp mate by sweeping the complete validated driver outline.
 
-> [`curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_matemodul-tooth_number-width-bore-): Build the standalone swept-envelope mate for a cusp gear.
-
-> [`curve_gear_cusp_centre_distance(modul, tooth_number, samples=720)`](#function-curve_gear_cusp_centre_distancemodul-tooth_number-samples720): Return the solved pitch-curve centre distance for a cusp pair.
-
-> [`curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0)`](#function-curve_gear_cusp_mate_rotationmodul-tooth_number-samples720-phase0): Return the integrated mate angle at one driver phase.
-
 > [`_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08)`](#function-_cg_cusp_pair_buildmodul-tooth_number-width-bore-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-driver_colorsteelblue-mate_colorgold-sweep_steps360-max_pose_step05-sweep_clearance008): Construct the cusp driver and swept-envelope mate as a pair.
-
-> [`curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_pairmodul-tooth_number-width-bore-): Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
 
 
 ## Functions
@@ -383,9 +383,9 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Cusp gear preview | Full size |
 | --- | --- |
-| [![Cusp gear preview](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) |   |
+| [![Cusp gear preview](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp.png) ![](../images/table-spacer.png) |
 
 
 The common candidate validator accepts the full regular radial-root profile. Each cusp tooth is translated inward until its root width meets the local cusp-branch width; the cusp interval is then cropped and replaced by that unchanged tooth profile.
@@ -411,9 +411,9 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Cusp gear body preview | Full size |
 | --- | --- |
-| [![Cusp gear body preview](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) |   |
+| [![Cusp gear body preview](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_body.png) ![](../images/table-spacer.png) |
 
 
 Build the three-cusp deltoid body with its integrated cusp-tip teeth.
@@ -435,9 +435,9 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_2d(modul, tooth_number, bore, ...)`
 
-|  |  |
+| Cusp 2D gear and body preview | Full size |
 | --- | --- |
-| [![Cusp 2D gear and body preview](../images/functions/cusp/curve_gear_cusp_2d.png)](../images/functions/cusp/curve_gear_cusp_2d.png) |   |
+| [![Cusp 2D gear and body preview](../images/functions/cusp/curve_gear_cusp_2d.png)](../images/functions/cusp/curve_gear_cusp_2d.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the complete cusp gear profile as 2D geometry.
@@ -467,9 +467,9 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`
 
-|  |  |
+| Cusp 2D body preview | Full size |
 | --- | --- |
-| [![Cusp 2D body preview](../images/functions/cusp/curve_gear_cusp_body_2d.png)](../images/functions/cusp/curve_gear_cusp_body_2d.png) |   |
+| [![Cusp 2D body preview](../images/functions/cusp/curve_gear_cusp_body_2d.png)](../images/functions/cusp/curve_gear_cusp_body_2d.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_body_2d.png) ![](../images/table-spacer.png) |
 
 
 Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
@@ -550,9 +550,9 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Cusp gear mate preview | Full size |
 | --- | --- |
-| [![Cusp gear mate preview](../images/functions/cusp/curve_gear_cusp_mate.png)](../images/functions/cusp/curve_gear_cusp_mate.png) |   |
+| [![Cusp gear mate preview](../images/functions/cusp/curve_gear_cusp_mate.png)](../images/functions/cusp/curve_gear_cusp_mate.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_mate.png) ![](../images/table-spacer.png) |
 
 
 Build the standalone swept-envelope mate for a cusp gear.
@@ -644,9 +644,9 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`
 
-|  |  |
+| Cusp pair preview | Full size |
 | --- | --- |
-| [![Cusp pair preview](../images/functions/cusp/curve_gear_cusp_pair.png)](../images/functions/cusp/curve_gear_cusp_pair.png) |   |
+| [![Cusp pair preview](../images/functions/cusp/curve_gear_cusp_pair.png)](../images/functions/cusp/curve_gear_cusp_pair.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_pair.png) ![](../images/table-spacer.png) |
 
 
 Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
