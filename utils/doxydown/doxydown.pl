@@ -15,6 +15,41 @@ my $source_link;
 my $infer_module = 0;
 my $inferred_brief;
 
+sub natural_name_cmp {
+    my ( $left, $right ) = @_;
+    my @left_parts  = lc($left)  =~ /(\d+|\D+)/g;
+    my @right_parts = lc($right) =~ /(\d+|\D+)/g;
+    my $last = $#left_parts < $#right_parts ? $#left_parts : $#right_parts;
+
+    for my $index ( 0 .. $last ) {
+        my ( $left_part, $right_part ) = ( $left_parts[$index], $right_parts[$index] );
+        if ( $left_part =~ /^\d+$/ && $right_part =~ /^\d+$/ ) {
+            my ( $left_number, $right_number ) = ( $left_part, $right_part );
+            $left_number  =~ s/^0+(?=\d)//;
+            $right_number =~ s/^0+(?=\d)//;
+            my $comparison = length($left_number) <=> length($right_number)
+                || $left_number cmp $right_number
+                || length($left_part) <=> length($right_part);
+            return $comparison if $comparison;
+        } else {
+            my $comparison = $left_part cmp $right_part;
+            return $comparison if $comparison;
+        }
+    }
+
+    return @left_parts <=> @right_parts || $left cmp $right;
+}
+
+sub ordered_functions {
+    my ($functions) = @_;
+    return sort {
+        my $a_internal = $a->{'name'} =~ /^_/ ? 1 : 0;
+        my $b_internal = $b->{'name'} =~ /^_/ ? 1 : 0;
+        $a_internal <=> $b_internal
+            || natural_name_cmp( $a->{'name'}, $b->{'name'} );
+    } @$functions;
+}
+
 my %languages = (
     c => {
         start  => qr/^\s*\/\*\*+(?:\s*|(\s+\S.+\s*))$/,
@@ -130,12 +165,7 @@ EOD
         if (scalar(@{ $m->{'functions'} }) > 0) {
             print "**Functions**:\n\n";
  
-            foreach my $function (
-                sort {
-                    (($a->{'name'} =~ /^_/) ? 1 : 0)
-                        <=> (($b->{'name'} =~ /^_/) ? 1 : 0)
-                } @{ $m->{'functions'} }
-            ) {
+            foreach my $function ( ordered_functions( $m->{'functions'} ) ) {
                 print_func($function);
             }
         }
@@ -279,8 +309,8 @@ sub print_markdown {
             if ( scalar(@{ $m->{'functions'} }) > 0 ) {
                 print "\n## Functions\n\nThe module `$mname` defines the following functions.\n\n";
 
-                foreach ( @{ $m->{'functions'} } ) {
-                    print_function_markdown( "Function", $_->{'name'}, $_ );
+                foreach my $function ( ordered_functions( $m->{'functions'} ) ) {
+                    print_function_markdown( "Function", $function->{'name'}, $function );
  
                     print "\nBack to [module description](#$m->{'id'}).\n\n";
 

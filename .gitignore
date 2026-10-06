@@ -1,5 +1,6 @@
 # Project-local configuration and generated OpenSCAD output.
 config.local.mk
+.codex/
 build/
 *.stl
 *.csg

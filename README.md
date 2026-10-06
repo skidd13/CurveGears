@@ -68,6 +68,8 @@ Most families follow the same API shape:
 
 - `curve_gear_<family>` — complete gear
 - `curve_gear_<family>_body` — body only
+- `curve_gear_<family>_2d` — complete gear profile as 2D geometry
+- `curve_gear_<family>_body_2d` — 2D body profile; a negative `body_offset` shrinks the outer contour while preserving the bore
 - `curve_gear_<family>_mate` — conjugate mate
 - `curve_gear_<family>_pair` — assembled pair
 

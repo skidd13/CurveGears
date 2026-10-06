@@ -26,15 +26,15 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 > [`curve_gear_ellipse(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipsemodul-tooth_number-width-bore-): Build an elliptical non-circular gear.
 
-> [`curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_bodymodul-tooth_number-width-bore-): Build the elliptical body solid without teeth.
-
 > [`curve_gear_ellipse_2d`](#function-curve_gear_ellipse_2d): Emit the complete ellipse gear profile as 2D geometry.
+
+> [`curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_bodymodul-tooth_number-width-bore-): Build the elliptical body solid without teeth.
 
 > [`curve_gear_ellipse_body_2d`](#function-curve_gear_ellipse_body_2d): Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_matemodul-tooth_number-width-bore-): Build the standalone elliptical mate boundary at the origin.
-
 > [`curve_gear_ellipse_centre_distance(modul, tooth_number, eccentricity, ...)`](#function-curve_gear_ellipse_centre_distancemodul-tooth_number-eccentricity-): Return the mathematical centre distance for an elliptical pair.
+
+> [`curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_matemodul-tooth_number-width-bore-): Build the standalone elliptical mate boundary at the origin.
 
 > [`curve_gear_ellipse_mate_rotation(modul, tooth_number, eccentricity, ...)`](#function-curve_gear_ellipse_mate_rotationmodul-tooth_number-eccentricity-): Return the conjugate elliptical mate rotation for a driver phase.
 
@@ -42,81 +42,30 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 > [`_cg_ellipse_axes(modul, tooth_number, eccentricity)`](#function-_cg_ellipse_axesmodul-tooth_number-eccentricity): Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
 
-> [`_cg_ellipse_radius(a, b, theta)`](#function-_cg_ellipse_radiusa-b-theta): Evaluate the ellipse radius at an angular position.
-
-> [`_cg_ellipse_driver_point(a, b, theta)`](#function-_cg_ellipse_driver_pointa-b-theta): Convert an ellipse radius and angle into a Cartesian pitch point.
-
 > [`_cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false)`](#function-_cg_ellipse_buildmodultooth_numberwidthboreeccentricity062pressure_angle20tooth_phase0backlashundefclearanceundefsamples480orientation0body_onlyfalse): Internal ellipse construction dispatcher.
-
-> [`_cg_ellipse_motion_radii`](#function-_cg_ellipse_motion_radii): Evaluate ellipse radii at integration midpoints.
-
-> [`_cg_ellipse_driver_radii(a, b, n=480)`](#function-_cg_ellipse_driver_radiia-b-n480): Evaluate ellipse radii at direct mate-construction angles.
 
 > [`_cg_ellipse_centre_distance`](#function-_cg_ellipse_centre_distance): Solve the ellipse conjugate centre distance.
 
-> [`_cg_ellipse_motion_table`](#function-_cg_ellipse_motion_table): Build the shared ellipse phase-motion table.
+> [`_cg_ellipse_driver_point(a, b, theta)`](#function-_cg_ellipse_driver_pointa-b-theta): Convert an ellipse radius and angle into a Cartesian pitch point.
 
-> [`_cg_ellipse_mate_points_from_driver`](#function-_cg_ellipse_mate_points_from_driver): Build ellipse mate pitch points by advancing driver angle directly.
+> [`_cg_ellipse_driver_radii(a, b, n=480)`](#function-_cg_ellipse_driver_radiia-b-n480): Evaluate ellipse radii at direct mate-construction angles.
 
 > [`_cg_ellipse_mate_points`](#function-_cg_ellipse_mate_points): Build ellipse mate pitch points and their shared motion table.
 
+> [`_cg_ellipse_mate_points_from_driver`](#function-_cg_ellipse_mate_points_from_driver): Build ellipse mate pitch points by advancing driver angle directly.
+
+> [`_cg_ellipse_motion_radii`](#function-_cg_ellipse_motion_radii): Evaluate ellipse radii at integration midpoints.
+
+> [`_cg_ellipse_motion_table`](#function-_cg_ellipse_motion_table): Build the shared ellipse phase-motion table.
+
 > [`_cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_ellipse_pair_buildmodultooth_numberwidthboreeccentricity062pressure_angle20samples480phase0together_builttruebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal ellipse pair construction dispatcher.
+
+> [`_cg_ellipse_radius(a, b, theta)`](#function-_cg_ellipse_radiusa-b-theta): Evaluate the ellipse radius at an angular position.
 
 
 ## Functions
 
 The module `Ellipse` defines the following functions.
-
-### Function `_cg_ellipse_axes(modul, tooth_number, eccentricity)`
-
-
-Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `eccentricity`: {0 <= e < 1} Ellipse eccentricity.
-
-**Returns:**
-
-- `{array}`: Semi-major and semi-minor axes as `[a, b]` in mm.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_radius(a, b, theta)`
-
-
-Evaluate the ellipse radius at an angular position.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major axis in mm.
-- `b`: {number > 0} Ellipse semi-minor axis in mm.
-- `theta`: {angle} Polar angle in degrees.
-
-**Returns:**
-
-- `{number}`: Radius in mm.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_driver_point(a, b, theta)`
-
-
-Convert an ellipse radius and angle into a Cartesian pitch point.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major axis in mm.
-- `b`: {number > 0} Ellipse semi-minor axis in mm.
-- `theta`: {angle} Polar angle in degrees.
-
-**Returns:**
-
-- `{array}`: Cartesian point `[x, y]` in mm.
-
-Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse(modul, tooth_number, width, bore, ...)`
 
@@ -155,29 +104,37 @@ curve_gear_ellipse(1, 24, 4, 8);
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false)`
+### Function `curve_gear_ellipse_2d`
+
+| ellipse 2D gear and body preview | Full size |
+| --- | --- |
+| [![ellipse 2D gear and body preview](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [Open full-size image](../images/functions/ellipse/curve_gear_ellipse_2d.png) ![](../images/table-spacer.png) |
 
 
-Internal ellipse construction dispatcher.
+Emit the complete ellipse gear profile as 2D geometry.
 
 **Parameters:**
 
-- `modul`: {number} Tooth module in mm.
-- `tooth_number`: {integer} Number of teeth.
-- `width`: {number} Extrusion width in mm.
-- `bore`: {number} Centre bore diameter in mm.
-- `eccentricity`: {number, default 0.62} Internal construction parameter.
-- `pressure_angle`: {number, default 20} Involute pressure angle in degrees.
-- `tooth_phase`: {number, default 0} Tooth placement phase in degrees.
-- `backlash`: {number, default undef} Tangential tooth-thickness reduction in mm.
-- `clearance`: {number, default undef} Additional radial root clearance in mm.
-- `samples`: {integer, default 480} Pitch-curve or motion-table sampling density.
-- `orientation`: {number, default 0} Single-gear display rotation in degrees.
-- `body_only`: {boolean, default false} Emit the body without teeth.
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `eccentricity`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `backlash`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `clearance`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `samples`: {value} Same family-specific parameter as curve_gear_ellipse.
+- `orientation`: {value} Rotation in degrees.
 
 **Returns:**
 
-- `{geometry}`: Constructed family geometry.
+No return
+
+### Example:
+
+~~~c
+curve_gear_ellipse_2d(0.8, 34, 4.8);
+~~~
 
 Back to [module description](#module-ellipse).
 
@@ -212,40 +169,6 @@ No return
 
 ~~~c
 curve_gear_ellipse_body(1, 24, 4, 8);
-~~~
-
-Back to [module description](#module-ellipse).
-
-### Function `curve_gear_ellipse_2d`
-
-| ellipse 2D gear and body preview | Full size |
-| --- | --- |
-| [![ellipse 2D gear and body preview](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [Open full-size image](../images/functions/ellipse/curve_gear_ellipse_2d.png) ![](../images/table-spacer.png) |
-
-
-Emit the complete ellipse gear profile as 2D geometry.
-
-**Parameters:**
-
-- `modul`: {value} Tooth module in mm.
-- `tooth_number`: {value} Number of teeth.
-- `bore`: {value} Centre bore diameter in mm.
-- `eccentricity`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `backlash`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `clearance`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `samples`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `orientation`: {value} Rotation in degrees.
-
-**Returns:**
-
-No return
-
-### Example:
-
-~~~c
-curve_gear_ellipse_2d(0.8, 34, 4.8);
 ~~~
 
 Back to [module description](#module-ellipse).
@@ -285,108 +208,21 @@ curve_gear_ellipse_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_motion_radii`
+### Function `curve_gear_ellipse_centre_distance(modul, tooth_number, eccentricity, ...)`
 
 
-Evaluate ellipse radii at integration midpoints.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array of number}`: Sampled radii in angular order.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_driver_radii(a, b, n=480)`
-
-
-Evaluate ellipse radii at direct mate-construction angles.
+Return the mathematical centre distance for an elliptical pair.
 
 **Parameters:**
 
-- `a`: {number > 0} Ellipse semi-major scale in millimetres.
-- `b`: {number > 0} Ellipse semi-minor scale in millimetres.
-- `n`: {integer >= 1, default 480} Number of boundary intervals.
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `eccentricity`: {0 <= e < 1, default 0.62} Ellipse eccentricity.
+- `samples`: {integer >= 120, default 480} Motion-table sampling density.
 
 **Returns:**
 
-- `{array of number}`: Driver radii in angular order.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_centre_distance`
-
-
-Solve the ellipse conjugate centre distance.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `n`: {integer >= 1, default 360} Number of motion intervals.
-
-**Returns:**
-
-- `{number}`: Conjugate centre distance.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_motion_table`
-
-
-Build the shared ellipse phase-motion table.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 480} Number of midpoint samples.
-
-**Returns:**
-
-- `{array}`: Monotonic driver-to-mate phase-motion table.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_mate_points_from_driver`
-
-
-Build ellipse mate pitch points by advancing driver angle directly.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 480} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_mate_points`
-
-
-Build ellipse mate pitch points and their shared motion table.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 480} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
+- `{number}`: Pair centre distance in mm.
 
 Back to [module description](#module-ellipse).
 
@@ -415,24 +251,6 @@ Build the standalone elliptical mate boundary at the origin.
 **Returns:**
 
 No return
-
-Back to [module description](#module-ellipse).
-
-### Function `curve_gear_ellipse_centre_distance(modul, tooth_number, eccentricity, ...)`
-
-
-Return the mathematical centre distance for an elliptical pair.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `eccentricity`: {0 <= e < 1, default 0.62} Ellipse eccentricity.
-- `samples`: {integer >= 120, default 480} Motion-table sampling density.
-
-**Returns:**
-
-- `{number}`: Pair centre distance in mm.
 
 Back to [module description](#module-ellipse).
 
@@ -494,6 +312,171 @@ curve_gear_ellipse_pair(1, 24, 4, 8);
 
 Back to [module description](#module-ellipse).
 
+### Function `_cg_ellipse_axes(modul, tooth_number, eccentricity)`
+
+
+Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `eccentricity`: {0 <= e < 1} Ellipse eccentricity.
+
+**Returns:**
+
+- `{array}`: Semi-major and semi-minor axes as `[a, b]` in mm.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false)`
+
+
+Internal ellipse construction dispatcher.
+
+**Parameters:**
+
+- `modul`: {number} Tooth module in mm.
+- `tooth_number`: {integer} Number of teeth.
+- `width`: {number} Extrusion width in mm.
+- `bore`: {number} Centre bore diameter in mm.
+- `eccentricity`: {number, default 0.62} Internal construction parameter.
+- `pressure_angle`: {number, default 20} Involute pressure angle in degrees.
+- `tooth_phase`: {number, default 0} Tooth placement phase in degrees.
+- `backlash`: {number, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {number, default undef} Additional radial root clearance in mm.
+- `samples`: {integer, default 480} Pitch-curve or motion-table sampling density.
+- `orientation`: {number, default 0} Single-gear display rotation in degrees.
+- `body_only`: {boolean, default false} Emit the body without teeth.
+
+**Returns:**
+
+- `{geometry}`: Constructed family geometry.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_centre_distance`
+
+
+Solve the ellipse conjugate centre distance.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major scale.
+- `b`: {number > 0} Ellipse semi-minor scale.
+- `n`: {integer >= 1, default 360} Number of motion intervals.
+
+**Returns:**
+
+- `{number}`: Conjugate centre distance.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_driver_point(a, b, theta)`
+
+
+Convert an ellipse radius and angle into a Cartesian pitch point.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major axis in mm.
+- `b`: {number > 0} Ellipse semi-minor axis in mm.
+- `theta`: {angle} Polar angle in degrees.
+
+**Returns:**
+
+- `{array}`: Cartesian point `[x, y]` in mm.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_driver_radii(a, b, n=480)`
+
+
+Evaluate ellipse radii at direct mate-construction angles.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major scale in millimetres.
+- `b`: {number > 0} Ellipse semi-minor scale in millimetres.
+- `n`: {integer >= 1, default 480} Number of boundary intervals.
+
+**Returns:**
+
+- `{array of number}`: Driver radii in angular order.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_mate_points`
+
+
+Build ellipse mate pitch points and their shared motion table.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major scale.
+- `b`: {number > 0} Ellipse semi-minor scale.
+- `D`: {number > 0} Driver-to-mate centre distance.
+- `n`: {integer >= 1, default 480} Number of output points.
+
+**Returns:**
+
+- `{array of points}`: Cartesian mate pitch points.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_mate_points_from_driver`
+
+
+Build ellipse mate pitch points by advancing driver angle directly.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major scale.
+- `b`: {number > 0} Ellipse semi-minor scale.
+- `D`: {number > 0} Driver-to-mate centre distance.
+- `n`: {integer >= 1, default 480} Number of output points.
+
+**Returns:**
+
+- `{array of points}`: Cartesian mate pitch points.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_motion_radii`
+
+
+Evaluate ellipse radii at integration midpoints.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major scale.
+- `b`: {number > 0} Ellipse semi-minor scale.
+- `n`: {integer >= 1, default 360} Number of midpoint samples.
+
+**Returns:**
+
+- `{array of number}`: Sampled radii in angular order.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_motion_table`
+
+
+Build the shared ellipse phase-motion table.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major scale.
+- `b`: {number > 0} Ellipse semi-minor scale.
+- `D`: {number > 0} Driver-to-mate centre distance.
+- `n`: {integer >= 1, default 480} Number of midpoint samples.
+
+**Returns:**
+
+- `{array}`: Monotonic driver-to-mate phase-motion table.
+
+Back to [module description](#module-ellipse).
+
 ### Function `_cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`
 
 
@@ -519,6 +502,23 @@ Internal ellipse pair construction dispatcher.
 **Returns:**
 
 - `{geometry}`: Constructed family geometry.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_radius(a, b, theta)`
+
+
+Evaluate the ellipse radius at an angular position.
+
+**Parameters:**
+
+- `a`: {number > 0} Ellipse semi-major axis in mm.
+- `b`: {number > 0} Ellipse semi-minor axis in mm.
+- `theta`: {angle} Polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Radius in mm.
 
 Back to [module description](#module-ellipse).
 

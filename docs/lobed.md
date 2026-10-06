@@ -25,140 +25,50 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`curve_gear_lobed(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobedmodul-tooth_number-width-bore-): Build a lobed non-circular gear.
 
-> [`curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_bodymodul-tooth_number-width-bore-): Build the lobed body solid without teeth.
-
 > [`curve_gear_lobed_2d`](#function-curve_gear_lobed_2d): Emit the complete lobed gear profile as 2D geometry.
+
+> [`curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_bodymodul-tooth_number-width-bore-): Build the lobed body solid without teeth.
 
 > [`curve_gear_lobed_body_2d`](#function-curve_gear_lobed_body_2d): Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_matemodul-tooth_number-width-bore-): Build the standalone lobed mate boundary at the origin.
-
 > [`curve_gear_lobed_centre_distance(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_centre_distancemodul-tooth_number-lobes-lobe_depth-): Return the mathematical centre distance for a lobed pair.
+
+> [`curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_matemodul-tooth_number-width-bore-): Build the standalone lobed mate boundary at the origin.
 
 > [`curve_gear_lobed_mate_rotation(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_mate_rotationmodul-tooth_number-lobes-lobe_depth-): Return the conjugate lobed mate rotation for a driver phase.
 
 > [`curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_pairmodul-tooth_number-width-bore-): Build a meshed or separated lobed pair.
 
-> [`_cg_lobed_unit_radius(lobes, lobe_depth, theta)`](#function-_cg_lobed_unit_radiuslobes-lobe_depth-theta): Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
-
-> [`_cg_lobed_point(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_pointscale-lobes-lobe_depth-theta): Evaluate one Cartesian point on a scaled lobed pitch curve.
-
-> [`_cg_lobed_unit_points(lobes, lobe_depth, n)`](#function-_cg_lobed_unit_pointslobes-lobe_depth-n): Sample one complete unit lobed pitch curve.
-
-> [`_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n, unit_points=undef)`](#function-_cg_lobed_scalemodul-tooth_number-lobes-lobe_depth-n-unit_pointsundef): Scale a unit lobed curve to the requested tooth pitch.
-
-> [`_cg_lobed_radius(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_radiusscale-lobes-lobe_depth-theta): Evaluate a scaled lobed pitch-curve radius.
-
 > [`_cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_lobed_buildmodultooth_numberwidthborelobes4lobe_depth013pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal lobed construction dispatcher.
-
-> [`_cg_lobed_motion_radii`](#function-_cg_lobed_motion_radii): Evaluate lobed radii at integration midpoints.
-
-> [`_cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)`](#function-_cg_lobed_driver_radiiscale-lobes-lobe_depth-n360): Evaluate lobed radii at direct mate-construction angles.
 
 > [`_cg_lobed_centre_distance`](#function-_cg_lobed_centre_distance): Solve the lobed conjugate centre distance.
 
-> [`_cg_lobed_motion_table`](#function-_cg_lobed_motion_table): Build the shared lobed phase-motion table.
-
-> [`_cg_lobed_mate_points_from_driver`](#function-_cg_lobed_mate_points_from_driver): Build lobed mate pitch points by advancing driver angle directly.
+> [`_cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)`](#function-_cg_lobed_driver_radiiscale-lobes-lobe_depth-n360): Evaluate lobed radii at direct mate-construction angles.
 
 > [`_cg_lobed_mate_points`](#function-_cg_lobed_mate_points): Build lobed mate pitch points and their shared motion table.
 
+> [`_cg_lobed_mate_points_from_driver`](#function-_cg_lobed_mate_points_from_driver): Build lobed mate pitch points by advancing driver angle directly.
+
+> [`_cg_lobed_motion_radii`](#function-_cg_lobed_motion_radii): Evaluate lobed radii at integration midpoints.
+
+> [`_cg_lobed_motion_table`](#function-_cg_lobed_motion_table): Build the shared lobed phase-motion table.
+
 > [`_cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_lobed_pair_buildmodultooth_numberwidthborelobes4lobe_depth013pressure_angle20samples720phase0together_builttruebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal lobed pair construction dispatcher.
+
+> [`_cg_lobed_point(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_pointscale-lobes-lobe_depth-theta): Evaluate one Cartesian point on a scaled lobed pitch curve.
+
+> [`_cg_lobed_radius(scale, lobes, lobe_depth, theta)`](#function-_cg_lobed_radiusscale-lobes-lobe_depth-theta): Evaluate a scaled lobed pitch-curve radius.
+
+> [`_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n, unit_points=undef)`](#function-_cg_lobed_scalemodul-tooth_number-lobes-lobe_depth-n-unit_pointsundef): Scale a unit lobed curve to the requested tooth pitch.
+
+> [`_cg_lobed_unit_points(lobes, lobe_depth, n)`](#function-_cg_lobed_unit_pointslobes-lobe_depth-n): Sample one complete unit lobed pitch curve.
+
+> [`_cg_lobed_unit_radius(lobes, lobe_depth, theta)`](#function-_cg_lobed_unit_radiuslobes-lobe_depth-theta): Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
 
 
 ## Functions
 
 The module `Lobed` defines the following functions.
-
-### Function `_cg_lobed_unit_radius(lobes, lobe_depth, theta)`
-
-
-Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
-
-**Parameters:**
-
-- `lobes`: {integer >= 1} Number of radial lobes.
-- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
-- `theta`: {angle} Polar angle in degrees.
-
-**Returns:**
-
-- `{number}`: Unit radius at the requested angle.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_point(scale, lobes, lobe_depth, theta)`
-
-
-Evaluate one Cartesian point on a scaled lobed pitch curve.
-
-**Parameters:**
-
-- `scale`: {number > 0} Mean pitch-radius scale in mm.
-- `lobes`: {integer >= 1} Number of radial lobes.
-- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
-- `theta`: {angle} Polar angle in degrees.
-
-**Returns:**
-
-- `{array}`: Cartesian point `[x, y]` in mm.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_unit_points(lobes, lobe_depth, n)`
-
-
-Sample one complete unit lobed pitch curve.
-
-**Parameters:**
-
-- `lobes`: {integer >= 1} Number of radial lobes.
-- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
-- `n`: {integer >= 1, default 720} Number of samples.
-
-**Returns:**
-
-- `{array}`: Closed list of sampled Cartesian points.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n, unit_points=undef)`
-
-
-Scale a unit lobed curve to the requested tooth pitch.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `lobes`: {integer >= 1} Number of radial lobes.
-- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
-- `n`: {integer >= 1, default 720} Number of samples used for arc length.
-- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
-
-**Returns:**
-
-- `{number}`: Mean pitch-radius scale in mm.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_radius(scale, lobes, lobe_depth, theta)`
-
-
-Evaluate a scaled lobed pitch-curve radius.
-
-**Parameters:**
-
-- `scale`: {number > 0} Mean pitch-radius scale in mm.
-- `lobes`: {integer >= 1} Number of radial lobes.
-- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
-- `theta`: {angle} Polar angle in degrees.
-
-**Returns:**
-
-- `{number}`: Radius in mm.
-
-Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed(modul, tooth_number, width, bore, ...)`
 
@@ -198,30 +108,38 @@ curve_gear_lobed(1, 24, 4, 8);
 
 Back to [module description](#module-lobed).
 
-### Function `_cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`
+### Function `curve_gear_lobed_2d`
+
+| lobed 2D gear and body preview | Full size |
+| --- | --- |
+| [![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_2d.png) ![](../images/table-spacer.png) |
 
 
-Internal lobed construction dispatcher.
+Emit the complete lobed gear profile as 2D geometry.
 
 **Parameters:**
 
-- `modul`: {number} Tooth module in mm.
-- `tooth_number`: {integer} Number of teeth.
-- `width`: {number} Extrusion width in mm.
-- `bore`: {number} Centre bore diameter in mm.
-- `lobes`: {integer, default 4} Internal construction parameter.
-- `lobe_depth`: {number, default 0.13} Internal construction parameter.
-- `pressure_angle`: {number, default 20} Involute pressure angle in degrees.
-- `tooth_phase`: {number, default 0} Tooth placement phase in degrees.
-- `backlash`: {number, default undef} Tangential tooth-thickness reduction in mm.
-- `clearance`: {number, default undef} Additional radial root clearance in mm.
-- `samples`: {integer, default 720} Pitch-curve or motion-table sampling density.
-- `orientation`: {number, default 0} Single-gear display rotation in degrees.
-- `body_only`: {boolean, default false} Emit the body without teeth.
+- `modul`: {value} Tooth module in mm.
+- `tooth_number`: {value} Number of teeth.
+- `bore`: {value} Centre bore diameter in mm.
+- `lobes`: {value} Same family-specific parameter as curve_gear_lobed.
+- `lobe_depth`: {value} Same family-specific parameter as curve_gear_lobed.
+- `pressure_angle`: {value} Same family-specific parameter as curve_gear_lobed.
+- `tooth_phase`: {value} Same family-specific parameter as curve_gear_lobed.
+- `backlash`: {value} Same family-specific parameter as curve_gear_lobed.
+- `clearance`: {value} Same family-specific parameter as curve_gear_lobed.
+- `samples`: {value} Same family-specific parameter as curve_gear_lobed.
+- `orientation`: {value} Rotation in degrees.
 
 **Returns:**
 
-- `{geometry}`: Constructed family geometry.
+No return
+
+### Example:
+
+~~~c
+curve_gear_lobed_2d(0.8, 34, 4.8);
+~~~
 
 Back to [module description](#module-lobed).
 
@@ -257,41 +175,6 @@ No return
 
 ~~~c
 curve_gear_lobed_body(1, 24, 4, 8);
-~~~
-
-Back to [module description](#module-lobed).
-
-### Function `curve_gear_lobed_2d`
-
-| lobed 2D gear and body preview | Full size |
-| --- | --- |
-| [![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_2d.png) ![](../images/table-spacer.png) |
-
-
-Emit the complete lobed gear profile as 2D geometry.
-
-**Parameters:**
-
-- `modul`: {value} Tooth module in mm.
-- `tooth_number`: {value} Number of teeth.
-- `bore`: {value} Centre bore diameter in mm.
-- `lobes`: {value} Same family-specific parameter as curve_gear_lobed.
-- `lobe_depth`: {value} Same family-specific parameter as curve_gear_lobed.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_lobed.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_lobed.
-- `backlash`: {value} Same family-specific parameter as curve_gear_lobed.
-- `clearance`: {value} Same family-specific parameter as curve_gear_lobed.
-- `samples`: {value} Same family-specific parameter as curve_gear_lobed.
-- `orientation`: {value} Rotation in degrees.
-
-**Returns:**
-
-No return
-
-### Example:
-
-~~~c
-curve_gear_lobed_2d(0.8, 34, 4.8);
 ~~~
 
 Back to [module description](#module-lobed).
@@ -332,114 +215,22 @@ curve_gear_lobed_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-lobed).
 
-### Function `_cg_lobed_motion_radii`
+### Function `curve_gear_lobed_centre_distance(modul, tooth_number, lobes, lobe_depth, ...)`
 
 
-Evaluate lobed radii at integration midpoints.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `lobes`: {integer >= 2} Number of radial lobes.
-- `lobe_depth`: {number} Normalised lobe amplitude.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array of number}`: Sampled radii in angular order.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)`
-
-
-Evaluate lobed radii at direct mate-construction angles.
+Return the mathematical centre distance for a lobed pair.
 
 **Parameters:**
 
-- `scale`: {number > 0} Base radial scale in millimetres.
-- `lobes`: {integer >= 2} Number of radial lobes.
-- `lobe_depth`: {number} Normalised lobe amplitude.
-- `n`: {integer >= 1, default 360} Number of boundary intervals.
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `lobes`: {integer >= 1, default 4} Number of radial lobes.
+- `lobe_depth`: {0 <= d < 1, default 0.13} Radial modulation depth.
+- `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 
 **Returns:**
 
-- `{array of number}`: Driver radii in angular order.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_centre_distance`
-
-
-Solve the lobed conjugate centre distance.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `lobes`: {integer >= 2} Number of radial lobes.
-- `lobe_depth`: {number} Normalised lobe amplitude.
-- `n`: {integer >= 1, default 360} Number of motion intervals.
-
-**Returns:**
-
-- `{number}`: Conjugate centre distance.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_motion_table`
-
-
-Build the shared lobed phase-motion table.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `lobes`: {integer >= 2} Number of radial lobes.
-- `lobe_depth`: {number} Normalised lobe amplitude.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array}`: Monotonic driver-to-mate phase-motion table.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_mate_points_from_driver`
-
-
-Build lobed mate pitch points by advancing driver angle directly.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `lobes`: {integer >= 2} Number of radial lobes.
-- `lobe_depth`: {number} Normalised lobe amplitude.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-lobed).
-
-### Function `_cg_lobed_mate_points`
-
-
-Build lobed mate pitch points and their shared motion table.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `lobes`: {integer >= 2} Number of radial lobes.
-- `lobe_depth`: {number} Normalised lobe amplitude.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
+- `{number}`: Pair centre distance in mm.
 
 Back to [module description](#module-lobed).
 
@@ -469,25 +260,6 @@ Build the standalone lobed mate boundary at the origin.
 **Returns:**
 
 No return
-
-Back to [module description](#module-lobed).
-
-### Function `curve_gear_lobed_centre_distance(modul, tooth_number, lobes, lobe_depth, ...)`
-
-
-Return the mathematical centre distance for a lobed pair.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `lobes`: {integer >= 1, default 4} Number of radial lobes.
-- `lobe_depth`: {0 <= d < 1, default 0.13} Radial modulation depth.
-- `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
-
-**Returns:**
-
-- `{number}`: Pair centre distance in mm.
 
 Back to [module description](#module-lobed).
 
@@ -551,6 +323,144 @@ curve_gear_lobed_pair(1, 24, 4, 8);
 
 Back to [module description](#module-lobed).
 
+### Function `_cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`
+
+
+Internal lobed construction dispatcher.
+
+**Parameters:**
+
+- `modul`: {number} Tooth module in mm.
+- `tooth_number`: {integer} Number of teeth.
+- `width`: {number} Extrusion width in mm.
+- `bore`: {number} Centre bore diameter in mm.
+- `lobes`: {integer, default 4} Internal construction parameter.
+- `lobe_depth`: {number, default 0.13} Internal construction parameter.
+- `pressure_angle`: {number, default 20} Involute pressure angle in degrees.
+- `tooth_phase`: {number, default 0} Tooth placement phase in degrees.
+- `backlash`: {number, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {number, default undef} Additional radial root clearance in mm.
+- `samples`: {integer, default 720} Pitch-curve or motion-table sampling density.
+- `orientation`: {number, default 0} Single-gear display rotation in degrees.
+- `body_only`: {boolean, default false} Emit the body without teeth.
+
+**Returns:**
+
+- `{geometry}`: Constructed family geometry.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_centre_distance`
+
+
+Solve the lobed conjugate centre distance.
+
+**Parameters:**
+
+- `scale`: {number > 0} Base radial scale.
+- `lobes`: {integer >= 2} Number of radial lobes.
+- `lobe_depth`: {number} Normalised lobe amplitude.
+- `n`: {integer >= 1, default 360} Number of motion intervals.
+
+**Returns:**
+
+- `{number}`: Conjugate centre distance.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)`
+
+
+Evaluate lobed radii at direct mate-construction angles.
+
+**Parameters:**
+
+- `scale`: {number > 0} Base radial scale in millimetres.
+- `lobes`: {integer >= 2} Number of radial lobes.
+- `lobe_depth`: {number} Normalised lobe amplitude.
+- `n`: {integer >= 1, default 360} Number of boundary intervals.
+
+**Returns:**
+
+- `{array of number}`: Driver radii in angular order.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_mate_points`
+
+
+Build lobed mate pitch points and their shared motion table.
+
+**Parameters:**
+
+- `scale`: {number > 0} Base radial scale.
+- `lobes`: {integer >= 2} Number of radial lobes.
+- `lobe_depth`: {number} Normalised lobe amplitude.
+- `D`: {number > 0} Driver-to-mate centre distance.
+- `n`: {integer >= 1, default 360} Number of output points.
+
+**Returns:**
+
+- `{array of points}`: Cartesian mate pitch points.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_mate_points_from_driver`
+
+
+Build lobed mate pitch points by advancing driver angle directly.
+
+**Parameters:**
+
+- `scale`: {number > 0} Base radial scale.
+- `lobes`: {integer >= 2} Number of radial lobes.
+- `lobe_depth`: {number} Normalised lobe amplitude.
+- `D`: {number > 0} Driver-to-mate centre distance.
+- `n`: {integer >= 1, default 360} Number of output points.
+
+**Returns:**
+
+- `{array of points}`: Cartesian mate pitch points.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_motion_radii`
+
+
+Evaluate lobed radii at integration midpoints.
+
+**Parameters:**
+
+- `scale`: {number > 0} Base radial scale.
+- `lobes`: {integer >= 2} Number of radial lobes.
+- `lobe_depth`: {number} Normalised lobe amplitude.
+- `n`: {integer >= 1, default 360} Number of midpoint samples.
+
+**Returns:**
+
+- `{array of number}`: Sampled radii in angular order.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_motion_table`
+
+
+Build the shared lobed phase-motion table.
+
+**Parameters:**
+
+- `scale`: {number > 0} Base radial scale.
+- `lobes`: {integer >= 2} Number of radial lobes.
+- `lobe_depth`: {number} Normalised lobe amplitude.
+- `D`: {number > 0} Driver-to-mate centre distance.
+- `n`: {integer >= 1, default 360} Number of midpoint samples.
+
+**Returns:**
+
+- `{array}`: Monotonic driver-to-mate phase-motion table.
+
+Back to [module description](#module-lobed).
+
 ### Function `_cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`
 
 
@@ -577,6 +487,96 @@ Internal lobed pair construction dispatcher.
 **Returns:**
 
 - `{geometry}`: Constructed family geometry.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_point(scale, lobes, lobe_depth, theta)`
+
+
+Evaluate one Cartesian point on a scaled lobed pitch curve.
+
+**Parameters:**
+
+- `scale`: {number > 0} Mean pitch-radius scale in mm.
+- `lobes`: {integer >= 1} Number of radial lobes.
+- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
+- `theta`: {angle} Polar angle in degrees.
+
+**Returns:**
+
+- `{array}`: Cartesian point `[x, y]` in mm.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_radius(scale, lobes, lobe_depth, theta)`
+
+
+Evaluate a scaled lobed pitch-curve radius.
+
+**Parameters:**
+
+- `scale`: {number > 0} Mean pitch-radius scale in mm.
+- `lobes`: {integer >= 1} Number of radial lobes.
+- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
+- `theta`: {angle} Polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Radius in mm.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_scale(modul, tooth_number, lobes, lobe_depth, n, unit_points=undef)`
+
+
+Scale a unit lobed curve to the requested tooth pitch.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `lobes`: {integer >= 1} Number of radial lobes.
+- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
+- `n`: {integer >= 1, default 720} Number of samples used for arc length.
+- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
+
+**Returns:**
+
+- `{number}`: Mean pitch-radius scale in mm.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_unit_points(lobes, lobe_depth, n)`
+
+
+Sample one complete unit lobed pitch curve.
+
+**Parameters:**
+
+- `lobes`: {integer >= 1} Number of radial lobes.
+- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
+- `n`: {integer >= 1, default 720} Number of samples.
+
+**Returns:**
+
+- `{array}`: Closed list of sampled Cartesian points.
+
+Back to [module description](#module-lobed).
+
+### Function `_cg_lobed_unit_radius(lobes, lobe_depth, theta)`
+
+
+Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
+
+**Parameters:**
+
+- `lobes`: {integer >= 1} Number of radial lobes.
+- `lobe_depth`: {0 <= d < 1} Radial modulation depth.
+- `theta`: {angle} Polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Unit radius at the requested angle.
 
 Back to [module description](#module-lobed).
 

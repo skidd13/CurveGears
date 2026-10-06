@@ -24,32 +24,14 @@ It requires curve_gears_math.scad to have been loaded first.
 
 **Functions**:
 
-> [`_cg_mate_pitch_diagnostics`](#function-_cg_mate_pitch_diagnostics): Return the required numerical and geometric mate diagnostics.
-
 > [`_cg_mate_boundary_from_pitch_points(mate_points, modul, tooth_number, width, bore, ...)`](#function-_cg_mate_boundary_from_pitch_pointsmate_points-modul-tooth_number-width-bore-): Build one mate from its canonical sampled pitch boundary.
+
+> [`_cg_mate_pitch_diagnostics`](#function-_cg_mate_pitch_diagnostics): Return the required numerical and geometric mate diagnostics.
 
 
 ## Functions
 
 The module `Mate generation` defines the following functions.
-
-### Function `_cg_mate_pitch_diagnostics`
-
-
-Return the required numerical and geometric mate diagnostics.
-
-**Parameters:**
-
-- `driver_radii`: {array of number} Driver radii at output angles.
-- `mid_radii`: {array of number} Driver radii at integration midpoints.
-- `D`: {number > 0} Solved centre distance in mm.
-- `mate_points`: {array of points} Directly constructed mate pitch points.
-
-**Returns:**
-
-- `{array}`: Named diagnostic records suitable for echo or test output.
-
-Back to [module description](#module-mate-generation).
 
 ### Function `_cg_mate_boundary_from_pitch_points(mate_points, modul, tooth_number, width, bore, ...)`
 
@@ -76,6 +58,24 @@ Build one mate from its canonical sampled pitch boundary.
 **Returns:**
 
 - `{geometry}`: Extruded mate boundary.
+
+Back to [module description](#module-mate-generation).
+
+### Function `_cg_mate_pitch_diagnostics`
+
+
+Return the required numerical and geometric mate diagnostics.
+
+**Parameters:**
+
+- `driver_radii`: {array of number} Driver radii at output angles.
+- `mid_radii`: {array of number} Driver radii at integration midpoints.
+- `D`: {number > 0} Solved centre distance in mm.
+- `mate_points`: {array of points} Directly constructed mate pitch points.
+
+**Returns:**
+
+- `{array}`: Named diagnostic records suitable for echo or test output.
 
 Back to [module description](#module-mate-generation).
 

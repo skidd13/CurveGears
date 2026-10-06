@@ -24,9 +24,9 @@ construction contracts used by the non-circular families.
 
 > [`curve_gear_circle(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circlemodul-tooth_number-width-bore-): Build a circular reference gear.
 
-> [`curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`](#function-curve_gear_circle_bodymodul-tooth_number-width-bore-samples480): Build the circular reference body without teeth.
-
 > [`curve_gear_circle_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_circle_2dmodul-tooth_number-bore-): Emit the complete circular gear profile as 2D geometry.
+
+> [`curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`](#function-curve_gear_circle_bodymodul-tooth_number-width-bore-samples480): Build the circular reference body without teeth.
 
 > [`curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`](#function-curve_gear_circle_body_2dmodul-tooth_number-bore-samples480-body_offset0): Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
 
@@ -36,47 +36,14 @@ construction contracts used by the non-circular families.
 
 > [`curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circle_pairmodul-tooth_number-width-bore-): Build a meshed or separated circular reference pair.
 
-> [`_cg_circle_radius(modul, tooth_number)`](#function-_cg_circle_radiusmodul-tooth_number): Calculate the circular pitch radius from module and tooth count.
-
 > [`_cg_circle_points(modul, tooth_number, samples=480)`](#function-_cg_circle_pointsmodul-tooth_number-samples480): Sample the circular pitch curve in angular order.
+
+> [`_cg_circle_radius(modul, tooth_number)`](#function-_cg_circle_radiusmodul-tooth_number): Calculate the circular pitch radius from module and tooth count.
 
 
 ## Functions
 
 The module `Circle` defines the following functions.
-
-### Function `_cg_circle_radius(modul, tooth_number)`
-
-
-Calculate the circular pitch radius from module and tooth count.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3} Number of teeth.
-
-**Returns:**
-
-- `{number}`: Pitch radius in millimetres.
-
-Back to [module description](#module-circle).
-
-### Function `_cg_circle_points(modul, tooth_number, samples=480)`
-
-
-Sample the circular pitch curve in angular order.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `samples`: {integer >= 1, default 480} Number of pitch-curve samples.
-
-**Returns:**
-
-- `{array of points}`: Closed circular pitch curve in millimetres.
-
-Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle(modul, tooth_number, width, bore, ...)`
 
@@ -97,29 +64,6 @@ Build a circular reference gear.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0} Additional radial root clearance in mm.
-- `samples`: {integer >= 120, default 480} Circular pitch-curve sampling density.
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-circle).
-
-### Function `curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`
-
-| Circle body preview | Full size |
-| --- | --- |
-| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [Open full-size image](../images/functions/circle/curve_gear_circle_body.png) ![](../images/table-spacer.png) |
-
-
-Build the circular reference body without teeth.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
 - `samples`: {integer >= 120, default 480} Circular pitch-curve sampling density.
 
 **Returns:**
@@ -157,6 +101,29 @@ No return
 ~~~c
 curve_gear_circle_2d(0.8, 34, 4.8);
 ~~~
+
+Back to [module description](#module-circle).
+
+### Function `curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`
+
+| Circle body preview | Full size |
+| --- | --- |
+| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [Open full-size image](../images/functions/circle/curve_gear_circle_body.png) ![](../images/table-spacer.png) |
+
+
+Build the circular reference body without teeth.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `width`: {number > 0} Extrusion width in mm.
+- `bore`: {number >= 0} Centre bore diameter in mm.
+- `samples`: {integer >= 120, default 480} Circular pitch-curve sampling density.
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-circle).
 
@@ -260,6 +227,39 @@ Build a meshed or separated circular reference pair.
 **Returns:**
 
 No return
+
+Back to [module description](#module-circle).
+
+### Function `_cg_circle_points(modul, tooth_number, samples=480)`
+
+
+Sample the circular pitch curve in angular order.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in millimetres.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `samples`: {integer >= 1, default 480} Number of pitch-curve samples.
+
+**Returns:**
+
+- `{array of points}`: Closed circular pitch curve in millimetres.
+
+Back to [module description](#module-circle).
+
+### Function `_cg_circle_radius(modul, tooth_number)`
+
+
+Calculate the circular pitch radius from module and tooth count.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in millimetres.
+- `tooth_number`: {integer >= 3} Number of teeth.
+
+**Returns:**
+
+- `{number}`: Pitch radius in millimetres.
 
 Back to [module description](#module-circle).
 
