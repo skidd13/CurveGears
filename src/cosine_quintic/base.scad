@@ -1,0 +1,19 @@
+/**
+ * @module Cosine Quintic
+ * @brief Signed fifth-power cosine polar pitch curves.
+ */
+include <../common/curve_gears_math.scad>
+
+function _cg_cosine_quintic_unit_radius(theta,depth=.19,harmonic=2) =
+    let(c=cos(harmonic*theta)) 1+depth*(c>=0 ? pow(c,5) : -pow(-c,5));
+
+function _cg_cosine_quintic_unit_points(samples=720,depth=.19,harmonic=2) =
+    [for(i=[0:samples-1]) let(theta=360*i/samples,r=_cg_cosine_quintic_unit_radius(theta,depth,harmonic)) [r*cos(theta),r*sin(theta)]];
+
+function _cg_cosine_quintic_scale(modul,tooth_number,samples=720,depth=.19,harmonic=2,unit_points=undef) =
+    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_cosine_quintic_unit_points(samples,depth,harmonic) : unit_points,_cg_pi);
+
+function _cg_cosine_quintic_points(modul,tooth_number,samples=720,depth=.19,harmonic=2,unit_points=undef) =
+    let(u=is_undef(unit_points) ? _cg_cosine_quintic_unit_points(samples,depth,harmonic) : unit_points,
+        scale=_cg_cosine_quintic_scale(modul,tooth_number,samples,depth,harmonic,u))
+    _cg_scale_points(scale,u);

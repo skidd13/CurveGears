@@ -4,7 +4,7 @@
 
 - [README](../README.md)
 - Families
-  - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
+  - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cosine Quintic](../docs/cosine_quintic.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
   - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Logistic Dwell](../docs/logistic_dwell.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md)
 - Shared
   - [Examples catalogue](README.md) · [Test layout](../tests/README.md)
@@ -64,6 +64,22 @@ Executable examples for the public API and shared construction layers.
 > [`curve_gear_circle_2d`](#function-curve_gear_circle_2d): Render the complete circle gear profile as flat 2D geometry.
 
 > [`curve_gear_circle_body_2d`](#function-curve_gear_circle_body_2d): Render the circle body as flat 2D geometry with a 2 mm inward outer-contour shrink.
+
+> [`curve_gear_cosine_quintic_2d_example`](#function-curve_gear_cosine_quintic_2d_example)
+
+> [`curve_gear_cosine_quintic_body_2d_example`](#function-curve_gear_cosine_quintic_body_2d_example)
+
+> [`curve_gear_cosine_quintic_body_example`](#function-curve_gear_cosine_quintic_body_example)
+
+> [`curve_gear_cosine_quintic_centre_distance_example`](#function-curve_gear_cosine_quintic_centre_distance_example)
+
+> [`curve_gear_cosine_quintic_example`](#function-curve_gear_cosine_quintic_example): Cosine Quintic gear example.
+
+> [`curve_gear_cosine_quintic_mate_example`](#function-curve_gear_cosine_quintic_mate_example)
+
+> [`curve_gear_cosine_quintic_mate_rotation_example`](#function-curve_gear_cosine_quintic_mate_rotation_example)
+
+> [`curve_gear_cosine_quintic_pair_example`](#function-curve_gear_cosine_quintic_pair_example)
 
 > [`curve_gear_cusp_2d`](#function-curve_gear_cusp_2d): Render the complete cusp gear profile as flat 2D geometry.
 
@@ -651,6 +667,126 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/circle/curve_gear_circle_body_2d.scad`](functions/circle/curve_gear_circle_body_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_2d_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_body_2d_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_body_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_centre_distance_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_example`
+
+
+Cosine Quintic gear example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_mate_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_mate_rotation_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_cosine_quintic_pair_example`
+
+
+
 
 **Parameters:**
 
