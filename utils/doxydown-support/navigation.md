@@ -1,7 +1,7 @@
 - [README](@README@)
 - Families
   - [Bézier](@DOCS@bezier.md) · [Cassini](@DOCS@cassini.md) · [Circle](@DOCS@circle.md) · [Cosine Quintic](@DOCS@cosine_quintic.md) · [Cusp](@DOCS@cusp.md) · [Ellipse](@DOCS@ellipse.md) · [Epitrochoid](@DOCS@epitrochoid.md)
-  - [Fourier](@DOCS@fourier.md) · [Hypotrochoid](@DOCS@hypotrochoid.md) · [Lobed](@DOCS@lobed.md) · [Logarithmic spiral](@DOCS@logarithmic_spiral.md) · [Logistic Dwell](@DOCS@logistic_dwell.md) · [Pascal](@DOCS@pascal.md) · [Superformula](@DOCS@superformula.md) · [Tanh Triad](@DOCS@tanh_triad.md)
+  - [Fourier](@DOCS@fourier.md) · [Hypotrochoid](@DOCS@hypotrochoid.md) · [Lobed](@DOCS@lobed.md) · [Logarithmic spiral](@DOCS@logarithmic_spiral.md) · [Logistic Dwell](@DOCS@logistic_dwell.md) · [Pascal](@DOCS@pascal.md) · [Superformula](@DOCS@superformula.md) · [Tanh Triad](@DOCS@tanh_triad.md) · [Temple Fay](@DOCS@temple_fay.md)
 - Shared
   - [Examples catalogue](@EXAMPLES@README.md) · [Test layout](@TESTS@README.md)
   - [Tooth construction](@DOCS@tooth-construction.md) · [Tooth placement](@DOCS@tooth-placement.md) · [Mate motion](@DOCS@mate-motion.md) · [Mate generation](@DOCS@mate-generation.md) · [Pair assembly](@DOCS@pair-assembly.md)

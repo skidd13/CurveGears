@@ -19,7 +19,7 @@ PREVIEW_SHARED_SOURCE_DEPS := $(shell find src/common -type f -name '*.scad' -pr
 PREVIEW_ALL_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
-FAMILIES := bezier cassini circle cosine_quintic cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral logistic_dwell pascal superformula tanh_triad
+FAMILIES := bezier cassini circle cosine_quintic cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral logistic_dwell pascal superformula tanh_triad temple_fay
 CI_REGRESSION_GROUPS := common_math tooth_generation tooth_placement mate_motion $(FAMILIES)
 CI_EXAMPLE_RENDER_GROUPS := core overview $(FAMILIES)
 
@@ -126,7 +126,7 @@ examples: examples/README.md
 	@test -s examples/README.md
 	@test -s "$(MAIN_EXAMPLE)"
 	@for example in $(CORE_EXAMPLES); do test -s "$$example" || { echo "missing core example: $$example"; exit 1; }; done
-	@test "$(words $(API_EXAMPLES))" -eq 118
+	@test "$(words $(API_EXAMPLES))" -eq 126
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
 
@@ -136,9 +136,9 @@ ci-example-manifest:
 		relative=$${example#examples/}; output=$${relative%.scad}.png; \
 		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
 	done > "$(CI_EXAMPLE_MANIFEST)"
-	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 114
-	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 114
-	@echo 'PASS: CI manifest contains all 114 canonical examples'
+	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 122
+	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 122
+	@echo 'PASS: CI manifest contains all 122 canonical examples'
 
 ci-render-examples: ci-example-manifest
 	@set -eu; \
@@ -191,7 +191,7 @@ tests/README.md: $(REGRESSION_TEST_DEPS) $(TEST_COMMON_MATH_HEADER) $(TEST_TOOTH
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
-DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/cosine_quintic.md docs/cusp.md docs/ellipse.md docs/epitrochoid.md docs/fourier.md docs/hypotrochoid.md docs/lobed.md docs/logarithmic_spiral.md docs/logistic_dwell.md docs/pascal.md docs/superformula.md docs/tanh_triad.md docs/tooth-construction.md docs/tooth-placement.md docs/mate-motion.md docs/mate-generation.md docs/pair-assembly.md
+DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/cosine_quintic.md docs/cusp.md docs/ellipse.md docs/epitrochoid.md docs/fourier.md docs/hypotrochoid.md docs/lobed.md docs/logarithmic_spiral.md docs/logistic_dwell.md docs/pascal.md docs/superformula.md docs/tanh_triad.md docs/temple_fay.md docs/tooth-construction.md docs/tooth-placement.md docs/mate-motion.md docs/mate-generation.md docs/pair-assembly.md
 
 FORCE:
 
@@ -240,6 +240,7 @@ $(eval $(call DOXYDOC_PAGE,docs/epitrochoid.md,Epitrochoid,src/epitrochoid/base.
 $(eval $(call DOXYDOC_PAGE,docs/tanh_triad.md,Tanh Triad,src/tanh_triad/base.scad,src/tanh_triad/gear.scad,src/tanh_triad/mate.scad,src/tanh_triad/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/logistic_dwell.md,Logistic Dwell,src/logistic_dwell/base.scad,src/logistic_dwell/gear.scad,src/logistic_dwell/mate.scad,src/logistic_dwell/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/cosine_quintic.md,Cosine Quintic,src/cosine_quintic/base.scad,src/cosine_quintic/gear.scad,src/cosine_quintic/mate.scad,src/cosine_quintic/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/temple_fay.md,Temple Fay,src/temple_fay/base.scad,src/temple_fay/gear.scad,src/temple_fay/mate.scad,src/temple_fay/pair.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-construction.md,Tooth construction,src/common/tooth/generation.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-placement.md,Tooth placement,src/common/tooth/placement.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-motion.md,Mate motion,src/common/mate/motion.scad))

@@ -5,7 +5,7 @@
 - [README](../README.md)
 - Families
   - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cosine Quintic](../docs/cosine_quintic.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
-  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Logistic Dwell](../docs/logistic_dwell.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md)
+  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Logistic Dwell](../docs/logistic_dwell.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md) · [Temple Fay](../docs/temple_fay.md)
 - Shared
   - [Examples catalogue](README.md) · [Test layout](../tests/README.md)
   - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
@@ -148,6 +148,22 @@ Executable examples for the public API and shared construction layers.
 > [`curve_gear_tanh_triad_mate_rotation_example`](#function-curve_gear_tanh_triad_mate_rotation_example): Tanh Triad mate-rotation example.
 
 > [`curve_gear_tanh_triad_pair_example`](#function-curve_gear_tanh_triad_pair_example): Tanh Triad pair example.
+
+> [`curve_gear_temple_fay_2d_example`](#function-curve_gear_temple_fay_2d_example)
+
+> [`curve_gear_temple_fay_body_2d_example`](#function-curve_gear_temple_fay_body_2d_example)
+
+> [`curve_gear_temple_fay_body_example`](#function-curve_gear_temple_fay_body_example)
+
+> [`curve_gear_temple_fay_centre_distance_example`](#function-curve_gear_temple_fay_centre_distance_example)
+
+> [`curve_gear_temple_fay_example`](#function-curve_gear_temple_fay_example): Temple Fay gear example.
+
+> [`curve_gear_temple_fay_mate_example`](#function-curve_gear_temple_fay_mate_example)
+
+> [`curve_gear_temple_fay_mate_rotation_example`](#function-curve_gear_temple_fay_mate_rotation_example)
+
+> [`curve_gear_temple_fay_pair_example`](#function-curve_gear_temple_fay_pair_example)
 
 > [`cusp_curve_gear`](#function-cusp_curve_gear): Render the three-cusp gear with radial teeth whose roots follow the cusp branches.
 
@@ -1369,6 +1385,126 @@ Back to [module description](#module-executable-examples).
 
 
 Tanh Triad pair example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_2d_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_body_2d_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_body_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_centre_distance_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_example`
+
+
+Temple Fay gear example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_mate_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_mate_rotation_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_temple_fay_pair_example`
+
+
+
 
 **Parameters:**
 

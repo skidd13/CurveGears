@@ -5,11 +5,12 @@
  * Each item includes the canonical main example for its family. The showcase
  * therefore follows the examples catalogue automatically; the labels are part
  * of the preview so the silhouettes can be compared without guessing.
- * The 12 maintained families are arranged in a compact four-column grid.
+ * The maintained families are arranged in a compact four-column grid.
  */
 use <functions/bezier/curve_gear_bezier.scad>;
 use <functions/cassini/curve_gear_cassini.scad>;
 use <functions/circle/curve_gear_circle.scad>;
+use <functions/cosine_quintic/curve_gear_cosine_quintic.scad>;
 use <functions/cusp/curve_gear_cusp.scad>;
 use <functions/ellipse/curve_gear_ellipse.scad>;
 use <functions/epitrochoid/curve_gear_epitrochoid.scad>;
@@ -17,8 +18,11 @@ use <functions/fourier/curve_gear_fourier.scad>;
 use <functions/hypotrochoid/curve_gear_hypotrochoid.scad>;
 use <functions/lobed/curve_gear_lobed.scad>;
 use <functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad>;
+use <functions/logistic_dwell/curve_gear_logistic_dwell.scad>;
 use <functions/pascal/curve_gear_pascal.scad>;
 use <functions/superformula/curve_gear_superformula.scad>;
+use <functions/tanh_triad/curve_gear_tanh_triad.scad>;
+use <functions/temple_fay/curve_gear_temple_fay.scad>;
 
 $fn=64;
 
@@ -57,7 +61,15 @@ _showcase_item(-82.5,-40,"LOBED","Crimson")
     _main_example_lobed();
 _showcase_item(-27.5,-40,"LOG SPIRAL","Gold")
     _main_example_logarithmic_spiral();
-_showcase_item(27.5,-40,"PASCAL","Purple")
+_showcase_item(27.5,-40,"LOGISTIC DWELL","DarkViolet")
+    _main_example_logistic_dwell();
+_showcase_item(82.5,-40,"PASCAL","Purple")
     _main_example_pascal();
-_showcase_item(82.5,-40,"SUPERFORMULA","Orange")
+_showcase_item(-82.5,-120,"SUPERFORMULA","Orange")
     _main_example_superformula();
+_showcase_item(-27.5,-120,"TANH TRIAD","SeaGreen")
+    _main_example_tanh_triad();
+_showcase_item(27.5,-120,"TEMPLE FAY","HotPink")
+    _main_example_temple_fay();
+_showcase_item(82.5,-120,"COSINE QUINTIC","RoyalBlue")
+    _main_example_cosine_quintic();

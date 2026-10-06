@@ -18,3 +18,4 @@ include <hypotrochoid/pair.scad>
 include <tanh_triad/pair.scad>
 include <logistic_dwell/pair.scad>
 include <cosine_quintic/pair.scad>
+include <temple_fay/pair.scad>

@@ -18,3 +18,4 @@ include <hypotrochoid/gear.scad>
 include <tanh_triad/gear.scad>
 include <logistic_dwell/gear.scad>
 include <cosine_quintic/gear.scad>
+include <temple_fay/gear.scad>
