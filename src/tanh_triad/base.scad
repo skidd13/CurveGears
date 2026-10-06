@@ -1,6 +1,10 @@
 /**
  * @module Tanh Triad
  * @brief Bounded tanh-modulated third-harmonic polar pitch curves.
+ *
+ * The unit law is `r(theta)=1+0.13*tanh(1.8*sin(3 theta))+0.03*cos(6 theta+20 degrees)`;
+ * the shared arc-length pitch scaler supplies the requested mean module.
+ * Reference: https://en.wikipedia.org/wiki/Hyperbolic_function.
  */
 include <../common/curve_gears_math.scad>
 

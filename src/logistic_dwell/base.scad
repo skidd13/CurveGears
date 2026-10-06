@@ -1,6 +1,10 @@
 /**
  * @module Logistic Dwell
  * @brief Logistic-gated second-harmonic polar pitch curves.
+ *
+ * The unit law is `r(theta)=1+0.2/(1+exp(-8*sin(2 theta)))-0.1`.
+ * The logistic gate creates a controlled dwell and rapid-return interval.
+ * Reference: https://en.wikipedia.org/wiki/Logistic_function.
  */
 include <../common/curve_gears_math.scad>
 

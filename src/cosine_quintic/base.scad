@@ -1,6 +1,10 @@
 /**
  * @module Cosine Quintic
  * @brief Signed fifth-power cosine polar pitch curves.
+ *
+ * The unit law is `r(theta)=1+0.19*sgn(cos(2 theta))*abs(cos(2 theta))^5`.
+ * The odd signed power preserves continuity while flattening the plateaux.
+ * Reference: https://en.wikipedia.org/wiki/Power_function.
  */
 include <../common/curve_gears_math.scad>
 
