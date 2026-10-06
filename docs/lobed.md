@@ -72,9 +72,9 @@ The module `Lobed` defines the following functions.
 
 ### Function `curve_gear_lobed(modul, tooth_number, width, bore, ...)`
 
-| Lobed gear preview | Full size |
+| Lobed gear preview | ⠀ |
 | --- | --- |
-| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed.png) ![](../images/table-spacer.png) |
+| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Public single-gear construction for the lobed family.
@@ -110,9 +110,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_2d`
 
-| lobed 2D gear and body preview | Full size |
+| lobed 2D gear outline | ⠀ |
 | --- | --- |
-| [![lobed 2D gear and body preview](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_2d.png) ![](../images/table-spacer.png) |
+| [![lobed 2D gear outline](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the complete lobed gear profile as 2D geometry.
@@ -145,9 +145,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`
 
-| Lobed body preview | Full size |
+| Lobed body preview | ⠀ |
 | --- | --- |
-| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_body.png) ![](../images/table-spacer.png) |
+| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the lobed body solid without teeth.
@@ -181,9 +181,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body_2d`
 
-| lobed 2D body preview | Full size |
+| lobed 2D body outline | ⠀ |
 | --- | --- |
-| [![lobed 2D body preview](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_body_2d.png) ![](../images/table-spacer.png) |
+| [![lobed 2D body outline](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
@@ -236,9 +236,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`
 
-| Lobed mate preview | Full size |
+| Lobed mate preview | ⠀ |
 | --- | --- |
-| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_mate.png) ![](../images/table-spacer.png) |
+| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the standalone lobed mate boundary at the origin.
@@ -285,9 +285,9 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`
 
-| Lobed pair preview | Full size |
+| Lobed pair preview | ⠀ |
 | --- | --- |
-| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [Open full-size image](../images/functions/lobed/curve_gear_lobed_pair.png) ![](../images/table-spacer.png) |
+| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

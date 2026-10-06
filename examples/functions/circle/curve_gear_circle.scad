@@ -3,6 +3,7 @@
  * @brief Render a Circle gear from the documented pitch-curve family.
  * Source: [`functions/circle/curve_gear_circle.scad`](functions/circle/curve_gear_circle.scad)
  * @image ../images/functions/circle/curve_gear_circle.png curve gear circle preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/circle/gear.scad>;
 module _main_example_circle() {

@@ -68,6 +68,7 @@ function _cg_cassini_mate_points(scale,focus_ratio,D,n=720) = _cg_cassini_mate_p
  * @function curve_gear_cassini_mate
  * @brief Build the standalone conjugate mate for a Cassini driver.
  * @image ../images/functions/cassini/curve_gear_cassini_mate.png Cassini mate preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

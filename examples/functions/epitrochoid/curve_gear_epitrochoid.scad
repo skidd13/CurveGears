@@ -3,6 +3,7 @@
  * @brief Render a scalloped Epitrochoid gear showing the rolling-pen profile.
  * Source: [`functions/epitrochoid/curve_gear_epitrochoid.scad`](functions/epitrochoid/curve_gear_epitrochoid.scad)
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid.png curve_gear_epitrochoid example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/epitrochoid/mate.scad>;
 $fn=64;

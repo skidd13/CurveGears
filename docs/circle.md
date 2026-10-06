@@ -47,9 +47,9 @@ The module `Circle` defines the following functions.
 
 ### Function `curve_gear_circle(modul, tooth_number, width, bore, ...)`
 
-| Circle gear preview | Full size |
+| Circle gear preview | ⠀ |
 | --- | --- |
-| [![Circle gear preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [Open full-size image](../images/functions/circle/curve_gear_circle.png) ![](../images/table-spacer.png) |
+| [![Circle gear preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build a circular reference gear.
@@ -74,9 +74,9 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_2d(modul, tooth_number, bore, ...)`
 
-| Circle 2D gear and body preview | Full size |
+| Circle 2D gear outline | ⠀ |
 | --- | --- |
-| [![Circle 2D gear and body preview](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [Open full-size image](../images/functions/circle/curve_gear_circle_2d.png) ![](../images/table-spacer.png) |
+| [![Circle 2D gear outline](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the complete circular gear profile as 2D geometry.
@@ -106,9 +106,9 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`
 
-| Circle body preview | Full size |
+| Circle body preview | ⠀ |
 | --- | --- |
-| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [Open full-size image](../images/functions/circle/curve_gear_circle_body.png) ![](../images/table-spacer.png) |
+| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the circular reference body without teeth.
@@ -129,9 +129,9 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`
 
-| Circle 2D body preview | Full size |
+| Circle 2D body outline | ⠀ |
 | --- | --- |
-| [![Circle 2D body preview](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [Open full-size image](../images/functions/circle/curve_gear_circle_body_2d.png) ![](../images/table-spacer.png) |
+| [![Circle 2D body outline](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
@@ -174,9 +174,9 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`
 
-| Circle mate preview | Full size |
+| Circle mate preview | ⠀ |
 | --- | --- |
-| [![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [Open full-size image](../images/functions/circle/curve_gear_circle_mate.png) ![](../images/table-spacer.png) |
+| [![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the circular reference mate boundary at the origin.
@@ -201,9 +201,9 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`
 
-| Circle pair preview | Full size |
+| Circle pair preview | ⠀ |
 | --- | --- |
-| [![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [Open full-size image](../images/functions/circle/curve_gear_circle_pair.png) ![](../images/table-spacer.png) |
+| [![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build a meshed or separated circular reference pair.

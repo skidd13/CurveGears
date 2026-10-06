@@ -3,6 +3,7 @@
  * @brief Render the Ellipse body before tooth placement.
  * Source: [`functions/ellipse/curve_gear_ellipse_body.scad`](functions/ellipse/curve_gear_ellipse_body.scad)
  * @image ../images/functions/ellipse/curve_gear_ellipse_body.png curve_gear_ellipse_body example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/ellipse/mate.scad>;
 $fn=64;

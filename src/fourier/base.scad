@@ -90,6 +90,7 @@ module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],
  * @function curve_gear_fourier(modul, tooth_number, width, bore, ...)
  * @brief Build a coefficient-driven Fourier gear.
  * @image ../images/functions/fourier/curve_gear_fourier.png Fourier gear preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -112,6 +113,7 @@ module curve_gear_fourier(modul,tooth_number,width,bore,coefficients=[[2,.10,0]]
  * @function curve_gear_fourier_body(modul, tooth_number, width, bore, ...)
  * @brief Build the Fourier body without teeth.
  * @image ../images/functions/fourier/curve_gear_fourier_body.png Fourier body preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -131,7 +133,8 @@ module curve_gear_fourier_body(modul,tooth_number,width,bore,coefficients=[[2,.1
 /***
  * @function curve_gear_fourier_2d
  * @brief Emit the complete fourier gear profile as 2D geometry.
- * @image ../images/functions/fourier/curve_gear_fourier_2d.png fourier 2D gear and body preview
+ * @image ../images/functions/fourier/curve_gear_fourier_2d.png fourier 2D gear outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
@@ -152,7 +155,8 @@ module curve_gear_fourier_2d(modul, tooth_number, bore, coefficients=[[2,.10,0]]
 /***
  * @function curve_gear_fourier_body_2d
  * @brief Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
- * @image ../images/functions/fourier/curve_gear_fourier_body_2d.png fourier 2D body preview
+ * @image ../images/functions/fourier/curve_gear_fourier_body_2d.png fourier 2D body outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.

@@ -4,6 +4,7 @@ include <base.scad>
  * @function curve_gear_circle(modul, tooth_number, width, bore, ...)
  * @brief Build a circular reference gear.
  * @image ../images/functions/circle/curve_gear_circle.png Circle gear preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -23,6 +24,7 @@ module curve_gear_circle(modul,tooth_number,width,bore,pressure_angle=20,tooth_p
  * @function curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)
  * @brief Build the circular reference body without teeth.
  * @image ../images/functions/circle/curve_gear_circle_body.png Circle body preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -38,7 +40,8 @@ module curve_gear_circle_body(modul,tooth_number,width,bore,samples=480) {
 /***
  * @function curve_gear_circle_2d(modul, tooth_number, bore, ...)
  * @brief Emit the complete circular gear profile as 2D geometry.
- * @image ../images/functions/circle/curve_gear_circle_2d.png Circle 2D gear and body preview
+ * @image ../images/functions/circle/curve_gear_circle_2d.png Circle 2D gear outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param bore {number >= 0} Centre bore diameter in mm.
@@ -58,7 +61,8 @@ module curve_gear_circle_2d(modul,tooth_number,bore,pressure_angle=20,tooth_phas
 /***
  * @function curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)
  * @brief Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
- * @image ../images/functions/circle/curve_gear_circle_body_2d.png Circle 2D body preview
+ * @image ../images/functions/circle/curve_gear_circle_body_2d.png Circle 2D body outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param bore {number >= 0} Centre bore diameter in mm.

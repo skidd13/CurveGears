@@ -3,6 +3,7 @@
  * @brief Render the Fourier body before tooth placement.
  * Source: [`functions/fourier/curve_gear_fourier_body.scad`](functions/fourier/curve_gear_fourier_body.scad)
  * @image ../images/functions/fourier/curve_gear_fourier_body.png curve_gear_fourier_body example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/fourier/mate.scad>;
 $fn=64;

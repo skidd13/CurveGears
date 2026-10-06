@@ -7,6 +7,7 @@
  * local rather than attached to a curve, so the involute flanks and top
  * closure can be inspected without placement hiding their shape.
  * @image ../images/tooth/construction.png Tooth construction preview preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../src/common/curve_gears_math.scad>;
 

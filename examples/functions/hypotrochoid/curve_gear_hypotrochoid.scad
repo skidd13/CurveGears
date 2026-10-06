@@ -3,6 +3,7 @@
  * @brief Render a triangular inner-rolling Hypotrochoid form.
  * Source: [`functions/hypotrochoid/curve_gear_hypotrochoid.scad`](functions/hypotrochoid/curve_gear_hypotrochoid.scad)
  * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid.png curve_gear_hypotrochoid example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/hypotrochoid/gear.scad>;
 $fn=64;

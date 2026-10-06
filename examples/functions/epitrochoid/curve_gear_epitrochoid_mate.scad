@@ -3,6 +3,7 @@
  * @brief Render the conjugate Epitrochoid mate generated from the driver pitch curve.
  * Source: [`functions/epitrochoid/curve_gear_epitrochoid_mate.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate.scad)
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png curve_gear_epitrochoid_mate example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/epitrochoid/mate.scad>;
 $fn=64;

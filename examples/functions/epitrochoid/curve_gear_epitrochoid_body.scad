@@ -3,6 +3,7 @@
  * @brief Render the Epitrochoid body before tooth placement.
  * Source: [`functions/epitrochoid/curve_gear_epitrochoid_body.scad`](functions/epitrochoid/curve_gear_epitrochoid_body.scad)
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body.png curve_gear_epitrochoid_body example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/epitrochoid/mate.scad>;
 $fn=64;

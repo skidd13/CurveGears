@@ -3,6 +3,7 @@
  * @function curve_gear_epitrochoid(modul, tooth_number, width, bore, ...)
  * @brief Build an epitrochoid non-circular gear.
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid.png Epitrochoid gear preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -66,6 +67,7 @@ module curve_gear_epitrochoid(modul,tooth_number,width,bore,major_ratio=3,rollin
  * @function curve_gear_epitrochoid_body(modul, tooth_number, width, bore, ...)
  * @brief Build the epitrochoid body solid without teeth.
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body.png Epitrochoid body preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -89,7 +91,8 @@ module curve_gear_epitrochoid_body(modul,tooth_number,width,bore,major_ratio=3,r
 /***
  * @function curve_gear_epitrochoid_2d
  * @brief Emit the complete epitrochoid gear profile as 2D geometry.
- * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png epitrochoid 2D gear and body preview
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png epitrochoid 2D gear outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
@@ -112,7 +115,8 @@ module curve_gear_epitrochoid_2d(modul, tooth_number, bore, major_ratio=3, rolli
 /***
  * @function curve_gear_epitrochoid_body_2d
  * @brief Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
- * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png epitrochoid 2D body preview
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png epitrochoid 2D body outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.

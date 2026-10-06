@@ -75,9 +75,9 @@ The module `Epitrochoid` defines the following functions.
 
 ### Function `curve_gear_epitrochoid(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid gear preview | Full size |
+| Epitrochoid gear preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid gear preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [Open full-size image](../images/functions/epitrochoid/curve_gear_epitrochoid.png) ![](../images/table-spacer.png) |
+| [![Epitrochoid gear preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Public single-gear construction for the epitrochoid family.
@@ -114,9 +114,9 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_2d`
 
-| epitrochoid 2D gear and body preview | Full size |
+| epitrochoid 2D gear outline | ⠀ |
 | --- | --- |
-| [![epitrochoid 2D gear and body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [Open full-size image](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) ![](../images/table-spacer.png) |
+| [![epitrochoid 2D gear outline](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the complete epitrochoid gear profile as 2D geometry.
@@ -150,9 +150,9 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_body(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid body preview | Full size |
+| Epitrochoid body preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [Open full-size image](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) ![](../images/table-spacer.png) |
+| [![Epitrochoid body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the epitrochoid body solid without teeth.
@@ -187,9 +187,9 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_body_2d`
 
-| epitrochoid 2D body preview | Full size |
+| epitrochoid 2D body outline | ⠀ |
 | --- | --- |
-| [![epitrochoid 2D body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [Open full-size image](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) ![](../images/table-spacer.png) |
+| [![epitrochoid 2D body outline](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
@@ -244,9 +244,9 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_mate(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid mate preview | Full size |
+| Epitrochoid mate preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid mate preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [Open full-size image](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) ![](../images/table-spacer.png) |
+| [![Epitrochoid mate preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the standalone epitrochoid mate boundary at the origin.
@@ -295,9 +295,9 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_pair(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid pair preview | Full size |
+| Epitrochoid pair preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid pair preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [Open full-size image](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) ![](../images/table-spacer.png) |
+| [![Epitrochoid pair preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

@@ -3,6 +3,7 @@
  * @brief Render the conjugate Pascal mate generated from the driver pitch curve.
  * Source: [`functions/pascal/curve_gear_pascal_mate.scad`](functions/pascal/curve_gear_pascal_mate.scad)
  * @image ../images/functions/pascal/curve_gear_pascal_mate.png curve_gear_pascal_mate example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/pascal/mate.scad>;
 $fn=64;

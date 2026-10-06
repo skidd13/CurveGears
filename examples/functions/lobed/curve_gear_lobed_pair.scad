@@ -3,6 +3,7 @@
  * @brief Render a complete Lobed gear pair with derived conjugate motion.
  * Source: [`functions/lobed/curve_gear_lobed_pair.scad`](functions/lobed/curve_gear_lobed_pair.scad)
  * @image ../images/functions/lobed/curve_gear_lobed_pair.png curve_gear_lobed_pair example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/lobed/pair.scad>;
 $fn=64;

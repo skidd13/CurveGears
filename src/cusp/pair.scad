@@ -51,6 +51,7 @@ module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,sampl
  * @function curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
  * @image ../images/functions/cusp/curve_gear_cusp_pair.png Cusp pair preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by 3} Shared tooth count.
  * @param width {number > 0} Gear extrusion width in mm.

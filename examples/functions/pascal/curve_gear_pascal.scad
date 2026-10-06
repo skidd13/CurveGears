@@ -3,6 +3,7 @@
  * @brief Render a heart-like Pascal gear with a pronounced non-convex waist.
  * Source: [`functions/pascal/curve_gear_pascal.scad`](functions/pascal/curve_gear_pascal.scad)
  * @image ../images/functions/pascal/curve_gear_pascal.png curve_gear_pascal example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/pascal/mate.scad>;
 $fn=64;

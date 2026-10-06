@@ -116,9 +116,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_2d`
 
-| bezier 2D gear and body preview | Full size |
+| bezier 2D gear outline | ⠀ |
 | --- | --- |
-| [![bezier 2D gear and body preview](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_2d.png) ![](../images/table-spacer.png) |
+| [![bezier 2D gear outline](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the complete bezier gear profile as 2D geometry.
@@ -150,9 +150,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`
 
-| Bézier body preview | Full size |
+| Bézier body preview | ⠀ |
 | --- | --- |
-| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_body.png) ![](../images/table-spacer.png) |
+| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the closed Bézier body without teeth.
@@ -179,9 +179,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body_2d`
 
-| bezier 2D body preview | Full size |
+| bezier 2D body outline | ⠀ |
 | --- | --- |
-| [![bezier 2D body preview](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_body_2d.png) ![](../images/table-spacer.png) |
+| [![bezier 2D body outline](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
@@ -214,9 +214,9 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_mate`
 
-| Bézier mate preview | Full size |
+| Bézier mate preview | ⠀ |
 | --- | --- |
-| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [Open full-size image](../images/functions/bezier/curve_gear_bezier_mate.png) ![](../images/table-spacer.png) |
+| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build a conjugate mate for an admissible radial Bézier pitch curve.

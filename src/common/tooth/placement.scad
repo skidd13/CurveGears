@@ -507,6 +507,7 @@ function _cg_placement_after_preflight(points,arc,perimeter,body,modul,tooth_num
  * @function _cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)
  * @brief Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
  * @image ../images/tooth/placement.png Tooth placement result preview
+ * @image ../images/table-spacer.png ⠀
  * @param points {array of points} Sampled closed pitch contour.
  * @param arc {array} Cumulative closed-contour arc-length table.
  * @param perimeter {number > 0} Total contour perimeter in mm.

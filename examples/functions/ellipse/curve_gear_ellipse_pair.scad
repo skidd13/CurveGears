@@ -3,6 +3,7 @@
  * @brief Render a complete Ellipse gear pair with derived conjugate motion.
  * Source: [`functions/ellipse/curve_gear_ellipse_pair.scad`](functions/ellipse/curve_gear_ellipse_pair.scad)
  * @image ../images/functions/ellipse/curve_gear_ellipse_pair.png curve_gear_ellipse_pair example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/ellipse/pair.scad>;
 $fn=64;

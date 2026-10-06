@@ -3,6 +3,7 @@
  * @brief Render a thin-waisted peanut-shaped Cassini gear.
  * Source: [`functions/cassini/curve_gear_cassini.scad`](functions/cassini/curve_gear_cassini.scad)
  * @image ../images/functions/cassini/curve_gear_cassini.png curve_gear_cassini example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/cassini/gear.scad>;
 $fn=64;

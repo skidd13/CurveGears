@@ -70,9 +70,9 @@ The module `Hypotrochoid` defines the following functions.
 
 ### Function `curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)`
 
-| Hypotrochoid gear preview | Full size |
+| Hypotrochoid gear preview | ⠀ |
 | --- | --- |
-| [![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) ![](../images/table-spacer.png) |
+| [![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build a hypotrochoid non-circular gear.
@@ -107,9 +107,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_2d`
 
-| hypotrochoid 2D gear and body preview | Full size |
+| hypotrochoid 2D gear outline | ⠀ |
 | --- | --- |
-| [![hypotrochoid 2D gear and body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) ![](../images/table-spacer.png) |
+| [![hypotrochoid 2D gear outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the complete hypotrochoid gear profile as 2D geometry.
@@ -143,9 +143,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body`
 
-| Hypotrochoid body preview | Full size |
+| Hypotrochoid body preview | ⠀ |
 | --- | --- |
-| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) ![](../images/table-spacer.png) |
+| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the hypotrochoid body solid without teeth.
@@ -174,9 +174,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body_2d`
 
-| hypotrochoid 2D body preview | Full size |
+| hypotrochoid 2D body outline | ⠀ |
 | --- | --- |
-| [![hypotrochoid 2D body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) ![](../images/table-spacer.png) |
+| [![hypotrochoid 2D body outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
 
 
 Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
@@ -231,9 +231,9 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_mate`
 
-| Hypotrochoid mate preview | Full size |
+| Hypotrochoid mate preview | ⠀ |
 | --- | --- |
-| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [Open full-size image](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) ![](../images/table-spacer.png) |
+| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
 
 
 Build the standalone conjugate mate for a hypotrochoid driver.

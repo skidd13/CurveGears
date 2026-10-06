@@ -3,6 +3,7 @@
  * @brief Render a square four-lobed gear with a clear radial rhythm.
  * Source: [`functions/lobed/curve_gear_lobed.scad`](functions/lobed/curve_gear_lobed.scad)
  * @image ../images/functions/lobed/curve_gear_lobed.png curve_gear_lobed example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/lobed/mate.scad>;
 $fn=64;

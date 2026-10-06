@@ -3,6 +3,7 @@
  * @function curve_gear_lobed(modul, tooth_number, width, bore, ...)
  * @brief Build a lobed non-circular gear.
  * @image ../images/functions/lobed/curve_gear_lobed.png Lobed gear preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -65,6 +66,7 @@ module curve_gear_lobed(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pr
  * @function curve_gear_lobed_body(modul, tooth_number, width, bore, ...)
  * @brief Build the lobed body solid without teeth.
  * @image ../images/functions/lobed/curve_gear_lobed_body.png Lobed body preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -87,7 +89,8 @@ module curve_gear_lobed_body(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.
 /***
  * @function curve_gear_lobed_2d
  * @brief Emit the complete lobed gear profile as 2D geometry.
- * @image ../images/functions/lobed/curve_gear_lobed_2d.png lobed 2D gear and body preview
+ * @image ../images/functions/lobed/curve_gear_lobed_2d.png lobed 2D gear outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
@@ -109,7 +112,8 @@ module curve_gear_lobed_2d(modul, tooth_number, bore, lobes=4, lobe_depth=0.13, 
 /***
  * @function curve_gear_lobed_body_2d
  * @brief Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
- * @image ../images/functions/lobed/curve_gear_lobed_body_2d.png lobed 2D body preview
+ * @image ../images/functions/lobed/curve_gear_lobed_body_2d.png lobed 2D body outline
+ * @image ../images/table-spacer-512.png ⠀
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.

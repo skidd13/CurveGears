@@ -3,6 +3,7 @@
  * @brief Render a complete Superformula gear pair with derived conjugate motion.
  * Source: [`functions/superformula/curve_gear_superformula_pair.scad`](functions/superformula/curve_gear_superformula_pair.scad)
  * @image ../images/functions/superformula/curve_gear_superformula_pair.png curve_gear_superformula_pair example preview
+ * @image ../images/table-spacer.png ⠀
  */
 include <../../../src/superformula/pair.scad>;
 $fn=64;

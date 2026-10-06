@@ -2,6 +2,7 @@
  * @function curve_gear_logarithmic_spiral_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated logarithmic-spiral pair.
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png Logarithmic spiral pair preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

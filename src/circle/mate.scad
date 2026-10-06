@@ -15,6 +15,7 @@ function curve_gear_circle_centre_distance(modul,tooth_number) = modul*tooth_num
  * @function curve_gear_circle_mate(modul, tooth_number, width, bore, ...)
  * @brief Build the circular reference mate boundary at the origin.
  * @image ../images/functions/circle/curve_gear_circle_mate.png Circle mate preview
+ * @image ../images/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
