@@ -16,3 +16,4 @@ include <bezier/mate.scad>
 include <cassini/gear.scad>
 include <hypotrochoid/gear.scad>
 include <tanh_triad/gear.scad>
+include <logistic_dwell/gear.scad>

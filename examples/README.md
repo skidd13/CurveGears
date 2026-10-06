@@ -5,7 +5,7 @@
 - [README](../README.md)
 - Families
   - [Bézier](../docs/bezier.md) · [Cassini](../docs/cassini.md) · [Circle](../docs/circle.md) · [Cusp](../docs/cusp.md) · [Ellipse](../docs/ellipse.md) · [Epitrochoid](../docs/epitrochoid.md)
-  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md)
+  - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Logistic Dwell](../docs/logistic_dwell.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md)
 - Shared
   - [Examples catalogue](README.md) · [Test layout](../tests/README.md)
   - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
@@ -92,6 +92,22 @@ Executable examples for the public API and shared construction layers.
 > [`curve_gear_logarithmic_spiral_2d`](#function-curve_gear_logarithmic_spiral_2d): Render the complete logarithmic_spiral gear profile as flat 2D geometry.
 
 > [`curve_gear_logarithmic_spiral_body_2d`](#function-curve_gear_logarithmic_spiral_body_2d): Render the logarithmic_spiral body as flat 2D geometry with a 2 mm inward outer-contour shrink.
+
+> [`curve_gear_logistic_dwell_2d_example`](#function-curve_gear_logistic_dwell_2d_example)
+
+> [`curve_gear_logistic_dwell_body_2d_example`](#function-curve_gear_logistic_dwell_body_2d_example)
+
+> [`curve_gear_logistic_dwell_body_example`](#function-curve_gear_logistic_dwell_body_example)
+
+> [`curve_gear_logistic_dwell_centre_distance_example`](#function-curve_gear_logistic_dwell_centre_distance_example)
+
+> [`curve_gear_logistic_dwell_example`](#function-curve_gear_logistic_dwell_example): Logistic Dwell gear example.
+
+> [`curve_gear_logistic_dwell_mate_example`](#function-curve_gear_logistic_dwell_mate_example)
+
+> [`curve_gear_logistic_dwell_mate_rotation_example`](#function-curve_gear_logistic_dwell_mate_rotation_example)
+
+> [`curve_gear_logistic_dwell_pair_example`](#function-curve_gear_logistic_dwell_pair_example)
 
 > [`curve_gear_pascal_2d`](#function-curve_gear_pascal_2d): Render the complete pascal gear profile as flat 2D geometry.
 
@@ -901,6 +917,126 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_2d_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_body_2d_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_body_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_centre_distance_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_example`
+
+
+Logistic Dwell gear example.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_mate_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_mate_rotation_example`
+
+
+
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `curve_gear_logistic_dwell_pair_example`
+
+
+
 
 **Parameters:**
 

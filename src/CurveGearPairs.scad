@@ -16,3 +16,4 @@ include <bezier/pair.scad>
 include <cassini/pair.scad>
 include <hypotrochoid/pair.scad>
 include <tanh_triad/pair.scad>
+include <logistic_dwell/pair.scad>
