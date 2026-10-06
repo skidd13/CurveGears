@@ -37,7 +37,7 @@ The module `Mate generation` defines the following functions.
 
 | Mate boundary assembly preview | ⠀ |
 | --- | --- |
-| [![Mate boundary assembly preview](../images/tooth/assembly.png)](../images/tooth/assembly.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Mate boundary assembly preview](../images/tooth/assembly.png)](../images/tooth/assembly.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build one mate from its canonical sampled pitch boundary.

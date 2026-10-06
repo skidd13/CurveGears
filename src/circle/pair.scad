@@ -5,7 +5,7 @@ include <../common/pair/assembly.scad>
  * @function curve_gear_circle_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated circular reference pair.
  * @image ../images/functions/circle/curve_gear_circle_pair.png Circle pair preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

@@ -118,7 +118,7 @@ Back to [module description](#module-bezier).
 
 | bezier 2D gear outline | ⠀ |
 | --- | --- |
-| [![bezier 2D gear outline](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![bezier 2D gear outline](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete bezier gear profile as 2D geometry.
@@ -152,7 +152,7 @@ Back to [module description](#module-bezier).
 
 | Bézier body preview | ⠀ |
 | --- | --- |
-| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the closed Bézier body without teeth.
@@ -181,7 +181,7 @@ Back to [module description](#module-bezier).
 
 | bezier 2D body outline | ⠀ |
 | --- | --- |
-| [![bezier 2D body outline](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![bezier 2D body outline](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
@@ -216,7 +216,7 @@ Back to [module description](#module-bezier).
 
 | Bézier mate preview | ⠀ |
 | --- | --- |
-| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build a conjugate mate for an admissible radial Bézier pitch curve.

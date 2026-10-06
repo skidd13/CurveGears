@@ -2,7 +2,7 @@
  * @function curve_gear_cassini_pair
  * @brief Build a meshed or separated Cassini driver/mate pair.
  * @image ../images/functions/cassini/curve_gear_cassini_pair.png Cassini pair preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

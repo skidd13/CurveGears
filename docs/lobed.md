@@ -74,7 +74,7 @@ The module `Lobed` defines the following functions.
 
 | Lobed gear preview | ⠀ |
 | --- | --- |
-| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Public single-gear construction for the lobed family.
@@ -112,7 +112,7 @@ Back to [module description](#module-lobed).
 
 | lobed 2D gear outline | ⠀ |
 | --- | --- |
-| [![lobed 2D gear outline](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![lobed 2D gear outline](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete lobed gear profile as 2D geometry.
@@ -147,7 +147,7 @@ Back to [module description](#module-lobed).
 
 | Lobed body preview | ⠀ |
 | --- | --- |
-| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the lobed body solid without teeth.
@@ -183,7 +183,7 @@ Back to [module description](#module-lobed).
 
 | lobed 2D body outline | ⠀ |
 | --- | --- |
-| [![lobed 2D body outline](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![lobed 2D body outline](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
@@ -238,7 +238,7 @@ Back to [module description](#module-lobed).
 
 | Lobed mate preview | ⠀ |
 | --- | --- |
-| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the standalone lobed mate boundary at the origin.
@@ -287,7 +287,7 @@ Back to [module description](#module-lobed).
 
 | Lobed pair preview | ⠀ |
 | --- | --- |
-| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

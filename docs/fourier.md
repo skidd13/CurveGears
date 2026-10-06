@@ -76,7 +76,7 @@ The module `Fourier` defines the following functions.
 
 | Fourier gear preview | ⠀ |
 | --- | --- |
-| [![Fourier gear preview](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Fourier gear preview](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build a coefficient-driven Fourier gear.
@@ -111,7 +111,7 @@ Back to [module description](#module-fourier).
 
 | fourier 2D gear outline | ⠀ |
 | --- | --- |
-| [![fourier 2D gear outline](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![fourier 2D gear outline](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete fourier gear profile as 2D geometry.
@@ -145,7 +145,7 @@ Back to [module description](#module-fourier).
 
 | Fourier body preview | ⠀ |
 | --- | --- |
-| [![Fourier body preview](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Fourier body preview](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the Fourier body without teeth.
@@ -174,7 +174,7 @@ Back to [module description](#module-fourier).
 
 | fourier 2D body outline | ⠀ |
 | --- | --- |
-| [![fourier 2D body outline](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![fourier 2D body outline](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
@@ -227,7 +227,7 @@ Back to [module description](#module-fourier).
 
 | Fourier mate preview | ⠀ |
 | --- | --- |
-| [![Fourier mate preview](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Fourier mate preview](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the standalone dynamically conjugate Fourier mate.
@@ -274,7 +274,7 @@ Back to [module description](#module-fourier).
 
 | Fourier pair preview | ⠀ |
 | --- | --- |
-| [![Fourier pair preview](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Fourier pair preview](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build a meshed or separated Fourier pair using one shared motion table.

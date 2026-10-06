@@ -3,7 +3,7 @@
  * @brief Render the conjugate Hypotrochoid mate generated from the driver pitch curve.
  * Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate.scad)
  * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png curve_gear_hypotrochoid_mate example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/hypotrochoid/mate.scad>;
 $fn=64;

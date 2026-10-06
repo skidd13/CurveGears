@@ -3,7 +3,7 @@
  * @brief Render the conjugate Logarithmic spiral mate generated from the driver pitch curve.
  * Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.scad)
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png curve_gear_logarithmic_spiral_mate example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/logarithmic_spiral/mate.scad>;
 $fn=64;

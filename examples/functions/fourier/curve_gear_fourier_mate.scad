@@ -3,7 +3,7 @@
  * @brief Render the conjugate Fourier mate generated from the driver pitch curve.
  * Source: [`functions/fourier/curve_gear_fourier_mate.scad`](functions/fourier/curve_gear_fourier_mate.scad)
  * @image ../images/functions/fourier/curve_gear_fourier_mate.png curve_gear_fourier_mate example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/fourier/mate.scad>;
 $fn=64;

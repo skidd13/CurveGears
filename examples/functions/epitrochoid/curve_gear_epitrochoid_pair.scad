@@ -3,7 +3,7 @@
  * @brief Render a complete Epitrochoid gear pair with derived conjugate motion.
  * Source: [`functions/epitrochoid/curve_gear_epitrochoid_pair.scad`](functions/epitrochoid/curve_gear_epitrochoid_pair.scad)
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png curve_gear_epitrochoid_pair example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/epitrochoid/pair.scad>;
 $fn=64;

@@ -3,7 +3,7 @@
  * @brief Render a Logarithmic spiral gear from the documented pitch-curve family.
  * Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral.scad)
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png curve_gear_logarithmic_spiral example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/logarithmic_spiral/mate.scad>;
 $fn=64;

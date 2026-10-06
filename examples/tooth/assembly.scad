@@ -8,7 +8,7 @@
  * _cg_final_outline_from_placements, so the body intervals replaced by teeth
  * can be checked as one continuous polygon.
  * @image ../images/tooth/assembly.png Tooth assembly preview preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../src/common/curve_gears_math.scad>;
 

@@ -77,7 +77,7 @@ The module `Epitrochoid` defines the following functions.
 
 | Epitrochoid gear preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid gear preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Epitrochoid gear preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Public single-gear construction for the epitrochoid family.
@@ -116,7 +116,7 @@ Back to [module description](#module-epitrochoid).
 
 | epitrochoid 2D gear outline | ⠀ |
 | --- | --- |
-| [![epitrochoid 2D gear outline](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![epitrochoid 2D gear outline](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete epitrochoid gear profile as 2D geometry.
@@ -152,7 +152,7 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid body preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Epitrochoid body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the epitrochoid body solid without teeth.
@@ -189,7 +189,7 @@ Back to [module description](#module-epitrochoid).
 
 | epitrochoid 2D body outline | ⠀ |
 | --- | --- |
-| [![epitrochoid 2D body outline](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![epitrochoid 2D body outline](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
@@ -246,7 +246,7 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid mate preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid mate preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Epitrochoid mate preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the standalone epitrochoid mate boundary at the origin.
@@ -297,7 +297,7 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid pair preview | ⠀ |
 | --- | --- |
-| [![Epitrochoid pair preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Epitrochoid pair preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

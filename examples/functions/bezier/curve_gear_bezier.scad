@@ -3,7 +3,7 @@
  * @brief Render a smooth asymmetric Bézier gear with a soft teardrop outline.
  * Source: [`functions/bezier/curve_gear_bezier.scad`](functions/bezier/curve_gear_bezier.scad)
  * @image ../images/functions/bezier/curve_gear_bezier.png curve_gear_bezier example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/bezier/base.scad>;
 $fn=64;

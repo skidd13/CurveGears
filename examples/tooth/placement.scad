@@ -10,7 +10,7 @@
  * is inset beneath the source curve, while the production tooth
  * boundary is shown in full so each tooth visibly stands on the edge.
  * @image ../images/tooth/placement.png Tooth placement preview preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../src/common/curve_gears_math.scad>;
 

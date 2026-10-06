@@ -3,7 +3,7 @@
  * @brief Render the Hypotrochoid body before tooth placement.
  * Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body.scad)
  * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png curve_gear_hypotrochoid_body example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/hypotrochoid/gear.scad>;
 $fn=64;

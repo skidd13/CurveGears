@@ -3,7 +3,7 @@
  * @brief Render the Logarithmic spiral body before tooth placement.
  * Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.scad)
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png curve_gear_logarithmic_spiral_body example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/logarithmic_spiral/mate.scad>;
 $fn=64;

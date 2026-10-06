@@ -81,7 +81,7 @@ The module `Superformula` defines the following functions.
 
 | Superformula gear preview | ⠀ |
 | --- | --- |
-| [![Superformula gear preview](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Superformula gear preview](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Public single-gear construction for the superformula family.
@@ -124,7 +124,7 @@ Back to [module description](#module-superformula).
 
 | superformula 2D gear outline | ⠀ |
 | --- | --- |
-| [![superformula 2D gear outline](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![superformula 2D gear outline](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete superformula gear profile as 2D geometry.
@@ -163,7 +163,7 @@ Back to [module description](#module-superformula).
 
 | Superformula body preview | ⠀ |
 | --- | --- |
-| [![Superformula body preview](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Superformula body preview](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the superformula body solid without teeth.
@@ -203,7 +203,7 @@ Back to [module description](#module-superformula).
 
 | superformula 2D body outline | ⠀ |
 | --- | --- |
-| [![superformula 2D body outline](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![superformula 2D body outline](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
@@ -266,7 +266,7 @@ Back to [module description](#module-superformula).
 
 | Superformula mate preview | ⠀ |
 | --- | --- |
-| [![Superformula mate preview](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Superformula mate preview](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the standalone superformula mate boundary at the origin.
@@ -323,7 +323,7 @@ Back to [module description](#module-superformula).
 
 | Superformula pair preview | ⠀ |
 | --- | --- |
-| [![Superformula pair preview](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Superformula pair preview](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

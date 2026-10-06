@@ -72,7 +72,7 @@ The module `Hypotrochoid` defines the following functions.
 
 | Hypotrochoid gear preview | ⠀ |
 | --- | --- |
-| [![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Hypotrochoid gear preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build a hypotrochoid non-circular gear.
@@ -109,7 +109,7 @@ Back to [module description](#module-hypotrochoid).
 
 | hypotrochoid 2D gear outline | ⠀ |
 | --- | --- |
-| [![hypotrochoid 2D gear outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![hypotrochoid 2D gear outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete hypotrochoid gear profile as 2D geometry.
@@ -145,7 +145,7 @@ Back to [module description](#module-hypotrochoid).
 
 | Hypotrochoid body preview | ⠀ |
 | --- | --- |
-| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the hypotrochoid body solid without teeth.
@@ -176,7 +176,7 @@ Back to [module description](#module-hypotrochoid).
 
 | hypotrochoid 2D body outline | ⠀ |
 | --- | --- |
-| [![hypotrochoid 2D body outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![hypotrochoid 2D body outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
@@ -233,7 +233,7 @@ Back to [module description](#module-hypotrochoid).
 
 | Hypotrochoid mate preview | ⠀ |
 | --- | --- |
-| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the standalone conjugate mate for a hypotrochoid driver.

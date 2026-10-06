@@ -3,7 +3,7 @@
  * @brief Render the complete lobed gear profile as flat 2D geometry.
  * Source: [`functions/lobed/curve_gear_lobed_2d.scad`](functions/lobed/curve_gear_lobed_2d.scad)
  * @image ../images/functions/lobed/curve_gear_lobed_2d.png lobed 2D gear outline
- * @image ../images/table-spacer-512.png ⠀
+ * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
 include <../../../src/lobed/gear.scad>;
-curve_gear_lobed_2d(0.8, 34, 4.8, lobes=4, lobe_depth=0.13);
+curve_gear_lobed_2d(0.8, 34, 4.8, lobes=4, lobe_depth=0.13, samples=240);

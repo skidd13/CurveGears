@@ -49,7 +49,7 @@ The module `Circle` defines the following functions.
 
 | Circle gear preview | ⠀ |
 | --- | --- |
-| [![Circle gear preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Circle gear preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build a circular reference gear.
@@ -76,7 +76,7 @@ Back to [module description](#module-circle).
 
 | Circle 2D gear outline | ⠀ |
 | --- | --- |
-| [![Circle 2D gear outline](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![Circle 2D gear outline](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete circular gear profile as 2D geometry.
@@ -108,7 +108,7 @@ Back to [module description](#module-circle).
 
 | Circle body preview | ⠀ |
 | --- | --- |
-| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the circular reference body without teeth.
@@ -131,7 +131,7 @@ Back to [module description](#module-circle).
 
 | Circle 2D body outline | ⠀ |
 | --- | --- |
-| [![Circle 2D body outline](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![Circle 2D body outline](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
@@ -176,7 +176,7 @@ Back to [module description](#module-circle).
 
 | Circle mate preview | ⠀ |
 | --- | --- |
-| [![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the circular reference mate boundary at the origin.
@@ -203,7 +203,7 @@ Back to [module description](#module-circle).
 
 | Circle pair preview | ⠀ |
 | --- | --- |
-| [![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build a meshed or separated circular reference pair.

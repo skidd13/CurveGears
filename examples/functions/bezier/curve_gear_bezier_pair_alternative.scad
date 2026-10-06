@@ -3,7 +3,7 @@
  * @brief Bézier asymmetric pair alternative: The same visibly non-circular Bézier curve and its derived mate.
  * Source: [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad)
  * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier asymmetric pair alternative preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/bezier/pair.scad>;
 

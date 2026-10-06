@@ -71,7 +71,7 @@ The module `Ellipse` defines the following functions.
 
 | Ellipse gear preview | ⠀ |
 | --- | --- |
-| [![Ellipse gear preview](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Ellipse gear preview](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Public single-gear construction for the ellipse family.
@@ -108,7 +108,7 @@ Back to [module description](#module-ellipse).
 
 | ellipse 2D gear outline | ⠀ |
 | --- | --- |
-| [![ellipse 2D gear outline](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![ellipse 2D gear outline](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete ellipse gear profile as 2D geometry.
@@ -142,7 +142,7 @@ Back to [module description](#module-ellipse).
 
 | Ellipse body preview | ⠀ |
 | --- | --- |
-| [![Ellipse body preview](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Ellipse body preview](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the elliptical body solid without teeth.
@@ -177,7 +177,7 @@ Back to [module description](#module-ellipse).
 
 | ellipse 2D body outline | ⠀ |
 | --- | --- |
-| [![ellipse 2D body outline](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![ellipse 2D body outline](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
@@ -230,7 +230,7 @@ Back to [module description](#module-ellipse).
 
 | Ellipse mate preview | ⠀ |
 | --- | --- |
-| [![Ellipse mate preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Ellipse mate preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the standalone elliptical mate boundary at the origin.
@@ -277,7 +277,7 @@ Back to [module description](#module-ellipse).
 
 | Ellipse pair preview | ⠀ |
 | --- | --- |
-| [![Ellipse pair preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Ellipse pair preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

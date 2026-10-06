@@ -460,7 +460,7 @@ Back to [module description](#module-tooth-generation).
 
 | Validated tooth candidate preview | ⠀ |
 | --- | --- |
-| [![Validated tooth candidate preview](../images/tooth/construction.png)](../images/tooth/construction.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Validated tooth candidate preview](../images/tooth/construction.png)](../images/tooth/construction.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Return one cached, validated local candidate tooth.

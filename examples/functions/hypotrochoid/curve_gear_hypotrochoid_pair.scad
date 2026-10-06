@@ -3,7 +3,7 @@
  * @brief Render a complete Hypotrochoid gear pair with derived conjugate motion.
  * Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair.scad)
  * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png curve_gear_hypotrochoid_pair example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/hypotrochoid/pair.scad>;
 $fn=64;

@@ -65,7 +65,7 @@ function _cg_ellipse_mate_points(a,b,D,n=480) = _cg_ellipse_mate_points_from_dri
  * @function curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)
  * @brief Build the standalone elliptical mate boundary at the origin.
  * @image ../images/functions/ellipse/curve_gear_ellipse_mate.png Ellipse mate preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

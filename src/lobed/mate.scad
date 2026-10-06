@@ -71,7 +71,7 @@ function _cg_lobed_mate_points(scale,lobes,lobe_depth,D,n=360) = _cg_lobed_mate_
  * @function curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)
  * @brief Build the standalone lobed mate boundary at the origin.
  * @image ../images/functions/lobed/curve_gear_lobed_mate.png Lobed mate preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

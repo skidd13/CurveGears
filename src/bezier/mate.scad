@@ -118,7 +118,7 @@ function _cg_bezier_mate_centre_distance(control_points,scale,n) =
  * @function curve_gear_bezier_mate
  * @brief Build a conjugate mate for an admissible radial Bézier pitch curve.
  * @image ../images/functions/bezier/curve_gear_bezier_mate.png Bézier mate preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

@@ -3,7 +3,7 @@
  * @brief Render a complete Logarithmic spiral gear pair with derived conjugate motion.
  * Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.scad)
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png curve_gear_logarithmic_spiral_pair example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/logarithmic_spiral/pair.scad>;
 $fn=64;

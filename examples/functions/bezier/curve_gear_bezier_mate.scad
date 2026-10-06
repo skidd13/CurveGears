@@ -3,7 +3,7 @@
  * @brief Render the conjugate Bézier mate generated from the driver pitch curve.
  * Source: [`functions/bezier/curve_gear_bezier_mate.scad`](functions/bezier/curve_gear_bezier_mate.scad)
  * @image ../images/functions/bezier/curve_gear_bezier_mate.png curve_gear_bezier_mate example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/bezier/mate.scad>;
 $fn=64;

@@ -80,7 +80,7 @@ The module `Pascal` defines the following functions.
 
 | Pascal gear preview | ⠀ |
 | --- | --- |
-| [![Pascal gear preview](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Pascal gear preview](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Public single-gear construction for the pascal family.
@@ -117,7 +117,7 @@ Back to [module description](#module-pascal).
 
 | pascal 2D gear outline | ⠀ |
 | --- | --- |
-| [![pascal 2D gear outline](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![pascal 2D gear outline](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the complete pascal gear profile as 2D geometry.
@@ -151,7 +151,7 @@ Back to [module description](#module-pascal).
 
 | Pascal body preview | ⠀ |
 | --- | --- |
-| [![Pascal body preview](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Pascal body preview](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the Pascal body solid without teeth.
@@ -186,7 +186,7 @@ Back to [module description](#module-pascal).
 
 | pascal 2D body outline | ⠀ |
 | --- | --- |
-| [![pascal 2D body outline](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) | [![⠀](../images/table-spacer-512.png)](../images/table-spacer-512.png) |
+| [![pascal 2D body outline](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 Emit the pascal body as 2D geometry with an optional signed outer-contour offset.
@@ -239,7 +239,7 @@ Back to [module description](#module-pascal).
 
 | Pascal mate preview | ⠀ |
 | --- | --- |
-| [![Pascal mate preview](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Pascal mate preview](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Build the standalone Pascal mate boundary at the origin.
@@ -286,7 +286,7 @@ Back to [module description](#module-pascal).
 
 | Pascal pair preview | ⠀ |
 | --- | --- |
-| [![Pascal pair preview](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) | [![⠀](../images/table-spacer.png)](../images/table-spacer.png) |
+| [![Pascal pair preview](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 Pair geometry uses the single-gear parameters documented in gear.scad.

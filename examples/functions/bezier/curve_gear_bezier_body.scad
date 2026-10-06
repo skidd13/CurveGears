@@ -3,7 +3,7 @@
  * @brief Render the Bézier body before tooth placement.
  * Source: [`functions/bezier/curve_gear_bezier_body.scad`](functions/bezier/curve_gear_bezier_body.scad)
  * @image ../images/functions/bezier/curve_gear_bezier_body.png curve_gear_bezier_body example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/bezier/base.scad>;
 $fn=64;

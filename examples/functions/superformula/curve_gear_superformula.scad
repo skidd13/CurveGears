@@ -3,7 +3,7 @@
  * @brief Render a Superformula gear from the documented pitch-curve family.
  * Source: [`functions/superformula/curve_gear_superformula.scad`](functions/superformula/curve_gear_superformula.scad)
  * @image ../images/functions/superformula/curve_gear_superformula.png curve_gear_superformula example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/superformula/mate.scad>;
 $fn=64;

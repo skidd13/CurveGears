@@ -3,7 +3,7 @@
  * @brief Render a Ellipse gear from the documented pitch-curve family.
  * Source: [`functions/ellipse/curve_gear_ellipse.scad`](functions/ellipse/curve_gear_ellipse.scad)
  * @image ../images/functions/ellipse/curve_gear_ellipse.png curve_gear_ellipse example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/ellipse/mate.scad>;
 $fn=64;

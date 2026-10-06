@@ -6,7 +6,7 @@ include <../common/mate/placement.scad>
  * @function curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)
  * @brief Build the standalone static reference mate boundary at the origin.
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png Logarithmic spiral mate preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  * A fixed 180-degree placement is applied by the static pair assembly; this
  * module does not claim dynamic conjugacy.
  * @param modul {number > 0} Tooth module in mm.

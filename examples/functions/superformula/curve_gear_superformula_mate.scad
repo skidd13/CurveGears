@@ -3,7 +3,7 @@
  * @brief Render the conjugate Superformula mate generated from the driver pitch curve.
  * Source: [`functions/superformula/curve_gear_superformula_mate.scad`](functions/superformula/curve_gear_superformula_mate.scad)
  * @image ../images/functions/superformula/curve_gear_superformula_mate.png curve_gear_superformula_mate example preview
- * @image ../images/table-spacer.png ⠀
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/superformula/mate.scad>;
 $fn=64;
