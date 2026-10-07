@@ -370,6 +370,8 @@ Family-specific pipeline, contract and invalid-input fixtures.
 
 > [`circle_full_pipeline`](#function-circle_full_pipeline): Verify the complete Circle gear, mate, and pair entry points.
 
+> [`cosine_quintic_full_pipeline`](#function-cosine_quintic_full_pipeline): Verify the complete Cosine Quintic gear, mate and pair entry points.
+
 > [`cusp_envelope_collision_probe`](#function-cusp_envelope_collision_probe): Check that sampled intermediate driver poses clear the swept-envelope mate.
 
 > [`cusp_full_pipeline`](#function-cusp_full_pipeline): Render the cusp gear, body, swept-envelope mate, and separated pair.
@@ -588,6 +590,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`circle/full_pipeline.scad`](circle/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cosine_quintic_full_pipeline`
+
+
+Verify the complete Cosine Quintic gear, mate and pair entry points.
 
 **Parameters:**
 
