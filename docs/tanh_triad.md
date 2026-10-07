@@ -30,9 +30,13 @@ Reference: https://en.wikipedia.org/wiki/Hyperbolic_function.
 
 > [`curve_gear_tanh_triad_body_2d`](#function-curve_gear_tanh_triad_body_2d): Build the tanh-modulated 2D body outline.
 
-> [`curve_gear_tanh_triad_centre_distance`](#function-curve_gear_tanh_triad_centre_distance): Build a Tanh Triad gear pair.
+> [`curve_gear_tanh_triad_centre_distance`](#function-curve_gear_tanh_triad_centre_distance): Return the solved centre distance for a Tanh Triad pair.
 
 > [`curve_gear_tanh_triad_mate`](#function-curve_gear_tanh_triad_mate): Build a Tanh Triad mating gear.
+
+> [`curve_gear_tanh_triad_mate_rotation`](#function-curve_gear_tanh_triad_mate_rotation): Return the mate rotation at a requested Tanh Triad driver phase.
+
+> [`curve_gear_tanh_triad_pair`](#function-curve_gear_tanh_triad_pair): Build a Tanh Triad gear pair.
 
 
 ## Functions
@@ -207,38 +211,8 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_centre_distance`
 
-| Tanh Triad pair 1 | Tanh Triad pair 2 |
-| --- | --- |
-| [![Tanh Triad pair 1](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [![Tanh Triad pair 2](../images/functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.png) |
 
-
-
-function curve_gear_tanh_triad_centre_distance(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720) = let(scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction)) _cg_tanh_triad_centre_distance(scale,transition,crest,correction,samples);
-/** @function curve_gear_tanh_triad_mate_rotation
-
-function curve_gear_tanh_triad_mate_rotation(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720,phase=0) = let(scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction),D=_cg_tanh_triad_centre_distance(scale,transition,crest,correction,samples),motion=_cg_tanh_triad_motion_table(scale,transition,crest,correction,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
-include <mate.scad>
-include <../common/pair/assembly.scad>
-
-/***
-@function curve_gear_tanh_triad_pair
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Return the solved centre distance for a Tanh Triad pair.
 
 **Parameters:**
 
@@ -247,34 +221,11 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 - `transition`: {number} Transition.
 - `crest`: {number} Crest.
 - `correction`: {number} Correction.
-- `samples`: {integer} Samples. */
-- `modul`: {number} Tooth module.
-- `tooth_number`: {integer} Tooth count.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
 - `samples`: {integer} Samples.
-- `phase`: {number} Driver phase. */
-- `modul`: {number} Tooth module.
-- `tooth_number`: {integer} Tooth count.
-- `width`: {number} Width.
-- `bore`: {number} Bore.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `pressure_angle`: {number} Pressure angle.
-- `samples`: {integer} Samples.
-- `phase`: {number} Pair phase.
-- `together_built`: {boolean} Mesh pair.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `tooth_phase`: {number} Tooth phase.
-- `driver_color`: {string} Driver colour.
-- `mate_color`: {string} Mate colour.
 
 **Returns:**
 
-No return
+- `{number}`: Fixed centre distance in millimetres.
 
 Back to [module description](#module-tanh-triad).
 
@@ -312,6 +263,77 @@ Back to [module description](#module-tanh-triad).
 - `backlash`: {number} Backlash.
 - `clearance`: {number} Clearance.
 - `samples`: {integer} Samples.
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-tanh-triad).
+
+### Function `curve_gear_tanh_triad_mate_rotation`
+
+
+Return the mate rotation at a requested Tanh Triad driver phase.
+
+**Parameters:**
+
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `transition`: {number} Transition.
+- `crest`: {number} Crest.
+- `correction`: {number} Correction.
+- `samples`: {integer} Samples.
+- `phase`: {number} Driver phase.
+
+**Returns:**
+
+- `{angle}`: Mate display rotation in degrees.
+
+Back to [module description](#module-tanh-triad).
+
+### Function `curve_gear_tanh_triad_pair`
+
+| Tanh Triad pair 1 | Tanh Triad pair 2 |
+| --- | --- |
+| [![Tanh Triad pair 1](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [![Tanh Triad pair 2](../images/functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.png) |
+
+
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Parameters:**
+
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `transition`: {number} Transition.
+- `crest`: {number} Crest.
+- `correction`: {number} Correction.
+- `pressure_angle`: {number} Pressure angle.
+- `samples`: {integer} Samples.
+- `phase`: {number} Pair phase.
+- `together_built`: {boolean} Mesh pair.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `tooth_phase`: {number} Tooth phase.
+- `driver_color`: {string} Driver colour.
+- `mate_color`: {string} Mate colour.
 
 **Returns:**
 

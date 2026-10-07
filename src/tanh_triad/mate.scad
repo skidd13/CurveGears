@@ -47,22 +47,28 @@ module curve_gear_tanh_triad_mate(modul,tooth_number,width,bore,transition=1.8,c
     _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
-/** @function curve_gear_tanh_triad_centre_distance
- *
- * @param modul {number} Tooth module.
- * @param tooth_number {integer} Tooth count.
- * @param transition {number} Transition.
- * @param crest {number} Crest.
- * @param correction {number} Correction.
- * @param samples {integer} Samples. */
-function curve_gear_tanh_triad_centre_distance(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720) = let(scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction)) _cg_tanh_triad_centre_distance(scale,transition,crest,correction,samples);
-/** @function curve_gear_tanh_triad_mate_rotation
- *
+/***
+ * @function curve_gear_tanh_triad_centre_distance
+ * @brief Return the solved centre distance for a Tanh Triad pair.
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
  * @param transition {number} Transition.
  * @param crest {number} Crest.
  * @param correction {number} Correction.
  * @param samples {integer} Samples.
- * @param phase {number} Driver phase. */
+ * @return {number} Fixed centre distance in millimetres.
+ */
+function curve_gear_tanh_triad_centre_distance(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720) = let(scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction)) _cg_tanh_triad_centre_distance(scale,transition,crest,correction,samples);
+/***
+ * @function curve_gear_tanh_triad_mate_rotation
+ * @brief Return the mate rotation at a requested Tanh Triad driver phase.
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param transition {number} Transition.
+ * @param crest {number} Crest.
+ * @param correction {number} Correction.
+ * @param samples {integer} Samples.
+ * @param phase {number} Driver phase.
+ * @return {angle} Mate display rotation in degrees.
+ */
 function curve_gear_tanh_triad_mate_rotation(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720,phase=0) = let(scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction),D=_cg_tanh_triad_centre_distance(scale,transition,crest,correction,samples),motion=_cg_tanh_triad_motion_table(scale,transition,crest,correction,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
