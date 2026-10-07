@@ -422,6 +422,8 @@ Family-specific pipeline, contract and invalid-input fixtures.
 
 > [`logarithmic_spiral_wraparound`](#function-logarithmic_spiral_wraparound): Nautilus wraparound: the final/first placement boundary is exercised with
 
+> [`logistic_dwell_full_pipeline`](#function-logistic_dwell_full_pipeline): Verify the complete Logistic Dwell gear, mate and pair entry points.
+
 > [`pascal_full_pipeline`](#function-pascal_full_pipeline): Verify the complete Pascal gear, mate, and pair entry points.
 
 > [`pascal_pair_pipeline`](#function-pascal_pair_pipeline): Verify Pascal pair assembly and conjugate mate placement.
@@ -982,6 +984,21 @@ Back to [module description](#module-family-integration).
 Source: [`logarithmic_spiral/wraparound.scad`](logarithmic_spiral/wraparound.scad)
 
 a phase near one full turn and the radial return remains canonical.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `logistic_dwell_full_pipeline`
+
+
+Verify the complete Logistic Dwell gear, mate and pair entry points.
 
 **Parameters:**
 
