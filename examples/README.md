@@ -16,6 +16,11 @@ Each entry is catalogued as a function in one Doxydown examples module. The sour
 ## Module `Executable examples`
 
 Executable examples for the public API and shared construction layers.
+Examples use the logo palette from `palette.scad`: petrol teal (#087F8C)
+for drivers and their parts, and warm copper (#C87533) for mates.
+The 3D placement and assembly diagrams use pale violet (#EDC4FF) for tooth
+details, defined separately in `tooth/palette.scad`. The 2D construction
+diagram uses the shared white fill and teal outline.
 
 ### Brief content:
 
@@ -275,7 +280,7 @@ Executable examples for the public API and shared construction layers.
 
 > [`tooth_assembly`](#function-tooth_assembly): Tooth assembly preview: Compare placed tooth boundaries with the final assembled outline.
 
-> [`tooth_construction`](#function-tooth_construction): Tooth construction preview: Render one validated cached local tooth candidate.
+> [`tooth_construction`](#function-tooth_construction): Tooth construction preview: Render one validated cached local tooth candidate in 2D.
 
 > [`tooth_placement`](#function-tooth_placement): Tooth placement preview: Render cached teeth placed along a sinusoidal edge of a body.
 
@@ -2525,13 +2530,13 @@ Back to [module description](#module-executable-examples).
 
 | Tooth construction preview preview | ⠀ |
 | --- | --- |
-| [![Tooth construction preview preview](../images/tooth/construction.png)](../images/tooth/construction.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tooth construction preview preview](../images/tooth/construction_2d.png)](../images/tooth/construction_2d.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
-Source: [`tooth/construction.scad`](tooth/construction.scad)
+Source: [`tooth/construction_2d.scad`](tooth/construction_2d.scad)
 
 This is the standalone output of tooth/generation.scad. It is intentionally
-local rather than attached to a curve, so the involute flanks and top
+a 2D polygon rather than attached to a curve, so the involute flanks and top
 closure can be inspected without placement hiding their shape.
 
 **Parameters:**

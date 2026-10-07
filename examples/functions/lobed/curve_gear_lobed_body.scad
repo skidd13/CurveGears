@@ -6,5 +6,7 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/lobed/mate.scad>;
+include <../../palette.scad>;
 $fn=64;
+color(example_driver_color)
 curve_gear_lobed_body(.8,34,4,4.8,lobes=4,lobe_depth=.13,samples=240);

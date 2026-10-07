@@ -4,4 +4,6 @@
  * Source: [`cusp/curve_gear_cusp_body.scad`](cusp/curve_gear_cusp_body.scad)
  */
 use <../../../src/cusp/gear.scad>
+include <../../palette.scad>;
+color(example_driver_color)
 curve_gear_cusp_body(1.2,36,4,4.8);

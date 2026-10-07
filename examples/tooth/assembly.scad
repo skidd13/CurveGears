@@ -11,6 +11,8 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../src/common/curve_gears_math.scad>;
+include <../palette.scad>;
+include <palette.scad>;
 
 $fn=96;
 modul=.8;
@@ -32,11 +34,11 @@ assert(len(selected)==tooth_number,str("assembly showcase expected all teeth pla
 assembled=_cg_final_outline_from_placements(body,arc,perimeter,selected);
 
 translate([-panel_offset,0,0]) {
-    color("DarkSeaGreen")
+    color(example_driver_color)
         linear_extrude(height=width,convexity=4)
             polygon(body);
     for(placement=selected)
-        color("DarkOrange")
+        color(example_tooth_color)
             translate([0,0,.05])
                 linear_extrude(height=width+.1,convexity=4)
                     polygon(placement[6]);
@@ -47,7 +49,7 @@ translate([-panel_offset,0,0]) {
 }
 
 translate([panel_offset,0,0]) {
-    color("SteelBlue")
+    color(example_driver_color)
         linear_extrude(height=width,convexity=4)
             polygon(assembled);
     color("DimGray")

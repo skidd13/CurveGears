@@ -6,4 +6,6 @@
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
 include <../../../src/hypotrochoid/gear.scad>;
+include <../../palette.scad>;
+color(example_driver_color)
 curve_gear_hypotrochoid_2d(0.8, 34, 4.8, samples=360);

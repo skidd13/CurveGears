@@ -6,8 +6,10 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/ellipse/mate.scad>;
+include <../../palette.scad>;
 $fn=64;
 module _main_example_ellipse() {
     curve_gear_ellipse(.8,34,4,4.8,eccentricity=.72,samples=240);
 }
+color(example_driver_color)
 _main_example_ellipse();

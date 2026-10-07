@@ -6,4 +6,6 @@
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
 include <../../../src/superformula/gear.scad>;
+include <../../palette.scad>;
+color(example_driver_color)
 curve_gear_superformula_body_2d(0.5, 80, 4.8, symmetry=5, n1=0.9, n2=3.4, n3=3.4, samples=240);

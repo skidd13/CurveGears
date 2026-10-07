@@ -13,6 +13,8 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../src/common/curve_gears_math.scad>;
+include <../palette.scad>;
+include <palette.scad>;
 
 $fn=96;
 modul=1.2;
@@ -50,7 +52,7 @@ display_points=concat(
         [x,wave_base+wave_height*sin(360*wave_periods*i/(wave_samples-1))-display_inset]],
     [[-display_half_width,wave_base-display_inset]]);
 
-color("DarkSeaGreen")
+color(example_driver_color)
     linear_extrude(height=4,convexity=4)
         polygon(display_points);
 
@@ -58,7 +60,7 @@ for (placement=placements)
     if (placement[0]=="placed"
         && placement[3]>wave_start
         && placement[3]<wave_end)
-        color("DarkOrange")
+        color(example_tooth_color)
             translate([0,0,.05])
                 linear_extrude(height=4.1,convexity=4)
                     polygon(placement[6]);

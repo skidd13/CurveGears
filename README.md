@@ -1,5 +1,7 @@
 # CurveGears
 
+![CurveGears](images/curvegears-logo.png)
+
 ## Beyond the circle
 
 What happens when a gear no longer has to be round?

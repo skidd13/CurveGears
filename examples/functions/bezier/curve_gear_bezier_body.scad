@@ -6,6 +6,7 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/bezier/base.scad>;
+include <../../palette.scad>;
 $fn=64;
 example_controls=[
     [1.25,0],[1.25,.65],[.85,1.15],[0,1.15],
@@ -13,4 +14,5 @@ example_controls=[
     [-1.25,-.45],[-.65,-.8],[0,-.8],
     [.65,-.8],[1.25,-.45],[1.25,0]
 ];
+color(example_driver_color)
 curve_gear_bezier_body(.8,34,4,4.8,control_points=example_controls,samples=240);

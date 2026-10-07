@@ -6,4 +6,6 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/circle/mate.scad>
+include <../../palette.scad>;
+color(example_mate_color)
 curve_gear_circle_mate(.8,34,4,4.8);

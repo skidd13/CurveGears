@@ -11,9 +11,9 @@
         "cgal-face-front": "#ffffff",
         "cgal-face-back": "#ffffff",
         "cgal-face-2d": "#ffffff",
-        "cgal-edge-front": "#147d78",
-        "cgal-edge-back": "#147d78",
-        "cgal-edge-2d": "#147d78",
+        "cgal-edge-front": "#087f8c",
+        "cgal-edge-back": "#087f8c",
+        "cgal-edge-2d": "#087f8c",
         "crosshair": "#ffffff"
     }
 }

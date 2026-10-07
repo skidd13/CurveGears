@@ -2,4 +2,6 @@
  * @brief Tanh Triad 2D example.
  */
 include <../../../src/tanh_triad/gear.scad>
+include <../../palette.scad>;
+color(example_driver_color)
 curve_gear_tanh_triad_2d(.8,34,4.8,samples=240);

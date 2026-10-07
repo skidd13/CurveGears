@@ -6,8 +6,10 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/cassini/gear.scad>;
+include <../../palette.scad>;
 $fn=64;
 module _main_example_cassini() {
     curve_gear_cassini(.8,34,4,4.8,focus_ratio=.92,samples=360);
 }
+color(example_driver_color)
 _main_example_cassini();

@@ -6,4 +6,6 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/circle/gear.scad>;
+include <../../palette.scad>;
+color(example_driver_color)
 curve_gear_circle_body(.8,34,4,4.8);

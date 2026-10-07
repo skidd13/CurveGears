@@ -6,5 +6,7 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/logarithmic_spiral/mate.scad>;
+include <../../palette.scad>;
 $fn=64;
+color(example_driver_color)
 curve_gear_logarithmic_spiral_body(.8,34,4,4.8,sectors=1,growth_rate=1.17,samples=240);

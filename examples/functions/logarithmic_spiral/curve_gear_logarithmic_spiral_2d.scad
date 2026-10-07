@@ -6,4 +6,6 @@
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
 include <../../../src/logarithmic_spiral/gear.scad>;
+include <../../palette.scad>;
+color(example_driver_color)
 curve_gear_logarithmic_spiral_2d(0.8, 34, 4.8, sectors=1, growth_rate=1.17, samples=240);

@@ -6,8 +6,10 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/pascal/mate.scad>;
+include <../../palette.scad>;
 $fn=64;
 module _main_example_pascal() {
     curve_gear_pascal(.8,34,4,4.8,eccentricity=.60,samples=240);
 }
+color(example_driver_color)
 _main_example_pascal();

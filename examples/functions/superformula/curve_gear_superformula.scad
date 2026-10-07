@@ -6,8 +6,10 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/superformula/mate.scad>;
+include <../../palette.scad>;
 $fn=64;
 module _main_example_superformula() {
     curve_gear_superformula(.5,80,4,4.8,symmetry=5,n1=.9,n2=3.4,n3=3.4,samples=240);
 }
+color(example_driver_color)
 _main_example_superformula();

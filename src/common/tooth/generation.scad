@@ -447,7 +447,7 @@ function _cg_validate_candidate_flanks(flanks) =
 /**
  * @function _cg_reference_tooth_candidate(pitch_radius, modul, tooth_number, ...)
  * @brief Return one cached, validated local candidate tooth.
- * @image ../images/tooth/construction.png Validated tooth candidate preview
+ * @image ../images/tooth/construction_2d.png Validated tooth candidate preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  * @param pitch_radius {number > 0} Pitch radius used to scale the reference tooth.
  * @param modul {number > 0} Tooth module.

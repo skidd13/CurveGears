@@ -6,8 +6,10 @@
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
 include <../../../src/fourier/mate.scad>;
+include <../../palette.scad>;
 $fn=64;
 module _main_example_fourier() {
     curve_gear_fourier(.8,34,4,4.8,coefficients=[[2,.22,0],[3,.08,30]],samples=240);
 }
+color(example_driver_color)
 _main_example_fourier();

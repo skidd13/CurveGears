@@ -29,8 +29,8 @@ MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
 MAIN_EXAMPLES := $(foreach family,$(FAMILIES),examples/functions/$(family)/curve_gear_$(family).scad)
 MAIN_EXAMPLE_IMAGES := $(patsubst examples/%.scad,images/%.png,$(MAIN_EXAMPLES))
-CORE_EXAMPLES := examples/tooth/construction.scad examples/tooth/placement.scad examples/tooth/assembly.scad
-CORE_IMAGES := images/tooth/construction.png images/tooth/placement.png images/tooth/assembly.png
+CORE_EXAMPLES := examples/tooth/construction_2d.scad examples/tooth/placement.scad examples/tooth/assembly.scad
+CORE_IMAGES := $(patsubst examples/%.scad,images/%.png,$(CORE_EXAMPLES))
 API_EXAMPLES := $(shell find examples/functions -type f -name '*.scad' -print | sort)
 API_GEOMETRY_EXAMPLES := $(filter-out %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(API_EXAMPLES))
 API_IMAGES := $(patsubst examples/%.scad,images/%.png,$(API_GEOMETRY_EXAMPLES))
@@ -83,12 +83,14 @@ images: $(MAIN_IMAGE) api-images $(CORE_IMAGES)
 
 api-images: $(API_IMAGES)
 
-$(filter %_2d.png,$(API_IMAGES)): CAMERA=0,0,0,0,0,0,0
-$(filter %_2d.png,$(API_IMAGES)): COLORSCHEME=$(API_2D_COLORSCHEME)
-$(filter %_2d.png,$(API_IMAGES)): IMAGE_SIZE=$(API_2D_IMAGE_SIZE)
-$(filter %_2d.png,$(API_IMAGES)): utils/openscad/white-outline.json
+$(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): CAMERA=0,0,0,0,0,0,0
+$(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): COLORSCHEME=$(API_2D_COLORSCHEME)
+$(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): IMAGE_SIZE=$(API_2D_IMAGE_SIZE)
+$(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): utils/openscad/white-outline.json
 $(API_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
+$(API_IMAGES) $(CORE_IMAGES): examples/palette.scad
 $(CORE_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
+$(CORE_IMAGES): examples/tooth/palette.scad
 
 define FAMILY_API_IMAGE_SOURCE_DEPS
 $(filter images/functions/$(1)/%,$(API_IMAGES)): $(shell find src/$(1) -type f -name '*.scad' -print | sort)
@@ -393,7 +395,7 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test -s "$(MAIN_IMAGE)"
 	@grep -Fq "$(MAIN_IMAGE)" README.md
 	@for image in $(CORE_IMAGES); do test -s "$$image" || { echo "missing core image: $$image"; exit 1; }; done
-	@grep -Fq '../images/tooth/construction.png' docs/tooth-construction.md
+	@grep -Fq '../images/tooth/construction_2d.png' docs/tooth-construction.md
 	@grep -Fq '../images/tooth/placement.png' docs/tooth-placement.md
 	@grep -Fq 'examples/README.md' README.md
 	@for image in $(API_IMAGES); do test -s "$$image" || { echo "missing API image: $$image"; exit 1; }; done
