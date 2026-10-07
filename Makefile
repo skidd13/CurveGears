@@ -136,9 +136,9 @@ ci-example-manifest:
 		relative=$${example#examples/}; output=$${relative%.scad}.png; \
 		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
 	done > "$(CI_EXAMPLE_MANIFEST)"
-	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 122
-	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 122
-	@echo 'PASS: CI manifest contains all 122 canonical examples'
+	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 130
+	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 130
+	@echo 'PASS: CI manifest contains all 130 canonical examples'
 
 ci-render-examples: ci-example-manifest
 	@set -eu; \
