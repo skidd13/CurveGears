@@ -322,14 +322,14 @@ $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REG
 test: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
 	@if printf '%s\n' "$(REGRESSION_FAMILIES)" | grep -qw cusp; then \
 		mkdir -p "$(REGRESSION_DIR)/cusp"; \
-		for phase in 0.25 30.25; do \
-			log="$(REGRESSION_DIR)/cusp/envelope_$${phase}.log"; output="$(REGRESSION_DIR)/cusp/envelope_$${phase}.stl"; \
+		for cusps in 3 5; do for phase in 0.25 30.25 54.25; do \
+			log="$(REGRESSION_DIR)/cusp/envelope_$${cusps}_$${phase}.log"; output="$(REGRESSION_DIR)/cusp/envelope_$${cusps}_$${phase}.stl"; \
 			rm -f "$$log" "$$output"; \
-			$(OPENSCAD) -o "$$output" -D "phase=$$phase" tests/cusp/envelope_solver_collision_probe.scad > "$$log" 2>&1 || true; \
-			grep -Fq 'Current top level object is empty.' "$$log" || { cat "$$log"; echo "cusp envelope collision at driver phase $$phase"; exit 1; }; \
+			$(OPENSCAD) -o "$$output" -D "cusps=$$cusps" -D "phase=$$phase" tests/cusp/envelope_solver_collision_probe.scad > "$$log" 2>&1 || true; \
+			grep -Fq 'Current top level object is empty.' "$$log" || { cat "$$log"; echo "$$cusps-cusp envelope collision at driver phase $$phase"; exit 1; }; \
 			! grep -q 'ERROR:' "$$log" || { cat "$$log"; exit 1; }; \
-		done; \
-		echo 'PASS: cusp swept envelope clears the driver at intermediate phases'; \
+		done; done; \
+		echo 'PASS: three- and five-cusp swept envelopes clear the driver at intermediate phases'; \
 	fi
 	$(PYTHON) -m utils.regression.check $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 

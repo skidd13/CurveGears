@@ -191,7 +191,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`cusp_curve_gear`](#function-cusp_curve_gear): Render the three-cusp gear with radial teeth whose roots follow the cusp branches.
 
-> [`cusp_curve_gear_alternative`](#function-cusp_curve_gear_alternative): Cusp alternative: A thin plate contrasts with the thick canonical gear; the bore remains 4.8 mm. The deltoid pitch law is fixed; the validated 36-tooth count is retained while thickness reveals the body structure.
+> [`cusp_curve_gear_alternative`](#function-cusp_curve_gear_alternative): Cusp alternative: Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
 
 > [`cusp_curve_gear_body`](#function-cusp_curve_gear_body): Render the three-cusp deltoid body with its integrated cusp-tip teeth.
 
@@ -1731,7 +1731,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/cusp/curve_gear_cusp_alternative.scad`](functions/cusp/curve_gear_cusp_alternative.scad)
-A thin plate contrasts with the thick canonical gear; the bore remains 4.8 mm. The deltoid pitch law is fixed; the validated 36-tooth count is retained while thickness reveals the body structure.
+Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
 
 **Parameters:**
 
@@ -1826,7 +1826,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/cusp/curve_gear_cusp_pair_alternative.scad`](functions/cusp/curve_gear_cusp_pair_alternative.scad)
-A thin plate contrasts with the thick canonical gear; the bore remains 4.8 mm. The deltoid pitch law is fixed; the validated 36-tooth count is retained while thickness reveals the body structure.
+Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
 
 **Parameters:**
 

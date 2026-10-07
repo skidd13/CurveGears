@@ -6,12 +6,13 @@
  */
 include <../../src/cusp/pair.scad>
 
+cusps=3;
 modul=1.2;
-teeth=36;
+teeth=cusps==3 ? 36 : 12*cusps;
 samples=720;
 sweep_steps=360;
 phase=.25;
-geometry=_cg_cusp_pair_motion_geometry(modul,teeth,20,undef,undef,samples);
+geometry=_cg_cusp_pair_motion_geometry(modul,teeth,20,undef,undef,samples,cusps);
 distance=geometry[3];
 driver_outline=_cg_cusp_envelope_driver_outline(geometry[0]);
 echo(str("checking intermediate phase=",phase," deg between one-degree envelope poses"));

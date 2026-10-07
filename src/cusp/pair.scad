@@ -2,14 +2,14 @@ include <mate.scad>
 include <../common/pair/assembly.scad>
 
 /***
- * @function _cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08)
+ * @function _cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, cusps=3)
  * @brief Construct the cusp driver and swept-envelope mate as a pair.
  * @param modul {number > 0} Tooth module in millimetres.
- * @param tooth_number {integer >= 3, divisible by 3} Number of teeth.
+ * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
  * @param width {number > 0} Extrusion width in millimetres.
  * @param bore {number >= 0} Centre bore diameter in millimetres.
  * @param pressure_angle {0 < angle < 90, default 20} Standard-flank pressure angle.
- * @param samples {integer >= 720, divisible by 3, default 720} Pitch and motion sample count.
+ * @param samples {integer >= 720, divisible by cusps, default 720} Pitch and motion sample count.
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @param together_built {boolean, default true} Mesh the pair when true.
  * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
@@ -19,13 +19,15 @@ include <../common/pair/assembly.scad>
  * @param sweep_steps {integer >= 36, default 360} Base driver-phase intervals.
  * @param max_pose_step {number > 0, default 0.5} Maximum member pose step in degrees.
  * @param sweep_clearance {number > 0, default 0.08} Cutter clearance as a module fraction.
+ * @param cusps {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
  */
-module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,driver_color="SteelBlue",mate_color="Gold",sweep_steps=360,max_pose_step=.5,sweep_clearance=.08) {
-    assert(tooth_number>=3 && floor(tooth_number)==tooth_number && tooth_number%3==0,
-        "cusp_gear_pair: tooth_number must be an integer divisible by 3");
+module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,driver_color="SteelBlue",mate_color="Gold",sweep_steps=360,max_pose_step=.5,sweep_clearance=.08,cusps=3) {
+    assert(cusps>=3 && floor(cusps)==cusps,"cusp_gear: cusps must be an integer >= 3");
+    assert(tooth_number>=cusps && floor(tooth_number)==tooth_number && tooth_number%cusps==0,
+        "cusp_gear_pair: tooth_number must be an integer divisible by cusps");
     _cg_assert_samples(samples,"cusp_gear_pair: samples must be an integer >= 720 for the validated swept mate",720);
-    assert(samples%3==0,"cusp_gear_pair: samples must be divisible by 3");
-    geometry=_cg_cusp_pair_motion_geometry(modul,tooth_number,pressure_angle,backlash,clearance,samples);
+    assert(samples%cusps==0,"cusp_gear_pair: samples must be divisible by cusps");
+    geometry=_cg_cusp_pair_motion_geometry(modul,tooth_number,pressure_angle,backlash,clearance,samples,cusps);
     driver_state=geometry[0];
     centre_distance=geometry[3];
     motion=geometry[4][2];
@@ -49,16 +51,16 @@ module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,sampl
 
 /***
  * @function curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)
- * @brief Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
+ * @brief Build a meshed or separated hypocycloid cusp gear pair with a swept-envelope mate.
  * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
  * @image ../images/functions/cusp/curve_gear_cusp_pair.png Cusp pair 1
  * @image ../images/functions/cusp/curve_gear_cusp_pair_alternative.png Cusp pair 2
  * @param modul {number > 0} Tooth module in mm.
- * @param tooth_number {integer >= 3, divisible by 3} Shared tooth count.
+ * @param tooth_number {integer >= 3, divisible by cusps} Shared tooth count.
  * @param width {number > 0} Gear extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
  * @param pressure_angle {0 < angle < 90, default 20} Tooth pressure angle.
- * @param samples {integer >= 720, divisible by 3, default 720} Pitch and motion sampling density for the validated swept mate.
+ * @param samples {integer >= 720, divisible by cusps, default 720} Pitch and motion sampling density for the validated swept mate.
  * @param phase {angle, default 0} Driver motion phase.
  * @param together_built {boolean, default true} Place gears at the solved pitch distance when true.
  * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
@@ -68,7 +70,8 @@ module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,sampl
  * @param sweep_steps {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
  * @param max_pose_step {number > 0, default 0.5} Maximum angular step of either member in degrees.
  * @param sweep_clearance {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
+ * @param cusps {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
  */
-module curve_gear_cusp_pair(modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,driver_color="SteelBlue",mate_color="Gold",sweep_steps=360,max_pose_step=.5,sweep_clearance=.08) {
-    _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle,samples,phase,together_built,backlash,clearance,driver_color,mate_color,sweep_steps,max_pose_step,sweep_clearance);
+module curve_gear_cusp_pair(modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,driver_color="SteelBlue",mate_color="Gold",sweep_steps=360,max_pose_step=.5,sweep_clearance=.08,cusps=3) {
+    _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle,samples,phase,together_built,backlash,clearance,driver_color,mate_color,sweep_steps,max_pose_step,sweep_clearance,cusps);
 }

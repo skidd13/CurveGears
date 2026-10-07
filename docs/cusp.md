@@ -14,40 +14,48 @@
 ## Module `Cusp`
 
 
-The deltoid pitch curve has three equally spaced cusps, so the tooth count
-must be divisible by three. A standard validated tooth profile is placed at
+The hypocycloid pitch curve has `cusps` equally spaced cusps (default 3),
+so tooth count and samples must be divisible by `cusps`. A standard validated tooth profile is placed at
 each cusp after being shifted inward to fit the local curve width. The mate
 is generated from the complete placed driver outline and the closed motion
-table. The public gear, body, mate, centre-distance, rotation, and pair APIs
+table. The pitch law is x=a*((cusps-1)*cos(t)+cos((cusps-1)*t)),
+y=a*((cusps-1)*sin(t)-sin((cusps-1)*t)); perimeter is 8*a*(cusps-1).
+Three cusps give the deltoid; five give a five-pointed hypocycloid.
+Tooth count sets pitch spacing; ordinary teeth inaccessible beside cusp
+tips or inside a cusp tooth's occupied shoulder interval are omitted.
+Reference: https://mathworld.wolfram.com/Hypocycloid.html.
+The public gear, body, mate, centre-distance, rotation, and pair APIs
 are documented together below.
 
 ### Brief content:
 
 **Functions**:
 
-> [`curve_gear_cusp(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cuspmodul-tooth_number-width-bore-): Build the three-cusp deltoid gear with regular radial teeth at its cusps.
+> [`curve_gear_cusp(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cuspmodul-tooth_number-width-bore-): Build the hypocycloid cusp gear with regular radial teeth at its cusps.
 
 > [`curve_gear_cusp_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_2dmodul-tooth_number-bore-): Emit the complete cusp gear profile as 2D geometry.
 
-> [`curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_bodymodul-tooth_number-width-bore-): Build the three-cusp deltoid body with its integrated cusp-tip teeth.
+> [`curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_bodymodul-tooth_number-width-bore-): Build the hypocycloid body with its integrated cusp-tip teeth.
 
 > [`curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_body_2dmodul-tooth_number-bore-): Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
 
-> [`curve_gear_cusp_centre_distance(modul, tooth_number, samples=720)`](#function-curve_gear_cusp_centre_distancemodul-tooth_number-samples720): Return the solved pitch-curve centre distance for a cusp pair.
+> [`curve_gear_cusp_centre_distance(modul, tooth_number, samples=720, cusps=3)`](#function-curve_gear_cusp_centre_distancemodul-tooth_number-samples720-cusps3): Return the solved pitch-curve centre distance for a cusp pair.
 
 > [`curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_matemodul-tooth_number-width-bore-): Build the standalone swept-envelope mate for a cusp gear.
 
-> [`curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0)`](#function-curve_gear_cusp_mate_rotationmodul-tooth_number-samples720-phase0): Return the integrated mate angle at one driver phase.
+> [`curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0, cusps=3)`](#function-curve_gear_cusp_mate_rotationmodul-tooth_number-samples720-phase0-cusps3): Return the integrated mate angle at one driver phase.
 
-> [`curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_pairmodul-tooth_number-width-bore-): Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
+> [`curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_pairmodul-tooth_number-width-bore-): Build a meshed or separated hypocycloid cusp gear pair with a swept-envelope mate.
 
-> [`_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90)`](#function-_cg_cusp_anchor_placementpoints-arc-perimeter-body-modul-tooth_number-index-candidate-phase-90): Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
+> [`_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90, cusps=3)`](#function-_cg_cusp_anchor_placementpoints-arc-perimeter-body-modul-tooth_number-index-candidate-phase-90-cusps3): Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
 
-> [`_cg_cusp_body_branch_point(a, t, dedendum)`](#function-_cg_cusp_body_branch_pointa-t-dedendum): Find a radial-root point on one deltoid branch.
+> [`_cg_cusp_body_branch_point(a, t, dedendum, cusps=3)`](#function-_cg_cusp_body_branch_pointa-t-dedendum-cusps3): Find a radial-root point on one hypocycloid branch.
 
-> [`_cg_cusp_body_outline(state, tooth_number)`](#function-_cg_cusp_body_outlinestate-tooth_number): Build the cusp-family body outline with its integrated tip teeth.
+> [`_cg_cusp_body_outline(state, tooth_number, cusps=3)`](#function-_cg_cusp_body_outlinestate-tooth_number-cusps3): Build the cusp-family body outline with its integrated tip teeth.
 
-> [`_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_cusp_buildmodul-tooth_number-width-bore-pressure_angle20-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct the validated cusp body or complete gear.
+> [`_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false, cusps=3)`](#function-_cg_cusp_buildmodul-tooth_number-width-bore-pressure_angle20-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse-cusps3): Construct the validated cusp body or complete gear.
+
+> [`_cg_cusp_clear_shoulder_placement(placement, anchors, perimeter)`](#function-_cg_cusp_clear_shoulder_placementplacement-anchors-perimeter): Classify an ordinary tooth as inaccessible when a cusp shoulder owns its splice interval.
 
 > [`_cg_cusp_cross2(a, b)`](#function-_cg_cusp_cross2a-b): Calculate the scalar 2D cross product of two vectors.
 
@@ -57,29 +65,29 @@ are documented together below.
 
 > [`_cg_cusp_envelope_mate_outer_radius(geometry, modul)`](#function-_cg_cusp_envelope_mate_outer_radiusgeometry-modul): Calculate the swept-envelope mate's outer blank radius.
 
-> [`_cg_cusp_indices(tooth_number)`](#function-_cg_cusp_indicestooth_number): Return the three tooth indices aligned with the deltoid cusps.
+> [`_cg_cusp_indices(tooth_number, cusps=3)`](#function-_cg_cusp_indicestooth_number-cusps3): Return the tooth indices aligned with the hypocycloid cusps.
 
-> [`_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08)`](#function-_cg_cusp_pair_buildmodul-tooth_number-width-bore-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-driver_colorsteelblue-mate_colorgold-sweep_steps360-max_pose_step05-sweep_clearance008): Construct the cusp driver and swept-envelope mate as a pair.
+> [`_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, cusps=3)`](#function-_cg_cusp_pair_buildmodul-tooth_number-width-bore-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-driver_colorsteelblue-mate_colorgold-sweep_steps360-max_pose_step05-sweep_clearance008-cusps3): Construct the cusp driver and swept-envelope mate as a pair.
 
-> [`_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`](#function-_cg_cusp_pair_motion_geometrymodul-tooth_number-pressure_angle-backlash-clearance-samples): Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified deltoid pitch curve.
+> [`_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples, cusps=3)`](#function-_cg_cusp_pair_motion_geometrymodul-tooth_number-pressure_angle-backlash-clearance-samples-cusps3): Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified hypocycloid pitch curve.
 
-> [`_cg_cusp_parameter_for_body_y(a, target, dedendum, lo=0, hi=60, i=0)`](#function-_cg_cusp_parameter_for_body_ya-target-dedendum-lo0-hi60-i0): Solve for the deltoid parameter at a requested body-branch height.
+> [`_cg_cusp_parameter_for_body_y(a, target, dedendum, lo=0, hi=60, i=0, cusps=3)`](#function-_cg_cusp_parameter_for_body_ya-target-dedendum-lo0-hi60-i0-cusps3): Solve for the hypocycloid parameter at a requested body-branch height.
 
-> [`_cg_cusp_points(a, samples=720)`](#function-_cg_cusp_pointsa-samples720): Sample one closed three-cusp deltoid pitch curve.
+> [`_cg_cusp_points(a, samples=720, cusps=3)`](#function-_cg_cusp_pointsa-samples720-cusps3): Sample one closed n-cusp hypocycloid pitch curve.
 
-> [`_cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90)`](#function-_cg_cusp_prepared_statepoints-modul-tooth_number-pressure_angle-backlash-clearance-tip_candidate-phase-90): Assemble ordinary and cusp-anchor teeth into one validated state.
+> [`_cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90, cusps=3)`](#function-_cg_cusp_prepared_statepoints-modul-tooth_number-pressure_angle-backlash-clearance-tip_candidate-phase-90-cusps3): Assemble ordinary and cusp-anchor teeth into one validated state.
 
 > [`_cg_cusp_radius_on_outline(outline, angle)`](#function-_cg_cusp_radius_on_outlineoutline-angle): Find the furthest outline intersection along a radial direction.
 
 > [`_cg_cusp_ray_segment_radius(a, b, angle)`](#function-_cg_cusp_ray_segment_radiusa-b-angle): Find a non-negative ray intersection radius on one outline segment.
 
-> [`_cg_cusp_scale(modul, tooth_number)`](#function-_cg_cusp_scalemodul-tooth_number): Scale the deltoid to the requested module and tooth count.
+> [`_cg_cusp_repeated_radii(outline, samples, midpoint, pitch_offset, cusps=3)`](#function-_cg_cusp_repeated_radiioutline-samples-midpoint-pitch_offset-cusps3): Sample outline radii for all repeated hypocycloid sectors.
 
-> [`_cg_cusp_state(modul, tooth_number, pressure_angle=20, backlash=undef, clearance=undef, samples=720)`](#function-_cg_cusp_statemodul-tooth_number-pressure_angle20-backlashundef-clearanceundef-samples720): Construct the complete validated state for a cusp gear.
+> [`_cg_cusp_scale(modul, tooth_number, cusps=3)`](#function-_cg_cusp_scalemodul-tooth_number-cusps3): Scale the hypocycloid to the requested module and tooth count.
 
-> [`_cg_cusp_threefold_radii(outline, samples, midpoint, pitch_offset)`](#function-_cg_cusp_threefold_radiioutline-samples-midpoint-pitch_offset): Sample outline radii for all three repeated deltoid sectors.
+> [`_cg_cusp_state(modul, tooth_number, pressure_angle=20, backlash=undef, clearance=undef, samples=720, cusps=3)`](#function-_cg_cusp_statemodul-tooth_number-pressure_angle20-backlashundef-clearanceundef-samples720-cusps3): Construct the complete validated state for a cusp gear.
 
-> [`_cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance)`](#function-_cg_cusp_tip_candidatemodul-tooth_number-pressure_angle-backlash-clearance): Prepare the standard tooth profile and cusp-anchor dimensions.
+> [`_cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance, cusps=3)`](#function-_cg_cusp_tip_candidatemodul-tooth_number-pressure_angle-backlash-clearance-cusps3): Prepare the standard tooth profile and cusp-anchor dimensions.
 
 
 ## Functions
@@ -93,21 +101,22 @@ The module `Cusp` defines the following functions.
 | [![Cusp gear 1](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) | [![Cusp gear 2](../images/functions/cusp/curve_gear_cusp_alternative.png)](../images/functions/cusp/curve_gear_cusp_alternative.png) |
 
 
-A thin plate contrasts with the thick canonical gear; the bore remains 4.8 mm. The deltoid pitch law is fixed; the validated 36-tooth count is retained while thickness reveals the body structure.
+Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
 The common candidate validator accepts the full regular radial-root profile. Each cusp tooth is translated inward until its root width meets the local cusp-branch width; the cusp interval is then cropped and replaced by that unchanged tooth profile.
 The mate is derived from the full placed driver outline and closed motion table.
 
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Tooth count; one radial tooth is centred on each cusp.
+- `tooth_number`: {integer >= 3, divisible by cusps} Tooth count; one radial tooth is centred on each cusp.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Standard-flank pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0} Additional radial root clearance in mm.
-- `samples`: {integer >= 720, divisible by 3, default 720} Deltoid pitch-curve sampling density for validated cusp teeth.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Hypocycloid pitch-curve sampling density for validated cusp teeth.
 - `orientation`: {angle, default 0} Whole-gear display rotation in degrees.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -127,13 +136,14 @@ Emit the complete cusp gear profile as 2D geometry.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Tooth count.
+- `tooth_number`: {integer >= 3, divisible by cusps} Tooth count.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {angle, default 20} Standard-flank pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0} Additional radial root clearance.
-- `samples`: {integer >= 720, divisible by 3} Deltoid curve sampling density.
+- `samples`: {integer >= 720, divisible by cusps} Hypocycloid curve sampling density.
 - `orientation`: {angle, default 0} Whole-gear rotation in degrees.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -154,16 +164,17 @@ Back to [module description](#module-cusp).
 | [![Cusp gear body preview](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
-Build the three-cusp deltoid body with its integrated cusp-tip teeth.
+Build the hypocycloid body with its integrated cusp-tip teeth.
 
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Tooth count scale.
+- `tooth_number`: {integer >= 3, divisible by cusps} Tooth count scale.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `samples`: {integer >= 720, divisible by 3, default 720} Pitch-curve sampling density for validated cusp geometry.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Pitch-curve sampling density for validated cusp geometry.
 - `orientation`: {angle, default 0} Whole-body display rotation.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -183,11 +194,12 @@ Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Tooth count.
+- `tooth_number`: {integer >= 3, divisible by cusps} Tooth count.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `samples`: {integer >= 720, divisible by 3} Deltoid curve sampling density.
+- `samples`: {integer >= 720, divisible by cusps} Hypocycloid curve sampling density.
 - `orientation`: {angle, default 0} Whole-body rotation in degrees.
 - `body_offset`: {number, default 0} Signed offset in mm; negative shrinks the outer contour and preserves the bore.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -201,7 +213,7 @@ curve_gear_cusp_body_2d(0.8, 36, 4.8, body_offset=-2);
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_centre_distance(modul, tooth_number, samples=720)`
+### Function `curve_gear_cusp_centre_distance(modul, tooth_number, samples=720, cusps=3)`
 
 
 Return the solved pitch-curve centre distance for a cusp pair.
@@ -209,8 +221,9 @@ Return the solved pitch-curve centre distance for a cusp pair.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Shared tooth count.
-- `samples`: {integer >= 120, divisible by 3, default 720} Motion sampling density.
+- `tooth_number`: {integer >= 3, divisible by cusps} Shared tooth count.
+- `samples`: {integer >= 120, divisible by cusps, default 720} Motion sampling density.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -230,17 +243,18 @@ Build the standalone swept-envelope mate for a cusp gear.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Shared tooth count.
+- `tooth_number`: {integer >= 3, divisible by cusps} Shared tooth count.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Tooth pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0} Additional radial root clearance.
-- `samples`: {integer >= 720, divisible by 3, default 720} Motion and pitch-curve sampling density for the validated cusp outline.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Motion and pitch-curve sampling density for the validated cusp outline.
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
 - `max_pose_step`: {number > 0, default 0.5} Maximum angular step of either member in degrees.
 - `sweep_clearance`: {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
 - `phase`: {angle, default 0} Driver phase used to orient the displayed mate.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -248,7 +262,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0)`
+### Function `curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0, cusps=3)`
 
 
 Return the integrated mate angle at one driver phase.
@@ -256,9 +270,10 @@ Return the integrated mate angle at one driver phase.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Shared tooth count.
-- `samples`: {integer >= 120, divisible by 3, default 720} Motion sampling density.
+- `tooth_number`: {integer >= 3, divisible by cusps} Shared tooth count.
+- `samples`: {integer >= 120, divisible by cusps, default 720} Motion sampling density.
 - `phase`: {angle, default 0} Driver angle in degrees.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -278,11 +293,11 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3, divisible by 3} Shared tooth count.
+- `tooth_number`: {integer >= 3, divisible by cusps} Shared tooth count.
 - `width`: {number > 0} Gear extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Tooth pressure angle.
-- `samples`: {integer >= 720, divisible by 3, default 720} Pitch and motion sampling density for the validated swept mate.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Pitch and motion sampling density for the validated swept mate.
 - `phase`: {angle, default 0} Driver motion phase.
 - `together_built`: {boolean, default true} Place gears at the solved pitch distance when true.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
@@ -292,6 +307,7 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
 - `max_pose_step`: {number > 0, default 0.5} Maximum angular step of either member in degrees.
 - `sweep_clearance`: {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -299,22 +315,23 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90)`
+### Function `_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90, cusps=3)`
 
 
 Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
 
 **Parameters:**
 
-- `points`: {array of points} Sampled deltoid pitch curve.
+- `points`: {array of points} Sampled hypocycloid pitch curve.
 - `arc`: {array} Pitch-curve arc-length table.
 - `perimeter`: {number > 0} Pitch-curve perimeter in millimetres.
 - `body`: {array of points} Radial-root body polyline.
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
 - `index`: {integer >= 0} Tooth index at this cusp.
 - `candidate`: {array} Prepared standard tooth candidate with cusp data.
 - `phase`: {angle, default -90} Tooth-placement phase in degrees.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps.
 
 **Returns:**
 
@@ -322,16 +339,17 @@ Place a standard tooth in the analytic cusp-axis frame and trim its shoulder int
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_body_branch_point(a, t, dedendum)`
+### Function `_cg_cusp_body_branch_point(a, t, dedendum, cusps=3)`
 
 
-Find a radial-root point on one deltoid branch.
+Find a radial-root point on one hypocycloid branch.
 
 **Parameters:**
 
-- `a`: {number > 0} Deltoid scale in millimetres.
-- `t`: {angle} Deltoid parameter in degrees.
+- `a`: {number > 0} Rolling-circle radius in millimetres.
+- `t`: {angle} Hypocycloid parameter in degrees.
 - `dedendum`: {number >= 0} Tooth-root depth in millimetres.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -339,7 +357,7 @@ Find a radial-root point on one deltoid branch.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_body_outline(state, tooth_number)`
+### Function `_cg_cusp_body_outline(state, tooth_number, cusps=3)`
 
 
 Build the cusp-family body outline with its integrated tip teeth.
@@ -347,7 +365,8 @@ Build the cusp-family body outline with its integrated tip teeth.
 **Parameters:**
 
 - `state`: {array} Validated cusp gear state.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -355,7 +374,7 @@ Build the cusp-family body outline with its integrated tip teeth.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`
+### Function `_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false, cusps=3)`
 
 
 Construct the validated cusp body or complete gear.
@@ -363,19 +382,39 @@ Construct the validated cusp body or complete gear.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
 - `width`: {number > 0} Extrusion width in millimetres.
 - `bore`: {number >= 0} Centre bore diameter in millimetres.
 - `pressure_angle`: {0 < angle < 90, default 20} Standard-flank pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0} Additional radial root clearance.
-- `samples`: {integer >= 720, divisible by 3, default 720} Pitch-curve sample count.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Pitch-curve sample count.
 - `orientation`: {angle, default 0} Display rotation in degrees.
 - `body_only`: {boolean, default false} Emit the integrated body without ordinary teeth.
+- `is_2d`: {boolean, default false} Emit a planar outline instead of an extrusion.
+- `body_offset`: {number, default 0} Signed planar-body offset in millimetres.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
 No return
+
+Back to [module description](#module-cusp).
+
+### Function `_cg_cusp_clear_shoulder_placement(placement, anchors, perimeter)`
+
+
+Classify an ordinary tooth as inaccessible when a cusp shoulder owns its splice interval.
+
+**Parameters:**
+
+- `placement`: {array} Ordinary tooth placement from the shared validator.
+- `anchors`: {array} Prepared radial cusp-anchor placements.
+- `perimeter`: {number > 0} Closed pitch-curve perimeter in millimetres.
+
+**Returns:**
+
+- `{array}`: Original placement or an inaccessible placement with its diagnostic geometry retained.
 
 Back to [module description](#module-cusp).
 
@@ -448,14 +487,15 @@ Calculate the swept-envelope mate's outer blank radius.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_indices(tooth_number)`
+### Function `_cg_cusp_indices(tooth_number, cusps=3)`
 
 
-Return the three tooth indices aligned with the deltoid cusps.
+Return the tooth indices aligned with the hypocycloid cusps.
 
 **Parameters:**
 
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -463,7 +503,7 @@ Return the three tooth indices aligned with the deltoid cusps.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08)`
+### Function `_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, cusps=3)`
 
 
 Construct the cusp driver and swept-envelope mate as a pair.
@@ -471,11 +511,11 @@ Construct the cusp driver and swept-envelope mate as a pair.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
 - `width`: {number > 0} Extrusion width in millimetres.
 - `bore`: {number >= 0} Centre bore diameter in millimetres.
 - `pressure_angle`: {0 < angle < 90, default 20} Standard-flank pressure angle.
-- `samples`: {integer >= 720, divisible by 3, default 720} Pitch and motion sample count.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Pitch and motion sample count.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 - `together_built`: {boolean, default true} Mesh the pair when true.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
@@ -485,6 +525,7 @@ Construct the cusp driver and swept-envelope mate as a pair.
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals.
 - `max_pose_step`: {number > 0, default 0.5} Maximum member pose step in degrees.
 - `sweep_clearance`: {number > 0, default 0.08} Cutter clearance as a module fraction.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -492,19 +533,20 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples)`
+### Function `_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples, cusps=3)`
 
 
-Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified deltoid pitch curve.
+Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified hypocycloid pitch curve.
 
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
 - `pressure_angle`: {0 < angle < 90} Standard-flank pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0} Additional radial root clearance.
-- `samples`: {integer >= 120, divisible by 3} Motion sampling density.
+- `samples`: {integer >= 120, divisible by cusps} Motion sampling density.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -512,57 +554,60 @@ Build the validated cusp driver, radial motion data, solved distance, and motion
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_parameter_for_body_y(a, target, dedendum, lo=0, hi=60, i=0)`
+### Function `_cg_cusp_parameter_for_body_y(a, target, dedendum, lo=0, hi=60, i=0, cusps=3)`
 
 
-Solve for the deltoid parameter at a requested body-branch height.
+Solve for the hypocycloid parameter at a requested body-branch height.
 
 **Parameters:**
 
-- `a`: {number > 0} Deltoid scale in millimetres.
+- `a`: {number > 0} Rolling-circle radius in millimetres.
 - `target`: {number} Target Cartesian y coordinate in millimetres.
 - `dedendum`: {number >= 0} Tooth-root depth in millimetres.
 - `lo`: {angle, default 0} Lower parameter bound in degrees.
-- `hi`: {angle, default 60} Upper parameter bound in degrees.
+- `hi`: {undef or angle, default undef} Upper bound in degrees; undef uses 180/cusps.
 - `i`: {integer >= 0, default 0} Recursion iteration.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
-- `{angle}`: Solved deltoid parameter in degrees.
+- `{angle}`: Solved hypocycloid parameter in degrees.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_points(a, samples=720)`
+### Function `_cg_cusp_points(a, samples=720, cusps=3)`
 
 
-Sample one closed three-cusp deltoid pitch curve.
+Sample one closed n-cusp hypocycloid pitch curve.
 
 **Parameters:**
 
-- `a`: {number > 0} Deltoid scale in millimetres.
-- `samples`: {integer >= 3, divisible by 3, default 720} Sample count.
+- `a`: {number > 0} Rolling-circle radius in millimetres.
+- `samples`: {integer >= 3, divisible by cusps, default 720} Sample count.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
-- `{array of points}`: Deltoid pitch curve in millimetres.
+- `{array of points}`: Hypocycloid pitch curve in millimetres.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90)`
+### Function `_cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90, cusps=3)`
 
 
 Assemble ordinary and cusp-anchor teeth into one validated state.
 
 **Parameters:**
 
-- `points`: {array of points} Sampled deltoid pitch curve.
+- `points`: {array of points} Sampled hypocycloid pitch curve.
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
 - `pressure_angle`: {0 < angle < 90} Standard-flank pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0} Additional radial root clearance.
 - `tip_candidate`: {array} Prepared standard tooth candidate with cusp data.
 - `phase`: {angle, default -90} Tooth-placement phase in degrees.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -603,23 +648,43 @@ Find a non-negative ray intersection radius on one outline segment.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_scale(modul, tooth_number)`
+### Function `_cg_cusp_repeated_radii(outline, samples, midpoint, pitch_offset, cusps=3)`
 
 
-Scale the deltoid to the requested module and tooth count.
+Sample outline radii for all repeated hypocycloid sectors.
+
+**Parameters:**
+
+- `outline`: {array of points} Pitch curve or closed driver outline.
+- `samples`: {integer >= 3, divisible by cusps} Total angular sample count.
+- `midpoint`: {boolean} Sample at interval midpoints when true.
+- `pitch_offset`: {number} Radial offset in millimetres.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
+
+**Returns:**
+
+- `{array of number}`: Repeated radius samples.
+
+Back to [module description](#module-cusp).
+
+### Function `_cg_cusp_scale(modul, tooth_number, cusps=3)`
+
+
+Scale the hypocycloid to the requested module and tooth count.
 
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
-- `{number}`: Deltoid scale in millimetres.
+- `{number}`: Rolling-circle radius in millimetres.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_state(modul, tooth_number, pressure_angle=20, backlash=undef, clearance=undef, samples=720)`
+### Function `_cg_cusp_state(modul, tooth_number, pressure_angle=20, backlash=undef, clearance=undef, samples=720, cusps=3)`
 
 
 Construct the complete validated state for a cusp gear.
@@ -627,11 +692,12 @@ Construct the complete validated state for a cusp gear.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
 - `pressure_angle`: {0 < angle < 90, default 20} Standard-flank pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0} Additional radial root clearance.
-- `samples`: {integer >= 720, divisible by 3, default 720} Pitch-curve samples.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Pitch-curve samples.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 
@@ -639,25 +705,7 @@ Construct the complete validated state for a cusp gear.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_threefold_radii(outline, samples, midpoint, pitch_offset)`
-
-
-Sample outline radii for all three repeated deltoid sectors.
-
-**Parameters:**
-
-- `outline`: {array of points} Pitch curve or closed driver outline.
-- `samples`: {integer >= 3, divisible by 3} Total angular sample count.
-- `midpoint`: {boolean} Sample at interval midpoints when true.
-- `pitch_offset`: {number} Radial offset in millimetres.
-
-**Returns:**
-
-- `{array of number}`: Threefold radius samples.
-
-Back to [module description](#module-cusp).
-
-### Function `_cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance)`
+### Function `_cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance, cusps=3)`
 
 
 Prepare the standard tooth profile and cusp-anchor dimensions.
@@ -665,10 +713,11 @@ Prepare the standard tooth profile and cusp-anchor dimensions.
 **Parameters:**
 
 - `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by 3} Number of teeth.
+- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
 - `pressure_angle`: {0 < angle < 90} Standard-flank pressure angle.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0} Additional radial root clearance.
+- `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**
 

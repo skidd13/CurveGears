@@ -374,9 +374,15 @@ Family-specific pipeline, contract and invalid-input fixtures.
 
 > [`cusp_envelope_collision_probe`](#function-cusp_envelope_collision_probe): Check that sampled intermediate driver poses clear the swept-envelope mate.
 
+> [`cusp_five_cusp_pair_pipeline`](#function-cusp_five_cusp_pair_pipeline): Fully render a five-cusp driver and its swept-envelope mate with the canonical bore.
+
 > [`cusp_full_pipeline`](#function-cusp_full_pipeline): Render the cusp gear, body, swept-envelope mate, and separated pair.
 
 > [`cusp_pair_pipeline`](#function-cusp_pair_pipeline): Render and validate the swept-envelope mate for a deltoid cusp driver.
+
+> [`cusp_parameter_controls_pipeline`](#function-cusp_parameter_controls_pipeline): Validate independent tooth counts, module and extrusion widths for four, five and six cusps.
+
+> [`cusp_parameter_pipeline`](#function-cusp_parameter_pipeline): Validate hypocycloid cusp counts, exact cusp anchors and five-cusp gear/body geometry.
 
 > [`cusp_tooth_pipeline`](#function-cusp_tooth_pipeline): Assert the cusp tip uses a validated, bounded regular-tooth profile.
 
@@ -407,6 +413,14 @@ Family-specific pipeline, contract and invalid-input fixtures.
 > [`hypotrochoid_pair_pipeline`](#function-hypotrochoid_pair_pipeline): Verify Hypotrochoid pair assembly and conjugate mate placement.
 
 > [`hypotrochoid_tooth_pipeline`](#function-hypotrochoid_tooth_pipeline): Verify Hypotrochoid tooth placement through the shared tooth pipeline.
+
+> [`invalid_cusp_count`](#function-invalid_cusp_count): Reject invalid cusp-count parameters before geometry construction.
+
+> [`invalid_cusp_samples`](#function-invalid_cusp_samples): Reject invalid cusp-count parameters before geometry construction.
+
+> [`invalid_cusp_tooth_count`](#function-invalid_cusp_tooth_count): Reject invalid cusp-count parameters before geometry construction.
+
+> [`invalid_fractional_cusps`](#function-invalid_fractional_cusps): Reject a non-integer cusp count.
 
 > [`lobed_full_pipeline`](#function-lobed_full_pipeline): Verify the complete Lobed gear, mate, and pair entry points.
 
@@ -633,6 +647,21 @@ No return
 
 Back to [module description](#module-family-integration).
 
+### Function `cusp_five_cusp_pair_pipeline`
+
+
+Source: [`cusp/five_cusp_pair_pipeline.scad`](cusp/five_cusp_pair_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
 ### Function `cusp_full_pipeline`
 
 
@@ -652,6 +681,36 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`cusp/pair_pipeline.scad`](cusp/pair_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_parameter_controls_pipeline`
+
+
+Source: [`cusp/parameter_controls_pipeline.scad`](cusp/parameter_controls_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_parameter_pipeline`
+
+
+Source: [`cusp/parameter_pipeline.scad`](cusp/parameter_pipeline.scad)
 
 **Parameters:**
 
@@ -877,6 +936,66 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`hypotrochoid/tooth_pipeline.scad`](hypotrochoid/tooth_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_cusp_count`
+
+
+Source: [`cusp/invalid_cusp_count.scad`](cusp/invalid_cusp_count.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_cusp_samples`
+
+
+Source: [`cusp/invalid_cusp_samples.scad`](cusp/invalid_cusp_samples.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_cusp_tooth_count`
+
+
+Source: [`cusp/invalid_cusp_tooth_count.scad`](cusp/invalid_cusp_tooth_count.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_fractional_cusps`
+
+
+Source: [`cusp/invalid_fractional_cusps.scad`](cusp/invalid_fractional_cusps.scad)
 
 **Parameters:**
 
