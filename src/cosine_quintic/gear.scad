@@ -18,7 +18,19 @@ module _cg_cosine_quintic_build(modul,tooth_number,width,bore,depth=.19,harmonic
  * @brief Build a signed fifth-power cosine gear.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic.png Cosine Quintic gear preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
- * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+ *
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param width {number} Width.
+ * @param bore {number} Bore.
+ * @param depth {number} Quintic depth.
+ * @param harmonic {integer} Cosine harmonic.
+ * @param pressure_angle {number} Pressure angle.
+ * @param tooth_phase {number} Tooth phase.
+ * @param backlash {number} Backlash.
+ * @param clearance {number} Clearance.
+ * @param samples {integer} Samples.
+ * @param orientation {number} Orientation.
  */
 module curve_gear_cosine_quintic(modul,tooth_number,width,bore,depth=.19,harmonic=2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_cosine_quintic_build(modul,tooth_number,width,bore,depth,harmonic,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false);
@@ -27,7 +39,19 @@ module curve_gear_cosine_quintic(modul,tooth_number,width,bore,depth=.19,harmoni
 /*** @function curve_gear_cosine_quintic_body
  * @brief Build the Cosine Quintic body.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png Cosine Quintic body preview
- * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+ *
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param width {number} Width.
+ * @param bore {number} Bore.
+ * @param depth {number} Quintic depth.
+ * @param harmonic {integer} Cosine harmonic.
+ * @param pressure_angle {number} Pressure angle.
+ * @param tooth_phase {number} Tooth phase.
+ * @param backlash {number} Backlash.
+ * @param clearance {number} Clearance.
+ * @param samples {integer} Samples.
+ * @param orientation {number} Orientation.
  */
 module curve_gear_cosine_quintic_body(modul,tooth_number,width,bore,depth=.19,harmonic=2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_cosine_quintic_build(modul,tooth_number,width,bore,depth,harmonic,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
@@ -36,7 +60,18 @@ module curve_gear_cosine_quintic_body(modul,tooth_number,width,bore,depth=.19,ha
 /*** @function curve_gear_cosine_quintic_2d
  * @brief Build the Cosine Quintic 2D outline.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png Cosine Quintic 2D outline
- * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+ *
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param bore {number} Bore.
+ * @param depth {number} Quintic depth.
+ * @param harmonic {integer} Cosine harmonic.
+ * @param pressure_angle {number} Pressure angle.
+ * @param tooth_phase {number} Tooth phase.
+ * @param backlash {number} Backlash.
+ * @param clearance {number} Clearance.
+ * @param samples {integer} Samples.
+ * @param orientation {number} Orientation.
  */
 module curve_gear_cosine_quintic_2d(modul,tooth_number,bore,depth=.19,harmonic=2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_cosine_quintic_build(modul,tooth_number,0,bore,depth,harmonic,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false,true);
@@ -45,7 +80,19 @@ module curve_gear_cosine_quintic_2d(modul,tooth_number,bore,depth=.19,harmonic=2
 /*** @function curve_gear_cosine_quintic_body_2d
  * @brief Build the Cosine Quintic 2D body outline.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png Cosine Quintic 2D body outline
- * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation. @param body_offset {number} Body offset.
+ *
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param bore {number} Bore.
+ * @param depth {number} Quintic depth.
+ * @param harmonic {integer} Cosine harmonic.
+ * @param pressure_angle {number} Pressure angle.
+ * @param tooth_phase {number} Tooth phase.
+ * @param backlash {number} Backlash.
+ * @param clearance {number} Clearance.
+ * @param samples {integer} Samples.
+ * @param orientation {number} Orientation.
+ * @param body_offset {number} Body offset.
  */
 module curve_gear_cosine_quintic_body_2d(modul,tooth_number,bore,depth=.19,harmonic=2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_offset=0) {
     _cg_cosine_quintic_build(modul,tooth_number,0,bore,depth,harmonic,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true,true,body_offset);

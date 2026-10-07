@@ -46,7 +46,14 @@ The module `Tanh Triad` defines the following functions.
 | [![Tanh Triad gear preview](../images/functions/tanh_triad/curve_gear_tanh_triad.png)](../images/functions/tanh_triad/curve_gear_tanh_triad.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
-Build a bounded tanh-modulated three-cycle gear.
+
+
+
+
+
+
+
+
 
 **Parameters:**
 
@@ -57,7 +64,12 @@ Build a bounded tanh-modulated three-cycle gear.
 - `transition`: {number > 0, default 1.8} Transition steepness.
 - `crest`: {0 < number < 0.5, default 0.13} Main radial modulation.
 - `correction`: {0 <= number < 0.2, default 0.03} Sixth-harmonic correction.
-- `pressure_angle`: {angle, default 20} Pressure angle. @param tooth_phase {angle, default 0} Tooth phase. @param backlash {undef or >= 0} Backlash. @param clearance {undef or >= 0} Clearance. @param samples {integer >= 120, default 720} Samples. @param orientation {angle, default 0} Orientation.
+- `pressure_angle`: {angle, default 20} Pressure angle.
+- `tooth_phase`: {angle, default 0} Tooth phase.
+- `backlash`: {undef or >= 0} Backlash.
+- `clearance`: {undef or >= 0} Clearance.
+- `samples`: {integer >= 120, default 720} Samples.
+- `orientation`: {angle, default 0} Orientation.
 
 **Returns:**
 
@@ -72,7 +84,18 @@ Back to [module description](#module-tanh-triad).
 | [![Tanh Triad 2D outline](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the tanh-modulated 2D gear outline.
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Parameters:**
 
@@ -102,7 +125,19 @@ Back to [module description](#module-tanh-triad).
 | [![Tanh Triad body preview](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) ![](../images/table-spacer.png) |
 
 
-Build the tanh-modulated gear body.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Parameters:**
 
@@ -133,7 +168,19 @@ Back to [module description](#module-tanh-triad).
 | [![Tanh Triad 2D body outline](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the tanh-modulated 2D body outline.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Parameters:**
 
@@ -164,8 +211,10 @@ Back to [module description](#module-tanh-triad).
 | [![Tanh Triad pair preview](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) ![](../images/table-spacer.png) |
 
 
+
 function curve_gear_tanh_triad_centre_distance(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720) = let(scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction)) _cg_tanh_triad_centre_distance(scale,transition,crest,correction,samples);
 /** @function curve_gear_tanh_triad_mate_rotation
+
 function curve_gear_tanh_triad_mate_rotation(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720,phase=0) = let(scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction),D=_cg_tanh_triad_centre_distance(scale,transition,crest,correction,samples),motion=_cg_tanh_triad_motion_table(scale,transition,crest,correction,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
 include <mate.scad>
 include <../common/pair/assembly.scad>
@@ -173,10 +222,37 @@ include <../common/pair/assembly.scad>
 /***
 @function curve_gear_tanh_triad_pair
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param transition {number} Transition. @param crest {number} Crest. @param correction {number} Correction. @param samples {integer} Samples. */
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param transition {number} Transition. @param crest {number} Crest. @param correction {number} Correction. @param samples {integer} Samples. @param phase {number} Driver phase. */
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `transition`: {number} Transition.
+- `crest`: {number} Crest.
+- `correction`: {number} Correction.
+- `samples`: {integer} Samples. */
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `transition`: {number} Transition.
+- `crest`: {number} Crest.
+- `correction`: {number} Correction.
+- `samples`: {integer} Samples.
+- `phase`: {number} Driver phase. */
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
@@ -207,7 +283,18 @@ Back to [module description](#module-tanh-triad).
 | [![Tanh Triad mate preview](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) ![](../images/table-spacer.png) |
 
 
-Build a Tanh Triad mating gear.
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Parameters:**
 

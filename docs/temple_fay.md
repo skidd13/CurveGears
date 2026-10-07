@@ -53,11 +53,22 @@ The module `Temple Fay` defines the following functions.
 | [![Temple Fay gear preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
-Build a Temple Fay butterfly-inspired gear.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -72,11 +83,21 @@ Back to [module description](#module-temple-fay).
 | [![Temple Fay 2D outline](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the Temple Fay 2D outline.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `bore`: {number} Bore.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -91,11 +112,22 @@ Back to [module description](#module-temple-fay).
 | [![Temple Fay body preview](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_body.png) ![](../images/table-spacer.png) |
 
 
-Build the Temple Fay body.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -110,11 +142,22 @@ Back to [module description](#module-temple-fay).
 | [![Temple Fay 2D body outline](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the Temple Fay 2D body outline.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation. @param body_offset {number} Body offset.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `bore`: {number} Bore.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
+- `body_offset`: {number} Body offset.
 
 **Returns:**
 
@@ -125,11 +168,15 @@ Back to [module description](#module-temple-fay).
 ### Function `curve_gear_temple_fay_centre_distance`
 
 
-Return the Temple Fay reference centre distance.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param samples {integer} Samples.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `samples`: {integer} Samples.
 
 **Returns:**
 
@@ -144,11 +191,21 @@ Back to [module description](#module-temple-fay).
 | [![Temple Fay mate preview](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) ![](../images/table-spacer.png) |
 
 
-Build a separated Temple Fay mate presentation.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
 
 **Returns:**
 
@@ -159,11 +216,16 @@ Back to [module description](#module-temple-fay).
 ### Function `curve_gear_temple_fay_mate_rotation`
 
 
-Return the Temple Fay reference mate rotation.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param samples {integer} Samples. @param phase {number} Driver phase.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `samples`: {integer} Samples.
+- `phase`: {number} Driver phase.
 
 **Returns:**
 
@@ -178,11 +240,25 @@ Back to [module description](#module-temple-fay).
 | [![Temple Fay pair preview](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) ![](../images/table-spacer.png) |
 
 
-Build a separated Temple Fay reference pair; this family is not asserted as a conjugate transmission.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param pressure_angle {number} Pressure angle. @param samples {integer} Samples. @param phase {number} Pair phase. @param together_built {boolean} Reference placement. @param backlash {number} Backlash. @param clearance {number} Clearance. @param tooth_phase {number} Tooth phase. @param driver_color {string} Driver colour. @param mate_color {string} Mate colour.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `wing`: {number} Wing amplitude.
+- `fold`: {number} Fold harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `samples`: {integer} Samples.
+- `phase`: {number} Pair phase.
+- `together_built`: {boolean} Reference placement.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `tooth_phase`: {number} Tooth phase.
+- `driver_color`: {string} Driver colour.
+- `mate_color`: {string} Mate colour.
 
 **Returns:**
 

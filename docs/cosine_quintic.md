@@ -50,11 +50,22 @@ The module `Cosine Quintic` defines the following functions.
 | [![Cosine Quintic gear preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
-Build a signed fifth-power cosine gear.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -69,11 +80,21 @@ Back to [module description](#module-cosine-quintic).
 | [![Cosine Quintic 2D outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the Cosine Quintic 2D outline.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `bore`: {number} Bore.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -88,11 +109,22 @@ Back to [module description](#module-cosine-quintic).
 | [![Cosine Quintic body preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) ![](../images/table-spacer.png) |
 
 
-Build the Cosine Quintic body.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -107,11 +139,22 @@ Back to [module description](#module-cosine-quintic).
 | [![Cosine Quintic 2D body outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the Cosine Quintic 2D body outline.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation. @param body_offset {number} Body offset.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `bore`: {number} Bore.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
+- `body_offset`: {number} Body offset.
 
 **Returns:**
 
@@ -122,11 +165,15 @@ Back to [module description](#module-cosine-quintic).
 ### Function `curve_gear_cosine_quintic_centre_distance`
 
 
-Return the Cosine Quintic centre distance.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param samples {integer} Samples.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `samples`: {integer} Samples.
 
 **Returns:**
 
@@ -141,11 +188,21 @@ Back to [module description](#module-cosine-quintic).
 | [![Cosine Quintic mate preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) ![](../images/table-spacer.png) |
 
 
-Build a Cosine Quintic mating gear.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
 
 **Returns:**
 
@@ -156,11 +213,16 @@ Back to [module description](#module-cosine-quintic).
 ### Function `curve_gear_cosine_quintic_mate_rotation`
 
 
-Return the Cosine Quintic mate rotation.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param samples {integer} Samples. @param phase {number} Driver phase.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `samples`: {integer} Samples.
+- `phase`: {number} Driver phase.
 
 **Returns:**
 
@@ -175,11 +237,25 @@ Back to [module description](#module-cosine-quintic).
 | [![Cosine Quintic pair preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) ![](../images/table-spacer.png) |
 
 
-Build a Cosine Quintic gear pair.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param samples {integer} Samples. @param phase {number} Pair phase. @param together_built {boolean} Mesh pair. @param backlash {number} Backlash. @param clearance {number} Clearance. @param tooth_phase {number} Tooth phase. @param driver_color {string} Driver colour. @param mate_color {string} Mate colour.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `depth`: {number} Quintic depth.
+- `harmonic`: {integer} Cosine harmonic.
+- `pressure_angle`: {number} Pressure angle.
+- `samples`: {integer} Samples.
+- `phase`: {number} Pair phase.
+- `together_built`: {boolean} Mesh pair.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `tooth_phase`: {number} Tooth phase.
+- `driver_color`: {string} Driver colour.
+- `mate_color`: {string} Mate colour.
 
 **Returns:**
 

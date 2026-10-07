@@ -50,7 +50,18 @@ The module `Logistic Dwell` defines the following functions.
 | [![Logistic Dwell gear preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
-Build a logistic-gated second-harmonic dwell gear.
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Parameters:**
 
@@ -80,11 +91,21 @@ Back to [module description](#module-logistic-dwell).
 | [![Logistic Dwell 2D outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the Logistic Dwell 2D outline.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param gain {number} Logistic gain. @param depth {number} Dwell depth. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `bore`: {number} Bore.
+- `gain`: {number} Logistic gain.
+- `depth`: {number} Dwell depth.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -99,11 +120,22 @@ Back to [module description](#module-logistic-dwell).
 | [![Logistic Dwell body preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) ![](../images/table-spacer.png) |
 
 
-Build the Logistic Dwell body.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param gain {number} Logistic gain. @param depth {number} Dwell depth. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `gain`: {number} Logistic gain.
+- `depth`: {number} Dwell depth.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
 
 **Returns:**
 
@@ -118,11 +150,22 @@ Back to [module description](#module-logistic-dwell).
 | [![Logistic Dwell 2D body outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) ![](../images/table-spacer.png) |
 
 
-Build the Logistic Dwell 2D body outline.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param bore {number} Bore. @param gain {number} Logistic gain. @param depth {number} Dwell depth. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples. @param orientation {number} Orientation. @param body_offset {number} Body offset.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `bore`: {number} Bore.
+- `gain`: {number} Logistic gain.
+- `depth`: {number} Dwell depth.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
+- `orientation`: {number} Orientation.
+- `body_offset`: {number} Body offset.
 
 **Returns:**
 
@@ -133,7 +176,11 @@ Back to [module description](#module-logistic-dwell).
 ### Function `curve_gear_logistic_dwell_centre_distance`
 
 
-Return the Logistic Dwell centre distance.
+
+
+
+
+
 
 **Parameters:**
 
@@ -156,11 +203,21 @@ Back to [module description](#module-logistic-dwell).
 | [![Logistic Dwell mate preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) ![](../images/table-spacer.png) |
 
 
-Build a Logistic Dwell mating gear.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param gain {number} Logistic gain. @param depth {number} Dwell depth. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `gain`: {number} Logistic gain.
+- `depth`: {number} Dwell depth.
+- `pressure_angle`: {number} Pressure angle.
+- `tooth_phase`: {number} Tooth phase.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `samples`: {integer} Samples.
 
 **Returns:**
 
@@ -171,7 +228,12 @@ Back to [module description](#module-logistic-dwell).
 ### Function `curve_gear_logistic_dwell_mate_rotation`
 
 
-Return the Logistic Dwell mate rotation for a driver phase.
+
+
+
+
+
+
 
 **Parameters:**
 
@@ -195,11 +257,25 @@ Back to [module description](#module-logistic-dwell).
 | [![Logistic Dwell pair preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) ![](../images/table-spacer.png) |
 
 
-Build a Logistic Dwell gear pair.
+
 
 **Parameters:**
 
-- `modul`: {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param gain {number} Logistic gain. @param depth {number} Dwell depth. @param pressure_angle {number} Pressure angle. @param samples {integer} Samples. @param phase {number} Pair phase. @param together_built {boolean} Mesh pair. @param backlash {number} Backlash. @param clearance {number} Clearance. @param tooth_phase {number} Tooth phase. @param driver_color {string} Driver colour. @param mate_color {string} Mate colour.
+- `modul`: {number} Tooth module.
+- `tooth_number`: {integer} Tooth count.
+- `width`: {number} Width.
+- `bore`: {number} Bore.
+- `gain`: {number} Logistic gain.
+- `depth`: {number} Dwell depth.
+- `pressure_angle`: {number} Pressure angle.
+- `samples`: {integer} Samples.
+- `phase`: {number} Pair phase.
+- `together_built`: {boolean} Mesh pair.
+- `backlash`: {number} Backlash.
+- `clearance`: {number} Clearance.
+- `tooth_phase`: {number} Tooth phase.
+- `driver_color`: {string} Driver colour.
+- `mate_color`: {string} Mate colour.
 
 **Returns:**
 

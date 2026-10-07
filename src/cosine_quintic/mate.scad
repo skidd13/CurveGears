@@ -12,7 +12,18 @@ function _cg_cosine_quintic_mate_points(scale,depth,harmonic,D,n=360) = _cg_mate
  * @function curve_gear_cosine_quintic_mate
  * @brief Build a Cosine Quintic mating gear.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png Cosine Quintic mate preview
- * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples.
+ *
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param width {number} Width.
+ * @param bore {number} Bore.
+ * @param depth {number} Quintic depth.
+ * @param harmonic {integer} Cosine harmonic.
+ * @param pressure_angle {number} Pressure angle.
+ * @param tooth_phase {number} Tooth phase.
+ * @param backlash {number} Backlash.
+ * @param clearance {number} Clearance.
+ * @param samples {integer} Samples.
  */
 module curve_gear_cosine_quintic_mate(modul,tooth_number,width,bore,depth=.19,harmonic=2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     _cg_assert_samples(samples,"cosine_quintic_gear_mate: samples must be an integer >= 120");
@@ -24,12 +35,23 @@ module curve_gear_cosine_quintic_mate(modul,tooth_number,width,bore,depth=.19,ha
 
 /** @function curve_gear_cosine_quintic_centre_distance
  * @brief Return the Cosine Quintic centre distance.
- * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param samples {integer} Samples.
+ *
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param depth {number} Quintic depth.
+ * @param harmonic {integer} Cosine harmonic.
+ * @param samples {integer} Samples.
  */
 function curve_gear_cosine_quintic_centre_distance(modul,tooth_number,depth=.19,harmonic=2,samples=720) = let(scale=_cg_cosine_quintic_scale(modul,tooth_number,samples,depth,harmonic)) _cg_cosine_quintic_centre_distance(scale,depth,harmonic,samples);
 
 /** @function curve_gear_cosine_quintic_mate_rotation
  * @brief Return the Cosine Quintic mate rotation.
- * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param depth {number} Quintic depth. @param harmonic {integer} Cosine harmonic. @param samples {integer} Samples. @param phase {number} Driver phase.
+ *
+ * @param modul {number} Tooth module.
+ * @param tooth_number {integer} Tooth count.
+ * @param depth {number} Quintic depth.
+ * @param harmonic {integer} Cosine harmonic.
+ * @param samples {integer} Samples.
+ * @param phase {number} Driver phase.
  */
 function curve_gear_cosine_quintic_mate_rotation(modul,tooth_number,depth=.19,harmonic=2,samples=720,phase=0) = let(scale=_cg_cosine_quintic_scale(modul,tooth_number,samples,depth,harmonic),D=_cg_cosine_quintic_centre_distance(scale,depth,harmonic,samples),motion=_cg_cosine_quintic_motion_table(scale,depth,harmonic,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);

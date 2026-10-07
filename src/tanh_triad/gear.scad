@@ -18,14 +18,27 @@ module _cg_tanh_triad_build(modul,tooth_number,width,bore,transition=1.8,crest=.
  * @brief Build a bounded tanh-modulated three-cycle gear.
  * @image ../images/functions/tanh_triad/curve_gear_tanh_triad.png Tanh Triad gear preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
+ *
  * @param modul {number > 0} Tooth module in mm.
+ *
  * @param tooth_number {integer >= 3} Number of teeth.
+ *
  * @param width {number > 0} Extrusion width in mm.
+ *
  * @param bore {number >= 0} Centre bore diameter in mm.
+ *
  * @param transition {number > 0, default 1.8} Transition steepness.
+ *
  * @param crest {0 < number < 0.5, default 0.13} Main radial modulation.
+ *
  * @param correction {0 <= number < 0.2, default 0.03} Sixth-harmonic correction.
- * @param pressure_angle {angle, default 20} Pressure angle. @param tooth_phase {angle, default 0} Tooth phase. @param backlash {undef or >= 0} Backlash. @param clearance {undef or >= 0} Clearance. @param samples {integer >= 120, default 720} Samples. @param orientation {angle, default 0} Orientation.
+ *
+ * @param pressure_angle {angle, default 20} Pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth phase.
+ * @param backlash {undef or >= 0} Backlash.
+ * @param clearance {undef or >= 0} Clearance.
+ * @param samples {integer >= 120, default 720} Samples.
+ * @param orientation {angle, default 0} Orientation.
  */
 module curve_gear_tanh_triad(modul,tooth_number,width,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_tanh_triad_build(modul,tooth_number,width,bore,transition,crest,correction,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false);
@@ -35,18 +48,31 @@ module curve_gear_tanh_triad(modul,tooth_number,width,bore,transition=1.8,crest=
  * @function curve_gear_tanh_triad_body
  * @brief Build the tanh-modulated gear body.
  * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body.png Tanh Triad body preview
+ *
  * @param modul {number} Tooth module.
+ *
  * @param tooth_number {integer} Tooth count.
+ *
  * @param width {number} Width.
+ *
  * @param bore {number} Bore.
+ *
  * @param transition {number} Transition.
+ *
  * @param crest {number} Crest.
+ *
  * @param correction {number} Correction.
+ *
  * @param pressure_angle {number} Pressure angle.
+ *
  * @param tooth_phase {number} Tooth phase.
+ *
  * @param backlash {number} Backlash.
+ *
  * @param clearance {number} Clearance.
+ *
  * @param samples {integer} Samples.
+ *
  * @param orientation {number} Orientation.
  */
 module curve_gear_tanh_triad_body(modul,tooth_number,width,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
@@ -57,17 +83,29 @@ module curve_gear_tanh_triad_body(modul,tooth_number,width,bore,transition=1.8,c
  * @function curve_gear_tanh_triad_2d
  * @brief Build the tanh-modulated 2D gear outline.
  * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png Tanh Triad 2D outline
+ *
  * @param modul {number} Tooth module.
+ *
  * @param tooth_number {integer} Tooth count.
+ *
  * @param bore {number} Bore.
+ *
  * @param transition {number} Transition.
+ *
  * @param crest {number} Crest.
+ *
  * @param correction {number} Correction.
+ *
  * @param pressure_angle {number} Pressure angle.
+ *
  * @param tooth_phase {number} Tooth phase.
+ *
  * @param backlash {number} Backlash.
+ *
  * @param clearance {number} Clearance.
+ *
  * @param samples {integer} Samples.
+ *
  * @param orientation {number} Orientation.
  */
 module curve_gear_tanh_triad_2d(modul,tooth_number,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
@@ -78,18 +116,31 @@ module curve_gear_tanh_triad_2d(modul,tooth_number,bore,transition=1.8,crest=.13
  * @function curve_gear_tanh_triad_body_2d
  * @brief Build the tanh-modulated 2D body outline.
  * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png Tanh Triad 2D body outline
+ *
  * @param modul {number} Tooth module.
+ *
  * @param tooth_number {integer} Tooth count.
+ *
  * @param bore {number} Bore.
+ *
  * @param transition {number} Transition.
+ *
  * @param crest {number} Crest.
+ *
  * @param correction {number} Correction.
+ *
  * @param pressure_angle {number} Pressure angle.
+ *
  * @param tooth_phase {number} Tooth phase.
+ *
  * @param backlash {number} Backlash.
+ *
  * @param clearance {number} Clearance.
+ *
  * @param samples {integer} Samples.
+ *
  * @param orientation {number} Orientation.
+ *
  * @param body_offset {number} Body offset.
  */
 module curve_gear_tanh_triad_body_2d(modul,tooth_number,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_offset=0) {
