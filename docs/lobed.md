@@ -72,12 +72,13 @@ The module `Lobed` defines the following functions.
 
 ### Function `curve_gear_lobed(modul, tooth_number, width, bore, ...)`
 
-| Lobed gear preview | ⠀ |
+| Lobed gear 1 | Lobed gear 2 |
 | --- | --- |
-| [![Lobed gear preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Lobed gear 1](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [![Lobed gear 2](../images/functions/lobed/curve_gear_lobed_alternative.png)](../images/functions/lobed/curve_gear_lobed_alternative.png) |
 
 
 Public single-gear construction for the lobed family.
+Two deep lobes replace the canonical shallow four-lobed square form. Lobe count 2 and depth 0.28 show the transition to an elongated, waisted pitch curve.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
 [`curve_gear_lobed_body`](#f-curve_gear_lobed_body)
 
@@ -285,11 +286,12 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`
 
-| Lobed pair preview | ⠀ |
+| Lobed pair 1 | Lobed pair 2 |
 | --- | --- |
-| [![Lobed pair preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Lobed pair 1](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [![Lobed pair 2](../images/functions/lobed/curve_gear_lobed_pair_alternative.png)](../images/functions/lobed/curve_gear_lobed_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_lobed`](#f-curve_gear_lobed)
 

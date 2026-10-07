@@ -1,11 +1,12 @@
 /***
  * @function hypotrochoid_curve_gear_pair_alternative
- * @brief curve_gear_hypotrochoid_pair alternative: Executable example for curve gear hypotrochoid pair alternative.
+ * @brief Hypotrochoid alternative pair: The alternative curve and its mate displayed separately for inspection.
  * Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad)
- * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png curve_gear_hypotrochoid_pair alternative preview
+ * A 5:1 rolling ratio and offset 0.35 produce five-fold shaping rather than the canonical three-fold outline. The alternative changes the curve itself, not merely the pair spacing.
+ * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png Hypotrochoid pair alternative
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/hypotrochoid/pair.scad>;
+use <curve_gear_hypotrochoid_alternative.scad>;
 include <../../palette.scad>;
-$fn=64;
-curve_gear_hypotrochoid_pair(.8,34,4,4.8,samples=360,phase=37,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+$fn=96;
+_alternative_example_hypotrochoid(pair=true);

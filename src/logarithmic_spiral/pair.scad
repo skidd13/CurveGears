@@ -1,8 +1,9 @@
 /***
  * @function curve_gear_logarithmic_spiral_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated logarithmic-spiral pair.
- * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png Logarithmic spiral pair preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+ * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png Logarithmic spiral pair 1
+ * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair_alternative.png Logarithmic spiral pair 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

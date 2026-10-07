@@ -41,11 +41,12 @@ The module `Tanh Triad` defines the following functions.
 
 ### Function `curve_gear_tanh_triad`
 
-| Tanh Triad gear preview | ⠀ |
+| Tanh Triad gear 1 | Tanh Triad gear 2 |
 | --- | --- |
-| [![Tanh Triad gear preview](../images/functions/tanh_triad/curve_gear_tanh_triad.png)](../images/functions/tanh_triad/curve_gear_tanh_triad.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tanh Triad gear 1](../images/functions/tanh_triad/curve_gear_tanh_triad.png)](../images/functions/tanh_triad/curve_gear_tanh_triad.png) | [![Tanh Triad gear 2](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative.png) |
 
 
+A broad smooth triad with transition 0.8 and crest 0.32 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
 
 
 
@@ -206,9 +207,9 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_centre_distance`
 
-| Tanh Triad pair preview | ⠀ |
+| Tanh Triad pair 1 | Tanh Triad pair 2 |
 | --- | --- |
-| [![Tanh Triad pair preview](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tanh Triad pair 1](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [![Tanh Triad pair 2](../images/functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.png) |
 
 
 
@@ -221,6 +222,7 @@ include <../common/pair/assembly.scad>
 
 /***
 @function curve_gear_tanh_triad_pair
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 
 

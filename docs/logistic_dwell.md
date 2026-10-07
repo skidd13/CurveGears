@@ -45,11 +45,12 @@ The module `Logistic Dwell` defines the following functions.
 
 ### Function `curve_gear_logistic_dwell`
 
-| Logistic Dwell gear preview | ⠀ |
+| Logistic Dwell gear 1 | Logistic Dwell gear 2 |
 | --- | --- |
-| [![Logistic Dwell gear preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logistic Dwell gear 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png) | [![Logistic Dwell gear 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png) |
 
 
+Depth 0.46 and gain 3 replace the canonical shallow, steep logistic gate. The larger radial variation and smoother transitions distinguish curve amplitude from gate sharpness; coarse teeth expose the contour.
 
 
 
@@ -252,11 +253,12 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_pair`
 
-| Logistic Dwell pair preview | ⠀ |
+| Logistic Dwell pair 1 | Logistic Dwell pair 2 |
 | --- | --- |
-| [![Logistic Dwell pair preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logistic Dwell pair 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [![Logistic Dwell pair 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 
 **Parameters:**

@@ -4,8 +4,9 @@ include <../common/pair/assembly.scad>
 /***
  * @function curve_gear_fourier_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated Fourier pair using one shared motion table.
- * @image ../images/functions/fourier/curve_gear_fourier_pair.png Fourier pair preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+ * @image ../images/functions/fourier/curve_gear_fourier_pair.png Fourier pair 1
+ * @image ../images/functions/fourier/curve_gear_fourier_pair_alternative.png Fourier pair 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

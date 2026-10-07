@@ -1,8 +1,9 @@
 /***
  * @function curve_gear_cassini
  * @brief Build a single-loop Cassini non-circular gear.
- * @image ../images/functions/cassini/curve_gear_cassini.png Cassini gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * A low focus ratio of 0.35 produces a compact oval rather than the canonical 0.92 peanut waist. Twenty coarse teeth make the limiting near-circular form clear.
+ * @image ../images/functions/cassini/curve_gear_cassini.png Cassini gear 1
+ * @image ../images/functions/cassini/curve_gear_cassini_alternative.png Cassini gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

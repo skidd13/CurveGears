@@ -66,12 +66,13 @@ The module `Logarithmic Spiral` defines the following functions.
 
 ### Function `curve_gear_logarithmic_spiral(modul, tooth_number, width, bore, ...)`
 
-| Logarithmic spiral gear preview | ⠀ |
+| Logarithmic spiral gear 1 | Logarithmic spiral gear 2 |
 | --- | --- |
-| [![Logarithmic spiral gear preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logarithmic spiral gear 1](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png) | [![Logarithmic spiral gear 2](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative.png) |
 
 
 Public single-gear construction for the logarithmic spiral family.
+Three spiral sectors replace the canonical single return. Growth 1.22 increases the radial sweep. Returns are broad transitions without ordinary teeth, and the pair is a static reference rather than a validated conjugate transmission.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
 [`curve_gear_logarithmic_spiral_body`](#f-curve_gear_logarithmic_spiral_body)
 
@@ -241,11 +242,12 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_pair(modul, tooth_number, width, bore, ...)`
 
-| Logarithmic spiral pair preview | ⠀ |
+| Logarithmic spiral pair 1 | Logarithmic spiral pair 2 |
 | --- | --- |
-| [![Logarithmic spiral pair preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logarithmic spiral pair 1](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png) | [![Logarithmic spiral pair 2](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair_alternative.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_logarithmic_spiral`](#f-curve_gear_logarithmic_spiral)
 

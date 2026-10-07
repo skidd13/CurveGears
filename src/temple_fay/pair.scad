@@ -3,8 +3,9 @@ include <../common/pair/assembly.scad>
 
 /*** @function curve_gear_temple_fay_pair
  * @brief Build a separated Temple Fay reference pair; this family is not asserted as a conjugate transmission.
- * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair.png Temple Fay pair preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+ * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair.png Temple Fay pair 1
+ * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png Temple Fay pair 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

@@ -4,8 +4,9 @@ include <../common/pair/assembly.scad>
 /***
  * @function curve_gear_cosine_quintic_pair
  * @brief Build a Cosine Quintic gear pair.
- * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png Cosine Quintic pair preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png Cosine Quintic pair 1
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.png Cosine Quintic pair 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

@@ -1,8 +1,8 @@
-# Hypotrochoid pair alternatives
+# Hypotrochoid alternatives
 
-These examples belong to `curve_gear_hypotrochoid_pair`. They demonstrate
-deliberate display choices for that function and are not separate public API
-callables.
+These examples use a 5:1 rolling ratio and offset 0.35 to contrast five-fold
+shaping with the canonical three-fold outline. They are examples of the existing
+public gear and pair functions, not separate public API callables.
 
-- [Separated pair alternative](curve_gear_hypotrochoid_pair_alternative.scad) — uses `together_built=false` and
-  `phase=37` for side-by-side inspection.
+- [Five-fold gear alternative](curve_gear_hypotrochoid_alternative.scad)
+- [Separated five-fold pair](curve_gear_hypotrochoid_pair_alternative.scad) — uses `together_built=false` for inspection.

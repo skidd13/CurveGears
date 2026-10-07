@@ -11,8 +11,9 @@ module _cg_temple_fay_build(modul,tooth_number,width,bore,wing=.24,fold=.07,pres
 /***
  * @function curve_gear_temple_fay
  * @brief Build a Temple Fay butterfly-inspired gear.
- * @image ../images/functions/temple_fay/curve_gear_temple_fay.png Temple Fay gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+ * @image ../images/functions/temple_fay/curve_gear_temple_fay.png Temple Fay gear 1
+ * @image ../images/functions/temple_fay/curve_gear_temple_fay_alternative.png Temple Fay gear 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

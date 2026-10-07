@@ -91,6 +91,8 @@ $(API_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 $(API_IMAGES) $(CORE_IMAGES): examples/palette.scad
 $(CORE_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 $(CORE_IMAGES): examples/tooth/palette.scad
+# Pair alternatives import their single-gear alternative's parameter wrapper.
+$(filter %_pair_alternative.png,$(API_IMAGES)): images/functions/%_pair_alternative.png: examples/functions/%_alternative.scad
 
 define FAMILY_API_IMAGE_SOURCE_DEPS
 $(filter images/functions/$(1)/%,$(API_IMAGES)): $(shell find src/$(1) -type f -name '*.scad' -print | sort)
@@ -128,7 +130,7 @@ examples: examples/README.md
 	@test -s examples/README.md
 	@test -s "$(MAIN_EXAMPLE)"
 	@for example in $(CORE_EXAMPLES); do test -s "$$example" || { echo "missing core example: $$example"; exit 1; }; done
-	@test "$(words $(API_EXAMPLES))" -eq 126
+	@test "$(words $(API_EXAMPLES))" -eq 155
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
 
@@ -138,9 +140,9 @@ ci-example-manifest:
 		relative=$${example#examples/}; output=$${relative%.scad}.png; \
 		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
 	done > "$(CI_EXAMPLE_MANIFEST)"
-	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 130
-	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 130
-	@echo 'PASS: CI manifest contains all 130 canonical examples'
+	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 159
+	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 159
+	@echo 'PASS: CI manifest contains all 159 examples'
 
 ci-render-examples: ci-example-manifest
 	@set -eu; \

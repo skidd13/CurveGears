@@ -2,8 +2,9 @@
  * Public single-gear construction for the superformula family.
  * @function curve_gear_superformula(modul, tooth_number, width, bore, ...)
  * @brief Build a superformula non-circular gear.
- * @image ../images/functions/superformula/curve_gear_superformula.png Superformula gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * A rounded square with symmetry 4 and exponents 8 replaces the canonical five-pointed star. This demonstrates the superformula's ability to change its shape class through exponents and symmetry.
+ * @image ../images/functions/superformula/curve_gear_superformula.png Superformula gear 1
+ * @image ../images/functions/superformula/curve_gear_superformula_alternative.png Superformula gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

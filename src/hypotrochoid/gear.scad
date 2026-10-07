@@ -1,8 +1,9 @@
 /***
  * @function curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)
  * @brief Build a hypotrochoid non-circular gear.
- * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid.png Hypotrochoid gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * A 5:1 rolling ratio and offset 0.35 produce five-fold shaping rather than the canonical three-fold outline. The alternative changes the curve itself, not merely the pair spacing.
+ * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid.png Hypotrochoid gear 1
+ * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative.png Hypotrochoid gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

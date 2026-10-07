@@ -2,8 +2,9 @@
  * Public single-gear construction for the logarithmic spiral family.
  * @function curve_gear_logarithmic_spiral(modul, tooth_number, width, bore, ...)
  * @brief Build a logarithmic-spiral non-circular gear.
- * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png Logarithmic spiral gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Three spiral sectors replace the canonical single return. Growth 1.22 increases the radial sweep. Returns are broad transitions without ordinary teeth, and the pair is a static reference rather than a validated conjugate transmission.
+ * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png Logarithmic spiral gear 1
+ * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative.png Logarithmic spiral gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3 and divisible by sectors} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

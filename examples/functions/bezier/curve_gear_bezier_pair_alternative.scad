@@ -1,18 +1,12 @@
 /***
  * @function bezier_curve_gear_pair_alternative
- * @brief Bézier asymmetric pair alternative: The same visibly non-circular Bézier curve and its derived mate.
+ * @brief Bézier alternative pair: The alternative curve and its mate displayed separately for inspection.
  * Source: [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad)
- * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier asymmetric pair alternative preview
+ * An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
+ * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier pair alternative
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/bezier/pair.scad>;
+use <curve_gear_bezier_alternative.scad>;
 include <../../palette.scad>;
-
-$fn=64;
-asymmetric_controls=[
-    [1.55,0],[1.55,.8],[1.0,1.55],[0,1.55],
-    [-1.0,1.55],[-1.55,.8],[-1.55,0],
-    [-1.55,-.35],[-.8,-.65],[0,-.65],
-    [.8,-.65],[1.55,-.35],[1.55,0]
-];
-curve_gear_bezier_pair(.8,34,4,4.8,control_points=asymmetric_controls,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+$fn=96;
+_alternative_example_bezier(pair=true);

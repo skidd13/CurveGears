@@ -2,8 +2,9 @@
  * Public single-gear construction for the ellipse family.
  * @function curve_gear_ellipse(modul, tooth_number, width, bore, ...)
  * @brief Build an elliptical non-circular gear.
- * @image ../images/functions/ellipse/curve_gear_ellipse.png Ellipse gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Eccentricity 0.94 produces a long narrow ellipse rather than the canonical 0.72 oval. The sharper ends and narrow transverse span reveal where tooth placement becomes demanding.
+ * @image ../images/functions/ellipse/curve_gear_ellipse.png Ellipse gear 1
+ * @image ../images/functions/ellipse/curve_gear_ellipse_alternative.png Ellipse gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

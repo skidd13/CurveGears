@@ -4,8 +4,9 @@ include <../common/pair/assembly.scad>
 /**
  * @function curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
- * @image ../images/functions/bezier/curve_gear_bezier_pair.png Bézier pair preview
- * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier asymmetric alternative pair
+ * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+ * @image ../images/functions/bezier/curve_gear_bezier_pair.png Bézier pair 1
+ * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier pair 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

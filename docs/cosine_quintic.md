@@ -45,11 +45,12 @@ The module `Cosine Quintic` defines the following functions.
 
 ### Function `curve_gear_cosine_quintic`
 
-| Cosine Quintic gear preview | ⠀ |
+| Cosine Quintic gear 1 | Cosine Quintic gear 2 |
 | --- | --- |
-| [![Cosine Quintic gear preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cosine Quintic gear 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png) | [![Cosine Quintic gear 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative.png) |
 
 
+Three pronounced signed-cosine plateaux replace the canonical two-harmonic form. Harmonic 3 and depth 0.16 expose how the fifth power concentrates the radial excursions.
 
 
 **Parameters:**
@@ -232,11 +233,12 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_pair`
 
-| Cosine Quintic pair preview | ⠀ |
+| Cosine Quintic pair 1 | Cosine Quintic pair 2 |
 | --- | --- |
-| [![Cosine Quintic pair preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cosine Quintic pair 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [![Cosine Quintic pair 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 
 **Parameters:**

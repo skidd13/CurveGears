@@ -2,8 +2,9 @@
  * Public single-gear construction for the pascal family.
  * @function curve_gear_pascal(modul, tooth_number, width, bore, ...)
  * @brief Build a Pascal-curve non-circular gear.
- * @image ../images/functions/pascal/curve_gear_pascal.png Pascal gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Eccentricity 0.28 gives a convex egg-like outline instead of the canonical non-convex 0.60 limacon. Twenty coarse teeth emphasise the body contour. This contrasts the regular conjugate domain with the experimental dimpled case.
+ * @image ../images/functions/pascal/curve_gear_pascal.png Pascal gear 1
+ * @image ../images/functions/pascal/curve_gear_pascal_alternative.png Pascal gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

@@ -81,12 +81,12 @@ The module `Bezier` defines the following functions.
 
 ### Function `curve_gear_bezier(modul, tooth_number, width, bore, ...)`
 
-| Bézier gear preview | Bézier asymmetric alternative |
+| Bézier gear 1 | Bézier gear 2 |
 | --- | --- |
-| [![Bézier gear preview](../images/functions/bezier/curve_gear_bezier.png)](../images/functions/bezier/curve_gear_bezier.png) | [![Bézier asymmetric alternative](../images/functions/bezier/curve_gear_bezier_alternative.png)](../images/functions/bezier/curve_gear_bezier_alternative.png) |
+| [![Bézier gear 1](../images/functions/bezier/curve_gear_bezier.png)](../images/functions/bezier/curve_gear_bezier.png) | [![Bézier gear 2](../images/functions/bezier/curve_gear_bezier_alternative.png)](../images/functions/bezier/curve_gear_bezier_alternative.png) |
 
 
-Build a closed cubic Bézier gear from user-controlled normalised points.
+An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
 
 **Parameters:**
 
@@ -279,12 +279,12 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_pair(modul, tooth_number, width, bore, ...)`
 
-| Bézier pair preview | Bézier asymmetric alternative pair |
+| Bézier pair 1 | Bézier pair 2 |
 | --- | --- |
-| [![Bézier pair preview](../images/functions/bezier/curve_gear_bezier_pair.png)](../images/functions/bezier/curve_gear_bezier_pair.png) | [![Bézier asymmetric alternative pair](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)](../images/functions/bezier/curve_gear_bezier_pair_alternative.png) |
+| [![Bézier pair 1](../images/functions/bezier/curve_gear_bezier_pair.png)](../images/functions/bezier/curve_gear_bezier_pair.png) | [![Bézier pair 2](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)](../images/functions/bezier/curve_gear_bezier_pair_alternative.png) |
 
 
-Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 **Parameters:**
 

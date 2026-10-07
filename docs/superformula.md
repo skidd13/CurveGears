@@ -79,12 +79,13 @@ The module `Superformula` defines the following functions.
 
 ### Function `curve_gear_superformula(modul, tooth_number, width, bore, ...)`
 
-| Superformula gear preview | ⠀ |
+| Superformula gear 1 | Superformula gear 2 |
 | --- | --- |
-| [![Superformula gear preview](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Superformula gear 1](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) | [![Superformula gear 2](../images/functions/superformula/curve_gear_superformula_alternative.png)](../images/functions/superformula/curve_gear_superformula_alternative.png) |
 
 
 Public single-gear construction for the superformula family.
+A rounded square with symmetry 4 and exponents 8 replaces the canonical five-pointed star. This demonstrates the superformula's ability to change its shape class through exponents and symmetry.
 Odd symmetry requires a=b and n2=n3 for full-turn continuity.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
 [`curve_gear_superformula_body`](#f-curve_gear_superformula_body)
@@ -321,11 +322,12 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_pair(modul, tooth_number, width, bore, ...)`
 
-| Superformula pair preview | ⠀ |
+| Superformula pair 1 | Superformula pair 2 |
 | --- | --- |
-| [![Superformula pair preview](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Superformula pair 1](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) | [![Superformula pair 2](../images/functions/superformula/curve_gear_superformula_pair_alternative.png)](../images/functions/superformula/curve_gear_superformula_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_superformula`](#f-curve_gear_superformula)
 

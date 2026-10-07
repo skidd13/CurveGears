@@ -75,12 +75,13 @@ The module `Epitrochoid` defines the following functions.
 
 ### Function `curve_gear_epitrochoid(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid gear preview | ⠀ |
+| Epitrochoid gear 1 | Epitrochoid gear 2 |
 | --- | --- |
-| [![Epitrochoid gear preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Epitrochoid gear 1](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [![Epitrochoid gear 2](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative.png) |
 
 
 Public single-gear construction for the epitrochoid family.
+A rolling ratio of 2:1 produces broad two-fold shaping instead of the canonical four-fold scallops. Offset 0.65 strengthens the excursions of the generating point.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
 [`curve_gear_epitrochoid_body`](#f-curve_gear_epitrochoid_body)
 
@@ -295,11 +296,12 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_pair(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid pair preview | ⠀ |
+| Epitrochoid pair 1 | Epitrochoid pair 2 |
 | --- | --- |
-| [![Epitrochoid pair preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Epitrochoid pair 1](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [![Epitrochoid pair 2](../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_epitrochoid`](#f-curve_gear_epitrochoid)
 

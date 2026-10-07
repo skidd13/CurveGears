@@ -77,11 +77,12 @@ The module `Cassini` defines the following functions.
 
 ### Function `curve_gear_cassini`
 
-| Cassini gear preview | ⠀ |
+| Cassini gear 1 | Cassini gear 2 |
 | --- | --- |
-| [![Cassini gear preview](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cassini gear 1](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) | [![Cassini gear 2](../images/functions/cassini/curve_gear_cassini_alternative.png)](../images/functions/cassini/curve_gear_cassini_alternative.png) |
 
 
+A low focus ratio of 0.35 produces a compact oval rather than the canonical 0.92 peanut waist. Twenty coarse teeth make the limiting near-circular form clear.
 The supported branch is a positive single loop. `focus_ratio >= 1` is rejected.
 
 **Parameters:**
@@ -281,12 +282,12 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_pair`
 
-| Cassini pair preview | ⠀ |
+| Cassini pair 1 | Cassini pair 2 |
 | --- | --- |
-| [![Cassini pair preview](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cassini pair 1](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) | [![Cassini pair 2](../images/functions/cassini/curve_gear_cassini_pair_alternative.png)](../images/functions/cassini/curve_gear_cassini_pair_alternative.png) |
 
 
-Build a meshed or separated Cassini driver/mate pair.
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 **Parameters:**
 

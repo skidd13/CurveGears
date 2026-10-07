@@ -274,8 +274,9 @@ module _cg_cusp_build(modul,tooth_number,width,bore,pressure_angle=20,backlash=u
 /***
  * @function curve_gear_cusp(modul, tooth_number, width, bore, ...)
  * @brief Build the three-cusp deltoid gear with regular radial teeth at its cusps.
- * @image ../images/functions/cusp/curve_gear_cusp.png Cusp gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * A thin plate contrasts with the thick canonical gear; the bore remains 4.8 mm. The deltoid pitch law is fixed; the validated 36-tooth count is retained while thickness reveals the body structure.
+ * @image ../images/functions/cusp/curve_gear_cusp.png Cusp gear 1
+ * @image ../images/functions/cusp/curve_gear_cusp_alternative.png Cusp gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by 3} Tooth count; one radial tooth is centred on each cusp.
  * @param width {number > 0} Extrusion width in mm.

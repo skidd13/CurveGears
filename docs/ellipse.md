@@ -69,12 +69,13 @@ The module `Ellipse` defines the following functions.
 
 ### Function `curve_gear_ellipse(modul, tooth_number, width, bore, ...)`
 
-| Ellipse gear preview | ⠀ |
+| Ellipse gear 1 | Ellipse gear 2 |
 | --- | --- |
-| [![Ellipse gear preview](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Ellipse gear 1](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) | [![Ellipse gear 2](../images/functions/ellipse/curve_gear_ellipse_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_alternative.png) |
 
 
 Public single-gear construction for the ellipse family.
+Eccentricity 0.94 produces a long narrow ellipse rather than the canonical 0.72 oval. The sharper ends and narrow transverse span reveal where tooth placement becomes demanding.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
 [`curve_gear_ellipse_body`](#f-curve_gear_ellipse_body)
 
@@ -275,11 +276,12 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_pair(modul, tooth_number, width, bore, ...)`
 
-| Ellipse pair preview | ⠀ |
+| Ellipse pair 1 | Ellipse pair 2 |
 | --- | --- |
-| [![Ellipse pair preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Ellipse pair 1](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) | [![Ellipse pair 2](../images/functions/ellipse/curve_gear_ellipse_pair_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_ellipse`](#f-curve_gear_ellipse)
 

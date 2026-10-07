@@ -104,8 +104,9 @@ module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_
 /***
  * @function curve_gear_bezier(modul, tooth_number, width, bore, ...)
  * @brief Build a closed cubic Bézier gear from user-controlled normalised points.
- * @image ../images/functions/bezier/curve_gear_bezier.png Bézier gear preview
- * @image ../images/functions/bezier/curve_gear_bezier_alternative.png Bézier asymmetric alternative
+ * An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
+ * @image ../images/functions/bezier/curve_gear_bezier.png Bézier gear 1
+ * @image ../images/functions/bezier/curve_gear_bezier_alternative.png Bézier gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

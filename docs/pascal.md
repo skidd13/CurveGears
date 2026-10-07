@@ -78,12 +78,13 @@ The module `Pascal` defines the following functions.
 
 ### Function `curve_gear_pascal(modul, tooth_number, width, bore, ...)`
 
-| Pascal gear preview | ⠀ |
+| Pascal gear 1 | Pascal gear 2 |
 | --- | --- |
-| [![Pascal gear preview](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Pascal gear 1](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) | [![Pascal gear 2](../images/functions/pascal/curve_gear_pascal_alternative.png)](../images/functions/pascal/curve_gear_pascal_alternative.png) |
 
 
 Public single-gear construction for the pascal family.
+Eccentricity 0.28 gives a convex egg-like outline instead of the canonical non-convex 0.60 limacon. Twenty coarse teeth emphasise the body contour. This contrasts the regular conjugate domain with the experimental dimpled case.
 The gear is centred on X=0,Y=0 with its lower face at Z=0.
 [`curve_gear_pascal_body`](#f-curve_gear_pascal_body)
 
@@ -284,11 +285,12 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_pair(modul, tooth_number, width, bore, ...)`
 
-| Pascal pair preview | ⠀ |
+| Pascal pair 1 | Pascal pair 2 |
 | --- | --- |
-| [![Pascal pair preview](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Pascal pair 1](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) | [![Pascal pair 2](../images/functions/pascal/curve_gear_pascal_pair_alternative.png)](../images/functions/pascal/curve_gear_pascal_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_pascal`](#f-curve_gear_pascal)
 

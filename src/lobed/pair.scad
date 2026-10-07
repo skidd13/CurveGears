@@ -1,8 +1,9 @@
 /***
  * @function curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)
  * @brief Build a meshed or separated lobed pair.
- * @image ../images/functions/lobed/curve_gear_lobed_pair.png Lobed pair preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+ * @image ../images/functions/lobed/curve_gear_lobed_pair.png Lobed pair 1
+ * @image ../images/functions/lobed/curve_gear_lobed_pair_alternative.png Lobed pair 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

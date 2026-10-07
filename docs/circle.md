@@ -47,12 +47,12 @@ The module `Circle` defines the following functions.
 
 ### Function `curve_gear_circle(modul, tooth_number, width, bore, ...)`
 
-| Circle gear preview | ⠀ |
+| Circle gear 1 | Circle gear 2 |
 | --- | --- |
-| [![Circle gear preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Circle gear 1](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [![Circle gear 2](../images/functions/circle/curve_gear_circle_alternative.png)](../images/functions/circle/curve_gear_circle_alternative.png) |
 
 
-Build a circular reference gear.
+Twelve coarse teeth replace the fine-toothed reference; the bore remains 4.8 mm. Circle has no non-circular shape control; the circular pitch law is deliberately preserved.
 
 **Parameters:**
 
@@ -201,12 +201,12 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`
 
-| Circle pair preview | ⠀ |
+| Circle pair 1 | Circle pair 2 |
 | --- | --- |
-| [![Circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Circle pair 1](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [![Circle pair 2](../images/functions/circle/curve_gear_circle_pair_alternative.png)](../images/functions/circle/curve_gear_circle_pair_alternative.png) |
 
 
-Build a meshed or separated circular reference pair.
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 **Parameters:**
 

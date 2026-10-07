@@ -48,11 +48,12 @@ The module `Temple Fay` defines the following functions.
 
 ### Function `curve_gear_temple_fay`
 
-| Temple Fay gear preview | ⠀ |
+| Temple Fay gear 1 | Temple Fay gear 2 |
 | --- | --- |
-| [![Temple Fay gear preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Temple Fay gear 1](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![Temple Fay gear 2](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png) |
 
 
+Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
 
 
 **Parameters:**
@@ -235,11 +236,12 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_pair`
 
-| Temple Fay pair preview | ⠀ |
+| Temple Fay pair 1 | Temple Fay pair 2 |
 | --- | --- |
-| [![Temple Fay pair preview](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Temple Fay pair 1](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [![Temple Fay pair 2](../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png) |
 
 
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 
 **Parameters:**

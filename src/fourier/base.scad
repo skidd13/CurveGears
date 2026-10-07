@@ -89,8 +89,9 @@ module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],
 /***
  * @function curve_gear_fourier(modul, tooth_number, width, bore, ...)
  * @brief Build a coefficient-driven Fourier gear.
- * @image ../images/functions/fourier/curve_gear_fourier.png Fourier gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * A single strong third harmonic produces three clear lobes instead of the canonical mixed second/third-harmonic oval. This isolates harmonic count from mixed-phase asymmetry.
+ * @image ../images/functions/fourier/curve_gear_fourier.png Fourier gear 1
+ * @image ../images/functions/fourier/curve_gear_fourier_alternative.png Fourier gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

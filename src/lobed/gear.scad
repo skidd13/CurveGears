@@ -2,8 +2,9 @@
  * Public single-gear construction for the lobed family.
  * @function curve_gear_lobed(modul, tooth_number, width, bore, ...)
  * @brief Build a lobed non-circular gear.
- * @image ../images/functions/lobed/curve_gear_lobed.png Lobed gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Two deep lobes replace the canonical shallow four-lobed square form. Lobe count 2 and depth 0.28 show the transition to an elongated, waisted pitch curve.
+ * @image ../images/functions/lobed/curve_gear_lobed.png Lobed gear 1
+ * @image ../images/functions/lobed/curve_gear_lobed_alternative.png Lobed gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

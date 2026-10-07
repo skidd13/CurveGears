@@ -3,8 +3,9 @@ include <base.scad>
 /***
  * @function curve_gear_circle(modul, tooth_number, width, bore, ...)
  * @brief Build a circular reference gear.
- * @image ../images/functions/circle/curve_gear_circle.png Circle gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Twelve coarse teeth replace the fine-toothed reference; the bore remains 4.8 mm. Circle has no non-circular shape control; the circular pitch law is deliberately preserved.
+ * @image ../images/functions/circle/curve_gear_circle.png Circle gear 1
+ * @image ../images/functions/circle/curve_gear_circle_alternative.png Circle gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

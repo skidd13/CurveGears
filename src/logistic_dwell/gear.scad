@@ -16,8 +16,9 @@ module _cg_logistic_dwell_build(modul,tooth_number,width,bore,gain=8,depth=.2,pr
 /***
  * @function curve_gear_logistic_dwell
  * @brief Build a logistic-gated second-harmonic dwell gear.
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell.png Logistic Dwell gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Depth 0.46 and gain 3 replace the canonical shallow, steep logistic gate. The larger radial variation and smoother transitions distinguish curve amplitude from gate sharpness; coarse teeth expose the contour.
+ * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell.png Logistic Dwell gear 1
+ * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png Logistic Dwell gear 2
  *
  * @param modul {number > 0} Tooth module in mm.
  *

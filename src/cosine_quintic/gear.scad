@@ -16,8 +16,9 @@ module _cg_cosine_quintic_build(modul,tooth_number,width,bore,depth=.19,harmonic
 /***
  * @function curve_gear_cosine_quintic
  * @brief Build a signed fifth-power cosine gear.
- * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic.png Cosine Quintic gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Three pronounced signed-cosine plateaux replace the canonical two-harmonic form. Harmonic 3 and depth 0.16 expose how the fifth power concentrates the radial excursions.
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic.png Cosine Quintic gear 1
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative.png Cosine Quintic gear 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

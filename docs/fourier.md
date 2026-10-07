@@ -74,12 +74,12 @@ The module `Fourier` defines the following functions.
 
 ### Function `curve_gear_fourier(modul, tooth_number, width, bore, ...)`
 
-| Fourier gear preview | ⠀ |
+| Fourier gear 1 | Fourier gear 2 |
 | --- | --- |
-| [![Fourier gear preview](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Fourier gear 1](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) | [![Fourier gear 2](../images/functions/fourier/curve_gear_fourier_alternative.png)](../images/functions/fourier/curve_gear_fourier_alternative.png) |
 
 
-Build a coefficient-driven Fourier gear.
+A single strong third harmonic produces three clear lobes instead of the canonical mixed second/third-harmonic oval. This isolates harmonic count from mixed-phase asymmetry.
 
 **Parameters:**
 
@@ -272,12 +272,12 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_pair(modul, tooth_number, width, bore, ...)`
 
-| Fourier pair preview | ⠀ |
+| Fourier pair 1 | Fourier pair 2 |
 | --- | --- |
-| [![Fourier pair preview](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Fourier pair 1](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) | [![Fourier pair 2](../images/functions/fourier/curve_gear_fourier_pair_alternative.png)](../images/functions/fourier/curve_gear_fourier_pair_alternative.png) |
 
 
-Build a meshed or separated Fourier pair using one shared motion table.
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 **Parameters:**
 

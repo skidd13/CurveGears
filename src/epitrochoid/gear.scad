@@ -2,8 +2,9 @@
  * Public single-gear construction for the epitrochoid family.
  * @function curve_gear_epitrochoid(modul, tooth_number, width, bore, ...)
  * @brief Build an epitrochoid non-circular gear.
- * @image ../images/functions/epitrochoid/curve_gear_epitrochoid.png Epitrochoid gear preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * A rolling ratio of 2:1 produces broad two-fold shaping instead of the canonical four-fold scallops. Offset 0.65 strengthens the excursions of the generating point.
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid.png Epitrochoid gear 1
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_alternative.png Epitrochoid gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

@@ -88,11 +88,12 @@ The module `Cusp` defines the following functions.
 
 ### Function `curve_gear_cusp(modul, tooth_number, width, bore, ...)`
 
-| Cusp gear preview | ⠀ |
+| Cusp gear 1 | Cusp gear 2 |
 | --- | --- |
-| [![Cusp gear preview](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cusp gear 1](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) | [![Cusp gear 2](../images/functions/cusp/curve_gear_cusp_alternative.png)](../images/functions/cusp/curve_gear_cusp_alternative.png) |
 
 
+A thin plate contrasts with the thick canonical gear; the bore remains 4.8 mm. The deltoid pitch law is fixed; the validated 36-tooth count is retained while thickness reveals the body structure.
 The common candidate validator accepts the full regular radial-root profile. Each cusp tooth is translated inward until its root width meets the local cusp-branch width; the cusp interval is then cropped and replaced by that unchanged tooth profile.
 The mate is derived from the full placed driver outline and closed motion table.
 
@@ -267,12 +268,12 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`
 
-| Cusp pair preview | ⠀ |
+| Cusp pair 1 | Cusp pair 2 |
 | --- | --- |
-| [![Cusp pair preview](../images/functions/cusp/curve_gear_cusp_pair.png)](../images/functions/cusp/curve_gear_cusp_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cusp pair 1](../images/functions/cusp/curve_gear_cusp_pair.png)](../images/functions/cusp/curve_gear_cusp_pair.png) | [![Cusp pair 2](../images/functions/cusp/curve_gear_cusp_pair_alternative.png)](../images/functions/cusp/curve_gear_cusp_pair_alternative.png) |
 
 
-Build a meshed or separated deltoid cusp gear pair with a swept-envelope mate.
+Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 **Parameters:**
 
