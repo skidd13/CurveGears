@@ -22,6 +22,11 @@ include <../common/pair/assembly.scad>
  * @param mate_color {string} Mate colour.
  */
 module curve_gear_temple_fay_pair(modul,tooth_number,width,bore,wing=.18,fold=.05,pressure_angle=20,samples=720,phase=0,together_built=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
-    curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,phase);
-    translate([curve_gear_temple_fay_centre_distance(modul,tooth_number,wing,fold,samples),0,0]) color(mate_color) curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,phase+180);
+    points=_cg_temple_fay_points(modul,tooth_number,samples,wing,fold);
+    extent=_cg_pair_point_extent(points);
+    distance=curve_gear_temple_fay_centre_distance(modul,tooth_number,wing,fold,samples);
+    _cg_static_pair_assembly(distance,together_built,phase,phase+180,extent,extent,modul) {
+        color(driver_color) curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,phase);
+        color(mate_color) curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,phase+180);
+    }
 }
