@@ -14,7 +14,7 @@
 ## Module `Temple Fay`
 
 
-The project law is `r(theta)=1+0.12*sin(2 theta)+0.03*sin(4 theta)`.
+The project law is `r(theta)=1+0.18*sin(2 theta)+0.05*sin(4 theta)`.
 It is a bounded two-harmonic Fourier polar curve inspired by the Butterfly
 Curve associated with Temple H. Fay; this project name is intentional and
 does not claim that the implementation is the historical curve itself.

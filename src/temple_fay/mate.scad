@@ -5,7 +5,7 @@ include <gear.scad>
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_mate.png Temple Fay mate preview
  * @param modul {number} Tooth module. @param tooth_number {integer} Tooth count. @param width {number} Width. @param bore {number} Bore. @param wing {number} Wing amplitude. @param fold {number} Fold harmonic. @param pressure_angle {number} Pressure angle. @param tooth_phase {number} Tooth phase. @param backlash {number} Backlash. @param clearance {number} Clearance. @param samples {integer} Samples.
  */
-module curve_gear_temple_fay_mate(modul,tooth_number,width,bore,wing=.12,fold=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) { curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,180); }
+module curve_gear_temple_fay_mate(modul,tooth_number,width,bore,wing=.18,fold=.05,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) { curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,180); }
 
 /** @function curve_gear_temple_fay_centre_distance
  * @brief Return the Temple Fay reference centre distance.
