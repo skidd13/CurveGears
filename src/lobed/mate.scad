@@ -70,8 +70,9 @@ function _cg_lobed_mate_points(scale,lobes,lobe_depth,D,n=360) = _cg_lobed_mate_
 /***
  * @function curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)
  * @brief Build the standalone lobed mate boundary at the origin.
- * @image ../images/functions/lobed/curve_gear_lobed_mate.png Lobed mate preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/lobed/curve_gear_lobed_mate.png Lobed mate 1
+ * @image ../images/functions/lobed/curve_gear_lobed_mate_alternative.png Lobed mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

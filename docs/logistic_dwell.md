@@ -87,11 +87,12 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_2d`
 
-| Logistic Dwell 2D outline | ⠀ |
+| Logistic Dwell 2D gear 1 | Logistic Dwell 2D gear 2 |
 | --- | --- |
-| [![Logistic Dwell 2D outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Logistic Dwell 2D gear 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [![Logistic Dwell 2D gear 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -116,11 +117,12 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_body`
 
-| Logistic Dwell body preview | ⠀ |
+| Logistic Dwell body 1 | Logistic Dwell body 2 |
 | --- | --- |
-| [![Logistic Dwell body preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logistic Dwell body 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [![Logistic Dwell body 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -146,11 +148,12 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_body_2d`
 
-| Logistic Dwell 2D body outline | ⠀ |
+| Logistic Dwell 2D body 1 | Logistic Dwell 2D body 2 |
 | --- | --- |
-| [![Logistic Dwell 2D body outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Logistic Dwell 2D body 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [![Logistic Dwell 2D body 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -199,11 +202,12 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_mate`
 
-| Logistic Dwell mate preview | ⠀ |
+| Logistic Dwell mate 1 | Logistic Dwell mate 2 |
 | --- | --- |
-| [![Logistic Dwell mate preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logistic Dwell mate 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [![Logistic Dwell mate 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**

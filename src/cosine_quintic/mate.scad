@@ -11,8 +11,9 @@ function _cg_cosine_quintic_mate_points(scale,depth,harmonic,D,n=360) = _cg_mate
 /***
  * @function curve_gear_cosine_quintic_mate
  * @brief Build a Cosine Quintic mating gear.
- * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png Cosine Quintic mate preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png Cosine Quintic mate 1
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png Cosine Quintic mate 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

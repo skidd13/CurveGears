@@ -116,12 +116,12 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_2d`
 
-| pascal 2D gear outline | ⠀ |
+| Pascal 2D gear 1 | Pascal 2D gear 2 |
 | --- | --- |
-| [![pascal 2D gear outline](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Pascal 2D gear 1](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) | [![Pascal 2D gear 2](../images/functions/pascal/curve_gear_pascal_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_alternative_2d.png) |
 
 
-Emit the complete pascal gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -150,12 +150,12 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_body(modul, tooth_number, width, bore, ...)`
 
-| Pascal body preview | ⠀ |
+| Pascal body 1 | Pascal body 2 |
 | --- | --- |
-| [![Pascal body preview](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Pascal body 1](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) | [![Pascal body 2](../images/functions/pascal/curve_gear_pascal_body_alternative.png)](../images/functions/pascal/curve_gear_pascal_body_alternative.png) |
 
 
-Build the Pascal body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -185,12 +185,12 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_body_2d`
 
-| pascal 2D body outline | ⠀ |
+| Pascal 2D body 1 | Pascal 2D body 2 |
 | --- | --- |
-| [![pascal 2D body outline](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Pascal 2D body 1](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) | [![Pascal 2D body 2](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png) |
 
 
-Emit the pascal body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -238,12 +238,12 @@ Back to [module description](#module-pascal).
 
 ### Function `curve_gear_pascal_mate(modul, tooth_number, width, bore, ...)`
 
-| Pascal mate preview | ⠀ |
+| Pascal mate 1 | Pascal mate 2 |
 | --- | --- |
-| [![Pascal mate preview](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Pascal mate 1](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) | [![Pascal mate 2](../images/functions/pascal/curve_gear_pascal_mate_alternative.png)](../images/functions/pascal/curve_gear_pascal_mate_alternative.png) |
 
 
-Build the standalone Pascal mate boundary at the origin.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

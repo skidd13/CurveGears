@@ -128,8 +128,9 @@ module curve_gear_bezier(modul,tooth_number,width,bore,control_points=_cg_bezier
 /***
  * @function curve_gear_bezier_body(modul, tooth_number, width, bore, ...)
  * @brief Build the closed Bézier body without teeth.
- * @image ../images/functions/bezier/curve_gear_bezier_body.png Bézier body preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/bezier/curve_gear_bezier_body.png Bézier body 1
+ * @image ../images/functions/bezier/curve_gear_bezier_body_alternative.png Bézier body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -149,8 +150,9 @@ module curve_gear_bezier_body(modul,tooth_number,width,bore,control_points=_cg_b
 /***
  * @function curve_gear_bezier_2d
  * @brief Emit the complete bezier gear profile as 2D geometry.
- * @image ../images/functions/bezier/curve_gear_bezier_2d.png bezier 2D gear outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/bezier/curve_gear_bezier_2d.png Bézier 2D gear 1
+ * @image ../images/functions/bezier/curve_gear_bezier_alternative_2d.png Bézier 2D gear 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
@@ -171,8 +173,9 @@ module curve_gear_bezier_2d(modul, tooth_number, bore, control_points=_cg_bezier
 /***
  * @function curve_gear_bezier_body_2d
  * @brief Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
- * @image ../images/functions/bezier/curve_gear_bezier_body_2d.png bezier 2D body outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/bezier/curve_gear_bezier_body_2d.png Bézier 2D body 1
+ * @image ../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png Bézier 2D body 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.

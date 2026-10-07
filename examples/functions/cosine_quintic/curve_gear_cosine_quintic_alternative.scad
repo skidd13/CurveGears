@@ -12,9 +12,21 @@ include <../../palette.scad>;
 
 $fn=96;
 // Both executable alternatives share this parameter source.
-module _alternative_example_cosine_quintic(pair=false) {
+module _alternative_example_cosine_quintic(pair=false,view="gear") {
     if (pair)
         curve_gear_cosine_quintic_pair(.5,96,3,4.8,depth=.16,harmonic=3,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+    else if (view=="body")
+        color(example_driver_color)
+            curve_gear_cosine_quintic_body(.5,96,3,4.8,depth=.16,harmonic=3,samples=360);
+    else if (view=="mate")
+        color(example_mate_color)
+            curve_gear_cosine_quintic_mate(.5,96,3,4.8,depth=.16,harmonic=3,samples=360);
+    else if (view=="gear_2d")
+        color(example_driver_color)
+            curve_gear_cosine_quintic_2d(.5,96,4.8,depth=.16,harmonic=3,samples=360);
+    else if (view=="body_2d")
+        color(example_driver_color)
+            curve_gear_cosine_quintic_body_2d(.5,96,4.8,depth=.16,harmonic=3,samples=360);
     else
         color(example_driver_color)
             curve_gear_cosine_quintic(.5,96,3,4.8,depth=.16,harmonic=3,samples=360);

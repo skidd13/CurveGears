@@ -29,7 +29,7 @@ MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
 MAIN_EXAMPLES := $(foreach family,$(FAMILIES),examples/functions/$(family)/curve_gear_$(family).scad)
 MAIN_EXAMPLE_IMAGES := $(patsubst examples/%.scad,images/%.png,$(MAIN_EXAMPLES))
-CORE_EXAMPLES := examples/tooth/construction_2d.scad examples/tooth/placement.scad examples/tooth/assembly.scad
+CORE_EXAMPLES := $(shell find examples/tooth -type f -name '*.scad' ! -name 'palette.scad' -print | sort)
 CORE_IMAGES := $(patsubst examples/%.scad,images/%.png,$(CORE_EXAMPLES))
 API_EXAMPLES := $(shell find examples/functions -type f -name '*.scad' -print | sort)
 API_GEOMETRY_EXAMPLES := $(filter-out %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(API_EXAMPLES))
@@ -93,6 +93,13 @@ $(CORE_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
 $(CORE_IMAGES): examples/tooth/palette.scad
 # Pair alternatives import their single-gear alternative's parameter wrapper.
 $(filter %_pair_alternative.png,$(API_IMAGES)): images/functions/%_pair_alternative.png: examples/functions/%_alternative.scad
+$(filter %_body_alternative.png,$(API_IMAGES)): images/functions/%_body_alternative.png: examples/functions/%_alternative.scad
+$(filter %_mate_alternative.png,$(API_IMAGES)): images/functions/%_mate_alternative.png: examples/functions/%_alternative.scad
+$(filter-out %_body_alternative_2d.png,$(filter %_alternative_2d.png,$(API_IMAGES))): images/functions/%_alternative_2d.png: examples/functions/%_alternative.scad
+$(filter %_body_alternative_2d.png,$(API_IMAGES)): images/functions/%_body_alternative_2d.png: examples/functions/%_alternative.scad
+images/tooth/construction_alternative_2d.png: examples/tooth/construction_2d.scad
+images/tooth/placement_alternative.png: examples/tooth/placement.scad
+images/tooth/assembly_alternative.png: examples/tooth/assembly.scad
 
 define FAMILY_API_IMAGE_SOURCE_DEPS
 $(filter images/functions/$(1)/%,$(API_IMAGES)): $(shell find src/$(1) -type f -name '*.scad' -print | sort)
@@ -130,7 +137,7 @@ examples: examples/README.md
 	@test -s examples/README.md
 	@test -s "$(MAIN_EXAMPLE)"
 	@for example in $(CORE_EXAMPLES); do test -s "$$example" || { echo "missing core example: $$example"; exit 1; }; done
-	@test "$(words $(API_EXAMPLES))" -eq 155
+	@test "$(words $(API_EXAMPLES))" -eq 219
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
 
@@ -140,9 +147,9 @@ ci-example-manifest:
 		relative=$${example#examples/}; output=$${relative%.scad}.png; \
 		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
 	done > "$(CI_EXAMPLE_MANIFEST)"
-	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 159
-	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 159
-	@echo 'PASS: CI manifest contains all 159 examples'
+	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 226
+	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 226
+	@echo 'PASS: CI manifest contains all 226 examples'
 
 ci-render-examples: ci-example-manifest
 	@set -eu; \

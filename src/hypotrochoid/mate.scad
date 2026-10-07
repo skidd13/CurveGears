@@ -74,8 +74,9 @@ function _cg_hypotrochoid_mate_points(scale,R,r,d,D,n=720) = _cg_hypotrochoid_ma
 
 /** @function curve_gear_hypotrochoid_mate
  * @brief Build the standalone conjugate mate for a hypotrochoid driver.
- * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png Hypotrochoid mate preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png Hypotrochoid mate 1
+ * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png Hypotrochoid mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

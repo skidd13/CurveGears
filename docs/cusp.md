@@ -126,12 +126,12 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_2d(modul, tooth_number, bore, ...)`
 
-| Cusp 2D gear outline | ⠀ |
+| Cusp 2D gear 1 | Cusp 2D gear 2 |
 | --- | --- |
-| [![Cusp 2D gear outline](../images/functions/cusp/curve_gear_cusp_2d.png)](../images/functions/cusp/curve_gear_cusp_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Cusp 2D gear 1](../images/functions/cusp/curve_gear_cusp_2d.png)](../images/functions/cusp/curve_gear_cusp_2d.png) | [![Cusp 2D gear 2](../images/functions/cusp/curve_gear_cusp_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_alternative_2d.png) |
 
 
-Emit the complete cusp gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -159,12 +159,12 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`
 
-| Cusp gear body preview | ⠀ |
+| Cusp body 1 | Cusp body 2 |
 | --- | --- |
-| [![Cusp gear body preview](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cusp body 1](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) | [![Cusp body 2](../images/functions/cusp/curve_gear_cusp_body_alternative.png)](../images/functions/cusp/curve_gear_cusp_body_alternative.png) |
 
 
-Build the hypocycloid body with its integrated cusp-tip teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -184,12 +184,12 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`
 
-| Cusp 2D body outline | ⠀ |
+| Cusp 2D body 1 | Cusp 2D body 2 |
 | --- | --- |
-| [![Cusp 2D body outline](../images/functions/cusp/curve_gear_cusp_body_2d.png)](../images/functions/cusp/curve_gear_cusp_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Cusp 2D body 1](../images/functions/cusp/curve_gear_cusp_body_2d.png)](../images/functions/cusp/curve_gear_cusp_body_2d.png) | [![Cusp 2D body 2](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png) |
 
 
-Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -233,12 +233,12 @@ Back to [module description](#module-cusp).
 
 ### Function `curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`
 
-| Cusp gear mate preview | ⠀ |
+| Cusp mate 1 | Cusp mate 2 |
 | --- | --- |
-| [![Cusp gear mate preview](../images/functions/cusp/curve_gear_cusp_mate.png)](../images/functions/cusp/curve_gear_cusp_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cusp mate 1](../images/functions/cusp/curve_gear_cusp_mate.png)](../images/functions/cusp/curve_gear_cusp_mate.png) | [![Cusp mate 2](../images/functions/cusp/curve_gear_cusp_mate_alternative.png)](../images/functions/cusp/curve_gear_cusp_mate_alternative.png) |
 
 
-Build the standalone swept-envelope mate for a cusp gear.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

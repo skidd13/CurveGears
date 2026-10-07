@@ -66,8 +66,9 @@ module curve_gear_lobed(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pr
 /***
  * @function curve_gear_lobed_body(modul, tooth_number, width, bore, ...)
  * @brief Build the lobed body solid without teeth.
- * @image ../images/functions/lobed/curve_gear_lobed_body.png Lobed body preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/lobed/curve_gear_lobed_body.png Lobed body 1
+ * @image ../images/functions/lobed/curve_gear_lobed_body_alternative.png Lobed body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -90,8 +91,9 @@ module curve_gear_lobed_body(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.
 /***
  * @function curve_gear_lobed_2d
  * @brief Emit the complete lobed gear profile as 2D geometry.
- * @image ../images/functions/lobed/curve_gear_lobed_2d.png lobed 2D gear outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/lobed/curve_gear_lobed_2d.png Lobed 2D gear 1
+ * @image ../images/functions/lobed/curve_gear_lobed_alternative_2d.png Lobed 2D gear 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
@@ -113,8 +115,9 @@ module curve_gear_lobed_2d(modul, tooth_number, bore, lobes=4, lobe_depth=0.13, 
 /***
  * @function curve_gear_lobed_body_2d
  * @brief Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
- * @image ../images/functions/lobed/curve_gear_lobed_body_2d.png lobed 2D body outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/lobed/curve_gear_lobed_body_2d.png Lobed 2D body 1
+ * @image ../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png Lobed 2D body 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.

@@ -12,9 +12,21 @@ include <../../palette.scad>;
 
 $fn=96;
 // Both executable alternatives share this parameter source.
-module _alternative_example_logistic_dwell(pair=false) {
+module _alternative_example_logistic_dwell(pair=false,view="gear") {
     if (pair)
         curve_gear_logistic_dwell_pair(1.2,20,2,4.8,gain=3,depth=.46,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+    else if (view=="body")
+        color(example_driver_color)
+            curve_gear_logistic_dwell_body(1.2,20,2,4.8,gain=3,depth=.46,samples=360);
+    else if (view=="mate")
+        color(example_mate_color)
+            curve_gear_logistic_dwell_mate(1.2,20,2,4.8,gain=3,depth=.46,samples=360);
+    else if (view=="gear_2d")
+        color(example_driver_color)
+            curve_gear_logistic_dwell_2d(1.2,20,4.8,gain=3,depth=.46,samples=360);
+    else if (view=="body_2d")
+        color(example_driver_color)
+            curve_gear_logistic_dwell_body_2d(1.2,20,4.8,gain=3,depth=.46,samples=360);
     else
         color(example_driver_color)
             curve_gear_logistic_dwell(1.2,20,2,4.8,gain=3,depth=.46,samples=360);

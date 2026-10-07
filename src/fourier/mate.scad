@@ -72,8 +72,9 @@ function _cg_fourier_mate_points(base,coefficients,D,n=360) = _cg_fourier_mate_p
 /***
  * @function curve_gear_fourier_mate(modul, tooth_number, width, bore, ...)
  * @brief Build the standalone dynamically conjugate Fourier mate.
- * @image ../images/functions/fourier/curve_gear_fourier_mate.png Fourier mate preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/fourier/curve_gear_fourier_mate.png Fourier mate 1
+ * @image ../images/functions/fourier/curve_gear_fourier_mate_alternative.png Fourier mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

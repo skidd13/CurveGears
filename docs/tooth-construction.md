@@ -458,9 +458,9 @@ Back to [module description](#module-tooth-generation).
 
 ### Function `_cg_reference_tooth_candidate(pitch_radius, modul, tooth_number, ...)`
 
-| Validated tooth candidate preview | ⠀ |
+| Tooth construction 1 | Tooth construction 2 |
 | --- | --- |
-| [![Validated tooth candidate preview](../images/tooth/construction_2d.png)](../images/tooth/construction_2d.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tooth construction 1](../images/tooth/construction_2d.png)](../images/tooth/construction_2d.png) | [![Tooth construction 2](../images/tooth/construction_alternative_2d.png)](../images/tooth/construction_alternative_2d.png) |
 
 
 Return one cached, validated local candidate tooth.

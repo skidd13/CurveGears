@@ -536,9 +536,9 @@ Back to [module description](#module-tooth-placement).
 
 ### Function `_cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)`
 
-| Tooth placement result preview | ⠀ |
+| Tooth placement 1 | Tooth placement 2 |
 | --- | --- |
-| [![Tooth placement result preview](../images/tooth/placement.png)](../images/tooth/placement.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tooth placement 1](../images/tooth/placement.png)](../images/tooth/placement.png) | [![Tooth placement 2](../images/tooth/placement_alternative.png)](../images/tooth/placement_alternative.png) |
 
 
 Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.

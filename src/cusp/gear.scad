@@ -343,8 +343,9 @@ module curve_gear_cusp(modul,tooth_number,width,bore,pressure_angle=20,backlash=
 /***
  * @function curve_gear_cusp_body(modul, tooth_number, width, bore, ...)
  * @brief Build the hypocycloid body with its integrated cusp-tip teeth.
- * @image ../images/functions/cusp/curve_gear_cusp_body.png Cusp gear body preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/cusp/curve_gear_cusp_body.png Cusp body 1
+ * @image ../images/functions/cusp/curve_gear_cusp_body_alternative.png Cusp body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Tooth count scale.
  * @param width {number > 0} Extrusion width in mm.
@@ -360,8 +361,9 @@ module curve_gear_cusp_body(modul,tooth_number,width,bore,samples=720,orientatio
 /***
  * @function curve_gear_cusp_2d(modul, tooth_number, bore, ...)
  * @brief Emit the complete cusp gear profile as 2D geometry.
- * @image ../images/functions/cusp/curve_gear_cusp_2d.png Cusp 2D gear outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/cusp/curve_gear_cusp_2d.png Cusp 2D gear 1
+ * @image ../images/functions/cusp/curve_gear_cusp_alternative_2d.png Cusp 2D gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Tooth count.
  * @param bore {number >= 0} Centre bore diameter in mm.
@@ -381,8 +383,9 @@ module curve_gear_cusp_2d(modul,tooth_number,bore,pressure_angle=20,backlash=und
 /***
  * @function curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)
  * @brief Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
- * @image ../images/functions/cusp/curve_gear_cusp_body_2d.png Cusp 2D body outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/cusp/curve_gear_cusp_body_2d.png Cusp 2D body 1
+ * @image ../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png Cusp 2D body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Tooth count.
  * @param bore {number >= 0} Centre bore diameter in mm.

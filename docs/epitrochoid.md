@@ -115,12 +115,12 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_2d`
 
-| epitrochoid 2D gear outline | ⠀ |
+| Epitrochoid 2D gear 1 | Epitrochoid 2D gear 2 |
 | --- | --- |
-| [![epitrochoid 2D gear outline](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Epitrochoid 2D gear 1](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [![Epitrochoid 2D gear 2](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png) |
 
 
-Emit the complete epitrochoid gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -151,12 +151,12 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_body(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid body preview | ⠀ |
+| Epitrochoid body 1 | Epitrochoid body 2 |
 | --- | --- |
-| [![Epitrochoid body preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Epitrochoid body 1](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [![Epitrochoid body 2](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png) |
 
 
-Build the epitrochoid body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -188,12 +188,12 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_body_2d`
 
-| epitrochoid 2D body outline | ⠀ |
+| Epitrochoid 2D body 1 | Epitrochoid 2D body 2 |
 | --- | --- |
-| [![epitrochoid 2D body outline](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Epitrochoid 2D body 1](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [![Epitrochoid 2D body 2](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png) |
 
 
-Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -245,12 +245,12 @@ Back to [module description](#module-epitrochoid).
 
 ### Function `curve_gear_epitrochoid_mate(modul, tooth_number, width, bore, ...)`
 
-| Epitrochoid mate preview | ⠀ |
+| Epitrochoid mate 1 | Epitrochoid mate 2 |
 | --- | --- |
-| [![Epitrochoid mate preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Epitrochoid mate 1](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [![Epitrochoid mate 2](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png) |
 
 
-Build the standalone epitrochoid mate boundary at the origin.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

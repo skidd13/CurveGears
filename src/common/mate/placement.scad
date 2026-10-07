@@ -44,8 +44,8 @@ function _cg_mate_pitch_diagnostics(driver_radii,mid_radii,D,mate_points) =
 /***
  * @function _cg_mate_boundary_from_pitch_points(mate_points, modul, tooth_number, width, bore, ...)
  * @brief Build one mate from its canonical sampled pitch boundary.
- * @image ../images/tooth/assembly.png Mate boundary assembly preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * @image ../images/tooth/assembly.png Tooth assembly 1
+ * @image ../images/tooth/assembly_alternative.png Tooth assembly 2
  * @param mate_points {array} Sampled mate pitch boundary points.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

@@ -78,8 +78,9 @@ function _cg_epitrochoid_mate_points(scale,R,r,d,D,n=360) = _cg_epitrochoid_mate
 /***
  * @function curve_gear_epitrochoid_mate(modul, tooth_number, width, bore, ...)
  * @brief Build the standalone epitrochoid mate boundary at the origin.
- * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png Epitrochoid mate preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png Epitrochoid mate 1
+ * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png Epitrochoid mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

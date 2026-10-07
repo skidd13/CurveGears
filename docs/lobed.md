@@ -111,12 +111,12 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_2d`
 
-| lobed 2D gear outline | ⠀ |
+| Lobed 2D gear 1 | Lobed 2D gear 2 |
 | --- | --- |
-| [![lobed 2D gear outline](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Lobed 2D gear 1](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [![Lobed 2D gear 2](../images/functions/lobed/curve_gear_lobed_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_alternative_2d.png) |
 
 
-Emit the complete lobed gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -146,12 +146,12 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`
 
-| Lobed body preview | ⠀ |
+| Lobed body 1 | Lobed body 2 |
 | --- | --- |
-| [![Lobed body preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Lobed body 1](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [![Lobed body 2](../images/functions/lobed/curve_gear_lobed_body_alternative.png)](../images/functions/lobed/curve_gear_lobed_body_alternative.png) |
 
 
-Build the lobed body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -182,12 +182,12 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_body_2d`
 
-| lobed 2D body outline | ⠀ |
+| Lobed 2D body 1 | Lobed 2D body 2 |
 | --- | --- |
-| [![lobed 2D body outline](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Lobed 2D body 1](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [![Lobed 2D body 2](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png) |
 
 
-Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -237,12 +237,12 @@ Back to [module description](#module-lobed).
 
 ### Function `curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`
 
-| Lobed mate preview | ⠀ |
+| Lobed mate 1 | Lobed mate 2 |
 | --- | --- |
-| [![Lobed mate preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Lobed mate 1](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [![Lobed mate 2](../images/functions/lobed/curve_gear_lobed_mate_alternative.png)](../images/functions/lobed/curve_gear_lobed_mate_alternative.png) |
 
 
-Build the standalone lobed mate boundary at the origin.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

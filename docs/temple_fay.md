@@ -79,11 +79,12 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_2d`
 
-| Temple Fay 2D outline | ⠀ |
+| Temple Fay 2D gear 1 | Temple Fay 2D gear 2 |
 | --- | --- |
-| [![Temple Fay 2D outline](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Temple Fay 2D gear 1](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [![Temple Fay 2D gear 2](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -108,11 +109,12 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_body`
 
-| Temple Fay body preview | ⠀ |
+| Temple Fay body 1 | Temple Fay body 2 |
 | --- | --- |
-| [![Temple Fay body preview](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Temple Fay body 1](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [![Temple Fay body 2](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -138,11 +140,12 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_body_2d`
 
-| Temple Fay 2D body outline | ⠀ |
+| Temple Fay 2D body 1 | Temple Fay 2D body 2 |
 | --- | --- |
-| [![Temple Fay 2D body outline](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Temple Fay 2D body 1](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [![Temple Fay 2D body 2](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -187,11 +190,12 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_mate`
 
-| Temple Fay mate preview | ⠀ |
+| Temple Fay mate 1 | Temple Fay mate 2 |
 | --- | --- |
-| [![Temple Fay mate preview](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Temple Fay mate 1](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [![Temple Fay mate 2](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**

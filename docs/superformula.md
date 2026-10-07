@@ -123,12 +123,12 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_2d`
 
-| superformula 2D gear outline | ⠀ |
+| Superformula 2D gear 1 | Superformula 2D gear 2 |
 | --- | --- |
-| [![superformula 2D gear outline](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Superformula 2D gear 1](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) | [![Superformula 2D gear 2](../images/functions/superformula/curve_gear_superformula_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_alternative_2d.png) |
 
 
-Emit the complete superformula gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -162,12 +162,12 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_body(modul, tooth_number, width, bore, ...)`
 
-| Superformula body preview | ⠀ |
+| Superformula body 1 | Superformula body 2 |
 | --- | --- |
-| [![Superformula body preview](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Superformula body 1](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) | [![Superformula body 2](../images/functions/superformula/curve_gear_superformula_body_alternative.png)](../images/functions/superformula/curve_gear_superformula_body_alternative.png) |
 
 
-Build the superformula body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -202,12 +202,12 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_body_2d`
 
-| superformula 2D body outline | ⠀ |
+| Superformula 2D body 1 | Superformula 2D body 2 |
 | --- | --- |
-| [![superformula 2D body outline](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Superformula 2D body 1](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) | [![Superformula 2D body 2](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png) |
 
 
-Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -265,12 +265,12 @@ Back to [module description](#module-superformula).
 
 ### Function `curve_gear_superformula_mate(modul, tooth_number, width, bore, ...)`
 
-| Superformula mate preview | ⠀ |
+| Superformula mate 1 | Superformula mate 2 |
 | --- | --- |
-| [![Superformula mate preview](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Superformula mate 1](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) | [![Superformula mate 2](../images/functions/superformula/curve_gear_superformula_mate_alternative.png)](../images/functions/superformula/curve_gear_superformula_mate_alternative.png) |
 
 
-Build the standalone superformula mate boundary at the origin.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

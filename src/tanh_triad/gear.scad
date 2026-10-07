@@ -48,8 +48,9 @@ module curve_gear_tanh_triad(modul,tooth_number,width,bore,transition=1.8,crest=
 /***
  * @function curve_gear_tanh_triad_body
  * @brief Build the tanh-modulated gear body.
- * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body.png Tanh Triad body preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body.png Tanh Triad body 1
+ * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative.png Tanh Triad body 2
  *
  * @param modul {number} Tooth module.
  *
@@ -84,8 +85,9 @@ module curve_gear_tanh_triad_body(modul,tooth_number,width,bore,transition=1.8,c
 /***
  * @function curve_gear_tanh_triad_2d
  * @brief Build the tanh-modulated 2D gear outline.
- * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png Tanh Triad 2D outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png Tanh Triad 2D gear 1
+ * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_alternative_2d.png Tanh Triad 2D gear 2
  *
  * @param modul {number} Tooth module.
  *
@@ -118,8 +120,9 @@ module curve_gear_tanh_triad_2d(modul,tooth_number,bore,transition=1.8,crest=.13
 /***
  * @function curve_gear_tanh_triad_body_2d
  * @brief Build the tanh-modulated 2D body outline.
- * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png Tanh Triad 2D body outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png Tanh Triad 2D body 1
+ * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative_2d.png Tanh Triad 2D body 2
  *
  * @param modul {number} Tooth module.
  *

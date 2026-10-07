@@ -39,8 +39,9 @@ module curve_gear_cosine_quintic(modul,tooth_number,width,bore,depth=.19,harmoni
 
 /*** @function curve_gear_cosine_quintic_body
  * @brief Build the Cosine Quintic body.
- * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png Cosine Quintic body preview
- * @image ../utils/doxydown-support/table-spacer.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png Cosine Quintic body 1
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png Cosine Quintic body 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -61,8 +62,9 @@ module curve_gear_cosine_quintic_body(modul,tooth_number,width,bore,depth=.19,ha
 
 /*** @function curve_gear_cosine_quintic_2d
  * @brief Build the Cosine Quintic 2D outline.
- * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png Cosine Quintic 2D outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png Cosine Quintic 2D gear 1
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png Cosine Quintic 2D gear 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -82,8 +84,9 @@ module curve_gear_cosine_quintic_2d(modul,tooth_number,bore,depth=.19,harmonic=2
 
 /*** @function curve_gear_cosine_quintic_body_2d
  * @brief Build the Cosine Quintic 2D body outline.
- * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png Cosine Quintic 2D body outline
- * @image ../utils/doxydown-support/table-spacer-512.png ⠀
+ * Alternative 2 uses the contrasting controls described in the gear example.
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png Cosine Quintic 2D body 1
+ * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png Cosine Quintic 2D body 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

@@ -113,12 +113,12 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_2d`
 
-| cassini 2D gear outline | ⠀ |
+| Cassini 2D gear 1 | Cassini 2D gear 2 |
 | --- | --- |
-| [![cassini 2D gear outline](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Cassini 2D gear 1](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) | [![Cassini 2D gear 2](../images/functions/cassini/curve_gear_cassini_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_alternative_2d.png) |
 
 
-Emit the complete cassini gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -147,12 +147,12 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_body`
 
-| Cassini body preview | ⠀ |
+| Cassini body 1 | Cassini body 2 |
 | --- | --- |
-| [![Cassini body preview](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cassini body 1](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) | [![Cassini body 2](../images/functions/cassini/curve_gear_cassini_body_alternative.png)](../images/functions/cassini/curve_gear_cassini_body_alternative.png) |
 
 
-Build the Cassini body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -182,12 +182,12 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_body_2d`
 
-| cassini 2D body outline | ⠀ |
+| Cassini 2D body 1 | Cassini 2D body 2 |
 | --- | --- |
-| [![cassini 2D body outline](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Cassini 2D body 1](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) | [![Cassini 2D body 2](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png) |
 
 
-Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -235,12 +235,12 @@ Back to [module description](#module-cassini).
 
 ### Function `curve_gear_cassini_mate`
 
-| Cassini mate preview | ⠀ |
+| Cassini mate 1 | Cassini mate 2 |
 | --- | --- |
-| [![Cassini mate preview](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cassini mate 1](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) | [![Cassini mate 2](../images/functions/cassini/curve_gear_cassini_mate_alternative.png)](../images/functions/cassini/curve_gear_cassini_mate_alternative.png) |
 
 
-Build the standalone conjugate mate for a Cassini driver.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

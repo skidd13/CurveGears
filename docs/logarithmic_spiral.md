@@ -105,12 +105,12 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_2d`
 
-| logarithmic_spiral 2D gear outline | ⠀ |
+| Logarithmic spiral 2D gear 1 | Logarithmic spiral 2D gear 2 |
 | --- | --- |
-| [![logarithmic_spiral 2D gear outline](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Logarithmic spiral 2D gear 1](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_2d.png) | [![Logarithmic spiral 2D gear 2](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative_2d.png) |
 
 
-Emit the complete logarithmic_spiral gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -140,12 +140,12 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_body(modul, tooth_number, width, bore, ...)`
 
-| Logarithmic spiral body preview | ⠀ |
+| Logarithmic spiral body 1 | Logarithmic spiral body 2 |
 | --- | --- |
-| [![Logarithmic spiral body preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logarithmic spiral body 1](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png) | [![Logarithmic spiral body 2](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative.png) |
 
 
-Build the logarithmic-spiral body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -176,12 +176,12 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_body_2d`
 
-| logarithmic_spiral 2D body outline | ⠀ |
+| Logarithmic spiral 2D body 1 | Logarithmic spiral 2D body 2 |
 | --- | --- |
-| [![logarithmic_spiral 2D body outline](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Logarithmic spiral 2D body 1](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_2d.png) | [![Logarithmic spiral 2D body 2](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative_2d.png) |
 
 
-Emit the logarithmic_spiral body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -212,11 +212,12 @@ Back to [module description](#module-logarithmic-spiral).
 
 ### Function `curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)`
 
-| Logarithmic spiral mate preview | ⠀ |
+| Logarithmic spiral mate 1 | Logarithmic spiral mate 2 |
 | --- | --- |
-| [![Logarithmic spiral mate preview](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Logarithmic spiral mate 1](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png) | [![Logarithmic spiral mate 2](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate_alternative.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 A fixed 180-degree placement is applied by the static pair assembly; this
 module does not claim dynamic conjugacy.
 

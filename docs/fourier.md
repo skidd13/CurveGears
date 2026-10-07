@@ -109,12 +109,12 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_2d`
 
-| fourier 2D gear outline | ⠀ |
+| Fourier 2D gear 1 | Fourier 2D gear 2 |
 | --- | --- |
-| [![fourier 2D gear outline](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Fourier 2D gear 1](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) | [![Fourier 2D gear 2](../images/functions/fourier/curve_gear_fourier_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_alternative_2d.png) |
 
 
-Emit the complete fourier gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -143,12 +143,12 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_body(modul, tooth_number, width, bore, ...)`
 
-| Fourier body preview | ⠀ |
+| Fourier body 1 | Fourier body 2 |
 | --- | --- |
-| [![Fourier body preview](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Fourier body 1](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) | [![Fourier body 2](../images/functions/fourier/curve_gear_fourier_body_alternative.png)](../images/functions/fourier/curve_gear_fourier_body_alternative.png) |
 
 
-Build the Fourier body without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -172,12 +172,12 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_body_2d`
 
-| fourier 2D body outline | ⠀ |
+| Fourier 2D body 1 | Fourier 2D body 2 |
 | --- | --- |
-| [![fourier 2D body outline](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Fourier 2D body 1](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) | [![Fourier 2D body 2](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png) |
 
 
-Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -225,12 +225,12 @@ Back to [module description](#module-fourier).
 
 ### Function `curve_gear_fourier_mate(modul, tooth_number, width, bore, ...)`
 
-| Fourier mate preview | ⠀ |
+| Fourier mate 1 | Fourier mate 2 |
 | --- | --- |
-| [![Fourier mate preview](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Fourier mate 1](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) | [![Fourier mate 2](../images/functions/fourier/curve_gear_fourier_mate_alternative.png)](../images/functions/fourier/curve_gear_fourier_mate_alternative.png) |
 
 
-Build the standalone dynamically conjugate Fourier mate.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

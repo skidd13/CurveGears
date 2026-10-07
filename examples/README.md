@@ -33,6 +33,12 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 **Functions**:
 
+> [`assembly_alternative`](#function-assembly_alternative): Tooth assembly alternative: An elongated ellipse replaces the circular pitch contour. Sixty tooth positions show body-to-flank splicing along changing curvature in the placed and assembled panels.
+
+> [`bezier_body_2d_alternative`](#function-bezier_body_2d_alternative): Bézier alternative: The contrasting family controls shown as a 2D body.
+
+> [`bezier_body_alternative`](#function-bezier_body_alternative): Bézier alternative: The contrasting family controls shown as a body.
+
 > [`bezier_curve_gear`](#function-bezier_curve_gear): Render a smooth asymmetric Bézier gear with a soft teardrop outline.
 
 > [`bezier_curve_gear_alternative`](#function-bezier_curve_gear_alternative): Bézier alternative: An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
@@ -44,6 +50,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 > [`bezier_curve_gear_pair`](#function-bezier_curve_gear_pair): Render a complete Bézier gear pair with derived conjugate motion.
 
 > [`bezier_curve_gear_pair_alternative`](#function-bezier_curve_gear_pair_alternative): Bézier alternative pair: The alternative curve and its mate displayed separately for inspection.
+
+> [`bezier_gear_2d_alternative`](#function-bezier_gear_2d_alternative): Bézier alternative: The contrasting family controls shown as a 2D gear.
+
+> [`bezier_mate_alternative`](#function-bezier_mate_alternative): Bézier alternative: The contrasting family controls shown as a mate.
+
+> [`cassini_body_2d_alternative`](#function-cassini_body_2d_alternative): Cassini alternative: The contrasting family controls shown as a 2D body.
+
+> [`cassini_body_alternative`](#function-cassini_body_alternative): Cassini alternative: The contrasting family controls shown as a body.
 
 > [`cassini_curve_gear`](#function-cassini_curve_gear): Render a thin-waisted peanut-shaped Cassini gear.
 
@@ -61,6 +75,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`cassini_curve_gear_pair_alternative`](#function-cassini_curve_gear_pair_alternative): Cassini alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`cassini_gear_2d_alternative`](#function-cassini_gear_2d_alternative): Cassini alternative: The contrasting family controls shown as a 2D gear.
+
+> [`cassini_mate_alternative`](#function-cassini_mate_alternative): Cassini alternative: The contrasting family controls shown as a mate.
+
+> [`circle_body_2d_alternative`](#function-circle_body_2d_alternative): Circle alternative: The contrasting family controls shown as a 2D body.
+
+> [`circle_body_alternative`](#function-circle_body_alternative): Circle alternative: The contrasting family controls shown as a body.
+
 > [`circle_curve_gear`](#function-circle_curve_gear): Render a Circle gear from the documented pitch-curve family.
 
 > [`circle_curve_gear_alternative`](#function-circle_curve_gear_alternative): Circle alternative: Twelve coarse teeth replace the fine-toothed reference; the bore remains 4.8 mm. Circle has no non-circular shape control; the circular pitch law is deliberately preserved.
@@ -73,9 +95,23 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`circle_curve_gear_pair_alternative`](#function-circle_curve_gear_pair_alternative): Circle alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`circle_gear_2d_alternative`](#function-circle_gear_2d_alternative): Circle alternative: The contrasting family controls shown as a 2D gear.
+
+> [`circle_mate_alternative`](#function-circle_mate_alternative): Circle alternative: The contrasting family controls shown as a mate.
+
+> [`construction_alternative_2d`](#function-construction_alternative_2d): Tooth construction alternative: A coarse 12-position reference with a 10-degree pressure angle contrasts flank curvature and top closure with the standard 34-position, 20-degree tooth.
+
+> [`cosine_quintic_body_2d_alternative`](#function-cosine_quintic_body_2d_alternative): Cosine Quintic alternative: The contrasting family controls shown as a 2D body.
+
+> [`cosine_quintic_body_alternative`](#function-cosine_quintic_body_alternative): Cosine Quintic alternative: The contrasting family controls shown as a body.
+
 > [`cosine_quintic_curve_gear_alternative`](#function-cosine_quintic_curve_gear_alternative): Cosine Quintic alternative: Three pronounced signed-cosine plateaux replace the canonical two-harmonic form. Harmonic 3 and depth 0.16 expose how the fifth power concentrates the radial excursions.
 
 > [`cosine_quintic_curve_gear_pair_alternative`](#function-cosine_quintic_curve_gear_pair_alternative): Cosine Quintic alternative pair: The alternative curve and its mate displayed separately for inspection.
+
+> [`cosine_quintic_gear_2d_alternative`](#function-cosine_quintic_gear_2d_alternative): Cosine Quintic alternative: The contrasting family controls shown as a 2D gear.
+
+> [`cosine_quintic_mate_alternative`](#function-cosine_quintic_mate_alternative): Cosine Quintic alternative: The contrasting family controls shown as a mate.
 
 > [`curve_gear_bezier_2d`](#function-curve_gear_bezier_2d): Render the complete bezier gear profile as flat 2D geometry.
 
@@ -189,6 +225,10 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`curve_gear_temple_fay_pair_example`](#function-curve_gear_temple_fay_pair_example)
 
+> [`cusp_body_2d_alternative`](#function-cusp_body_2d_alternative): Cusp alternative: The contrasting family controls shown as a 2D body.
+
+> [`cusp_body_alternative`](#function-cusp_body_alternative): Cusp alternative: The contrasting family controls shown as a body.
+
 > [`cusp_curve_gear`](#function-cusp_curve_gear): Render the three-cusp gear with radial teeth whose roots follow the cusp branches.
 
 > [`cusp_curve_gear_alternative`](#function-cusp_curve_gear_alternative): Cusp alternative: Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
@@ -204,6 +244,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 > [`cusp_curve_gear_pair`](#function-cusp_curve_gear_pair): Render the deltoid cusp gear with its conjugate motion mate.
 
 > [`cusp_curve_gear_pair_alternative`](#function-cusp_curve_gear_pair_alternative): Cusp alternative pair: The alternative curve and its mate displayed separately for inspection.
+
+> [`cusp_gear_2d_alternative`](#function-cusp_gear_2d_alternative): Cusp alternative: The contrasting family controls shown as a 2D gear.
+
+> [`cusp_mate_alternative`](#function-cusp_mate_alternative): Cusp alternative: The contrasting family controls shown as a mate.
+
+> [`ellipse_body_2d_alternative`](#function-ellipse_body_2d_alternative): Ellipse alternative: The contrasting family controls shown as a 2D body.
+
+> [`ellipse_body_alternative`](#function-ellipse_body_alternative): Ellipse alternative: The contrasting family controls shown as a body.
 
 > [`ellipse_curve_gear`](#function-ellipse_curve_gear): Render a Ellipse gear from the documented pitch-curve family.
 
@@ -221,6 +269,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`ellipse_curve_gear_pair_alternative`](#function-ellipse_curve_gear_pair_alternative): Ellipse alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`ellipse_gear_2d_alternative`](#function-ellipse_gear_2d_alternative): Ellipse alternative: The contrasting family controls shown as a 2D gear.
+
+> [`ellipse_mate_alternative`](#function-ellipse_mate_alternative): Ellipse alternative: The contrasting family controls shown as a mate.
+
+> [`epitrochoid_body_2d_alternative`](#function-epitrochoid_body_2d_alternative): Epitrochoid alternative: The contrasting family controls shown as a 2D body.
+
+> [`epitrochoid_body_alternative`](#function-epitrochoid_body_alternative): Epitrochoid alternative: The contrasting family controls shown as a body.
+
 > [`epitrochoid_curve_gear`](#function-epitrochoid_curve_gear): Render a scalloped Epitrochoid gear showing the rolling-pen profile.
 
 > [`epitrochoid_curve_gear_alternative`](#function-epitrochoid_curve_gear_alternative): Epitrochoid alternative: A rolling ratio of 2:1 produces broad two-fold shaping instead of the canonical four-fold scallops. Offset 0.65 strengthens the excursions of the generating point.
@@ -236,6 +292,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 > [`epitrochoid_curve_gear_pair`](#function-epitrochoid_curve_gear_pair): Render a complete Epitrochoid gear pair with derived conjugate motion.
 
 > [`epitrochoid_curve_gear_pair_alternative`](#function-epitrochoid_curve_gear_pair_alternative): Epitrochoid alternative pair: The alternative curve and its mate displayed separately for inspection.
+
+> [`epitrochoid_gear_2d_alternative`](#function-epitrochoid_gear_2d_alternative): Epitrochoid alternative: The contrasting family controls shown as a 2D gear.
+
+> [`epitrochoid_mate_alternative`](#function-epitrochoid_mate_alternative): Epitrochoid alternative: The contrasting family controls shown as a mate.
+
+> [`fourier_body_2d_alternative`](#function-fourier_body_2d_alternative): Fourier alternative: The contrasting family controls shown as a 2D body.
+
+> [`fourier_body_alternative`](#function-fourier_body_alternative): Fourier alternative: The contrasting family controls shown as a body.
 
 > [`fourier_curve_gear`](#function-fourier_curve_gear): Render a two-harmonic Fourier gear with visibly modulated lobes.
 
@@ -253,6 +317,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`fourier_curve_gear_pair_alternative`](#function-fourier_curve_gear_pair_alternative): Fourier alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`fourier_gear_2d_alternative`](#function-fourier_gear_2d_alternative): Fourier alternative: The contrasting family controls shown as a 2D gear.
+
+> [`fourier_mate_alternative`](#function-fourier_mate_alternative): Fourier alternative: The contrasting family controls shown as a mate.
+
+> [`hypotrochoid_body_2d_alternative`](#function-hypotrochoid_body_2d_alternative): Hypotrochoid alternative: The contrasting family controls shown as a 2D body.
+
+> [`hypotrochoid_body_alternative`](#function-hypotrochoid_body_alternative): Hypotrochoid alternative: The contrasting family controls shown as a body.
+
 > [`hypotrochoid_curve_gear`](#function-hypotrochoid_curve_gear): Render a triangular inner-rolling Hypotrochoid form.
 
 > [`hypotrochoid_curve_gear_alternative`](#function-hypotrochoid_curve_gear_alternative): Hypotrochoid alternative: A 5:1 rolling ratio and offset 0.35 produce five-fold shaping rather than the canonical three-fold outline. The alternative changes the curve itself, not merely the pair spacing.
@@ -268,6 +340,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 > [`hypotrochoid_curve_gear_pair`](#function-hypotrochoid_curve_gear_pair): Render a complete Hypotrochoid gear pair with derived conjugate motion.
 
 > [`hypotrochoid_curve_gear_pair_alternative`](#function-hypotrochoid_curve_gear_pair_alternative): Hypotrochoid alternative pair: The alternative curve and its mate displayed separately for inspection.
+
+> [`hypotrochoid_gear_2d_alternative`](#function-hypotrochoid_gear_2d_alternative): Hypotrochoid alternative: The contrasting family controls shown as a 2D gear.
+
+> [`hypotrochoid_mate_alternative`](#function-hypotrochoid_mate_alternative): Hypotrochoid alternative: The contrasting family controls shown as a mate.
+
+> [`lobed_body_2d_alternative`](#function-lobed_body_2d_alternative): Lobed alternative: The contrasting family controls shown as a 2D body.
+
+> [`lobed_body_alternative`](#function-lobed_body_alternative): Lobed alternative: The contrasting family controls shown as a body.
 
 > [`lobed_curve_gear`](#function-lobed_curve_gear): Render a square four-lobed gear with a clear radial rhythm.
 
@@ -285,6 +365,14 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`lobed_curve_gear_pair_alternative`](#function-lobed_curve_gear_pair_alternative): Lobed alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`lobed_gear_2d_alternative`](#function-lobed_gear_2d_alternative): Lobed alternative: The contrasting family controls shown as a 2D gear.
+
+> [`lobed_mate_alternative`](#function-lobed_mate_alternative): Lobed alternative: The contrasting family controls shown as a mate.
+
+> [`logarithmic_spiral_body_2d_alternative`](#function-logarithmic_spiral_body_2d_alternative): Logarithmic spiral alternative: The contrasting family controls shown as a 2D body.
+
+> [`logarithmic_spiral_body_alternative`](#function-logarithmic_spiral_body_alternative): Logarithmic spiral alternative: The contrasting family controls shown as a body.
+
 > [`logarithmic_spiral_curve_gear`](#function-logarithmic_spiral_curve_gear): Render a Logarithmic spiral gear from the documented pitch-curve family.
 
 > [`logarithmic_spiral_curve_gear_alternative`](#function-logarithmic_spiral_curve_gear_alternative): Logarithmic spiral alternative: Three spiral sectors replace the canonical single return. Growth 1.22 increases the radial sweep. Returns are broad transitions without ordinary teeth, and the pair is a static reference rather than a validated conjugate transmission.
@@ -299,9 +387,25 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`logarithmic_spiral_curve_gear_reference_separation`](#function-logarithmic_spiral_curve_gear_reference_separation): Show the Logarithmic spiral reference-separation calculation.
 
+> [`logarithmic_spiral_gear_2d_alternative`](#function-logarithmic_spiral_gear_2d_alternative): Logarithmic spiral alternative: The contrasting family controls shown as a 2D gear.
+
+> [`logarithmic_spiral_mate_alternative`](#function-logarithmic_spiral_mate_alternative): Logarithmic spiral alternative: The contrasting family controls shown as a mate.
+
+> [`logistic_dwell_body_2d_alternative`](#function-logistic_dwell_body_2d_alternative): Logistic Dwell alternative: The contrasting family controls shown as a 2D body.
+
+> [`logistic_dwell_body_alternative`](#function-logistic_dwell_body_alternative): Logistic Dwell alternative: The contrasting family controls shown as a body.
+
 > [`logistic_dwell_curve_gear_alternative`](#function-logistic_dwell_curve_gear_alternative): Logistic Dwell alternative: Depth 0.46 and gain 3 replace the canonical shallow, steep logistic gate. The larger radial variation and smoother transitions distinguish curve amplitude from gate sharpness; coarse teeth expose the contour.
 
 > [`logistic_dwell_curve_gear_pair_alternative`](#function-logistic_dwell_curve_gear_pair_alternative): Logistic Dwell alternative pair: The alternative curve and its mate displayed separately for inspection.
+
+> [`logistic_dwell_gear_2d_alternative`](#function-logistic_dwell_gear_2d_alternative): Logistic Dwell alternative: The contrasting family controls shown as a 2D gear.
+
+> [`logistic_dwell_mate_alternative`](#function-logistic_dwell_mate_alternative): Logistic Dwell alternative: The contrasting family controls shown as a mate.
+
+> [`pascal_body_2d_alternative`](#function-pascal_body_2d_alternative): Pascal alternative: The contrasting family controls shown as a 2D body.
+
+> [`pascal_body_alternative`](#function-pascal_body_alternative): Pascal alternative: The contrasting family controls shown as a body.
 
 > [`pascal_curve_gear`](#function-pascal_curve_gear): Render a heart-like Pascal gear with a pronounced non-convex waist.
 
@@ -319,6 +423,16 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`pascal_curve_gear_pair_alternative`](#function-pascal_curve_gear_pair_alternative): Pascal alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`pascal_gear_2d_alternative`](#function-pascal_gear_2d_alternative): Pascal alternative: The contrasting family controls shown as a 2D gear.
+
+> [`pascal_mate_alternative`](#function-pascal_mate_alternative): Pascal alternative: The contrasting family controls shown as a mate.
+
+> [`placement_alternative`](#function-placement_alternative): Tooth placement alternative: A single high elliptical arch replaces the multi-period sinusoidal edge, exposing continuously changing normals and curvature.
+
+> [`superformula_body_2d_alternative`](#function-superformula_body_2d_alternative): Superformula alternative: The contrasting family controls shown as a 2D body.
+
+> [`superformula_body_alternative`](#function-superformula_body_alternative): Superformula alternative: The contrasting family controls shown as a body.
+
 > [`superformula_curve_gear`](#function-superformula_curve_gear): Render a Superformula gear from the documented pitch-curve family.
 
 > [`superformula_curve_gear_alternative`](#function-superformula_curve_gear_alternative): Superformula alternative: A rounded square with symmetry 4 and exponents 8 replaces the canonical five-pointed star. This demonstrates the superformula's ability to change its shape class through exponents and symmetry.
@@ -335,13 +449,33 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`superformula_curve_gear_pair_alternative`](#function-superformula_curve_gear_pair_alternative): Superformula alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`superformula_gear_2d_alternative`](#function-superformula_gear_2d_alternative): Superformula alternative: The contrasting family controls shown as a 2D gear.
+
+> [`superformula_mate_alternative`](#function-superformula_mate_alternative): Superformula alternative: The contrasting family controls shown as a mate.
+
+> [`tanh_triad_body_2d_alternative`](#function-tanh_triad_body_2d_alternative): Tanh Triad alternative: The contrasting family controls shown as a 2D body.
+
+> [`tanh_triad_body_alternative`](#function-tanh_triad_body_alternative): Tanh Triad alternative: The contrasting family controls shown as a body.
+
 > [`tanh_triad_curve_gear_alternative`](#function-tanh_triad_curve_gear_alternative): Tanh Triad alternative: A broad smooth triad with transition 0.8 and crest 0.32 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
 
 > [`tanh_triad_curve_gear_pair_alternative`](#function-tanh_triad_curve_gear_pair_alternative): Tanh Triad alternative pair: The alternative curve and its mate displayed separately for inspection.
 
+> [`tanh_triad_gear_2d_alternative`](#function-tanh_triad_gear_2d_alternative): Tanh Triad alternative: The contrasting family controls shown as a 2D gear.
+
+> [`tanh_triad_mate_alternative`](#function-tanh_triad_mate_alternative): Tanh Triad alternative: The contrasting family controls shown as a mate.
+
+> [`temple_fay_body_2d_alternative`](#function-temple_fay_body_2d_alternative): Temple Fay alternative: The contrasting family controls shown as a 2D body.
+
+> [`temple_fay_body_alternative`](#function-temple_fay_body_alternative): Temple Fay alternative: The contrasting family controls shown as a body.
+
 > [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative: Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
 
 > [`temple_fay_curve_gear_pair_alternative`](#function-temple_fay_curve_gear_pair_alternative): Temple Fay alternative pair: The alternative curve and its mate displayed separately for inspection.
+
+> [`temple_fay_gear_2d_alternative`](#function-temple_fay_gear_2d_alternative): Temple Fay alternative: The contrasting family controls shown as a 2D gear.
+
+> [`temple_fay_mate_alternative`](#function-temple_fay_mate_alternative): Temple Fay alternative: The contrasting family controls shown as a mate.
 
 > [`tooth_assembly`](#function-tooth_assembly): Tooth assembly preview: Compare placed tooth boundaries with the final assembled outline.
 
@@ -353,6 +487,68 @@ tooth scale or body proportions. Spiral pairs remain static references.
 ## Functions
 
 The module `Executable examples` defines the following functions.
+
+### Function `assembly_alternative`
+
+| Tooth assembly alternative | ⠀ |
+| --- | --- |
+| [![Tooth assembly alternative](../images/tooth/assembly_alternative.png)](../images/tooth/assembly_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`tooth/assembly_alternative.scad`](tooth/assembly_alternative.scad)
+An elongated ellipse replaces the circular pitch contour. Sixty tooth positions show body-to-flank splicing along changing curvature in the placed and assembled panels.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `bezier_body_2d_alternative`
+
+| Bézier 2D body alternative | ⠀ |
+| --- | --- |
+| [![Bézier 2D body alternative](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/bezier/curve_gear_bezier_body_alternative_2d.scad`](functions/bezier/curve_gear_bezier_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `bezier_body_alternative`
+
+| Bézier body alternative | ⠀ |
+| --- | --- |
+| [![Bézier body alternative](../images/functions/bezier/curve_gear_bezier_body_alternative.png)](../images/functions/bezier/curve_gear_bezier_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/bezier/curve_gear_bezier_body_alternative.scad`](functions/bezier/curve_gear_bezier_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
 
 ### Function `bezier_curve_gear`
 
@@ -459,6 +655,90 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad)
 An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `bezier_gear_2d_alternative`
+
+| Bézier 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Bézier 2D gear alternative](../images/functions/bezier/curve_gear_bezier_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/bezier/curve_gear_bezier_alternative_2d.scad`](functions/bezier/curve_gear_bezier_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `bezier_mate_alternative`
+
+| Bézier mate alternative | ⠀ |
+| --- | --- |
+| [![Bézier mate alternative](../images/functions/bezier/curve_gear_bezier_mate_alternative.png)](../images/functions/bezier/curve_gear_bezier_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/bezier/curve_gear_bezier_mate_alternative.scad`](functions/bezier/curve_gear_bezier_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cassini_body_2d_alternative`
+
+| Cassini 2D body alternative | ⠀ |
+| --- | --- |
+| [![Cassini 2D body alternative](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/cassini/curve_gear_cassini_body_alternative_2d.scad`](functions/cassini/curve_gear_cassini_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cassini_body_alternative`
+
+| Cassini body alternative | ⠀ |
+| --- | --- |
+| [![Cassini body alternative](../images/functions/cassini/curve_gear_cassini_body_alternative.png)](../images/functions/cassini/curve_gear_cassini_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/cassini/curve_gear_cassini_body_alternative.scad`](functions/cassini/curve_gear_cassini_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
 
 **Parameters:**
 
@@ -616,6 +896,90 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `cassini_gear_2d_alternative`
+
+| Cassini 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Cassini 2D gear alternative](../images/functions/cassini/curve_gear_cassini_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/cassini/curve_gear_cassini_alternative_2d.scad`](functions/cassini/curve_gear_cassini_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cassini_mate_alternative`
+
+| Cassini mate alternative | ⠀ |
+| --- | --- |
+| [![Cassini mate alternative](../images/functions/cassini/curve_gear_cassini_mate_alternative.png)](../images/functions/cassini/curve_gear_cassini_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/cassini/curve_gear_cassini_mate_alternative.scad`](functions/cassini/curve_gear_cassini_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `circle_body_2d_alternative`
+
+| Circle 2D body alternative | ⠀ |
+| --- | --- |
+| [![Circle 2D body alternative](../images/functions/circle/curve_gear_circle_body_alternative_2d.png)](../images/functions/circle/curve_gear_circle_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/circle/curve_gear_circle_body_alternative_2d.scad`](functions/circle/curve_gear_circle_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+An additional -6 mm body offset exposes how the outer contour shrinks while the 4.8 mm bore stays fixed.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `circle_body_alternative`
+
+| Circle body alternative | ⠀ |
+| --- | --- |
+| [![Circle body alternative](../images/functions/circle/curve_gear_circle_body_alternative.png)](../images/functions/circle/curve_gear_circle_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/circle/curve_gear_circle_body_alternative.scad`](functions/circle/curve_gear_circle_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+A 0.5 mm plate contrasts with the thick canonical body while retaining the 4.8 mm bore.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `circle_curve_gear`
 
 | curve gear circle preview | ⠀ |
@@ -732,6 +1096,110 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `circle_gear_2d_alternative`
+
+| Circle 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Circle 2D gear alternative](../images/functions/circle/curve_gear_circle_alternative_2d.png)](../images/functions/circle/curve_gear_circle_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/circle/curve_gear_circle_alternative_2d.scad`](functions/circle/curve_gear_circle_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `circle_mate_alternative`
+
+| Circle mate alternative | ⠀ |
+| --- | --- |
+| [![Circle mate alternative](../images/functions/circle/curve_gear_circle_mate_alternative.png)](../images/functions/circle/curve_gear_circle_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/circle/curve_gear_circle_mate_alternative.scad`](functions/circle/curve_gear_circle_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `construction_alternative_2d`
+
+| Tooth construction alternative | ⠀ |
+| --- | --- |
+| [![Tooth construction alternative](../images/tooth/construction_alternative_2d.png)](../images/tooth/construction_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`tooth/construction_alternative_2d.scad`](tooth/construction_alternative_2d.scad)
+A coarse 12-position reference with a 10-degree pressure angle contrasts flank curvature and top closure with the standard 34-position, 20-degree tooth.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cosine_quintic_body_2d_alternative`
+
+| Cosine Quintic 2D body alternative | ⠀ |
+| --- | --- |
+| [![Cosine Quintic 2D body alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.scad`](functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cosine_quintic_body_alternative`
+
+| Cosine Quintic body alternative | ⠀ |
+| --- | --- |
+| [![Cosine Quintic body alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.scad`](functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `cosine_quintic_curve_gear_alternative`
 
 | Cosine Quintic gear alternative | ⠀ |
@@ -761,6 +1229,48 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.scad`](functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.scad)
 Three pronounced signed-cosine plateaux replace the canonical two-harmonic form. Harmonic 3 and depth 0.16 expose how the fifth power concentrates the radial excursions.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cosine_quintic_gear_2d_alternative`
+
+| Cosine Quintic 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Cosine Quintic 2D gear alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.scad`](functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cosine_quintic_mate_alternative`
+
+| Cosine Quintic mate alternative | ⠀ |
+| --- | --- |
+| [![Cosine Quintic mate alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.scad`](functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
 
 **Parameters:**
 
@@ -1708,6 +2218,48 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `cusp_body_2d_alternative`
+
+| Cusp 2D body alternative | ⠀ |
+| --- | --- |
+| [![Cusp 2D body alternative](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/cusp/curve_gear_cusp_body_alternative_2d.scad`](functions/cusp/curve_gear_cusp_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_body_alternative`
+
+| Cusp body alternative | ⠀ |
+| --- | --- |
+| [![Cusp body alternative](../images/functions/cusp/curve_gear_cusp_body_alternative.png)](../images/functions/cusp/curve_gear_cusp_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/cusp/curve_gear_cusp_body_alternative.scad`](functions/cusp/curve_gear_cusp_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `cusp_curve_gear`
 
 
@@ -1827,6 +2379,90 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/cusp/curve_gear_cusp_pair_alternative.scad`](functions/cusp/curve_gear_cusp_pair_alternative.scad)
 Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_gear_2d_alternative`
+
+| Cusp 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Cusp 2D gear alternative](../images/functions/cusp/curve_gear_cusp_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/cusp/curve_gear_cusp_alternative_2d.scad`](functions/cusp/curve_gear_cusp_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `cusp_mate_alternative`
+
+| Cusp mate alternative | ⠀ |
+| --- | --- |
+| [![Cusp mate alternative](../images/functions/cusp/curve_gear_cusp_mate_alternative.png)](../images/functions/cusp/curve_gear_cusp_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/cusp/curve_gear_cusp_mate_alternative.scad`](functions/cusp/curve_gear_cusp_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `ellipse_body_2d_alternative`
+
+| Ellipse 2D body alternative | ⠀ |
+| --- | --- |
+| [![Ellipse 2D body alternative](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/ellipse/curve_gear_ellipse_body_alternative_2d.scad`](functions/ellipse/curve_gear_ellipse_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `ellipse_body_alternative`
+
+| Ellipse body alternative | ⠀ |
+| --- | --- |
+| [![Ellipse body alternative](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/ellipse/curve_gear_ellipse_body_alternative.scad`](functions/ellipse/curve_gear_ellipse_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
 
 **Parameters:**
 
@@ -1990,6 +2626,90 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `ellipse_gear_2d_alternative`
+
+| Ellipse 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Ellipse 2D gear alternative](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/ellipse/curve_gear_ellipse_alternative_2d.scad`](functions/ellipse/curve_gear_ellipse_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `ellipse_mate_alternative`
+
+| Ellipse mate alternative | ⠀ |
+| --- | --- |
+| [![Ellipse mate alternative](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/ellipse/curve_gear_ellipse_mate_alternative.scad`](functions/ellipse/curve_gear_ellipse_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `epitrochoid_body_2d_alternative`
+
+| Epitrochoid 2D body alternative | ⠀ |
+| --- | --- |
+| [![Epitrochoid 2D body alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.scad`](functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `epitrochoid_body_alternative`
+
+| Epitrochoid body alternative | ⠀ |
+| --- | --- |
+| [![Epitrochoid body alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_body_alternative.scad`](functions/epitrochoid/curve_gear_epitrochoid_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `epitrochoid_curve_gear`
 
 | curve_gear_epitrochoid example preview | ⠀ |
@@ -2131,6 +2851,90 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.scad`](functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.scad)
 A rolling ratio of 2:1 produces broad two-fold shaping instead of the canonical four-fold scallops. Offset 0.65 strengthens the excursions of the generating point.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `epitrochoid_gear_2d_alternative`
+
+| Epitrochoid 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Epitrochoid 2D gear alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.scad`](functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `epitrochoid_mate_alternative`
+
+| Epitrochoid mate alternative | ⠀ |
+| --- | --- |
+| [![Epitrochoid mate alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.scad`](functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `fourier_body_2d_alternative`
+
+| Fourier 2D body alternative | ⠀ |
+| --- | --- |
+| [![Fourier 2D body alternative](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/fourier/curve_gear_fourier_body_alternative_2d.scad`](functions/fourier/curve_gear_fourier_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `fourier_body_alternative`
+
+| Fourier body alternative | ⠀ |
+| --- | --- |
+| [![Fourier body alternative](../images/functions/fourier/curve_gear_fourier_body_alternative.png)](../images/functions/fourier/curve_gear_fourier_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/fourier/curve_gear_fourier_body_alternative.scad`](functions/fourier/curve_gear_fourier_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
 
 **Parameters:**
 
@@ -2294,6 +3098,90 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `fourier_gear_2d_alternative`
+
+| Fourier 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Fourier 2D gear alternative](../images/functions/fourier/curve_gear_fourier_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/fourier/curve_gear_fourier_alternative_2d.scad`](functions/fourier/curve_gear_fourier_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `fourier_mate_alternative`
+
+| Fourier mate alternative | ⠀ |
+| --- | --- |
+| [![Fourier mate alternative](../images/functions/fourier/curve_gear_fourier_mate_alternative.png)](../images/functions/fourier/curve_gear_fourier_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/fourier/curve_gear_fourier_mate_alternative.scad`](functions/fourier/curve_gear_fourier_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `hypotrochoid_body_2d_alternative`
+
+| Hypotrochoid 2D body alternative | ⠀ |
+| --- | --- |
+| [![Hypotrochoid 2D body alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `hypotrochoid_body_alternative`
+
+| Hypotrochoid body alternative | ⠀ |
+| --- | --- |
+| [![Hypotrochoid body alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `hypotrochoid_curve_gear`
 
 | curve_gear_hypotrochoid example preview | ⠀ |
@@ -2429,6 +3317,90 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.scad)
 A 5:1 rolling ratio and offset 0.35 produce five-fold shaping rather than the canonical three-fold outline. The alternative changes the curve itself, not merely the pair spacing.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `hypotrochoid_gear_2d_alternative`
+
+| Hypotrochoid 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Hypotrochoid 2D gear alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `hypotrochoid_mate_alternative`
+
+| Hypotrochoid mate alternative | ⠀ |
+| --- | --- |
+| [![Hypotrochoid mate alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.scad`](functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `lobed_body_2d_alternative`
+
+| Lobed 2D body alternative | ⠀ |
+| --- | --- |
+| [![Lobed 2D body alternative](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/lobed/curve_gear_lobed_body_alternative_2d.scad`](functions/lobed/curve_gear_lobed_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `lobed_body_alternative`
+
+| Lobed body alternative | ⠀ |
+| --- | --- |
+| [![Lobed body alternative](../images/functions/lobed/curve_gear_lobed_body_alternative.png)](../images/functions/lobed/curve_gear_lobed_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/lobed/curve_gear_lobed_body_alternative.scad`](functions/lobed/curve_gear_lobed_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
 
 **Parameters:**
 
@@ -2592,6 +3564,90 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `lobed_gear_2d_alternative`
+
+| Lobed 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Lobed 2D gear alternative](../images/functions/lobed/curve_gear_lobed_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/lobed/curve_gear_lobed_alternative_2d.scad`](functions/lobed/curve_gear_lobed_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `lobed_mate_alternative`
+
+| Lobed mate alternative | ⠀ |
+| --- | --- |
+| [![Lobed mate alternative](../images/functions/lobed/curve_gear_lobed_mate_alternative.png)](../images/functions/lobed/curve_gear_lobed_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/lobed/curve_gear_lobed_mate_alternative.scad`](functions/lobed/curve_gear_lobed_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `logarithmic_spiral_body_2d_alternative`
+
+| Logarithmic spiral 2D body alternative | ⠀ |
+| --- | --- |
+| [![Logarithmic spiral 2D body alternative](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative_2d.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `logarithmic_spiral_body_alternative`
+
+| Logarithmic spiral body alternative | ⠀ |
+| --- | --- |
+| [![Logarithmic spiral body alternative](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `logarithmic_spiral_curve_gear`
 
 | curve_gear_logarithmic_spiral example preview | ⠀ |
@@ -2726,6 +3782,90 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `logarithmic_spiral_gear_2d_alternative`
+
+| Logarithmic spiral 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Logarithmic spiral 2D gear alternative](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative_2d.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative_2d.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `logarithmic_spiral_mate_alternative`
+
+| Logarithmic spiral mate alternative | ⠀ |
+| --- | --- |
+| [![Logarithmic spiral mate alternative](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate_alternative.png)](../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate_alternative.scad`](functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `logistic_dwell_body_2d_alternative`
+
+| Logistic Dwell 2D body alternative | ⠀ |
+| --- | --- |
+| [![Logistic Dwell 2D body alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.scad`](functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `logistic_dwell_body_alternative`
+
+| Logistic Dwell body alternative | ⠀ |
+| --- | --- |
+| [![Logistic Dwell body alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.scad`](functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `logistic_dwell_curve_gear_alternative`
 
 | Logistic Dwell gear alternative | ⠀ |
@@ -2755,6 +3895,90 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.scad`](functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.scad)
 Depth 0.46 and gain 3 replace the canonical shallow, steep logistic gate. The larger radial variation and smoother transitions distinguish curve amplitude from gate sharpness; coarse teeth expose the contour.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `logistic_dwell_gear_2d_alternative`
+
+| Logistic Dwell 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Logistic Dwell 2D gear alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.scad`](functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `logistic_dwell_mate_alternative`
+
+| Logistic Dwell mate alternative | ⠀ |
+| --- | --- |
+| [![Logistic Dwell mate alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.scad`](functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `pascal_body_2d_alternative`
+
+| Pascal 2D body alternative | ⠀ |
+| --- | --- |
+| [![Pascal 2D body alternative](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/pascal/curve_gear_pascal_body_alternative_2d.scad`](functions/pascal/curve_gear_pascal_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `pascal_body_alternative`
+
+| Pascal body alternative | ⠀ |
+| --- | --- |
+| [![Pascal body alternative](../images/functions/pascal/curve_gear_pascal_body_alternative.png)](../images/functions/pascal/curve_gear_pascal_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/pascal/curve_gear_pascal_body_alternative.scad`](functions/pascal/curve_gear_pascal_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
 
 **Parameters:**
 
@@ -2918,6 +4142,110 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `pascal_gear_2d_alternative`
+
+| Pascal 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Pascal 2D gear alternative](../images/functions/pascal/curve_gear_pascal_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/pascal/curve_gear_pascal_alternative_2d.scad`](functions/pascal/curve_gear_pascal_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `pascal_mate_alternative`
+
+| Pascal mate alternative | ⠀ |
+| --- | --- |
+| [![Pascal mate alternative](../images/functions/pascal/curve_gear_pascal_mate_alternative.png)](../images/functions/pascal/curve_gear_pascal_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/pascal/curve_gear_pascal_mate_alternative.scad`](functions/pascal/curve_gear_pascal_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `placement_alternative`
+
+| Tooth placement alternative | ⠀ |
+| --- | --- |
+| [![Tooth placement alternative](../images/tooth/placement_alternative.png)](../images/tooth/placement_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`tooth/placement_alternative.scad`](tooth/placement_alternative.scad)
+A single high elliptical arch replaces the multi-period sinusoidal edge, exposing continuously changing normals and curvature.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `superformula_body_2d_alternative`
+
+| Superformula 2D body alternative | ⠀ |
+| --- | --- |
+| [![Superformula 2D body alternative](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/superformula/curve_gear_superformula_body_alternative_2d.scad`](functions/superformula/curve_gear_superformula_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `superformula_body_alternative`
+
+| Superformula body alternative | ⠀ |
+| --- | --- |
+| [![Superformula body alternative](../images/functions/superformula/curve_gear_superformula_body_alternative.png)](../images/functions/superformula/curve_gear_superformula_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/superformula/curve_gear_superformula_body_alternative.scad`](functions/superformula/curve_gear_superformula_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `superformula_curve_gear`
 
 | curve_gear_superformula example preview | ⠀ |
@@ -3070,6 +4398,90 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `superformula_gear_2d_alternative`
+
+| Superformula 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Superformula 2D gear alternative](../images/functions/superformula/curve_gear_superformula_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/superformula/curve_gear_superformula_alternative_2d.scad`](functions/superformula/curve_gear_superformula_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `superformula_mate_alternative`
+
+| Superformula mate alternative | ⠀ |
+| --- | --- |
+| [![Superformula mate alternative](../images/functions/superformula/curve_gear_superformula_mate_alternative.png)](../images/functions/superformula/curve_gear_superformula_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/superformula/curve_gear_superformula_mate_alternative.scad`](functions/superformula/curve_gear_superformula_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `tanh_triad_body_2d_alternative`
+
+| Tanh Triad 2D body alternative | ⠀ |
+| --- | --- |
+| [![Tanh Triad 2D body alternative](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/tanh_triad/curve_gear_tanh_triad_body_alternative_2d.scad`](functions/tanh_triad/curve_gear_tanh_triad_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `tanh_triad_body_alternative`
+
+| Tanh Triad body alternative | ⠀ |
+| --- | --- |
+| [![Tanh Triad body alternative](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/tanh_triad/curve_gear_tanh_triad_body_alternative.scad`](functions/tanh_triad/curve_gear_tanh_triad_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `tanh_triad_curve_gear_alternative`
 
 | Tanh Triad gear alternative | ⠀ |
@@ -3099,6 +4511,90 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.scad`](functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.scad)
 A broad smooth triad with transition 0.8 and crest 0.32 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `tanh_triad_gear_2d_alternative`
+
+| Tanh Triad 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Tanh Triad 2D gear alternative](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/tanh_triad/curve_gear_tanh_triad_alternative_2d.scad`](functions/tanh_triad/curve_gear_tanh_triad_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `tanh_triad_mate_alternative`
+
+| Tanh Triad mate alternative | ⠀ |
+| --- | --- |
+| [![Tanh Triad mate alternative](../images/functions/tanh_triad/curve_gear_tanh_triad_mate_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/tanh_triad/curve_gear_tanh_triad_mate_alternative.scad`](functions/tanh_triad/curve_gear_tanh_triad_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `temple_fay_body_2d_alternative`
+
+| Temple Fay 2D body alternative | ⠀ |
+| --- | --- |
+| [![Temple Fay 2D body alternative](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.scad`](functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `temple_fay_body_alternative`
+
+| Temple Fay body alternative | ⠀ |
+| --- | --- |
+| [![Temple Fay body alternative](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/temple_fay/curve_gear_temple_fay_body_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_body_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The body view exposes the contour before ordinary tooth placement.
 
 **Parameters:**
 
@@ -3150,11 +4646,53 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `temple_fay_gear_2d_alternative`
+
+| Temple Fay 2D gear alternative | ⠀ |
+| --- | --- |
+| [![Temple Fay 2D gear alternative](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+
+
+Source: [`functions/temple_fay/curve_gear_temple_fay_alternative_2d.scad`](functions/temple_fay/curve_gear_temple_fay_alternative_2d.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The planar view exposes the complete outline without perspective.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `temple_fay_mate_alternative`
+
+| Temple Fay mate alternative | ⠀ |
+| --- | --- |
+| [![Temple Fay mate alternative](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+
+
+Source: [`functions/temple_fay/curve_gear_temple_fay_mate_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_mate_alternative.scad)
+This uses the same curve, tooth scale and bore as the family gear alternative.
+The mate uses copper; it retains the reference-pair limitations documented for this family.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `tooth_assembly`
 
-| Tooth assembly preview preview | ⠀ |
+| Tooth assembly 1 | Tooth assembly 2 |
 | --- | --- |
-| [![Tooth assembly preview preview](../images/tooth/assembly.png)](../images/tooth/assembly.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tooth assembly 1](../images/tooth/assembly.png)](../images/tooth/assembly.png) | [![Tooth assembly 2](../images/tooth/assembly_alternative.png)](../images/tooth/assembly_alternative.png) |
 
 
 Source: [`tooth/assembly.scad`](tooth/assembly.scad)
@@ -3176,9 +4714,9 @@ Back to [module description](#module-executable-examples).
 
 ### Function `tooth_construction`
 
-| Tooth construction preview preview | ⠀ |
+| Tooth construction 1 | Tooth construction 2 |
 | --- | --- |
-| [![Tooth construction preview preview](../images/tooth/construction_2d.png)](../images/tooth/construction_2d.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tooth construction 1](../images/tooth/construction_2d.png)](../images/tooth/construction_2d.png) | [![Tooth construction 2](../images/tooth/construction_alternative_2d.png)](../images/tooth/construction_alternative_2d.png) |
 
 
 Source: [`tooth/construction_2d.scad`](tooth/construction_2d.scad)
@@ -3199,9 +4737,9 @@ Back to [module description](#module-executable-examples).
 
 ### Function `tooth_placement`
 
-| Tooth placement preview preview | ⠀ |
+| Tooth placement 1 | Tooth placement 2 |
 | --- | --- |
-| [![Tooth placement preview preview](../images/tooth/placement.png)](../images/tooth/placement.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tooth placement 1](../images/tooth/placement.png)](../images/tooth/placement.png) | [![Tooth placement 2](../images/tooth/placement_alternative.png)](../images/tooth/placement_alternative.png) |
 
 
 Source: [`tooth/placement.scad`](tooth/placement.scad)

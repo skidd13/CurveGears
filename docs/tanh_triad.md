@@ -84,11 +84,12 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_2d`
 
-| Tanh Triad 2D outline | ⠀ |
+| Tanh Triad 2D gear 1 | Tanh Triad 2D gear 2 |
 | --- | --- |
-| [![Tanh Triad 2D outline](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Tanh Triad 2D gear 1](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) | [![Tanh Triad 2D gear 2](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 
@@ -125,11 +126,12 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_body`
 
-| Tanh Triad body preview | ⠀ |
+| Tanh Triad body 1 | Tanh Triad body 2 |
 | --- | --- |
-| [![Tanh Triad body preview](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tanh Triad body 1](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) | [![Tanh Triad body 2](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 
@@ -168,11 +170,12 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_body_2d`
 
-| Tanh Triad 2D body outline | ⠀ |
+| Tanh Triad 2D body 1 | Tanh Triad 2D body 2 |
 | --- | --- |
-| [![Tanh Triad 2D body outline](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Tanh Triad 2D body 1](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) | [![Tanh Triad 2D body 2](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 
@@ -231,11 +234,12 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_mate`
 
-| Tanh Triad mate preview | ⠀ |
+| Tanh Triad mate 1 | Tanh Triad mate 2 |
 | --- | --- |
-| [![Tanh Triad mate preview](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Tanh Triad mate 1](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) | [![Tanh Triad mate 2](../images/functions/tanh_triad/curve_gear_tanh_triad_mate_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 

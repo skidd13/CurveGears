@@ -107,12 +107,12 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_2d`
 
-| ellipse 2D gear outline | ⠀ |
+| Ellipse 2D gear 1 | Ellipse 2D gear 2 |
 | --- | --- |
-| [![ellipse 2D gear outline](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Ellipse 2D gear 1](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [![Ellipse 2D gear 2](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png) |
 
 
-Emit the complete ellipse gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -141,12 +141,12 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)`
 
-| Ellipse body preview | ⠀ |
+| Ellipse body 1 | Ellipse body 2 |
 | --- | --- |
-| [![Ellipse body preview](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Ellipse body 1](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) | [![Ellipse body 2](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png) |
 
 
-Build the elliptical body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -176,12 +176,12 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_body_2d`
 
-| ellipse 2D body outline | ⠀ |
+| Ellipse 2D body 1 | Ellipse 2D body 2 |
 | --- | --- |
-| [![ellipse 2D body outline](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Ellipse 2D body 1](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) | [![Ellipse 2D body 2](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png) |
 
 
-Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -229,12 +229,12 @@ Back to [module description](#module-ellipse).
 
 ### Function `curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)`
 
-| Ellipse mate preview | ⠀ |
+| Ellipse mate 1 | Ellipse mate 2 |
 | --- | --- |
-| [![Ellipse mate preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Ellipse mate 1](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) | [![Ellipse mate 2](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png) |
 
 
-Build the standalone elliptical mate boundary at the origin.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

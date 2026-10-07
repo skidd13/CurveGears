@@ -74,12 +74,12 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_2d(modul, tooth_number, bore, ...)`
 
-| Circle 2D gear outline | ⠀ |
+| Circle 2D gear 1 | Circle 2D gear 2 |
 | --- | --- |
-| [![Circle 2D gear outline](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Circle 2D gear 1](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [![Circle 2D gear 2](../images/functions/circle/curve_gear_circle_alternative_2d.png)](../images/functions/circle/curve_gear_circle_alternative_2d.png) |
 
 
-Emit the complete circular gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -106,12 +106,12 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`
 
-| Circle body preview | ⠀ |
+| Circle body 1 | Circle body 2 |
 | --- | --- |
-| [![Circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Circle body 1](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [![Circle body 2](../images/functions/circle/curve_gear_circle_body_alternative.png)](../images/functions/circle/curve_gear_circle_body_alternative.png) |
 
 
-Build the circular reference body without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -129,12 +129,12 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`
 
-| Circle 2D body outline | ⠀ |
+| Circle 2D body 1 | Circle 2D body 2 |
 | --- | --- |
-| [![Circle 2D body outline](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Circle 2D body 1](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [![Circle 2D body 2](../images/functions/circle/curve_gear_circle_body_alternative_2d.png)](../images/functions/circle/curve_gear_circle_body_alternative_2d.png) |
 
 
-Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -174,12 +174,12 @@ Back to [module description](#module-circle).
 
 ### Function `curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`
 
-| Circle mate preview | ⠀ |
+| Circle mate 1 | Circle mate 2 |
 | --- | --- |
-| [![Circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Circle mate 1](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [![Circle mate 2](../images/functions/circle/curve_gear_circle_mate_alternative.png)](../images/functions/circle/curve_gear_circle_mate_alternative.png) |
 
 
-Build the circular reference mate boundary at the origin.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

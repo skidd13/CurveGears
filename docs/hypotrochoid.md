@@ -107,12 +107,12 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_2d`
 
-| hypotrochoid 2D gear outline | ⠀ |
+| Hypotrochoid 2D gear 1 | Hypotrochoid 2D gear 2 |
 | --- | --- |
-| [![hypotrochoid 2D gear outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Hypotrochoid 2D gear 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [![Hypotrochoid 2D gear 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png) |
 
 
-Emit the complete hypotrochoid gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -143,12 +143,12 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body`
 
-| Hypotrochoid body preview | ⠀ |
+| Hypotrochoid body 1 | Hypotrochoid body 2 |
 | --- | --- |
-| [![Hypotrochoid body preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Hypotrochoid body 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [![Hypotrochoid body 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png) |
 
 
-Build the hypotrochoid body solid without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -174,12 +174,12 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_body_2d`
 
-| hypotrochoid 2D body outline | ⠀ |
+| Hypotrochoid 2D body 1 | Hypotrochoid 2D body 2 |
 | --- | --- |
-| [![hypotrochoid 2D body outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Hypotrochoid 2D body 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [![Hypotrochoid 2D body 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png) |
 
 
-Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -231,12 +231,12 @@ Back to [module description](#module-hypotrochoid).
 
 ### Function `curve_gear_hypotrochoid_mate`
 
-| Hypotrochoid mate preview | ⠀ |
+| Hypotrochoid mate 1 | Hypotrochoid mate 2 |
 | --- | --- |
-| [![Hypotrochoid mate preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Hypotrochoid mate 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [![Hypotrochoid mate 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png) |
 
 
-Build the standalone conjugate mate for a hypotrochoid driver.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

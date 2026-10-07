@@ -76,11 +76,12 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_2d`
 
-| Cosine Quintic 2D outline | ⠀ |
+| Cosine Quintic 2D gear 1 | Cosine Quintic 2D gear 2 |
 | --- | --- |
-| [![Cosine Quintic 2D outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Cosine Quintic 2D gear 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [![Cosine Quintic 2D gear 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -105,11 +106,12 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_body`
 
-| Cosine Quintic body preview | ⠀ |
+| Cosine Quintic body 1 | Cosine Quintic body 2 |
 | --- | --- |
-| [![Cosine Quintic body preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cosine Quintic body 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [![Cosine Quintic body 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -135,11 +137,12 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_body_2d`
 
-| Cosine Quintic 2D body outline | ⠀ |
+| Cosine Quintic 2D body 1 | Cosine Quintic 2D body 2 |
 | --- | --- |
-| [![Cosine Quintic 2D body outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Cosine Quintic 2D body 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [![Cosine Quintic 2D body 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -184,11 +187,12 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_mate`
 
-| Cosine Quintic mate preview | ⠀ |
+| Cosine Quintic mate 1 | Cosine Quintic mate 2 |
 | --- | --- |
-| [![Cosine Quintic mate preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Cosine Quintic mate 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [![Cosine Quintic mate 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png) |
 
 
+Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**

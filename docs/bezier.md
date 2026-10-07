@@ -116,12 +116,12 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_2d`
 
-| bezier 2D gear outline | ⠀ |
+| Bézier 2D gear 1 | Bézier 2D gear 2 |
 | --- | --- |
-| [![bezier 2D gear outline](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Bézier 2D gear 1](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [![Bézier 2D gear 2](../images/functions/bezier/curve_gear_bezier_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_alternative_2d.png) |
 
 
-Emit the complete bezier gear profile as 2D geometry.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -150,12 +150,12 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body(modul, tooth_number, width, bore, ...)`
 
-| Bézier body preview | ⠀ |
+| Bézier body 1 | Bézier body 2 |
 | --- | --- |
-| [![Bézier body preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Bézier body 1](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [![Bézier body 2](../images/functions/bezier/curve_gear_bezier_body_alternative.png)](../images/functions/bezier/curve_gear_bezier_body_alternative.png) |
 
 
-Build the closed Bézier body without teeth.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -179,12 +179,12 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_body_2d`
 
-| bezier 2D body outline | ⠀ |
+| Bézier 2D body 1 | Bézier 2D body 2 |
 | --- | --- |
-| [![bezier 2D body outline](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
+| [![Bézier 2D body 1](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [![Bézier 2D body 2](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png) |
 
 
-Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 
@@ -214,12 +214,12 @@ Back to [module description](#module-bezier).
 
 ### Function `curve_gear_bezier_mate`
 
-| Bézier mate preview | ⠀ |
+| Bézier mate 1 | Bézier mate 2 |
 | --- | --- |
-| [![Bézier mate preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
+| [![Bézier mate 1](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [![Bézier mate 2](../images/functions/bezier/curve_gear_bezier_mate_alternative.png)](../images/functions/bezier/curve_gear_bezier_mate_alternative.png) |
 
 
-Build a conjugate mate for an admissible radial Bézier pitch curve.
+Alternative 2 uses the contrasting controls described in the gear example.
 
 **Parameters:**
 

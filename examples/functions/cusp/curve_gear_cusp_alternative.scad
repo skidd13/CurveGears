@@ -14,10 +14,22 @@ $fn=96;
 // Both executable alternatives share these independent size and shape controls.
 // Change tooth_number by any multiple of cusps; modul controls pitch size.
 // Samples must also be a multiple of cusps. Width is extrusion thickness.
-module _alternative_example_cusp(pair=false,cusps=5,tooth_number=60,width=4,bore=4.8,modul=.8,samples=720) {
+module _alternative_example_cusp(pair=false,cusps=5,tooth_number=60,width=4,bore=4.8,modul=.8,samples=720,view="gear") {
     assert(tooth_number%cusps==0,"example: tooth_number must be divisible by cusps");
     if (pair)
         curve_gear_cusp_pair(modul,tooth_number,width,bore,samples=samples,cusps=cusps,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+    else if (view=="body")
+        color(example_driver_color)
+            curve_gear_cusp_body(modul,tooth_number,width,bore,samples=samples,cusps=cusps);
+    else if (view=="mate")
+        color(example_mate_color)
+            curve_gear_cusp_mate(modul,tooth_number,width,bore,samples=samples,cusps=cusps);
+    else if (view=="gear_2d")
+        color(example_driver_color)
+            curve_gear_cusp_2d(modul,tooth_number,bore,samples=samples,cusps=cusps);
+    else if (view=="body_2d")
+        color(example_driver_color)
+            curve_gear_cusp_body_2d(modul,tooth_number,bore,samples=samples,cusps=cusps);
     else
         color(example_driver_color)
             curve_gear_cusp(modul,tooth_number,width,bore,samples=samples,cusps=cusps);
