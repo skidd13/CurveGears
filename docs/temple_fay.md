@@ -78,9 +78,9 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_2d`
 
-| Temple Fay 2D outline | Full size |
+| Temple Fay 2D outline | ⠀ |
 | --- | --- |
-| [![Temple Fay 2D outline](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) ![](../images/table-spacer.png) |
+| [![Temple Fay 2D outline](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -107,9 +107,9 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_body`
 
-| Temple Fay body preview | Full size |
+| Temple Fay body preview | ⠀ |
 | --- | --- |
-| [![Temple Fay body preview](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_body.png) ![](../images/table-spacer.png) |
+| [![Temple Fay body preview](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -137,9 +137,9 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_body_2d`
 
-| Temple Fay 2D body outline | Full size |
+| Temple Fay 2D body outline | ⠀ |
 | --- | --- |
-| [![Temple Fay 2D body outline](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) ![](../images/table-spacer.png) |
+| [![Temple Fay 2D body outline](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -186,9 +186,9 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_mate`
 
-| Temple Fay mate preview | Full size |
+| Temple Fay mate preview | ⠀ |
 | --- | --- |
-| [![Temple Fay mate preview](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) ![](../images/table-spacer.png) |
+| [![Temple Fay mate preview](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -235,9 +235,9 @@ Back to [module description](#module-temple-fay).
 
 ### Function `curve_gear_temple_fay_pair`
 
-| Temple Fay pair preview | Full size |
+| Temple Fay pair preview | ⠀ |
 | --- | --- |
-| [![Temple Fay pair preview](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) ![](../images/table-spacer.png) |
+| [![Temple Fay pair preview](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 

@@ -39,6 +39,7 @@ module curve_gear_cosine_quintic(modul,tooth_number,width,bore,depth=.19,harmoni
 /*** @function curve_gear_cosine_quintic_body
  * @brief Build the Cosine Quintic body.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png Cosine Quintic body preview
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -60,6 +61,7 @@ module curve_gear_cosine_quintic_body(modul,tooth_number,width,bore,depth=.19,ha
 /*** @function curve_gear_cosine_quintic_2d
  * @brief Build the Cosine Quintic 2D outline.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png Cosine Quintic 2D outline
+ * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -80,6 +82,7 @@ module curve_gear_cosine_quintic_2d(modul,tooth_number,bore,depth=.19,harmonic=2
 /*** @function curve_gear_cosine_quintic_body_2d
  * @brief Build the Cosine Quintic 2D body outline.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png Cosine Quintic 2D body outline
+ * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

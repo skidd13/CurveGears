@@ -79,9 +79,9 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_2d`
 
-| Tanh Triad 2D outline | Full size |
+| Tanh Triad 2D outline | ⠀ |
 | --- | --- |
-| [![Tanh Triad 2D outline](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) ![](../images/table-spacer.png) |
+| [![Tanh Triad 2D outline](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -120,9 +120,9 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_body`
 
-| Tanh Triad body preview | Full size |
+| Tanh Triad body preview | ⠀ |
 | --- | --- |
-| [![Tanh Triad body preview](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) ![](../images/table-spacer.png) |
+| [![Tanh Triad body preview](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -163,9 +163,9 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_body_2d`
 
-| Tanh Triad 2D body outline | Full size |
+| Tanh Triad 2D body outline | ⠀ |
 | --- | --- |
-| [![Tanh Triad 2D body outline](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) ![](../images/table-spacer.png) |
+| [![Tanh Triad 2D body outline](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -206,9 +206,9 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_centre_distance`
 
-| Tanh Triad pair preview | Full size |
+| Tanh Triad pair preview | ⠀ |
 | --- | --- |
-| [![Tanh Triad pair preview](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) ![](../images/table-spacer.png) |
+| [![Tanh Triad pair preview](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -278,9 +278,9 @@ Back to [module description](#module-tanh-triad).
 
 ### Function `curve_gear_tanh_triad_mate`
 
-| Tanh Triad mate preview | Full size |
+| Tanh Triad mate preview | ⠀ |
 | --- | --- |
-| [![Tanh Triad mate preview](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) ![](../images/table-spacer.png) |
+| [![Tanh Triad mate preview](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 

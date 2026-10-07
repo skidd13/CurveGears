@@ -13,6 +13,7 @@ function _cg_tanh_triad_mate_points(scale,transition,crest,correction,D,n=360) =
  * @function curve_gear_tanh_triad_mate
  * @brief Build a Tanh Triad mating gear.
  * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png Tanh Triad mate preview
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  *
  * @param modul {number} Tooth module.
  *

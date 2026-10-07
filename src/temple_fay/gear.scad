@@ -32,6 +32,7 @@ module curve_gear_temple_fay(modul,tooth_number,width,bore,wing=.18,fold=.05,pre
 /*** @function curve_gear_temple_fay_body
  * @brief Build the Temple Fay body.
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_body.png Temple Fay body preview
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -51,6 +52,7 @@ module curve_gear_temple_fay_body(modul,tooth_number,width,bore,wing=.18,fold=.0
 /*** @function curve_gear_temple_fay_2d
  * @brief Build the Temple Fay 2D outline.
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_2d.png Temple Fay 2D outline
+ * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -69,6 +71,7 @@ module curve_gear_temple_fay_2d(modul,tooth_number,bore,wing=.18,fold=.05,pressu
 /*** @function curve_gear_temple_fay_body_2d
  * @brief Build the Temple Fay 2D body outline.
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png Temple Fay 2D body outline
+ * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

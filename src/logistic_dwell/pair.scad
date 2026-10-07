@@ -5,6 +5,7 @@ include <../common/pair/assembly.scad>
  * @function curve_gear_logistic_dwell_pair
  * @brief Build a Logistic Dwell gear pair.
  * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png Logistic Dwell pair preview
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

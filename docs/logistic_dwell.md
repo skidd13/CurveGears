@@ -86,9 +86,9 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_2d`
 
-| Logistic Dwell 2D outline | Full size |
+| Logistic Dwell 2D outline | ⠀ |
 | --- | --- |
-| [![Logistic Dwell 2D outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) ![](../images/table-spacer.png) |
+| [![Logistic Dwell 2D outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -115,9 +115,9 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_body`
 
-| Logistic Dwell body preview | Full size |
+| Logistic Dwell body preview | ⠀ |
 | --- | --- |
-| [![Logistic Dwell body preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) ![](../images/table-spacer.png) |
+| [![Logistic Dwell body preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -145,9 +145,9 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_body_2d`
 
-| Logistic Dwell 2D body outline | Full size |
+| Logistic Dwell 2D body outline | ⠀ |
 | --- | --- |
-| [![Logistic Dwell 2D body outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) ![](../images/table-spacer.png) |
+| [![Logistic Dwell 2D body outline](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -198,9 +198,9 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_mate`
 
-| Logistic Dwell mate preview | Full size |
+| Logistic Dwell mate preview | ⠀ |
 | --- | --- |
-| [![Logistic Dwell mate preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) ![](../images/table-spacer.png) |
+| [![Logistic Dwell mate preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -252,9 +252,9 @@ Back to [module description](#module-logistic-dwell).
 
 ### Function `curve_gear_logistic_dwell_pair`
 
-| Logistic Dwell pair preview | Full size |
+| Logistic Dwell pair preview | ⠀ |
 | --- | --- |
-| [![Logistic Dwell pair preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) ![](../images/table-spacer.png) |
+| [![Logistic Dwell pair preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 

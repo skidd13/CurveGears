@@ -5,6 +5,7 @@ include <../common/pair/assembly.scad>
  * @function curve_gear_cosine_quintic_pair
  * @brief Build a Cosine Quintic gear pair.
  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png Cosine Quintic pair preview
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

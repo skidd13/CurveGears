@@ -75,9 +75,9 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_2d`
 
-| Cosine Quintic 2D outline | Full size |
+| Cosine Quintic 2D outline | ⠀ |
 | --- | --- |
-| [![Cosine Quintic 2D outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) ![](../images/table-spacer.png) |
+| [![Cosine Quintic 2D outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -104,9 +104,9 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_body`
 
-| Cosine Quintic body preview | Full size |
+| Cosine Quintic body preview | ⠀ |
 | --- | --- |
-| [![Cosine Quintic body preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) ![](../images/table-spacer.png) |
+| [![Cosine Quintic body preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -134,9 +134,9 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_body_2d`
 
-| Cosine Quintic 2D body outline | Full size |
+| Cosine Quintic 2D body outline | ⠀ |
 | --- | --- |
-| [![Cosine Quintic 2D body outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) ![](../images/table-spacer.png) |
+| [![Cosine Quintic 2D body outline](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [![⠀](../utils/doxydown-support/table-spacer-512.png)](../utils/doxydown-support/table-spacer-512.png) |
 
 
 
@@ -183,9 +183,9 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_mate`
 
-| Cosine Quintic mate preview | Full size |
+| Cosine Quintic mate preview | ⠀ |
 | --- | --- |
-| [![Cosine Quintic mate preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) ![](../images/table-spacer.png) |
+| [![Cosine Quintic mate preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 
@@ -232,9 +232,9 @@ Back to [module description](#module-cosine-quintic).
 
 ### Function `curve_gear_cosine_quintic_pair`
 
-| Cosine Quintic pair preview | Full size |
+| Cosine Quintic pair preview | ⠀ |
 | --- | --- |
-| [![Cosine Quintic pair preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) ![](../images/table-spacer.png) |
+| [![Cosine Quintic pair preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [![⠀](../utils/doxydown-support/table-spacer.png)](../utils/doxydown-support/table-spacer.png) |
 
 
 

@@ -3,6 +3,7 @@ include <gear.scad>
 /*** @function curve_gear_temple_fay_mate
  * @brief Build a separated Temple Fay mate presentation.
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_mate.png Temple Fay mate preview
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

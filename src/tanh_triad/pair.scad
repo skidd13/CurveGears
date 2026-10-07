@@ -5,6 +5,7 @@ include <../common/pair/assembly.scad>
  * @function curve_gear_tanh_triad_pair
  * @brief Build a Tanh Triad gear pair.
  * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png Tanh Triad pair preview
+ * @image ../utils/doxydown-support/table-spacer.png ⠀
  *
  * @param modul {number} Tooth module.
  *
