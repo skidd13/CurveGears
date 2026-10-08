@@ -12,7 +12,8 @@ include <common_params.scad>
  * @param x {number} Input value.
  * @return {number} Hyperbolic tangent of `x`.
  */
-function _cg_tanh(x) = (exp(2*x)-1)/(exp(2*x)+1);
+function _cg_tanh(x) =
+    let(e=exp(-2*abs(x))) (x<0 ? -1 : 1)*(1-e)/(1+e);
 
 /*** @function _cg_degrees(angle)
  * @brief Convert radians to degrees.

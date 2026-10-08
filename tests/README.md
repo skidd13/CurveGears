@@ -410,6 +410,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`circle_full_pipeline`](#function-circle_full_pipeline): Verify the complete Circle gear, mate, and pair entry points.
 
+> [`common_tanh_limits`](#function-common_tanh_limits): Verify finite saturation, odd symmetry and continuity of the shared tanh helper.
+
 > [`cosine_quintic_full_pipeline`](#function-cosine_quintic_full_pipeline): Verify the complete Cosine Quintic gear, mate and pair entry points.
 
 > [`cusp_envelope_collision_probe`](#function-cusp_envelope_collision_probe): Check that sampled intermediate driver poses clear the swept-envelope mate.
@@ -648,6 +650,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`circle/full_pipeline.scad`](circle/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `common_tanh_limits`
+
+
+Source: [`common/tanh_limits.scad`](common/tanh_limits.scad)
 
 **Parameters:**
 
