@@ -458,6 +458,12 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`hypotrochoid_tooth_pipeline`](#function-hypotrochoid_tooth_pipeline): Verify Hypotrochoid tooth placement through the shared tooth pipeline.
 
+> [`invalid_backlash`](#function-invalid_backlash): Reject unsupported backlash before tooth construction.
+
+> [`invalid_backlash_2d`](#function-invalid_backlash_2d): Reject unsupported backlash before tooth construction.
+
+> [`invalid_backlash_upper`](#function-invalid_backlash_upper): Reject unsupported backlash before tooth construction.
+
 > [`invalid_body_bore`](#function-invalid_body_bore): Reject a negative Cusp body bore.
 
 > [`invalid_body_bore_2d`](#function-invalid_body_bore_2d): Reject a negative planar Cusp body bore.
@@ -1016,6 +1022,51 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`hypotrochoid/tooth_pipeline.scad`](hypotrochoid/tooth_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_backlash`
+
+
+Source: [`circle/invalid_backlash.scad`](circle/invalid_backlash.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_backlash_2d`
+
+
+Source: [`circle/invalid_backlash_2d.scad`](circle/invalid_backlash_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_backlash_upper`
+
+
+Source: [`circle/invalid_backlash_upper.scad`](circle/invalid_backlash_upper.scad)
 
 **Parameters:**
 

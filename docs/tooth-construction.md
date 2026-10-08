@@ -25,6 +25,8 @@ ordering, top geometry, crossings, then the expensive boundary scan.
 
 > [`_cg_addendum(modul)`](#function-_cg_addendummodul): Calculate the reference addendum for a module.
 
+> [`_cg_backlash_valid(modul, backlash=undef)`](#function-_cg_backlash_validmodul-backlashundef): Check that tooth-thickness reduction is non-negative and below half the circular pitch.
+
 > [`_cg_bbox_segments_overlap`](#function-_cg_bbox_segments_overlap): Perform a cheap bounding-box overlap test for two segments.
 
 > [`_cg_candidate_record(valid, code, top_width, tip_normal_error, left, right, left_top, right_top, boundary, left_hits, right_hits)`](#function-_cg_candidate_recordvalid-code-top_width-tip_normal_error-left-right-left_top-right_top-boundary-left_hits-right_hits): Package the validated local-tooth candidate state.
@@ -114,6 +116,22 @@ Calculate the reference addendum for a module.
 **Returns:**
 
 - `{number}`: Addendum in mm.
+
+Back to [module description](#module-tooth-generation).
+
+### Function `_cg_backlash_valid(modul, backlash=undef)`
+
+
+Check that tooth-thickness reduction is non-negative and below half the circular pitch.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in millimetres.
+- `backlash`: {undef or number >= 0} Tangential tooth-thickness reduction.
+
+**Returns:**
+
+- `{boolean}`: True for an omitted value or a supported reduction.
 
 Back to [module description](#module-tooth-generation).
 

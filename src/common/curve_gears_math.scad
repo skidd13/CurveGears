@@ -235,6 +235,7 @@ function _cg_point_near_any(point,points,radius) =
  */
 module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepared_state=undef,body_offset=0) {
     _cg_assert_gear_inputs(points,modul,tooth_number,bore,pressure_angle,clearance);
+    assert(_cg_backlash_valid(modul,backlash),"backlash must be non-negative and below half the circular pitch");
     state=prepared_state;
     arc=is_undef(state) ? _cg_polyline_arc_table(points) : state[1];
     perimeter=arc[len(arc)-1][1];

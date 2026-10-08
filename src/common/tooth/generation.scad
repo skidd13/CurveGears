@@ -43,6 +43,17 @@ function _cg_dedendum(modul,clearance=undef) = is_undef(clearance)
  * @return {number} Default backlash in mm.
  */
 function _cg_default_backlash(modul) = _cg_circle_pi*modul*0.025;
+
+/**
+ * @function _cg_backlash_valid(modul, backlash=undef)
+ * @brief Check that tooth-thickness reduction is non-negative and below half the circular pitch.
+ * @param modul {number > 0} Tooth module in millimetres.
+ * @param backlash {undef or number >= 0} Tangential tooth-thickness reduction.
+ * @return {boolean} True for an omitted value or a supported reduction.
+ */
+function _cg_backlash_valid(modul,backlash=undef) =
+    is_undef(backlash) || (is_num(backlash) && backlash>=0 && backlash<_cg_circle_pi*modul/2);
+
 /*** @function _cg_tooth_angles(modul, z, pressure_angle, backlash)
  * @brief Calculate the radii and angular limits of a reference tooth.
  * @param modul {number > 0} Tooth module in mm.
@@ -84,7 +95,7 @@ function _cg_tooth_polygon(modul,z,pressure_angle=20,backlash=undef) =
 module _cg_involute_tooth(modul,tooth_number,pressure_angle=20,backlash=undef) {
     assert(modul > 0 && tooth_number >= 3,"invalid module or tooth count");
     assert(pressure_angle > 0 && pressure_angle < 90,"invalid pressure angle");
-    assert(is_undef(backlash) || (backlash >= 0 && backlash < _cg_circle_pi*modul/2),"backlash must be below half the circular pitch");
+    assert(_cg_backlash_valid(modul,backlash),"backlash must be below half the circular pitch");
     a=_cg_tooth_angles(modul,tooth_number,pressure_angle,backlash);
     intersection() {
         translate([-modul*tooth_number/2,0])
@@ -332,6 +343,7 @@ function _cg_flank_failure_code(left,right) =
  * @return {number} Normalised pitch fraction.
  */
 function _cg_reference_clearance_fraction(modul,backlash=undef) =
+    assert(_cg_backlash_valid(modul,backlash),"backlash must be non-negative and below half the circular pitch")
     .05 + (is_undef(backlash) ? 0 : backlash/(_cg_circle_pi*modul));
 
 /**
