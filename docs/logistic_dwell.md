@@ -38,6 +38,8 @@ Reference: https://en.wikipedia.org/wiki/Logistic_function.
 
 > [`curve_gear_logistic_dwell_pair`](#function-curve_gear_logistic_dwell_pair): Build a Logistic Dwell gear pair.
 
+> [`_cg_logistic_dwell_parameters_valid(gain,depth)`](#function-_cg_logistic_dwell_parameters_validgaindepth): Check the shared curve-parameter contract for every family entry point.
+
 
 ## Functions
 
@@ -286,6 +288,22 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 **Returns:**
 
 No return
+
+Back to [module description](#module-logistic-dwell).
+
+### Function `_cg_logistic_dwell_parameters_valid(gain,depth)`
+
+
+Check the shared curve-parameter contract for every family entry point.
+
+**Parameters:**
+
+- `gain`: {number > 0} Curve parameter.
+- `depth`: {number between 0 and 0.5} Curve parameter.
+
+**Returns:**
+
+- `{boolean}`: True when all curve parameters are supported.
 
 Back to [module description](#module-logistic-dwell).
 

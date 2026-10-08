@@ -8,7 +8,17 @@
  */
 include <../common/curve_gears_math.scad>
 
+/**
+ * @function _cg_logistic_dwell_parameters_valid(gain,depth)
+ * @brief Check the shared curve-parameter contract for every family entry point.
+ * @param gain {number > 0} Curve parameter.
+ * @param depth {number between 0 and 0.5} Curve parameter.
+ * @return {boolean} True when all curve parameters are supported.
+ */
+function _cg_logistic_dwell_parameters_valid(gain,depth) = gain>0 && depth>0 && depth<.5;
+
 function _cg_logistic_dwell_unit_radius(theta,gain=8,depth=.2) =
+    assert(_cg_logistic_dwell_parameters_valid(gain,depth),"logistic_dwell: invalid curve parameters")
     1+depth/(1+exp(-gain*sin(2*theta)))-depth/2;
 
 function _cg_logistic_dwell_unit_points(samples=720,gain=8,depth=.2) =

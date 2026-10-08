@@ -38,6 +38,8 @@ Reference: https://en.wikipedia.org/wiki/Hyperbolic_function.
 
 > [`curve_gear_tanh_triad_pair`](#function-curve_gear_tanh_triad_pair): Build a Tanh Triad gear pair.
 
+> [`_cg_tanh_triad_parameters_valid(transition,crest,correction)`](#function-_cg_tanh_triad_parameters_validtransitioncrestcorrection): Check the shared curve-parameter contract for every family entry point.
+
 
 ## Functions
 
@@ -342,6 +344,23 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 **Returns:**
 
 No return
+
+Back to [module description](#module-tanh-triad).
+
+### Function `_cg_tanh_triad_parameters_valid(transition,crest,correction)`
+
+
+Check the shared curve-parameter contract for every family entry point.
+
+**Parameters:**
+
+- `transition`: {number > 0} Curve parameter.
+- `crest`: {number between 0 and 0.5} Curve parameter.
+- `correction`: {number >= 0 and < 0.2} Curve parameter.
+
+**Returns:**
+
+- `{boolean}`: True when all curve parameters are supported.
 
 Back to [module description](#module-tanh-triad).
 

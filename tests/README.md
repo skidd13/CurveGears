@@ -414,6 +414,14 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`cosine_quintic_full_pipeline`](#function-cosine_quintic_full_pipeline): Verify the complete Cosine Quintic gear, mate and pair entry points.
 
+> [`cosine_quintic_invalid_centre_distance_parameters`](#function-cosine_quintic_invalid_centre_distance_parameters): Reject invalid curve controls consistently at the centre_distance entry point.
+
+> [`cosine_quintic_invalid_mate_parameters`](#function-cosine_quintic_invalid_mate_parameters): Reject invalid curve controls consistently at the mate entry point.
+
+> [`cosine_quintic_invalid_mate_rotation_parameters`](#function-cosine_quintic_invalid_mate_rotation_parameters): Reject invalid curve controls consistently at the mate_rotation entry point.
+
+> [`cosine_quintic_invalid_pair_parameters`](#function-cosine_quintic_invalid_pair_parameters): Reject invalid curve controls consistently at the pair entry point.
+
 > [`cusp_envelope_collision_probe`](#function-cusp_envelope_collision_probe): Check that sampled intermediate driver poses clear the swept-envelope mate.
 
 > [`cusp_envelope_mate_fixture`](#function-cusp_envelope_mate_fixture): Build the full swept-envelope reference mate once for collision phases.
@@ -494,6 +502,14 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`logistic_dwell_full_pipeline`](#function-logistic_dwell_full_pipeline): Verify the complete Logistic Dwell gear, mate and pair entry points.
 
+> [`logistic_dwell_invalid_centre_distance_parameters`](#function-logistic_dwell_invalid_centre_distance_parameters): Reject invalid curve controls consistently at the centre_distance entry point.
+
+> [`logistic_dwell_invalid_mate_parameters`](#function-logistic_dwell_invalid_mate_parameters): Reject invalid curve controls consistently at the mate entry point.
+
+> [`logistic_dwell_invalid_mate_rotation_parameters`](#function-logistic_dwell_invalid_mate_rotation_parameters): Reject invalid curve controls consistently at the mate_rotation entry point.
+
+> [`logistic_dwell_invalid_pair_parameters`](#function-logistic_dwell_invalid_pair_parameters): Reject invalid curve controls consistently at the pair entry point.
+
 > [`pascal_full_pipeline`](#function-pascal_full_pipeline): Verify the complete Pascal gear, mate, and pair entry points.
 
 > [`pascal_pair_pipeline`](#function-pascal_pair_pipeline): Verify Pascal pair assembly and conjugate mate placement.
@@ -513,6 +529,14 @@ existing resolution and colours; CI reduction does not replace them.
 > [`superformula_tooth_pipeline`](#function-superformula_tooth_pipeline): Verify Superformula tooth placement through the shared tooth pipeline.
 
 > [`tanh_triad_full_pipeline`](#function-tanh_triad_full_pipeline): Verify the complete Tanh Triad gear, mate and pair entry points.
+
+> [`tanh_triad_invalid_centre_distance_parameters`](#function-tanh_triad_invalid_centre_distance_parameters): Reject invalid curve controls consistently at the centre_distance entry point.
+
+> [`tanh_triad_invalid_mate_parameters`](#function-tanh_triad_invalid_mate_parameters): Reject invalid curve controls consistently at the mate entry point.
+
+> [`tanh_triad_invalid_mate_rotation_parameters`](#function-tanh_triad_invalid_mate_rotation_parameters): Reject invalid curve controls consistently at the mate_rotation entry point.
+
+> [`tanh_triad_invalid_pair_parameters`](#function-tanh_triad_invalid_pair_parameters): Reject invalid curve controls consistently at the pair entry point.
 
 > [`temple_fay_full_pipeline`](#function-temple_fay_full_pipeline): Exercise Temple Fay gear, body, mate and reference pair calls.
 
@@ -692,6 +716,66 @@ Back to [module description](#module-family-integration).
 
 
 Verify the complete Cosine Quintic gear, mate and pair entry points.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cosine_quintic_invalid_centre_distance_parameters`
+
+
+Source: [`cosine_quintic/invalid_centre_distance_parameters.scad`](cosine_quintic/invalid_centre_distance_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cosine_quintic_invalid_mate_parameters`
+
+
+Source: [`cosine_quintic/invalid_mate_parameters.scad`](cosine_quintic/invalid_mate_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cosine_quintic_invalid_mate_rotation_parameters`
+
+
+Source: [`cosine_quintic/invalid_mate_rotation_parameters.scad`](cosine_quintic/invalid_mate_rotation_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cosine_quintic_invalid_pair_parameters`
+
+
+Source: [`cosine_quintic/invalid_pair_parameters.scad`](cosine_quintic/invalid_pair_parameters.scad)
 
 **Parameters:**
 
@@ -1305,6 +1389,66 @@ No return
 
 Back to [module description](#module-family-integration).
 
+### Function `logistic_dwell_invalid_centre_distance_parameters`
+
+
+Source: [`logistic_dwell/invalid_centre_distance_parameters.scad`](logistic_dwell/invalid_centre_distance_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `logistic_dwell_invalid_mate_parameters`
+
+
+Source: [`logistic_dwell/invalid_mate_parameters.scad`](logistic_dwell/invalid_mate_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `logistic_dwell_invalid_mate_rotation_parameters`
+
+
+Source: [`logistic_dwell/invalid_mate_rotation_parameters.scad`](logistic_dwell/invalid_mate_rotation_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `logistic_dwell_invalid_pair_parameters`
+
+
+Source: [`logistic_dwell/invalid_pair_parameters.scad`](logistic_dwell/invalid_pair_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
 ### Function `pascal_full_pipeline`
 
 
@@ -1446,6 +1590,66 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`tanh_triad/full_pipeline.scad`](tanh_triad/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `tanh_triad_invalid_centre_distance_parameters`
+
+
+Source: [`tanh_triad/invalid_centre_distance_parameters.scad`](tanh_triad/invalid_centre_distance_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `tanh_triad_invalid_mate_parameters`
+
+
+Source: [`tanh_triad/invalid_mate_parameters.scad`](tanh_triad/invalid_mate_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `tanh_triad_invalid_mate_rotation_parameters`
+
+
+Source: [`tanh_triad/invalid_mate_rotation_parameters.scad`](tanh_triad/invalid_mate_rotation_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `tanh_triad_invalid_pair_parameters`
+
+
+Source: [`tanh_triad/invalid_pair_parameters.scad`](tanh_triad/invalid_pair_parameters.scad)
 
 **Parameters:**
 

@@ -3,7 +3,7 @@ include <base.scad>
 module _cg_logistic_dwell_build(modul,tooth_number,width,bore,gain=8,depth=.2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
     assert(modul>0 && (is_2d || width>0) && bore>=0,"logistic_dwell_gear: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"logistic_dwell_gear: tooth_number must be an integer >= 3");
-    assert(gain>0 && depth>0 && depth<.5,"logistic_dwell_gear: invalid curve parameters");
+    assert(_cg_logistic_dwell_parameters_valid(gain,depth),"logistic_dwell_gear: invalid curve parameters");
     _cg_assert_samples(samples,"logistic_dwell_gear: samples must be an integer >= 120");
     points=_cg_logistic_dwell_points(modul,tooth_number,samples,gain,depth);
     rotate([0,0,orientation])

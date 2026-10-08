@@ -3,7 +3,7 @@ include <base.scad>
 module _cg_tanh_triad_build(modul,tooth_number,width,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
     assert(modul>0 && (is_2d || width>0) && bore>=0,"tanh_triad_gear: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"tanh_triad_gear: tooth_number must be an integer >= 3");
-    assert(transition>0 && crest>0 && crest<.5 && correction>=0 && correction<.2,"tanh_triad_gear: invalid curve parameters");
+    assert(_cg_tanh_triad_parameters_valid(transition,crest,correction),"tanh_triad_gear: invalid curve parameters");
     _cg_assert_samples(samples,"tanh_triad_gear: samples must be an integer >= 120");
     points=_cg_tanh_triad_points(modul,tooth_number,samples,transition,crest,correction);
     rotate([0,0,orientation])

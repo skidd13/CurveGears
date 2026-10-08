@@ -38,6 +38,8 @@ Reference: https://en.wikipedia.org/wiki/Power_function.
 
 > [`curve_gear_cosine_quintic_pair`](#function-curve_gear_cosine_quintic_pair): Build a Cosine Quintic gear pair.
 
+> [`_cg_cosine_quintic_parameters_valid(depth,harmonic)`](#function-_cg_cosine_quintic_parameters_validdepthharmonic): Check the shared curve-parameter contract for every family entry point.
+
 
 ## Functions
 
@@ -266,6 +268,22 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 **Returns:**
 
 No return
+
+Back to [module description](#module-cosine-quintic).
+
+### Function `_cg_cosine_quintic_parameters_valid(depth,harmonic)`
+
+
+Check the shared curve-parameter contract for every family entry point.
+
+**Parameters:**
+
+- `depth`: {number between 0 and 0.5} Curve parameter.
+- `harmonic`: {integer >= 1} Curve parameter.
+
+**Returns:**
+
+- `{boolean}`: True when all curve parameters are supported.
 
 Back to [module description](#module-cosine-quintic).
 

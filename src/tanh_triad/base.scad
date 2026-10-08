@@ -8,7 +8,18 @@
  */
 include <../common/curve_gears_math.scad>
 
+/**
+ * @function _cg_tanh_triad_parameters_valid(transition,crest,correction)
+ * @brief Check the shared curve-parameter contract for every family entry point.
+ * @param transition {number > 0} Curve parameter.
+ * @param crest {number between 0 and 0.5} Curve parameter.
+ * @param correction {number >= 0 and < 0.2} Curve parameter.
+ * @return {boolean} True when all curve parameters are supported.
+ */
+function _cg_tanh_triad_parameters_valid(transition,crest,correction) = transition>0 && crest>0 && crest<.5 && correction>=0 && correction<.2;
+
 function _cg_tanh_triad_unit_radius(theta,transition=1.8,crest=.13,correction=.03) =
+    assert(_cg_tanh_triad_parameters_valid(transition,crest,correction),"tanh_triad: invalid curve parameters")
     1+crest*_cg_tanh(transition*sin(3*theta))+correction*cos(6*theta+20);
 
 function _cg_tanh_triad_unit_points(samples=720,transition=1.8,crest=.13,correction=.03) =

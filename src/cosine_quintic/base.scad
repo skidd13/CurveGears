@@ -8,7 +8,17 @@
  */
 include <../common/curve_gears_math.scad>
 
+/**
+ * @function _cg_cosine_quintic_parameters_valid(depth,harmonic)
+ * @brief Check the shared curve-parameter contract for every family entry point.
+ * @param depth {number between 0 and 0.5} Curve parameter.
+ * @param harmonic {integer >= 1} Curve parameter.
+ * @return {boolean} True when all curve parameters are supported.
+ */
+function _cg_cosine_quintic_parameters_valid(depth,harmonic) = depth>0 && depth<.5 && harmonic>=1 && floor(harmonic)==harmonic;
+
 function _cg_cosine_quintic_unit_radius(theta,depth=.19,harmonic=2) =
+    assert(_cg_cosine_quintic_parameters_valid(depth,harmonic),"cosine_quintic: invalid curve parameters")
     let(c=cos(harmonic*theta)) 1+depth*(c>=0 ? pow(c,5) : -pow(-c,5));
 
 function _cg_cosine_quintic_unit_points(samples=720,depth=.19,harmonic=2) =
