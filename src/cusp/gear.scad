@@ -286,6 +286,9 @@ module _cg_cusp_build(modul,tooth_number,width,bore,pressure_angle=20,backlash=u
     assert(samples%cusps==0,"cusp_gear: samples must be divisible by cusps so every cusp is an exact sample");
     scale=_cg_cusp_scale(modul,tooth_number,cusps);
     points=_cg_cusp_points(scale,samples,cusps);
+    _cg_assert_gear_inputs(points,modul,tooth_number,bore,pressure_angle,clearance);
+    assert(is_2d || width>_cg_eps_len(),
+        "stage=extrusion severity=error code=EXTRUSION_HEIGHT_INVALID message=width must be positive");
     rotate([0,0,orientation]) {
         state=_cg_cusp_state(modul,tooth_number,pressure_angle,backlash,clearance,samples,cusps);
         if(body_only) {

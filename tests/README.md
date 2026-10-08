@@ -458,6 +458,12 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`hypotrochoid_tooth_pipeline`](#function-hypotrochoid_tooth_pipeline): Verify Hypotrochoid tooth placement through the shared tooth pipeline.
 
+> [`invalid_body_bore`](#function-invalid_body_bore): Reject a negative Cusp body bore.
+
+> [`invalid_body_bore_2d`](#function-invalid_body_bore_2d): Reject a negative planar Cusp body bore.
+
+> [`invalid_body_width`](#function-invalid_body_width): Reject non-positive Cusp body extrusion width.
+
 > [`invalid_cusp_count`](#function-invalid_cusp_count): Reject invalid cusp-count parameters before geometry construction.
 
 > [`invalid_cusp_samples`](#function-invalid_cusp_samples): Reject invalid cusp-count parameters before geometry construction.
@@ -1010,6 +1016,51 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`hypotrochoid/tooth_pipeline.scad`](hypotrochoid/tooth_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_body_bore`
+
+
+Source: [`cusp/invalid_body_bore.scad`](cusp/invalid_body_bore.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_body_bore_2d`
+
+
+Source: [`cusp/invalid_body_bore_2d.scad`](cusp/invalid_body_bore_2d.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `invalid_body_width`
+
+
+Source: [`cusp/invalid_body_width.scad`](cusp/invalid_body_width.scad)
 
 **Parameters:**
 
