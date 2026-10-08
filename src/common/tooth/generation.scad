@@ -180,12 +180,12 @@ function _cg_bbox_segments_overlap(a,b,c,d) =
     && max(min(a[1],b[1]),min(c[1],d[1])) <= min(max(a[1],b[1]),max(c[1],d[1]))+_cg_eps_intersect();
 
 /**
- * @function _cg_polygon_intersections
+ * @function _cg_polygon_intersections_direct
  * @brief Find exact non-neighbouring polygon crossings after broad phase.
  * @param points {array of points} Closed polygon to inspect.
  * @return {array} Non-neighbouring segment intersection records.
  */
-function _cg_polygon_intersections(points) = [
+function _cg_polygon_intersections_direct(points) = [
     for(i=[0:len(points)-2]) for(j=[i+1:len(points)-1])
         let(adjacent=j==i+1 || (i==0 && j==len(points)-1),
             a=points[i],b=points[(i+1)%len(points)],c=points[j],d=points[(j+1)%len(points)],
@@ -194,6 +194,56 @@ function _cg_polygon_intersections(points) = [
                 : [false,[0,0],0,0])
         if(!adjacent && hit[0]) [i,j,hit[1]]
 ];
+/**
+ * @function _cg_segment_bounds_tree(points, begin=0, end=undef)
+ * @brief Build a balanced hierarchy of exact segment bounds in original index order.
+ * @param points {array of finite 2D points} Closed polygon vertices.
+ * @param begin {integer >= 0, default 0} First included segment index.
+ * @param end {undef or integer, default undef} Exclusive end; undef uses all segments.
+ * @return {array} `[minimum, maximum, first, last, left, right]` node, or empty range.
+ */
+function _cg_segment_bounds_tree(points,begin=0,end=undef) =
+    let(stop=is_undef(end) ? len(points) : end,count=stop-begin)
+    count<=0 ? [] : count==1 ?
+        let(a=points[begin],b=points[(begin+1)%len(points)])
+        [[min(a[0],b[0]),min(a[1],b[1])],
+         [max(a[0],b[0]),max(a[1],b[1])],begin,begin,[],[]] :
+        let(mid=begin+floor(count/2),left=_cg_segment_bounds_tree(points,begin,mid),right=_cg_segment_bounds_tree(points,mid,stop))
+        [[min(left[0][0],right[0][0]),min(left[0][1],right[0][1])],
+         [max(left[1][0],right[1][0]),max(left[1][1],right[1][1])],begin,stop-1,left,right];
+/**
+ * @function _cg_segment_bounds_candidates(tree, a, b, after=-1)
+ * @brief Return overlapping leaf segments in ascending order using the existing tolerance.
+ * Bounds reject only impossible overlaps; callers retain the exact narrow-phase tests.
+ * @param tree {array} Hierarchy returned by `_cg_segment_bounds_tree`.
+ * @param a {point} Query segment start.
+ * @param b {point} Query segment end.
+ * @param after {integer, default -1} Return only indices greater than this value.
+ * @return {array of integer} Ordered overlapping segment indices.
+ */
+function _cg_segment_bounds_candidates(tree,a,b,after=-1) =
+    len(tree)==0 || tree[3]<=after || !_cg_bbox_segments_overlap(a,b,tree[0],tree[1]) ? [] :
+    tree[2]==tree[3] ? [tree[2]] :
+    concat(_cg_segment_bounds_candidates(tree[4],a,b,after),_cg_segment_bounds_candidates(tree[5],a,b,after));
+/**
+ * @function _cg_polygon_intersections(points)
+ * @brief Find every exact non-neighbouring crossing through ordered bounds traversal.
+ * Small or non-finite inputs retain direct-scanner behaviour. Exact intersection
+ * equations, tolerance and diagnostic ordering remain unchanged.
+ * @param points {array of points} Closed polygon to inspect.
+ * @return {array} Non-neighbouring `[first segment, second segment, intersection]` records.
+ */
+function _cg_polygon_intersections(points) =
+    len(points)<4 || !_cg_polyline_finite(points) ? _cg_polygon_intersections_direct(points) :
+    let(tree=_cg_segment_bounds_tree(points)) [
+        for(i=[0:len(points)-2])
+        let(a=points[i],b=points[(i+1)%len(points)])
+        for(j=_cg_segment_bounds_candidates(tree,a,b,i))
+        if(j!=i+1 && !(i==0 && j==len(points)-1))
+        let(hit=_cg_segment_intersection(a,b,points[j],points[(j+1)%len(points)]))
+        if(hit[0]) [i,j,hit[1]]
+    ];
+
 
 /**
  * @function _cg_polygon_area

@@ -57,7 +57,9 @@ ordering, top geometry, crossings, then the expensive boundary scan.
 
 > [`_cg_polygon_area`](#function-_cg_polygon_area): Calculate the absolute area of a closed polyline.
 
-> [`_cg_polygon_intersections`](#function-_cg_polygon_intersections): Find exact non-neighbouring polygon crossings after broad phase.
+> [`_cg_polygon_intersections(points)`](#function-_cg_polygon_intersectionspoints): Find every exact non-neighbouring crossing through ordered bounds traversal.
+
+> [`_cg_polygon_intersections_direct`](#function-_cg_polygon_intersections_direct): Find exact non-neighbouring polygon crossings after broad phase.
 
 > [`_cg_polyline_finite`](#function-_cg_polyline_finite): Test every point in a polyline for finite coordinates.
 
@@ -70,6 +72,10 @@ ordering, top geometry, crossings, then the expensive boundary scan.
 > [`_cg_reference_tooth_candidate(pitch_radius, modul, tooth_number, ...)`](#function-_cg_reference_tooth_candidatepitch_radius-modul-tooth_number-): Return one cached, validated local candidate tooth.
 
 > [`_cg_reference_tooth_local_flanks`](#function-_cg_reference_tooth_local_flanks): Build one cached local tooth flank pair; the reference Boolean cutter's centre sentinel becomes a false inward spoke in a curved frame, so bounded normal extensions establish the body splices.
+
+> [`_cg_segment_bounds_candidates(tree, a, b, after=-1)`](#function-_cg_segment_bounds_candidatestree-a-b-after-1): Return overlapping leaf segments in ascending order using the existing tolerance.
+
+> [`_cg_segment_bounds_tree(points, begin=0, end=undef)`](#function-_cg_segment_bounds_treepoints-begin0-endundef): Build a balanced hierarchy of exact segment bounds in original index order.
 
 > [`_cg_segment_intersection`](#function-_cg_segment_intersection): Test two segments and return their intersection parameters.
 
@@ -374,7 +380,23 @@ Calculate the absolute area of a closed polyline.
 
 Back to [module description](#module-tooth-generation).
 
-### Function `_cg_polygon_intersections`
+### Function `_cg_polygon_intersections(points)`
+
+
+Small or non-finite inputs retain direct-scanner behaviour. Exact intersection
+equations, tolerance and diagnostic ordering remain unchanged.
+
+**Parameters:**
+
+- `points`: {array of points} Closed polygon to inspect.
+
+**Returns:**
+
+- `{array}`: Non-neighbouring `[first segment, second segment, intersection]` records.
+
+Back to [module description](#module-tooth-generation).
+
+### Function `_cg_polygon_intersections_direct`
 
 
 Find exact non-neighbouring polygon crossings after broad phase.
@@ -496,6 +518,41 @@ Build one cached local tooth flank pair; the reference Boolean cutter's centre s
 **Returns:**
 
 - `{array}`: Local left and right flank polylines.
+
+Back to [module description](#module-tooth-generation).
+
+### Function `_cg_segment_bounds_candidates(tree, a, b, after=-1)`
+
+
+Bounds reject only impossible overlaps; callers retain the exact narrow-phase tests.
+
+**Parameters:**
+
+- `tree`: {array} Hierarchy returned by `_cg_segment_bounds_tree`.
+- `a`: {point} Query segment start.
+- `b`: {point} Query segment end.
+- `after`: {integer, default -1} Return only indices greater than this value.
+
+**Returns:**
+
+- `{array of integer}`: Ordered overlapping segment indices.
+
+Back to [module description](#module-tooth-generation).
+
+### Function `_cg_segment_bounds_tree(points, begin=0, end=undef)`
+
+
+Build a balanced hierarchy of exact segment bounds in original index order.
+
+**Parameters:**
+
+- `points`: {array of finite 2D points} Closed polygon vertices.
+- `begin`: {integer >= 0, default 0} First included segment index.
+- `end`: {undef or integer, default undef} Exclusive end; undef uses all segments.
+
+**Returns:**
+
+- `{array}`: `[minimum, maximum, first, last, left, right]` node, or empty range.
 
 Back to [module description](#module-tooth-generation).
 

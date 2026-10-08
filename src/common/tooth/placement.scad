@@ -422,19 +422,37 @@ function _cg_splice_failures(placements,perimeter,tooth_pitch=undef) =
             if(intervals[i][0] > intervals[i+1][0]+_cg_eps_intersect()) ["SPLICE_ORDER_INVALID",intervals[i],intervals[i+1]]]
     );
 
-/*** @function _cg_tooth_body_intersections(tooth_boundary, body)
+/*** @function _cg_tooth_body_intersections_direct(tooth_boundary, body)
  * @brief Find intersections between a placed tooth boundary and the body.
  * @param tooth_boundary {array} Tooth boundary points.
  * @param body {array} Body boundary points.
  * @return {array} Intersection records with segment indices and fractions.
  */
-function _cg_tooth_body_intersections(tooth_boundary,body) =
+function _cg_tooth_body_intersections_direct(tooth_boundary,body) =
     [for(ti=[0:len(tooth_boundary)-1],bi=[0:len(body)-1])
         let(a=tooth_boundary[ti],b=tooth_boundary[(ti+1)%len(tooth_boundary)],
             c=body[bi],d=body[(bi+1)%len(body)])
         if(_cg_bbox_segments_overlap(a,b,c,d))
         let(hit=_cg_segment_intersection(a,b,c,d))
         if(hit[0]) [hit[1],ti,bi,hit[2],hit[3]]];
+/**
+ * @function _cg_tooth_body_intersections(tooth_boundary, body)
+ * @brief Find all exact tooth/body crossings after hierarchical bounds rejection.
+ * @param tooth_boundary {array} Tooth boundary points.
+ * @param body {array} Body boundary points.
+ * @return {array} Original intersection records in tooth/body segment order.
+ */
+function _cg_tooth_body_intersections(tooth_boundary,body) =
+    len(body)<4 || !_cg_polyline_finite(body) || !_cg_polyline_finite(tooth_boundary) ?
+        _cg_tooth_body_intersections_direct(tooth_boundary,body) :
+    let(tree=_cg_segment_bounds_tree(body)) [
+        for(ti=[0:len(tooth_boundary)-1])
+        let(a=tooth_boundary[ti],b=tooth_boundary[(ti+1)%len(tooth_boundary)])
+        for(bi=_cg_segment_bounds_candidates(tree,a,b))
+        let(hit=_cg_segment_intersection(a,b,body[bi],body[(bi+1)%len(body)]))
+        if(hit[0]) [hit[1],ti,bi,hit[2],hit[3]]
+    ];
+
 
 /*** @function _cg_placement_invalid(index, target, frame, candidate, code)
  * @brief Construct the canonical invalid placement record.

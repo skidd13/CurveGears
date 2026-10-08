@@ -130,18 +130,34 @@ function _cg_has_immediate_backtrack(points) =
 function _cg_same_edge(a,b,c,d) =
     (_cg_vlen(_cg_vsub(a,c))<=_cg_eps_len() && _cg_vlen(_cg_vsub(b,d))<=_cg_eps_len())
     || (_cg_vlen(_cg_vsub(a,d))<=_cg_eps_len() && _cg_vlen(_cg_vsub(b,c))<=_cg_eps_len());
-/*** @function _cg_has_duplicate_edge(points)
+/*** @function _cg_has_duplicate_edge_direct(points)
  * @brief Detect non-adjacent duplicate edges in a closed point list.
  * @param points {array} Closed polygon points.
  * @return {boolean} True when a non-adjacent edge is duplicated.
  */
-function _cg_has_duplicate_edge(points) =
+function _cg_has_duplicate_edge_direct(points) =
     len(points)<4 ? false : max([for(i=[0:len(points)-2]) for(j=[i+1:len(points)-1])
         let(adjacent=j==i+1 || (i==0 && j==len(points)-1),
             duplicate=!adjacent
                 && _cg_bbox_segments_overlap(points[i],points[(i+1)%len(points)],points[j],points[(j+1)%len(points)])
                 && _cg_same_edge(points[i],points[(i+1)%len(points)],points[j],points[(j+1)%len(points)]))
         duplicate ? 1 : 0]) == 1;
+/**
+ * @function _cg_has_duplicate_edge(points)
+ * @brief Detect every non-adjacent duplicate edge through exact bounds traversal.
+ * @param points {array} Closed polygon points.
+ * @return {boolean} True when a non-adjacent edge is duplicated.
+ */
+function _cg_has_duplicate_edge(points) =
+    len(points)<4 || !_cg_polyline_finite(points) ? _cg_has_duplicate_edge_direct(points) :
+    let(tree=_cg_segment_bounds_tree(points)) len([
+        for(i=[0:len(points)-2])
+        let(a=points[i],b=points[(i+1)%len(points)])
+        for(j=_cg_segment_bounds_candidates(tree,a,b,i))
+        if(j!=i+1 && !(i==0 && j==len(points)-1)
+           && _cg_same_edge(a,b,points[j],points[(j+1)%len(points)])) 1
+    ])>0;
+
 /*** @function _cg_merge_point_count(points, target)
  * @brief Count points that coincide with a target within the merge tolerance.
  * @param points {array} Point list.

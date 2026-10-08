@@ -66,6 +66,8 @@ Shared tooth-construction and equivalence regression fixtures.
 
 > [`tooth_generation_reference_pipeline`](#function-tooth_generation_reference_pipeline): Render the compact mathematical reference tooth for STL comparison.
 
+> [`tooth_generation_segment_bounds_equivalence`](#function-tooth_generation_segment_bounds_equivalence): Prove ordered broad-phase and exact validation equivalence for crossing, duplicate and near-tolerance polygons.
+
 
 ## Functions
 
@@ -165,6 +167,21 @@ Back to [module description](#module-tooth-generation).
 
 
 Source: [`tooth/generation/reference_pipeline.scad`](tooth/generation/reference_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-tooth-generation).
+
+### Function `tooth_generation_segment_bounds_equivalence`
+
+
+Source: [`tooth/generation/segment_bounds_equivalence.scad`](tooth/generation/segment_bounds_equivalence.scad)
 
 **Parameters:**
 

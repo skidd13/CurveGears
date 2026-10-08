@@ -95,7 +95,9 @@ permitted.
 
 > [`_cg_splice_relation`](#function-_cg_splice_relation): Classify two canonical body intervals.
 
-> [`_cg_tooth_body_intersections(tooth_boundary, body)`](#function-_cg_tooth_body_intersectionstooth_boundary-body): Find intersections between a placed tooth boundary and the body.
+> [`_cg_tooth_body_intersections(tooth_boundary, body)`](#function-_cg_tooth_body_intersectionstooth_boundary-body): Find all exact tooth/body crossings after hierarchical bounds rejection.
+
+> [`_cg_tooth_body_intersections_direct(tooth_boundary, body)`](#function-_cg_tooth_body_intersections_directtooth_boundary-body): Find intersections between a placed tooth boundary and the body.
 
 > [`_cg_tooth_contact_is_permitted(a, b, hit)`](#function-_cg_tooth_contact_is_permitteda-b-hit): Permit only a shared endpoint contact between tooth boundaries.
 
@@ -747,6 +749,22 @@ Classify two canonical body intervals.
 Back to [module description](#module-tooth-placement).
 
 ### Function `_cg_tooth_body_intersections(tooth_boundary, body)`
+
+
+Find all exact tooth/body crossings after hierarchical bounds rejection.
+
+**Parameters:**
+
+- `tooth_boundary`: {array} Tooth boundary points.
+- `body`: {array} Body boundary points.
+
+**Returns:**
+
+- `{array}`: Original intersection records in tooth/body segment order.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_tooth_body_intersections_direct(tooth_boundary, body)`
 
 
 Find intersections between a placed tooth boundary and the body.
