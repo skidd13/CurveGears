@@ -21,8 +21,9 @@ assert(_cg_has_flank_crossing(crossing_left,crossing_right),
     "expected FLANK_CROSSING");
 echo("stage=flank severity=info code=FLANK_CROSSING PASS");
 
-wide_backlash_candidate=_cg_reference_tooth_candidate(17,1,34,20,30);
-assert(!wide_backlash_candidate[0] && wide_backlash_candidate[1]=="FLANK_ORDER_INVALID",
+valid_flanks=_cg_reference_tooth_local_flanks(17,1,34,20);
+reversed_flank_candidate=_cg_validate_candidate_flanks([valid_flanks[1],valid_flanks[0]]);
+assert(!reversed_flank_candidate[0] && reversed_flank_candidate[1]=="FLANK_ORDER_INVALID",
     "expected FLANK_ORDER_INVALID before top geometry");
 echo("stage=flank severity=info code=FLANK_ORDER_INVALID PASS");
 
