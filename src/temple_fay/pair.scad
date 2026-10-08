@@ -27,8 +27,8 @@ module curve_gear_temple_fay_pair(modul,tooth_number,width,bore,wing=.18,fold=.0
     points=_cg_temple_fay_points(modul,tooth_number,samples,wing,fold);
     extent=_cg_pair_point_extent(points);
     distance=curve_gear_temple_fay_centre_distance(modul,tooth_number,wing,fold,samples);
-    _cg_static_pair_assembly(distance,together_built,phase,phase+180,extent,extent,modul) {
-        color(driver_color) curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,phase);
-        color(mate_color) curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,phase+180);
+    _cg_static_pair_assembly(distance,together_built,phase,curve_gear_temple_fay_mate_rotation(modul,tooth_number,wing,fold,samples,phase),extent,extent,modul) {
+        color(driver_color) curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples);
+        color(mate_color) curve_gear_temple_fay(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples);
     }
 }

@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 
@@ -108,7 +109,14 @@ def check_smoke(cases: list[tuple[str, Path, Path]], families: list[str]) -> lis
             continue
         _check_success_output(output)
         if output.suffix == ".stl":
-            assert_closed_mesh(output)
+            geometry=assert_closed_mesh(output)
+            sentinel=re.search(r"^// @regression: sentinel-cube ([0-9.eE+-]+)$",source.read_text(),re.MULTILINE)
+            if sentinel:
+                edge=float(sentinel.group(1))
+                assert edge>0 and all(abs(lo)<=1e-6 and abs(hi-edge)<=1e-6 for lo,hi in geometry["bounds"]), \
+                    ("GEOMETRY_EQUIVALENCE_FAILED",source,geometry["bounds"])
+                assert abs(geometry["volume"]-edge**3)<=max(1e-12,edge**3*1e-5), \
+                    ("GEOMETRY_EQUIVALENCE_FAILED",source,geometry["volume"])
         else:
             assert output.suffix == ".csg" and output.read_text().strip(), f"empty compilation: {output}"
         references[source.name] = output

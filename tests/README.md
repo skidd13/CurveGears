@@ -540,6 +540,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`temple_fay_full_pipeline`](#function-temple_fay_full_pipeline): Exercise Temple Fay gear, body, mate and reference pair calls.
 
+> [`temple_fay_phase_equivalence`](#function-temple_fay_phase_equivalence): Compare assembled and separated pair geometry with independent single-rotation references.
+
 
 ## Functions
 
@@ -1665,6 +1667,21 @@ Back to [module description](#module-family-integration).
 
 
 Exercise Temple Fay gear, body, mate and reference pair calls.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `temple_fay_phase_equivalence`
+
+
+Source: [`temple_fay/phase_equivalence.scad`](temple_fay/phase_equivalence.scad)
 
 **Parameters:**
 
