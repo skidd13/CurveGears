@@ -1,6 +1,6 @@
 include <base.scad>
 
-module _cg_temple_fay_build(modul,tooth_number,width,bore,wing=.24,fold=.07,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
+module _cg_temple_fay_build(modul,tooth_number,width,bore,wing=.18,fold=.05,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
     assert(modul>0 && (is_2d || width>0) && bore>=0,"temple_fay_gear: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number && wing>0 && wing<.5 && fold>=0 && fold<.2,"temple_fay_gear: invalid parameters");
     _cg_assert_samples(samples,"temple_fay_gear: samples must be an integer >= 120");

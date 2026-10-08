@@ -29,7 +29,7 @@ module curve_gear_temple_fay_mate(modul,tooth_number,width,bore,wing=.18,fold=.0
  * @param fold {number} Fold harmonic.
  * @param samples {integer} Samples.
  */
-function curve_gear_temple_fay_centre_distance(modul,tooth_number,wing=.24,fold=.07,samples=720) = let(scale=_cg_temple_fay_scale(modul,tooth_number,samples,wing,fold)) 2*scale;
+function curve_gear_temple_fay_centre_distance(modul,tooth_number,wing=.18,fold=.05,samples=720) = let(scale=_cg_temple_fay_scale(modul,tooth_number,samples,wing,fold)) 2*scale;
 
 /** @function curve_gear_temple_fay_mate_rotation
  * @brief Return the Temple Fay reference mate rotation.
@@ -41,4 +41,4 @@ function curve_gear_temple_fay_centre_distance(modul,tooth_number,wing=.24,fold=
  * @param samples {integer} Samples.
  * @param phase {number} Driver phase.
  */
-function curve_gear_temple_fay_mate_rotation(modul,tooth_number,wing=.24,fold=.07,samples=720,phase=0) = 180-phase;
+function curve_gear_temple_fay_mate_rotation(modul,tooth_number,wing=.18,fold=.05,samples=720,phase=0) = 180-phase;

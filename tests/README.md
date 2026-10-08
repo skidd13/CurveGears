@@ -538,6 +538,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`tanh_triad_invalid_pair_parameters`](#function-tanh_triad_invalid_pair_parameters): Reject invalid curve controls consistently at the pair entry point.
 
+> [`temple_fay_defaults`](#function-temple_fay_defaults): Bind default reference spacing to the pitch curve emitted by the default gear.
+
 > [`temple_fay_full_pipeline`](#function-temple_fay_full_pipeline): Exercise Temple Fay gear, body, mate and reference pair calls.
 
 > [`temple_fay_phase_equivalence`](#function-temple_fay_phase_equivalence): Compare assembled and separated pair geometry with independent single-rotation references.
@@ -1652,6 +1654,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`tanh_triad/invalid_pair_parameters.scad`](tanh_triad/invalid_pair_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `temple_fay_defaults`
+
+
+Source: [`temple_fay/defaults.scad`](temple_fay/defaults.scad)
 
 **Parameters:**
 
