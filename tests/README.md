@@ -204,6 +204,8 @@ Shared placement, collision and diagnostic regression fixtures.
 
 **Functions**:
 
+> [`tooth_placement_assembly_ownership`](#function-tooth_placement_assembly_ownership): Preserve missing and duplicate tooth detection using exposed tops as root unions hide internal splice points.
+
 > [`tooth_placement_collision_failure`](#function-tooth_placement_collision_failure): Expected-failure gate for a complete placed-tooth collision.
 
 > [`tooth_placement_include`](#function-tooth_placement_include): Direct include smoke test for the standalone tooth-placement layer.
@@ -216,6 +218,21 @@ Shared placement, collision and diagnostic regression fixtures.
 ## Functions
 
 The module `Tooth placement and validation` defines the following functions.
+
+### Function `tooth_placement_assembly_ownership`
+
+
+Source: [`tooth/placement/assembly_ownership.scad`](tooth/placement/assembly_ownership.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-tooth-placement-and-validation).
 
 ### Function `tooth_placement_collision_failure`
 
@@ -299,6 +316,8 @@ Shared mate-motion and tooth-phase regression fixtures.
 
 > [`mate_phase_forwarding`](#function-mate_phase_forwarding): Verify that mate tooth phase reaches the shared placement engine.
 
+> [`mate_trochoid_polar_radii`](#function-mate_trochoid_polar_radii): Compare indexed motion radii with independent full-outline ray scans for both trochoid families.
+
 
 ## Functions
 
@@ -353,6 +372,21 @@ No parameters
 **Returns:**
 
 - `{geometry}`: Small validation solid.
+
+Back to [module description](#module-mate-motion-and-phase).
+
+### Function `mate_trochoid_polar_radii`
+
+
+Source: [`mate/trochoid_polar_radii.scad`](mate/trochoid_polar_radii.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-mate-motion-and-phase).
 
@@ -447,6 +481,8 @@ existing resolution and colours; CI reduction does not replace them.
 > [`epitrochoid_contact`](#function-epitrochoid_contact): Verify Epitrochoid contact geometry and pitch diagnostics.
 
 > [`epitrochoid_full_pipeline`](#function-epitrochoid_full_pipeline): Verify the complete Epitrochoid gear, mate, and pair entry points.
+
+> [`epitrochoid_mate_alternative_pipeline`](#function-epitrochoid_mate_alternative_pipeline): Fully render the stronger alternative mate with the corrected physical-radius pitch law and canonical bore.
 
 > [`epitrochoid_pair_pipeline`](#function-epitrochoid_pair_pipeline): Verify Epitrochoid pair assembly and conjugate mate placement.
 
@@ -975,6 +1011,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`epitrochoid/full_pipeline.scad`](epitrochoid/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `epitrochoid_mate_alternative_pipeline`
+
+
+Source: [`epitrochoid/mate_alternative_pipeline.scad`](epitrochoid/mate_alternative_pipeline.scad)
 
 **Parameters:**
 

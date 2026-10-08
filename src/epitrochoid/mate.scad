@@ -4,26 +4,26 @@ include <../common/mate/placement.scad>
 
 /**
  * @function _cg_epitrochoid_motion_radii
- * @brief Evaluate epitrochoid radii at integration midpoints.
+ * @brief Sample the driver polygon at physical polar integration midpoints.
  * @param scale {number > 0} Overall curve scale.
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
  * @param d {number > 0} Pen offset ratio.
- * @param n {integer >= 1, default 240} Number of midpoint samples.
+ * @param n {integer >= 3, default 240} Number of midpoint samples.
  * @return {array of number} Sampled radii in angular order.
  */
-function _cg_epitrochoid_motion_radii(scale,R,r,d,n=240) = [for(i=[0:n-1]) _cg_epitrochoid_curve_radius(scale,R,r,d,360*(i+.5)/n)];
+function _cg_epitrochoid_motion_radii(scale,R,r,d,n=240) = _cg_trochoid_polar_radii(_cg_epitrochoid_points_scaled(scale,R,r,d,n),n,true);
 /**
  * @function _cg_epitrochoid_driver_radii(scale, R, r, d, n=240)
- * @brief Evaluate epitrochoid radii at direct mate-construction angles.
+ * @brief Sample the driver polygon at physical polar phase boundaries.
  * @param scale {number > 0} Overall curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
  * @param d {number > 0} Pen offset ratio.
- * @param n {integer >= 1, default 240} Number of boundary intervals.
+ * @param n {integer >= 3, default 240} Number of boundary intervals.
  * @return {array of number} Driver radii in angular order.
  */
-function _cg_epitrochoid_driver_radii(scale,R,r,d,n=240) = [for(i=[0:n-1]) _cg_epitrochoid_curve_radius(scale,R,r,d,360*i/n)];
+function _cg_epitrochoid_driver_radii(scale,R,r,d,n=240) = _cg_trochoid_polar_radii(_cg_epitrochoid_points_scaled(scale,R,r,d,n),n,false);
 /**
  * @function _cg_epitrochoid_centre_distance
  * @brief Solve the epitrochoid conjugate centre distance.
@@ -99,7 +99,9 @@ module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,r
     scale=_cg_epitrochoid_scale(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples);
     D=_cg_epitrochoid_centre_distance(scale,major_ratio,rolling_ratio,offset_ratio,samples);
     mate=_cg_epitrochoid_mate_points(scale,major_ratio,rolling_ratio,offset_ratio,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
+    // Deeper hidden support reaches the body at the corrected high-curvature waist.
+    state=_cg_tooth_geometry_state(mate,modul,tooth_number,pressure_angle,tooth_phase,false,backlash,clearance,false,true,root_support=.5);
+    _cg_gear_from_state(state,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,false);
 }
 
 /***

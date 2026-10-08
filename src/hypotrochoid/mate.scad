@@ -4,26 +4,26 @@ include <../common/mate/placement.scad>
 
 /***
  * @function _cg_hypotrochoid_motion_radii(scale, R, r, d, n=720)
- * @brief Sample hypotrochoid radii at motion-integration midpoints.
+ * @brief Sample the driver polygon at physical polar integration midpoints.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
  * @param d {number >= 0} Pen offset ratio.
- * @param n {integer >= 1, default 720} Number of motion intervals.
+ * @param n {integer >= 3, default 720} Number of motion intervals.
  * @return {array of number} Midpoint pitch radii.
  */
-function _cg_hypotrochoid_motion_radii(scale,R,r,d,n=720) = [for(i=[0:n-1]) _cg_hypotrochoid_curve_radius(scale,R,r,d,360*(i+.5)/n)];
+function _cg_hypotrochoid_motion_radii(scale,R,r,d,n=720) = _cg_trochoid_polar_radii(_cg_hypotrochoid_points_scaled(scale,R,r,d,n),n,true);
 /***
  * @function _cg_hypotrochoid_driver_radii(scale, R, r, d, n=720)
- * @brief Sample hypotrochoid radii at driver-phase boundaries.
+ * @brief Sample the driver polygon at physical polar phase boundaries.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
  * @param d {number >= 0} Pen offset ratio.
- * @param n {integer >= 1, default 720} Number of phase intervals.
+ * @param n {integer >= 3, default 720} Number of phase intervals.
  * @return {array of number} Driver pitch radii.
  */
-function _cg_hypotrochoid_driver_radii(scale,R,r,d,n=720) = [for(i=[0:n-1]) _cg_hypotrochoid_curve_radius(scale,R,r,d,360*i/n)];
+function _cg_hypotrochoid_driver_radii(scale,R,r,d,n=720) = _cg_trochoid_polar_radii(_cg_hypotrochoid_points_scaled(scale,R,r,d,n),n,false);
 /***
  * @function _cg_hypotrochoid_centre_distance(scale, R, r, d, n=720)
  * @brief Solve the fixed centre distance for a hypotrochoid mate.

@@ -831,6 +831,7 @@ Build the reusable pitch, body, candidate, and placement state.
 - `body_only`: {boolean, default false} Omit tooth placement records.
 - `prepare_final`: {boolean, default false} Cache final boundary checks for pair rendering.
 - `prepared_placement_state`: {array or undef} Reuse a family-prepared `[candidate, placements]` pair.
+- `root_support`: {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
 
 **Returns:**
 
@@ -918,6 +919,7 @@ Build the shared tooth candidate and placement records for prepared geometry.
 - `radial_root`: {boolean, default false} Use radial-root construction.
 - `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `root_support`: {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
 
 **Returns:**
 

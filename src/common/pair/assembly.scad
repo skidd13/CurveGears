@@ -59,13 +59,14 @@ module _cg_assert_pair_gap_failures(failures) {
  * @param mate_radial_root {boolean, default false} Mate radial-root construction.
  * @param driver_color {OpenSCAD colour, default SteelBlue} Driver colour.
  * @param mate_color {OpenSCAD colour, default Gold} Mate colour.
+ * @param mate_root_support {number >= 0, default 0.25} Inward mate-candidate support in modules.
  */
-module _cg_pair_assembly(centre_distance,motion,phase,together_built,driver_extent,mate_extent,modul,driver_points,mate_points,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,driver_radial_root,mate_radial_root,driver_color,mate_color) {
+module _cg_pair_assembly(centre_distance,motion,phase,together_built,driver_extent,mate_extent,modul,driver_points,mate_points,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,driver_radial_root,mate_radial_root,driver_color,mate_color,mate_root_support=.25) {
     mate_rotation=_cg_mate_rotation_for_phase(motion,phase);
     display_distance=_cg_pair_display_separation(driver_extent,mate_extent,modul);
     _cg_assert_gear_inputs(driver_points,modul,tooth_number,bore,pressure_angle,clearance,mate_points);
     driver_state=_cg_tooth_geometry_state(driver_points,modul,tooth_number,pressure_angle,tooth_phase,driver_radial_root,backlash,clearance,false,true);
-    mate_state=_cg_tooth_geometry_state(mate_points,modul,tooth_number,pressure_angle,tooth_phase,mate_radial_root,backlash,clearance,false,true);
+    mate_state=_cg_tooth_geometry_state(mate_points,modul,tooth_number,pressure_angle,tooth_phase,mate_radial_root,backlash,clearance,false,true,root_support=mate_root_support);
     gap_failures=together_built ? _cg_pair_gap_failures_from_states(driver_state,mate_state,modul,centre_distance,phase,mate_rotation,clearance) : [];
     _cg_assert_pair_gap_failures(gap_failures);
     if(together_built) {

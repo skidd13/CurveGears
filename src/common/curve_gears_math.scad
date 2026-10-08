@@ -67,6 +67,19 @@ function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
         if(shifted>start_s+_cg_eps_len() && shifted<end_s-_cg_eps_len())
             _cg_point_for_closed_arc(body,arc,shifted)];
 
+/**
+ * @function _cg_join_adjacent_root_boundaries(previous, current)
+ * @brief Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
+ * @param previous {array of points} Previous trimmed tooth boundary.
+ * @param current {array of points} Current trimmed tooth boundary.
+ * @return {array} One segment/segment/point record, or an empty unsupported junction.
+ */
+function _cg_join_adjacent_root_boundaries(previous,current) =
+    let(hits=[for(hit=_cg_tooth_pair_collisions(previous,current))
+        if(hit[0]>floor((len(previous)-1)/2) && hit[0]<len(previous)-1
+            && hit[1]<floor((len(current)-1)/2)) hit])
+    len(hits)==1 ? hits[0] : [];
+
 /***
  * @function _cg_final_outline_from_placements(body, arc, perimeter, placements, tooth_pitch, prepared_boundaries)
  * @brief Replace canonical body intervals with ordered placed teeth.
@@ -80,7 +93,14 @@ function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
  */
 function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_pitch=undef,prepared_boundaries=undef) =
     let(placed=[for(p=placements) if(p[0]=="placed") p],
-        boundaries=is_undef(prepared_boundaries) ? _cg_trimmed_tooth_boundaries(placements) : prepared_boundaries)
+        boundaries=is_undef(prepared_boundaries) ? _cg_trimmed_tooth_boundaries(placements) : prepared_boundaries,
+        raw_intervals=[for(p=placed) _cg_splice_interval(p,perimeter)],
+        joins=[for(i=[0:len(placed)-1])
+            let(previous=(i-1+len(placed))%len(placed),
+                shift=raw_intervals[i][3]<=raw_intervals[previous][3] ? perimeter : 0)
+            len(placed)>1 && !is_undef(tooth_pitch)
+                && raw_intervals[previous][1]>raw_intervals[i][0]+shift+_cg_eps_intersect()
+                ? _cg_join_adjacent_root_boundaries(boundaries[previous],boundaries[i]) : []])
     len(placed)==0 ? body :
     [
         for(i=[0:len(placed)-1])
@@ -96,8 +116,12 @@ function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_p
                 // body span and leaves polygon() to close it with a chord.
                 previous_end=previous_end_raw,
                 start_s=current_interval[0]+offset,
-                body_interval=_cg_body_interval_before(body,arc,perimeter,previous_end,start_s),
-                tooth_interval=boundaries[i],
+                start_join=joins[i],end_join=joins[(i+1)%len(placed)],
+                body_interval=len(start_join)>0 ? [] : _cg_body_interval_before(body,arc,perimeter,previous_end,start_s),
+                first=len(start_join)>0 ? start_join[1]+1 : 0,
+                last=len(end_join)>0 ? end_join[0] : len(boundaries[i])-1,
+                tooth_interval=concat(len(start_join)>0 ? [start_join[2]] : [],
+                    [for(k=[first:last]) boundaries[i][k]]),
                 interval=concat(body_interval,tooth_interval)
             )
             for(p=interval) p
@@ -179,11 +203,13 @@ function _cg_assembled_component_failures(outline,placements,prepared_boundaries
     let(
         placed=[for(p=placements) if(p[0]=="placed") p],
         boundaries=is_undef(prepared_boundaries) ? _cg_trimmed_tooth_boundaries(placements) : prepared_boundaries,
-        merge_counts=[for(p=placed) _cg_merge_point_count(outline,p[8][0])],
+        // Root unions can hide a body splice point; the exposed tooth top remains its unique assembly witness.
+        witnesses=[for(p=placed) p[6][len(p[5][4])-1]],
+        merge_counts=[for(point=witnesses) _cg_merge_point_count(outline,point)],
         missing=len(placed)==0 ? [] : [for(i=[0:len(placed)-1]) if(merge_counts[i]==0)
-            ["MERGE_MISSING_TOOTH",placed[i][2],placed[i][8][0]]],
+            ["MERGE_MISSING_TOOTH",placed[i][2],witnesses[i]]],
         duplicate=len(placed)==0 ? [] : [for(i=[0:len(placed)-1]) if(merge_counts[i]>1)
-            ["MERGE_DUPLICATE_TOOTH",placed[i][2],placed[i][8][0]]]
+            ["MERGE_DUPLICATE_TOOTH",placed[i][2],witnesses[i]]]
     )
     concat(
         missing,

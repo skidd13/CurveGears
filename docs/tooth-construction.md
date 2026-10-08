@@ -513,6 +513,7 @@ Return one cached, validated local candidate tooth.
 - `pressure_angle`: {number} Involute pressure angle in degrees.
 - `clearance`: {number >= 0} Radial root clearance.
 - `backlash`: {number >= 0} Tangential tooth-thickness reduction.
+- `root_support`: {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
 
 **Returns:**
 
@@ -532,6 +533,7 @@ Build one cached local tooth flank pair; the reference Boolean cutter's centre s
 - `pressure_angle`: {number} Involute pressure angle in degrees.
 - `clearance`: {number >= 0} Radial root clearance.
 - `backlash`: {number >= 0} Tangential tooth-thickness reduction.
+- `root_support`: {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
 
 **Returns:**
 

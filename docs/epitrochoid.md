@@ -48,13 +48,13 @@ Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
 
 > [`_cg_epitrochoid_curve_radius(scale, R, r, d, theta)`](#function-_cg_epitrochoid_curve_radiusscale-r-r-d-theta): Evaluate a scaled epitrochoid radius.
 
-> [`_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`](#function-_cg_epitrochoid_driver_radiiscale-r-r-d-n240): Evaluate epitrochoid radii at direct mate-construction angles.
+> [`_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`](#function-_cg_epitrochoid_driver_radiiscale-r-r-d-n240): Sample the driver polygon at physical polar phase boundaries.
 
 > [`_cg_epitrochoid_mate_points`](#function-_cg_epitrochoid_mate_points): Build epitrochoid mate pitch points and their shared motion table.
 
 > [`_cg_epitrochoid_mate_points_from_driver`](#function-_cg_epitrochoid_mate_points_from_driver): Build epitrochoid mate pitch points by advancing driver angle directly.
 
-> [`_cg_epitrochoid_motion_radii`](#function-_cg_epitrochoid_motion_radii): Evaluate epitrochoid radii at integration midpoints.
+> [`_cg_epitrochoid_motion_radii`](#function-_cg_epitrochoid_motion_radii): Sample the driver polygon at physical polar integration midpoints.
 
 > [`_cg_epitrochoid_motion_table`](#function-_cg_epitrochoid_motion_table): Build the shared epitrochoid phase-motion table.
 
@@ -405,7 +405,7 @@ Back to [module description](#module-epitrochoid).
 ### Function `_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`
 
 
-Evaluate epitrochoid radii at direct mate-construction angles.
+Sample the driver polygon at physical polar phase boundaries.
 
 **Parameters:**
 
@@ -413,7 +413,7 @@ Evaluate epitrochoid radii at direct mate-construction angles.
 - `R`: {number > 0} Fixed-circle radius ratio.
 - `r`: {number > 0} Rolling-circle radius ratio.
 - `d`: {number > 0} Pen offset ratio.
-- `n`: {integer >= 1, default 240} Number of boundary intervals.
+- `n`: {integer >= 3, default 240} Number of boundary intervals.
 
 **Returns:**
 
@@ -464,7 +464,7 @@ Back to [module description](#module-epitrochoid).
 ### Function `_cg_epitrochoid_motion_radii`
 
 
-Evaluate epitrochoid radii at integration midpoints.
+Sample the driver polygon at physical polar integration midpoints.
 
 **Parameters:**
 
@@ -472,7 +472,7 @@ Evaluate epitrochoid radii at integration midpoints.
 - `R`: {number > 0} Fixed-circle radius ratio.
 - `r`: {number > 0} Rolling-circle radius ratio.
 - `d`: {number > 0} Pen offset ratio.
-- `n`: {integer >= 1, default 240} Number of midpoint samples.
+- `n`: {integer >= 3, default 240} Number of midpoint samples.
 
 **Returns:**
 
@@ -593,6 +593,147 @@ Scale an epitrochoid to the requested tooth pitch.
 - `{number}`: Curve scale in mm.
 
 Back to [module description](#module-epitrochoid).
+
+
+Back to [top](#).
+
+## Module `Trochoid common`
+
+
+This file is an implementation detail. Public family APIs live in
+`epitrochoid/` and `hypotrochoid/`; the rolling equations remain in those
+family modules. This layer contains only the shared curve post-processing.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_trochoid_curve_radius_from_point`](#function-_cg_trochoid_curve_radius_from_point): Evaluate the radial distance of a scaled curve point.
+
+> [`_cg_trochoid_points_scaled_from_points`](#function-_cg_trochoid_points_scaled_from_points): Scale sampled unit-curve points.
+
+> [`_cg_trochoid_polar_radii(points, n, midpoint=false)`](#function-_cg_trochoid_polar_radiipoints-n-midpointfalse): Sample the emitted driver polygon at uniformly spaced physical polar angles.
+
+> [`_cg_trochoid_polar_table(points)`](#function-_cg_trochoid_polar_tablepoints): Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
+
+> [`_cg_trochoid_radius_at_polar_angle(table, theta)`](#function-_cg_trochoid_radius_at_polar_angletable-theta): Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
+
+> [`_cg_trochoid_radius_from_point`](#function-_cg_trochoid_radius_from_point): Evaluate the radial distance of a unit-curve point.
+
+> [`_cg_trochoid_scale_from_points`](#function-_cg_trochoid_scale_from_points): Scale a sampled unit curve to the requested tooth pitch.
+
+
+## Functions
+
+The module `Trochoid common` defines the following functions.
+
+### Function `_cg_trochoid_curve_radius_from_point`
+
+
+Evaluate the radial distance of a scaled curve point.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-trochoid-common).
+
+### Function `_cg_trochoid_points_scaled_from_points`
+
+
+Scale sampled unit-curve points.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-trochoid-common).
+
+### Function `_cg_trochoid_polar_radii(points, n, midpoint=false)`
+
+
+Sample the emitted driver polygon at uniformly spaced physical polar angles.
+
+**Parameters:**
+
+- `points`: {array of 2D points} Closed star-shaped driver polygon.
+- `n`: {integer >= 3} Number of motion intervals.
+- `midpoint`: {boolean, default false} Use integration midpoints instead of phase boundaries.
+
+**Returns:**
+
+- `{array of number}`: Physical pitch radii in increasing angular order.
+
+Back to [module description](#module-trochoid-common).
+
+### Function `_cg_trochoid_polar_table(points)`
+
+
+Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
+
+**Parameters:**
+
+- `points`: {array of 2D points} Closed polygon starting on the positive X ray.
+
+**Returns:**
+
+- `{array}`: Angle/point rows with an explicit closing row at 360 degrees.
+
+Back to [module description](#module-trochoid-common).
+
+### Function `_cg_trochoid_radius_at_polar_angle(table, theta)`
+
+
+Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
+
+**Parameters:**
+
+- `table`: {array} Validated angle/point table.
+- `theta`: {angle} Physical polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Radius of the exact sampled driver polygon at that angle.
+
+Back to [module description](#module-trochoid-common).
+
+### Function `_cg_trochoid_radius_from_point`
+
+
+Evaluate the radial distance of a unit-curve point.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-trochoid-common).
+
+### Function `_cg_trochoid_scale_from_points`
+
+
+Scale a sampled unit curve to the requested tooth pitch.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-trochoid-common).
 
 
 Back to [top](#).

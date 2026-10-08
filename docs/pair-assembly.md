@@ -97,6 +97,7 @@ Back to [top](#).
 @param mate_radial_root {boolean, default false} Mate radial-root construction.
 @param driver_color {OpenSCAD colour, default SteelBlue} Driver colour.
 @param mate_color {OpenSCAD colour, default Gold} Mate colour.
+@param mate_root_support {number >= 0, default 0.25} Inward mate-candidate support in modules.
 
 ### Brief content:
 

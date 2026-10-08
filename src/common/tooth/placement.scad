@@ -568,11 +568,12 @@ function _cg_placement_result(points,arc,perimeter,body,modul,tooth_number,tooth
  * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
  * @param clearance {undef or >= 0} Additional radial root clearance in mm.
  * @return {array} `[candidate, placements]` shared placement state.
+ * @param root_support {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
  */
-function _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef) =
+function _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,root_support=.25) =
     let(
         reference_pitch_radius=modul*tooth_number/2,
-        candidate=_cg_reference_tooth_candidate(reference_pitch_radius,modul,tooth_number,pressure_angle,backlash,clearance,radial_root),
+        candidate=_cg_reference_tooth_candidate(reference_pitch_radius,modul,tooth_number,pressure_angle,backlash,clearance,radial_root,root_support),
         placements=[for(j=[0:tooth_number-1])
             _cg_placement_result(points,arc,perimeter,body,modul,tooth_number,j,candidate,pressure_angle,tooth_phase,radial_root,backlash,clearance)]
     ) [candidate,placements];
@@ -592,14 +593,15 @@ function _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,
  * @param prepare_final {boolean, default false} Cache final boundary checks for pair rendering.
  * @param prepared_placement_state {array or undef} Reuse a family-prepared `[candidate, placements]` pair.
  * @return {array} `[points, arc, perimeter, body, candidate, placements, ...]`.
+ * @param root_support {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
  */
-function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepare_final=false,prepared_placement_state=undef) =
+function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,prepare_final=false,prepared_placement_state=undef,root_support=.25) =
     let(
         arc=_cg_polyline_arc_table(points),
         perimeter=arc[len(arc)-1][1],
         body=_cg_canonical_body_polyline(points,_cg_dedendum(modul,clearance),radial_root),
         placement_state=body_only ? [undef,[]] : is_undef(prepared_placement_state)
-            ? _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance)
+            ? _cg_tooth_placement_state(points,arc,perimeter,body,modul,tooth_number,pressure_angle,tooth_phase,radial_root,backlash,clearance,root_support)
             : prepared_placement_state,
         placements=placement_state[1],
         trimmed_boundaries=prepare_final ? _cg_trimmed_tooth_boundaries(placements) : [],

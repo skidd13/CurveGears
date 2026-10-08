@@ -386,8 +386,9 @@ function _cg_reference_involute_local_point(base_radius,rho,start_angle,end_angl
  * @param clearance {number >= 0} Radial root clearance.
  * @param backlash {number >= 0} Tangential tooth-thickness reduction.
  * @return {array} Local left and right flank polylines.
+ * @param root_support {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
  */
-function _cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressure_angle=20,backlash=undef,clearance=undef,radial_root=false) =
+function _cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressure_angle=20,backlash=undef,clearance=undef,radial_root=false,root_support=.25) =
     let(
         base_radius=pitch_radius*cos(pressure_angle),
         tip_radius=pitch_radius+_cg_addendum(modul),
@@ -396,7 +397,7 @@ function _cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressu
         step=rho_tip/16,
         left_involute=[for(rho=[0:step:rho_tip]) _cg_reference_involute_local_point(base_radius,rho,angles[0],angles[1],0)],
         right_involute=[for(rho=[0:step:rho_tip]) _cg_reference_involute_local_point(base_radius,rho,angles[0],angles[1],1)],
-        root_depth=radial_root ? 2*_cg_dedendum(modul,clearance)+.25*modul : _cg_dedendum(modul,clearance)+.25*modul,
+        root_depth=radial_root ? 2*_cg_dedendum(modul,clearance)+.25*modul : _cg_dedendum(modul,clearance)+root_support*modul,
         root_x=min([left_involute[0][0],right_involute[0][0],pitch_radius-root_depth])
     )
     [
@@ -518,6 +519,7 @@ function _cg_validate_candidate_flanks(flanks) =
  * @param clearance {number >= 0} Radial root clearance.
  * @param backlash {number >= 0} Tangential tooth-thickness reduction.
  * @return {array} Validated local tooth candidate and status information.
+ * @param root_support {number >= 0, default 0.25} Inward support in modules beyond the normal body offset.
  */
-function _cg_reference_tooth_candidate(pitch_radius,modul,tooth_number,pressure_angle=20,backlash=undef,clearance=undef,radial_root=false) =
-    _cg_validate_candidate_flanks(_cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressure_angle,backlash,clearance,radial_root));
+function _cg_reference_tooth_candidate(pitch_radius,modul,tooth_number,pressure_angle=20,backlash=undef,clearance=undef,radial_root=false,root_support=.25) =
+    _cg_validate_candidate_flanks(_cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressure_angle,backlash,clearance,radial_root,root_support));
