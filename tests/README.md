@@ -344,7 +344,30 @@ Back to [top](#).
 
 ## Module `Family integration`
 
-Family-specific pipeline, contract and invalid-input fixtures.
+`make test family=<name>` exports dedicated tooth/pair/parameter fixtures as
+closed meshes and compiles the composite `full_pipeline.scad` fixture. The
+composite repeats those components; `make test-full family=<name>` retains
+its full geometry export as an explicit exhaustive tier.
+Cusp checks retain all three intermediate phases for both three and five
+cusps. Make builds each complete swept-envelope planar outline once, checks
+its closed DXF edges and extruded mesh, and records the validated driver
+outline and motion table at nine decimal places. Each phase reuses that
+state with the relative mate rotation before extruding the intersection. No envelope sampling
+or geometric checks are relaxed. `make test-cusp-native` retains an
+independent full-envelope audit for all six phases. DXF serialisation uses
+the renderer's decimal precision; native overlap witnesses validate its
+effect before the cached path is accepted. Cached outputs depend on their actual
+transitive `use`/`include` sources and the selected renderer.
+`make test-build-tools` checks source inventory, dependency discovery and
+rejection of missing, invalid or warning-producing cached geometry.
+CI uses `make ci-check-examples group=<family|core|overview>`: each example
+either compiles or fully renders. Every family fully renders both normal
+and alternative pairs, plus both outlined bodies to cover body offsets.
+Core examples and the overview fully render. Numerical helpers must echo
+finite results; they do not generate empty images. Full exports remain
+available with `make ci-render-examples group=<family|core|overview>`.
+Documentation images remain available through `make images` with their
+existing resolution and colours; CI reduction does not replace them.
 
 ### Brief content:
 
@@ -373,6 +396,8 @@ Family-specific pipeline, contract and invalid-input fixtures.
 > [`cosine_quintic_full_pipeline`](#function-cosine_quintic_full_pipeline): Verify the complete Cosine Quintic gear, mate and pair entry points.
 
 > [`cusp_envelope_collision_probe`](#function-cusp_envelope_collision_probe): Check that sampled intermediate driver poses clear the swept-envelope mate.
+
+> [`cusp_envelope_mate_fixture`](#function-cusp_envelope_mate_fixture): Build the full swept-envelope reference mate once for collision phases.
 
 > [`cusp_five_cusp_pair_pipeline`](#function-cusp_five_cusp_pair_pipeline): Fully render a five-cusp driver and its swept-envelope mate with the canonical bore.
 
@@ -636,6 +661,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`cusp/envelope_solver_collision_probe.scad`](cusp/envelope_solver_collision_probe.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_envelope_mate_fixture`
+
+
+Source: [`cusp/envelope_mate_fixture.scad`](cusp/envelope_mate_fixture.scad)
 
 **Parameters:**
 

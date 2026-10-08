@@ -13,17 +13,16 @@ COLORSCHEME ?= Nature
 API_2D_COLORSCHEME ?= White Outline
 REGRESSION_DIR ?= build/regression
 REGRESSION_FAMILIES ?= $(if $(family),$(family),$(FAMILY))
-REGRESSION_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print)
 REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print | sort)
-PREVIEW_SHARED_SOURCE_DEPS := $(shell find src/common -type f -name '*.scad' -print | sort)
-PREVIEW_ALL_SOURCE_DEPS := $(shell find src -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
-FAMILIES := bezier cassini circle cosine_quintic cusp ellipse epitrochoid fourier hypotrochoid lobed logarithmic_spiral logistic_dwell pascal superformula tanh_triad temple_fay
+FAMILIES := $(notdir $(patsubst %/pair.scad,%,$(wildcard src/*/pair.scad)))
 CI_REGRESSION_GROUPS := common_math tooth_generation tooth_placement mate_motion $(FAMILIES)
 CI_EXAMPLE_RENDER_GROUPS := core overview $(FAMILIES)
 
-.PHONY: all help images api-images examples ci-example-manifest ci-render-examples ci-family-matrix ci-regression-groups readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
+.DELETE_ON_ERROR:
+
+.PHONY: all help images api-images examples ci-example-manifest ci-render-examples ci-check-examples ci-example-group test-build-tools test-cusp-native ci-family-matrix ci-regression-groups readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
@@ -59,7 +58,9 @@ help:
 	  '  images              Render the main image, API examples and common examples' \
 	  '  api-images          Render family function example images' \
 	  '  ci-example-manifest Write the canonical CI example manifest' \
-	  '  ci-render-examples  Render one CI-size example group (group=<core|overview|family>)' \
+	  '  ci-check-examples   Compile every example; render the pair/body boundary matrix (group=<core|overview|family>)' \
+	  '  ci-render-examples  Exhaustively render geometry examples in one group' \
+	  '  test-build-tools    Verify inventory, dependency and output checks' \
 	  '  ci-family-matrix    Print the JSON family matrix used by GitHub Actions' \
 	  '  ci-regression-groups Print the regression groups consumed by GitHub Actions' \
 	  '  examples            Generate the example index' \
@@ -71,6 +72,7 @@ help:
 	  '  test-smoke          Run family smoke pipelines and manifest checks' \
 	  '  test-deliberate     Run deliberate geometry regression cases' \
 	  '  test-full           Run full family pipelines' \
+	  '  test-cusp-native    Audit all six Cusp phases with independent native sweeps' \
 	  '  check               Run tests and documentation checks' \
 	  '  clean               Remove generated build and image artifacts' \
 	  'Test selection: make test family=cusp runs cusp checks; omit family to run all families.' \
@@ -87,26 +89,7 @@ $(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): CAMERA=0,0,0,0,0,0,0
 $(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): COLORSCHEME=$(API_2D_COLORSCHEME)
 $(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): IMAGE_SIZE=$(API_2D_IMAGE_SIZE)
 $(filter %_2d.png,$(API_IMAGES) $(CORE_IMAGES)): utils/openscad/white-outline.json
-$(API_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
-$(API_IMAGES) $(CORE_IMAGES): examples/palette.scad
-$(CORE_IMAGES): $(PREVIEW_SHARED_SOURCE_DEPS)
-$(CORE_IMAGES): examples/tooth/palette.scad
-# Pair alternatives import their single-gear alternative's parameter wrapper.
-$(filter %_pair_alternative.png,$(API_IMAGES)): images/functions/%_pair_alternative.png: examples/functions/%_alternative.scad
-$(filter %_body_alternative.png,$(API_IMAGES)): images/functions/%_body_alternative.png: examples/functions/%_alternative.scad
-$(filter %_mate_alternative.png,$(API_IMAGES)): images/functions/%_mate_alternative.png: examples/functions/%_alternative.scad
-$(filter-out %_body_alternative_2d.png,$(filter %_alternative_2d.png,$(API_IMAGES))): images/functions/%_alternative_2d.png: examples/functions/%_alternative.scad
-$(filter %_body_alternative_2d.png,$(API_IMAGES)): images/functions/%_body_alternative_2d.png: examples/functions/%_alternative.scad
-images/tooth/construction_alternative_2d.png: examples/tooth/construction_2d.scad
-images/tooth/placement_alternative.png: examples/tooth/placement.scad
-images/tooth/assembly_alternative.png: examples/tooth/assembly.scad
-
-define FAMILY_API_IMAGE_SOURCE_DEPS
-$(filter images/functions/$(1)/%,$(API_IMAGES)): $(shell find src/$(1) -type f -name '*.scad' -print | sort)
-endef
-$(foreach family,$(FAMILIES),$(eval $(call FAMILY_API_IMAGE_SOURCE_DEPS,$(family))))
-
-$(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES) $(PREVIEW_ALL_SOURCE_DEPS)
+$(MAIN_IMAGE): $(MAIN_EXAMPLE) $(MAIN_EXAMPLES)
 	@mkdir -p $(@D)
 	$(OPENSCAD) -o "$@" --render --camera=$(CAMERA) --colorscheme="$(COLORSCHEME)" --projection=o --viewall --autocenter --imgsize=$(MAIN_IMAGE_SIZE) -q "$<"
 
@@ -137,40 +120,49 @@ examples: examples/README.md
 	@test -s examples/README.md
 	@test -s "$(MAIN_EXAMPLE)"
 	@for example in $(CORE_EXAMPLES); do test -s "$$example" || { echo "missing core example: $$example"; exit 1; }; done
-	@test "$(words $(API_EXAMPLES))" -eq 219
+	@$(PYTHON) -m utils.build_inventory
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
 
-ci-example-manifest:
-	@mkdir -p "$(dir $(CI_EXAMPLE_MANIFEST))"
-	@for example in $(CI_EXAMPLES); do \
-		relative=$${example#examples/}; output=$${relative%.scad}.png; \
-		printf '%s\t%s\n' "$$example" "build/ci-images/$$output"; \
-	done > "$(CI_EXAMPLE_MANIFEST)"
-	@test "$$(wc -l < "$(CI_EXAMPLE_MANIFEST)" | tr -d ' ')" -eq 226
-	@test "$$(cut -f1 "$(CI_EXAMPLE_MANIFEST)" | sort -u | wc -l | tr -d ' ')" -eq 226
-	@echo 'PASS: CI manifest contains all 226 examples'
+# Compilation covers every callable and every alternative. Full geometry is
+# checked on both pair variants and both outlined bodies in each family.
+CI_SELECTED_EXAMPLES := $(if $(filter core,$(group)),$(CORE_EXAMPLES),$(if $(filter overview,$(group)),$(MAIN_EXAMPLE),$(filter examples/functions/$(group)/%,$(API_EXAMPLES))))
+CI_MATRIX_EXAMPLES := $(shell $(PYTHON) -m utils.build_inventory --render-sources)
+CI_COMPILE_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.csg,$(filter-out $(CI_MATRIX_EXAMPLES),$(CI_SELECTED_EXAMPLES)))
+CI_NUMERIC_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.csg,$(filter %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(CI_SELECTED_EXAMPLES)))
+CI_RENDER_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.png,$(filter $(CI_MATRIX_EXAMPLES),$(CI_SELECTED_EXAMPLES)))
+CI_ALL_RENDER_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.png,$(filter-out %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(CI_SELECTED_EXAMPLES)))
 
-ci-render-examples: ci-example-manifest
-	@set -eu; \
-	group="$(group)"; \
-	case " $(CI_EXAMPLE_RENDER_GROUPS) " in *" $$group "*) ;; *) echo "unknown CI example render group: $$group"; exit 2 ;; esac; \
-	group_manifest="$(dir $(CI_EXAMPLE_MANIFEST))manifest-$$group.tsv"; \
-	awk -F '\t' -v group="$$group" ' \
-		$$1 == "examples/main_curved_gear.scad" { if (group == "overview") print; next; } \
-		$$1 ~ /^examples\/tooth\// { if (group == "core") print; next; } \
-		$$1 ~ /^examples\/functions\// { path = $$1; sub(/^examples\/functions\//, "", path); split(path, part, "/"); if (part[1] == group) print; } \
-	' "$(CI_EXAMPLE_MANIFEST)" > "$$group_manifest"; \
-	test -s "$$group_manifest" || { echo "CI example render group is empty: $$group"; exit 1; }; \
-	tab=$$(printf '\t'); \
-	while IFS="$$tab" read -r example output; do \
-		mkdir -p "$$(dirname "$$output")"; \
-		echo "Rendering $$example"; \
-		camera=0,0,0,50,0,40,0; \
-		case "$$example" in *_2d.scad) camera=0,0,0,0,0,0,0 ;; esac; \
-		$(OPENSCAD) -o "$$output" --render --camera="$$camera" --colorscheme=Nature --projection=o --viewall --autocenter --imgsize=$(CI_IMAGE_SIZE) -q "$$example"; \
-		test -s "$$output"; \
-	done < "$$group_manifest"
+ci-example-manifest:
+	@$(PYTHON) -m utils.build_inventory --manifest "$(CI_EXAMPLE_MANIFEST)"
+
+ci-example-group: ci-example-manifest
+	@case " $(CI_EXAMPLE_RENDER_GROUPS) " in *" $(group) "*) ;; *) echo "unknown CI example group: $(group)"; exit 2 ;; esac
+	@test -n "$(CI_SELECTED_EXAMPLES)"
+
+ci-check-examples: ci-example-group $(CI_COMPILE_OUTPUTS) $(CI_RENDER_OUTPUTS)
+	@for output in $(CI_COMPILE_OUTPUTS); do $(PYTHON) -m utils.check_build_output compile "$$output" --source "examples/$${output#build/ci-images/}" || exit 1; done
+	@for output in $(CI_RENDER_OUTPUTS); do $(PYTHON) -m utils.check_build_output image "$$output" --size $(CI_IMAGE_SIZE) || exit 1; done
+	@echo 'PASS: all examples compile; pair/body boundary matrix renders'
+
+# Explicit exhaustive tier: numeric helpers are compiled, not blank PNGs.
+ci-render-examples: ci-example-group $(CI_NUMERIC_OUTPUTS) $(CI_ALL_RENDER_OUTPUTS)
+	@for output in $(CI_NUMERIC_OUTPUTS); do $(PYTHON) -m utils.check_build_output compile "$$output" --source "examples/$${output#build/ci-images/}" || exit 1; done
+	@for output in $(CI_ALL_RENDER_OUTPUTS); do $(PYTHON) -m utils.check_build_output image "$$output" --size $(CI_IMAGE_SIZE) || exit 1; done
+	@echo 'PASS: exhaustive example geometry renders'
+
+build/ci-images/%.csg: examples/%.scad build/renderer-config.txt
+	@mkdir -p "$(@D)"
+	$(OPENSCAD) -o "$(abspath $@)" "$<" > "$(@:.csg=.log)" 2>&1
+	@$(PYTHON) -m utils.check_build_output compile "$@" --source "$<"
+
+build/ci-images/%.png: CI_CAMERA=0,0,0,50,0,40,0
+$(patsubst examples/%.scad,build/ci-images/%.png,$(filter %_2d.scad,$(CI_EXAMPLES))): CI_CAMERA=0,0,0,0,0,0,0
+$(patsubst examples/%.scad,build/ci-images/%.png,$(filter %_2d.scad,$(CI_EXAMPLES))): build/ci-2d-config.txt
+build/ci-images/%.png: examples/%.scad build/ci-image-config.txt
+	@mkdir -p "$(@D)"
+	$(OPENSCAD) -o "$@" --render --camera=$(CI_CAMERA) --colorscheme=Nature --projection=o --viewall --autocenter --imgsize=$(CI_IMAGE_SIZE) "$<" > "$(@:.png=.png.log)" 2>&1
+	@$(PYTHON) -m utils.check_build_output image "$@" --size $(CI_IMAGE_SIZE)
 
 readme: README.md $(NAVIGATION_TEMPLATE) FORCE
 	@test -s README.md
@@ -266,7 +258,9 @@ REGRESSION_SMOKE_SOURCES := $(shell find tests -type f -name '*.scad' \
 	! -name 'invalid_*.scad' ! -name '*_failure.scad' ! -name 'validation_cases.scad' \
 	! -name 'equivalence.scad' ! -name 'accessibility_cases.scad' ! -path 'tests/superformula/mate_pipeline.scad' \
 	! -name 'contact.scad' ! -name 'reference.scad' ! -exec rg -q '^// @regression: manual' {} \; -print | sort)
-REGRESSION_SMOKE_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.stl,$(REGRESSION_SMOKE_SOURCES))
+REGRESSION_COMPILE_SOURCES := $(filter %/full_pipeline.scad,$(REGRESSION_SMOKE_SOURCES))
+REGRESSION_MESH_SOURCES := $(filter-out $(REGRESSION_COMPILE_SOURCES),$(REGRESSION_SMOKE_SOURCES))
+REGRESSION_SMOKE_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.stl,$(REGRESSION_MESH_SOURCES)) $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.csg,$(REGRESSION_COMPILE_SOURCES))
 REGRESSION_SELECTED_FAMILIES := $(foreach family,$(REGRESSION_FAMILIES),$(if $(filter common,$(family)),common_math tooth_generation tooth_placement mate_motion,$(family)))
 REGRESSION_SMOKE_common_math := $(filter $(REGRESSION_DIR)/smoke/common/%,$(REGRESSION_SMOKE_ALL))
 REGRESSION_SMOKE_tooth_generation := $(filter $(REGRESSION_DIR)/smoke/tooth/generation/%,$(REGRESSION_SMOKE_ALL))
@@ -279,12 +273,18 @@ $(REGRESSION_SMOKE_MANIFEST): $(REGRESSION_SMOKE_SOURCES) FORCE
 	@mkdir -p "$(@D)"
 	@for source in $(REGRESSION_SMOKE_SOURCES); do \
 		relative=$${source#tests/}; relative=$${relative%.scad}; \
-		printf '%s\t%s\n' "$$source" "$(REGRESSION_DIR)/smoke/$$relative.stl"; \
+		extension=stl; case "$$source" in */full_pipeline.scad) extension=csg ;; esac; \
+		printf '%s\t%s\n' "$$source" "$(REGRESSION_DIR)/smoke/$$relative.$$extension"; \
 	done > "$@"
 
-$(REGRESSION_DIR)/smoke/%.stl: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REGRESSION_TEST_DEPS)
+$(REGRESSION_DIR)/smoke/%.stl: tests/%.scad
 	@mkdir -p "$(@D)"
 	$(OPENSCAD) -o "$@" "$<" > "$(@:.stl=.log)" 2>&1
+
+$(REGRESSION_DIR)/smoke/%.csg: tests/%.scad build/renderer-config.txt
+	@mkdir -p "$(@D)"
+	$(OPENSCAD) -o "$(abspath $@)" "$<" > "$(@:.csg=.log)" 2>&1
+	@$(PYTHON) -m utils.check_build_output compile "$@" --source "$<"
 
 REGRESSION_DELIBERATE_tooth_generation := $(REGRESSION_DIR)/tooth_equivalence_deliberate.ok
 REGRESSION_DELIBERATE_tooth_placement := $(REGRESSION_DIR)/tooth_validation_cases_deliberate.ok $(REGRESSION_DIR)/collision_failure_deliberate.failed $(REGRESSION_DIR)/polygon_failure_deliberate.failed
@@ -295,14 +295,14 @@ REGRESSION_DELIBERATE_ALL := $(REGRESSION_DELIBERATE_tooth_generation) $(REGRESS
 REGRESSION_DELIBERATE_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(foreach family,$(REGRESSION_SELECTED_FAMILIES),$(REGRESSION_DELIBERATE_$(family))),$(REGRESSION_DELIBERATE_ALL))
 
 define REGRESSION_EXPECT_SUCCESS
-$(REGRESSION_DIR)/$(1)_deliberate.ok: $(2) $(REGRESSION_SOURCE_DEPS) $(REGRESSION_TEST_DEPS)
+$(REGRESSION_DIR)/$(1)_deliberate.ok: $(2) $(shell $(PYTHON) -m utils.build_inventory --source $(2))
 	@mkdir -p "$$(@D)"
 	$(OPENSCAD) -o "$(REGRESSION_DIR)/$(1)_deliberate.stl" "$$<" > "$(REGRESSION_DIR)/$(1)_deliberate.log" 2>&1
 	@touch "$$@"
 endef
 
 define REGRESSION_EXPECT_FAILURE
-$(REGRESSION_DIR)/$(1)_deliberate.failed: $(2) $(REGRESSION_SOURCE_DEPS) $(REGRESSION_TEST_DEPS)
+$(REGRESSION_DIR)/$(1)_deliberate.failed: $(2) $(shell $(PYTHON) -m utils.build_inventory --source $(2))
 	@mkdir -p "$$(@D)"
 	@rm -f "$(REGRESSION_DIR)/$(1)_deliberate.stl"
 	@set +e; $(OPENSCAD) -o "$(REGRESSION_DIR)/$(1)_deliberate.stl" "$$<" > "$(REGRESSION_DIR)/$(1)_deliberate.log" 2>&1; status=$$$$?; test $$$$status -ne 0
@@ -320,36 +320,75 @@ REGRESSION_INVALID_SOURCES := $(shell find tests -type f -name 'invalid_*.scad' 
 REGRESSION_INVALID_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/invalid/%.failed,$(REGRESSION_INVALID_SOURCES))
 REGRESSION_INVALID_OUTPUTS := $(if $(strip $(REGRESSION_FAMILIES)),$(filter $(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DIR)/invalid/$(family)/%),$(REGRESSION_INVALID_ALL)),$(REGRESSION_INVALID_ALL))
 
-$(REGRESSION_DIR)/invalid/%.failed: tests/%.scad $(REGRESSION_SOURCE_DEPS) $(REGRESSION_TEST_DEPS)
+$(REGRESSION_DIR)/invalid/%.failed: tests/%.scad
 	@mkdir -p "$(@D)"
 	@rm -f "$(@:.failed=.stl)"
 	@set +e; $(OPENSCAD) -o "$(@:.failed=.stl)" "$<" > "$(@:.failed=.log)" 2>&1; status=$$?; test $$status -ne 0
 	@touch "$@"
 
-test: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
-	@if printf '%s\n' "$(REGRESSION_FAMILIES)" | grep -qw cusp; then \
-		mkdir -p "$(REGRESSION_DIR)/cusp"; \
-		for cusps in 3 5; do for phase in 0.25 30.25 54.25; do \
-			log="$(REGRESSION_DIR)/cusp/envelope_$${cusps}_$${phase}.log"; output="$(REGRESSION_DIR)/cusp/envelope_$${cusps}_$${phase}.stl"; \
-			rm -f "$$log" "$$output"; \
-			$(OPENSCAD) -o "$$output" -D "cusps=$$cusps" -D "phase=$$phase" tests/cusp/envelope_solver_collision_probe.scad > "$$log" 2>&1 || true; \
-			grep -Fq 'Current top level object is empty.' "$$log" || { cat "$$log"; echo "$$cusps-cusp envelope collision at driver phase $$phase"; exit 1; }; \
-			! grep -q 'ERROR:' "$$log" || { cat "$$log"; exit 1; }; \
-		done; done; \
-		echo 'PASS: three- and five-cusp swept envelopes clear the driver at intermediate phases'; \
-	fi
-	$(PYTHON) -m utils.regression.check $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
+# Build each native swept mate once, then check intermediate phases by importing
+# its validated planar outline. No sector approximation or lower sample density is used.
+CUSP_COLLISION_CASES := $(foreach cusps,3 5,$(foreach phase,0.25 30.25 54.25,$(REGRESSION_DIR)/cusp/envelope_$(cusps)_$(phase).ok))
+CUSP_COLLISION_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(if $(filter cusp,$(REGRESSION_SELECTED_FAMILIES)),$(CUSP_COLLISION_CASES)),$(CUSP_COLLISION_CASES))
+
+CUSP_FIXTURE_DEPS := $(shell $(PYTHON) -m utils.build_inventory --source tests/cusp/envelope_mate_fixture.scad)
+CUSP_PROBE_DEPS := $(shell $(PYTHON) -m utils.build_inventory --source tests/cusp/envelope_solver_collision_probe.scad)
+CUSP_MATE_OUTPUTS := $(REGRESSION_DIR)/cusp/mate_3.stl $(REGRESSION_DIR)/cusp/mate_5.stl
+CUSP_PROFILE_OUTPUTS := $(REGRESSION_DIR)/cusp/mate_3.dxf $(REGRESSION_DIR)/cusp/mate_5.dxf
+$(CUSP_PROFILE_OUTPUTS): $(REGRESSION_DIR)/cusp/mate_%.dxf: tests/cusp/envelope_mate_fixture.scad build/renderer-config.txt $(CUSP_FIXTURE_DEPS)
+	@mkdir -p "$(@D)"
+	$(OPENSCAD) -o "$(abspath $@)" -D "cusps=$*" -D profile=true "$<" > "$(@:.dxf=.profile.log)" 2>&1
+	@$(PYTHON) -m utils.check_build_output profile "$@"
+
+$(CUSP_MATE_OUTPUTS): $(REGRESSION_DIR)/cusp/mate_%.stl: tests/cusp/envelope_mate_fixture.scad $(REGRESSION_DIR)/cusp/mate_%.dxf build/renderer-config.txt
+	@$(PYTHON) -m utils.check_build_output profile "$(REGRESSION_DIR)/cusp/mate_$*.dxf"
+	$(OPENSCAD) -o "$@" -D 'mate_file="$(abspath $(REGRESSION_DIR)/cusp/mate_$*.dxf)"' "$<" > "$(@:.stl=.log)" 2>&1
+	@$(PYTHON) -m utils.check_build_output mesh "$@"
+
+
+CUSP_SNAPSHOT_OUTPUTS := $(REGRESSION_DIR)/cusp/snapshot_3.scad $(REGRESSION_DIR)/cusp/snapshot_5.scad
+$(CUSP_SNAPSHOT_OUTPUTS): $(REGRESSION_DIR)/cusp/snapshot_%.scad: $(REGRESSION_DIR)/cusp/mate_%.dxf utils/cusp_cache.py
+	@$(PYTHON) -m utils.check_build_output profile "$<"
+	@$(PYTHON) -m utils.cusp_cache "$(REGRESSION_DIR)/cusp/mate_$*.profile.log" "$@"
+
+define CUSP_COLLISION_CHECK
+$(REGRESSION_DIR)/cusp/envelope_$(1)_$(2).ok: tests/cusp/envelope_solver_collision_probe.scad $(REGRESSION_DIR)/cusp/mate_$(1).stl $(REGRESSION_DIR)/cusp/mate_$(1).dxf $(REGRESSION_DIR)/cusp/snapshot_$(1).scad build/renderer-config.txt $(CUSP_PROBE_DEPS)
+	@$(PYTHON) -m utils.check_build_output mesh "$(REGRESSION_DIR)/cusp/mate_$(1).stl"
+	@rm -f "$$(@:.ok=.stl)" "$$@"
+	@$(OPENSCAD) -o "$$(@:.ok=.stl)" -D 'cusps=$(1)' -D 'phase=$(2)' -D 'mate_file="$(abspath $(REGRESSION_DIR)/cusp/mate_$(1).dxf)"' "$(REGRESSION_DIR)/cusp/snapshot_$(1).scad" > "$$(@:.ok=.log)" 2>&1 || true
+	@$(PYTHON) -m utils.check_build_output empty "$$(@:.ok=.stl)"
+	@touch "$$@"
+endef
+$(foreach cusps,3 5,$(foreach phase,0.25 30.25 54.25,$(eval $(call CUSP_COLLISION_CHECK,$(cusps),$(phase)))))
+
+# Independent native tier for auditing the cached outline path.
+CUSP_NATIVE_COLLISION_CASES := $(foreach cusps,3 5,$(foreach phase,0.25 30.25 54.25,$(REGRESSION_DIR)/cusp/native_envelope_$(cusps)_$(phase).ok))
+define CUSP_NATIVE_COLLISION_CHECK
+$(REGRESSION_DIR)/cusp/native_envelope_$(1)_$(2).ok: tests/cusp/envelope_solver_collision_probe.scad build/renderer-config.txt $(CUSP_PROBE_DEPS)
+	@mkdir -p "$$(@D)"
+	@rm -f "$$(@:.ok=.stl)" "$$@"
+	@$(OPENSCAD) -o "$$(@:.ok=.stl)" -D 'cusps=$(1)' -D 'phase=$(2)' "$$<" > "$$(@:.ok=.log)" 2>&1 || true
+	@$(PYTHON) -m utils.check_build_output empty "$$(@:.ok=.stl)"
+	@touch "$$@"
+endef
+$(foreach cusps,3 5,$(foreach phase,0.25 30.25 54.25,$(eval $(call CUSP_NATIVE_COLLISION_CHECK,$(cusps),$(phase)))))
+test-cusp-native: $(CUSP_NATIVE_COLLISION_CASES)
+	@for output in $(CUSP_NATIVE_COLLISION_CASES:.ok=.stl); do $(PYTHON) -m utils.check_build_output empty "$$output" || exit 1; done
+	@echo 'PASS: all six independent native Cusp envelope phases'
+
+test: $(CUSP_COLLISION_OUTPUTS) $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
+	$(PYTHON) -m utils.regression.check --build-dir "$(REGRESSION_DIR)" $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
 test-smoke: $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST)
-	$(PYTHON) -m utils.regression.check --smoke-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
+	$(PYTHON) -m utils.regression.check --build-dir "$(REGRESSION_DIR)" --smoke-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
-test-deliberate: $(REGRESSION_DELIBERATE_OUTPUTS)
-	$(PYTHON) -m utils.regression.check --deliberate-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
+test-deliberate: $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) build/renderer-config.txt
+	$(PYTHON) -m utils.regression.check --build-dir "$(REGRESSION_DIR)" --deliberate-only $(foreach family,$(REGRESSION_SELECTED_FAMILIES),--family $(family))
 
 FULL_PIPELINE_OUTPUTS := $(foreach family,$(FAMILIES),$(REGRESSION_DIR)/full_$(family).stl)
 
 define FULL_PIPELINE_RENDER
-$(REGRESSION_DIR)/full_$(1).stl: tests/$(1)/full_pipeline.scad $(REGRESSION_SOURCE_DEPS) $(REGRESSION_TEST_DEPS)
+$(REGRESSION_DIR)/full_$(1).stl: tests/$(1)/full_pipeline.scad
 	@mkdir -p "$$(@D)"
 	$(OPENSCAD) -o "$$@" "$$<" > "$$(@:.stl=.log)" 2>&1
 	@test -s "$$@"
@@ -429,3 +468,25 @@ check-docs: docs-pages examples/README.md tests/README.md
 
 clean:
 	rm -rf build
+
+# A write-if-changed configuration stamp invalidates outputs when the selected
+# renderer or render flags change, without defeating a no-op Make invocation.
+build/renderer-config.txt: FORCE
+	@$(PYTHON) -m utils.build_config "$@" "$(OPENSCAD)"
+build/ci-image-config.txt: build/renderer-config.txt FORCE
+	@$(PYTHON) -m utils.build_config "$@" "$(OPENSCAD)" "$(CI_IMAGE_SIZE)" Nature
+
+build/ci-2d-config.txt: build/renderer-config.txt FORCE
+	@$(PYTHON) -m utils.build_config "$@" "$(OPENSCAD)" "$(CI_IMAGE_SIZE)" Nature 0,0,0,0,0,0,0
+
+$(REGRESSION_SMOKE_ALL) $(REGRESSION_INVALID_ALL) $(REGRESSION_DELIBERATE_ALL) $(FULL_PIPELINE_OUTPUTS): build/renderer-config.txt
+
+# Generated dependency rules contain only transitive literal use/include inputs.
+DEPENDENCY_STATUS := $(shell $(PYTHON) -m utils.build_inventory --dependencies "$(REGRESSION_DIR)/source-dependencies.mk" --regression-dir "$(REGRESSION_DIR)" && echo PASS)
+ifneq ($(DEPENDENCY_STATUS),PASS)
+$(error OpenSCAD dependency discovery failed)
+endif
+include $(REGRESSION_DIR)/source-dependencies.mk
+
+test-build-tools:
+	$(PYTHON) -m unittest discover -s utils/tests -v

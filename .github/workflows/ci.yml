@@ -21,10 +21,12 @@ jobs:
       - name: Export family matrix from Make
         id: family_matrix
         run: echo "families=$(make -s ci-family-matrix)" >> "$GITHUB_OUTPUT"
+      - name: Build tooling checks
+        run: make test-build-tools
       - name: Common regressions
         run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test family=common OPENSCAD=openscad
-      - name: Render CI examples (core)
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-render-examples group=core OPENSCAD=openscad
+      - name: Compile examples and render boundary matrix (core)
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-check-examples group=core OPENSCAD=openscad
 
   family_validate:
     name: Family validation (${{ matrix.family }})
@@ -46,8 +48,8 @@ jobs:
           sudo apt-get install --yes openscad ripgrep xvfb libgl1-mesa-dri libglu1-mesa
       - name: Regression (${{ matrix.family }})
         run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make test family=${{ matrix.family }} OPENSCAD=openscad
-      - name: Render CI examples (${{ matrix.family }})
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-render-examples group=${{ matrix.family }} OPENSCAD=openscad
+      - name: Compile examples and render boundary matrix (${{ matrix.family }})
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-check-examples group=${{ matrix.family }} OPENSCAD=openscad
 
   common_end_check:
     name: Common end check
@@ -74,7 +76,7 @@ jobs:
         run: sudo apt-get install --yes openscad xvfb libgl1-mesa-dri libglu1-mesa
       - name: Render main overview
         if: ${{ needs.base_validate.result == 'success' && needs.family_validate.result == 'success' }}
-        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-render-examples group=overview OPENSCAD=openscad
+        run: xvfb-run -a --server-args="-screen 0 1280x1024x24" make ci-check-examples group=overview OPENSCAD=openscad
       - name: Require successful validation jobs
         if: ${{ always() && (needs.base_validate.result != 'success' || needs.family_validate.result != 'success' || failure()) }}
         run: exit 1

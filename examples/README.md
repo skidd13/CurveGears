@@ -55,6 +55,10 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`bezier_mate_alternative`](#function-bezier_mate_alternative): Bézier alternative: The contrasting family controls shown as a mate.
 
+> [`bezier_mate_centre_distance_example`](#function-bezier_mate_centre_distance_example): Show the solved Bézier mate centre distance.
+
+> [`bezier_mate_rotation_example`](#function-bezier_mate_rotation_example): Show the Bézier mate rotation at a sample driver phase.
+
 > [`cassini_body_2d_alternative`](#function-cassini_body_2d_alternative): Cassini alternative: The contrasting family controls shown as a 2D body.
 
 > [`cassini_body_alternative`](#function-cassini_body_alternative): Cassini alternative: The contrasting family controls shown as a body.
@@ -82,6 +86,8 @@ tooth scale or body proportions. Spiral pairs remain static references.
 > [`circle_body_2d_alternative`](#function-circle_body_2d_alternative): Circle alternative: The contrasting family controls shown as a 2D body.
 
 > [`circle_body_alternative`](#function-circle_body_alternative): Circle alternative: The contrasting family controls shown as a body.
+
+> [`circle_centre_distance_example`](#function-circle_centre_distance_example): Show the circular pair centre distance.
 
 > [`circle_curve_gear`](#function-circle_curve_gear): Render a Circle gear from the documented pitch-curve family.
 
@@ -708,6 +714,36 @@ No return
 
 Back to [module description](#module-executable-examples).
 
+### Function `bezier_mate_centre_distance_example`
+
+
+Source: [`functions/bezier/curve_gear_bezier_mate_centre_distance.scad`](functions/bezier/curve_gear_bezier_mate_centre_distance.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `bezier_mate_rotation_example`
+
+
+Source: [`functions/bezier/curve_gear_bezier_mate_rotation.scad`](functions/bezier/curve_gear_bezier_mate_rotation.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
 ### Function `cassini_body_2d_alternative`
 
 | Cassini 2D body alternative | ⠀ |
@@ -969,6 +1005,21 @@ Back to [module description](#module-executable-examples).
 Source: [`functions/circle/curve_gear_circle_body_alternative.scad`](functions/circle/curve_gear_circle_body_alternative.scad)
 This uses the same curve, tooth scale and bore as the family gear alternative.
 A 0.5 mm plate contrasts with the thick canonical body while retaining the 4.8 mm bore.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-executable-examples).
+
+### Function `circle_centre_distance_example`
+
+
+Source: [`functions/circle/curve_gear_circle_centre_distance.scad`](functions/circle/curve_gear_circle_centre_distance.scad)
 
 **Parameters:**
 
