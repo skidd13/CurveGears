@@ -54,7 +54,6 @@ The module `Tanh Triad` defines the following functions.
 | [![tanh triad example preview](../images/functions/tanh_triad/curve_gear_tanh_triad.png)](../images/functions/tanh_triad/curve_gear_tanh_triad.png) | [![Tanh Triad gear alternative](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_alternative.png) |
 
 
-A broad smooth triad with transition 0.8 and crest 0.32 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
 
 
 

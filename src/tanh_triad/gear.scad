@@ -12,7 +12,6 @@ module _cg_tanh_triad_build(modul,tooth_number,width,bore,transition=1.8,crest=.
 /**
  * @function curve_gear_tanh_triad
  * @brief Build a bounded tanh-modulated three-cycle gear.
- * A broad smooth triad with transition 0.8 and crest 0.32 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
  *
  * @param modul {number > 0} Tooth module in mm.
  *
