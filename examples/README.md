@@ -77,7 +77,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`cassini_curve_gear_pair`](#function-cassini_curve_gear_pair): Render a complete Cassini gear pair with derived conjugate motion.
 
-> [`cassini_curve_gear_pair_alternative`](#function-cassini_curve_gear_pair_alternative): Cassini alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`cassini_curve_gear_pair_alternative`](#function-cassini_curve_gear_pair_alternative): Cassini alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`cassini_gear_2d_alternative`](#function-cassini_gear_2d_alternative): Cassini alternative: The contrasting family controls shown as a 2D gear.
 
@@ -261,7 +261,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`ellipse_curve_gear`](#function-ellipse_curve_gear): Render a Ellipse gear from the documented pitch-curve family.
 
-> [`ellipse_curve_gear_alternative`](#function-ellipse_curve_gear_alternative): Ellipse alternative: Eccentricity 0.94 produces a long narrow ellipse rather than the canonical 0.72 oval. The sharper ends and narrow transverse span reveal where tooth placement becomes demanding.
+> [`ellipse_curve_gear_alternative`](#function-ellipse_curve_gear_alternative): Ellipse alternative: Eccentricity 0.85 produces a long ellipse rather than the canonical 0.72 oval while retaining a validated engaged pair.
 
 > [`ellipse_curve_gear_body`](#function-ellipse_curve_gear_body): Render the Ellipse body before tooth placement.
 
@@ -273,7 +273,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`ellipse_curve_gear_pair`](#function-ellipse_curve_gear_pair): Render a complete Ellipse gear pair with derived conjugate motion.
 
-> [`ellipse_curve_gear_pair_alternative`](#function-ellipse_curve_gear_pair_alternative): Ellipse alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`ellipse_curve_gear_pair_alternative`](#function-ellipse_curve_gear_pair_alternative): Ellipse alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`ellipse_gear_2d_alternative`](#function-ellipse_gear_2d_alternative): Ellipse alternative: The contrasting family controls shown as a 2D gear.
 
@@ -321,7 +321,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`fourier_curve_gear_pair`](#function-fourier_curve_gear_pair): Render a complete Fourier gear pair with derived conjugate motion.
 
-> [`fourier_curve_gear_pair_alternative`](#function-fourier_curve_gear_pair_alternative): Fourier alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`fourier_curve_gear_pair_alternative`](#function-fourier_curve_gear_pair_alternative): Fourier alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`fourier_gear_2d_alternative`](#function-fourier_gear_2d_alternative): Fourier alternative: The contrasting family controls shown as a 2D gear.
 
@@ -453,7 +453,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`superformula_curve_gear_pair`](#function-superformula_curve_gear_pair): Render a complete Superformula gear pair with derived conjugate motion.
 
-> [`superformula_curve_gear_pair_alternative`](#function-superformula_curve_gear_pair_alternative): Superformula alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`superformula_curve_gear_pair_alternative`](#function-superformula_curve_gear_pair_alternative): Superformula alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`superformula_gear_2d_alternative`](#function-superformula_gear_2d_alternative): Superformula alternative: The contrasting family controls shown as a 2D gear.
 
@@ -2552,7 +2552,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/ellipse/curve_gear_ellipse_alternative.scad`](functions/ellipse/curve_gear_ellipse_alternative.scad)
-Eccentricity 0.94 produces a long narrow ellipse rather than the canonical 0.72 oval. The sharper ends and narrow transverse span reveal where tooth placement becomes demanding.
+Eccentricity 0.85 produces a long ellipse rather than the canonical 0.72 oval while retaining a validated engaged pair.
 
 **Parameters:**
 
@@ -2665,7 +2665,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/ellipse/curve_gear_ellipse_pair_alternative.scad`](functions/ellipse/curve_gear_ellipse_pair_alternative.scad)
-Eccentricity 0.94 produces a long narrow ellipse rather than the canonical 0.72 oval. The sharper ends and narrow transverse span reveal where tooth placement becomes demanding.
+Eccentricity 0.85 produces a long ellipse rather than the canonical 0.72 oval while retaining a validated engaged pair.
 
 **Parameters:**
 

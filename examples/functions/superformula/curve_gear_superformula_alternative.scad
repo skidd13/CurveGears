@@ -14,7 +14,7 @@ $fn=96;
 // Both executable alternatives share this parameter source.
 module _alternative_example_superformula(pair=false,view="gear") {
     if (pair)
-        curve_gear_superformula_pair(.7,60,3,4.8,symmetry=4,n1=8,n2=8,n3=8,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+        curve_gear_superformula_pair(.7,60,3,4.8,symmetry=4,n1=8,n2=8,n3=8,samples=360,together_built=true,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
             curve_gear_superformula_body(.7,60,3,4.8,symmetry=4,n1=8,n2=8,n3=8,samples=360);
