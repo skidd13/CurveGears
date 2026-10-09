@@ -3,7 +3,7 @@
  * @brief Circle alternative: The contrasting family controls shown as a body.
  * Source: [`functions/circle/curve_gear_circle_body_alternative.scad`](functions/circle/curve_gear_circle_body_alternative.scad)
  * This uses the same curve, tooth scale and bore as the family gear alternative.
- * A 0.5 mm plate contrasts with the thick canonical body while retaining the 4.8 mm bore.
+ * A 2 mm plate matches the alternative pair and mate while retaining the 4.8 mm bore.
  * @image ../images/functions/circle/curve_gear_circle_body_alternative.png Circle body alternative
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */

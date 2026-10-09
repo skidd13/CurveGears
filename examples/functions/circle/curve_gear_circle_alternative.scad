@@ -17,7 +17,7 @@ module _alternative_example_circle(pair=false,view="gear") {
         curve_gear_circle_pair(2,12,2,4.8,samples=360,together_built=true,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
-            curve_gear_circle_body(2,12,.5,4.8,samples=360);
+            curve_gear_circle_body(2,12,2,4.8,samples=360);
     else if (view=="mate")
         color(example_mate_color)
             curve_gear_circle_mate(2,12,2,4.8,samples=360);
