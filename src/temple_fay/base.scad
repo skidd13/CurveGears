@@ -10,8 +10,12 @@
  * https://en.wikipedia.org/wiki/Fourier_series.
  */
 include <../common/curve_gears_math.scad>
+include <../common/harmonic.scad>
 
-function _cg_temple_fay_unit_radius(theta,wing=.18,fold=.05) = 1+wing*sin(2*theta)+fold*sin(4*theta);
-function _cg_temple_fay_unit_points(samples=720,wing=.18,fold=.05) = [for(i=[0:samples-1]) let(theta=360*i/samples,r=_cg_temple_fay_unit_radius(theta,wing,fold)) [r*cos(theta),r*sin(theta)]];
-function _cg_temple_fay_scale(modul,tooth_number,samples=720,wing=.18,fold=.05,unit_points=undef) = _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_temple_fay_unit_points(samples,wing,fold) : unit_points,_cg_pi);
-function _cg_temple_fay_points(modul,tooth_number,samples=720,wing=.18,fold=.05,unit_points=undef) = let(u=is_undef(unit_points) ? _cg_temple_fay_unit_points(samples,wing,fold) : unit_points,scale=_cg_temple_fay_scale(modul,tooth_number,samples,wing,fold,u)) _cg_scale_points(scale,u);
+function _cg_temple_fay_unit_radius(theta,wing=.18,fold=.05) = _cg_harmonic_unit_radius([[2,wing,-90],[4,fold,-90]],theta);
+function _cg_temple_fay_shape(modul,tooth_number,wing=.18,fold=.05,samples=720) =
+    _cg_polar_shape(
+        function(theta) _cg_temple_fay_unit_radius(theta,wing,fold),
+        modul,tooth_number,samples,
+        function(scale) [scale*(1+wing+fold)+.01,3*scale],
+        true);

@@ -4,7 +4,7 @@ module _cg_temple_fay_build(modul,tooth_number,width,bore,wing=.18,fold=.05,pres
     assert(modul>0 && (is_2d || width>0) && bore>=0,"temple_fay_gear: module, width and bore must be valid");
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number && wing>0 && wing<.5 && fold>=0 && fold<.2,"temple_fay_gear: invalid parameters");
     _cg_assert_samples(samples,"temple_fay_gear: samples must be an integer >= 120");
-    points=_cg_temple_fay_points(modul,tooth_number,samples,wing,fold);
+    points=_cg_temple_fay_shape(modul,tooth_number,wing,fold,samples)[0];
     rotate([0,0,orientation]) if(is_2d) _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only,undef,body_offset); else _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
 }
 

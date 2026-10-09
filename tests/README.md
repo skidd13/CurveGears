@@ -660,7 +660,11 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`temple_fay_full_pipeline`](#function-temple_fay_full_pipeline): Exercise Temple Fay gear, body, mate and reference pair calls.
 
-> [`temple_fay_phase_equivalence`](#function-temple_fay_phase_equivalence): Compare assembled and separated pair geometry with independent single-rotation references.
+> [`temple_fay_invalid_pair_parameters`](#function-temple_fay_invalid_pair_parameters): Retain rejection of invalid curve controls at the dynamic pair entry point.
+
+> [`temple_fay_invalid_pair_samples`](#function-temple_fay_invalid_pair_samples): Retain the minimum 120-sample requirement for dynamic pair construction.
+
+> [`temple_fay_phase_equivalence`](#function-temple_fay_phase_equivalence): Compare the public dynamic helpers with the shared preparation contract.
 
 
 ## Functions
@@ -1922,6 +1926,36 @@ Back to [module description](#module-family-integration).
 
 
 Exercise Temple Fay gear, body, mate and reference pair calls.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `temple_fay_invalid_pair_parameters`
+
+
+Source: [`temple_fay/invalid_pair_parameters.scad`](temple_fay/invalid_pair_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `temple_fay_invalid_pair_samples`
+
+
+Source: [`temple_fay/invalid_pair_samples.scad`](temple_fay/invalid_pair_samples.scad)
 
 **Parameters:**
 

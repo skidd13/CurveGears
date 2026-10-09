@@ -33,13 +33,13 @@ https://en.wikipedia.org/wiki/Fourier_series.
 
 > [`curve_gear_temple_fay_body_2d`](#function-curve_gear_temple_fay_body_2d): Build the Temple Fay 2D body outline.
 
-> [`curve_gear_temple_fay_centre_distance`](#function-curve_gear_temple_fay_centre_distance): Return the Temple Fay reference centre distance.
+> [`curve_gear_temple_fay_centre_distance`](#function-curve_gear_temple_fay_centre_distance): Solve the Temple Fay conjugate centre distance from rolling closure.
 
-> [`curve_gear_temple_fay_mate`](#function-curve_gear_temple_fay_mate): Build a separated Temple Fay mate presentation.
+> [`curve_gear_temple_fay_mate`](#function-curve_gear_temple_fay_mate): Build the dynamically solved Temple Fay conjugate mate.
 
-> [`curve_gear_temple_fay_mate_rotation`](#function-curve_gear_temple_fay_mate_rotation): Return the Temple Fay reference mate rotation.
+> [`curve_gear_temple_fay_mate_rotation`](#function-curve_gear_temple_fay_mate_rotation): Return the integrated Temple Fay conjugate mate rotation.
 
-> [`curve_gear_temple_fay_pair`](#function-curve_gear_temple_fay_pair): Build a separated Temple Fay reference pair; this family is not asserted as a conjugate transmission.
+> [`curve_gear_temple_fay_pair`](#function-curve_gear_temple_fay_pair): Build a Temple Fay driver and dynamically solved conjugate mate, separated by default.
 
 
 ## Functions
@@ -259,7 +259,7 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 - `pressure_angle`: {number} Pressure angle.
 - `samples`: {integer} Samples.
 - `phase`: {number} Pair phase.
-- `together_built`: {boolean} Reference placement.
+- `together_built`: {boolean, default false} Use meshed placement when true, separated display placement otherwise.
 - `backlash`: {number} Backlash.
 - `clearance`: {number} Clearance.
 - `tooth_phase`: {number} Tooth phase.
@@ -271,6 +271,43 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 No return
 
 Back to [module description](#module-temple-fay).
+
+
+Back to [top](#).
+
+## Module `Harmonic common`
+
+
+Coefficients are [harmonic, amplitude, phase in degrees]. Family adapters
+own admissibility, pitch scaling and sampling; this evaluator does not
+inherit the public Fourier family's coefficient-domain restrictions.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_harmonic_unit_radius`](#function-_cg_harmonic_unit_radius): Evaluate a finite cosine series around unit mean radius.
+
+
+## Functions
+
+The module `Harmonic common` defines the following functions.
+
+### Function `_cg_harmonic_unit_radius`
+
+
+Evaluate a finite cosine series around unit mean radius.
+
+**Parameters:**
+
+- `coefficients`: {array} Harmonic, amplitude and phase rows.
+- `theta`: {angle} Physical polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Unit radius before family-specific scaling.
+
+Back to [module description](#module-harmonic-common).
 
 
 Back to [top](#).
