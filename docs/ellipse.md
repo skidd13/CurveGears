@@ -44,19 +44,7 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 > [`_cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false)`](#function-_cg_ellipse_buildmodultooth_numberwidthboreeccentricity062pressure_angle20tooth_phase0backlashundefclearanceundefsamples480orientation0body_onlyfalse): Internal ellipse construction dispatcher.
 
-> [`_cg_ellipse_centre_distance`](#function-_cg_ellipse_centre_distance): Solve the ellipse conjugate centre distance.
-
 > [`_cg_ellipse_driver_point(a, b, theta)`](#function-_cg_ellipse_driver_pointa-b-theta): Convert an ellipse radius and angle into a Cartesian pitch point.
-
-> [`_cg_ellipse_driver_radii(a, b, n=480)`](#function-_cg_ellipse_driver_radiia-b-n480): Evaluate ellipse radii at direct mate-construction angles.
-
-> [`_cg_ellipse_mate_points`](#function-_cg_ellipse_mate_points): Build ellipse mate pitch points and their shared motion table.
-
-> [`_cg_ellipse_mate_points_from_driver`](#function-_cg_ellipse_mate_points_from_driver): Build ellipse mate pitch points by advancing driver angle directly.
-
-> [`_cg_ellipse_motion_radii`](#function-_cg_ellipse_motion_radii): Evaluate ellipse radii at integration midpoints.
-
-> [`_cg_ellipse_motion_table`](#function-_cg_ellipse_motion_table): Build the shared ellipse phase-motion table.
 
 > [`_cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_ellipse_pair_buildmodultooth_numberwidthboreeccentricity062pressure_angle20samples480phase0together_builttruebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal ellipse pair construction dispatcher.
 
@@ -357,23 +345,6 @@ Internal ellipse construction dispatcher.
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_centre_distance`
-
-
-Solve the ellipse conjugate centre distance.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `n`: {integer >= 1, default 360} Number of motion intervals.
-
-**Returns:**
-
-- `{number}`: Conjugate centre distance.
-
-Back to [module description](#module-ellipse).
-
 ### Function `_cg_ellipse_driver_point(a, b, theta)`
 
 
@@ -388,94 +359,6 @@ Convert an ellipse radius and angle into a Cartesian pitch point.
 **Returns:**
 
 - `{array}`: Cartesian point `[x, y]` in mm.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_driver_radii(a, b, n=480)`
-
-
-Evaluate ellipse radii at direct mate-construction angles.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale in millimetres.
-- `b`: {number > 0} Ellipse semi-minor scale in millimetres.
-- `n`: {integer >= 1, default 480} Number of boundary intervals.
-
-**Returns:**
-
-- `{array of number}`: Driver radii in angular order.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_mate_points`
-
-
-Build ellipse mate pitch points and their shared motion table.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 480} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_mate_points_from_driver`
-
-
-Build ellipse mate pitch points by advancing driver angle directly.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 480} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_motion_radii`
-
-
-Evaluate ellipse radii at integration midpoints.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array of number}`: Sampled radii in angular order.
-
-Back to [module description](#module-ellipse).
-
-### Function `_cg_ellipse_motion_table`
-
-
-Build the shared ellipse phase-motion table.
-
-**Parameters:**
-
-- `a`: {number > 0} Ellipse semi-major scale.
-- `b`: {number > 0} Ellipse semi-minor scale.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 480} Number of midpoint samples.
-
-**Returns:**
-
-- `{array}`: Monotonic driver-to-mate phase-motion table.
 
 Back to [module description](#module-ellipse).
 
