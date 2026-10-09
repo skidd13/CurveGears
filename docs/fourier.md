@@ -62,7 +62,7 @@ The module `Fourier` defines the following functions.
 
 | Fourier gear 1 | Fourier gear 2 |
 | --- | --- |
-| [![Fourier gear 1](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) | [![Fourier gear 2](../images/functions/fourier/curve_gear_fourier_alternative.png)](../images/functions/fourier/curve_gear_fourier_alternative.png) |
+| [![curve_gear_fourier example preview](../images/functions/fourier/curve_gear_fourier.png)](../images/functions/fourier/curve_gear_fourier.png) | [![Fourier gear alternative](../images/functions/fourier/curve_gear_fourier_alternative.png)](../images/functions/fourier/curve_gear_fourier_alternative.png) |
 
 
 A single strong third harmonic produces three clear lobes instead of the canonical mixed second/third-harmonic oval. This isolates harmonic count from mixed-phase asymmetry.
@@ -97,10 +97,10 @@ Back to [module description](#module-fourier).
 
 | Fourier 2D gear 1 | Fourier 2D gear 2 |
 | --- | --- |
-| [![Fourier 2D gear 1](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) | [![Fourier 2D gear 2](../images/functions/fourier/curve_gear_fourier_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_alternative_2d.png) |
+| [![fourier 2D gear outline](../images/functions/fourier/curve_gear_fourier_2d.png)](../images/functions/fourier/curve_gear_fourier_2d.png) | [![Fourier 2D gear alternative](../images/functions/fourier/curve_gear_fourier_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete fourier gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -131,10 +131,10 @@ Back to [module description](#module-fourier).
 
 | Fourier body 1 | Fourier body 2 |
 | --- | --- |
-| [![Fourier body 1](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) | [![Fourier body 2](../images/functions/fourier/curve_gear_fourier_body_alternative.png)](../images/functions/fourier/curve_gear_fourier_body_alternative.png) |
+| [![curve_gear_fourier_body example preview](../images/functions/fourier/curve_gear_fourier_body.png)](../images/functions/fourier/curve_gear_fourier_body.png) | [![Fourier body alternative](../images/functions/fourier/curve_gear_fourier_body_alternative.png)](../images/functions/fourier/curve_gear_fourier_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the Fourier body without teeth.
 
 **Parameters:**
 
@@ -160,10 +160,10 @@ Back to [module description](#module-fourier).
 
 | Fourier 2D body 1 | Fourier 2D body 2 |
 | --- | --- |
-| [![Fourier 2D body 1](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) | [![Fourier 2D body 2](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png) |
+| [![fourier 2D body outline](../images/functions/fourier/curve_gear_fourier_body_2d.png)](../images/functions/fourier/curve_gear_fourier_body_2d.png) | [![Fourier 2D body alternative](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png)](../images/functions/fourier/curve_gear_fourier_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -213,10 +213,10 @@ Back to [module description](#module-fourier).
 
 | Fourier mate 1 | Fourier mate 2 |
 | --- | --- |
-| [![Fourier mate 1](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) | [![Fourier mate 2](../images/functions/fourier/curve_gear_fourier_mate_alternative.png)](../images/functions/fourier/curve_gear_fourier_mate_alternative.png) |
+| [![curve_gear_fourier_mate example preview](../images/functions/fourier/curve_gear_fourier_mate.png)](../images/functions/fourier/curve_gear_fourier_mate.png) | [![Fourier mate alternative](../images/functions/fourier/curve_gear_fourier_mate_alternative.png)](../images/functions/fourier/curve_gear_fourier_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone dynamically conjugate Fourier mate.
 
 **Parameters:**
 
@@ -260,10 +260,10 @@ Back to [module description](#module-fourier).
 
 | Fourier pair 1 | Fourier pair 2 |
 | --- | --- |
-| [![Fourier pair 1](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) | [![Fourier pair 2](../images/functions/fourier/curve_gear_fourier_pair_alternative.png)](../images/functions/fourier/curve_gear_fourier_pair_alternative.png) |
+| [![curve_gear_fourier_pair example preview](../images/functions/fourier/curve_gear_fourier_pair.png)](../images/functions/fourier/curve_gear_fourier_pair.png) | [![Fourier pair alternative](../images/functions/fourier/curve_gear_fourier_pair_alternative.png)](../images/functions/fourier/curve_gear_fourier_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+Build a meshed or separated Fourier pair using one shared motion table.
 
 **Parameters:**
 

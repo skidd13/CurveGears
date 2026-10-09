@@ -4,8 +4,6 @@ include <base.scad>
  * @function curve_gear_circle
  * @brief Build a circular reference gear.
  * Twelve coarse teeth replace the fine-toothed reference; the bore remains 4.8 mm. Circle has no non-circular shape control; the circular pitch law is deliberately preserved.
- * @image ../images/functions/circle/curve_gear_circle.png Circle gear 1
- * @image ../images/functions/circle/curve_gear_circle_alternative.png Circle gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -24,9 +22,6 @@ module curve_gear_circle(modul,tooth_number,width,bore,pressure_angle=20,tooth_p
 /***
  * @function curve_gear_circle_body
  * @brief Build the circular reference body without teeth.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/circle/curve_gear_circle_body.png Circle body 1
- * @image ../images/functions/circle/curve_gear_circle_body_alternative.png Circle body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -42,9 +37,6 @@ module curve_gear_circle_body(modul,tooth_number,width,bore,samples=480) {
 /***
  * @function curve_gear_circle_2d
  * @brief Emit the complete circular gear profile as 2D geometry.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/circle/curve_gear_circle_2d.png Circle 2D gear 1
- * @image ../images/functions/circle/curve_gear_circle_alternative_2d.png Circle 2D gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param bore {number >= 0} Centre bore diameter in mm.
@@ -64,9 +56,6 @@ module curve_gear_circle_2d(modul,tooth_number,bore,pressure_angle=20,tooth_phas
 /***
  * @function curve_gear_circle_body_2d
  * @brief Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/circle/curve_gear_circle_body_2d.png Circle 2D body 1
- * @image ../images/functions/circle/curve_gear_circle_body_alternative_2d.png Circle 2D body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param bore {number >= 0} Centre bore diameter in mm.

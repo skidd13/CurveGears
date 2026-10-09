@@ -50,10 +50,10 @@ The module `Temple Fay` defines the following functions.
 
 | Temple Fay gear 1 | Temple Fay gear 2 |
 | --- | --- |
-| [![Temple Fay gear 1](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![Temple Fay gear 2](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png) |
+| [![temple fay example preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![Temple Fay gear alternative](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png) |
 
 
-Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
 
 
 **Parameters:**
@@ -81,10 +81,9 @@ Back to [module description](#module-temple-fay).
 
 | Temple Fay 2D gear 1 | Temple Fay 2D gear 2 |
 | --- | --- |
-| [![Temple Fay 2D gear 1](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [![Temple Fay 2D gear 2](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png) |
+| [![temple fay 2d example preview](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [![Temple Fay 2D gear alternative](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -111,10 +110,9 @@ Back to [module description](#module-temple-fay).
 
 | Temple Fay body 1 | Temple Fay body 2 |
 | --- | --- |
-| [![Temple Fay body 1](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [![Temple Fay body 2](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png) |
+| [![temple fay body example preview](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [![Temple Fay body alternative](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -142,10 +140,9 @@ Back to [module description](#module-temple-fay).
 
 | Temple Fay 2D body 1 | Temple Fay 2D body 2 |
 | --- | --- |
-| [![Temple Fay 2D body 1](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [![Temple Fay 2D body 2](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png) |
+| [![temple fay body 2d example preview](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [![Temple Fay 2D body alternative](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -192,10 +189,9 @@ Back to [module description](#module-temple-fay).
 
 | Temple Fay mate 1 | Temple Fay mate 2 |
 | --- | --- |
-| [![Temple Fay mate 1](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [![Temple Fay mate 2](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png) |
+| [![temple fay mate example preview](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [![Temple Fay mate alternative](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -242,10 +238,9 @@ Back to [module description](#module-temple-fay).
 
 | Temple Fay pair 1 | Temple Fay pair 2 |
 | --- | --- |
-| [![Temple Fay pair 1](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [![Temple Fay pair 2](../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png) |
+| [![temple fay pair example preview](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [![Temple Fay pair alternative](../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 
 **Parameters:**

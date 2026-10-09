@@ -49,7 +49,7 @@ The module `Circle` defines the following functions.
 
 | Circle gear 1 | Circle gear 2 |
 | --- | --- |
-| [![Circle gear 1](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [![Circle gear 2](../images/functions/circle/curve_gear_circle_alternative.png)](../images/functions/circle/curve_gear_circle_alternative.png) |
+| [![curve gear circle preview](../images/functions/circle/curve_gear_circle.png)](../images/functions/circle/curve_gear_circle.png) | [![Circle gear alternative](../images/functions/circle/curve_gear_circle_alternative.png)](../images/functions/circle/curve_gear_circle_alternative.png) |
 
 
 Twelve coarse teeth replace the fine-toothed reference; the bore remains 4.8 mm. Circle has no non-circular shape control; the circular pitch law is deliberately preserved.
@@ -76,10 +76,10 @@ Back to [module description](#module-circle).
 
 | Circle 2D gear 1 | Circle 2D gear 2 |
 | --- | --- |
-| [![Circle 2D gear 1](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [![Circle 2D gear 2](../images/functions/circle/curve_gear_circle_alternative_2d.png)](../images/functions/circle/curve_gear_circle_alternative_2d.png) |
+| [![circle 2D gear outline](../images/functions/circle/curve_gear_circle_2d.png)](../images/functions/circle/curve_gear_circle_2d.png) | [![Circle 2D gear alternative](../images/functions/circle/curve_gear_circle_alternative_2d.png)](../images/functions/circle/curve_gear_circle_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete circular gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -108,10 +108,10 @@ Back to [module description](#module-circle).
 
 | Circle body 1 | Circle body 2 |
 | --- | --- |
-| [![Circle body 1](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [![Circle body 2](../images/functions/circle/curve_gear_circle_body_alternative.png)](../images/functions/circle/curve_gear_circle_body_alternative.png) |
+| [![curve gear circle body preview](../images/functions/circle/curve_gear_circle_body.png)](../images/functions/circle/curve_gear_circle_body.png) | [![Circle body alternative](../images/functions/circle/curve_gear_circle_body_alternative.png)](../images/functions/circle/curve_gear_circle_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the circular reference body without teeth.
 
 **Parameters:**
 
@@ -131,10 +131,10 @@ Back to [module description](#module-circle).
 
 | Circle 2D body 1 | Circle 2D body 2 |
 | --- | --- |
-| [![Circle 2D body 1](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [![Circle 2D body 2](../images/functions/circle/curve_gear_circle_body_alternative_2d.png)](../images/functions/circle/curve_gear_circle_body_alternative_2d.png) |
+| [![circle 2D body outline](../images/functions/circle/curve_gear_circle_body_2d.png)](../images/functions/circle/curve_gear_circle_body_2d.png) | [![Circle 2D body alternative](../images/functions/circle/curve_gear_circle_body_alternative_2d.png)](../images/functions/circle/curve_gear_circle_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
 
 **Parameters:**
 
@@ -176,10 +176,10 @@ Back to [module description](#module-circle).
 
 | Circle mate 1 | Circle mate 2 |
 | --- | --- |
-| [![Circle mate 1](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [![Circle mate 2](../images/functions/circle/curve_gear_circle_mate_alternative.png)](../images/functions/circle/curve_gear_circle_mate_alternative.png) |
+| [![curve gear circle mate preview](../images/functions/circle/curve_gear_circle_mate.png)](../images/functions/circle/curve_gear_circle_mate.png) | [![Circle mate alternative](../images/functions/circle/curve_gear_circle_mate_alternative.png)](../images/functions/circle/curve_gear_circle_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the circular reference mate boundary at the origin.
 
 **Parameters:**
 
@@ -203,10 +203,10 @@ Back to [module description](#module-circle).
 
 | Circle pair 1 | Circle pair 2 |
 | --- | --- |
-| [![Circle pair 1](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [![Circle pair 2](../images/functions/circle/curve_gear_circle_pair_alternative.png)](../images/functions/circle/curve_gear_circle_pair_alternative.png) |
+| [![curve gear circle pair preview](../images/functions/circle/curve_gear_circle_pair.png)](../images/functions/circle/curve_gear_circle_pair.png) | [![Circle pair alternative](../images/functions/circle/curve_gear_circle_pair_alternative.png)](../images/functions/circle/curve_gear_circle_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+Build a meshed or separated circular reference pair.
 
 **Parameters:**
 

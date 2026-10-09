@@ -117,9 +117,6 @@ function _cg_bezier_mate_centre_distance(control_points,scale,n) =
 /**
  * @function curve_gear_bezier_mate
  * @brief Build a conjugate mate for an admissible radial Bézier pitch curve.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/bezier/curve_gear_bezier_mate.png Bézier mate 1
- * @image ../images/functions/bezier/curve_gear_bezier_mate_alternative.png Bézier mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

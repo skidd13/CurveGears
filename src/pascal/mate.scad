@@ -6,9 +6,6 @@ include <../common/mate/placement.scad>
 /***
  * @function curve_gear_pascal_mate
  * @brief Build the standalone Pascal mate boundary at the origin.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/pascal/curve_gear_pascal_mate.png Pascal mate 1
- * @image ../images/functions/pascal/curve_gear_pascal_mate_alternative.png Pascal mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

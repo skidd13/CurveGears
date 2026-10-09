@@ -475,7 +475,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`temple_fay_body_alternative`](#function-temple_fay_body_alternative): Temple Fay alternative: The contrasting family controls shown as a body.
 
-> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative: Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative: Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
 
 > [`temple_fay_curve_gear_pair_alternative`](#function-temple_fay_curve_gear_pair_alternative): Temple Fay alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
@@ -1004,7 +1004,7 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/circle/curve_gear_circle_body_alternative.scad`](functions/circle/curve_gear_circle_body_alternative.scad)
 This uses the same curve, tooth scale and bore as the family gear alternative.
-A 0.5 mm plate contrasts with the thick canonical body while retaining the 4.8 mm bore.
+A 2 mm plate matches the alternative pair and mate while retaining the 4.8 mm bore.
 
 **Parameters:**
 
@@ -1449,6 +1449,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cosine_quintic_2d_example`
 
+| cosine quintic 2d example preview | Full size |
+| --- | --- |
+| [![cosine quintic 2d example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) ![](../images/table-spacer.png) |
+
 
 
 
@@ -1464,6 +1468,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cosine_quintic_body_2d_example`
 
+| cosine quintic body 2d example preview | Full size |
+| --- | --- |
+| [![cosine quintic body 2d example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) ![](../images/table-spacer.png) |
+
 
 
 
@@ -1478,6 +1486,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cosine_quintic_body_example`
+
+| cosine quintic body example preview | Full size |
+| --- | --- |
+| [![cosine quintic body example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) ![](../images/table-spacer.png) |
 
 
 
@@ -1509,6 +1521,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cosine_quintic_example`
 
+| cosine quintic example preview | Full size |
+| --- | --- |
+| [![cosine quintic example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png) ![](../images/table-spacer.png) |
+
 
 Cosine Quintic gear example.
 
@@ -1523,6 +1539,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cosine_quintic_mate_example`
+
+| cosine quintic mate example preview | Full size |
+| --- | --- |
+| [![cosine quintic mate example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) ![](../images/table-spacer.png) |
 
 
 
@@ -1553,6 +1573,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_cosine_quintic_pair_example`
+
+| cosine quintic pair example preview | Full size |
+| --- | --- |
+| [![cosine quintic pair example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [Open full-size image](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) ![](../images/table-spacer.png) |
 
 
 
@@ -1835,6 +1859,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logistic_dwell_2d_example`
 
+| logistic dwell 2d example preview | Full size |
+| --- | --- |
+| [![logistic dwell 2d example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) ![](../images/table-spacer.png) |
+
 
 
 
@@ -1850,6 +1878,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logistic_dwell_body_2d_example`
 
+| logistic dwell body 2d example preview | Full size |
+| --- | --- |
+| [![logistic dwell body 2d example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) ![](../images/table-spacer.png) |
+
 
 
 
@@ -1864,6 +1896,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logistic_dwell_body_example`
+
+| logistic dwell body example preview | Full size |
+| --- | --- |
+| [![logistic dwell body example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) ![](../images/table-spacer.png) |
 
 
 
@@ -1895,6 +1931,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logistic_dwell_example`
 
+| logistic dwell example preview | Full size |
+| --- | --- |
+| [![logistic dwell example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png) ![](../images/table-spacer.png) |
+
 
 Logistic Dwell gear example.
 
@@ -1909,6 +1949,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logistic_dwell_mate_example`
+
+| logistic dwell mate example preview | Full size |
+| --- | --- |
+| [![logistic dwell mate example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) ![](../images/table-spacer.png) |
 
 
 
@@ -1939,6 +1983,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_logistic_dwell_pair_example`
+
+| logistic dwell pair example preview | Full size |
+| --- | --- |
+| [![logistic dwell pair example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [Open full-size image](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) ![](../images/table-spacer.png) |
 
 
 
@@ -2031,6 +2079,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_tanh_triad_2d_example`
 
+| tanh triad 2d example preview | Full size |
+| --- | --- |
+| [![tanh triad 2d example preview](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_2d.png) ![](../images/table-spacer.png) |
+
 
 Tanh Triad 2D example.
 
@@ -2046,6 +2098,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_tanh_triad_body_2d_example`
 
+| tanh triad body 2d example preview | Full size |
+| --- | --- |
+| [![tanh triad body 2d example preview](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_body_2d.png) ![](../images/table-spacer.png) |
+
 
 Tanh Triad body 2D example.
 
@@ -2060,6 +2116,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_tanh_triad_body_example`
+
+| tanh triad body example preview | Full size |
+| --- | --- |
+| [![tanh triad body example preview](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_body.png) ![](../images/table-spacer.png) |
 
 
 Tanh Triad body example.
@@ -2091,6 +2151,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_tanh_triad_example`
 
+| tanh triad example preview | Full size |
+| --- | --- |
+| [![tanh triad example preview](../images/functions/tanh_triad/curve_gear_tanh_triad.png)](../images/functions/tanh_triad/curve_gear_tanh_triad.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad.png) ![](../images/table-spacer.png) |
+
 
 Tanh Triad gear example.
 
@@ -2105,6 +2169,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_tanh_triad_mate_example`
+
+| tanh triad mate example preview | Full size |
+| --- | --- |
+| [![tanh triad mate example preview](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png) ![](../images/table-spacer.png) |
 
 
 Tanh Triad mate example.
@@ -2136,6 +2204,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_tanh_triad_pair_example`
 
+| tanh triad pair example preview | Full size |
+| --- | --- |
+| [![tanh triad pair example preview](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png)](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) | [Open full-size image](../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png) ![](../images/table-spacer.png) |
+
 
 Tanh Triad pair example.
 
@@ -2150,6 +2222,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_temple_fay_2d_example`
+
+| temple fay 2d example preview | Full size |
+| --- | --- |
+| [![temple fay 2d example preview](../images/functions/temple_fay/curve_gear_temple_fay_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_2d.png) ![](../images/table-spacer.png) |
 
 
 
@@ -2166,6 +2242,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_temple_fay_body_2d_example`
 
+| temple fay body 2d example preview | Full size |
+| --- | --- |
+| [![temple fay body 2d example preview](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png)](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_body_2d.png) ![](../images/table-spacer.png) |
+
 
 
 
@@ -2180,6 +2260,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_temple_fay_body_example`
+
+| temple fay body example preview | Full size |
+| --- | --- |
+| [![temple fay body example preview](../images/functions/temple_fay/curve_gear_temple_fay_body.png)](../images/functions/temple_fay/curve_gear_temple_fay_body.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_body.png) ![](../images/table-spacer.png) |
 
 
 
@@ -2211,6 +2295,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_temple_fay_example`
 
+| temple fay example preview | Full size |
+| --- | --- |
+| [![temple fay example preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay.png) ![](../images/table-spacer.png) |
+
 
 Temple Fay gear example.
 
@@ -2225,6 +2313,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_temple_fay_mate_example`
+
+| temple fay mate example preview | Full size |
+| --- | --- |
+| [![temple fay mate example preview](../images/functions/temple_fay/curve_gear_temple_fay_mate.png)](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_mate.png) ![](../images/table-spacer.png) |
 
 
 
@@ -2255,6 +2347,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_temple_fay_pair_example`
+
+| temple fay pair example preview | Full size |
+| --- | --- |
+| [![temple fay pair example preview](../images/functions/temple_fay/curve_gear_temple_fay_pair.png)](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay_pair.png) ![](../images/table-spacer.png) |
 
 
 
@@ -2313,6 +2409,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `cusp_curve_gear`
 
+| cusp example preview | Full size |
+| --- | --- |
+| [![cusp example preview](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp.png) ![](../images/table-spacer.png) |
+
 
 Source: [`cusp/curve_gear_cusp.scad`](cusp/curve_gear_cusp.scad)
 
@@ -2348,6 +2448,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `cusp_curve_gear_body`
 
+| cusp body example preview | Full size |
+| --- | --- |
+| [![cusp body example preview](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_body.png) ![](../images/table-spacer.png) |
+
 
 Source: [`cusp/curve_gear_cusp_body.scad`](cusp/curve_gear_cusp_body.scad)
 
@@ -2378,6 +2482,10 @@ Back to [module description](#module-executable-examples).
 
 ### Function `cusp_curve_gear_mate`
 
+| cusp mate example preview | Full size |
+| --- | --- |
+| [![cusp mate example preview](../images/functions/cusp/curve_gear_cusp_mate.png)](../images/functions/cusp/curve_gear_cusp_mate.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_mate.png) ![](../images/table-spacer.png) |
+
 
 Source: [`cusp/curve_gear_cusp_mate.scad`](cusp/curve_gear_cusp_mate.scad)
 
@@ -2407,6 +2515,10 @@ No return
 Back to [module description](#module-executable-examples).
 
 ### Function `cusp_curve_gear_pair`
+
+| cusp pair example preview | Full size |
+| --- | --- |
+| [![cusp pair example preview](../images/functions/cusp/curve_gear_cusp_pair.png)](../images/functions/cusp/curve_gear_cusp_pair.png) | [Open full-size image](../images/functions/cusp/curve_gear_cusp_pair.png) ![](../images/table-spacer.png) |
 
 
 Source: [`cusp/curve_gear_cusp_pair.scad`](cusp/curve_gear_cusp_pair.scad)
@@ -4665,7 +4777,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_alternative.scad)
-Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
 
 **Parameters:**
 
@@ -4685,8 +4797,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad)
-Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
-The contact-pair fixture uses the same bore and width with a reduced .08/.02 wing/fold profile so the engaged mate remains collision-free.
+Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
 
 **Parameters:**
 

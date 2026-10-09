@@ -6,9 +6,6 @@ include <../common/mate/motion.scad>
 /***
  * @function curve_gear_lobed_mate
  * @brief Build the standalone lobed mate boundary at the origin.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/lobed/curve_gear_lobed_mate.png Lobed mate 1
- * @image ../images/functions/lobed/curve_gear_lobed_mate_alternative.png Lobed mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.

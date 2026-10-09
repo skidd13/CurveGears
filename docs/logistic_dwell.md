@@ -51,7 +51,7 @@ The module `Logistic Dwell` defines the following functions.
 
 | Logistic Dwell gear 1 | Logistic Dwell gear 2 |
 | --- | --- |
-| [![Logistic Dwell gear 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png) | [![Logistic Dwell gear 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png) |
+| [![logistic dwell example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell.png) | [![Logistic Dwell gear alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png) |
 
 
 Depth 0.46 and gain 3 replace the canonical shallow, steep logistic gate. The larger radial variation and smoother transitions distinguish curve amplitude from gate sharpness; coarse teeth expose the contour.
@@ -93,10 +93,9 @@ Back to [module description](#module-logistic-dwell).
 
 | Logistic Dwell 2D gear 1 | Logistic Dwell 2D gear 2 |
 | --- | --- |
-| [![Logistic Dwell 2D gear 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [![Logistic Dwell 2D gear 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png) |
+| [![logistic dwell 2d example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png) | [![Logistic Dwell 2D gear alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -123,10 +122,9 @@ Back to [module description](#module-logistic-dwell).
 
 | Logistic Dwell body 1 | Logistic Dwell body 2 |
 | --- | --- |
-| [![Logistic Dwell body 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [![Logistic Dwell body 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png) |
+| [![logistic dwell body example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png) | [![Logistic Dwell body alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -154,10 +152,9 @@ Back to [module description](#module-logistic-dwell).
 
 | Logistic Dwell 2D body 1 | Logistic Dwell 2D body 2 |
 | --- | --- |
-| [![Logistic Dwell 2D body 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [![Logistic Dwell 2D body 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png) |
+| [![logistic dwell body 2d example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png) | [![Logistic Dwell 2D body alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -208,10 +205,9 @@ Back to [module description](#module-logistic-dwell).
 
 | Logistic Dwell mate 1 | Logistic Dwell mate 2 |
 | --- | --- |
-| [![Logistic Dwell mate 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [![Logistic Dwell mate 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png) |
+| [![logistic dwell mate example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate.png) | [![Logistic Dwell mate alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -263,10 +259,9 @@ Back to [module description](#module-logistic-dwell).
 
 | Logistic Dwell pair 1 | Logistic Dwell pair 2 |
 | --- | --- |
-| [![Logistic Dwell pair 1](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [![Logistic Dwell pair 2](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.png) |
+| [![logistic dwell pair example preview](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair.png) | [![Logistic Dwell pair alternative](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.png)](../images/functions/logistic_dwell/curve_gear_logistic_dwell_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 
 **Parameters:**

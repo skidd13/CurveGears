@@ -5,9 +5,6 @@ include <../common/mate/placement.scad>
 /***
  * @function curve_gear_tanh_triad_mate
  * @brief Build a Tanh Triad mating gear.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_mate.png Tanh Triad mate 1
- * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_mate_alternative.png Tanh Triad mate 2
  *
  * @param modul {number} Tooth module.
  *

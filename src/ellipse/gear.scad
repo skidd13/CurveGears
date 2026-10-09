@@ -3,8 +3,6 @@
  * @function curve_gear_ellipse
  * @brief Build an elliptical non-circular gear.
  * Eccentricity 0.94 produces a long narrow ellipse rather than the canonical 0.72 oval. The sharper ends and narrow transverse span reveal where tooth placement becomes demanding.
- * @image ../images/functions/ellipse/curve_gear_ellipse.png Ellipse gear 1
- * @image ../images/functions/ellipse/curve_gear_ellipse_alternative.png Ellipse gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -60,9 +58,6 @@ module curve_gear_ellipse(modul,tooth_number,width,bore,eccentricity=0.62,pressu
 /***
  * @function curve_gear_ellipse_body
  * @brief Build the elliptical body solid without teeth.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/ellipse/curve_gear_ellipse_body.png Ellipse body 1
- * @image ../images/functions/ellipse/curve_gear_ellipse_body_alternative.png Ellipse body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -84,9 +79,6 @@ module curve_gear_ellipse_body(modul,tooth_number,width,bore,eccentricity=0.62,p
 /***
  * @function curve_gear_ellipse_2d
  * @brief Emit the complete ellipse gear profile as 2D geometry.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/ellipse/curve_gear_ellipse_2d.png Ellipse 2D gear 1
- * @image ../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png Ellipse 2D gear 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
@@ -107,9 +99,6 @@ module curve_gear_ellipse_2d(modul, tooth_number, bore, eccentricity=0.62, press
 /***
  * @function curve_gear_ellipse_body_2d
  * @brief Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/ellipse/curve_gear_ellipse_body_2d.png Ellipse 2D body 1
- * @image ../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png Ellipse 2D body 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.

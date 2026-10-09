@@ -67,7 +67,7 @@ The module `Cassini` defines the following functions.
 
 | Cassini gear 1 | Cassini gear 2 |
 | --- | --- |
-| [![Cassini gear 1](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) | [![Cassini gear 2](../images/functions/cassini/curve_gear_cassini_alternative.png)](../images/functions/cassini/curve_gear_cassini_alternative.png) |
+| [![curve_gear_cassini example preview](../images/functions/cassini/curve_gear_cassini.png)](../images/functions/cassini/curve_gear_cassini.png) | [![Cassini gear alternative](../images/functions/cassini/curve_gear_cassini_alternative.png)](../images/functions/cassini/curve_gear_cassini_alternative.png) |
 
 
 A low focus ratio of 0.35 produces a compact oval rather than the canonical 0.92 peanut waist. Twenty coarse teeth make the limiting near-circular form clear.
@@ -103,10 +103,10 @@ Back to [module description](#module-cassini).
 
 | Cassini 2D gear 1 | Cassini 2D gear 2 |
 | --- | --- |
-| [![Cassini 2D gear 1](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) | [![Cassini 2D gear 2](../images/functions/cassini/curve_gear_cassini_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_alternative_2d.png) |
+| [![cassini 2D gear outline](../images/functions/cassini/curve_gear_cassini_2d.png)](../images/functions/cassini/curve_gear_cassini_2d.png) | [![Cassini 2D gear alternative](../images/functions/cassini/curve_gear_cassini_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete cassini gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -137,10 +137,10 @@ Back to [module description](#module-cassini).
 
 | Cassini body 1 | Cassini body 2 |
 | --- | --- |
-| [![Cassini body 1](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) | [![Cassini body 2](../images/functions/cassini/curve_gear_cassini_body_alternative.png)](../images/functions/cassini/curve_gear_cassini_body_alternative.png) |
+| [![curve_gear_cassini_body example preview](../images/functions/cassini/curve_gear_cassini_body.png)](../images/functions/cassini/curve_gear_cassini_body.png) | [![Cassini body alternative](../images/functions/cassini/curve_gear_cassini_body_alternative.png)](../images/functions/cassini/curve_gear_cassini_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the Cassini body solid without teeth.
 
 **Parameters:**
 
@@ -172,10 +172,10 @@ Back to [module description](#module-cassini).
 
 | Cassini 2D body 1 | Cassini 2D body 2 |
 | --- | --- |
-| [![Cassini 2D body 1](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) | [![Cassini 2D body 2](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png) |
+| [![cassini 2D body outline](../images/functions/cassini/curve_gear_cassini_body_2d.png)](../images/functions/cassini/curve_gear_cassini_body_2d.png) | [![Cassini 2D body alternative](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png)](../images/functions/cassini/curve_gear_cassini_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the cassini body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -225,10 +225,10 @@ Back to [module description](#module-cassini).
 
 | Cassini mate 1 | Cassini mate 2 |
 | --- | --- |
-| [![Cassini mate 1](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) | [![Cassini mate 2](../images/functions/cassini/curve_gear_cassini_mate_alternative.png)](../images/functions/cassini/curve_gear_cassini_mate_alternative.png) |
+| [![curve_gear_cassini_mate example preview](../images/functions/cassini/curve_gear_cassini_mate.png)](../images/functions/cassini/curve_gear_cassini_mate.png) | [![Cassini mate alternative](../images/functions/cassini/curve_gear_cassini_mate_alternative.png)](../images/functions/cassini/curve_gear_cassini_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone conjugate mate for a Cassini driver.
 
 **Parameters:**
 
@@ -272,10 +272,10 @@ Back to [module description](#module-cassini).
 
 | Cassini pair 1 | Cassini pair 2 |
 | --- | --- |
-| [![Cassini pair 1](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) | [![Cassini pair 2](../images/functions/cassini/curve_gear_cassini_pair_alternative.png)](../images/functions/cassini/curve_gear_cassini_pair_alternative.png) |
+| [![curve_gear_cassini_pair example preview](../images/functions/cassini/curve_gear_cassini_pair.png)](../images/functions/cassini/curve_gear_cassini_pair.png) | [![Cassini pair alternative](../images/functions/cassini/curve_gear_cassini_pair_alternative.png)](../images/functions/cassini/curve_gear_cassini_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+Build a meshed or separated Cassini driver/mate pair.
 
 **Parameters:**
 

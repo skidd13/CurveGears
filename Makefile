@@ -205,6 +205,7 @@ $(1): $(3) $(4) $(5) $(6) $(7) $(8) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FO
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
 	@$(DOCGEN) -g -e c -l c "$(3)" "$(4)" "$(5)" "$(6)" $(if $(7),"$(7)") $(if $(8),"$(8)") >> "$$@"
+	@$(PYTHON) utils/merge_example_images.py "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -215,6 +216,7 @@ $(1): $(3) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
 	@$(DOCGEN) -g -e c -l c $(3) >> "$$@"
+	@$(PYTHON) utils/merge_example_images.py "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -407,6 +409,7 @@ check: test check-docs
 check-docs: docs-pages examples/README.md tests/README.md
 	@test -s README.md
 	@$(PYTHON) utils/check_public_params.py
+	@$(PYTHON) utils/check_pair_example_invariants.py
 	@test -s examples/README.md
 	@test -s "$(NAVIGATION_TEMPLATE)"
 	@test -s "$(FOOTER_TEMPLATE)"
@@ -419,6 +422,7 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test -z "$$(rg -n '@function[[:space:]]+[^[:space:](]+\(' src -g '*.scad' || true)"
 	@test -z "$$(rg -n '^> \[`[^]]+\([^)]+' docs examples/README.md tests/README.md -g '*.md' || true)"
 	@test -z "$$(rg -n '^### (Function|Method) `[^`]+\(' docs examples/README.md tests/README.md -g '*.md' || true)"
+	@test -z "$$(rg -n '@image' src -g '*.scad' || true)"
 	@test ! -e utils/test_catalogue.py
 	@test ! -e utils/example_catalogue.py
 	@test ! -e utils/doxydown-support/docs-navigation.md

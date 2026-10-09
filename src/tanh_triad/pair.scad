@@ -4,9 +4,6 @@ include <../common/pair/assembly.scad>
 /***
  * @function curve_gear_tanh_triad_pair
  * @brief Build a Tanh Triad gear pair.
- * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
- * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_pair.png Tanh Triad pair 1
- * @image ../images/functions/tanh_triad/curve_gear_tanh_triad_pair_alternative.png Tanh Triad pair 2
  *
  * @param modul {number, default .8} Tooth module.
  *

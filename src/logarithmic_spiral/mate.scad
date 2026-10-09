@@ -5,9 +5,6 @@ include <../common/mate/placement.scad>
 /***
  * @function curve_gear_logarithmic_spiral_mate
  * @brief Build the standalone static reference mate boundary at the origin.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png Logarithmic spiral mate 1
- * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate_alternative.png Logarithmic spiral mate 2
  * A fixed 180-degree placement is applied by the static pair assembly; this
  * module does not claim dynamic conjugacy.
  * @param modul {number > 0} Tooth module in mm.

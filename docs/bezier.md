@@ -83,7 +83,7 @@ The module `Bezier` defines the following functions.
 
 | Bézier gear 1 | Bézier gear 2 |
 | --- | --- |
-| [![Bézier gear 1](../images/functions/bezier/curve_gear_bezier.png)](../images/functions/bezier/curve_gear_bezier.png) | [![Bézier gear 2](../images/functions/bezier/curve_gear_bezier_alternative.png)](../images/functions/bezier/curve_gear_bezier_alternative.png) |
+| [![curve_gear_bezier example preview](../images/functions/bezier/curve_gear_bezier.png)](../images/functions/bezier/curve_gear_bezier.png) | [![Bézier gear alternative](../images/functions/bezier/curve_gear_bezier_alternative.png)](../images/functions/bezier/curve_gear_bezier_alternative.png) |
 
 
 An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
@@ -118,10 +118,10 @@ Back to [module description](#module-bezier).
 
 | Bézier 2D gear 1 | Bézier 2D gear 2 |
 | --- | --- |
-| [![Bézier 2D gear 1](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [![Bézier 2D gear 2](../images/functions/bezier/curve_gear_bezier_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_alternative_2d.png) |
+| [![bezier 2D gear outline](../images/functions/bezier/curve_gear_bezier_2d.png)](../images/functions/bezier/curve_gear_bezier_2d.png) | [![Bézier 2D gear alternative](../images/functions/bezier/curve_gear_bezier_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete bezier gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -152,10 +152,10 @@ Back to [module description](#module-bezier).
 
 | Bézier body 1 | Bézier body 2 |
 | --- | --- |
-| [![Bézier body 1](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [![Bézier body 2](../images/functions/bezier/curve_gear_bezier_body_alternative.png)](../images/functions/bezier/curve_gear_bezier_body_alternative.png) |
+| [![curve_gear_bezier_body example preview](../images/functions/bezier/curve_gear_bezier_body.png)](../images/functions/bezier/curve_gear_bezier_body.png) | [![Bézier body alternative](../images/functions/bezier/curve_gear_bezier_body_alternative.png)](../images/functions/bezier/curve_gear_bezier_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the closed Bézier body without teeth.
 
 **Parameters:**
 
@@ -181,10 +181,10 @@ Back to [module description](#module-bezier).
 
 | Bézier 2D body 1 | Bézier 2D body 2 |
 | --- | --- |
-| [![Bézier 2D body 1](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [![Bézier 2D body 2](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png) |
+| [![bezier 2D body outline](../images/functions/bezier/curve_gear_bezier_body_2d.png)](../images/functions/bezier/curve_gear_bezier_body_2d.png) | [![Bézier 2D body alternative](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png)](../images/functions/bezier/curve_gear_bezier_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the bezier body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -216,10 +216,10 @@ Back to [module description](#module-bezier).
 
 | Bézier mate 1 | Bézier mate 2 |
 | --- | --- |
-| [![Bézier mate 1](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [![Bézier mate 2](../images/functions/bezier/curve_gear_bezier_mate_alternative.png)](../images/functions/bezier/curve_gear_bezier_mate_alternative.png) |
+| [![curve_gear_bezier_mate example preview](../images/functions/bezier/curve_gear_bezier_mate.png)](../images/functions/bezier/curve_gear_bezier_mate.png) | [![Bézier mate alternative](../images/functions/bezier/curve_gear_bezier_mate_alternative.png)](../images/functions/bezier/curve_gear_bezier_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build a conjugate mate for an admissible radial Bézier pitch curve.
 
 **Parameters:**
 
@@ -281,10 +281,10 @@ Back to [module description](#module-bezier).
 
 | Bézier pair 1 | Bézier pair 2 |
 | --- | --- |
-| [![Bézier pair 1](../images/functions/bezier/curve_gear_bezier_pair.png)](../images/functions/bezier/curve_gear_bezier_pair.png) | [![Bézier pair 2](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)](../images/functions/bezier/curve_gear_bezier_pair_alternative.png) |
+| [![curve_gear_bezier_pair example preview](../images/functions/bezier/curve_gear_bezier_pair.png)](../images/functions/bezier/curve_gear_bezier_pair.png) | [![Bézier pair alternative](../images/functions/bezier/curve_gear_bezier_pair_alternative.png)](../images/functions/bezier/curve_gear_bezier_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+Build a meshed or separated pair using the admissible Bézier radial-mate adapter.
 
 **Parameters:**
 

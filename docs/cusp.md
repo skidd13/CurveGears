@@ -98,7 +98,7 @@ The module `Cusp` defines the following functions.
 
 | Cusp gear 1 | Cusp gear 2 |
 | --- | --- |
-| [![Cusp gear 1](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) | [![Cusp gear 2](../images/functions/cusp/curve_gear_cusp_alternative.png)](../images/functions/cusp/curve_gear_cusp_alternative.png) |
+| [![cusp example preview](../images/functions/cusp/curve_gear_cusp.png)](../images/functions/cusp/curve_gear_cusp.png) | [![Cusp gear alternative](../images/functions/cusp/curve_gear_cusp_alternative.png)](../images/functions/cusp/curve_gear_cusp_alternative.png) |
 
 
 Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
@@ -128,10 +128,10 @@ Back to [module description](#module-cusp).
 
 | Cusp 2D gear 1 | Cusp 2D gear 2 |
 | --- | --- |
-| [![Cusp 2D gear 1](../images/functions/cusp/curve_gear_cusp_2d.png)](../images/functions/cusp/curve_gear_cusp_2d.png) | [![Cusp 2D gear 2](../images/functions/cusp/curve_gear_cusp_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_alternative_2d.png) |
+| [![cusp 2D gear outline](../images/functions/cusp/curve_gear_cusp_2d.png)](../images/functions/cusp/curve_gear_cusp_2d.png) | [![Cusp 2D gear alternative](../images/functions/cusp/curve_gear_cusp_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete cusp gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -161,10 +161,10 @@ Back to [module description](#module-cusp).
 
 | Cusp body 1 | Cusp body 2 |
 | --- | --- |
-| [![Cusp body 1](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) | [![Cusp body 2](../images/functions/cusp/curve_gear_cusp_body_alternative.png)](../images/functions/cusp/curve_gear_cusp_body_alternative.png) |
+| [![cusp body example preview](../images/functions/cusp/curve_gear_cusp_body.png)](../images/functions/cusp/curve_gear_cusp_body.png) | [![Cusp body alternative](../images/functions/cusp/curve_gear_cusp_body_alternative.png)](../images/functions/cusp/curve_gear_cusp_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the hypocycloid body with its integrated cusp-tip teeth.
 
 **Parameters:**
 
@@ -186,10 +186,10 @@ Back to [module description](#module-cusp).
 
 | Cusp 2D body 1 | Cusp 2D body 2 |
 | --- | --- |
-| [![Cusp 2D body 1](../images/functions/cusp/curve_gear_cusp_body_2d.png)](../images/functions/cusp/curve_gear_cusp_body_2d.png) | [![Cusp 2D body 2](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png) |
+| [![cusp 2D body outline](../images/functions/cusp/curve_gear_cusp_body_2d.png)](../images/functions/cusp/curve_gear_cusp_body_2d.png) | [![Cusp 2D body alternative](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png)](../images/functions/cusp/curve_gear_cusp_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
 
 **Parameters:**
 
@@ -235,10 +235,10 @@ Back to [module description](#module-cusp).
 
 | Cusp mate 1 | Cusp mate 2 |
 | --- | --- |
-| [![Cusp mate 1](../images/functions/cusp/curve_gear_cusp_mate.png)](../images/functions/cusp/curve_gear_cusp_mate.png) | [![Cusp mate 2](../images/functions/cusp/curve_gear_cusp_mate_alternative.png)](../images/functions/cusp/curve_gear_cusp_mate_alternative.png) |
+| [![cusp mate example preview](../images/functions/cusp/curve_gear_cusp_mate.png)](../images/functions/cusp/curve_gear_cusp_mate.png) | [![Cusp mate alternative](../images/functions/cusp/curve_gear_cusp_mate_alternative.png)](../images/functions/cusp/curve_gear_cusp_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone swept-envelope mate for a cusp gear.
 
 **Parameters:**
 
@@ -285,10 +285,10 @@ Back to [module description](#module-cusp).
 
 | Cusp pair 1 | Cusp pair 2 |
 | --- | --- |
-| [![Cusp pair 1](../images/functions/cusp/curve_gear_cusp_pair.png)](../images/functions/cusp/curve_gear_cusp_pair.png) | [![Cusp pair 2](../images/functions/cusp/curve_gear_cusp_pair_alternative.png)](../images/functions/cusp/curve_gear_cusp_pair_alternative.png) |
+| [![cusp pair example preview](../images/functions/cusp/curve_gear_cusp_pair.png)](../images/functions/cusp/curve_gear_cusp_pair.png) | [![Cusp pair alternative](../images/functions/cusp/curve_gear_cusp_pair_alternative.png)](../images/functions/cusp/curve_gear_cusp_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
+Build a meshed or separated hypocycloid cusp gear pair with a swept-envelope mate.
 
 **Parameters:**
 

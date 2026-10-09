@@ -77,7 +77,7 @@ The module `Epitrochoid` defines the following functions.
 
 | Epitrochoid gear 1 | Epitrochoid gear 2 |
 | --- | --- |
-| [![Epitrochoid gear 1](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [![Epitrochoid gear 2](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative.png) |
+| [![curve_gear_epitrochoid example preview](../images/functions/epitrochoid/curve_gear_epitrochoid.png)](../images/functions/epitrochoid/curve_gear_epitrochoid.png) | [![Epitrochoid gear alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative.png) |
 
 
 Public single-gear construction for the epitrochoid family.
@@ -117,10 +117,10 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid 2D gear 1 | Epitrochoid 2D gear 2 |
 | --- | --- |
-| [![Epitrochoid 2D gear 1](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [![Epitrochoid 2D gear 2](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png) |
+| [![epitrochoid 2D gear outline](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_2d.png) | [![Epitrochoid 2D gear alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete epitrochoid gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -153,10 +153,10 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid body 1 | Epitrochoid body 2 |
 | --- | --- |
-| [![Epitrochoid body 1](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [![Epitrochoid body 2](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png) |
+| [![curve_gear_epitrochoid_body example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body.png) | [![Epitrochoid body alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the epitrochoid body solid without teeth.
 
 **Parameters:**
 
@@ -190,10 +190,10 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid 2D body 1 | Epitrochoid 2D body 2 |
 | --- | --- |
-| [![Epitrochoid 2D body 1](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [![Epitrochoid 2D body 2](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png) |
+| [![epitrochoid 2D body outline](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_2d.png) | [![Epitrochoid 2D body alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -247,10 +247,10 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid mate 1 | Epitrochoid mate 2 |
 | --- | --- |
-| [![Epitrochoid mate 1](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [![Epitrochoid mate 2](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png) |
+| [![curve_gear_epitrochoid_mate example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png) | [![Epitrochoid mate alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone epitrochoid mate boundary at the origin.
 
 **Parameters:**
 
@@ -298,10 +298,9 @@ Back to [module description](#module-epitrochoid).
 
 | Epitrochoid pair 1 | Epitrochoid pair 2 |
 | --- | --- |
-| [![Epitrochoid pair 1](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [![Epitrochoid pair 2](../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png) |
+| [![curve_gear_epitrochoid_pair example preview](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png) | [![Epitrochoid pair alternative](../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png)](../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_epitrochoid`](#f-curve_gear_epitrochoid)
 

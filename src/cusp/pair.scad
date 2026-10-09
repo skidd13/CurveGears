@@ -52,9 +52,6 @@ module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,sampl
 /***
  * @function curve_gear_cusp_pair
  * @brief Build a meshed or separated hypocycloid cusp gear pair with a swept-envelope mate.
- * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
- * @image ../images/functions/cusp/curve_gear_cusp_pair.png Cusp pair 1
- * @image ../images/functions/cusp/curve_gear_cusp_pair_alternative.png Cusp pair 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Shared tooth count.
  * @param width {number > 0} Gear extrusion width in mm.

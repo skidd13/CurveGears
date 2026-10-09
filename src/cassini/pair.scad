@@ -1,9 +1,6 @@
 /**
  * @function curve_gear_cassini_pair
  * @brief Build a meshed or separated Cassini driver/mate pair.
- * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
- * @image ../images/functions/cassini/curve_gear_cassini_pair.png Cassini pair 1
- * @image ../images/functions/cassini/curve_gear_cassini_pair_alternative.png Cassini pair 2
  * @param modul {number > 0, default .8} Tooth module in mm.
  * @param tooth_number {integer >= 3, default 34} Number of teeth.
  * @param width {number > 0, default 4} Extrusion width in mm.

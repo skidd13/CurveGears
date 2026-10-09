@@ -1,9 +1,6 @@
 /***
  * @function curve_gear_epitrochoid_pair
  * @brief Build a meshed or separated epitrochoid pair.
- * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
- * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png Epitrochoid pair 1
- * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png Epitrochoid pair 2
  * @param modul {number > 0, default .8} Tooth module in mm.
  * @param tooth_number {integer >= 3, default 34} Number of teeth.
  * @param width {number > 0, default 4} Extrusion width in mm.

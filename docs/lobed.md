@@ -54,7 +54,7 @@ The module `Lobed` defines the following functions.
 
 | Lobed gear 1 | Lobed gear 2 |
 | --- | --- |
-| [![Lobed gear 1](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [![Lobed gear 2](../images/functions/lobed/curve_gear_lobed_alternative.png)](../images/functions/lobed/curve_gear_lobed_alternative.png) |
+| [![curve_gear_lobed example preview](../images/functions/lobed/curve_gear_lobed.png)](../images/functions/lobed/curve_gear_lobed.png) | [![Lobed gear alternative](../images/functions/lobed/curve_gear_lobed_alternative.png)](../images/functions/lobed/curve_gear_lobed_alternative.png) |
 
 
 Public single-gear construction for the lobed family.
@@ -93,10 +93,10 @@ Back to [module description](#module-lobed).
 
 | Lobed 2D gear 1 | Lobed 2D gear 2 |
 | --- | --- |
-| [![Lobed 2D gear 1](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [![Lobed 2D gear 2](../images/functions/lobed/curve_gear_lobed_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_alternative_2d.png) |
+| [![lobed 2D gear outline](../images/functions/lobed/curve_gear_lobed_2d.png)](../images/functions/lobed/curve_gear_lobed_2d.png) | [![Lobed 2D gear alternative](../images/functions/lobed/curve_gear_lobed_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete lobed gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -128,10 +128,10 @@ Back to [module description](#module-lobed).
 
 | Lobed body 1 | Lobed body 2 |
 | --- | --- |
-| [![Lobed body 1](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [![Lobed body 2](../images/functions/lobed/curve_gear_lobed_body_alternative.png)](../images/functions/lobed/curve_gear_lobed_body_alternative.png) |
+| [![curve_gear_lobed_body example preview](../images/functions/lobed/curve_gear_lobed_body.png)](../images/functions/lobed/curve_gear_lobed_body.png) | [![Lobed body alternative](../images/functions/lobed/curve_gear_lobed_body_alternative.png)](../images/functions/lobed/curve_gear_lobed_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the lobed body solid without teeth.
 
 **Parameters:**
 
@@ -164,10 +164,10 @@ Back to [module description](#module-lobed).
 
 | Lobed 2D body 1 | Lobed 2D body 2 |
 | --- | --- |
-| [![Lobed 2D body 1](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [![Lobed 2D body 2](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png) |
+| [![lobed 2D body outline](../images/functions/lobed/curve_gear_lobed_body_2d.png)](../images/functions/lobed/curve_gear_lobed_body_2d.png) | [![Lobed 2D body alternative](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png)](../images/functions/lobed/curve_gear_lobed_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -219,10 +219,10 @@ Back to [module description](#module-lobed).
 
 | Lobed mate 1 | Lobed mate 2 |
 | --- | --- |
-| [![Lobed mate 1](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [![Lobed mate 2](../images/functions/lobed/curve_gear_lobed_mate_alternative.png)](../images/functions/lobed/curve_gear_lobed_mate_alternative.png) |
+| [![curve_gear_lobed_mate example preview](../images/functions/lobed/curve_gear_lobed_mate.png)](../images/functions/lobed/curve_gear_lobed_mate.png) | [![Lobed mate alternative](../images/functions/lobed/curve_gear_lobed_mate_alternative.png)](../images/functions/lobed/curve_gear_lobed_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone lobed mate boundary at the origin.
 
 **Parameters:**
 
@@ -268,10 +268,9 @@ Back to [module description](#module-lobed).
 
 | Lobed pair 1 | Lobed pair 2 |
 | --- | --- |
-| [![Lobed pair 1](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [![Lobed pair 2](../images/functions/lobed/curve_gear_lobed_pair_alternative.png)](../images/functions/lobed/curve_gear_lobed_pair_alternative.png) |
+| [![curve_gear_lobed_pair example preview](../images/functions/lobed/curve_gear_lobed_pair.png)](../images/functions/lobed/curve_gear_lobed_pair.png) | [![Lobed pair alternative](../images/functions/lobed/curve_gear_lobed_pair_alternative.png)](../images/functions/lobed/curve_gear_lobed_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_lobed`](#f-curve_gear_lobed)
 

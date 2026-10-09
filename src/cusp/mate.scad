@@ -44,9 +44,6 @@ module _cg_cusp_envelope_mate_from_geometry(geometry,modul,width,bore,sweep_step
 /***
  * @function curve_gear_cusp_mate
  * @brief Build the standalone swept-envelope mate for a cusp gear.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/cusp/curve_gear_cusp_mate.png Cusp mate 1
- * @image ../images/functions/cusp/curve_gear_cusp_mate_alternative.png Cusp mate 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Shared tooth count.
  * @param width {number > 0} Extrusion width in mm.

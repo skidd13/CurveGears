@@ -500,7 +500,7 @@ Back to [module description](#module-tooth-generation).
 
 | Tooth construction 1 | Tooth construction 2 |
 | --- | --- |
-| [![Tooth construction 1](../images/tooth/construction_2d.png)](../images/tooth/construction_2d.png) | [![Tooth construction 2](../images/tooth/construction_alternative_2d.png)](../images/tooth/construction_alternative_2d.png) |
+| [![Tooth construction 1](../images/tooth/construction_2d.png)](../images/tooth/construction_2d.png) | [![Tooth construction alternative](../images/tooth/construction_alternative_2d.png)](../images/tooth/construction_alternative_2d.png) |
 
 
 Return one cached, validated local candidate tooth.

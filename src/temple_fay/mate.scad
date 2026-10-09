@@ -4,9 +4,6 @@ include <../common/mate/placement.scad>
 
 /*** @function curve_gear_temple_fay_mate
  * @brief Build the dynamically solved Temple Fay conjugate mate.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/temple_fay/curve_gear_temple_fay_mate.png Temple Fay mate 1
- * @image ../images/functions/temple_fay/curve_gear_temple_fay_mate_alternative.png Temple Fay mate 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

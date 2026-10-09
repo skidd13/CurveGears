@@ -1,9 +1,6 @@
 /***
  * @function curve_gear_superformula_pair
  * @brief Build a meshed or separated superformula pair from validated 2D boundaries.
- * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
- * @image ../images/functions/superformula/curve_gear_superformula_pair.png Superformula pair 1
- * @image ../images/functions/superformula/curve_gear_superformula_pair_alternative.png Superformula pair 2
  * @param modul {number > 0, default .5} Tooth module in mm.
  * @param tooth_number {integer >= 3, default 80} Number of teeth.
  * @param width {number > 0, default 4} Extrusion width in mm.

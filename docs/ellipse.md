@@ -59,7 +59,7 @@ The module `Ellipse` defines the following functions.
 
 | Ellipse gear 1 | Ellipse gear 2 |
 | --- | --- |
-| [![Ellipse gear 1](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) | [![Ellipse gear 2](../images/functions/ellipse/curve_gear_ellipse_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_alternative.png) |
+| [![curve_gear_ellipse example preview](../images/functions/ellipse/curve_gear_ellipse.png)](../images/functions/ellipse/curve_gear_ellipse.png) | [![Ellipse gear alternative](../images/functions/ellipse/curve_gear_ellipse_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_alternative.png) |
 
 
 Public single-gear construction for the ellipse family.
@@ -97,10 +97,10 @@ Back to [module description](#module-ellipse).
 
 | Ellipse 2D gear 1 | Ellipse 2D gear 2 |
 | --- | --- |
-| [![Ellipse 2D gear 1](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [![Ellipse 2D gear 2](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png) |
+| [![ellipse 2D gear outline](../images/functions/ellipse/curve_gear_ellipse_2d.png)](../images/functions/ellipse/curve_gear_ellipse_2d.png) | [![Ellipse 2D gear alternative](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete ellipse gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -131,10 +131,10 @@ Back to [module description](#module-ellipse).
 
 | Ellipse body 1 | Ellipse body 2 |
 | --- | --- |
-| [![Ellipse body 1](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) | [![Ellipse body 2](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png) |
+| [![curve_gear_ellipse_body example preview](../images/functions/ellipse/curve_gear_ellipse_body.png)](../images/functions/ellipse/curve_gear_ellipse_body.png) | [![Ellipse body alternative](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the elliptical body solid without teeth.
 
 **Parameters:**
 
@@ -166,10 +166,10 @@ Back to [module description](#module-ellipse).
 
 | Ellipse 2D body 1 | Ellipse 2D body 2 |
 | --- | --- |
-| [![Ellipse 2D body 1](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) | [![Ellipse 2D body 2](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png) |
+| [![ellipse 2D body outline](../images/functions/ellipse/curve_gear_ellipse_body_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_2d.png) | [![Ellipse 2D body alternative](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png)](../images/functions/ellipse/curve_gear_ellipse_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -219,10 +219,10 @@ Back to [module description](#module-ellipse).
 
 | Ellipse mate 1 | Ellipse mate 2 |
 | --- | --- |
-| [![Ellipse mate 1](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) | [![Ellipse mate 2](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png) |
+| [![curve_gear_ellipse_mate example preview](../images/functions/ellipse/curve_gear_ellipse_mate.png)](../images/functions/ellipse/curve_gear_ellipse_mate.png) | [![Ellipse mate alternative](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone elliptical mate boundary at the origin.
 
 **Parameters:**
 
@@ -266,10 +266,9 @@ Back to [module description](#module-ellipse).
 
 | Ellipse pair 1 | Ellipse pair 2 |
 | --- | --- |
-| [![Ellipse pair 1](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) | [![Ellipse pair 2](../images/functions/ellipse/curve_gear_ellipse_pair_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_pair_alternative.png) |
+| [![curve_gear_ellipse_pair example preview](../images/functions/ellipse/curve_gear_ellipse_pair.png)](../images/functions/ellipse/curve_gear_ellipse_pair.png) | [![Ellipse pair alternative](../images/functions/ellipse/curve_gear_ellipse_pair_alternative.png)](../images/functions/ellipse/curve_gear_ellipse_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_ellipse`](#f-curve_gear_ellipse)
 

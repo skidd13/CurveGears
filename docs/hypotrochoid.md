@@ -72,7 +72,7 @@ The module `Hypotrochoid` defines the following functions.
 
 | Hypotrochoid gear 1 | Hypotrochoid gear 2 |
 | --- | --- |
-| [![Hypotrochoid gear 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) | [![Hypotrochoid gear 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative.png) |
+| [![curve_gear_hypotrochoid example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid.png) | [![Hypotrochoid gear alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative.png) |
 
 
 A 5:1 rolling ratio and offset 0.35 produce five-fold shaping rather than the canonical three-fold outline. The alternative changes the curve itself, not merely the pair spacing.
@@ -109,10 +109,10 @@ Back to [module description](#module-hypotrochoid).
 
 | Hypotrochoid 2D gear 1 | Hypotrochoid 2D gear 2 |
 | --- | --- |
-| [![Hypotrochoid 2D gear 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [![Hypotrochoid 2D gear 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png) |
+| [![hypotrochoid 2D gear outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png) | [![Hypotrochoid 2D gear alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete hypotrochoid gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -145,10 +145,10 @@ Back to [module description](#module-hypotrochoid).
 
 | Hypotrochoid body 1 | Hypotrochoid body 2 |
 | --- | --- |
-| [![Hypotrochoid body 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [![Hypotrochoid body 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png) |
+| [![curve_gear_hypotrochoid_body example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body.png) | [![Hypotrochoid body alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the hypotrochoid body solid without teeth.
 
 **Parameters:**
 
@@ -176,10 +176,10 @@ Back to [module description](#module-hypotrochoid).
 
 | Hypotrochoid 2D body 1 | Hypotrochoid 2D body 2 |
 | --- | --- |
-| [![Hypotrochoid 2D body 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [![Hypotrochoid 2D body 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png) |
+| [![hypotrochoid 2D body outline](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_2d.png) | [![Hypotrochoid 2D body alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -233,10 +233,10 @@ Back to [module description](#module-hypotrochoid).
 
 | Hypotrochoid mate 1 | Hypotrochoid mate 2 |
 | --- | --- |
-| [![Hypotrochoid mate 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [![Hypotrochoid mate 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png) |
+| [![curve_gear_hypotrochoid_mate example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate.png) | [![Hypotrochoid mate alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone conjugate mate for a hypotrochoid driver.
 
 **Parameters:**
 
@@ -284,13 +284,10 @@ Back to [module description](#module-hypotrochoid).
 
 | Hypotrochoid pair 1 | Hypotrochoid pair 2 |
 | --- | --- |
-| [![Hypotrochoid pair 1](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png) | [![Hypotrochoid pair 2](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png) |
+| [![curve_gear_hypotrochoid_pair example preview](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair.png) | [![Hypotrochoid pair alternative](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png)](../images/functions/hypotrochoid/curve_gear_hypotrochoid_pair_alternative.png) |
 
 
 
-The separated display alternative uses `together_built=false`; its curated
-scenario example lives beside the public pair example.
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 **Parameters:**
 

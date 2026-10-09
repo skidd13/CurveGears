@@ -3,9 +3,6 @@ include <../common/pair/assembly.scad>
 
 /*** @function curve_gear_temple_fay_pair
  * @brief Build a Temple Fay driver and dynamically solved conjugate mate, separated by default.
- * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
- * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair.png Temple Fay pair 1
- * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png Temple Fay pair 2
  *
  * @param modul {number, default .8} Tooth module.
  * @param tooth_number {integer, default 34} Tooth count.

@@ -60,7 +60,7 @@ The module `Pascal` defines the following functions.
 
 | Pascal gear 1 | Pascal gear 2 |
 | --- | --- |
-| [![Pascal gear 1](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) | [![Pascal gear 2](../images/functions/pascal/curve_gear_pascal_alternative.png)](../images/functions/pascal/curve_gear_pascal_alternative.png) |
+| [![curve_gear_pascal example preview](../images/functions/pascal/curve_gear_pascal.png)](../images/functions/pascal/curve_gear_pascal.png) | [![Pascal gear alternative](../images/functions/pascal/curve_gear_pascal_alternative.png)](../images/functions/pascal/curve_gear_pascal_alternative.png) |
 
 
 Public single-gear construction for the pascal family.
@@ -98,10 +98,10 @@ Back to [module description](#module-pascal).
 
 | Pascal 2D gear 1 | Pascal 2D gear 2 |
 | --- | --- |
-| [![Pascal 2D gear 1](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) | [![Pascal 2D gear 2](../images/functions/pascal/curve_gear_pascal_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_alternative_2d.png) |
+| [![pascal 2D gear outline](../images/functions/pascal/curve_gear_pascal_2d.png)](../images/functions/pascal/curve_gear_pascal_2d.png) | [![Pascal 2D gear alternative](../images/functions/pascal/curve_gear_pascal_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete pascal gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -132,10 +132,10 @@ Back to [module description](#module-pascal).
 
 | Pascal body 1 | Pascal body 2 |
 | --- | --- |
-| [![Pascal body 1](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) | [![Pascal body 2](../images/functions/pascal/curve_gear_pascal_body_alternative.png)](../images/functions/pascal/curve_gear_pascal_body_alternative.png) |
+| [![curve_gear_pascal_body example preview](../images/functions/pascal/curve_gear_pascal_body.png)](../images/functions/pascal/curve_gear_pascal_body.png) | [![Pascal body alternative](../images/functions/pascal/curve_gear_pascal_body_alternative.png)](../images/functions/pascal/curve_gear_pascal_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the Pascal body solid without teeth.
 
 **Parameters:**
 
@@ -167,10 +167,10 @@ Back to [module description](#module-pascal).
 
 | Pascal 2D body 1 | Pascal 2D body 2 |
 | --- | --- |
-| [![Pascal 2D body 1](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) | [![Pascal 2D body 2](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png) |
+| [![pascal 2D body outline](../images/functions/pascal/curve_gear_pascal_body_2d.png)](../images/functions/pascal/curve_gear_pascal_body_2d.png) | [![Pascal 2D body alternative](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png)](../images/functions/pascal/curve_gear_pascal_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the pascal body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -220,10 +220,10 @@ Back to [module description](#module-pascal).
 
 | Pascal mate 1 | Pascal mate 2 |
 | --- | --- |
-| [![Pascal mate 1](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) | [![Pascal mate 2](../images/functions/pascal/curve_gear_pascal_mate_alternative.png)](../images/functions/pascal/curve_gear_pascal_mate_alternative.png) |
+| [![curve_gear_pascal_mate example preview](../images/functions/pascal/curve_gear_pascal_mate.png)](../images/functions/pascal/curve_gear_pascal_mate.png) | [![Pascal mate alternative](../images/functions/pascal/curve_gear_pascal_mate_alternative.png)](../images/functions/pascal/curve_gear_pascal_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone Pascal mate boundary at the origin.
 
 **Parameters:**
 
@@ -267,10 +267,9 @@ Back to [module description](#module-pascal).
 
 | Pascal pair 1 | Pascal pair 2 |
 | --- | --- |
-| [![Pascal pair 1](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) | [![Pascal pair 2](../images/functions/pascal/curve_gear_pascal_pair_alternative.png)](../images/functions/pascal/curve_gear_pascal_pair_alternative.png) |
+| [![curve_gear_pascal_pair example preview](../images/functions/pascal/curve_gear_pascal_pair.png)](../images/functions/pascal/curve_gear_pascal_pair.png) | [![Pascal pair alternative](../images/functions/pascal/curve_gear_pascal_pair_alternative.png)](../images/functions/pascal/curve_gear_pascal_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_pascal`](#f-curve_gear_pascal)
 

@@ -3,8 +3,6 @@
  * @function curve_gear_superformula
  * @brief Build a superformula non-circular gear.
  * A rounded square with symmetry 4 and exponents 8 replaces the canonical five-pointed star. This demonstrates the superformula's ability to change its shape class through exponents and symmetry.
- * @image ../images/functions/superformula/curve_gear_superformula.png Superformula gear 1
- * @image ../images/functions/superformula/curve_gear_superformula_alternative.png Superformula gear 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -75,9 +73,6 @@ module curve_gear_superformula(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,
 /***
  * @function curve_gear_superformula_body
  * @brief Build the superformula body solid without teeth.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/superformula/curve_gear_superformula_body.png Superformula body 1
- * @image ../images/functions/superformula/curve_gear_superformula_body_alternative.png Superformula body 2
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
@@ -104,9 +99,6 @@ module curve_gear_superformula_body(modul,tooth_number,width,bore,symmetry=4,a=1
 /***
  * @function curve_gear_superformula_2d
  * @brief Emit the complete superformula gear profile as 2D geometry.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/superformula/curve_gear_superformula_2d.png Superformula 2D gear 1
- * @image ../images/functions/superformula/curve_gear_superformula_alternative_2d.png Superformula 2D gear 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
@@ -132,9 +124,6 @@ module curve_gear_superformula_2d(modul, tooth_number, bore, symmetry=4, a=1, b=
 /***
  * @function curve_gear_superformula_body_2d
  * @brief Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/superformula/curve_gear_superformula_body_2d.png Superformula 2D body 1
- * @image ../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png Superformula 2D body 2
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.

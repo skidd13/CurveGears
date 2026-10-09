@@ -71,7 +71,7 @@ The module `Superformula` defines the following functions.
 
 | Superformula gear 1 | Superformula gear 2 |
 | --- | --- |
-| [![Superformula gear 1](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) | [![Superformula gear 2](../images/functions/superformula/curve_gear_superformula_alternative.png)](../images/functions/superformula/curve_gear_superformula_alternative.png) |
+| [![curve_gear_superformula example preview](../images/functions/superformula/curve_gear_superformula.png)](../images/functions/superformula/curve_gear_superformula.png) | [![Superformula gear alternative](../images/functions/superformula/curve_gear_superformula_alternative.png)](../images/functions/superformula/curve_gear_superformula_alternative.png) |
 
 
 Public single-gear construction for the superformula family.
@@ -115,10 +115,10 @@ Back to [module description](#module-superformula).
 
 | Superformula 2D gear 1 | Superformula 2D gear 2 |
 | --- | --- |
-| [![Superformula 2D gear 1](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) | [![Superformula 2D gear 2](../images/functions/superformula/curve_gear_superformula_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_alternative_2d.png) |
+| [![superformula 2D gear outline](../images/functions/superformula/curve_gear_superformula_2d.png)](../images/functions/superformula/curve_gear_superformula_2d.png) | [![Superformula 2D gear alternative](../images/functions/superformula/curve_gear_superformula_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the complete superformula gear profile as 2D geometry.
 
 **Parameters:**
 
@@ -154,10 +154,10 @@ Back to [module description](#module-superformula).
 
 | Superformula body 1 | Superformula body 2 |
 | --- | --- |
-| [![Superformula body 1](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) | [![Superformula body 2](../images/functions/superformula/curve_gear_superformula_body_alternative.png)](../images/functions/superformula/curve_gear_superformula_body_alternative.png) |
+| [![curve_gear_superformula_body example preview](../images/functions/superformula/curve_gear_superformula_body.png)](../images/functions/superformula/curve_gear_superformula_body.png) | [![Superformula body alternative](../images/functions/superformula/curve_gear_superformula_body_alternative.png)](../images/functions/superformula/curve_gear_superformula_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the superformula body solid without teeth.
 
 **Parameters:**
 
@@ -194,10 +194,10 @@ Back to [module description](#module-superformula).
 
 | Superformula 2D body 1 | Superformula 2D body 2 |
 | --- | --- |
-| [![Superformula 2D body 1](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) | [![Superformula 2D body 2](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png) |
+| [![superformula 2D body outline](../images/functions/superformula/curve_gear_superformula_body_2d.png)](../images/functions/superformula/curve_gear_superformula_body_2d.png) | [![Superformula 2D body alternative](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png)](../images/functions/superformula/curve_gear_superformula_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Emit the superformula body as 2D geometry with an optional signed outer-contour offset.
 
 **Parameters:**
 
@@ -257,10 +257,10 @@ Back to [module description](#module-superformula).
 
 | Superformula mate 1 | Superformula mate 2 |
 | --- | --- |
-| [![Superformula mate 1](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) | [![Superformula mate 2](../images/functions/superformula/curve_gear_superformula_mate_alternative.png)](../images/functions/superformula/curve_gear_superformula_mate_alternative.png) |
+| [![curve_gear_superformula_mate example preview](../images/functions/superformula/curve_gear_superformula_mate.png)](../images/functions/superformula/curve_gear_superformula_mate.png) | [![Superformula mate alternative](../images/functions/superformula/curve_gear_superformula_mate_alternative.png)](../images/functions/superformula/curve_gear_superformula_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
+Build the standalone superformula mate boundary at the origin.
 
 **Parameters:**
 
@@ -314,10 +314,9 @@ Back to [module description](#module-superformula).
 
 | Superformula pair 1 | Superformula pair 2 |
 | --- | --- |
-| [![Superformula pair 1](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) | [![Superformula pair 2](../images/functions/superformula/curve_gear_superformula_pair_alternative.png)](../images/functions/superformula/curve_gear_superformula_pair_alternative.png) |
+| [![curve_gear_superformula_pair example preview](../images/functions/superformula/curve_gear_superformula_pair.png)](../images/functions/superformula/curve_gear_superformula_pair.png) | [![Superformula pair alternative](../images/functions/superformula/curve_gear_superformula_pair_alternative.png)](../images/functions/superformula/curve_gear_superformula_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 Pair geometry uses the single-gear parameters documented in gear.scad.
 [`curve_gear_superformula`](#f-curve_gear_superformula)
 

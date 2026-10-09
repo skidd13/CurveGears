@@ -13,8 +13,6 @@ module _cg_logistic_dwell_build(modul,tooth_number,width,bore,gain=8,depth=.2,pr
  * @function curve_gear_logistic_dwell
  * @brief Build a logistic-gated second-harmonic dwell gear.
  * Depth 0.46 and gain 3 replace the canonical shallow, steep logistic gate. The larger radial variation and smoother transitions distinguish curve amplitude from gate sharpness; coarse teeth expose the contour.
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell.png Logistic Dwell gear 1
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative.png Logistic Dwell gear 2
  *
  * @param modul {number > 0} Tooth module in mm.
  *
@@ -46,9 +44,6 @@ module curve_gear_logistic_dwell(modul,tooth_number,width,bore,gain=8,depth=.2,p
 
 /*** @function curve_gear_logistic_dwell_body
  * @brief Build the Logistic Dwell body.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_body.png Logistic Dwell body 1
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative.png Logistic Dwell body 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -69,9 +64,6 @@ module curve_gear_logistic_dwell_body(modul,tooth_number,width,bore,gain=8,depth
 
 /*** @function curve_gear_logistic_dwell_2d
  * @brief Build the Logistic Dwell 2D outline.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_2d.png Logistic Dwell 2D gear 1
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_alternative_2d.png Logistic Dwell 2D gear 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
@@ -91,9 +83,6 @@ module curve_gear_logistic_dwell_2d(modul,tooth_number,bore,gain=8,depth=.2,pres
 
 /*** @function curve_gear_logistic_dwell_body_2d
  * @brief Build the Logistic Dwell 2D body outline.
- * Alternative 2 uses the contrasting controls described in the gear example.
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_2d.png Logistic Dwell 2D body 1
- * @image ../images/functions/logistic_dwell/curve_gear_logistic_dwell_body_alternative_2d.png Logistic Dwell 2D body 2
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

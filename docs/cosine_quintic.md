@@ -51,7 +51,7 @@ The module `Cosine Quintic` defines the following functions.
 
 | Cosine Quintic gear 1 | Cosine Quintic gear 2 |
 | --- | --- |
-| [![Cosine Quintic gear 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png) | [![Cosine Quintic gear 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative.png) |
+| [![cosine quintic example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic.png) | [![Cosine Quintic gear alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative.png) |
 
 
 Three pronounced signed-cosine plateaux replace the canonical two-harmonic form. Harmonic 3 and depth 0.16 expose how the fifth power concentrates the radial excursions.
@@ -82,10 +82,9 @@ Back to [module description](#module-cosine-quintic).
 
 | Cosine Quintic 2D gear 1 | Cosine Quintic 2D gear 2 |
 | --- | --- |
-| [![Cosine Quintic 2D gear 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [![Cosine Quintic 2D gear 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png) |
+| [![cosine quintic 2d example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_2d.png) | [![Cosine Quintic 2D gear alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -112,10 +111,9 @@ Back to [module description](#module-cosine-quintic).
 
 | Cosine Quintic body 1 | Cosine Quintic body 2 |
 | --- | --- |
-| [![Cosine Quintic body 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [![Cosine Quintic body 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png) |
+| [![cosine quintic body example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body.png) | [![Cosine Quintic body alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -143,10 +141,9 @@ Back to [module description](#module-cosine-quintic).
 
 | Cosine Quintic 2D body 1 | Cosine Quintic 2D body 2 |
 | --- | --- |
-| [![Cosine Quintic 2D body 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [![Cosine Quintic 2D body 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png) |
+| [![cosine quintic body 2d example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_2d.png) | [![Cosine Quintic 2D body alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_body_alternative_2d.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -193,10 +190,9 @@ Back to [module description](#module-cosine-quintic).
 
 | Cosine Quintic mate 1 | Cosine Quintic mate 2 |
 | --- | --- |
-| [![Cosine Quintic mate 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [![Cosine Quintic mate 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png) |
+| [![cosine quintic mate example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png) | [![Cosine Quintic mate alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate_alternative.png) |
 
 
-Alternative 2 uses the contrasting controls described in the gear example.
 
 
 **Parameters:**
@@ -243,10 +239,9 @@ Back to [module description](#module-cosine-quintic).
 
 | Cosine Quintic pair 1 | Cosine Quintic pair 2 |
 | --- | --- |
-| [![Cosine Quintic pair 1](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [![Cosine Quintic pair 2](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.png) |
+| [![cosine quintic pair example preview](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png) | [![Cosine Quintic pair alternative](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.png)](../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair_alternative.png) |
 
 
-Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
 
 
 **Parameters:**
