@@ -44,19 +44,7 @@ Botany 90 (2003), 333–338.
 
 > [`_cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_superformula_buildmodultooth_numberwidthboresymmetry4a1b1n124n224n324pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal superformula construction dispatcher.
 
-> [`_cg_superformula_centre_distance`](#function-_cg_superformula_centre_distance): Solve the superformula conjugate centre distance.
-
-> [`_cg_superformula_driver_radii(scale, symmetry, a, b, n1, n2, n3, n=240)`](#function-_cg_superformula_driver_radiiscale-symmetry-a-b-n1-n2-n3-n240): Evaluate superformula radii at direct mate-construction angles.
-
-> [`_cg_superformula_mate_points`](#function-_cg_superformula_mate_points): Build superformula mate pitch points and their shared motion table.
-
-> [`_cg_superformula_mate_points_from_driver`](#function-_cg_superformula_mate_points_from_driver): Build superformula mate pitch points by advancing driver angle directly.
-
 > [`_cg_superformula_max_radius(scale, symmetry, a, b, n1, n2, n3, n)`](#function-_cg_superformula_max_radiusscale-symmetry-a-b-n1-n2-n3-n): Find the maximum sampled radius of a superformula curve.
-
-> [`_cg_superformula_motion_radii`](#function-_cg_superformula_motion_radii): Evaluate superformula radii at integration midpoints.
-
-> [`_cg_superformula_motion_table`](#function-_cg_superformula_motion_table): Build the shared superformula phase-motion table.
 
 > [`_cg_superformula_odd_valid(symmetry, a, b, n2, n3, tol)`](#function-_cg_superformula_odd_validsymmetry-a-b-n2-n3-tol): Check the continuity constraints for odd superformula symmetry.
 
@@ -398,96 +386,6 @@ Internal superformula construction dispatcher.
 
 Back to [module description](#module-superformula).
 
-### Function `_cg_superformula_centre_distance`
-
-
-Solve the superformula conjugate centre distance.
-
-**Parameters:**
-
-- `scale`: {number > 0} Overall radial scale.
-- `symmetry`: {integer >= 2} Number of repeated sectors.
-- `a`: {number > 0} Superformula radial parameter.
-- `b`: {number > 0} Superformula radial parameter.
-- `n1`: {number > 0} Superformula exponent.
-- `n2`: {number > 0} Superformula exponent.
-- `n3`: {number > 0} Superformula exponent.
-- `n`: {integer >= 1, default 240} Number of motion intervals.
-
-**Returns:**
-
-- `{number}`: Conjugate centre distance.
-
-Back to [module description](#module-superformula).
-
-### Function `_cg_superformula_driver_radii(scale, symmetry, a, b, n1, n2, n3, n=240)`
-
-
-Evaluate superformula radii at direct mate-construction angles.
-
-**Parameters:**
-
-- `scale`: {number > 0} Overall radial scale.
-- `symmetry`: {integer >= 2} Number of repeated sectors.
-- `a`: {number > 0} Superformula radial parameter.
-- `b`: {number > 0} Superformula radial parameter.
-- `n1`: {number > 0} Superformula exponent.
-- `n2`: {number > 0} Superformula exponent.
-- `n3`: {number > 0} Superformula exponent.
-- `n`: {integer >= 1, default 240} Number of boundary intervals.
-
-**Returns:**
-
-- `{array of number}`: Driver radii in angular order.
-
-Back to [module description](#module-superformula).
-
-### Function `_cg_superformula_mate_points`
-
-
-Build superformula mate pitch points and their shared motion table.
-
-**Parameters:**
-
-- `scale`: {number > 0} Overall radial scale.
-- `symmetry`: {integer >= 2} Number of repeated sectors.
-- `a`: {number > 0} Superformula radial parameter.
-- `b`: {number > 0} Superformula radial parameter.
-- `n1`: {number > 0} Superformula exponent.
-- `n2`: {number > 0} Superformula exponent.
-- `n3`: {number > 0} Superformula exponent.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-superformula).
-
-### Function `_cg_superformula_mate_points_from_driver`
-
-
-Build superformula mate pitch points by advancing driver angle directly.
-
-**Parameters:**
-
-- `scale`: {number > 0} Overall radial scale.
-- `symmetry`: {integer >= 2} Number of repeated sectors.
-- `a`: {number > 0} Superformula radial parameter.
-- `b`: {number > 0} Superformula radial parameter.
-- `n1`: {number > 0} Superformula exponent.
-- `n2`: {number > 0} Superformula exponent.
-- `n3`: {number > 0} Superformula exponent.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-superformula).
-
 ### Function `_cg_superformula_max_radius(scale, symmetry, a, b, n1, n2, n3, n)`
 
 
@@ -507,51 +405,6 @@ Find the maximum sampled radius of a superformula curve.
 **Returns:**
 
 - `{number}`: Maximum sampled radius in mm.
-
-Back to [module description](#module-superformula).
-
-### Function `_cg_superformula_motion_radii`
-
-
-Evaluate superformula radii at integration midpoints.
-
-**Parameters:**
-
-- `scale`: {number > 0} Overall radial scale.
-- `symmetry`: {integer >= 2} Number of repeated sectors.
-- `a`: {number > 0} Superformula radial parameter.
-- `b`: {number > 0} Superformula radial parameter.
-- `n1`: {number > 0} Superformula exponent.
-- `n2`: {number > 0} Superformula exponent.
-- `n3`: {number > 0} Superformula exponent.
-- `n`: {integer >= 1, default 240} Number of midpoint samples.
-
-**Returns:**
-
-- `{array of number}`: Sampled radii in angular order.
-
-Back to [module description](#module-superformula).
-
-### Function `_cg_superformula_motion_table`
-
-
-Build the shared superformula phase-motion table.
-
-**Parameters:**
-
-- `scale`: {number > 0} Overall radial scale.
-- `symmetry`: {integer >= 2} Number of repeated sectors.
-- `a`: {number > 0} Superformula radial parameter.
-- `b`: {number > 0} Superformula radial parameter.
-- `n1`: {number > 0} Superformula exponent.
-- `n2`: {number > 0} Superformula exponent.
-- `n3`: {number > 0} Superformula exponent.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array}`: Monotonic driver-to-mate phase-motion table.
 
 Back to [module description](#module-superformula).
 

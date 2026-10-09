@@ -5,6 +5,14 @@
  */
 include <../../src/superformula/pair.scad>
 
+function _test_superformula_motion_radii(scale,symmetry,a,b,n1,n2,n3,n) =
+    [for(i=[0:n-1]) _cg_superformula_radius(scale,symmetry,a,b,n1,n2,n3,360*(i+.5)/n)];
+function _test_superformula_driver_radii(scale,symmetry,a,b,n1,n2,n3,n) =
+    [for(i=[0:n-1]) _cg_superformula_radius(scale,symmetry,a,b,n1,n2,n3,360*i/n)];
+function _test_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,n) =
+    let(mx=_cg_superformula_max_radius(scale,symmetry,a,b,n1,n2,n3,720),mid=_test_superformula_motion_radii(scale,symmetry,a,b,n1,n2,n3,n))
+    _cg_solve_mate_distance(mid,mx+.01,4*mx);
+
 phase=is_undef(test_phase) ? 0 : test_phase;
 modul=.5;
 tooth_number=80;
@@ -16,10 +24,10 @@ n2=3.4;
 n3=3.4;
 samples=360;
 scale=_cg_superformula_scale(modul,tooth_number,symmetry,1,1,n1,n2,n3,360);
-D=_cg_superformula_centre_distance(scale,symmetry,1,1,n1,n2,n3);
-motion=_cg_superformula_motion_table(scale,symmetry,1,1,n1,n2,n3,D,samples);
+D=_test_superformula_centre_distance(scale,symmetry,1,1,n1,n2,n3,samples);
+motion=_cg_motion_table_from_mid_radii(_test_superformula_motion_radii(scale,symmetry,1,1,n1,n2,n3,samples),D);
 driver=_cg_superformula_points(scale,symmetry,1,1,n1,n2,n3,samples);
-mate=[for(i=[0:samples-1]) _cg_superformula_mate_point(scale,symmetry,1,1,n1,n2,n3,D,motion,360*i/samples)];
+mate=_cg_mate_points_from_radius_samples(_test_superformula_driver_radii(scale,symmetry,1,1,n1,n2,n3,samples),_test_superformula_motion_radii(scale,symmetry,1,1,n1,n2,n3,samples),D);
 A=D;
 
 intersection() {
