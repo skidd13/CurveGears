@@ -38,3 +38,7 @@ htmlcov/
 
 # Keep local agent instructions out of repository history.
 [aA][gG][eE][nN][tT][sS].[mM][dD]
+
+# BEGIN NORCAINE LOCAL DATA IGNORE
+/.codex/
+# END NORCAINE LOCAL DATA IGNORE
