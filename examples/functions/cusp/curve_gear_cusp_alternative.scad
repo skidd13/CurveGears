@@ -17,7 +17,7 @@ $fn=96;
 module _alternative_example_cusp(pair=false,cusps=5,tooth_number=60,width=4,bore=4.8,modul=.8,samples=720,view="gear") {
     assert(tooth_number%cusps==0,"example: tooth_number must be divisible by cusps");
     if (pair)
-        curve_gear_cusp_pair(modul,tooth_number,width,bore,samples=samples,cusps=cusps,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+        curve_gear_cusp_pair(modul,tooth_number,width,bore,samples=samples,cusps=cusps,together_built=true,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
             curve_gear_cusp_body(modul,tooth_number,width,bore,samples=samples,cusps=cusps);

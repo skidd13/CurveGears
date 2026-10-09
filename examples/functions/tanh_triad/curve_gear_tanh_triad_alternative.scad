@@ -14,7 +14,7 @@ $fn=96;
 // Both executable alternatives share this parameter source.
 module _alternative_example_tanh_triad(pair=false,view="gear") {
     if (pair)
-        curve_gear_tanh_triad_pair(1.2,24,2,4.8,transition=.8,crest=.32,correction=0,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+        curve_gear_tanh_triad_pair(1.2,24,2,4.8,transition=.8,crest=.32,correction=0,samples=360,together_built=true,backlash=.8,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
             curve_gear_tanh_triad_body(1.2,24,2,4.8,transition=.8,crest=.32,correction=0,samples=360);

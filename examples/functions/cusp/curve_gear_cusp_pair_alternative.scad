@@ -1,6 +1,6 @@
 /***
  * @function cusp_curve_gear_pair_alternative
- * @brief Cusp alternative pair: The alternative curve and its mate displayed separately for inspection.
+ * @brief Cusp alternative pair: The alternative curve and its mate meshed in contact for inspection.
  * Source: [`functions/cusp/curve_gear_cusp_pair_alternative.scad`](functions/cusp/curve_gear_cusp_pair_alternative.scad)
  * Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
  * @image ../images/functions/cusp/curve_gear_cusp_pair_alternative.png Cusp pair alternative

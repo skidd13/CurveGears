@@ -49,7 +49,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`bezier_curve_gear_pair`](#function-bezier_curve_gear_pair): Render a complete Bézier gear pair with derived conjugate motion.
 
-> [`bezier_curve_gear_pair_alternative`](#function-bezier_curve_gear_pair_alternative): Bézier alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`bezier_curve_gear_pair_alternative`](#function-bezier_curve_gear_pair_alternative): Bézier alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`bezier_gear_2d_alternative`](#function-bezier_gear_2d_alternative): Bézier alternative: The contrasting family controls shown as a 2D gear.
 
@@ -99,7 +99,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`circle_curve_gear_pair`](#function-circle_curve_gear_pair): Render a complete Circle gear pair with derived conjugate motion.
 
-> [`circle_curve_gear_pair_alternative`](#function-circle_curve_gear_pair_alternative): Circle alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`circle_curve_gear_pair_alternative`](#function-circle_curve_gear_pair_alternative): Circle alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`circle_gear_2d_alternative`](#function-circle_gear_2d_alternative): Circle alternative: The contrasting family controls shown as a 2D gear.
 
@@ -113,7 +113,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`cosine_quintic_curve_gear_alternative`](#function-cosine_quintic_curve_gear_alternative): Cosine Quintic alternative: Three pronounced signed-cosine plateaux replace the canonical two-harmonic form. Harmonic 3 and depth 0.16 expose how the fifth power concentrates the radial excursions.
 
-> [`cosine_quintic_curve_gear_pair_alternative`](#function-cosine_quintic_curve_gear_pair_alternative): Cosine Quintic alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`cosine_quintic_curve_gear_pair_alternative`](#function-cosine_quintic_curve_gear_pair_alternative): Cosine Quintic alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`cosine_quintic_gear_2d_alternative`](#function-cosine_quintic_gear_2d_alternative): Cosine Quintic alternative: The contrasting family controls shown as a 2D gear.
 
@@ -249,7 +249,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`cusp_curve_gear_pair`](#function-cusp_curve_gear_pair): Render the deltoid cusp gear with its conjugate motion mate.
 
-> [`cusp_curve_gear_pair_alternative`](#function-cusp_curve_gear_pair_alternative): Cusp alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`cusp_curve_gear_pair_alternative`](#function-cusp_curve_gear_pair_alternative): Cusp alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`cusp_gear_2d_alternative`](#function-cusp_gear_2d_alternative): Cusp alternative: The contrasting family controls shown as a 2D gear.
 
@@ -297,7 +297,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`epitrochoid_curve_gear_pair`](#function-epitrochoid_curve_gear_pair): Render a complete Epitrochoid gear pair with derived conjugate motion.
 
-> [`epitrochoid_curve_gear_pair_alternative`](#function-epitrochoid_curve_gear_pair_alternative): Epitrochoid alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`epitrochoid_curve_gear_pair_alternative`](#function-epitrochoid_curve_gear_pair_alternative): Epitrochoid alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`epitrochoid_gear_2d_alternative`](#function-epitrochoid_gear_2d_alternative): Epitrochoid alternative: The contrasting family controls shown as a 2D gear.
 
@@ -345,7 +345,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`hypotrochoid_curve_gear_pair`](#function-hypotrochoid_curve_gear_pair): Render a complete Hypotrochoid gear pair with derived conjugate motion.
 
-> [`hypotrochoid_curve_gear_pair_alternative`](#function-hypotrochoid_curve_gear_pair_alternative): Hypotrochoid alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`hypotrochoid_curve_gear_pair_alternative`](#function-hypotrochoid_curve_gear_pair_alternative): Hypotrochoid alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`hypotrochoid_gear_2d_alternative`](#function-hypotrochoid_gear_2d_alternative): Hypotrochoid alternative: The contrasting family controls shown as a 2D gear.
 
@@ -369,7 +369,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`lobed_curve_gear_pair`](#function-lobed_curve_gear_pair): Render a complete Lobed gear pair with derived conjugate motion.
 
-> [`lobed_curve_gear_pair_alternative`](#function-lobed_curve_gear_pair_alternative): Lobed alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`lobed_curve_gear_pair_alternative`](#function-lobed_curve_gear_pair_alternative): Lobed alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`lobed_gear_2d_alternative`](#function-lobed_gear_2d_alternative): Lobed alternative: The contrasting family controls shown as a 2D gear.
 
@@ -389,7 +389,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`logarithmic_spiral_curve_gear_pair`](#function-logarithmic_spiral_curve_gear_pair): Render a complete Logarithmic spiral gear pair with derived conjugate motion.
 
-> [`logarithmic_spiral_curve_gear_pair_alternative`](#function-logarithmic_spiral_curve_gear_pair_alternative): Logarithmic spiral alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`logarithmic_spiral_curve_gear_pair_alternative`](#function-logarithmic_spiral_curve_gear_pair_alternative): Logarithmic spiral alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`logarithmic_spiral_curve_gear_reference_separation`](#function-logarithmic_spiral_curve_gear_reference_separation): Show the Logarithmic spiral reference-separation calculation.
 
@@ -403,7 +403,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`logistic_dwell_curve_gear_alternative`](#function-logistic_dwell_curve_gear_alternative): Logistic Dwell alternative: Depth 0.46 and gain 3 replace the canonical shallow, steep logistic gate. The larger radial variation and smoother transitions distinguish curve amplitude from gate sharpness; coarse teeth expose the contour.
 
-> [`logistic_dwell_curve_gear_pair_alternative`](#function-logistic_dwell_curve_gear_pair_alternative): Logistic Dwell alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`logistic_dwell_curve_gear_pair_alternative`](#function-logistic_dwell_curve_gear_pair_alternative): Logistic Dwell alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`logistic_dwell_gear_2d_alternative`](#function-logistic_dwell_gear_2d_alternative): Logistic Dwell alternative: The contrasting family controls shown as a 2D gear.
 
@@ -427,7 +427,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`pascal_curve_gear_pair`](#function-pascal_curve_gear_pair): Render a complete Pascal gear pair with derived conjugate motion.
 
-> [`pascal_curve_gear_pair_alternative`](#function-pascal_curve_gear_pair_alternative): Pascal alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`pascal_curve_gear_pair_alternative`](#function-pascal_curve_gear_pair_alternative): Pascal alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`pascal_gear_2d_alternative`](#function-pascal_gear_2d_alternative): Pascal alternative: The contrasting family controls shown as a 2D gear.
 
@@ -465,7 +465,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`tanh_triad_curve_gear_alternative`](#function-tanh_triad_curve_gear_alternative): Tanh Triad alternative: A broad smooth triad with transition 0.8 and crest 0.32 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
 
-> [`tanh_triad_curve_gear_pair_alternative`](#function-tanh_triad_curve_gear_pair_alternative): Tanh Triad alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`tanh_triad_curve_gear_pair_alternative`](#function-tanh_triad_curve_gear_pair_alternative): Tanh Triad alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`tanh_triad_gear_2d_alternative`](#function-tanh_triad_gear_2d_alternative): Tanh Triad alternative: The contrasting family controls shown as a 2D gear.
 
@@ -477,7 +477,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative: Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
 
-> [`temple_fay_curve_gear_pair_alternative`](#function-temple_fay_curve_gear_pair_alternative): Temple Fay alternative pair: The alternative curve and its mate displayed separately for inspection.
+> [`temple_fay_curve_gear_pair_alternative`](#function-temple_fay_curve_gear_pair_alternative): Temple Fay alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
 > [`temple_fay_gear_2d_alternative`](#function-temple_fay_gear_2d_alternative): Temple Fay alternative: The contrasting family controls shown as a 2D gear.
 
@@ -4686,6 +4686,7 @@ Back to [module description](#module-executable-examples).
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad)
 Wing 0.32 and fold 0.12 strengthen the diagonal wing and waist structure compared with the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+The contact-pair fixture uses the same bore and width with a reduced .08/.02 wing/fold profile so the engaged mate remains collision-free.
 
 **Parameters:**
 

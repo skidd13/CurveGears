@@ -14,7 +14,7 @@ $fn=96;
 // Both executable alternatives share this parameter source.
 module _alternative_example_logarithmic_spiral(pair=false,view="gear") {
     if (pair)
-        curve_gear_logarithmic_spiral_pair(.8,48,3,4.8,sectors=3,growth_rate=1.22,samples=240,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+        curve_gear_logarithmic_spiral_pair(.8,48,3,4.8,sectors=3,growth_rate=1.22,samples=240,together_built=true,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
             curve_gear_logarithmic_spiral_body(.8,48,3,4.8,sectors=3,growth_rate=1.22,samples=240);

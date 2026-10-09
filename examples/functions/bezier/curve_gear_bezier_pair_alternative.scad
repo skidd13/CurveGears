@@ -1,6 +1,6 @@
 /***
  * @function bezier_curve_gear_pair_alternative
- * @brief Bézier alternative pair: The alternative curve and its mate displayed separately for inspection.
+ * @brief Bézier alternative pair: The alternative curve and its mate meshed in contact for inspection.
  * Source: [`functions/bezier/curve_gear_bezier_pair_alternative.scad`](functions/bezier/curve_gear_bezier_pair_alternative.scad)
  * An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
  * @image ../images/functions/bezier/curve_gear_bezier_pair_alternative.png Bézier pair alternative

@@ -11,10 +11,10 @@ include <../../../src/temple_fay/pair.scad>;
 include <../../palette.scad>;
 
 $fn=96;
-// Both executable alternatives share this parameter source.
+// The standalone alternative keeps the expressive profile; the contact pair uses a reduced profile for valid engagement.
 module _alternative_example_temple_fay(pair=false,view="gear") {
     if (pair)
-        curve_gear_temple_fay_pair(.7,48,3,4.8,wing=.32,fold=.12,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+        curve_gear_temple_fay_pair(.8,34,4,4.8,wing=.08,fold=.02,samples=360,phase=180,together_built=true,backlash=.5,clearance=.5,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
             curve_gear_temple_fay_body(.7,48,3,4.8,wing=.32,fold=.12,samples=360);

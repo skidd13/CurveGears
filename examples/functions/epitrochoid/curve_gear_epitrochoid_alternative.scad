@@ -14,7 +14,7 @@ $fn=96;
 // Both executable alternatives share this parameter source.
 module _alternative_example_epitrochoid(pair=false,view="gear") {
     if (pair)
-        curve_gear_epitrochoid_pair(.7,48,3,4.8,major_ratio=2,rolling_ratio=1,offset_ratio=.65,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+        curve_gear_epitrochoid_pair(.7,48,3,4.8,major_ratio=2,rolling_ratio=1,offset_ratio=.65,samples=360,together_built=true,backlash=.6,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
             curve_gear_epitrochoid_body(.7,48,3,4.8,major_ratio=2,rolling_ratio=1,offset_ratio=.65,samples=360);

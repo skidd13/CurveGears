@@ -14,7 +14,7 @@ $fn=96;
 // Both executable alternatives share this parameter source.
 module _alternative_example_pascal(pair=false,view="gear") {
     if (pair)
-        curve_gear_pascal_pair(1.4,20,2,4.8,eccentricity=.28,samples=360,together_built=false,driver_color=example_driver_color,mate_color=example_mate_color);
+        curve_gear_pascal_pair(1.4,20,2,4.8,eccentricity=.28,samples=360,together_built=true,driver_color=example_driver_color,mate_color=example_mate_color);
     else if (view=="body")
         color(example_driver_color)
             curve_gear_pascal_body(1.4,20,2,4.8,eccentricity=.28,samples=360);
