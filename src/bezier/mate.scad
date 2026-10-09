@@ -12,7 +12,7 @@ include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
 
 /***
- * @function _cg_bezier_polar_samples(control_points, scale, n)
+ * @function _cg_bezier_polar_samples
  * @brief Convert sampled Bézier points to polar angle and radius pairs.
  * @param control_points {array of points} Bézier control points.
  * @param scale {number > 0} Pitch-curve scale in millimetres.
@@ -26,7 +26,7 @@ function _cg_bezier_polar_samples(control_points,scale,n) =
         [angle,_cg_vlen(p)]];
 
 /***
- * @function _cg_bezier_polar_table(control_points, scale, n)
+ * @function _cg_bezier_polar_table
  * @brief Build a closed polar interpolation table for a Bézier curve.
  * @param control_points {array of points} Bézier control points.
  * @param scale {number > 0} Pitch-curve scale in millimetres.
@@ -38,7 +38,7 @@ function _cg_bezier_polar_table(control_points,scale,n) =
     concat([[0,samples[0][1]]],samples,[[360,samples[0][1]]]);
 
 /***
- * @function _cg_bezier_polar_monotonic(samples, i=0)
+ * @function _cg_bezier_polar_monotonic
  * @brief Check that polar sample angles increase strictly through the table.
  * @param samples {array} Polar samples ordered by traversal.
  * @param i {integer >= 0, default 0} Current sample index.
@@ -48,7 +48,7 @@ function _cg_bezier_polar_monotonic(samples,i=0) =
     i>=len(samples)-1 ? true : samples[i+1][0]>samples[i][0]+_cg_eps_angle() && _cg_bezier_polar_monotonic(samples,i+1);
 
 /***
- * @function _cg_bezier_mate_admissibility(control_points, scale, n)
+ * @function _cg_bezier_mate_admissibility
  * @brief Return the first failed radial-curve condition for mate construction.
  * @param control_points {array of points} Bézier control points.
  * @param scale {number > 0} Pitch-curve scale in millimetres.
@@ -65,7 +65,7 @@ function _cg_bezier_mate_admissibility(control_points,scale,n) =
     "PASS";
 
 /***
- * @function _cg_bezier_radius_from_polar_table(table, theta)
+ * @function _cg_bezier_radius_from_polar_table
  * @brief Interpolate a Bézier pitch radius at one polar angle.
  * @param table {array} Closed angle-radius interpolation table.
  * @param theta {angle} Polar angle in degrees.
@@ -73,7 +73,7 @@ function _cg_bezier_mate_admissibility(control_points,scale,n) =
  */
 function _cg_bezier_radius_from_polar_table(table,theta) = _cg_interp_y_for_x(table,theta);
 /***
- * @function _cg_bezier_driver_radii_from_table(table, n)
+ * @function _cg_bezier_driver_radii_from_table
  * @brief Sample Bézier pitch radii at driver-phase boundaries.
  * @param table {array} Closed angle-radius interpolation table.
  * @param n {integer >= 1} Number of phase intervals.
@@ -81,7 +81,7 @@ function _cg_bezier_radius_from_polar_table(table,theta) = _cg_interp_y_for_x(ta
  */
 function _cg_bezier_driver_radii_from_table(table,n) = [for(i=[0:n-1]) _cg_bezier_radius_from_polar_table(table,360*i/n)];
 /***
- * @function _cg_bezier_mid_radii_from_table(table, n)
+ * @function _cg_bezier_mid_radii_from_table
  * @brief Sample Bézier pitch radii at phase-interval midpoints.
  * @param table {array} Closed angle-radius interpolation table.
  * @param n {integer >= 1} Number of phase intervals.
@@ -90,7 +90,7 @@ function _cg_bezier_driver_radii_from_table(table,n) = [for(i=[0:n-1]) _cg_bezie
 function _cg_bezier_mid_radii_from_table(table,n) = [for(i=[0:n-1]) _cg_bezier_radius_from_polar_table(table,360*(i+.5)/n)];
 
 /***
- * @function _cg_bezier_mate_points(control_points, scale, D, n)
+ * @function _cg_bezier_mate_points
  * @brief Construct conjugate mate pitch points for an admissible Bézier curve.
  * @param control_points {array of points} Bézier control points.
  * @param scale {number > 0} Pitch-curve scale in millimetres.
@@ -103,7 +103,7 @@ function _cg_bezier_mate_points(control_points,scale,D,n) =
     _cg_mate_points_from_radius_samples(driver,mid,D);
 
 /***
- * @function _cg_bezier_mate_centre_distance(control_points, scale, n)
+ * @function _cg_bezier_mate_centre_distance
  * @brief Solve the fixed centre distance for an admissible Bézier curve.
  * @param control_points {array of points} Bézier control points.
  * @param scale {number > 0} Pitch-curve scale in millimetres.
@@ -144,7 +144,7 @@ module curve_gear_bezier_mate(modul,tooth_number,width,bore,control_points=_cg_b
 }
 
 /**
- * @function curve_gear_bezier_mate_centre_distance(modul, tooth_number, ...)
+ * @function curve_gear_bezier_mate_centre_distance
  * @brief Return the conjugate centre distance for an admissible Bézier curve.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -156,7 +156,7 @@ function curve_gear_bezier_mate_centre_distance(modul,tooth_number,control_point
     let(scale=modul*tooth_number/2) _cg_bezier_mate_centre_distance(control_points,scale,samples);
 
 /**
- * @function curve_gear_bezier_mate_rotation(modul, tooth_number, ...)
+ * @function curve_gear_bezier_mate_rotation
  * @brief Return the conjugate mate rotation for a driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

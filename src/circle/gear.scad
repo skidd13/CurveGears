@@ -1,7 +1,7 @@
 include <base.scad>
 
 /***
- * @function curve_gear_circle(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_circle
  * @brief Build a circular reference gear.
  * Twelve coarse teeth replace the fine-toothed reference; the bore remains 4.8 mm. Circle has no non-circular shape control; the circular pitch law is deliberately preserved.
  * @image ../images/functions/circle/curve_gear_circle.png Circle gear 1
@@ -22,7 +22,7 @@ module curve_gear_circle(modul,tooth_number,width,bore,pressure_angle=20,tooth_p
 }
 
 /***
- * @function curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)
+ * @function curve_gear_circle_body
  * @brief Build the circular reference body without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/circle/curve_gear_circle_body.png Circle body 1
@@ -40,7 +40,7 @@ module curve_gear_circle_body(modul,tooth_number,width,bore,samples=480) {
 
 
 /***
- * @function curve_gear_circle_2d(modul, tooth_number, bore, ...)
+ * @function curve_gear_circle_2d
  * @brief Emit the complete circular gear profile as 2D geometry.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/circle/curve_gear_circle_2d.png Circle 2D gear 1
@@ -62,7 +62,7 @@ module curve_gear_circle_2d(modul,tooth_number,bore,pressure_angle=20,tooth_phas
 }
 
 /***
- * @function curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)
+ * @function curve_gear_circle_body_2d
  * @brief Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/circle/curve_gear_circle_body_2d.png Circle 2D body 1

@@ -13,7 +13,7 @@
 include <../common/trochoid.scad>
 
 /***
- * @function _cg_epitrochoid_point(R, r, d, theta)
+ * @function _cg_epitrochoid_point
  * @brief Evaluate one point on the unit rolling-circle epitrochoid.
  * @param R {number > 0} Fixed-circle ratio.
  * @param r {number > 0} Rolling-circle ratio.
@@ -23,7 +23,7 @@ include <../common/trochoid.scad>
  */
 function _cg_epitrochoid_point(R,r,d,theta) = [(R+r)*cos(theta)-d*cos((R+r)/r*theta),(R+r)*sin(theta)-d*sin((R+r)/r*theta)];
 /***
- * @function _cg_epitrochoid_points(R, r, d, n)
+ * @function _cg_epitrochoid_points
  * @brief Sample one complete unit epitrochoid curve.
  * @param R {number > 0} Fixed-circle ratio.
  * @param r {number > 0} Rolling-circle ratio.
@@ -33,7 +33,7 @@ function _cg_epitrochoid_point(R,r,d,theta) = [(R+r)*cos(theta)-d*cos((R+r)/r*th
  */
 function _cg_epitrochoid_points(R,r,d,n=720) = [for(i=[0:n-1]) _cg_epitrochoid_point(R,r,d,360*i/n)];
 /***
- * @function _cg_epitrochoid_scale(modul, tooth_number, R, r, d, n, unit_points=undef)
+ * @function _cg_epitrochoid_scale
  * @brief Scale an epitrochoid to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -46,7 +46,7 @@ function _cg_epitrochoid_points(R,r,d,n=720) = [for(i=[0:n-1]) _cg_epitrochoid_p
  */
 function _cg_epitrochoid_scale(modul,tooth_number,R=3,r=1,d=2,n=720,unit_points=undef) = _cg_trochoid_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_epitrochoid_points(R,r,d,n) : unit_points);
 /***
- * @function _cg_epitrochoid_radius(R, r, d, theta)
+ * @function _cg_epitrochoid_radius
  * @brief Evaluate the radial distance of the unit epitrochoid.
  * @param R {number > 0} Fixed-circle ratio.
  * @param r {number > 0} Rolling-circle ratio.
@@ -56,7 +56,7 @@ function _cg_epitrochoid_scale(modul,tooth_number,R=3,r=1,d=2,n=720,unit_points=
  */
 function _cg_epitrochoid_radius(R,r,d,theta) = _cg_trochoid_radius_from_point(_cg_epitrochoid_point(R,r,d,theta));
 /***
- * @function _cg_epitrochoid_curve_radius(scale, R, r, d, theta)
+ * @function _cg_epitrochoid_curve_radius
  * @brief Evaluate a scaled epitrochoid radius.
  * @param scale {number > 0} Curve scale in mm.
  * @param R {number > 0} Fixed-circle ratio.
@@ -67,7 +67,7 @@ function _cg_epitrochoid_radius(R,r,d,theta) = _cg_trochoid_radius_from_point(_c
  */
 function _cg_epitrochoid_curve_radius(scale,R,r,d,theta) = _cg_trochoid_curve_radius_from_point(scale,_cg_epitrochoid_point(R,r,d,theta));
 /***
- * @function _cg_epitrochoid_points_scaled(scale, R, r, d, n)
+ * @function _cg_epitrochoid_points_scaled
  * @brief Sample a scaled epitrochoid curve.
  * @param scale {number > 0} Curve scale in mm.
  * @param R {number > 0} Fixed-circle ratio.

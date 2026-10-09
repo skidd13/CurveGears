@@ -4,7 +4,7 @@ include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
 
 /***
- * @function curve_gear_pascal_mate(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_pascal_mate
  * @brief Build the standalone Pascal mate boundary at the origin.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/pascal/curve_gear_pascal_mate.png Pascal mate 1
@@ -27,7 +27,7 @@ module curve_gear_pascal_mate(modul,tooth_number,width,bore,eccentricity=0.25,pr
 }
 
 /***
- * @function curve_gear_pascal_centre_distance(modul, tooth_number, eccentricity, ...)
+ * @function curve_gear_pascal_centre_distance
  * @brief Return the mathematical centre distance for a Pascal pair.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -38,7 +38,7 @@ module curve_gear_pascal_mate(modul,tooth_number,width,bore,eccentricity=0.25,pr
 function curve_gear_pascal_centre_distance(modul,tooth_number,eccentricity=0.25,samples=360) = _cg_polar_mate_distance(_cg_pascal_shape(modul,tooth_number,eccentricity,samples),samples);
 
 /***
- * @function curve_gear_pascal_mate_rotation(modul, tooth_number, eccentricity, ...)
+ * @function curve_gear_pascal_mate_rotation
  * @brief Return the conjugate Pascal mate rotation for a driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

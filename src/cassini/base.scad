@@ -53,7 +53,7 @@ function _cg_cassini_points(scale,focus_ratio,n=720) =
     [for(i=[0:n-1]) _cg_cassini_point(scale,focus_ratio,360*i/n)];
 
 /**
- * @function _cg_cassini_scale(modul, tooth_number, focus_ratio, n=720, unit_points=undef)
+ * @function _cg_cassini_scale
  * @brief Scale a Cassini curve to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

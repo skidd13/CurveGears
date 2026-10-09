@@ -23,40 +23,40 @@ https://mathshistory.st-andrews.ac.uk/Curves/Limacon/.
 
 **Functions**:
 
-> [`curve_gear_pascal(modul, tooth_number, width, bore, ...)`](#function-curve_gear_pascalmodul-tooth_number-width-bore-): Build a Pascal-curve non-circular gear.
+> [`curve_gear_pascal`](#function-curve_gear_pascal): Build a Pascal-curve non-circular gear.
 
 > [`curve_gear_pascal_2d`](#function-curve_gear_pascal_2d): Emit the complete pascal gear profile as 2D geometry.
 
-> [`curve_gear_pascal_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_pascal_bodymodul-tooth_number-width-bore-): Build the Pascal body solid without teeth.
+> [`curve_gear_pascal_body`](#function-curve_gear_pascal_body): Build the Pascal body solid without teeth.
 
 > [`curve_gear_pascal_body_2d`](#function-curve_gear_pascal_body_2d): Emit the pascal body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_pascal_centre_distance(modul, tooth_number, eccentricity, ...)`](#function-curve_gear_pascal_centre_distancemodul-tooth_number-eccentricity-): Return the mathematical centre distance for a Pascal pair.
+> [`curve_gear_pascal_centre_distance`](#function-curve_gear_pascal_centre_distance): Return the mathematical centre distance for a Pascal pair.
 
-> [`curve_gear_pascal_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_pascal_matemodul-tooth_number-width-bore-): Build the standalone Pascal mate boundary at the origin.
+> [`curve_gear_pascal_mate`](#function-curve_gear_pascal_mate): Build the standalone Pascal mate boundary at the origin.
 
-> [`curve_gear_pascal_mate_rotation(modul, tooth_number, eccentricity, ...)`](#function-curve_gear_pascal_mate_rotationmodul-tooth_number-eccentricity-): Return the conjugate Pascal mate rotation for a driver phase.
+> [`curve_gear_pascal_mate_rotation`](#function-curve_gear_pascal_mate_rotation): Return the conjugate Pascal mate rotation for a driver phase.
 
-> [`curve_gear_pascal_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_pascal_pairmodul-tooth_number-width-bore-): Build a meshed or separated Pascal pair.
+> [`curve_gear_pascal_pair`](#function-curve_gear_pascal_pair): Build a meshed or separated Pascal pair.
 
-> [`_cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_pascal_buildmodultooth_numberwidthboreeccentricity025pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal pascal construction dispatcher.
+> [`_cg_pascal_build`](#function-_cg_pascal_build): Internal pascal construction dispatcher.
 
-> [`_cg_pascal_max_radius(scale, eccentricity)`](#function-_cg_pascal_max_radiusscale-eccentricity): Calculate the maximum Pascal pitch-curve radius.
+> [`_cg_pascal_max_radius`](#function-_cg_pascal_max_radius): Calculate the maximum Pascal pitch-curve radius.
 
-> [`_cg_pascal_min_radius(scale, eccentricity)`](#function-_cg_pascal_min_radiusscale-eccentricity): Calculate the minimum Pascal pitch-curve radius.
+> [`_cg_pascal_min_radius`](#function-_cg_pascal_min_radius): Calculate the minimum Pascal pitch-curve radius.
 
-> [`_cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,samples=360,phase=0,together_built=true,experimental_nonconvex=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_pascal_pair_buildmodultooth_numberwidthboreeccentricity025pressure_angle20samples360phase0together_builttrueexperimental_nonconvexfalsebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal pascal pair construction dispatcher.
+> [`_cg_pascal_pair_build`](#function-_cg_pascal_pair_build): Internal pascal pair construction dispatcher.
 
-> [`_cg_pascal_requires_radial_root(eccentricity)`](#function-_cg_pascal_requires_radial_rooteccentricity): Determine whether the Pascal curve requires radial-root tooth construction.
+> [`_cg_pascal_requires_radial_root`](#function-_cg_pascal_requires_radial_root): Determine whether the Pascal curve requires radial-root tooth construction.
 
-> [`_cg_pascal_unit_radius(eccentricity, phi)`](#function-_cg_pascal_unit_radiuseccentricity-phi): Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-convex cases remain experimental.
+> [`_cg_pascal_unit_radius`](#function-_cg_pascal_unit_radius): Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-convex cases remain experimental.
 
 
 ## Functions
 
 The module `Pascal` defines the following functions.
 
-### Function `curve_gear_pascal(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_pascal`
 
 | Pascal gear 1 | Pascal gear 2 |
 | --- | --- |
@@ -128,7 +128,7 @@ curve_gear_pascal_2d(0.8, 34, 4.8);
 
 Back to [module description](#module-pascal).
 
-### Function `curve_gear_pascal_body(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_pascal_body`
 
 | Pascal body 1 | Pascal body 2 |
 | --- | --- |
@@ -198,7 +198,7 @@ curve_gear_pascal_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-pascal).
 
-### Function `curve_gear_pascal_centre_distance(modul, tooth_number, eccentricity, ...)`
+### Function `curve_gear_pascal_centre_distance`
 
 
 Return the mathematical centre distance for a Pascal pair.
@@ -216,7 +216,7 @@ Return the mathematical centre distance for a Pascal pair.
 
 Back to [module description](#module-pascal).
 
-### Function `curve_gear_pascal_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_pascal_mate`
 
 | Pascal mate 1 | Pascal mate 2 |
 | --- | --- |
@@ -244,7 +244,7 @@ No return
 
 Back to [module description](#module-pascal).
 
-### Function `curve_gear_pascal_mate_rotation(modul, tooth_number, eccentricity, ...)`
+### Function `curve_gear_pascal_mate_rotation`
 
 
 Return the conjugate Pascal mate rotation for a driver phase.
@@ -263,7 +263,7 @@ Return the conjugate Pascal mate rotation for a driver phase.
 
 Back to [module description](#module-pascal).
 
-### Function `curve_gear_pascal_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_pascal_pair`
 
 | Pascal pair 1 | Pascal pair 2 |
 | --- | --- |
@@ -276,17 +276,17 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `eccentricity`: {0 <= e < 1, default 0.25} Pascal eccentricity.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `samples`: {integer >= 120, default 360} Pitch-curve sampling density.
 - `phase`: {angle, default 0} Pair motion phase in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `experimental_nonconvex`: {boolean, default false} Permit e >= 0.5 and use the direct calculated mate boundary.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
@@ -304,7 +304,7 @@ curve_gear_pascal_pair(1, 24, 4, 8);
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`
+### Function `_cg_pascal_build`
 
 
 Internal pascal construction dispatcher.
@@ -330,7 +330,7 @@ Internal pascal construction dispatcher.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_max_radius(scale, eccentricity)`
+### Function `_cg_pascal_max_radius`
 
 
 Calculate the maximum Pascal pitch-curve radius.
@@ -346,7 +346,7 @@ Calculate the maximum Pascal pitch-curve radius.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_min_radius(scale, eccentricity)`
+### Function `_cg_pascal_min_radius`
 
 
 Calculate the minimum Pascal pitch-curve radius.
@@ -362,7 +362,7 @@ Calculate the minimum Pascal pitch-curve radius.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,samples=360,phase=0,together_built=true,experimental_nonconvex=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`
+### Function `_cg_pascal_pair_build`
 
 
 Internal pascal pair construction dispatcher.
@@ -391,7 +391,7 @@ Internal pascal pair construction dispatcher.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_requires_radial_root(eccentricity)`
+### Function `_cg_pascal_requires_radial_root`
 
 
 Determine whether the Pascal curve requires radial-root tooth construction.
@@ -406,7 +406,7 @@ Determine whether the Pascal curve requires radial-root tooth construction.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_unit_radius(eccentricity, phi)`
+### Function `_cg_pascal_unit_radius`
 
 
 Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-convex cases remain experimental.

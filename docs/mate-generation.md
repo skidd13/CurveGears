@@ -24,7 +24,7 @@ It requires curve_gears_math.scad to have been loaded first.
 
 **Functions**:
 
-> [`_cg_mate_boundary_from_pitch_points(mate_points, modul, tooth_number, width, bore, ...)`](#function-_cg_mate_boundary_from_pitch_pointsmate_points-modul-tooth_number-width-bore-): Build one mate from its canonical sampled pitch boundary.
+> [`_cg_mate_boundary_from_pitch_points`](#function-_cg_mate_boundary_from_pitch_points): Build one mate from its canonical sampled pitch boundary.
 
 > [`_cg_mate_pitch_diagnostics`](#function-_cg_mate_pitch_diagnostics): Return the required numerical and geometric mate diagnostics.
 
@@ -35,7 +35,7 @@ It requires curve_gears_math.scad to have been loaded first.
 
 The module `Mate generation` defines the following functions.
 
-### Function `_cg_mate_boundary_from_pitch_points(mate_points, modul, tooth_number, width, bore, ...)`
+### Function `_cg_mate_boundary_from_pitch_points`
 
 | Tooth assembly 1 | Tooth assembly 2 |
 | --- | --- |

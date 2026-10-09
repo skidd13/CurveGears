@@ -3,7 +3,7 @@ include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
 
 /***
- * @function curve_gear_circle_centre_distance(modul, tooth_number)
+ * @function curve_gear_circle_centre_distance
  * @brief Return the reference centre distance for a circular pair.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -12,7 +12,7 @@ include <../common/mate/placement.scad>
 function curve_gear_circle_centre_distance(modul,tooth_number) = modul*tooth_number;
 
 /***
- * @function curve_gear_circle_mate(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_circle_mate
  * @brief Build the circular reference mate boundary at the origin.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/circle/curve_gear_circle_mate.png Circle mate 1

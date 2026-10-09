@@ -10,7 +10,7 @@ include <../common/curve_gears_math.scad>
 include <../common/saturating.scad>
 
 /**
- * @function _cg_tanh_triad_parameters_valid(transition,crest,correction)
+ * @function _cg_tanh_triad_parameters_valid
  * @brief Check the shared curve-parameter contract for every family entry point.
  * @param transition {number > 0} Curve parameter.
  * @param crest {number between 0 and 0.5} Curve parameter.

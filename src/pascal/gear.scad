@@ -1,6 +1,6 @@
 /***
  * Public single-gear construction for the pascal family.
- * @function curve_gear_pascal(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_pascal
  * @brief Build a Pascal-curve non-circular gear.
  * Eccentricity 0.28 gives a convex egg-like outline instead of the canonical non-convex 0.60 limacon. Twenty coarse teeth emphasise the body contour. This contrasts the regular conjugate domain with the experimental dimpled case.
  * @image ../images/functions/pascal/curve_gear_pascal.png Pascal gear 1
@@ -25,7 +25,7 @@ include <base.scad>
 
 module _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
+ * @function _cg_pascal_build
  * @brief Internal pascal construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -66,7 +66,7 @@ module curve_gear_pascal(modul,tooth_number,width,bore,eccentricity=0.25,pressur
 }
 
 /***
- * @function curve_gear_pascal_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_pascal_body
  * @brief Build the Pascal body solid without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/pascal/curve_gear_pascal_body.png Pascal body 1

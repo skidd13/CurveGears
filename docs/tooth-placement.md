@@ -29,21 +29,21 @@ permitted.
 
 > [`_cg_adjacent_contact_region`](#function-_cg_adjacent_contact_region): Return whether adjacent-tooth witnesses form one compact shared contact.
 
-> [`_cg_arc_mean_segment_length(arc)`](#function-_cg_arc_mean_segment_lengtharc): Calculate the mean segment length represented by an arc table.
+> [`_cg_arc_mean_segment_length`](#function-_cg_arc_mean_segment_length): Calculate the mean segment length represented by an arc table.
 
-> [`_cg_arc_near_target(s, target, perimeter)`](#function-_cg_arc_near_targets-target-perimeter): Wrap an arc position to the turn nearest a target position.
+> [`_cg_arc_near_target`](#function-_cg_arc_near_target): Wrap an arc position to the turn nearest a target position.
 
-> [`_cg_arc_segment_index(arc, perimeter, target)`](#function-_cg_arc_segment_indexarc-perimeter-target): Find the segment containing a wrapped arc target.
+> [`_cg_arc_segment_index`](#function-_cg_arc_segment_index): Find the segment containing a wrapped arc target.
 
 > [`_cg_arc_segment_is_discrete_return`](#function-_cg_arc_segment_is_discrete_return): Detect long discrete return segments in an arc table.
 
-> [`_cg_body_arc_for_intersection(hit, arc)`](#function-_cg_body_arc_for_intersectionhit-arc): Convert a body intersection record to its arc position.
+> [`_cg_body_arc_for_intersection`](#function-_cg_body_arc_for_intersection): Convert a body intersection record to its arc position.
 
 > [`_cg_canonical_body_polyline`](#function-_cg_canonical_body_polyline): Build the closed canonical body before teeth merge.
 
-> [`_cg_closed_arc_sample(points, arc, target)`](#function-_cg_closed_arc_samplepoints-arc-target): Resolve one wrapped closed-curve arc position into point and tangent.
+> [`_cg_closed_arc_sample`](#function-_cg_closed_arc_sample): Resolve one wrapped closed-curve arc position into point and tangent.
 
-> [`_cg_curve_tangent(points, i)`](#function-_cg_curve_tangentpoints-i): Estimate a centred tangent vector at a closed-curve point index.
+> [`_cg_curve_tangent`](#function-_cg_curve_tangent): Estimate a centred tangent vector at a closed-curve point index.
 
 > [`_cg_final_boundary_collisions`](#function-_cg_final_boundary_collisions): Run broad-phase and exact checks for every nearby placed-tooth pair.
 
@@ -51,45 +51,45 @@ permitted.
 
 > [`_cg_frame_failure_code`](#function-_cg_frame_failure_code): Validate frame finiteness, scale, orthogonality and winding.
 
-> [`_cg_frame_valid(frame)`](#function-_cg_frame_validframe): Check whether a local curve frame passes all frame invariants.
+> [`_cg_frame_valid`](#function-_cg_frame_valid): Check whether a local curve frame passes all frame invariants.
 
-> [`_cg_hit_seen_before(hits, index)`](#function-_cg_hit_seen_beforehits-index): Check whether an intersection point has already occurred.
+> [`_cg_hit_seen_before`](#function-_cg_hit_seen_before): Check whether an intersection point has already occurred.
 
-> [`_cg_join_adjacent_root_boundaries(previous, current)`](#function-_cg_join_adjacent_root_boundariesprevious-current): Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
+> [`_cg_join_adjacent_root_boundaries`](#function-_cg_join_adjacent_root_boundaries): Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
 
-> [`_cg_local_body_hits(hits, arc, perimeter, target, tooth_pitch)`](#function-_cg_local_body_hitshits-arc-perimeter-target-tooth_pitch): Retain body intersections within the local tooth interval.
+> [`_cg_local_body_hits`](#function-_cg_local_body_hits): Retain body intersections within the local tooth interval.
 
 > [`_cg_local_frame_for_closed_arc`](#function-_cg_local_frame_for_closed_arc): Return point, tangent, outward normal and winding at an arc position.
 
-> [`_cg_open_arc_table(points)`](#function-_cg_open_arc_tablepoints): Build a cumulative arc-length table for an open polyline.
+> [`_cg_open_arc_table`](#function-_cg_open_arc_table): Build a cumulative arc-length table for an open polyline.
 
-> [`_cg_outward_normal_from_winding(tangent, winding)`](#function-_cg_outward_normal_from_windingtangent-winding): Return the outward normal for a tangent and known contour winding.
+> [`_cg_outward_normal_from_winding`](#function-_cg_outward_normal_from_winding): Return the outward normal for a tangent and known contour winding.
 
 > [`_cg_pair_gap_failures_from_states`](#function-_cg_pair_gap_failures_from_states): Check opposing placed teeth while reusing common collision tests.
 
 > [`_cg_pair_transform_point`](#function-_cg_pair_transform_point): Transform a local point into a pair placement.
 
-> [`_cg_placement_after_preflight(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, pressure_angle, tooth_phase, radial_root, backlash, clearance, frame, tooth_pitch, target)`](#function-_cg_placement_after_preflightpoints-arc-perimeter-body-modul-tooth_number-tooth_index-candidate-pressure_angle-tooth_phase-radial_root-backlash-clearance-frame-tooth_pitch-target): Evaluate accessibility and body intersections after cheap placement checks.
+> [`_cg_placement_after_preflight`](#function-_cg_placement_after_preflight): Evaluate accessibility and body intersections after cheap placement checks.
 
-> [`_cg_placement_invalid(index, target, frame, candidate, code)`](#function-_cg_placement_invalidindex-target-frame-candidate-code): Construct the canonical invalid placement record.
+> [`_cg_placement_invalid`](#function-_cg_placement_invalid): Construct the canonical invalid placement record.
 
-> [`_cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)`](#function-_cg_placement_resultpoints-arc-perimeter-body-modul-tooth_number-tooth_index-candidate-): Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
+> [`_cg_placement_result`](#function-_cg_placement_result): Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
 
-> [`_cg_point_for_closed_arc(points, arc, target)`](#function-_cg_point_for_closed_arcpoints-arc-target): Interpolate a Cartesian point at a wrapped closed-curve arc position.
+> [`_cg_point_for_closed_arc`](#function-_cg_point_for_closed_arc): Interpolate a Cartesian point at a wrapped closed-curve arc position.
 
-> [`_cg_point_in_polygon(point, polygon_points)`](#function-_cg_point_in_polygonpoint-polygon_points): Test point inclusion using an even-odd polygon crossing rule.
+> [`_cg_point_in_polygon`](#function-_cg_point_in_polygon): Test point inclusion using an even-odd polygon crossing rule.
 
-> [`_cg_point_in_polygon_strict(point, polygon_points)`](#function-_cg_point_in_polygon_strictpoint-polygon_points): Test strict containment, excluding points on the polygon boundary.
+> [`_cg_point_in_polygon_strict`](#function-_cg_point_in_polygon_strict): Test strict containment, excluding points on the polygon boundary.
 
-> [`_cg_point_on_segment(point, a, b)`](#function-_cg_point_on_segmentpoint-a-b): Test whether a point lies on a segment within the geometry tolerance.
+> [`_cg_point_on_segment`](#function-_cg_point_on_segment): Test whether a point lies on a segment within the geometry tolerance.
 
-> [`_cg_polygon_segment_bounds(polygon_points)`](#function-_cg_polygon_segment_boundspolygon_points): Return bounds and longest edge used by segment-polygon broad-phase checks.
+> [`_cg_polygon_segment_bounds`](#function-_cg_polygon_segment_bounds): Return bounds and longest edge used by segment-polygon broad-phase checks.
 
-> [`_cg_polyline_arc_table(points)`](#function-_cg_polyline_arc_tablepoints): Build a cumulative arc-length table for a closed polyline.
+> [`_cg_polyline_arc_table`](#function-_cg_polyline_arc_table): Build a cumulative arc-length table for a closed polyline.
 
 > [`_cg_profile_point_at_frame`](#function-_cg_profile_point_at_frame): Map local normal/tangent coordinates into a gear frame.
 
-> [`_cg_segment_hits_polygon(a, b, polygon_points, prepared_bounds)`](#function-_cg_segment_hits_polygona-b-polygon_points-prepared_bounds): Test whether a segment enters or intersects a polygon.
+> [`_cg_segment_hits_polygon`](#function-_cg_segment_hits_polygon): Test whether a segment enters or intersects a polygon.
 
 > [`_cg_splice_failures`](#function-_cg_splice_failures): Validate replacement intervals, allowing only proved exposed unions of neighbouring roots.
 
@@ -97,33 +97,33 @@ permitted.
 
 > [`_cg_splice_relation`](#function-_cg_splice_relation): Classify two canonical body intervals.
 
-> [`_cg_tooth_body_intersections(tooth_boundary, body)`](#function-_cg_tooth_body_intersectionstooth_boundary-body): Find all exact tooth/body crossings after hierarchical bounds rejection.
+> [`_cg_tooth_body_intersections`](#function-_cg_tooth_body_intersections): Find all exact tooth/body crossings after hierarchical bounds rejection.
 
-> [`_cg_tooth_body_intersections_direct(tooth_boundary, body)`](#function-_cg_tooth_body_intersections_directtooth_boundary-body): Find intersections between a placed tooth boundary and the body.
+> [`_cg_tooth_body_intersections_direct`](#function-_cg_tooth_body_intersections_direct): Find intersections between a placed tooth boundary and the body.
 
-> [`_cg_tooth_contact_is_permitted(a, b, hit)`](#function-_cg_tooth_contact_is_permitteda-b-hit): Permit only a shared endpoint contact between tooth boundaries.
+> [`_cg_tooth_contact_is_permitted`](#function-_cg_tooth_contact_is_permitted): Permit only a shared endpoint contact between tooth boundaries.
 
-> [`_cg_tooth_containment_collisions(a, b)`](#function-_cg_tooth_containment_collisionsa-b): Detect one tooth boundary contained inside the other.
+> [`_cg_tooth_containment_collisions`](#function-_cg_tooth_containment_collisions): Detect one tooth boundary contained inside the other.
 
 > [`_cg_tooth_geometry_state`](#function-_cg_tooth_geometry_state): Build the reusable pitch, body, candidate, and placement state.
 
-> [`_cg_tooth_geometry_state_valid(state)`](#function-_cg_tooth_geometry_state_validstate): Validate a prepared tooth state using the common body, placement and outline rules.
+> [`_cg_tooth_geometry_state_valid`](#function-_cg_tooth_geometry_state_valid): Validate a prepared tooth state using the common body, placement and outline rules.
 
-> [`_cg_tooth_non_top_collisions(a, b)`](#function-_cg_tooth_non_top_collisionsa-b): Filter top-edge contacts from complete tooth-pair collisions.
+> [`_cg_tooth_non_top_collisions`](#function-_cg_tooth_non_top_collisions): Filter top-edge contacts from complete tooth-pair collisions.
 
-> [`_cg_tooth_order_failures(placements)`](#function-_cg_tooth_order_failuresplacements): Detect non-monotone indices among accepted placements.
+> [`_cg_tooth_order_failures`](#function-_cg_tooth_order_failures): Detect non-monotone indices among accepted placements.
 
-> [`_cg_tooth_pair_collisions(a, b)`](#function-_cg_tooth_pair_collisionsa-b): Find all segment intersections between two tooth boundaries.
+> [`_cg_tooth_pair_collisions`](#function-_cg_tooth_pair_collisions): Find all segment intersections between two tooth boundaries.
 
 > [`_cg_tooth_placement_state`](#function-_cg_tooth_placement_state): Build the shared tooth candidate and placement records for prepared geometry.
 
-> [`_cg_tooth_top_collisions(a, b)`](#function-_cg_tooth_top_collisionsa-b): Find collisions between the top edges of two tooth boundaries.
+> [`_cg_tooth_top_collisions`](#function-_cg_tooth_top_collisions): Find collisions between the top edges of two tooth boundaries.
 
-> [`_cg_trim_tooth_boundary(boundary, start_hit, end_hit)`](#function-_cg_trim_tooth_boundaryboundary-start_hit-end_hit): Trim a placed tooth boundary to its selected body intersections.
+> [`_cg_trim_tooth_boundary`](#function-_cg_trim_tooth_boundary): Trim a placed tooth boundary to its selected body intersections.
 
-> [`_cg_trimmed_tooth_boundaries(placements)`](#function-_cg_trimmed_tooth_boundariesplacements): Build the trimmed boundaries for all placed teeth once per validation pass.
+> [`_cg_trimmed_tooth_boundaries`](#function-_cg_trimmed_tooth_boundaries): Build the trimmed boundaries for all placed teeth once per validation pass.
 
-> [`_cg_unique_hits(hits)`](#function-_cg_unique_hitshits): Remove coincident intersection records while preserving order.
+> [`_cg_unique_hits`](#function-_cg_unique_hits): Remove coincident intersection records while preserving order.
 
 
 ## Functions
@@ -171,7 +171,7 @@ Return whether adjacent-tooth witnesses form one compact shared contact.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_arc_mean_segment_length(arc)`
+### Function `_cg_arc_mean_segment_length`
 
 
 Calculate the mean segment length represented by an arc table.
@@ -186,7 +186,7 @@ Calculate the mean segment length represented by an arc table.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_arc_near_target(s, target, perimeter)`
+### Function `_cg_arc_near_target`
 
 
 Wrap an arc position to the turn nearest a target position.
@@ -203,7 +203,7 @@ Wrap an arc position to the turn nearest a target position.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_arc_segment_index(arc, perimeter, target)`
+### Function `_cg_arc_segment_index`
 
 
 Find the segment containing a wrapped arc target.
@@ -237,7 +237,7 @@ Detect long discrete return segments in an arc table.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_body_arc_for_intersection(hit, arc)`
+### Function `_cg_body_arc_for_intersection`
 
 
 Convert a body intersection record to its arc position.
@@ -270,7 +270,7 @@ Build the closed canonical body before teeth merge.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_closed_arc_sample(points, arc, target)`
+### Function `_cg_closed_arc_sample`
 
 
 Resolve one wrapped closed-curve arc position into point and tangent.
@@ -287,7 +287,7 @@ Resolve one wrapped closed-curve arc position into point and tangent.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_curve_tangent(points, i)`
+### Function `_cg_curve_tangent`
 
 
 Estimate a centred tangent vector at a closed-curve point index.
@@ -355,7 +355,7 @@ Validate frame finiteness, scale, orthogonality and winding.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_frame_valid(frame)`
+### Function `_cg_frame_valid`
 
 
 Check whether a local curve frame passes all frame invariants.
@@ -370,7 +370,7 @@ Check whether a local curve frame passes all frame invariants.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_hit_seen_before(hits, index)`
+### Function `_cg_hit_seen_before`
 
 
 Check whether an intersection point has already occurred.
@@ -386,7 +386,7 @@ Check whether an intersection point has already occurred.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_join_adjacent_root_boundaries(previous, current)`
+### Function `_cg_join_adjacent_root_boundaries`
 
 
 Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
@@ -402,7 +402,7 @@ Find a unique right-flank/left-flank crossing for the exposed union of overlappi
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_local_body_hits(hits, arc, perimeter, target, tooth_pitch)`
+### Function `_cg_local_body_hits`
 
 
 Retain body intersections within the local tooth interval.
@@ -439,7 +439,7 @@ Return point, tangent, outward normal and winding at an arc position.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_open_arc_table(points)`
+### Function `_cg_open_arc_table`
 
 
 Build a cumulative arc-length table for an open polyline.
@@ -454,7 +454,7 @@ Build a cumulative arc-length table for an open polyline.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_outward_normal_from_winding(tangent, winding)`
+### Function `_cg_outward_normal_from_winding`
 
 
 Return the outward normal for a tangent and known contour winding.
@@ -505,7 +505,7 @@ No return
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_placement_after_preflight(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, pressure_angle, tooth_phase, radial_root, backlash, clearance, frame, tooth_pitch, target)`
+### Function `_cg_placement_after_preflight`
 
 
 Evaluate accessibility and body intersections after cheap placement checks.
@@ -535,7 +535,7 @@ Evaluate accessibility and body intersections after cheap placement checks.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_placement_invalid(index, target, frame, candidate, code)`
+### Function `_cg_placement_invalid`
 
 
 Construct the canonical invalid placement record.
@@ -554,7 +554,7 @@ Construct the canonical invalid placement record.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)`
+### Function `_cg_placement_result`
 
 | Tooth placement 1 | Tooth placement 2 |
 | --- | --- |
@@ -585,7 +585,7 @@ Classify one candidate as placed, omitted or invalid, rejecting a failed local f
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_point_for_closed_arc(points, arc, target)`
+### Function `_cg_point_for_closed_arc`
 
 
 Interpolate a Cartesian point at a wrapped closed-curve arc position.
@@ -602,7 +602,7 @@ Interpolate a Cartesian point at a wrapped closed-curve arc position.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_point_in_polygon(point, polygon_points)`
+### Function `_cg_point_in_polygon`
 
 
 Test point inclusion using an even-odd polygon crossing rule.
@@ -618,7 +618,7 @@ Test point inclusion using an even-odd polygon crossing rule.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_point_in_polygon_strict(point, polygon_points)`
+### Function `_cg_point_in_polygon_strict`
 
 
 Test strict containment, excluding points on the polygon boundary.
@@ -634,7 +634,7 @@ Test strict containment, excluding points on the polygon boundary.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_point_on_segment(point, a, b)`
+### Function `_cg_point_on_segment`
 
 
 Test whether a point lies on a segment within the geometry tolerance.
@@ -651,7 +651,7 @@ Test whether a point lies on a segment within the geometry tolerance.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_polygon_segment_bounds(polygon_points)`
+### Function `_cg_polygon_segment_bounds`
 
 
 Return bounds and longest edge used by segment-polygon broad-phase checks.
@@ -666,7 +666,7 @@ Return bounds and longest edge used by segment-polygon broad-phase checks.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_polyline_arc_table(points)`
+### Function `_cg_polyline_arc_table`
 
 
 Build a cumulative arc-length table for a closed polyline.
@@ -700,7 +700,7 @@ Map local normal/tangent coordinates into a gear frame.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_segment_hits_polygon(a, b, polygon_points, prepared_bounds)`
+### Function `_cg_segment_hits_polygon`
 
 
 Test whether a segment enters or intersects a polygon.
@@ -769,7 +769,7 @@ Classify two canonical body intervals.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_body_intersections(tooth_boundary, body)`
+### Function `_cg_tooth_body_intersections`
 
 
 Find all exact tooth/body crossings after hierarchical bounds rejection.
@@ -785,7 +785,7 @@ Find all exact tooth/body crossings after hierarchical bounds rejection.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_body_intersections_direct(tooth_boundary, body)`
+### Function `_cg_tooth_body_intersections_direct`
 
 
 Find intersections between a placed tooth boundary and the body.
@@ -801,7 +801,7 @@ Find intersections between a placed tooth boundary and the body.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_contact_is_permitted(a, b, hit)`
+### Function `_cg_tooth_contact_is_permitted`
 
 
 Permit only a shared endpoint contact between tooth boundaries.
@@ -818,7 +818,7 @@ Permit only a shared endpoint contact between tooth boundaries.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_containment_collisions(a, b)`
+### Function `_cg_tooth_containment_collisions`
 
 
 Detect one tooth boundary contained inside the other.
@@ -860,7 +860,7 @@ Build the reusable pitch, body, candidate, and placement state.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_geometry_state_valid(state)`
+### Function `_cg_tooth_geometry_state_valid`
 
 
 Validate a prepared tooth state using the common body, placement and outline rules.
@@ -875,7 +875,7 @@ Validate a prepared tooth state using the common body, placement and outline rul
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_non_top_collisions(a, b)`
+### Function `_cg_tooth_non_top_collisions`
 
 
 Filter top-edge contacts from complete tooth-pair collisions.
@@ -891,7 +891,7 @@ Filter top-edge contacts from complete tooth-pair collisions.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_order_failures(placements)`
+### Function `_cg_tooth_order_failures`
 
 
 Detect non-monotone indices among accepted placements.
@@ -906,7 +906,7 @@ Detect non-monotone indices among accepted placements.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_pair_collisions(a, b)`
+### Function `_cg_tooth_pair_collisions`
 
 
 Find all segment intersections between two tooth boundaries.
@@ -948,7 +948,7 @@ Build the shared tooth candidate and placement records for prepared geometry.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_tooth_top_collisions(a, b)`
+### Function `_cg_tooth_top_collisions`
 
 
 Find collisions between the top edges of two tooth boundaries.
@@ -964,7 +964,7 @@ Find collisions between the top edges of two tooth boundaries.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_trim_tooth_boundary(boundary, start_hit, end_hit)`
+### Function `_cg_trim_tooth_boundary`
 
 
 Trim a placed tooth boundary to its selected body intersections.
@@ -981,7 +981,7 @@ Trim a placed tooth boundary to its selected body intersections.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_trimmed_tooth_boundaries(placements)`
+### Function `_cg_trimmed_tooth_boundaries`
 
 
 Build the trimmed boundaries for all placed teeth once per validation pass.
@@ -996,7 +996,7 @@ Build the trimmed boundaries for all placed teeth once per validation pass.
 
 Back to [module description](#module-tooth-placement).
 
-### Function `_cg_unique_hits(hits)`
+### Function `_cg_unique_hits`
 
 
 Remove coincident intersection records while preserving order.

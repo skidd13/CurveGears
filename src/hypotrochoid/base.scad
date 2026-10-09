@@ -8,7 +8,7 @@
 include <../common/trochoid.scad>
 
 /***
- * @function _cg_hypotrochoid_point(R, r, d, theta)
+ * @function _cg_hypotrochoid_point
  * @brief Evaluate one point on the inner-rolling hypotrochoid.
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
@@ -18,7 +18,7 @@ include <../common/trochoid.scad>
  */
 function _cg_hypotrochoid_point(R,r,d,theta) = [(R-r)*cos(theta)+d*cos((R-r)/r*theta),(R-r)*sin(theta)-d*sin((R-r)/r*theta)];
 /***
- * @function _cg_hypotrochoid_points(R, r, d, n=720)
+ * @function _cg_hypotrochoid_points
  * @brief Sample a complete hypotrochoid curve.
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
@@ -28,7 +28,7 @@ function _cg_hypotrochoid_point(R,r,d,theta) = [(R-r)*cos(theta)+d*cos((R-r)/r*t
  */
 function _cg_hypotrochoid_points(R,r,d,n=720) = [for(i=[0:n-1]) _cg_hypotrochoid_point(R,r,d,360*i/n)];
 /***
- * @function _cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720, unit_points=undef)
+ * @function _cg_hypotrochoid_scale
  * @brief Scale the hypotrochoid to the requested module and tooth count.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -41,7 +41,7 @@ function _cg_hypotrochoid_points(R,r,d,n=720) = [for(i=[0:n-1]) _cg_hypotrochoid
  */
 function _cg_hypotrochoid_scale(modul,tooth_number,R=3,r=1,d=.35,n=720,unit_points=undef) = _cg_trochoid_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_hypotrochoid_points(R,r,d,n) : unit_points);
 /***
- * @function _cg_hypotrochoid_radius(R, r, d, theta)
+ * @function _cg_hypotrochoid_radius
  * @brief Evaluate the unit-scale hypotrochoid radius at an angle.
  * @param R {number > 0} Fixed-circle radius ratio.
  * @param r {number > 0} Rolling-circle radius ratio.
@@ -51,7 +51,7 @@ function _cg_hypotrochoid_scale(modul,tooth_number,R=3,r=1,d=.35,n=720,unit_poin
  */
 function _cg_hypotrochoid_radius(R,r,d,theta) = _cg_trochoid_radius_from_point(_cg_hypotrochoid_point(R,r,d,theta));
 /***
- * @function _cg_hypotrochoid_curve_radius(scale, R, r, d, theta)
+ * @function _cg_hypotrochoid_curve_radius
  * @brief Evaluate the scaled hypotrochoid radius at a polar angle.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
@@ -62,7 +62,7 @@ function _cg_hypotrochoid_radius(R,r,d,theta) = _cg_trochoid_radius_from_point(_
  */
 function _cg_hypotrochoid_curve_radius(scale,R,r,d,theta) = _cg_trochoid_curve_radius_from_point(scale,_cg_hypotrochoid_point(R,r,d,theta));
 /***
- * @function _cg_hypotrochoid_points_scaled(scale, R, r, d, n=720)
+ * @function _cg_hypotrochoid_points_scaled
  * @brief Sample a hypotrochoid at the requested physical scale.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.

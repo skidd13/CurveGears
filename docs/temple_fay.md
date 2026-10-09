@@ -250,21 +250,21 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 
 **Parameters:**
 
-- `modul`: {number} Tooth module.
-- `tooth_number`: {integer} Tooth count.
-- `width`: {number} Width.
-- `bore`: {number} Bore.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `samples`: {integer} Samples.
-- `phase`: {number} Pair phase.
+- `modul`: {number, default .8} Tooth module.
+- `tooth_number`: {integer, default 34} Tooth count.
+- `width`: {number, default 4} Width.
+- `bore`: {number, default 4.8} Bore.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `samples`: {integer, default 720} Samples.
+- `phase`: {number, default 0} Pair phase.
 - `together_built`: {boolean, default false} Use meshed placement when true, separated display placement otherwise.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `tooth_phase`: {number} Tooth phase.
-- `driver_color`: {string} Driver colour.
-- `mate_color`: {string} Mate colour.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `driver_color`: {string, default "SteelBlue"} Driver colour.
+- `mate_color`: {string, default "Gold"} Mate colour.
 
 **Returns:**
 

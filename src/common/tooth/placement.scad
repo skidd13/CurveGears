@@ -12,7 +12,7 @@ include <generation.scad>
  * permitted.
  */
 
-/*** @function _cg_outward_normal_from_winding(tangent, winding)
+/*** @function _cg_outward_normal_from_winding
  * @brief Return the outward normal for a tangent and known contour winding.
  * @param tangent {vector} Local tangent vector.
  * @param winding {-1 or 1} Signed contour winding.
@@ -23,7 +23,7 @@ function _cg_outward_normal_from_winding(tangent,winding) =
         ? [tangent[1],-tangent[0]]
         : [-tangent[1],tangent[0]];
 
-/*** @function _cg_curve_tangent(points, i)
+/*** @function _cg_curve_tangent
  * @brief Estimate a centred tangent vector at a closed-curve point index.
  * @param points {array} Closed curve points.
  * @param i {integer} Point index.
@@ -32,7 +32,7 @@ function _cg_outward_normal_from_winding(tangent,winding) =
 function _cg_curve_tangent(points,i) =
     let(n=len(points)) _cg_vsub(points[(i+1)%n],points[(i-1+n)%n]);
 
-/*** @function _cg_polyline_arc_table(points)
+/*** @function _cg_polyline_arc_table
  * @brief Build a cumulative arc-length table for a closed polyline.
  * @param points {array} Closed curve points.
  * @return {array} Table of `[point index, cumulative length]` rows.
@@ -45,7 +45,7 @@ function _cg_polyline_arc_table(points) =
     )
     [for(i=[0:n]) [i,cumulative[i]]];
 
-/*** @function _cg_open_arc_table(points)
+/*** @function _cg_open_arc_table
  * @brief Build a cumulative arc-length table for an open polyline.
  * @param points {array} Open curve points.
  * @return {array} Table of `[point index, cumulative length]` rows.
@@ -58,7 +58,7 @@ function _cg_open_arc_table(points) =
     )
     [for(i=[0:n-1]) [i,cumulative[i]]];
 
-/*** @function _cg_closed_arc_sample(points, arc, target)
+/*** @function _cg_closed_arc_sample
  * @brief Resolve one wrapped closed-curve arc position into point and tangent.
  * @param points {array} Closed curve points.
  * @param arc {array} Closed-curve arc-length table.
@@ -71,7 +71,7 @@ function _cg_closed_arc_sample(points,arc,target) =
         t0=_cg_curve_tangent(points,i%n),t1=_cg_curve_tangent(points,(i+1)%n))
     [_cg_vlerp(points[i%n],points[(i+1)%n],f),_cg_vlerp(t0,t1,f)];
 
-/*** @function _cg_point_for_closed_arc(points, arc, target)
+/*** @function _cg_point_for_closed_arc
  * @brief Interpolate a Cartesian point at a wrapped closed-curve arc position.
  * @param points {array} Closed curve points.
  * @param arc {array} Closed-curve arc-length table.
@@ -114,7 +114,7 @@ function _cg_frame_failure_code(frame) =
     _cg_cross2(frame[1],frame[2]) * frame[3] >= -_cg_eps_angle() ? "FRAME_NORMAL_REVERSED" :
     "PASS";
 
-/*** @function _cg_frame_valid(frame)
+/*** @function _cg_frame_valid
  * @brief Check whether a local curve frame passes all frame invariants.
  * @param frame {array} Point, tangent, normal and winding frame.
  * @return {boolean} True when the frame is valid.
@@ -162,7 +162,7 @@ function _cg_canonical_body_polyline(points,dedendum,radial_root=false) =
             frame=[point,tangent,normal,winding]
         ) _cg_canonical_body_point_from_frame(frame,dedendum,radial_root)];
 
-/*** @function _cg_arc_mean_segment_length(arc)
+/*** @function _cg_arc_mean_segment_length
  * @brief Calculate the mean segment length represented by an arc table.
  * @param arc {array} Arc-length table.
  * @return {number} Mean segment length in mm.
@@ -186,7 +186,7 @@ function _cg_arc_segment_is_discrete_return(arc,perimeter,target) =
     )
     segment_length > 4*_cg_arc_mean_segment_length(arc);
 
-/*** @function _cg_arc_segment_index(arc, perimeter, target)
+/*** @function _cg_arc_segment_index
  * @brief Find the segment containing a wrapped arc target.
  * @param arc {array} Arc-length table.
  * @param perimeter {number > 0} Closed-curve perimeter in mm.
@@ -220,7 +220,7 @@ function _cg_frame_continuity_failure_code(points,arc,perimeter,target,tooth_pit
     tangent_dot < -_cg_eps_angle() || normal_dot < -_cg_eps_angle()
         ? "FRAME_DISCONTINUITY" : "PASS";
 
-/*** @function _cg_point_in_polygon(point, polygon_points)
+/*** @function _cg_point_in_polygon
  * @brief Test point inclusion using an even-odd polygon crossing rule.
  * @param point {array} Cartesian point.
  * @param polygon_points {array} Polygon vertices.
@@ -232,7 +232,7 @@ function _cg_point_in_polygon(point,polygon_points) =
         if((a[1]>point[1])!=(b[1]>point[1])
             && point[0] < (b[0]-a[0])*(point[1]-a[1])/(b[1]-a[1])+a[0]) 1]) % 2 == 1;
 
-/*** @function _cg_polygon_segment_bounds(polygon_points)
+/*** @function _cg_polygon_segment_bounds
  * @brief Return bounds and longest edge used by segment-polygon broad-phase checks.
  * @param polygon_points {array} Polygon vertices.
  * @return {array} Polygon minimum, maximum and longest edge length.
@@ -245,7 +245,7 @@ function _cg_polygon_segment_bounds(polygon_points) =
             _cg_vlen(_cg_vsub(polygon_points[(i+1)%len(polygon_points)],polygon_points[i]))])
     ];
 
-/*** @function _cg_segment_hits_polygon(a, b, polygon_points, prepared_bounds)
+/*** @function _cg_segment_hits_polygon
  * @brief Test whether a segment enters or intersects a polygon.
  * @param a {array} Segment start point.
  * @param b {array} Segment end point.
@@ -324,7 +324,7 @@ function _cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,m
         required_clearance,frame,corridor
     ];
 
-/*** @function _cg_body_arc_for_intersection(hit, arc)
+/*** @function _cg_body_arc_for_intersection
  * @brief Convert a body intersection record to its arc position.
  * @param hit {array} Body intersection record.
  * @param arc {array} Body arc-length table.
@@ -333,7 +333,7 @@ function _cg_accessibility_result(points,arc,perimeter,body,target,tooth_pitch,m
 function _cg_body_arc_for_intersection(hit,arc) =
     arc[hit[2]][1]+hit[4]*(arc[hit[2]+1][1]-arc[hit[2]][1]);
 
-/*** @function _cg_local_body_hits(hits, arc, perimeter, target, tooth_pitch)
+/*** @function _cg_local_body_hits
  * @brief Retain body intersections within the local tooth interval.
  * @param hits {array} Body intersection records.
  * @param arc {array} Body arc-length table.
@@ -347,7 +347,7 @@ function _cg_local_body_hits(hits,arc,perimeter,target,tooth_pitch) =
         let(s=_cg_body_arc_for_intersection(hit,arc),delta=(s-target)-perimeter*floor((s-target)/perimeter+.5))
         if(abs(delta) <= .75*tooth_pitch) concat(hit,[s])];
 
-/*** @function _cg_hit_seen_before(hits, index)
+/*** @function _cg_hit_seen_before
  * @brief Check whether an intersection point has already occurred.
  * @param hits {array} Intersection records.
  * @param index {integer} Record index to test.
@@ -356,7 +356,7 @@ function _cg_local_body_hits(hits,arc,perimeter,target,tooth_pitch) =
 function _cg_hit_seen_before(hits,index) =
     index==0 ? false : len([for(j=[0:index-1]) if(_cg_vlen(_cg_vsub(hits[j][0],hits[index][0]))<=_cg_eps_intersect()) 1])>0;
 
-/*** @function _cg_unique_hits(hits)
+/*** @function _cg_unique_hits
  * @brief Remove coincident intersection records while preserving order.
  * @param hits {array} Intersection records.
  * @return {array} Unique intersection records.
@@ -364,7 +364,7 @@ function _cg_hit_seen_before(hits,index) =
 function _cg_unique_hits(hits) =
     len(hits)==0 ? [] : [for(i=[0:len(hits)-1]) if(!_cg_hit_seen_before(hits,i)) hits[i]];
 
-/*** @function _cg_arc_near_target(s, target, perimeter)
+/*** @function _cg_arc_near_target
  * @brief Wrap an arc position to the turn nearest a target position.
  * @param s {number} Arc position in mm.
  * @param target {number} Target arc position in mm.
@@ -405,7 +405,7 @@ function _cg_splice_relation(a,b) =
         ? "SPLICE_INTERVAL_INTERLEAVED" : "SPLICE_INTERVAL_OVERLAP";
 
 /**
- * @function _cg_join_adjacent_root_boundaries(previous, current)
+ * @function _cg_join_adjacent_root_boundaries
  * @brief Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
  * @param previous {array of points} Previous trimmed tooth boundary.
  * @param current {array of points} Current trimmed tooth boundary.
@@ -443,7 +443,7 @@ function _cg_splice_failures(placements,perimeter,tooth_pitch=undef,prepared_bou
             if(intervals[i][0] > intervals[i+1][0]+_cg_eps_intersect()) ["SPLICE_ORDER_INVALID",intervals[i],intervals[i+1]]]
     );
 
-/*** @function _cg_tooth_body_intersections_direct(tooth_boundary, body)
+/*** @function _cg_tooth_body_intersections_direct
  * @brief Find intersections between a placed tooth boundary and the body.
  * @param tooth_boundary {array} Tooth boundary points.
  * @param body {array} Body boundary points.
@@ -457,7 +457,7 @@ function _cg_tooth_body_intersections_direct(tooth_boundary,body) =
         let(hit=_cg_segment_intersection(a,b,c,d))
         if(hit[0]) [hit[1],ti,bi,hit[2],hit[3]]];
 /**
- * @function _cg_tooth_body_intersections(tooth_boundary, body)
+ * @function _cg_tooth_body_intersections
  * @brief Find all exact tooth/body crossings after hierarchical bounds rejection.
  * @param tooth_boundary {array} Tooth boundary points.
  * @param body {array} Body boundary points.
@@ -475,7 +475,7 @@ function _cg_tooth_body_intersections(tooth_boundary,body) =
     ];
 
 
-/*** @function _cg_placement_invalid(index, target, frame, candidate, code)
+/*** @function _cg_placement_invalid
  * @brief Construct the canonical invalid placement record.
  * @param index {integer} Tooth index.
  * @param target {number} Target arc position in mm.
@@ -488,7 +488,7 @@ function _cg_placement_invalid(index,target,frame,candidate,code) =
     ["invalid",code,index,target,frame,candidate,[],[],undef,undef,[false,-1,[0,0],0,0,frame,[]],[]];
 
 /***
- * @function _cg_placement_after_preflight(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, pressure_angle, tooth_phase, radial_root, backlash, clearance, frame, tooth_pitch, target)
+ * @function _cg_placement_after_preflight
  * @brief Evaluate accessibility and body intersections after cheap placement checks.
  * @param points {array} Sampled pitch-curve points.
  * @param arc {array} Pitch-curve arc-length table.
@@ -543,7 +543,7 @@ function _cg_placement_after_preflight(points,arc,perimeter,body,modul,tooth_num
     [state,code,tooth_index,target,frame,candidate,boundary,local_hits,first_hit,last_hit,accessibility,remote_hits];
 
 /**
- * @function _cg_placement_result(points, arc, perimeter, body, modul, tooth_number, tooth_index, candidate, ...)
+ * @function _cg_placement_result
  * @brief Classify one candidate as placed, omitted or invalid, rejecting a failed local frame or tooth candidate before accessibility and body-intersection scans.
  * @image ../images/tooth/placement.png Tooth placement 1
  * @image ../images/tooth/placement_alternative.png Tooth placement 2
@@ -640,7 +640,7 @@ function _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle=20,to
         prepare_final ? [body_collisions,outline,collisions,assembly_failures,final_intersections,final_signed_area,trimmed_boundaries] : []);
 
 /***
- * @function _cg_tooth_geometry_state_valid(state)
+ * @function _cg_tooth_geometry_state_valid
  * @brief Validate a prepared tooth state using the common body, placement and outline rules.
  * @param state {array} Prepared state returned by `_cg_tooth_geometry_state(..., prepare_final=true)`.
  * @return {boolean} True when the complete common gear validation passes.
@@ -657,7 +657,7 @@ function _cg_tooth_geometry_state_valid(state) = len(state)<12 ? false :
     && !_cg_has_duplicate_edge(state[7]) && _cg_polygon_area(state[7])>_cg_eps_area()
     && abs(state[11])>_cg_eps_area();
 
-/*** @function _cg_tooth_pair_collisions(a, b)
+/*** @function _cg_tooth_pair_collisions
  * @brief Find all segment intersections between two tooth boundaries.
  * @param a {array} First tooth boundary.
  * @param b {array} Second tooth boundary.
@@ -680,7 +680,7 @@ function _cg_tooth_pair_collisions(a,b) = [
         ) if(hit[0]) [i,j,hit[1]]
 ];
 
-/*** @function _cg_point_on_segment(point, a, b)
+/*** @function _cg_point_on_segment
  * @brief Test whether a point lies on a segment within the geometry tolerance.
  * @param point {point} Candidate point.
  * @param a {point} Segment start.
@@ -692,7 +692,7 @@ function _cg_point_on_segment(point,a,b) =
     && point[0]>=min(a[0],b[0])-_cg_eps_intersect() && point[0]<=max(a[0],b[0])+_cg_eps_intersect()
     && point[1]>=min(a[1],b[1])-_cg_eps_intersect() && point[1]<=max(a[1],b[1])+_cg_eps_intersect();
 
-/*** @function _cg_point_in_polygon_strict(point, polygon_points)
+/*** @function _cg_point_in_polygon_strict
  * @brief Test strict containment, excluding points on the polygon boundary.
  * @param point {point} Candidate point.
  * @param polygon_points {array} Closed polygon.
@@ -703,7 +703,7 @@ function _cg_point_in_polygon_strict(point,polygon_points) =
     && len([for(i=[0:len(polygon_points)-1])
         if(_cg_point_on_segment(point,polygon_points[i],polygon_points[(i+1)%len(polygon_points)])) 1])==0;
 
-/*** @function _cg_tooth_containment_collisions(a, b)
+/*** @function _cg_tooth_containment_collisions
  * @brief Detect one tooth boundary contained inside the other.
  * @param a {array of points} First tooth boundary.
  * @param b {array of points} Second tooth boundary.
@@ -713,7 +713,7 @@ function _cg_tooth_containment_collisions(a,b) =
     _cg_point_in_polygon_strict(a[0],b) ? [[-1,-1,a[0]]] :
     _cg_point_in_polygon_strict(b[0],a) ? [[-1,-1,b[0]]] : [];
 
-/*** @function _cg_tooth_contact_is_permitted(a, b, hit)
+/*** @function _cg_tooth_contact_is_permitted
  * @brief Permit only a shared endpoint contact between tooth boundaries.
  * @param a {array of points} First tooth boundary.
  * @param b {array of points} Second tooth boundary.
@@ -727,7 +727,7 @@ function _cg_tooth_contact_is_permitted(a,b,hit) =
     && (_cg_vlen(_cg_vsub(hit[2],b[hit[1]]))<=_cg_eps_intersect()
         || _cg_vlen(_cg_vsub(hit[2],b[(hit[1]+1)%len(b)]))<=_cg_eps_intersect());
 
-/*** @function _cg_tooth_top_collisions(a, b)
+/*** @function _cg_tooth_top_collisions
  * @brief Find collisions between the top edges of two tooth boundaries.
  * @param a {array} First tooth boundary.
  * @param b {array} Second tooth boundary.
@@ -745,7 +745,7 @@ function _cg_tooth_top_collisions(a,b) =
         && !_cg_tooth_contact_is_permitted(a,b,[top_a,top_b,hit[0] ? hit[1] : _cg_vlerp(p,q,.5)])
         ? [[top_a,top_b,hit[0] ? hit[1] : _cg_vlerp(p,q,.5)]] : [];
 
-/*** @function _cg_tooth_order_failures(placements)
+/*** @function _cg_tooth_order_failures
  * @brief Detect non-monotone indices among accepted placements.
  * @param placements {array} Placement records.
  * @return {array} Placement-order failure records.
@@ -755,7 +755,7 @@ function _cg_tooth_order_failures(placements) =
     len(placed)<2 ? [] : [for(i=[0:len(placed)-2])
         if(placed[i][2] >= placed[i+1][2]) ["TOOTH_ORDER_CONFLICT",placed[i][2],placed[i+1][2]]];
 
-/*** @function _cg_tooth_non_top_collisions(a, b)
+/*** @function _cg_tooth_non_top_collisions
  * @brief Filter top-edge contacts from complete tooth-pair collisions.
  * @param a {array} First tooth boundary.
  * @param b {array} Second tooth boundary.
@@ -781,7 +781,7 @@ function _cg_adjacent_contact_region(hits,modul) =
     && len([for(hit=hits)
         if(_cg_vlen(_cg_vsub(hit[2],hits[0][2])) <= modul/4) 1])==len(hits);
 
-/*** @function _cg_trim_tooth_boundary(boundary, start_hit, end_hit)
+/*** @function _cg_trim_tooth_boundary
  * @brief Trim a placed tooth boundary to its selected body intersections.
  * @param boundary {array} Placed tooth boundary points.
  * @param start_hit {array} First body intersection record.
@@ -797,7 +797,7 @@ function _cg_trim_tooth_boundary(boundary,start_hit,end_hit) =
         [end_hit[0]]
     );
 
-/*** @function _cg_trimmed_tooth_boundaries(placements)
+/*** @function _cg_trimmed_tooth_boundaries
  * @brief Build the trimmed boundaries for all placed teeth once per validation pass.
  * @param placements {array} Tooth placement records.
  * @return {array of boundaries} Placed-tooth boundaries in placement order.

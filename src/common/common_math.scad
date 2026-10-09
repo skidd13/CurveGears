@@ -15,45 +15,45 @@ include <common_params.scad>
 function _cg_tanh(x) =
     let(e=exp(-2*abs(x))) (x<0 ? -1 : 1)*(1-e)/(1+e);
 
-/*** @function _cg_degrees(angle)
+/*** @function _cg_degrees
  * @brief Convert radians to degrees.
  * @param angle {number} Angle in radians.
  * @return {number} Angle in degrees.
  */
 function _cg_degrees(angle) = angle*_cg_deg_per_rad;
-/*** @function _cg_radians(angle)
+/*** @function _cg_radians
  * @brief Convert degrees to radians.
  * @param angle {number} Angle in degrees.
  * @return {number} Angle in radians.
  */
 function _cg_radians(angle) = angle/_cg_deg_per_rad;
-/*** @function _cg_polar(p)
+/*** @function _cg_polar
  * @brief Convert a polar `[radius, angle]` pair to Cartesian coordinates.
  * @param p {array} Polar pair with angle in degrees.
  * @return {array} Cartesian point `[x, y]`.
  */
 function _cg_polar(p) = [p[0]*cos(p[1]),p[0]*sin(p[1])];
 
-/*** @function _cg_vsub(a, b)
+/*** @function _cg_vsub
  * @brief Subtract one two-dimensional vector from another.
  * @param a {array} Left-hand vector.
  * @param b {array} Right-hand vector.
  * @return {array} Difference vector.
  */
 function _cg_vsub(a,b) = [a[0]-b[0], a[1]-b[1]];
-/*** @function _cg_vlen(a)
+/*** @function _cg_vlen
  * @brief Calculate the Euclidean length of a two-dimensional vector.
  * @param a {array} Vector.
  * @return {number} Vector length.
  */
 function _cg_vlen(a) = sqrt(a[0]*a[0] + a[1]*a[1]);
-/*** @function _cg_vunit(a)
+/*** @function _cg_vunit
  * @brief Normalise a two-dimensional vector, returning zero for a zero vector.
  * @param a {array} Vector.
  * @return {array} Unit vector or `[0, 0]`.
  */
 function _cg_vunit(a) = let(l=_cg_vlen(a)) l == 0 ? [0,0] : [a[0]/l,a[1]/l];
-/*** @function _cg_lerp(a, b, t)
+/*** @function _cg_lerp
  * @brief Linearly interpolate between two scalar values.
  * @param a {number} Start value.
  * @param b {number} End value.
@@ -61,7 +61,7 @@ function _cg_vunit(a) = let(l=_cg_vlen(a)) l == 0 ? [0,0] : [a[0]/l,a[1]/l];
  * @return {number} Interpolated value.
  */
 function _cg_lerp(a,b,t) = a + t*(b-a);
-/*** @function _cg_vlerp(a, b, t)
+/*** @function _cg_vlerp
  * @brief Linearly interpolate between two two-dimensional vectors.
  * @param a {array} Start vector.
  * @param b {array} End vector.
@@ -69,14 +69,14 @@ function _cg_lerp(a,b,t) = a + t*(b-a);
  * @return {array} Interpolated vector.
  */
 function _cg_vlerp(a,b,t) = [_cg_lerp(a[0],b[0],t), _cg_lerp(a[1],b[1],t)];
-/*** @function _cg_cross2(a, b)
+/*** @function _cg_cross2
  * @brief Calculate the scalar two-dimensional cross product.
  * @param a {array} First vector.
  * @param b {array} Second vector.
  * @return {number} Signed cross-product magnitude.
  */
 function _cg_cross2(a,b) = a[0]*b[1]-a[1]*b[0];
-/*** @function _cg_sum(v, i, acc)
+/*** @function _cg_sum
  * @brief Sum a scalar array recursively.
  * @param v {array} Scalar values.
  * @param i {integer, default 0} Current index.
@@ -84,7 +84,7 @@ function _cg_cross2(a,b) = a[0]*b[1]-a[1]*b[0];
  * @return {number} Sum of the values.
  */
 function _cg_sum(v,i=0,acc=0) = i >= len(v) ? acc : _cg_sum(v,i+1,acc+v[i]);
-/*** @function _cg_prefix_sums(v, i, acc, out)
+/*** @function _cg_prefix_sums
  * @brief Build inclusive prefix sums for a scalar array.
  * @param v {array} Scalar values.
  * @param i {integer, default 0} Current index.
@@ -95,7 +95,7 @@ function _cg_sum(v,i=0,acc=0) = i >= len(v) ? acc : _cg_sum(v,i+1,acc+v[i]);
 function _cg_prefix_sums(v,i=0,acc=0,out=[0]) =
     i >= len(v) ? out : _cg_prefix_sums(v,i+1,acc+v[i],concat(out,[acc+v[i]]));
 
-/*** @function _cg_closed_polyline_perimeter(points)
+/*** @function _cg_closed_polyline_perimeter
  * @brief Calculate the perimeter of a closed sampled point list.
  * @param points {array of points} Closed Cartesian polyline.
  * @return {number} Perimeter in the input coordinate units.
@@ -104,7 +104,7 @@ function _cg_closed_polyline_perimeter(points) =
     _cg_sum([for(i=[0:len(points)-1])
         _cg_vlen(_cg_vsub(points[(i+1)%len(points)],points[i]))]);
 
-/*** @function _cg_pitch_scale_from_points(modul, tooth_number, unit_points, circumference)
+/*** @function _cg_pitch_scale_from_points
  * @brief Calculate pitch scaling from an existing unit-curve sample.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Requested tooth count.
@@ -115,7 +115,7 @@ function _cg_closed_polyline_perimeter(points) =
 function _cg_pitch_scale_from_points(modul,tooth_number,unit_points,circumference=_cg_pi) =
     circumference*modul*tooth_number/_cg_closed_polyline_perimeter(unit_points);
 
-/*** @function _cg_scale_points(scale, points)
+/*** @function _cg_scale_points
  * @brief Multiply every sampled point by one scalar.
  * @param scale {number} Point scale factor.
  * @param points {array of points} Cartesian point list.
@@ -130,7 +130,7 @@ function _cg_upper_bound_column(tab,target,column,lo,hi) =
         ? _cg_upper_bound_column(tab,target,column,mid,hi)
         : _cg_upper_bound_column(tab,target,column,lo,mid-1);
 
-/*** @function _cg_interp_x_for_y(tab, target)
+/*** @function _cg_interp_x_for_y
  * @brief Interpolate an x value at a monotonic y target in a two-column table.
  * @param tab {array} Table of `[x, y]` samples.
  * @param target {number} Target y value.
@@ -143,7 +143,7 @@ function _cg_interp_x_for_y(tab,target) =
     y1>y0 ? _cg_lerp(tab[segment][0],tab[segment+1][0],(target-y0)/(y1-y0)) :
     tab[len(tab)-1][0];
 
-/*** @function _cg_interp_y_for_x(tab, target)
+/*** @function _cg_interp_y_for_x
  * @brief Interpolate a y value at a monotonic x target in a two-column table.
  * @param tab {array} Table of `[x, y]` samples.
  * @param target {number} Target x value.

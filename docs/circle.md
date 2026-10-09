@@ -22,30 +22,30 @@ construction contracts used by the non-circular families.
 
 **Functions**:
 
-> [`curve_gear_circle(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circlemodul-tooth_number-width-bore-): Build a circular reference gear.
+> [`curve_gear_circle`](#function-curve_gear_circle): Build a circular reference gear.
 
-> [`curve_gear_circle_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_circle_2dmodul-tooth_number-bore-): Emit the complete circular gear profile as 2D geometry.
+> [`curve_gear_circle_2d`](#function-curve_gear_circle_2d): Emit the complete circular gear profile as 2D geometry.
 
-> [`curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`](#function-curve_gear_circle_bodymodul-tooth_number-width-bore-samples480): Build the circular reference body without teeth.
+> [`curve_gear_circle_body`](#function-curve_gear_circle_body): Build the circular reference body without teeth.
 
-> [`curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`](#function-curve_gear_circle_body_2dmodul-tooth_number-bore-samples480-body_offset0): Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
+> [`curve_gear_circle_body_2d`](#function-curve_gear_circle_body_2d): Emit the circular body as 2D geometry; negative body_offset shrinks its outer contour.
 
-> [`curve_gear_circle_centre_distance(modul, tooth_number)`](#function-curve_gear_circle_centre_distancemodul-tooth_number): Return the reference centre distance for a circular pair.
+> [`curve_gear_circle_centre_distance`](#function-curve_gear_circle_centre_distance): Return the reference centre distance for a circular pair.
 
-> [`curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circle_matemodul-tooth_number-width-bore-): Build the circular reference mate boundary at the origin.
+> [`curve_gear_circle_mate`](#function-curve_gear_circle_mate): Build the circular reference mate boundary at the origin.
 
-> [`curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_circle_pairmodul-tooth_number-width-bore-): Build a meshed or separated circular reference pair.
+> [`curve_gear_circle_pair`](#function-curve_gear_circle_pair): Build a meshed or separated circular reference pair.
 
-> [`_cg_circle_points(modul, tooth_number, samples=480)`](#function-_cg_circle_pointsmodul-tooth_number-samples480): Sample the circular pitch curve in angular order.
+> [`_cg_circle_points`](#function-_cg_circle_points): Sample the circular pitch curve in angular order.
 
-> [`_cg_circle_radius(modul, tooth_number)`](#function-_cg_circle_radiusmodul-tooth_number): Calculate the circular pitch radius from module and tooth count.
+> [`_cg_circle_radius`](#function-_cg_circle_radius): Calculate the circular pitch radius from module and tooth count.
 
 
 ## Functions
 
 The module `Circle` defines the following functions.
 
-### Function `curve_gear_circle(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_circle`
 
 | Circle gear 1 | Circle gear 2 |
 | --- | --- |
@@ -72,7 +72,7 @@ No return
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_2d(modul, tooth_number, bore, ...)`
+### Function `curve_gear_circle_2d`
 
 | Circle 2D gear 1 | Circle 2D gear 2 |
 | --- | --- |
@@ -104,7 +104,7 @@ curve_gear_circle_2d(0.8, 34, 4.8);
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_body(modul, tooth_number, width, bore, samples=480)`
+### Function `curve_gear_circle_body`
 
 | Circle body 1 | Circle body 2 |
 | --- | --- |
@@ -127,7 +127,7 @@ No return
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_body_2d(modul, tooth_number, bore, samples=480, body_offset=0)`
+### Function `curve_gear_circle_body_2d`
 
 | Circle 2D body 1 | Circle 2D body 2 |
 | --- | --- |
@@ -156,7 +156,7 @@ curve_gear_circle_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_centre_distance(modul, tooth_number)`
+### Function `curve_gear_circle_centre_distance`
 
 
 Return the reference centre distance for a circular pair.
@@ -172,7 +172,7 @@ Return the reference centre distance for a circular pair.
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_circle_mate`
 
 | Circle mate 1 | Circle mate 2 |
 | --- | --- |
@@ -199,7 +199,7 @@ No return
 
 Back to [module description](#module-circle).
 
-### Function `curve_gear_circle_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_circle_pair`
 
 | Circle pair 1 | Circle pair 2 |
 | --- | --- |
@@ -210,16 +210,16 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `samples`: {integer >= 120, default 480} Circular pitch-curve sampling density.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -230,7 +230,7 @@ No return
 
 Back to [module description](#module-circle).
 
-### Function `_cg_circle_points(modul, tooth_number, samples=480)`
+### Function `_cg_circle_points`
 
 
 Sample the circular pitch curve in angular order.
@@ -247,7 +247,7 @@ Sample the circular pitch curve in angular order.
 
 Back to [module description](#module-circle).
 
-### Function `_cg_circle_radius(modul, tooth_number)`
+### Function `_cg_circle_radius`
 
 
 Calculate the circular pitch radius from module and tooth count.

@@ -22,7 +22,7 @@ an explicit visual gap.
 
 **Functions**:
 
-> [`_cg_pair_display_separation(driver_extent, mate_extent, modul)`](#function-_cg_pair_display_separationdriver_extent-mate_extent-modul): Return the explicit non-meshed display separation for two extents.
+> [`_cg_pair_display_separation`](#function-_cg_pair_display_separation): Return the explicit non-meshed display separation for two extents.
 
 > [`_cg_pair_point_extent`](#function-_cg_pair_point_extent): Return the maximum radial extent of a sampled pitch curve.
 
@@ -31,7 +31,7 @@ an explicit visual gap.
 
 The module `Pair assembly` defines the following functions.
 
-### Function `_cg_pair_display_separation(driver_extent, mate_extent, modul)`
+### Function `_cg_pair_display_separation`
 
 
 Return the explicit non-meshed display separation for two extents.
@@ -105,7 +105,7 @@ Back to [top](#).
 
 > [`_cg_polar_pair`](#function-_cg_polar_pair): Prepare and assemble a named shape's driver and conjugate mate once.
 
-> [`_cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)`](#function-_cg_static_pair_assemblyreference_distance-together_built-driver_rotation-mate_rotation-): Places a statically classified reference pair without implying conjugate motion.
+> [`_cg_static_pair_assembly`](#function-_cg_static_pair_assembly): Places a statically classified reference pair without implying conjugate motion.
 
 
 ## Functions
@@ -140,7 +140,7 @@ Prepare and assemble a named shape's driver and conjugate mate once.
 
 Back to [module description](#module-_cg_pair_assembly).
 
-### Function `_cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)`
+### Function `_cg_static_pair_assembly`
 
 
 Places a statically classified reference pair without implying conjugate motion.

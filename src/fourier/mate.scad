@@ -3,7 +3,7 @@ include <../common/mate/preparation.scad>
 include <../common/mate/placement.scad>
 
 /***
- * @function curve_gear_fourier_mate(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_fourier_mate
  * @brief Build the standalone dynamically conjugate Fourier mate.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/fourier/curve_gear_fourier_mate.png Fourier mate 1
@@ -26,7 +26,7 @@ module curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients=[[2,.1
 }
 
 /***
- * @function curve_gear_fourier_centre_distance(modul, tooth_number, coefficients)
+ * @function curve_gear_fourier_centre_distance
  * @brief Return the Fourier conjugate pair centre distance.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -38,7 +38,7 @@ function curve_gear_fourier_centre_distance(modul,tooth_number,coefficients=[[2,
     _cg_polar_mate_distance(_cg_fourier_shape(modul,tooth_number,coefficients,samples),samples);
 
 /***
- * @function curve_gear_fourier_mate_rotation(modul, tooth_number, coefficients, samples, phase)
+ * @function curve_gear_fourier_mate_rotation
  * @brief Return Fourier mate rotation for a driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

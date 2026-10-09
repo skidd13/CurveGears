@@ -21,7 +21,7 @@ circle. The documented ratio constraints reject cusp and loop cases.
 
 **Functions**:
 
-> [`curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)`](#function-curve_gear_hypotrochoidmodul-tooth_number-width-bore-): Build a hypotrochoid non-circular gear.
+> [`curve_gear_hypotrochoid`](#function-curve_gear_hypotrochoid): Build a hypotrochoid non-circular gear.
 
 > [`curve_gear_hypotrochoid_2d`](#function-curve_gear_hypotrochoid_2d): Emit the complete hypotrochoid gear profile as 2D geometry.
 
@@ -37,38 +37,38 @@ circle. The documented ratio constraints reject cusp and loop cases.
 
 > [`curve_gear_hypotrochoid_pair`](#function-curve_gear_hypotrochoid_pair): Build a meshed or separated hypotrochoid driver/mate pair.
 
-> [`_cg_hypotrochoid_build(modul, tooth_number, width, bore, major_ratio=3, rolling_ratio=1, offset_ratio=0.35, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_hypotrochoid_buildmodul-tooth_number-width-bore-major_ratio3-rolling_ratio1-offset_ratio035-pressure_angle20-tooth_phase0-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct a validated hypotrochoid body, gear, or mate boundary.
+> [`_cg_hypotrochoid_build`](#function-_cg_hypotrochoid_build): Construct a validated hypotrochoid body, gear, or mate boundary.
 
-> [`_cg_hypotrochoid_centre_distance(scale, R, r, d, n=720)`](#function-_cg_hypotrochoid_centre_distancescale-r-r-d-n720): Solve the fixed centre distance for a hypotrochoid mate.
+> [`_cg_hypotrochoid_centre_distance`](#function-_cg_hypotrochoid_centre_distance): Solve the fixed centre distance for a hypotrochoid mate.
 
-> [`_cg_hypotrochoid_curve_radius(scale, R, r, d, theta)`](#function-_cg_hypotrochoid_curve_radiusscale-r-r-d-theta): Evaluate the scaled hypotrochoid radius at a polar angle.
+> [`_cg_hypotrochoid_curve_radius`](#function-_cg_hypotrochoid_curve_radius): Evaluate the scaled hypotrochoid radius at a polar angle.
 
-> [`_cg_hypotrochoid_driver_radii(scale, R, r, d, n=720)`](#function-_cg_hypotrochoid_driver_radiiscale-r-r-d-n720): Sample the driver polygon at physical polar phase boundaries.
+> [`_cg_hypotrochoid_driver_radii`](#function-_cg_hypotrochoid_driver_radii): Sample the driver polygon at physical polar phase boundaries.
 
-> [`_cg_hypotrochoid_mate_points(scale, R, r, d, D, n=720)`](#function-_cg_hypotrochoid_mate_pointsscale-r-r-d-d-n720): Return the conjugate mate pitch points for a hypotrochoid.
+> [`_cg_hypotrochoid_mate_points`](#function-_cg_hypotrochoid_mate_points): Return the conjugate mate pitch points for a hypotrochoid.
 
-> [`_cg_hypotrochoid_mate_points_from_driver(scale, R, r, d, D, n=720)`](#function-_cg_hypotrochoid_mate_points_from_driverscale-r-r-d-d-n720): Generate mate pitch points from driver phase samples.
+> [`_cg_hypotrochoid_mate_points_from_driver`](#function-_cg_hypotrochoid_mate_points_from_driver): Generate mate pitch points from driver phase samples.
 
-> [`_cg_hypotrochoid_motion_radii(scale, R, r, d, n=720)`](#function-_cg_hypotrochoid_motion_radiiscale-r-r-d-n720): Sample the driver polygon at physical polar integration midpoints.
+> [`_cg_hypotrochoid_motion_radii`](#function-_cg_hypotrochoid_motion_radii): Sample the driver polygon at physical polar integration midpoints.
 
-> [`_cg_hypotrochoid_motion_table(scale, R, r, d, D, n=720)`](#function-_cg_hypotrochoid_motion_tablescale-r-r-d-d-n720): Integrate hypotrochoid driver-to-mate phase motion.
+> [`_cg_hypotrochoid_motion_table`](#function-_cg_hypotrochoid_motion_table): Integrate hypotrochoid driver-to-mate phase motion.
 
-> [`_cg_hypotrochoid_point(R, r, d, theta)`](#function-_cg_hypotrochoid_pointr-r-d-theta): Evaluate one point on the inner-rolling hypotrochoid.
+> [`_cg_hypotrochoid_point`](#function-_cg_hypotrochoid_point): Evaluate one point on the inner-rolling hypotrochoid.
 
-> [`_cg_hypotrochoid_points(R, r, d, n=720)`](#function-_cg_hypotrochoid_pointsr-r-d-n720): Sample a complete hypotrochoid curve.
+> [`_cg_hypotrochoid_points`](#function-_cg_hypotrochoid_points): Sample a complete hypotrochoid curve.
 
-> [`_cg_hypotrochoid_points_scaled(scale, R, r, d, n=720)`](#function-_cg_hypotrochoid_points_scaledscale-r-r-d-n720): Sample a hypotrochoid at the requested physical scale.
+> [`_cg_hypotrochoid_points_scaled`](#function-_cg_hypotrochoid_points_scaled): Sample a hypotrochoid at the requested physical scale.
 
-> [`_cg_hypotrochoid_radius(R, r, d, theta)`](#function-_cg_hypotrochoid_radiusr-r-d-theta): Evaluate the unit-scale hypotrochoid radius at an angle.
+> [`_cg_hypotrochoid_radius`](#function-_cg_hypotrochoid_radius): Evaluate the unit-scale hypotrochoid radius at an angle.
 
-> [`_cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720, unit_points=undef)`](#function-_cg_hypotrochoid_scalemodul-tooth_number-r3-r1-d035-n720-unit_pointsundef): Scale the hypotrochoid to the requested module and tooth count.
+> [`_cg_hypotrochoid_scale`](#function-_cg_hypotrochoid_scale): Scale the hypotrochoid to the requested module and tooth count.
 
 
 ## Functions
 
 The module `Hypotrochoid` defines the following functions.
 
-### Function `curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_hypotrochoid`
 
 | Hypotrochoid gear 1 | Hypotrochoid gear 2 |
 | --- | --- |
@@ -294,10 +294,10 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
 - `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
@@ -305,8 +305,8 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -317,7 +317,7 @@ No return
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_build(modul, tooth_number, width, bore, major_ratio=3, rolling_ratio=1, offset_ratio=0.35, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`
+### Function `_cg_hypotrochoid_build`
 
 
 Construct a validated hypotrochoid body, gear, or mate boundary.
@@ -345,7 +345,7 @@ No return
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_centre_distance(scale, R, r, d, n=720)`
+### Function `_cg_hypotrochoid_centre_distance`
 
 
 Solve the fixed centre distance for a hypotrochoid mate.
@@ -364,7 +364,7 @@ Solve the fixed centre distance for a hypotrochoid mate.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_curve_radius(scale, R, r, d, theta)`
+### Function `_cg_hypotrochoid_curve_radius`
 
 
 Evaluate the scaled hypotrochoid radius at a polar angle.
@@ -383,7 +383,7 @@ Evaluate the scaled hypotrochoid radius at a polar angle.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_driver_radii(scale, R, r, d, n=720)`
+### Function `_cg_hypotrochoid_driver_radii`
 
 
 Sample the driver polygon at physical polar phase boundaries.
@@ -402,7 +402,7 @@ Sample the driver polygon at physical polar phase boundaries.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_mate_points(scale, R, r, d, D, n=720)`
+### Function `_cg_hypotrochoid_mate_points`
 
 
 Return the conjugate mate pitch points for a hypotrochoid.
@@ -422,7 +422,7 @@ Return the conjugate mate pitch points for a hypotrochoid.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_mate_points_from_driver(scale, R, r, d, D, n=720)`
+### Function `_cg_hypotrochoid_mate_points_from_driver`
 
 
 Generate mate pitch points from driver phase samples.
@@ -442,7 +442,7 @@ Generate mate pitch points from driver phase samples.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_motion_radii(scale, R, r, d, n=720)`
+### Function `_cg_hypotrochoid_motion_radii`
 
 
 Sample the driver polygon at physical polar integration midpoints.
@@ -461,7 +461,7 @@ Sample the driver polygon at physical polar integration midpoints.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_motion_table(scale, R, r, d, D, n=720)`
+### Function `_cg_hypotrochoid_motion_table`
 
 
 Integrate hypotrochoid driver-to-mate phase motion.
@@ -481,7 +481,7 @@ Integrate hypotrochoid driver-to-mate phase motion.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_point(R, r, d, theta)`
+### Function `_cg_hypotrochoid_point`
 
 
 Evaluate one point on the inner-rolling hypotrochoid.
@@ -499,7 +499,7 @@ Evaluate one point on the inner-rolling hypotrochoid.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_points(R, r, d, n=720)`
+### Function `_cg_hypotrochoid_points`
 
 
 Sample a complete hypotrochoid curve.
@@ -517,7 +517,7 @@ Sample a complete hypotrochoid curve.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_points_scaled(scale, R, r, d, n=720)`
+### Function `_cg_hypotrochoid_points_scaled`
 
 
 Sample a hypotrochoid at the requested physical scale.
@@ -536,7 +536,7 @@ Sample a hypotrochoid at the requested physical scale.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_radius(R, r, d, theta)`
+### Function `_cg_hypotrochoid_radius`
 
 
 Evaluate the unit-scale hypotrochoid radius at an angle.
@@ -554,7 +554,7 @@ Evaluate the unit-scale hypotrochoid radius at an angle.
 
 Back to [module description](#module-hypotrochoid).
 
-### Function `_cg_hypotrochoid_scale(modul, tooth_number, R=3, r=1, d=0.35, n=720, unit_points=undef)`
+### Function `_cg_hypotrochoid_scale`
 
 
 Scale the hypotrochoid to the requested module and tooth count.
@@ -593,11 +593,11 @@ family modules. This layer contains only the shared curve post-processing.
 
 > [`_cg_trochoid_points_scaled_from_points`](#function-_cg_trochoid_points_scaled_from_points): Scale sampled unit-curve points.
 
-> [`_cg_trochoid_polar_radii(points, n, midpoint=false)`](#function-_cg_trochoid_polar_radiipoints-n-midpointfalse): Sample the emitted driver polygon at uniformly spaced physical polar angles.
+> [`_cg_trochoid_polar_radii`](#function-_cg_trochoid_polar_radii): Sample the emitted driver polygon at uniformly spaced physical polar angles.
 
-> [`_cg_trochoid_polar_table(points)`](#function-_cg_trochoid_polar_tablepoints): Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
+> [`_cg_trochoid_polar_table`](#function-_cg_trochoid_polar_table): Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
 
-> [`_cg_trochoid_radius_at_polar_angle(table, theta)`](#function-_cg_trochoid_radius_at_polar_angletable-theta): Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
+> [`_cg_trochoid_radius_at_polar_angle`](#function-_cg_trochoid_radius_at_polar_angle): Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
 
 > [`_cg_trochoid_radius_from_point`](#function-_cg_trochoid_radius_from_point): Evaluate the radial distance of a unit-curve point.
 
@@ -640,7 +640,7 @@ No return
 
 Back to [module description](#module-trochoid-common).
 
-### Function `_cg_trochoid_polar_radii(points, n, midpoint=false)`
+### Function `_cg_trochoid_polar_radii`
 
 
 Sample the emitted driver polygon at uniformly spaced physical polar angles.
@@ -657,7 +657,7 @@ Sample the emitted driver polygon at uniformly spaced physical polar angles.
 
 Back to [module description](#module-trochoid-common).
 
-### Function `_cg_trochoid_polar_table(points)`
+### Function `_cg_trochoid_polar_table`
 
 
 Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
@@ -672,7 +672,7 @@ Index a finite star-shaped driver polygon by monotonically increasing physical p
 
 Back to [module description](#module-trochoid-common).
 
-### Function `_cg_trochoid_radius_at_polar_angle(table, theta)`
+### Function `_cg_trochoid_radius_at_polar_angle`
 
 
 Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.

@@ -23,48 +23,48 @@ Reference: https://mathshistory.st-andrews.ac.uk/Curves/Equiangular/.
 
 **Functions**:
 
-> [`curve_gear_logarithmic_spiral(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiralmodul-tooth_number-width-bore-): Build a logarithmic-spiral non-circular gear.
+> [`curve_gear_logarithmic_spiral`](#function-curve_gear_logarithmic_spiral): Build a logarithmic-spiral non-circular gear.
 
 > [`curve_gear_logarithmic_spiral_2d`](#function-curve_gear_logarithmic_spiral_2d): Emit the complete logarithmic_spiral gear profile as 2D geometry.
 
-> [`curve_gear_logarithmic_spiral_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiral_bodymodul-tooth_number-width-bore-): Build the logarithmic-spiral body solid without teeth.
+> [`curve_gear_logarithmic_spiral_body`](#function-curve_gear_logarithmic_spiral_body): Build the logarithmic-spiral body solid without teeth.
 
 > [`curve_gear_logarithmic_spiral_body_2d`](#function-curve_gear_logarithmic_spiral_body_2d): Emit the logarithmic_spiral body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiral_matemodul-tooth_number-width-bore-): Build the standalone static reference mate boundary at the origin.
+> [`curve_gear_logarithmic_spiral_mate`](#function-curve_gear_logarithmic_spiral_mate): Build the standalone static reference mate boundary at the origin.
 
-> [`curve_gear_logarithmic_spiral_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_logarithmic_spiral_pairmodul-tooth_number-width-bore-): Build a meshed or separated logarithmic-spiral pair.
+> [`curve_gear_logarithmic_spiral_pair`](#function-curve_gear_logarithmic_spiral_pair): Build a meshed or separated logarithmic-spiral pair.
 
-> [`curve_gear_logarithmic_spiral_reference_separation(modul, tooth_number, sectors, growth_rate, assembly_clearance)`](#function-curve_gear_logarithmic_spiral_reference_separationmodul-tooth_number-sectors-growth_rate-assembly_clearance): Return the explicit static reference separation for a spiral pair.
+> [`curve_gear_logarithmic_spiral_reference_separation`](#function-curve_gear_logarithmic_spiral_reference_separation): Return the explicit static reference separation for a spiral pair.
 
-> [`_cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false)`](#function-_cg_logarithmic_spiral_buildmodultooth_numberwidthboresectors1growth_rate117pressure_angle20tooth_phase0backlashundefclearanceundefsamples360orientation0body_onlyfalse): Dispatch logarithmic-spiral construction, building its spiral and radial returns as one canonical 2D boundary; long return segments form inaccessible tooth corridors, so ordinary teeth are omitted there.
+> [`_cg_logarithmic_spiral_build`](#function-_cg_logarithmic_spiral_build): Dispatch logarithmic-spiral construction, building its spiral and radial returns as one canonical 2D boundary; long return segments form inaccessible tooth corridors, so ordinary teeth are omitted there.
 
-> [`_cg_logarithmic_spiral_pair_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,samples=360,together_built=true,assembly_clearance=0,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_logarithmic_spiral_pair_buildmodultooth_numberwidthboresectors1growth_rate117pressure_angle20samples360together_builttrueassembly_clearance0backlashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal logarithmic spiral pair construction dispatcher.
+> [`_cg_logarithmic_spiral_pair_build`](#function-_cg_logarithmic_spiral_pair_build): Internal logarithmic spiral pair construction dispatcher.
 
-> [`_cg_logspiral_angle(sectors, sector, t)`](#function-_cg_logspiral_anglesectors-sector-t): Convert a spiral sector parameter to a polar angle.
+> [`_cg_logspiral_angle`](#function-_cg_logspiral_angle): Convert a spiral sector parameter to a polar angle.
 
 > [`_cg_logspiral_pitch_points`](#function-_cg_logspiral_pitch_points): Build the closed pitch polyline, retaining each radial sector return.
 
-> [`_cg_logspiral_point(rmin, growth_rate, sectors, sector, t)`](#function-_cg_logspiral_pointrmin-growth_rate-sectors-sector-t): Evaluate one Cartesian logarithmic-spiral point.
+> [`_cg_logspiral_point`](#function-_cg_logspiral_point): Evaluate one Cartesian logarithmic-spiral point.
 
-> [`_cg_logspiral_radius(rmin, growth_rate, t)`](#function-_cg_logspiral_radiusrmin-growth_rate-t): Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; radial returns are broad transitions, not ordinary teeth.
+> [`_cg_logspiral_radius`](#function-_cg_logspiral_radius): Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; radial returns are broad transitions, not ordinary teeth.
 
-> [`_cg_logspiral_rmax(modul, tooth_number, sectors, growth_rate)`](#function-_cg_logspiral_rmaxmodul-tooth_number-sectors-growth_rate): Calculate the maximum radius for the requested tooth pitch.
+> [`_cg_logspiral_rmax`](#function-_cg_logspiral_rmax): Calculate the maximum radius for the requested tooth pitch.
 
-> [`_cg_logspiral_rmin(modul, tooth_number, sectors, growth_rate)`](#function-_cg_logspiral_rminmodul-tooth_number-sectors-growth_rate): Calculate the minimum radius for the requested tooth pitch.
+> [`_cg_logspiral_rmin`](#function-_cg_logspiral_rmin): Calculate the minimum radius for the requested tooth pitch.
 
-> [`_cg_logspiral_sector_length_for_rmin(rmin, growth_rate, sectors, samples)`](#function-_cg_logspiral_sector_length_for_rminrmin-growth_rate-sectors-samples): Calculate the sampled length of one spiral sector.
+> [`_cg_logspiral_sector_length_for_rmin`](#function-_cg_logspiral_sector_length_for_rmin): Calculate the sampled length of one spiral sector.
 
-> [`_cg_logspiral_sector_points(rmin, growth_rate, sectors, sector, samples)`](#function-_cg_logspiral_sector_pointsrmin-growth_rate-sectors-sector-samples): Sample one logarithmic-spiral sector.
+> [`_cg_logspiral_sector_points`](#function-_cg_logspiral_sector_points): Sample one logarithmic-spiral sector.
 
-> [`_cg_logspiral_tangent(rmin, growth_rate, sectors, sector, t)`](#function-_cg_logspiral_tangentrmin-growth_rate-sectors-sector-t): Evaluate the tangent vector of the logarithmic spiral.
+> [`_cg_logspiral_tangent`](#function-_cg_logspiral_tangent): Evaluate the tangent vector of the logarithmic spiral.
 
 
 ## Functions
 
 The module `Logarithmic Spiral` defines the following functions.
 
-### Function `curve_gear_logarithmic_spiral(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_logarithmic_spiral`
 
 | Logarithmic spiral gear 1 | Logarithmic spiral gear 2 |
 | --- | --- |
@@ -138,7 +138,7 @@ curve_gear_logarithmic_spiral_2d(0.8, 34, 4.8);
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `curve_gear_logarithmic_spiral_body(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_logarithmic_spiral_body`
 
 | Logarithmic spiral body 1 | Logarithmic spiral body 2 |
 | --- | --- |
@@ -210,7 +210,7 @@ curve_gear_logarithmic_spiral_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_logarithmic_spiral_mate`
 
 | Logarithmic spiral mate 1 | Logarithmic spiral mate 2 |
 | --- | --- |
@@ -241,7 +241,7 @@ No return
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `curve_gear_logarithmic_spiral_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_logarithmic_spiral_pair`
 
 | Logarithmic spiral pair 1 | Logarithmic spiral pair 2 |
 | --- | --- |
@@ -254,16 +254,16 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `sectors`: {integer >= 1, default 1} Number of spiral sectors.
 - `growth_rate`: {number > 1, default 1.17} Radius growth per sector.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `assembly_clearance`: {number >= 0, default 0} Explicit reference separation beyond the radial extents in mm.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `samples`: {integer >= 120, default 360} Spiral sampling density.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
@@ -282,7 +282,7 @@ curve_gear_logarithmic_spiral_pair(1, 24, 4, 8);
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `curve_gear_logarithmic_spiral_reference_separation(modul, tooth_number, sectors, growth_rate, assembly_clearance)`
+### Function `curve_gear_logarithmic_spiral_reference_separation`
 
 
 Return the explicit static reference separation for a spiral pair.
@@ -301,7 +301,7 @@ Return the explicit static reference separation for a spiral pair.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false)`
+### Function `_cg_logarithmic_spiral_build`
 
 
 Dispatch logarithmic-spiral construction, building its spiral and radial returns as one canonical 2D boundary; long return segments form inaccessible tooth corridors, so ordinary teeth are omitted there.
@@ -328,7 +328,7 @@ Dispatch logarithmic-spiral construction, building its spiral and radial returns
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logarithmic_spiral_pair_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,samples=360,together_built=true,assembly_clearance=0,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`
+### Function `_cg_logarithmic_spiral_pair_build`
 
 
 Internal logarithmic spiral pair construction dispatcher.
@@ -357,7 +357,7 @@ Internal logarithmic spiral pair construction dispatcher.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_angle(sectors, sector, t)`
+### Function `_cg_logspiral_angle`
 
 
 Convert a spiral sector parameter to a polar angle.
@@ -392,7 +392,7 @@ Build the closed pitch polyline, retaining each radial sector return.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_point(rmin, growth_rate, sectors, sector, t)`
+### Function `_cg_logspiral_point`
 
 
 Evaluate one Cartesian logarithmic-spiral point.
@@ -411,7 +411,7 @@ Evaluate one Cartesian logarithmic-spiral point.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_radius(rmin, growth_rate, t)`
+### Function `_cg_logspiral_radius`
 
 
 Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; radial returns are broad transitions, not ordinary teeth.
@@ -428,7 +428,7 @@ Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; 
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_rmax(modul, tooth_number, sectors, growth_rate)`
+### Function `_cg_logspiral_rmax`
 
 
 Calculate the maximum radius for the requested tooth pitch.
@@ -446,7 +446,7 @@ Calculate the maximum radius for the requested tooth pitch.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_rmin(modul, tooth_number, sectors, growth_rate)`
+### Function `_cg_logspiral_rmin`
 
 
 Calculate the minimum radius for the requested tooth pitch.
@@ -464,7 +464,7 @@ Calculate the minimum radius for the requested tooth pitch.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_sector_length_for_rmin(rmin, growth_rate, sectors, samples)`
+### Function `_cg_logspiral_sector_length_for_rmin`
 
 
 Calculate the sampled length of one spiral sector.
@@ -482,7 +482,7 @@ Calculate the sampled length of one spiral sector.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_sector_points(rmin, growth_rate, sectors, sector, samples)`
+### Function `_cg_logspiral_sector_points`
 
 
 Sample one logarithmic-spiral sector.
@@ -501,7 +501,7 @@ Sample one logarithmic-spiral sector.
 
 Back to [module description](#module-logarithmic-spiral).
 
-### Function `_cg_logspiral_tangent(rmin, growth_rate, sectors, sector, t)`
+### Function `_cg_logspiral_tangent`
 
 
 Evaluate the tangent vector of the logarithmic spiral.

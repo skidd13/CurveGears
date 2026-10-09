@@ -3,7 +3,7 @@ include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
 
 /***
- * @function curve_gear_logarithmic_spiral_mate(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_logarithmic_spiral_mate
  * @brief Build the standalone static reference mate boundary at the origin.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_mate.png Logarithmic spiral mate 1
@@ -27,7 +27,7 @@ module curve_gear_logarithmic_spiral_mate(modul,tooth_number,width,bore,sectors=
 }
 
 /***
- * @function curve_gear_logarithmic_spiral_reference_separation(modul, tooth_number, sectors, growth_rate, assembly_clearance)
+ * @function curve_gear_logarithmic_spiral_reference_separation
  * @brief Return the explicit static reference separation for a spiral pair.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3 and divisible by sectors} Number of teeth.

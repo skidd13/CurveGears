@@ -71,7 +71,7 @@ function _cg_bezier_points(control_points,scale,samples) =
 
 module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
+ * @function _cg_bezier_build
  * @brief Internal bezier construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -102,7 +102,7 @@ module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_
 }
 
 /***
- * @function curve_gear_bezier(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_bezier
  * @brief Build a closed cubic Bézier gear from user-controlled normalised points.
  * An elongated asymmetric oval replaces the compact canonical outline. Unequal left/right handles and a narrow vertical span expose the effect of control-point geometry.
  * @image ../images/functions/bezier/curve_gear_bezier.png Bézier gear 1
@@ -126,7 +126,7 @@ module curve_gear_bezier(modul,tooth_number,width,bore,control_points=_cg_bezier
 }
 
 /***
- * @function curve_gear_bezier_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_bezier_body
  * @brief Build the closed Bézier body without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/bezier/curve_gear_bezier_body.png Bézier body 1

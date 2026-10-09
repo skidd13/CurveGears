@@ -42,7 +42,7 @@ function _cg_trochoid_shape(unit_points,scale,lower,upper,radial_root=false) =
     [points,function(theta) _cg_trochoid_radius_at_polar_angle(table,theta),lower,upper,radial_root];
 
 /**
- * @function _cg_trochoid_polar_table(points)
+ * @function _cg_trochoid_polar_table
  * @brief Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
  * @param points {array of 2D points} Closed polygon starting on the positive X ray.
  * @return {array} Angle/point rows with an explicit closing row at 360 degrees.
@@ -57,7 +57,7 @@ function _cg_trochoid_polar_table(points) =
     concat([for(i=[0:len(points)-1]) [angles[i],points[i]]],[[360,points[0]]]);
 
 /**
- * @function _cg_trochoid_radius_at_polar_angle(table, theta)
+ * @function _cg_trochoid_radius_at_polar_angle
  * @brief Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
  * @param table {array} Validated angle/point table.
  * @param theta {angle} Physical polar angle in degrees.
@@ -72,7 +72,7 @@ function _cg_trochoid_radius_at_polar_angle(table,theta) =
     _cg_cross2(a,b)/denominator;
 
 /**
- * @function _cg_trochoid_polar_radii(points, n, midpoint=false)
+ * @function _cg_trochoid_polar_radii
  * @brief Sample the emitted driver polygon at uniformly spaced physical polar angles.
  * @param points {array of 2D points} Closed star-shaped driver polygon.
  * @param n {integer >= 3} Number of motion intervals.

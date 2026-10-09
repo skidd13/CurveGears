@@ -27,23 +27,23 @@ https://mathworld.wolfram.com/FourierSeries.html.
 
 **Functions**:
 
-> [`curve_gear_fourier(modul, tooth_number, width, bore, ...)`](#function-curve_gear_fouriermodul-tooth_number-width-bore-): Build a coefficient-driven Fourier gear.
+> [`curve_gear_fourier`](#function-curve_gear_fourier): Build a coefficient-driven Fourier gear.
 
 > [`curve_gear_fourier_2d`](#function-curve_gear_fourier_2d): Emit the complete fourier gear profile as 2D geometry.
 
-> [`curve_gear_fourier_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_fourier_bodymodul-tooth_number-width-bore-): Build the Fourier body without teeth.
+> [`curve_gear_fourier_body`](#function-curve_gear_fourier_body): Build the Fourier body without teeth.
 
 > [`curve_gear_fourier_body_2d`](#function-curve_gear_fourier_body_2d): Emit the fourier body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_fourier_centre_distance(modul, tooth_number, coefficients)`](#function-curve_gear_fourier_centre_distancemodul-tooth_number-coefficients): Return the Fourier conjugate pair centre distance.
+> [`curve_gear_fourier_centre_distance`](#function-curve_gear_fourier_centre_distance): Return the Fourier conjugate pair centre distance.
 
-> [`curve_gear_fourier_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_fourier_matemodul-tooth_number-width-bore-): Build the standalone dynamically conjugate Fourier mate.
+> [`curve_gear_fourier_mate`](#function-curve_gear_fourier_mate): Build the standalone dynamically conjugate Fourier mate.
 
-> [`curve_gear_fourier_mate_rotation(modul, tooth_number, coefficients, samples, phase)`](#function-curve_gear_fourier_mate_rotationmodul-tooth_number-coefficients-samples-phase): Return Fourier mate rotation for a driver phase.
+> [`curve_gear_fourier_mate_rotation`](#function-curve_gear_fourier_mate_rotation): Return Fourier mate rotation for a driver phase.
 
-> [`curve_gear_fourier_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_fourier_pairmodul-tooth_number-width-bore-): Build a meshed or separated Fourier pair using one shared motion table.
+> [`curve_gear_fourier_pair`](#function-curve_gear_fourier_pair): Build a meshed or separated Fourier pair using one shared motion table.
 
-> [`_cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_fourier_buildmodultooth_numberwidthborecoefficients2100pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal fourier construction dispatcher.
+> [`_cg_fourier_build`](#function-_cg_fourier_build): Internal fourier construction dispatcher.
 
 > [`_cg_fourier_coefficients_valid`](#function-_cg_fourier_coefficients_valid): Validate integer harmonics and bounded positive-radius amplitudes.
 
@@ -58,7 +58,7 @@ https://mathworld.wolfram.com/FourierSeries.html.
 
 The module `Fourier` defines the following functions.
 
-### Function `curve_gear_fourier(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_fourier`
 
 | Fourier gear 1 | Fourier gear 2 |
 | --- | --- |
@@ -127,7 +127,7 @@ curve_gear_fourier_2d(0.8, 34, 4.8);
 
 Back to [module description](#module-fourier).
 
-### Function `curve_gear_fourier_body(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_fourier_body`
 
 | Fourier body 1 | Fourier body 2 |
 | --- | --- |
@@ -191,7 +191,7 @@ curve_gear_fourier_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-fourier).
 
-### Function `curve_gear_fourier_centre_distance(modul, tooth_number, coefficients)`
+### Function `curve_gear_fourier_centre_distance`
 
 
 Return the Fourier conjugate pair centre distance.
@@ -209,7 +209,7 @@ Return the Fourier conjugate pair centre distance.
 
 Back to [module description](#module-fourier).
 
-### Function `curve_gear_fourier_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_fourier_mate`
 
 | Fourier mate 1 | Fourier mate 2 |
 | --- | --- |
@@ -237,7 +237,7 @@ No return
 
 Back to [module description](#module-fourier).
 
-### Function `curve_gear_fourier_mate_rotation(modul, tooth_number, coefficients, samples, phase)`
+### Function `curve_gear_fourier_mate_rotation`
 
 
 Return Fourier mate rotation for a driver phase.
@@ -256,7 +256,7 @@ Return Fourier mate rotation for a driver phase.
 
 Back to [module description](#module-fourier).
 
-### Function `curve_gear_fourier_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_fourier_pair`
 
 | Fourier pair 1 | Fourier pair 2 |
 | --- | --- |
@@ -267,17 +267,17 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
-- `coefficients`: {array of [harmonic, amplitude, phase]} Same polar coefficients as the driver.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
+- `coefficients`: {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same polar coefficients as the driver.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `samples`: {integer >= 120, default 360} Pitch-curve sampling density.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 - `together_built`: {boolean, default true} Place the pair meshed when true.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -294,7 +294,7 @@ curve_gear_fourier_pair(1, 24, 4, 8, [[2, .10, 0], [3, .04, 30]]);
 
 Back to [module description](#module-fourier).
 
-### Function `_cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`
+### Function `_cg_fourier_build`
 
 
 Internal fourier construction dispatcher.

@@ -1,13 +1,13 @@
 /***
- * @function curve_gear_epitrochoid_pair(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_epitrochoid_pair
  * @brief Build a meshed or separated epitrochoid pair.
  * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_pair.png Epitrochoid pair 1
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_pair_alternative.png Epitrochoid pair 2
- * @param modul {number > 0} Tooth module in mm.
- * @param tooth_number {integer >= 3} Number of teeth.
- * @param width {number > 0} Extrusion width in mm.
- * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param modul {number > 0, default .8} Tooth module in mm.
+ * @param tooth_number {integer >= 3, default 34} Number of teeth.
+ * @param width {number > 0, default 4} Extrusion width in mm.
+ * @param bore {number >= 0, default 4.8} Centre bore diameter in mm.
  * @param major_ratio {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
  * @param rolling_ratio {number > 0, default 1} Rolling-circle ratio.
  * @param offset_ratio {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
@@ -15,8 +15,8 @@
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  * @param phase {angle, default 0} Pair motion phase in degrees.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param together_built {boolean, default true} Place the pair meshed when true, separated when false.
  * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
  * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.

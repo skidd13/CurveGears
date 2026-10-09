@@ -7,21 +7,21 @@ include <../common/pair/assembly.scad>
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair.png Temple Fay pair 1
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png Temple Fay pair 2
  *
- * @param modul {number} Tooth module.
- * @param tooth_number {integer} Tooth count.
- * @param width {number} Width.
- * @param bore {number} Bore.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param pressure_angle {number} Pressure angle.
- * @param samples {integer} Samples.
- * @param phase {number} Pair phase.
+ * @param modul {number, default .8} Tooth module.
+ * @param tooth_number {integer, default 34} Tooth count.
+ * @param width {number, default 4} Width.
+ * @param bore {number, default 4.8} Bore.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param samples {integer, default 720} Samples.
+ * @param phase {number, default 0} Pair phase.
  * @param together_built {boolean, default false} Use meshed placement when true, separated display placement otherwise.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param tooth_phase {number} Tooth phase.
- * @param driver_color {string} Driver colour.
- * @param mate_color {string} Mate colour.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param driver_color {string, default "SteelBlue"} Driver colour.
+ * @param mate_color {string, default "Gold"} Mate colour.
  */
 module curve_gear_temple_fay_pair(modul,tooth_number,width,bore,wing=.18,fold=.05,pressure_angle=20,samples=720,phase=0,together_built=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
     assert(wing>0 && wing<.5 && fold>=0 && fold<.2,"temple_fay_gear_pair: invalid parameters");

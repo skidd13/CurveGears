@@ -1,6 +1,6 @@
 /***
  * Public single-gear construction for the superformula family.
- * @function curve_gear_superformula(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_superformula
  * @brief Build a superformula non-circular gear.
  * A rounded square with symmetry 4 and exponents 8 replaces the canonical five-pointed star. This demonstrates the superformula's ability to change its shape class through exponents and symmetry.
  * @image ../images/functions/superformula/curve_gear_superformula.png Superformula gear 1
@@ -31,7 +31,7 @@ include <base.scad>
 
 module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
+ * @function _cg_superformula_build
  * @brief Internal superformula construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -73,7 +73,7 @@ module curve_gear_superformula(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,
 }
 
 /***
- * @function curve_gear_superformula_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_superformula_body
  * @brief Build the superformula body solid without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/superformula/curve_gear_superformula_body.png Superformula body 1

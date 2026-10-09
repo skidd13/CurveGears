@@ -26,29 +26,29 @@ Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
 
 **Functions**:
 
-> [`curve_gear_epitrochoid(modul, tooth_number, width, bore, ...)`](#function-curve_gear_epitrochoidmodul-tooth_number-width-bore-): Build an epitrochoid non-circular gear.
+> [`curve_gear_epitrochoid`](#function-curve_gear_epitrochoid): Build an epitrochoid non-circular gear.
 
 > [`curve_gear_epitrochoid_2d`](#function-curve_gear_epitrochoid_2d): Emit the complete epitrochoid gear profile as 2D geometry.
 
-> [`curve_gear_epitrochoid_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_epitrochoid_bodymodul-tooth_number-width-bore-): Build the epitrochoid body solid without teeth.
+> [`curve_gear_epitrochoid_body`](#function-curve_gear_epitrochoid_body): Build the epitrochoid body solid without teeth.
 
 > [`curve_gear_epitrochoid_body_2d`](#function-curve_gear_epitrochoid_body_2d): Emit the epitrochoid body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_epitrochoid_centre_distance(modul, tooth_number, major_ratio, rolling_ratio, offset_ratio, ...)`](#function-curve_gear_epitrochoid_centre_distancemodul-tooth_number-major_ratio-rolling_ratio-offset_ratio-): Return the mathematical centre distance for an epitrochoid pair.
+> [`curve_gear_epitrochoid_centre_distance`](#function-curve_gear_epitrochoid_centre_distance): Return the mathematical centre distance for an epitrochoid pair.
 
-> [`curve_gear_epitrochoid_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_epitrochoid_matemodul-tooth_number-width-bore-): Build the standalone epitrochoid mate boundary at the origin.
+> [`curve_gear_epitrochoid_mate`](#function-curve_gear_epitrochoid_mate): Build the standalone epitrochoid mate boundary at the origin.
 
-> [`curve_gear_epitrochoid_mate_rotation(modul, tooth_number, major_ratio, rolling_ratio, offset_ratio, ...)`](#function-curve_gear_epitrochoid_mate_rotationmodul-tooth_number-major_ratio-rolling_ratio-offset_ratio-): Return the conjugate epitrochoid mate rotation for a driver phase.
+> [`curve_gear_epitrochoid_mate_rotation`](#function-curve_gear_epitrochoid_mate_rotation): Return the conjugate epitrochoid mate rotation for a driver phase.
 
-> [`curve_gear_epitrochoid_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_epitrochoid_pairmodul-tooth_number-width-bore-): Build a meshed or separated epitrochoid pair.
+> [`curve_gear_epitrochoid_pair`](#function-curve_gear_epitrochoid_pair): Build a meshed or separated epitrochoid pair.
 
-> [`_cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_epitrochoid_buildmodultooth_numberwidthboremajor_ratio3rolling_ratio1offset_ratio35pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal epitrochoid construction dispatcher.
+> [`_cg_epitrochoid_build`](#function-_cg_epitrochoid_build): Internal epitrochoid construction dispatcher.
 
 > [`_cg_epitrochoid_centre_distance`](#function-_cg_epitrochoid_centre_distance): Solve the epitrochoid conjugate centre distance.
 
-> [`_cg_epitrochoid_curve_radius(scale, R, r, d, theta)`](#function-_cg_epitrochoid_curve_radiusscale-r-r-d-theta): Evaluate a scaled epitrochoid radius.
+> [`_cg_epitrochoid_curve_radius`](#function-_cg_epitrochoid_curve_radius): Evaluate a scaled epitrochoid radius.
 
-> [`_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`](#function-_cg_epitrochoid_driver_radiiscale-r-r-d-n240): Sample the driver polygon at physical polar phase boundaries.
+> [`_cg_epitrochoid_driver_radii`](#function-_cg_epitrochoid_driver_radii): Sample the driver polygon at physical polar phase boundaries.
 
 > [`_cg_epitrochoid_mate_points`](#function-_cg_epitrochoid_mate_points): Build epitrochoid mate pitch points and their shared motion table.
 
@@ -58,22 +58,22 @@ Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
 
 > [`_cg_epitrochoid_motion_table`](#function-_cg_epitrochoid_motion_table): Build the shared epitrochoid phase-motion table.
 
-> [`_cg_epitrochoid_point(R, r, d, theta)`](#function-_cg_epitrochoid_pointr-r-d-theta): Evaluate one point on the unit rolling-circle epitrochoid.
+> [`_cg_epitrochoid_point`](#function-_cg_epitrochoid_point): Evaluate one point on the unit rolling-circle epitrochoid.
 
-> [`_cg_epitrochoid_points(R, r, d, n)`](#function-_cg_epitrochoid_pointsr-r-d-n): Sample one complete unit epitrochoid curve.
+> [`_cg_epitrochoid_points`](#function-_cg_epitrochoid_points): Sample one complete unit epitrochoid curve.
 
-> [`_cg_epitrochoid_points_scaled(scale, R, r, d, n)`](#function-_cg_epitrochoid_points_scaledscale-r-r-d-n): Sample a scaled epitrochoid curve.
+> [`_cg_epitrochoid_points_scaled`](#function-_cg_epitrochoid_points_scaled): Sample a scaled epitrochoid curve.
 
-> [`_cg_epitrochoid_radius(R, r, d, theta)`](#function-_cg_epitrochoid_radiusr-r-d-theta): Evaluate the radial distance of the unit epitrochoid.
+> [`_cg_epitrochoid_radius`](#function-_cg_epitrochoid_radius): Evaluate the radial distance of the unit epitrochoid.
 
-> [`_cg_epitrochoid_scale(modul, tooth_number, R, r, d, n, unit_points=undef)`](#function-_cg_epitrochoid_scalemodul-tooth_number-r-r-d-n-unit_pointsundef): Scale an epitrochoid to the requested tooth pitch.
+> [`_cg_epitrochoid_scale`](#function-_cg_epitrochoid_scale): Scale an epitrochoid to the requested tooth pitch.
 
 
 ## Functions
 
 The module `Epitrochoid` defines the following functions.
 
-### Function `curve_gear_epitrochoid(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_epitrochoid`
 
 | Epitrochoid gear 1 | Epitrochoid gear 2 |
 | --- | --- |
@@ -149,7 +149,7 @@ curve_gear_epitrochoid_2d(0.8, 34, 4.8);
 
 Back to [module description](#module-epitrochoid).
 
-### Function `curve_gear_epitrochoid_body(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_epitrochoid_body`
 
 | Epitrochoid body 1 | Epitrochoid body 2 |
 | --- | --- |
@@ -223,7 +223,7 @@ curve_gear_epitrochoid_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-epitrochoid).
 
-### Function `curve_gear_epitrochoid_centre_distance(modul, tooth_number, major_ratio, rolling_ratio, offset_ratio, ...)`
+### Function `curve_gear_epitrochoid_centre_distance`
 
 
 Return the mathematical centre distance for an epitrochoid pair.
@@ -243,7 +243,7 @@ Return the mathematical centre distance for an epitrochoid pair.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `curve_gear_epitrochoid_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_epitrochoid_mate`
 
 | Epitrochoid mate 1 | Epitrochoid mate 2 |
 | --- | --- |
@@ -273,7 +273,7 @@ No return
 
 Back to [module description](#module-epitrochoid).
 
-### Function `curve_gear_epitrochoid_mate_rotation(modul, tooth_number, major_ratio, rolling_ratio, offset_ratio, ...)`
+### Function `curve_gear_epitrochoid_mate_rotation`
 
 
 Return the conjugate epitrochoid mate rotation for a driver phase.
@@ -294,7 +294,7 @@ Return the conjugate epitrochoid mate rotation for a driver phase.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `curve_gear_epitrochoid_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_epitrochoid_pair`
 
 | Epitrochoid pair 1 | Epitrochoid pair 2 |
 | --- | --- |
@@ -307,10 +307,10 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
 - `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
@@ -318,8 +318,8 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `phase`: {angle, default 0} Pair motion phase in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -336,7 +336,7 @@ curve_gear_epitrochoid_pair(1, 24, 4, 8);
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`
+### Function `_cg_epitrochoid_build`
 
 
 Internal epitrochoid construction dispatcher.
@@ -383,7 +383,7 @@ Solve the epitrochoid conjugate centre distance.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_curve_radius(scale, R, r, d, theta)`
+### Function `_cg_epitrochoid_curve_radius`
 
 
 Evaluate a scaled epitrochoid radius.
@@ -402,7 +402,7 @@ Evaluate a scaled epitrochoid radius.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_driver_radii(scale, R, r, d, n=240)`
+### Function `_cg_epitrochoid_driver_radii`
 
 
 Sample the driver polygon at physical polar phase boundaries.
@@ -500,7 +500,7 @@ Build the shared epitrochoid phase-motion table.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_point(R, r, d, theta)`
+### Function `_cg_epitrochoid_point`
 
 
 Evaluate one point on the unit rolling-circle epitrochoid.
@@ -518,7 +518,7 @@ Evaluate one point on the unit rolling-circle epitrochoid.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_points(R, r, d, n)`
+### Function `_cg_epitrochoid_points`
 
 
 Sample one complete unit epitrochoid curve.
@@ -536,7 +536,7 @@ Sample one complete unit epitrochoid curve.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_points_scaled(scale, R, r, d, n)`
+### Function `_cg_epitrochoid_points_scaled`
 
 
 Sample a scaled epitrochoid curve.
@@ -555,7 +555,7 @@ Sample a scaled epitrochoid curve.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_radius(R, r, d, theta)`
+### Function `_cg_epitrochoid_radius`
 
 
 Evaluate the radial distance of the unit epitrochoid.
@@ -573,7 +573,7 @@ Evaluate the radial distance of the unit epitrochoid.
 
 Back to [module description](#module-epitrochoid).
 
-### Function `_cg_epitrochoid_scale(modul, tooth_number, R, r, d, n, unit_points=undef)`
+### Function `_cg_epitrochoid_scale`
 
 
 Scale an epitrochoid to the requested tooth pitch.
@@ -612,11 +612,11 @@ family modules. This layer contains only the shared curve post-processing.
 
 > [`_cg_trochoid_points_scaled_from_points`](#function-_cg_trochoid_points_scaled_from_points): Scale sampled unit-curve points.
 
-> [`_cg_trochoid_polar_radii(points, n, midpoint=false)`](#function-_cg_trochoid_polar_radiipoints-n-midpointfalse): Sample the emitted driver polygon at uniformly spaced physical polar angles.
+> [`_cg_trochoid_polar_radii`](#function-_cg_trochoid_polar_radii): Sample the emitted driver polygon at uniformly spaced physical polar angles.
 
-> [`_cg_trochoid_polar_table(points)`](#function-_cg_trochoid_polar_tablepoints): Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
+> [`_cg_trochoid_polar_table`](#function-_cg_trochoid_polar_table): Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
 
-> [`_cg_trochoid_radius_at_polar_angle(table, theta)`](#function-_cg_trochoid_radius_at_polar_angletable-theta): Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
+> [`_cg_trochoid_radius_at_polar_angle`](#function-_cg_trochoid_radius_at_polar_angle): Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
 
 > [`_cg_trochoid_radius_from_point`](#function-_cg_trochoid_radius_from_point): Evaluate the radial distance of a unit-curve point.
 
@@ -659,7 +659,7 @@ No return
 
 Back to [module description](#module-trochoid-common).
 
-### Function `_cg_trochoid_polar_radii(points, n, midpoint=false)`
+### Function `_cg_trochoid_polar_radii`
 
 
 Sample the emitted driver polygon at uniformly spaced physical polar angles.
@@ -676,7 +676,7 @@ Sample the emitted driver polygon at uniformly spaced physical polar angles.
 
 Back to [module description](#module-trochoid-common).
 
-### Function `_cg_trochoid_polar_table(points)`
+### Function `_cg_trochoid_polar_table`
 
 
 Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
@@ -691,7 +691,7 @@ Index a finite star-shaped driver polygon by monotonically increasing physical p
 
 Back to [module description](#module-trochoid-common).
 
-### Function `_cg_trochoid_radius_at_polar_angle(table, theta)`
+### Function `_cg_trochoid_radius_at_polar_angle`
 
 
 Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.

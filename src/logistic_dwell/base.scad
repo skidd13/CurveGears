@@ -10,7 +10,7 @@ include <../common/curve_gears_math.scad>
 include <../common/saturating.scad>
 
 /**
- * @function _cg_logistic_dwell_parameters_valid(gain,depth)
+ * @function _cg_logistic_dwell_parameters_valid
  * @brief Check the shared curve-parameter contract for every family entry point.
  * @param gain {number > 0} Curve parameter.
  * @param depth {number between 0 and 0.5} Curve parameter.

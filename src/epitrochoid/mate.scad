@@ -15,7 +15,7 @@ include <../common/mate/placement.scad>
  */
 function _cg_epitrochoid_motion_radii(scale,R,r,d,n=240) = _cg_trochoid_polar_radii(_cg_epitrochoid_points_scaled(scale,R,r,d,n),n,true);
 /**
- * @function _cg_epitrochoid_driver_radii(scale, R, r, d, n=240)
+ * @function _cg_epitrochoid_driver_radii
  * @brief Sample the driver polygon at physical polar phase boundaries.
  * @param scale {number > 0} Overall curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
@@ -77,7 +77,7 @@ function _cg_epitrochoid_mate_points_from_driver(scale,R,r,d,D,n=360) =
 function _cg_epitrochoid_mate_points(scale,R,r,d,D,n=360) = _cg_epitrochoid_mate_points_from_driver(scale,R,r,d,D,n);
 
 /***
- * @function curve_gear_epitrochoid_mate(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_epitrochoid_mate
  * @brief Build the standalone epitrochoid mate boundary at the origin.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_mate.png Epitrochoid mate 1
@@ -106,7 +106,7 @@ module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,r
 }
 
 /***
- * @function curve_gear_epitrochoid_centre_distance(modul, tooth_number, major_ratio, rolling_ratio, offset_ratio, ...)
+ * @function curve_gear_epitrochoid_centre_distance
  * @brief Return the mathematical centre distance for an epitrochoid pair.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -119,7 +119,7 @@ module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,r
 function curve_gear_epitrochoid_centre_distance(modul,tooth_number,major_ratio=3,rolling_ratio=1,offset_ratio=.35,samples=720) = _cg_polar_mate_distance(_cg_epitrochoid_shape(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples),samples);
 
 /***
- * @function curve_gear_epitrochoid_mate_rotation(modul, tooth_number, major_ratio, rolling_ratio, offset_ratio, ...)
+ * @function curve_gear_epitrochoid_mate_rotation
  * @brief Return the conjugate epitrochoid mate rotation for a driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

@@ -10,7 +10,7 @@
 include <../common/curve_gears_math.scad>
 
 /***
- * @function _cg_logspiral_radius(rmin, growth_rate, t)
+ * @function _cg_logspiral_radius
  * @brief Evaluate the logarithmic-spiral radius r=rmin*g^(2*pi*t) at a sector parameter; radial returns are broad transitions, not ordinary teeth.
  * @param rmin {number > 0} Minimum radius in mm.
  * @param growth_rate {number > 1} Exponential growth base in the sector formula.
@@ -19,7 +19,7 @@ include <../common/curve_gears_math.scad>
  */
 function _cg_logspiral_radius(rmin,growth_rate,t) = rmin*pow(growth_rate,2*_cg_pi*t);
 /***
- * @function _cg_logspiral_angle(sectors, sector, t)
+ * @function _cg_logspiral_angle
  * @brief Convert a spiral sector parameter to a polar angle.
  * @param sectors {integer >= 1} Number of repeated sectors.
  * @param sector {integer >= 0} Sector index.
@@ -28,7 +28,7 @@ function _cg_logspiral_radius(rmin,growth_rate,t) = rmin*pow(growth_rate,2*_cg_p
  */
 function _cg_logspiral_angle(sectors,sector,t) = (sector+t)*360/sectors;
 /***
- * @function _cg_logspiral_point(rmin, growth_rate, sectors, sector, t)
+ * @function _cg_logspiral_point
  * @brief Evaluate one Cartesian logarithmic-spiral point.
  * @param rmin {number > 0} Minimum radius in mm.
  * @param growth_rate {number > 1} Exponential growth base in the sector formula.
@@ -40,7 +40,7 @@ function _cg_logspiral_angle(sectors,sector,t) = (sector+t)*360/sectors;
 function _cg_logspiral_point(rmin,growth_rate,sectors,sector,t) =
     let(r=_cg_logspiral_radius(rmin,growth_rate,t),phi=_cg_logspiral_angle(sectors,sector,t)) [r*cos(phi),r*sin(phi)];
 /***
- * @function _cg_logspiral_tangent(rmin, growth_rate, sectors, sector, t)
+ * @function _cg_logspiral_tangent
  * @brief Evaluate the tangent vector of the logarithmic spiral.
  * @param rmin {number > 0} Minimum radius in mm.
  * @param growth_rate {number > 1} Exponential growth base in the sector formula.
@@ -57,7 +57,7 @@ function _cg_logspiral_tangent(rmin,growth_rate,sectors,sector,t) =
     )
     [dr*cos(phi)-r*sin(phi),dr*sin(phi)+r*cos(phi)];
 /***
- * @function _cg_logspiral_sector_points(rmin, growth_rate, sectors, sector, samples)
+ * @function _cg_logspiral_sector_points
  * @brief Sample one logarithmic-spiral sector.
  * @param rmin {number > 0} Minimum radius in mm.
  * @param growth_rate {number > 1} Exponential growth base in the sector formula.
@@ -81,7 +81,7 @@ function _cg_logspiral_pitch_points(rmin,growth_rate,sectors,samples=360) =
     [for(sector=[0:sectors-1],i=[0:samples-1])
         _cg_logspiral_point(rmin,growth_rate,sectors,sector,i/(samples-1))];
 /***
- * @function _cg_logspiral_sector_length_for_rmin(rmin, growth_rate, sectors, samples)
+ * @function _cg_logspiral_sector_length_for_rmin
  * @brief Calculate the sampled length of one spiral sector.
  * @param rmin {number > 0} Minimum radius in mm.
  * @param growth_rate {number > 1, default 1.17} Exponential growth base in the sector formula.
@@ -92,7 +92,7 @@ function _cg_logspiral_pitch_points(rmin,growth_rate,sectors,samples=360) =
 function _cg_logspiral_sector_length_for_rmin(rmin,growth_rate=1.17,sectors=1,samples=360) =
     let(points=_cg_logspiral_sector_points(rmin,growth_rate,sectors,0,samples),arc=_cg_open_arc_table(points)) arc[len(arc)-1][1];
 /***
- * @function _cg_logspiral_rmin(modul, tooth_number, sectors, growth_rate)
+ * @function _cg_logspiral_rmin
  * @brief Calculate the minimum radius for the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -103,7 +103,7 @@ function _cg_logspiral_sector_length_for_rmin(rmin,growth_rate=1.17,sectors=1,sa
 function _cg_logspiral_rmin(modul,tooth_number,sectors=1,growth_rate=1.17) =
     _cg_pi*modul*tooth_number/(sectors*_cg_logspiral_sector_length_for_rmin(1,growth_rate,sectors,360));
 /***
- * @function _cg_logspiral_rmax(modul, tooth_number, sectors, growth_rate)
+ * @function _cg_logspiral_rmax
  * @brief Calculate the maximum radius for the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

@@ -10,26 +10,26 @@ include <../common_math.scad>
  * ordering, top geometry, crossings, then the expensive boundary scan.
  */
 
-/*** @function _cg_involute(r, rho)
+/*** @function _cg_involute
  * @brief Evaluate one point of the local circular involute approximation derived from the pinned reference involute equations.
  * @param r {number > 0} Base radius in mm.
  * @param rho {angle} Involute parameter in degrees.
  * @return {array} `[radius, angle]` polar point.
  */
 function _cg_involute(r,rho) = [r/cos(rho),_cg_degrees(tan(rho)-_cg_radians(rho))];
-/*** @function _cg_addendum(modul)
+/*** @function _cg_addendum
  * @brief Calculate the reference addendum for a module.
  * @param modul {number > 0} Tooth module in mm.
  * @return {number} Addendum in mm.
  */
 function _cg_addendum(modul) = modul < 1 ? 1.1*modul : modul;
-/*** @function _cg_default_clearance(modul)
+/*** @function _cg_default_clearance
  * @brief Calculate the default radial root clearance.
  * @param modul {number > 0} Tooth module in mm.
  * @return {number} Default clearance in mm.
  */
 function _cg_default_clearance(modul) = modul+modul/6-_cg_addendum(modul);
-/*** @function _cg_dedendum(modul, clearance)
+/*** @function _cg_dedendum
  * @brief Calculate the tooth dedendum from module and optional clearance.
  * @param modul {number > 0} Tooth module in mm.
  * @param clearance {undef or >= 0} Optional radial root clearance in mm.
@@ -37,7 +37,7 @@ function _cg_default_clearance(modul) = modul+modul/6-_cg_addendum(modul);
  */
 function _cg_dedendum(modul,clearance=undef) = is_undef(clearance)
     ? modul+modul/6 : _cg_addendum(modul)+clearance;
-/*** @function _cg_default_backlash(modul)
+/*** @function _cg_default_backlash
  * @brief Calculate the reference backlash for a module.
  * @param modul {number > 0} Tooth module in mm.
  * @return {number} Default backlash in mm.
@@ -45,7 +45,7 @@ function _cg_dedendum(modul,clearance=undef) = is_undef(clearance)
 function _cg_default_backlash(modul) = _cg_circle_pi*modul*0.025;
 
 /**
- * @function _cg_backlash_valid(modul, backlash=undef)
+ * @function _cg_backlash_valid
  * @brief Check that tooth-thickness reduction is non-negative and below half the circular pitch.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param backlash {undef or number >= 0} Tangential tooth-thickness reduction.
@@ -54,7 +54,7 @@ function _cg_default_backlash(modul) = _cg_circle_pi*modul*0.025;
 function _cg_backlash_valid(modul,backlash=undef) =
     is_undef(backlash) || (is_num(backlash) && backlash>=0 && backlash<_cg_circle_pi*modul/2);
 
-/*** @function _cg_tooth_angles(modul, z, pressure_angle, backlash)
+/*** @function _cg_tooth_angles
  * @brief Calculate the radii and angular limits of a reference tooth.
  * @param modul {number > 0} Tooth module in mm.
  * @param z {integer >= 3} Tooth count.
@@ -68,7 +68,7 @@ function _cg_tooth_angles(modul,z,pressure_angle,backlash=undef) =
         rho_r=acos(rb/r),phi_r=_cg_degrees(tan(rho_r)-_cg_radians(rho_r)),
         half_width=is_undef(backlash) ? 180*(1-0.05)/z : 180/z-360*backlash/(_cg_circle_pi*modul*z))
     [rb,ra,acos(rb/ra),half_width+2*phi_r,is_undef(backlash) ? -phi_r-90*(1-0.05)/z : -phi_r-half_width/2];
-/*** @function _cg_tooth_polygon(modul, z, pressure_angle, backlash)
+/*** @function _cg_tooth_polygon
  * @brief Build the local polygon for one reference tooth.
  * @param modul {number > 0} Tooth module in mm.
  * @param z {integer >= 3} Tooth count.
@@ -84,7 +84,7 @@ function _cg_tooth_polygon(modul,z,pressure_angle=20,backlash=undef) =
         [for(rho=[a[2]:-step:0]) _cg_polar([_cg_involute(a[0],rho)[0],a[3]-_cg_involute(a[0],rho)[1]])]);
 
 /***
- * @function _cg_involute_tooth(modul, tooth_number, pressure_angle, backlash)
+ * @function _cg_involute_tooth
  * @brief Render the bounded legacy compatibility involute-tooth module; production family gears use the calculated 2D candidate, while this module remains available to legacy consumers.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -206,7 +206,7 @@ function _cg_polygon_intersections_direct(points) = [
         if(!adjacent && hit[0]) [i,j,hit[1]]
 ];
 /**
- * @function _cg_segment_bounds_tree(points, begin=0, end=undef)
+ * @function _cg_segment_bounds_tree
  * @brief Build a balanced hierarchy of exact segment bounds in original index order.
  * @param points {array of finite 2D points} Closed polygon vertices.
  * @param begin {integer >= 0, default 0} First included segment index.
@@ -223,7 +223,7 @@ function _cg_segment_bounds_tree(points,begin=0,end=undef) =
         [[min(left[0][0],right[0][0]),min(left[0][1],right[0][1])],
          [max(left[1][0],right[1][0]),max(left[1][1],right[1][1])],begin,stop-1,left,right];
 /**
- * @function _cg_segment_bounds_candidates(tree, a, b, after=-1)
+ * @function _cg_segment_bounds_candidates
  * @brief Return overlapping leaf segments in ascending order using the existing tolerance.
  * Bounds reject only impossible overlaps; callers retain the exact narrow-phase tests.
  * @param tree {array} Hierarchy returned by `_cg_segment_bounds_tree`.
@@ -237,7 +237,7 @@ function _cg_segment_bounds_candidates(tree,a,b,after=-1) =
     tree[2]==tree[3] ? [tree[2]] :
     concat(_cg_segment_bounds_candidates(tree[4],a,b,after),_cg_segment_bounds_candidates(tree[5],a,b,after));
 /**
- * @function _cg_polygon_intersections(points)
+ * @function _cg_polygon_intersections
  * @brief Find every exact non-neighbouring crossing through ordered bounds traversal.
  * Small or non-finite inputs retain direct-scanner behaviour. Exact intersection
  * equations, tolerance and diagnostic ordering remain unchanged.
@@ -307,7 +307,7 @@ function _cg_first_flank_crossing(left,right) =
         if(hit[0] && !(i==0 && j==0) && _cg_vlen(hit[1]) > _cg_eps_intersect()) [i,j,hit[1]]])
     len(hits)>0 ? concat([true],hits[0]) : [false,-1,-1,[0,0]];
 
-/*** @function _cg_has_flank_crossing(left, right)
+/*** @function _cg_has_flank_crossing
  * @brief Determine whether the two local tooth flanks cross.
  * @param left {array} Left flank points.
  * @param right {array} Right flank points.
@@ -405,7 +405,7 @@ function _cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressu
         concat(root_x < right_involute[0][0]-_cg_eps_len() ? [[root_x,right_involute[0][1]]] : [],right_involute)
     ];
 
-/*** @function _cg_candidate_record(valid, code, top_width, tip_normal_error, left, right, left_top, right_top, boundary, left_hits, right_hits)
+/*** @function _cg_candidate_record
  * @brief Package the validated local-tooth candidate state.
  * @param valid {boolean} Candidate validity flag.
  * @param code {string} Validation status code.
@@ -423,7 +423,7 @@ function _cg_reference_tooth_local_flanks(pitch_radius,modul,tooth_number,pressu
 function _cg_candidate_record(valid,code,top_width,tip_normal_error,left,right,left_top,right_top,boundary,left_hits,right_hits) =
     [valid,code,top_width,tip_normal_error,left,right,left_top,right_top,boundary,left_hits,right_hits];
 
-/*** @function _cg_validate_candidate_boundary(left, right, left_top, right_top, top_width, tip_normal_error, left_hits, right_hits)
+/*** @function _cg_validate_candidate_boundary
  * @brief Perform the final local tooth polygon self-intersection check.
  * @param left {array} Left flank points.
  * @param right {array} Right flank points.
@@ -447,7 +447,7 @@ function _cg_validate_candidate_boundary(left,right,left_top,right_top,top_width
     )
     _cg_candidate_record(code=="PASS",code,top_width,tip_normal_error,left,right,left_top,right_top,code=="PASS" ? boundary : [],left_hits,right_hits);
 
-/*** @function _cg_validate_candidate_top_geometry(left, right, left_top, right_top, top_width, tip_normal_error, left_hits, right_hits)
+/*** @function _cg_validate_candidate_top_geometry
  * @brief Check top-line crossings before the final boundary scan (stage 4); the expensive scan stays separate so OpenSCAD evaluates it only after the top/flank crossing checks pass.
  * @param left {array} Left flank points.
  * @param right {array} Right flank points.
@@ -465,7 +465,7 @@ function _cg_validate_candidate_top_geometry(left,right,left_top,right_top,top_w
         ? _cg_candidate_record(false,"TOOTH_POLYGON_SELF_INTERSECTION",top_width,tip_normal_error,left,right,left_top,right_top,[],left_hits,right_hits)
         : _cg_validate_candidate_boundary(left,right,left_top,right_top,top_width,tip_normal_error,left_hits,right_hits);
 
-/*** @function _cg_validate_candidate_top(left, right)
+/*** @function _cg_validate_candidate_top
  * @brief Validate top intersections, width, endpoint order and tangency (stage 3), after flank cardinality checks and before crossing scans.
  * @param left {array} Left flank points.
  * @param right {array} Right flank points.
@@ -495,7 +495,7 @@ function _cg_validate_candidate_top(left,right) =
     endpoint_code!="PASS" ? _cg_candidate_record(false,endpoint_code,top_width,tip_normal_error,left,right,left_top,right_top,[],left_top_hits,right_top_hits) :
     _cg_validate_candidate_top_geometry(left,right,left_top,right_top,top_width,tip_normal_error,left_top_hits,right_top_hits);
 
-/*** @function _cg_validate_candidate_flanks(flanks)
+/*** @function _cg_validate_candidate_flanks
  * @brief Validate finite, ordered flanks (stage 2) before top intersections or crossing scans.
  * @param flanks {array} Pair of left and right flank point lists.
  * @return {array} Validated or failed candidate record.
@@ -508,7 +508,7 @@ function _cg_validate_candidate_flanks(flanks) =
     _cg_validate_candidate_top(left,right);
 
 /**
- * @function _cg_reference_tooth_candidate(pitch_radius, modul, tooth_number, ...)
+ * @function _cg_reference_tooth_candidate
  * @brief Return one cached, validated local candidate tooth.
  * @image ../images/tooth/construction_2d.png Tooth construction 1
  * @image ../images/tooth/construction_alternative_2d.png Tooth construction 2

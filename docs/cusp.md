@@ -31,70 +31,70 @@ are documented together below.
 
 **Functions**:
 
-> [`curve_gear_cusp(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cuspmodul-tooth_number-width-bore-): Build the hypocycloid cusp gear with regular radial teeth at its cusps.
+> [`curve_gear_cusp`](#function-curve_gear_cusp): Build the hypocycloid cusp gear with regular radial teeth at its cusps.
 
-> [`curve_gear_cusp_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_2dmodul-tooth_number-bore-): Emit the complete cusp gear profile as 2D geometry.
+> [`curve_gear_cusp_2d`](#function-curve_gear_cusp_2d): Emit the complete cusp gear profile as 2D geometry.
 
-> [`curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_bodymodul-tooth_number-width-bore-): Build the hypocycloid body with its integrated cusp-tip teeth.
+> [`curve_gear_cusp_body`](#function-curve_gear_cusp_body): Build the hypocycloid body with its integrated cusp-tip teeth.
 
-> [`curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`](#function-curve_gear_cusp_body_2dmodul-tooth_number-bore-): Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
+> [`curve_gear_cusp_body_2d`](#function-curve_gear_cusp_body_2d): Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
 
-> [`curve_gear_cusp_centre_distance(modul, tooth_number, samples=720, cusps=3)`](#function-curve_gear_cusp_centre_distancemodul-tooth_number-samples720-cusps3): Return the solved pitch-curve centre distance for a cusp pair.
+> [`curve_gear_cusp_centre_distance`](#function-curve_gear_cusp_centre_distance): Return the solved pitch-curve centre distance for a cusp pair.
 
-> [`curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_matemodul-tooth_number-width-bore-): Build the standalone swept-envelope mate for a cusp gear.
+> [`curve_gear_cusp_mate`](#function-curve_gear_cusp_mate): Build the standalone swept-envelope mate for a cusp gear.
 
-> [`curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0, cusps=3)`](#function-curve_gear_cusp_mate_rotationmodul-tooth_number-samples720-phase0-cusps3): Return the integrated mate angle at one driver phase.
+> [`curve_gear_cusp_mate_rotation`](#function-curve_gear_cusp_mate_rotation): Return the integrated mate angle at one driver phase.
 
-> [`curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_cusp_pairmodul-tooth_number-width-bore-): Build a meshed or separated hypocycloid cusp gear pair with a swept-envelope mate.
+> [`curve_gear_cusp_pair`](#function-curve_gear_cusp_pair): Build a meshed or separated hypocycloid cusp gear pair with a swept-envelope mate.
 
-> [`_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90, cusps=3)`](#function-_cg_cusp_anchor_placementpoints-arc-perimeter-body-modul-tooth_number-index-candidate-phase-90-cusps3): Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
+> [`_cg_cusp_anchor_placement`](#function-_cg_cusp_anchor_placement): Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
 
-> [`_cg_cusp_body_branch_point(a, t, dedendum, cusps=3)`](#function-_cg_cusp_body_branch_pointa-t-dedendum-cusps3): Find a radial-root point on one hypocycloid branch.
+> [`_cg_cusp_body_branch_point`](#function-_cg_cusp_body_branch_point): Find a radial-root point on one hypocycloid branch.
 
-> [`_cg_cusp_body_outline(state, tooth_number, cusps=3)`](#function-_cg_cusp_body_outlinestate-tooth_number-cusps3): Build the cusp-family body outline with its integrated tip teeth.
+> [`_cg_cusp_body_outline`](#function-_cg_cusp_body_outline): Build the cusp-family body outline with its integrated tip teeth.
 
-> [`_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false, cusps=3)`](#function-_cg_cusp_buildmodul-tooth_number-width-bore-pressure_angle20-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse-cusps3): Construct the validated cusp body or complete gear.
+> [`_cg_cusp_build`](#function-_cg_cusp_build): Construct the validated cusp body or complete gear.
 
-> [`_cg_cusp_clear_shoulder_placement(placement, anchors, perimeter)`](#function-_cg_cusp_clear_shoulder_placementplacement-anchors-perimeter): Classify an ordinary tooth as inaccessible when a cusp shoulder owns its splice interval.
+> [`_cg_cusp_clear_shoulder_placement`](#function-_cg_cusp_clear_shoulder_placement): Classify an ordinary tooth as inaccessible when a cusp shoulder owns its splice interval.
 
-> [`_cg_cusp_cross2(a, b)`](#function-_cg_cusp_cross2a-b): Calculate the scalar 2D cross product of two vectors.
+> [`_cg_cusp_cross2`](#function-_cg_cusp_cross2): Calculate the scalar 2D cross product of two vectors.
 
-> [`_cg_cusp_envelope_driver_outline(state)`](#function-_cg_cusp_envelope_driver_outlinestate): Extract the complete placed driver outline from its validated state.
+> [`_cg_cusp_envelope_driver_outline`](#function-_cg_cusp_envelope_driver_outline): Extract the complete placed driver outline from its validated state.
 
-> [`_cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)`](#function-_cg_cusp_envelope_mate_from_geometrygeometry-modul-width-bore-sweep_steps360-max_pose_step05-sweep_clearance008-phase0): Build the cusp mate by sweeping the complete validated driver outline.
+> [`_cg_cusp_envelope_mate_from_geometry`](#function-_cg_cusp_envelope_mate_from_geometry): Build the cusp mate by sweeping the complete validated driver outline.
 
-> [`_cg_cusp_envelope_mate_outer_radius(geometry, modul)`](#function-_cg_cusp_envelope_mate_outer_radiusgeometry-modul): Calculate the swept-envelope mate's outer blank radius.
+> [`_cg_cusp_envelope_mate_outer_radius`](#function-_cg_cusp_envelope_mate_outer_radius): Calculate the swept-envelope mate's outer blank radius.
 
-> [`_cg_cusp_indices(tooth_number, cusps=3)`](#function-_cg_cusp_indicestooth_number-cusps3): Return the tooth indices aligned with the hypocycloid cusps.
+> [`_cg_cusp_indices`](#function-_cg_cusp_indices): Return the tooth indices aligned with the hypocycloid cusps.
 
-> [`_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, cusps=3)`](#function-_cg_cusp_pair_buildmodul-tooth_number-width-bore-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-driver_colorsteelblue-mate_colorgold-sweep_steps360-max_pose_step05-sweep_clearance008-cusps3): Construct the cusp driver and swept-envelope mate as a pair.
+> [`_cg_cusp_pair_build`](#function-_cg_cusp_pair_build): Construct the cusp driver and swept-envelope mate as a pair.
 
-> [`_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples, cusps=3)`](#function-_cg_cusp_pair_motion_geometrymodul-tooth_number-pressure_angle-backlash-clearance-samples-cusps3): Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified hypocycloid pitch curve.
+> [`_cg_cusp_pair_motion_geometry`](#function-_cg_cusp_pair_motion_geometry): Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified hypocycloid pitch curve.
 
-> [`_cg_cusp_parameter_for_body_y(a, target, dedendum, lo=0, hi=60, i=0, cusps=3)`](#function-_cg_cusp_parameter_for_body_ya-target-dedendum-lo0-hi60-i0-cusps3): Solve for the hypocycloid parameter at a requested body-branch height.
+> [`_cg_cusp_parameter_for_body_y`](#function-_cg_cusp_parameter_for_body_y): Solve for the hypocycloid parameter at a requested body-branch height.
 
-> [`_cg_cusp_points(a, samples=720, cusps=3)`](#function-_cg_cusp_pointsa-samples720-cusps3): Sample one closed n-cusp hypocycloid pitch curve.
+> [`_cg_cusp_points`](#function-_cg_cusp_points): Sample one closed n-cusp hypocycloid pitch curve.
 
-> [`_cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90, cusps=3)`](#function-_cg_cusp_prepared_statepoints-modul-tooth_number-pressure_angle-backlash-clearance-tip_candidate-phase-90-cusps3): Assemble ordinary and cusp-anchor teeth into one validated state.
+> [`_cg_cusp_prepared_state`](#function-_cg_cusp_prepared_state): Assemble ordinary and cusp-anchor teeth into one validated state.
 
-> [`_cg_cusp_radius_on_outline(outline, angle)`](#function-_cg_cusp_radius_on_outlineoutline-angle): Find the furthest outline intersection along a radial direction.
+> [`_cg_cusp_radius_on_outline`](#function-_cg_cusp_radius_on_outline): Find the furthest outline intersection along a radial direction.
 
-> [`_cg_cusp_ray_segment_radius(a, b, angle)`](#function-_cg_cusp_ray_segment_radiusa-b-angle): Find a non-negative ray intersection radius on one outline segment.
+> [`_cg_cusp_ray_segment_radius`](#function-_cg_cusp_ray_segment_radius): Find a non-negative ray intersection radius on one outline segment.
 
-> [`_cg_cusp_repeated_radii(outline, samples, midpoint, pitch_offset, cusps=3)`](#function-_cg_cusp_repeated_radiioutline-samples-midpoint-pitch_offset-cusps3): Sample outline radii for all repeated hypocycloid sectors.
+> [`_cg_cusp_repeated_radii`](#function-_cg_cusp_repeated_radii): Sample outline radii for all repeated hypocycloid sectors.
 
-> [`_cg_cusp_scale(modul, tooth_number, cusps=3)`](#function-_cg_cusp_scalemodul-tooth_number-cusps3): Scale the hypocycloid to the requested module and tooth count.
+> [`_cg_cusp_scale`](#function-_cg_cusp_scale): Scale the hypocycloid to the requested module and tooth count.
 
-> [`_cg_cusp_state(modul, tooth_number, pressure_angle=20, backlash=undef, clearance=undef, samples=720, cusps=3)`](#function-_cg_cusp_statemodul-tooth_number-pressure_angle20-backlashundef-clearanceundef-samples720-cusps3): Construct the complete validated state for a cusp gear.
+> [`_cg_cusp_state`](#function-_cg_cusp_state): Construct the complete validated state for a cusp gear.
 
-> [`_cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance, cusps=3)`](#function-_cg_cusp_tip_candidatemodul-tooth_number-pressure_angle-backlash-clearance-cusps3): Prepare the standard tooth profile and cusp-anchor dimensions.
+> [`_cg_cusp_tip_candidate`](#function-_cg_cusp_tip_candidate): Prepare the standard tooth profile and cusp-anchor dimensions.
 
 
 ## Functions
 
 The module `Cusp` defines the following functions.
 
-### Function `curve_gear_cusp(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_cusp`
 
 | Cusp gear 1 | Cusp gear 2 |
 | --- | --- |
@@ -124,7 +124,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_2d(modul, tooth_number, bore, ...)`
+### Function `curve_gear_cusp_2d`
 
 | Cusp 2D gear 1 | Cusp 2D gear 2 |
 | --- | --- |
@@ -157,7 +157,7 @@ curve_gear_cusp_2d(0.8, 36, 4.8);
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_body(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_cusp_body`
 
 | Cusp body 1 | Cusp body 2 |
 | --- | --- |
@@ -182,7 +182,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)`
+### Function `curve_gear_cusp_body_2d`
 
 | Cusp 2D body 1 | Cusp 2D body 2 |
 | --- | --- |
@@ -213,7 +213,7 @@ curve_gear_cusp_body_2d(0.8, 36, 4.8, body_offset=-2);
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_centre_distance(modul, tooth_number, samples=720, cusps=3)`
+### Function `curve_gear_cusp_centre_distance`
 
 
 Return the solved pitch-curve centre distance for a cusp pair.
@@ -231,7 +231,7 @@ Return the solved pitch-curve centre distance for a cusp pair.
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_cusp_mate`
 
 | Cusp mate 1 | Cusp mate 2 |
 | --- | --- |
@@ -262,7 +262,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0, cusps=3)`
+### Function `curve_gear_cusp_mate_rotation`
 
 
 Return the integrated mate angle at one driver phase.
@@ -281,7 +281,7 @@ Return the integrated mate angle at one driver phase.
 
 Back to [module description](#module-cusp).
 
-### Function `curve_gear_cusp_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_cusp_pair`
 
 | Cusp pair 1 | Cusp pair 2 |
 | --- | --- |
@@ -300,8 +300,8 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 - `samples`: {integer >= 720, divisible by cusps, default 720} Pitch and motion sampling density for the validated swept mate.
 - `phase`: {angle, default 0} Driver motion phase.
 - `together_built`: {boolean, default true} Place gears at the solved pitch distance when true.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
-- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate colour.
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
@@ -315,7 +315,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90, cusps=3)`
+### Function `_cg_cusp_anchor_placement`
 
 
 Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
@@ -339,7 +339,7 @@ Place a standard tooth in the analytic cusp-axis frame and trim its shoulder int
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_body_branch_point(a, t, dedendum, cusps=3)`
+### Function `_cg_cusp_body_branch_point`
 
 
 Find a radial-root point on one hypocycloid branch.
@@ -357,7 +357,7 @@ Find a radial-root point on one hypocycloid branch.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_body_outline(state, tooth_number, cusps=3)`
+### Function `_cg_cusp_body_outline`
 
 
 Build the cusp-family body outline with its integrated tip teeth.
@@ -374,7 +374,7 @@ Build the cusp-family body outline with its integrated tip teeth.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false, cusps=3)`
+### Function `_cg_cusp_build`
 
 
 Construct the validated cusp body or complete gear.
@@ -401,7 +401,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_clear_shoulder_placement(placement, anchors, perimeter)`
+### Function `_cg_cusp_clear_shoulder_placement`
 
 
 Classify an ordinary tooth as inaccessible when a cusp shoulder owns its splice interval.
@@ -418,7 +418,7 @@ Classify an ordinary tooth as inaccessible when a cusp shoulder owns its splice 
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_cross2(a, b)`
+### Function `_cg_cusp_cross2`
 
 
 Calculate the scalar 2D cross product of two vectors.
@@ -434,7 +434,7 @@ Calculate the scalar 2D cross product of two vectors.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_envelope_driver_outline(state)`
+### Function `_cg_cusp_envelope_driver_outline`
 
 
 Extract the complete placed driver outline from its validated state.
@@ -449,7 +449,7 @@ Extract the complete placed driver outline from its validated state.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)`
+### Function `_cg_cusp_envelope_mate_from_geometry`
 
 
 Build the cusp mate by sweeping the complete validated driver outline.
@@ -471,7 +471,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_envelope_mate_outer_radius(geometry, modul)`
+### Function `_cg_cusp_envelope_mate_outer_radius`
 
 
 Calculate the swept-envelope mate's outer blank radius.
@@ -487,7 +487,7 @@ Calculate the swept-envelope mate's outer blank radius.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_indices(tooth_number, cusps=3)`
+### Function `_cg_cusp_indices`
 
 
 Return the tooth indices aligned with the hypocycloid cusps.
@@ -503,23 +503,23 @@ Return the tooth indices aligned with the hypocycloid cusps.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_pair_build(modul, tooth_number, width, bore, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, driver_color="SteelBlue", mate_color="Gold", sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, cusps=3)`
+### Function `_cg_cusp_pair_build`
 
 
 Construct the cusp driver and swept-envelope mate as a pair.
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in millimetres.
-- `tooth_number`: {integer >= 3, divisible by cusps} Number of teeth.
-- `width`: {number > 0} Extrusion width in millimetres.
-- `bore`: {number >= 0} Centre bore diameter in millimetres.
+- `modul`: {number > 0, default 1.2} Tooth module in millimetres.
+- `tooth_number`: {integer >= 3, divisible by cusps, default 36} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in millimetres.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in millimetres.
 - `pressure_angle`: {0 < angle < 90, default 20} Standard-flank pressure angle.
 - `samples`: {integer >= 720, divisible by cusps, default 720} Pitch and motion sample count.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 - `together_built`: {boolean, default true} Mesh the pair when true.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
-- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals.
@@ -533,7 +533,7 @@ No return
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples, cusps=3)`
+### Function `_cg_cusp_pair_motion_geometry`
 
 
 Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified hypocycloid pitch curve.
@@ -554,7 +554,7 @@ Build the validated cusp driver, radial motion data, solved distance, and motion
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_parameter_for_body_y(a, target, dedendum, lo=0, hi=60, i=0, cusps=3)`
+### Function `_cg_cusp_parameter_for_body_y`
 
 
 Solve for the hypocycloid parameter at a requested body-branch height.
@@ -575,7 +575,7 @@ Solve for the hypocycloid parameter at a requested body-branch height.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_points(a, samples=720, cusps=3)`
+### Function `_cg_cusp_points`
 
 
 Sample one closed n-cusp hypocycloid pitch curve.
@@ -592,7 +592,7 @@ Sample one closed n-cusp hypocycloid pitch curve.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90, cusps=3)`
+### Function `_cg_cusp_prepared_state`
 
 
 Assemble ordinary and cusp-anchor teeth into one validated state.
@@ -615,7 +615,7 @@ Assemble ordinary and cusp-anchor teeth into one validated state.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_radius_on_outline(outline, angle)`
+### Function `_cg_cusp_radius_on_outline`
 
 
 Find the furthest outline intersection along a radial direction.
@@ -631,7 +631,7 @@ Find the furthest outline intersection along a radial direction.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_ray_segment_radius(a, b, angle)`
+### Function `_cg_cusp_ray_segment_radius`
 
 
 Find a non-negative ray intersection radius on one outline segment.
@@ -648,7 +648,7 @@ Find a non-negative ray intersection radius on one outline segment.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_repeated_radii(outline, samples, midpoint, pitch_offset, cusps=3)`
+### Function `_cg_cusp_repeated_radii`
 
 
 Sample outline radii for all repeated hypocycloid sectors.
@@ -667,7 +667,7 @@ Sample outline radii for all repeated hypocycloid sectors.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_scale(modul, tooth_number, cusps=3)`
+### Function `_cg_cusp_scale`
 
 
 Scale the hypocycloid to the requested module and tooth count.
@@ -684,7 +684,7 @@ Scale the hypocycloid to the requested module and tooth count.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_state(modul, tooth_number, pressure_angle=20, backlash=undef, clearance=undef, samples=720, cusps=3)`
+### Function `_cg_cusp_state`
 
 
 Construct the complete validated state for a cusp gear.
@@ -705,7 +705,7 @@ Construct the complete validated state for a cusp gear.
 
 Back to [module description](#module-cusp).
 
-### Function `_cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance, cusps=3)`
+### Function `_cg_cusp_tip_candidate`
 
 
 Prepare the standard tooth profile and cusp-anchor dimensions.

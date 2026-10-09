@@ -1,6 +1,6 @@
 /***
  * Public single-gear construction for the ellipse family.
- * @function curve_gear_ellipse(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_ellipse
  * @brief Build an elliptical non-circular gear.
  * Eccentricity 0.94 produces a long narrow ellipse rather than the canonical 0.72 oval. The sharper ends and narrow transverse span reveal where tooth placement becomes demanding.
  * @image ../images/functions/ellipse/curve_gear_ellipse.png Ellipse gear 1
@@ -25,7 +25,7 @@ include <base.scad>
 
 module _cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false)
+ * @function _cg_ellipse_build
  * @brief Internal ellipse construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -58,7 +58,7 @@ module curve_gear_ellipse(modul,tooth_number,width,bore,eccentricity=0.62,pressu
 }
 
 /***
- * @function curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_ellipse_body
  * @brief Build the elliptical body solid without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/ellipse/curve_gear_ellipse_body.png Ellipse body 1

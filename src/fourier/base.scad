@@ -62,7 +62,7 @@ function _cg_fourier_shape(modul,tooth_number,coefficients=[[2,.10,0]],samples=7
 
 module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
+ * @function _cg_fourier_build
  * @brief Internal fourier construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -92,7 +92,7 @@ module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],
 }
 
 /***
- * @function curve_gear_fourier(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_fourier
  * @brief Build a coefficient-driven Fourier gear.
  * A single strong third harmonic produces three clear lobes instead of the canonical mixed second/third-harmonic oval. This isolates harmonic count from mixed-phase asymmetry.
  * @image ../images/functions/fourier/curve_gear_fourier.png Fourier gear 1
@@ -116,7 +116,7 @@ module curve_gear_fourier(modul,tooth_number,width,bore,coefficients=[[2,.10,0]]
 }
 
 /***
- * @function curve_gear_fourier_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_fourier_body
  * @brief Build the Fourier body without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/fourier/curve_gear_fourier_body.png Fourier body 1

@@ -1,7 +1,7 @@
 include <base.scad>
 
 /***
- * @function _cg_cusp_indices(tooth_number, cusps=3)
+ * @function _cg_cusp_indices
  * @brief Return the tooth indices aligned with the hypocycloid cusps.
  * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
  * @param cusps {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
@@ -9,7 +9,7 @@ include <base.scad>
  */
 function _cg_cusp_indices(tooth_number,cusps=3) = [for(i=[0:cusps-1]) i*tooth_number/cusps];
 /***
- * @function _cg_cusp_body_branch_point(a, t, dedendum, cusps=3)
+ * @function _cg_cusp_body_branch_point
  * @brief Find a radial-root point on one hypocycloid branch.
  * @param a {number > 0} Rolling-circle radius in millimetres.
  * @param t {angle} Hypocycloid parameter in degrees.
@@ -21,7 +21,7 @@ function _cg_cusp_body_branch_point(a,t,dedendum,cusps=3) =
     let(x=a*((cusps-1)*cos(t)+cos((cusps-1)*t)),y=a*((cusps-1)*sin(t)-sin((cusps-1)*t)),radius=_cg_vlen([x,y]),root=max(radius-dedendum,.02*dedendum))
         [x*root/radius,y*root/radius];
 /***
- * @function _cg_cusp_parameter_for_body_y(a, target, dedendum, lo=0, hi=60, i=0, cusps=3)
+ * @function _cg_cusp_parameter_for_body_y
  * @brief Solve for the hypocycloid parameter at a requested body-branch height.
  * @param a {number > 0} Rolling-circle radius in millimetres.
  * @param target {number} Target Cartesian y coordinate in millimetres.
@@ -40,7 +40,7 @@ function _cg_cusp_parameter_for_body_y(a,target,dedendum,lo=0,hi=undef,i=0,cusps
             ? _cg_cusp_parameter_for_body_y(a,target,dedendum,lo,mid,i+1,cusps)
             : _cg_cusp_parameter_for_body_y(a,target,dedendum,mid,upper,i+1,cusps);
 /***
- * @function _cg_cusp_tip_candidate(modul, tooth_number, pressure_angle, backlash, clearance, cusps=3)
+ * @function _cg_cusp_tip_candidate
  * @brief Prepare the standard tooth profile and cusp-anchor dimensions.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
@@ -66,7 +66,7 @@ function _cg_cusp_tip_candidate(modul,tooth_number,pressure_angle,backlash,clear
     concat(candidate,[[t,inset,branch_arc,"driver_cusp",height,[0,0],[0,0]]]);
 
 /***
- * @function _cg_cusp_anchor_placement(points, arc, perimeter, body, modul, tooth_number, index, candidate, phase=-90, cusps=3)
+ * @function _cg_cusp_anchor_placement
  * @brief Place a standard tooth in the analytic cusp-axis frame and trim its shoulder interval.
  * @param points {array of points} Sampled hypocycloid pitch curve.
  * @param arc {array} Pitch-curve arc-length table.
@@ -108,7 +108,7 @@ function _cg_cusp_anchor_placement(points,arc,perimeter,body,modul,tooth_number,
     ["placed","CUSP_CURVE_ANCHOR",index,target,frame,candidate,boundary,[left,right],left,right,[false,-1,[0,0],0,0,frame,[]],[]];
 
 /***
- * @function _cg_cusp_clear_shoulder_placement(placement, anchors, perimeter)
+ * @function _cg_cusp_clear_shoulder_placement
  * @brief Classify an ordinary tooth as inaccessible when a cusp shoulder owns its splice interval.
  * @param placement {array} Ordinary tooth placement from the shared validator.
  * @param anchors {array} Prepared radial cusp-anchor placements.
@@ -128,7 +128,7 @@ function _cg_cusp_clear_shoulder_placement(placement,anchors,perimeter) =
         [for(i=[2:len(placement)-1]) placement[i]]);
 
 /***
- * @function _cg_cusp_prepared_state(points, modul, tooth_number, pressure_angle, backlash, clearance, tip_candidate, phase=-90, cusps=3)
+ * @function _cg_cusp_prepared_state
  * @brief Assemble ordinary and cusp-anchor teeth into one validated state.
  * @param points {array of points} Sampled hypocycloid pitch curve.
  * @param modul {number > 0} Tooth module in millimetres.
@@ -160,7 +160,7 @@ function _cg_cusp_prepared_state(points,modul,tooth_number,pressure_angle,backla
     _cg_tooth_geometry_state(points,modul,tooth_number,pressure_angle,phase,true,backlash,clearance,false,true,[standard,placements]);
 
 /***
- * @function _cg_cusp_body_outline(state, tooth_number, cusps=3)
+ * @function _cg_cusp_body_outline
  * @brief Build the cusp-family body outline with its integrated tip teeth.
  * @param state {array} Validated cusp gear state.
  * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
@@ -171,7 +171,7 @@ function _cg_cusp_body_outline(state,tooth_number,cusps=3) =
     let(cusp_indices=_cg_cusp_indices(tooth_number,cusps),tip_placements=[for(p=state[5]) if(len([for(i=cusp_indices) if(p[2]==i) 1])>0) p])
     _cg_final_outline_from_placements(state[3],state[1],state[2],tip_placements);
 /***
- * @function _cg_cusp_state(modul, tooth_number, pressure_angle=20, backlash=undef, clearance=undef, samples=720, cusps=3)
+ * @function _cg_cusp_state
  * @brief Construct the complete validated state for a cusp gear.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
@@ -190,7 +190,7 @@ function _cg_cusp_state(modul,tooth_number,pressure_angle=20,backlash=undef,clea
         _cg_cusp_prepared_state(points,modul,tooth_number,pressure_angle,backlash,clearance,candidate,cusps=cusps);
 
 /***
- * @function _cg_cusp_cross2(a, b)
+ * @function _cg_cusp_cross2
  * @brief Calculate the scalar 2D cross product of two vectors.
  * @param a {array of number} First 2D vector.
  * @param b {array of number} Second 2D vector.
@@ -198,7 +198,7 @@ function _cg_cusp_state(modul,tooth_number,pressure_angle=20,backlash=undef,clea
  */
 function _cg_cusp_cross2(a,b) = a[0]*b[1]-a[1]*b[0];
 /***
- * @function _cg_cusp_ray_segment_radius(a, b, angle)
+ * @function _cg_cusp_ray_segment_radius
  * @brief Find a non-negative ray intersection radius on one outline segment.
  * @param a {array of number} First segment endpoint.
  * @param b {array of number} Second segment endpoint.
@@ -211,7 +211,7 @@ function _cg_cusp_ray_segment_radius(a,b,angle) =
         radius=abs(denominator)<=_cg_eps_len() ? -1 : _cg_cusp_cross2(a,segment)/denominator)
     abs(denominator)>_cg_eps_len() && u>=-_cg_eps_len() && u<=1+_cg_eps_len() && radius>=0 ? radius : 0;
 /***
- * @function _cg_cusp_radius_on_outline(outline, angle)
+ * @function _cg_cusp_radius_on_outline
  * @brief Find the furthest outline intersection along a radial direction.
  * @param outline {array of points} Closed gear outline.
  * @param angle {angle} Ray direction in degrees.
@@ -220,7 +220,7 @@ function _cg_cusp_ray_segment_radius(a,b,angle) =
 function _cg_cusp_radius_on_outline(outline,angle) =
     max([for(i=[0:len(outline)-1]) _cg_cusp_ray_segment_radius(outline[i],outline[(i+1)%len(outline)],angle)]);
 /***
- * @function _cg_cusp_repeated_radii(outline, samples, midpoint, pitch_offset, cusps=3)
+ * @function _cg_cusp_repeated_radii
  * @brief Sample outline radii for all repeated hypocycloid sectors.
  * @param outline {array of points} Pitch curve or closed driver outline.
  * @param samples {integer >= 3, divisible by cusps} Total angular sample count.
@@ -234,7 +234,7 @@ function _cg_cusp_repeated_radii(outline,samples,midpoint,pitch_offset,cusps=3) 
         _cg_cusp_radius_on_outline(outline,360*(i+(midpoint ? .5 : 0))/samples)+pitch_offset])
     [for(k=[0:cusps-1]) each sector];
 /***
- * @function _cg_cusp_pair_motion_geometry(modul, tooth_number, pressure_angle, backlash, clearance, samples, cusps=3)
+ * @function _cg_cusp_pair_motion_geometry
  * @brief Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified hypocycloid pitch curve.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
@@ -262,7 +262,7 @@ function _cg_cusp_pair_motion_geometry(modul,tooth_number,pressure_angle,backlas
     [driver_state,driver_radii,mid_radii,distance,integration];
 
 /***
- * @function _cg_cusp_build(modul, tooth_number, width, bore, pressure_angle=20, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false, cusps=3)
+ * @function _cg_cusp_build
  * @brief Construct the validated cusp body or complete gear.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
@@ -321,7 +321,7 @@ module _cg_cusp_build(modul,tooth_number,width,bore,pressure_angle=20,backlash=u
 }
 
 /***
- * @function curve_gear_cusp(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_cusp
  * @brief Build the hypocycloid cusp gear with regular radial teeth at its cusps.
  * Five cusps replace the canonical three-cusp deltoid. With 60 tooth positions, each cusp sector retains twelve tooth positions; the bore remains 4.8 mm. Set `cusps=5` and keep tooth count and samples divisible by five.
  * @image ../images/functions/cusp/curve_gear_cusp.png Cusp gear 1
@@ -344,7 +344,7 @@ module curve_gear_cusp(modul,tooth_number,width,bore,pressure_angle=20,backlash=
 }
 
 /***
- * @function curve_gear_cusp_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_cusp_body
  * @brief Build the hypocycloid body with its integrated cusp-tip teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/cusp/curve_gear_cusp_body.png Cusp body 1
@@ -362,7 +362,7 @@ module curve_gear_cusp_body(modul,tooth_number,width,bore,samples=720,orientatio
 }
 
 /***
- * @function curve_gear_cusp_2d(modul, tooth_number, bore, ...)
+ * @function curve_gear_cusp_2d
  * @brief Emit the complete cusp gear profile as 2D geometry.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/cusp/curve_gear_cusp_2d.png Cusp 2D gear 1
@@ -384,7 +384,7 @@ module curve_gear_cusp_2d(modul,tooth_number,bore,pressure_angle=20,backlash=und
 }
 
 /***
- * @function curve_gear_cusp_body_2d(modul, tooth_number, bore, ...)
+ * @function curve_gear_cusp_body_2d
  * @brief Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/cusp/curve_gear_cusp_body_2d.png Cusp 2D body 1

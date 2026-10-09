@@ -1,6 +1,6 @@
 /***
  * Public single-gear construction for the lobed family.
- * @function curve_gear_lobed(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_lobed
  * @brief Build a lobed non-circular gear.
  * Two deep lobes replace the canonical shallow four-lobed square form. Lobe count 2 and depth 0.28 show the transition to an elongated, waisted pitch curve.
  * @image ../images/functions/lobed/curve_gear_lobed.png Lobed gear 1
@@ -26,7 +26,7 @@ include <base.scad>
 
 module _cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
+ * @function _cg_lobed_build
  * @brief Internal lobed construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -62,7 +62,7 @@ module curve_gear_lobed(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pr
 }
 
 /***
- * @function curve_gear_lobed_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_lobed_body
  * @brief Build the lobed body solid without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/lobed/curve_gear_lobed_body.png Lobed body 1

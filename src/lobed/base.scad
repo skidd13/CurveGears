@@ -11,7 +11,7 @@ include <../common/curve_gears_math.scad>
 include <../common/harmonic.scad>
 
 /***
- * @function _cg_lobed_unit_radius(lobes, lobe_depth, theta)
+ * @function _cg_lobed_unit_radius
  * @brief Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
  * @param lobes {integer >= 1} Number of radial lobes.
  * @param lobe_depth {0 <= d < 1} Radial modulation depth.

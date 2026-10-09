@@ -1,19 +1,19 @@
 /***
- * @function curve_gear_logarithmic_spiral_pair(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_logarithmic_spiral_pair
  * @brief Build a meshed or separated logarithmic-spiral pair.
  * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png Logarithmic spiral pair 1
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair_alternative.png Logarithmic spiral pair 2
- * @param modul {number > 0} Tooth module in mm.
- * @param tooth_number {integer >= 3} Number of teeth.
- * @param width {number > 0} Extrusion width in mm.
- * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param modul {number > 0, default .8} Tooth module in mm.
+ * @param tooth_number {integer >= 3, default 34} Number of teeth.
+ * @param width {number > 0, default 4} Extrusion width in mm.
+ * @param bore {number >= 0, default 4.8} Centre bore diameter in mm.
  * @param sectors {integer >= 1, default 1} Number of spiral sectors.
  * @param growth_rate {number > 1, default 1.17} Radius growth per sector.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
  * @param assembly_clearance {number >= 0, default 0} Explicit reference separation beyond the radial extents in mm.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
  * @param samples {integer >= 120, default 360} Spiral sampling density.
  * @param together_built {boolean, default true} Place the pair meshed when true, separated when false.
@@ -29,7 +29,7 @@ include <../common/pair/assembly.scad>
 
 module _cg_logarithmic_spiral_pair_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,samples=360,together_built=true,assembly_clearance=0,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
 /***
- * @function _cg_logarithmic_spiral_pair_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,samples=360,together_built=true,assembly_clearance=0,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")
+ * @function _cg_logarithmic_spiral_pair_build
  * @brief Internal logarithmic spiral pair construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.

@@ -416,6 +416,9 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test -s "$(TEST_TOOTH_PLACEMENT_HEADER)"
 	@test -s "$(TEST_MATE_MOTION_HEADER)"
 	@test -s "$(TEST_FAMILY_HEADER)"
+	@test -z "$$(rg -n '@function[[:space:]]+[^[:space:](]+\(' src -g '*.scad' || true)"
+	@test -z "$$(rg -n '^> \[`[^]]+\([^)]+' docs examples/README.md tests/README.md -g '*.md' || true)"
+	@test -z "$$(rg -n '^### (Function|Method) `[^`]+\(' docs examples/README.md tests/README.md -g '*.md' || true)"
 	@test ! -e utils/test_catalogue.py
 	@test ! -e utils/example_catalogue.py
 	@test ! -e utils/doxydown-support/docs-navigation.md

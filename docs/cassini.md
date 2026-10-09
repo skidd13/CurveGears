@@ -40,13 +40,13 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`curve_gear_cassini_pair`](#function-curve_gear_cassini_pair): Build a meshed or separated Cassini driver/mate pair.
 
-> [`_cg_cassini_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`](#function-_cg_cassini_buildmodul-tooth_number-width-bore-focus_ratio078-pressure_angle20-tooth_phase0-backlashundef-clearanceundef-samples720-orientation0-body_onlyfalse): Construct a validated Cassini body, gear, or mate boundary.
+> [`_cg_cassini_build`](#function-_cg_cassini_build): Construct a validated Cassini body, gear, or mate boundary.
 
 > [`_cg_cassini_focus_ratio_valid`](#function-_cg_cassini_focus_ratio_valid): Check the supported single-loop Cassini parameter range.
 
 > [`_cg_cassini_max_radius`](#function-_cg_cassini_max_radius): Calculate the exact maximum scaled radius on the supported branch.
 
-> [`_cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")`](#function-_cg_cassini_pair_buildmodul-tooth_number-width-bore-focus_ratio078-pressure_angle20-samples720-phase0-together_builttrue-backlashundef-clearanceundef-tooth_phase0-driver_colorsteelblue-mate_colorgold): Construct the Cassini driver and its conjugate mate as a pair.
+> [`_cg_cassini_pair_build`](#function-_cg_cassini_pair_build): Construct the Cassini driver and its conjugate mate as a pair.
 
 > [`_cg_cassini_point`](#function-_cg_cassini_point): Convert a scaled Cassini radius to a Cartesian pitch point.
 
@@ -54,7 +54,7 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`_cg_cassini_radius`](#function-_cg_cassini_radius): Evaluate a scaled Cassini radius.
 
-> [`_cg_cassini_scale(modul, tooth_number, focus_ratio, n=720, unit_points=undef)`](#function-_cg_cassini_scalemodul-tooth_number-focus_ratio-n720-unit_pointsundef): Scale a Cassini curve to the requested tooth pitch.
+> [`_cg_cassini_scale`](#function-_cg_cassini_scale): Scale a Cassini curve to the requested tooth pitch.
 
 > [`_cg_cassini_unit_radius`](#function-_cg_cassini_unit_radius): Evaluate the normalised positive Cassini polar branch.
 
@@ -279,17 +279,17 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `focus_ratio`: {0 <= number < 1, default 0.78} Cassini focal ratio.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `samples`: {integer >= 120, default 720} Pitch-curve and motion sampling density.
 - `phase`: {angle, default 0} Driver motion phase.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -306,7 +306,7 @@ curve_gear_cassini_pair(1, 24, 4, 8);
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)`
+### Function `_cg_cassini_build`
 
 
 Construct a validated Cassini body, gear, or mate boundary.
@@ -366,7 +366,7 @@ On the supported `focus_ratio < 1` branch, squared radius increases with
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")`
+### Function `_cg_cassini_pair_build`
 
 
 Construct the Cassini driver and its conjugate mate as a pair.
@@ -382,8 +382,8 @@ Construct the Cassini driver and its conjugate mate as a pair.
 - `samples`: {integer >= 120, default 720} Pitch and motion sample count.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 - `together_built`: {boolean, default true} Mesh the pair when true.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
-- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -445,7 +445,7 @@ Evaluate a scaled Cassini radius.
 
 Back to [module description](#module-cassini).
 
-### Function `_cg_cassini_scale(modul, tooth_number, focus_ratio, n=720, unit_points=undef)`
+### Function `_cg_cassini_scale`
 
 
 Scale a Cassini curve to the requested tooth pitch.

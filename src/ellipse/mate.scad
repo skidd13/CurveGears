@@ -3,7 +3,7 @@ include <../common/mate/preparation.scad>
 include <../common/mate/placement.scad>
 
 /***
- * @function curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_ellipse_mate
  * @brief Build the standalone elliptical mate boundary at the origin.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/ellipse/curve_gear_ellipse_mate.png Ellipse mate 1
@@ -26,7 +26,7 @@ module curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity=0.62,p
 }
 
 /***
- * @function curve_gear_ellipse_centre_distance(modul, tooth_number, eccentricity, ...)
+ * @function curve_gear_ellipse_centre_distance
  * @brief Return the mathematical centre distance for an elliptical pair.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -38,7 +38,7 @@ function curve_gear_ellipse_centre_distance(modul,tooth_number,eccentricity=0.62
     _cg_polar_mate_distance(_cg_ellipse_shape(modul,tooth_number,eccentricity,samples),samples);
 
 /***
- * @function curve_gear_ellipse_mate_rotation(modul, tooth_number, eccentricity, ...)
+ * @function curve_gear_ellipse_mate_rotation
  * @brief Return the conjugate elliptical mate rotation for a driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.

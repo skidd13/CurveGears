@@ -9,7 +9,7 @@
 include <../common/curve_gears_math.scad>
 
 /***
- * @function _cg_circle_radius(modul, tooth_number)
+ * @function _cg_circle_radius
  * @brief Calculate the circular pitch radius from module and tooth count.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -17,7 +17,7 @@ include <../common/curve_gears_math.scad>
  */
 function _cg_circle_radius(modul,tooth_number) = modul*tooth_number/2;
 /***
- * @function _cg_circle_points(modul, tooth_number, samples=480)
+ * @function _cg_circle_points
  * @brief Sample the circular pitch curve in angular order.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3} Number of teeth.

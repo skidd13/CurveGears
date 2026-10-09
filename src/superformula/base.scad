@@ -13,7 +13,7 @@
 include <../common/curve_gears_math.scad>
 
 /***
- * @function _cg_superformula_unit_radius(symmetry, a, b, n1, n2, n3, theta)
+ * @function _cg_superformula_unit_radius
  * @brief Evaluate the unit Gielis superformula radius.
  * @param symmetry {integer >= 2} Number of repeated sectors.
  * @param a {number > 0} Superformula radial scale factor.
@@ -31,7 +31,7 @@ function _cg_superformula_unit_radius(symmetry,a,b,n1,n2,n3,theta) =
         -1/n1
     );
 /***
- * @function _cg_superformula_point(scale, symmetry, a, b, n1, n2, n3, theta)
+ * @function _cg_superformula_point
  * @brief Evaluate one Cartesian point on a scaled superformula curve.
  * @param scale {number > 0} Mean pitch-radius scale in mm.
  * @param symmetry {integer >= 2} Number of repeated sectors.
@@ -46,7 +46,7 @@ function _cg_superformula_unit_radius(symmetry,a,b,n1,n2,n3,theta) =
 function _cg_superformula_point(scale,symmetry,a,b,n1,n2,n3,theta) =
     let(r=scale*_cg_superformula_unit_radius(symmetry,a,b,n1,n2,n3,theta)) [r*cos(theta),r*sin(theta)];
 /***
- * @function _cg_superformula_points(scale, symmetry, a, b, n1, n2, n3, n)
+ * @function _cg_superformula_points
  * @brief Sample a complete scaled superformula pitch curve.
  * @param scale {number > 0} Mean pitch-radius scale in mm.
  * @param symmetry {integer >= 2} Number of repeated sectors.
@@ -61,7 +61,7 @@ function _cg_superformula_point(scale,symmetry,a,b,n1,n2,n3,theta) =
 function _cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,n=360) =
     [for(i=[0:n-1]) _cg_superformula_point(scale,symmetry,a,b,n1,n2,n3,360*i/n)];
 /***
- * @function _cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n, unit_points=undef)
+ * @function _cg_superformula_scale
  * @brief Scale a superformula curve to the requested tooth pitch.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -78,7 +78,7 @@ function _cg_superformula_points(scale,symmetry,a,b,n1,n2,n3,n=360) =
 function _cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,n=360,unit_points=undef) =
     _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_superformula_points(1,symmetry,a,b,n1,n2,n3,n) : unit_points,_cg_pi);
 /***
- * @function _cg_superformula_radius(scale, symmetry, a, b, n1, n2, n3, theta)
+ * @function _cg_superformula_radius
  * @brief Evaluate a scaled superformula radius.
  * @param scale {number > 0} Mean pitch-radius scale in mm.
  * @param symmetry {integer >= 2} Number of repeated sectors.
@@ -92,7 +92,7 @@ function _cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,n=360,u
  */
 function _cg_superformula_radius(scale,symmetry,a,b,n1,n2,n3,theta) = scale*_cg_superformula_unit_radius(symmetry,a,b,n1,n2,n3,theta);
 /***
- * @function _cg_superformula_max_radius(scale, symmetry, a, b, n1, n2, n3, n)
+ * @function _cg_superformula_max_radius
  * @brief Find the maximum sampled radius of a superformula curve.
  * @param scale {number > 0} Mean pitch-radius scale in mm.
  * @param symmetry {integer >= 2} Number of repeated sectors.
@@ -116,7 +116,7 @@ function _cg_superformula_shape(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples
         modul,tooth_number,samples,
         function(scale) let(mx=_cg_superformula_max_radius(scale,symmetry,a,b,n1,n2,n3,720)) [mx+.01,4*mx]);
 /***
- * @function _cg_superformula_odd_valid(symmetry, a, b, n2, n3, tol)
+ * @function _cg_superformula_odd_valid
  * @brief Check the continuity constraints for odd superformula symmetry.
  * @param symmetry {integer >= 2} Number of repeated sectors.
  * @param a {number > 0} Superformula radial scale factor.

@@ -9,7 +9,7 @@ include <../mate/preparation.scad>
  */
 
 /***
- * @function _cg_pair_display_separation(driver_extent, mate_extent, modul)
+ * @function _cg_pair_display_separation
  * @brief Return the explicit non-meshed display separation for two extents.
  * @param driver_extent {number > 0} Driver display extent from its origin.
  * @param mate_extent {number > 0} Mate display extent from its origin.
@@ -80,7 +80,7 @@ module _cg_pair_assembly(centre_distance,motion,phase,together_built,driver_exte
 }
 
 /***
- * @function _cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)
+ * @function _cg_static_pair_assembly
  * @brief Places a statically classified reference pair without implying conjugate motion.
  * @param reference_distance {number > 0} Explicit reference centre separation.
  * @param together_built {boolean, default true} Use reference placement when true, display placement otherwise.

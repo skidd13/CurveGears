@@ -4,17 +4,17 @@
  * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
  * @image ../images/functions/cassini/curve_gear_cassini_pair.png Cassini pair 1
  * @image ../images/functions/cassini/curve_gear_cassini_pair_alternative.png Cassini pair 2
- * @param modul {number > 0} Tooth module in mm.
- * @param tooth_number {integer >= 3} Number of teeth.
- * @param width {number > 0} Extrusion width in mm.
- * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param modul {number > 0, default .8} Tooth module in mm.
+ * @param tooth_number {integer >= 3, default 34} Number of teeth.
+ * @param width {number > 0, default 4} Extrusion width in mm.
+ * @param bore {number >= 0, default 4.8} Centre bore diameter in mm.
  * @param focus_ratio {0 <= number < 1, default 0.78} Cassini focal ratio.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
  * @param samples {integer >= 120, default 720} Pitch-curve and motion sampling density.
  * @param phase {angle, default 0} Driver motion phase.
  * @param tooth_phase {angle, default 0} Tooth placement phase.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param together_built {boolean, default true} Place the pair meshed when true.
  * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
  * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
@@ -25,7 +25,7 @@ include <mate.scad>
 include <../common/pair/assembly.scad>
 
 /***
- * @function _cg_cassini_pair_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, samples=720, phase=0, together_built=true, backlash=undef, clearance=undef, tooth_phase=0, driver_color="SteelBlue", mate_color="Gold")
+ * @function _cg_cassini_pair_build
  * @brief Construct the Cassini driver and its conjugate mate as a pair.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -36,8 +36,8 @@ include <../common/pair/assembly.scad>
  * @param samples {integer >= 120, default 720} Pitch and motion sample count.
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @param together_built {boolean, default true} Mesh the pair when true.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
- * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
  * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
  * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.

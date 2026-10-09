@@ -1,6 +1,6 @@
 /***
  * Public single-gear construction for the logarithmic spiral family.
- * @function curve_gear_logarithmic_spiral(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_logarithmic_spiral
  * @brief Build a logarithmic-spiral non-circular gear.
  * Three spiral sectors replace the canonical single return. Growth 1.22 increases the radial sweep. Returns are broad transitions without ordinary teeth, and the pair is a static reference rather than a validated conjugate transmission.
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral.png Logarithmic spiral gear 1
@@ -26,7 +26,7 @@ include <base.scad>
 
 module _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_logarithmic_spiral_build(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360,orientation=0,body_only=false)
+ * @function _cg_logarithmic_spiral_build
  * @brief Dispatch logarithmic-spiral construction, building its spiral and radial returns as one canonical 2D boundary; long return segments form inaccessible tooth corridors, so ordinary teeth are omitted there.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -65,7 +65,7 @@ module curve_gear_logarithmic_spiral(modul,tooth_number,width,bore,sectors=1,gro
 }
 
 /***
- * @function curve_gear_logarithmic_spiral_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_logarithmic_spiral_body
  * @brief Build the logarithmic-spiral body solid without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_body.png Logarithmic spiral body 1

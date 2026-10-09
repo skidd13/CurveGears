@@ -38,7 +38,7 @@ Reference: https://en.wikipedia.org/wiki/Hyperbolic_function.
 
 > [`curve_gear_tanh_triad_pair`](#function-curve_gear_tanh_triad_pair): Build a Tanh Triad gear pair.
 
-> [`_cg_tanh_triad_parameters_valid(transition,crest,correction)`](#function-_cg_tanh_triad_parameters_validtransitioncrestcorrection): Check the shared curve-parameter contract for every family entry point.
+> [`_cg_tanh_triad_parameters_valid`](#function-_cg_tanh_triad_parameters_valid): Check the shared curve-parameter contract for every family entry point.
 
 > [`_cg_tanh_triad_shape`](#function-_cg_tanh_triad_shape): Bind the named curve once for driver, mate and numeric consumers.
 
@@ -326,22 +326,22 @@ Alternative 2 separates the driver and mate and uses the contrasting gear contro
 
 **Parameters:**
 
-- `modul`: {number} Tooth module.
-- `tooth_number`: {integer} Tooth count.
-- `width`: {number} Width.
-- `bore`: {number} Bore.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `pressure_angle`: {number} Pressure angle.
-- `samples`: {integer} Samples.
-- `phase`: {number} Pair phase.
-- `together_built`: {boolean} Mesh pair.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `tooth_phase`: {number} Tooth phase.
-- `driver_color`: {string} Driver colour.
-- `mate_color`: {string} Mate colour.
+- `modul`: {number, default .8} Tooth module.
+- `tooth_number`: {integer, default 34} Tooth count.
+- `width`: {number, default 4} Width.
+- `bore`: {number, default 4.8} Bore.
+- `transition`: {number, default 1.8} Transition.
+- `crest`: {number, default .13} Crest.
+- `correction`: {number, default .03} Correction.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `samples`: {integer, default 720} Samples.
+- `phase`: {number, default 0} Pair phase.
+- `together_built`: {boolean, default true} Mesh pair.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `driver_color`: {string, default "SteelBlue"} Driver colour.
+- `mate_color`: {string, default "Gold"} Mate colour.
 
 **Returns:**
 
@@ -349,7 +349,7 @@ No return
 
 Back to [module description](#module-tanh-triad).
 
-### Function `_cg_tanh_triad_parameters_valid(transition,crest,correction)`
+### Function `_cg_tanh_triad_parameters_valid`
 
 
 Check the shared curve-parameter contract for every family entry point.

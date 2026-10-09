@@ -1,6 +1,6 @@
 /***
  * Public single-gear construction for the epitrochoid family.
- * @function curve_gear_epitrochoid(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_epitrochoid
  * @brief Build an epitrochoid non-circular gear.
  * A rolling ratio of 2:1 produces broad two-fold shaping instead of the canonical four-fold scallops. Offset 0.65 strengthens the excursions of the generating point.
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid.png Epitrochoid gear 1
@@ -27,7 +27,7 @@ include <base.scad>
 
 module _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
- * @function _cg_epitrochoid_build(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
+ * @function _cg_epitrochoid_build
  * @brief Internal epitrochoid construction dispatcher.
  * @param modul {number} Tooth module in mm.
  * @param tooth_number {integer} Number of teeth.
@@ -63,7 +63,7 @@ module curve_gear_epitrochoid(modul,tooth_number,width,bore,major_ratio=3,rollin
 }
 
 /***
- * @function curve_gear_epitrochoid_body(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_epitrochoid_body
  * @brief Build the epitrochoid body solid without teeth.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body.png Epitrochoid body 1

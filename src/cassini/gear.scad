@@ -22,7 +22,7 @@
 include <base.scad>
 
 /***
- * @function _cg_cassini_build(modul, tooth_number, width, bore, focus_ratio=0.78, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)
+ * @function _cg_cassini_build
  * @brief Construct a validated Cassini body, gear, or mate boundary.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3} Number of teeth.

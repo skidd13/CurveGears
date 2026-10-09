@@ -4,7 +4,7 @@ include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
 
 /***
- * @function _cg_hypotrochoid_motion_radii(scale, R, r, d, n=720)
+ * @function _cg_hypotrochoid_motion_radii
  * @brief Sample the driver polygon at physical polar integration midpoints.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
@@ -15,7 +15,7 @@ include <../common/mate/placement.scad>
  */
 function _cg_hypotrochoid_motion_radii(scale,R,r,d,n=720) = _cg_trochoid_polar_radii(_cg_hypotrochoid_points_scaled(scale,R,r,d,n),n,true);
 /***
- * @function _cg_hypotrochoid_driver_radii(scale, R, r, d, n=720)
+ * @function _cg_hypotrochoid_driver_radii
  * @brief Sample the driver polygon at physical polar phase boundaries.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
@@ -26,7 +26,7 @@ function _cg_hypotrochoid_motion_radii(scale,R,r,d,n=720) = _cg_trochoid_polar_r
  */
 function _cg_hypotrochoid_driver_radii(scale,R,r,d,n=720) = _cg_trochoid_polar_radii(_cg_hypotrochoid_points_scaled(scale,R,r,d,n),n,false);
 /***
- * @function _cg_hypotrochoid_centre_distance(scale, R, r, d, n=720)
+ * @function _cg_hypotrochoid_centre_distance
  * @brief Solve the fixed centre distance for a hypotrochoid mate.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
@@ -37,7 +37,7 @@ function _cg_hypotrochoid_driver_radii(scale,R,r,d,n=720) = _cg_trochoid_polar_r
  */
 function _cg_hypotrochoid_centre_distance(scale,R,r,d,n=720) = let(points=_cg_hypotrochoid_points_scaled(scale,R,r,d,1440),mx=max([for(p=points) _cg_vlen(p)])) _cg_solve_mate_distance(_cg_hypotrochoid_motion_radii(scale,R,r,d,n),mx+.01,4*mx);
 /***
- * @function _cg_hypotrochoid_motion_table(scale, R, r, d, D, n=720)
+ * @function _cg_hypotrochoid_motion_table
  * @brief Integrate hypotrochoid driver-to-mate phase motion.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
@@ -49,7 +49,7 @@ function _cg_hypotrochoid_centre_distance(scale,R,r,d,n=720) = let(points=_cg_hy
  */
 function _cg_hypotrochoid_motion_table(scale,R,r,d,D,n=720) = _cg_motion_table_from_mid_radii(_cg_hypotrochoid_motion_radii(scale,R,r,d,n),D);
 /***
- * @function _cg_hypotrochoid_mate_points_from_driver(scale, R, r, d, D, n=720)
+ * @function _cg_hypotrochoid_mate_points_from_driver
  * @brief Generate mate pitch points from driver phase samples.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.
@@ -61,7 +61,7 @@ function _cg_hypotrochoid_motion_table(scale,R,r,d,D,n=720) = _cg_motion_table_f
  */
 function _cg_hypotrochoid_mate_points_from_driver(scale,R,r,d,D,n=720) = _cg_mate_points_from_radius_samples(_cg_hypotrochoid_driver_radii(scale,R,r,d,n),_cg_hypotrochoid_motion_radii(scale,R,r,d,n),D);
 /***
- * @function _cg_hypotrochoid_mate_points(scale, R, r, d, D, n=720)
+ * @function _cg_hypotrochoid_mate_points
  * @brief Return the conjugate mate pitch points for a hypotrochoid.
  * @param scale {number > 0} Curve scale in millimetres.
  * @param R {number > 0} Fixed-circle radius ratio.

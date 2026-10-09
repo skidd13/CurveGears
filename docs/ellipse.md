@@ -24,38 +24,38 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 **Functions**:
 
-> [`curve_gear_ellipse(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipsemodul-tooth_number-width-bore-): Build an elliptical non-circular gear.
+> [`curve_gear_ellipse`](#function-curve_gear_ellipse): Build an elliptical non-circular gear.
 
 > [`curve_gear_ellipse_2d`](#function-curve_gear_ellipse_2d): Emit the complete ellipse gear profile as 2D geometry.
 
-> [`curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_bodymodul-tooth_number-width-bore-): Build the elliptical body solid without teeth.
+> [`curve_gear_ellipse_body`](#function-curve_gear_ellipse_body): Build the elliptical body solid without teeth.
 
 > [`curve_gear_ellipse_body_2d`](#function-curve_gear_ellipse_body_2d): Emit the ellipse body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_ellipse_centre_distance(modul, tooth_number, eccentricity, ...)`](#function-curve_gear_ellipse_centre_distancemodul-tooth_number-eccentricity-): Return the mathematical centre distance for an elliptical pair.
+> [`curve_gear_ellipse_centre_distance`](#function-curve_gear_ellipse_centre_distance): Return the mathematical centre distance for an elliptical pair.
 
-> [`curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_matemodul-tooth_number-width-bore-): Build the standalone elliptical mate boundary at the origin.
+> [`curve_gear_ellipse_mate`](#function-curve_gear_ellipse_mate): Build the standalone elliptical mate boundary at the origin.
 
-> [`curve_gear_ellipse_mate_rotation(modul, tooth_number, eccentricity, ...)`](#function-curve_gear_ellipse_mate_rotationmodul-tooth_number-eccentricity-): Return the conjugate elliptical mate rotation for a driver phase.
+> [`curve_gear_ellipse_mate_rotation`](#function-curve_gear_ellipse_mate_rotation): Return the conjugate elliptical mate rotation for a driver phase.
 
-> [`curve_gear_ellipse_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_ellipse_pairmodul-tooth_number-width-bore-): Build a meshed or separated elliptical pair.
+> [`curve_gear_ellipse_pair`](#function-curve_gear_ellipse_pair): Build a meshed or separated elliptical pair.
 
-> [`_cg_ellipse_axes(modul, tooth_number, eccentricity)`](#function-_cg_ellipse_axesmodul-tooth_number-eccentricity): Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
+> [`_cg_ellipse_axes`](#function-_cg_ellipse_axes): Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
 
-> [`_cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false)`](#function-_cg_ellipse_buildmodultooth_numberwidthboreeccentricity062pressure_angle20tooth_phase0backlashundefclearanceundefsamples480orientation0body_onlyfalse): Internal ellipse construction dispatcher.
+> [`_cg_ellipse_build`](#function-_cg_ellipse_build): Internal ellipse construction dispatcher.
 
-> [`_cg_ellipse_driver_point(a, b, theta)`](#function-_cg_ellipse_driver_pointa-b-theta): Convert an ellipse radius and angle into a Cartesian pitch point.
+> [`_cg_ellipse_driver_point`](#function-_cg_ellipse_driver_point): Convert an ellipse radius and angle into a Cartesian pitch point.
 
-> [`_cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_ellipse_pair_buildmodultooth_numberwidthboreeccentricity062pressure_angle20samples480phase0together_builttruebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal ellipse pair construction dispatcher.
+> [`_cg_ellipse_pair_build`](#function-_cg_ellipse_pair_build): Internal ellipse pair construction dispatcher.
 
-> [`_cg_ellipse_radius(a, b, theta)`](#function-_cg_ellipse_radiusa-b-theta): Evaluate the ellipse radius at an angular position.
+> [`_cg_ellipse_radius`](#function-_cg_ellipse_radius): Evaluate the ellipse radius at an angular position.
 
 
 ## Functions
 
 The module `Ellipse` defines the following functions.
 
-### Function `curve_gear_ellipse(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_ellipse`
 
 | Ellipse gear 1 | Ellipse gear 2 |
 | --- | --- |
@@ -127,7 +127,7 @@ curve_gear_ellipse_2d(0.8, 34, 4.8);
 
 Back to [module description](#module-ellipse).
 
-### Function `curve_gear_ellipse_body(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_ellipse_body`
 
 | Ellipse body 1 | Ellipse body 2 |
 | --- | --- |
@@ -197,7 +197,7 @@ curve_gear_ellipse_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-ellipse).
 
-### Function `curve_gear_ellipse_centre_distance(modul, tooth_number, eccentricity, ...)`
+### Function `curve_gear_ellipse_centre_distance`
 
 
 Return the mathematical centre distance for an elliptical pair.
@@ -215,7 +215,7 @@ Return the mathematical centre distance for an elliptical pair.
 
 Back to [module description](#module-ellipse).
 
-### Function `curve_gear_ellipse_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_ellipse_mate`
 
 | Ellipse mate 1 | Ellipse mate 2 |
 | --- | --- |
@@ -243,7 +243,7 @@ No return
 
 Back to [module description](#module-ellipse).
 
-### Function `curve_gear_ellipse_mate_rotation(modul, tooth_number, eccentricity, ...)`
+### Function `curve_gear_ellipse_mate_rotation`
 
 
 Return the conjugate elliptical mate rotation for a driver phase.
@@ -262,7 +262,7 @@ Return the conjugate elliptical mate rotation for a driver phase.
 
 Back to [module description](#module-ellipse).
 
-### Function `curve_gear_ellipse_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_ellipse_pair`
 
 | Ellipse pair 1 | Ellipse pair 2 |
 | --- | --- |
@@ -275,17 +275,17 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `eccentricity`: {0 <= e < 1, default 0.62} Ellipse eccentricity.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `samples`: {integer >= 120, default 480} Pitch-curve sampling density.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -302,7 +302,7 @@ curve_gear_ellipse_pair(1, 24, 4, 8);
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_axes(modul, tooth_number, eccentricity)`
+### Function `_cg_ellipse_axes`
 
 
 Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
@@ -319,7 +319,7 @@ Calculate the ellipse semi-axes for a requested module and tooth count using the
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480,orientation=0,body_only=false)`
+### Function `_cg_ellipse_build`
 
 
 Internal ellipse construction dispatcher.
@@ -345,7 +345,7 @@ Internal ellipse construction dispatcher.
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_driver_point(a, b, theta)`
+### Function `_cg_ellipse_driver_point`
 
 
 Convert an ellipse radius and angle into a Cartesian pitch point.
@@ -362,7 +362,7 @@ Convert an ellipse radius and angle into a Cartesian pitch point.
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_pair_build(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,samples=480,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`
+### Function `_cg_ellipse_pair_build`
 
 
 Internal ellipse pair construction dispatcher.
@@ -390,7 +390,7 @@ Internal ellipse pair construction dispatcher.
 
 Back to [module description](#module-ellipse).
 
-### Function `_cg_ellipse_radius(a, b, theta)`
+### Function `_cg_ellipse_radius`
 
 
 Evaluate the ellipse radius at an angular position.

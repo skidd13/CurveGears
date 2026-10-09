@@ -2,22 +2,22 @@ include <mate.scad>
 include <../common/pair/assembly.scad>
 
 /***
- * @function curve_gear_fourier_pair(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_fourier_pair
  * @brief Build a meshed or separated Fourier pair using one shared motion table.
  * Alternative 2 separates the driver and mate and uses the contrasting gear controls described above.
  * @image ../images/functions/fourier/curve_gear_fourier_pair.png Fourier pair 1
  * @image ../images/functions/fourier/curve_gear_fourier_pair_alternative.png Fourier pair 2
- * @param modul {number > 0} Tooth module in mm.
- * @param tooth_number {integer >= 3} Number of teeth.
- * @param width {number > 0} Extrusion width in mm.
- * @param bore {number >= 0} Centre bore diameter in mm.
- * @param coefficients {array of [harmonic, amplitude, phase]} Same polar coefficients as the driver.
+ * @param modul {number > 0, default .8} Tooth module in mm.
+ * @param tooth_number {integer >= 3, default 34} Number of teeth.
+ * @param width {number > 0, default 4} Extrusion width in mm.
+ * @param bore {number >= 0, default 4.8} Centre bore diameter in mm.
+ * @param coefficients {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same polar coefficients as the driver.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
  * @param samples {integer >= 120, default 360} Pitch-curve sampling density.
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @param together_built {boolean, default true} Place the pair meshed when true.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
  * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
  * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.

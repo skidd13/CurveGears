@@ -19,7 +19,7 @@ include <../common/curve_gears_math.scad>
 include <../common/mate/motion.scad>
 
 /***
- * @function _cg_cusp_scale(modul, tooth_number, cusps=3)
+ * @function _cg_cusp_scale
  * @brief Scale the hypocycloid to the requested module and tooth count.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3, divisible by cusps} Number of teeth.
@@ -32,7 +32,7 @@ function _cg_cusp_scale(modul,tooth_number,cusps=3) =
         "cusp_gear: tooth_number must be an integer divisible by cusps")
     modul*tooth_number*_cg_circle_pi/(8*(cusps-1));
 /***
- * @function _cg_cusp_points(a, samples=720, cusps=3)
+ * @function _cg_cusp_points
  * @brief Sample one closed n-cusp hypocycloid pitch curve.
  * @param a {number > 0} Rolling-circle radius in millimetres.
  * @param samples {integer >= 3, divisible by cusps, default 720} Sample count.

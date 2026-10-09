@@ -1,5 +1,5 @@
 /***
- * @function curve_gear_hypotrochoid(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_hypotrochoid
  * @brief Build a hypotrochoid non-circular gear.
  * A 5:1 rolling ratio and offset 0.35 produce five-fold shaping rather than the canonical three-fold outline. The alternative changes the curve itself, not merely the pair spacing.
  * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid.png Hypotrochoid gear 1
@@ -23,7 +23,7 @@
 include <base.scad>
 
 /***
- * @function _cg_hypotrochoid_build(modul, tooth_number, width, bore, major_ratio=3, rolling_ratio=1, offset_ratio=0.35, pressure_angle=20, tooth_phase=0, backlash=undef, clearance=undef, samples=720, orientation=0, body_only=false)
+ * @function _cg_hypotrochoid_build
  * @brief Construct a validated hypotrochoid body, gear, or mate boundary.
  * @param modul {number > 0} Tooth module in millimetres.
  * @param tooth_number {integer >= 3} Number of teeth.

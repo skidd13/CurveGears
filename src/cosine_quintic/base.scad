@@ -10,7 +10,7 @@ include <../common/curve_gears_math.scad>
 include <../common/harmonic.scad>
 
 /**
- * @function _cg_cosine_quintic_parameters_valid(depth,harmonic)
+ * @function _cg_cosine_quintic_parameters_valid
  * @brief Check the shared curve-parameter contract for every family entry point.
  * @param depth {number between 0 and 0.5} Curve parameter.
  * @param harmonic {integer >= 1} Curve parameter.

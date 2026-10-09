@@ -11,7 +11,7 @@
 include <../common/curve_gears_math.scad>
 
 /***
- * @function _cg_ellipse_axes(modul, tooth_number, eccentricity)
+ * @function _cg_ellipse_axes
  * @brief Calculate the ellipse semi-axes for a requested module and tooth count using the centred radius r=ab/sqrt(b² cos²θ+a² sin²θ) and a Ramanujan perimeter approximation.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
@@ -28,7 +28,7 @@ function _cg_ellipse_axes(modul,tooth_number,eccentricity) =
     [a,a*ratio];
 
 /***
- * @function _cg_ellipse_radius(a, b, theta)
+ * @function _cg_ellipse_radius
  * @brief Evaluate the ellipse radius at an angular position.
  * @param a {number > 0} Ellipse semi-major axis in mm.
  * @param b {number > 0} Ellipse semi-minor axis in mm.
@@ -37,7 +37,7 @@ function _cg_ellipse_axes(modul,tooth_number,eccentricity) =
  */
 function _cg_ellipse_radius(a,b,theta) = a*b/sqrt(pow(b*cos(theta),2)+pow(a*sin(theta),2));
 /***
- * @function _cg_ellipse_driver_point(a, b, theta)
+ * @function _cg_ellipse_driver_point
  * @brief Convert an ellipse radius and angle into a Cartesian pitch point.
  * @param a {number > 0} Ellipse semi-major axis in mm.
  * @param b {number > 0} Ellipse semi-minor axis in mm.

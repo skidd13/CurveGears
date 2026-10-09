@@ -31,7 +31,7 @@ module _cg_assert_gear_inputs(points,modul,tooth_number,bore,pressure_angle,clea
 }
 
 /***
- * @function _cg_tooth_phase_fraction(tooth_phase)
+ * @function _cg_tooth_phase_fraction
  * @brief Convert a public tooth phase in degrees to one contour-turn fraction.
  * @param tooth_phase {angle} Tooth placement phase in degrees.
  * @return {number} Fraction of one contour turn.
@@ -39,7 +39,7 @@ module _cg_assert_gear_inputs(points,modul,tooth_number,bore,pressure_angle,clea
 function _cg_tooth_phase_fraction(tooth_phase) = tooth_phase/360;
 
 /***
- * @function _cg_body_interval_before(body, arc, perimeter, start_s, end_s)
+ * @function _cg_body_interval_before
  * @brief Return canonical body vertices before a tooth splice interval.
  * @param body {array} Canonical body boundary points.
  * @param arc {array} Body arc-length table.
@@ -68,7 +68,7 @@ function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
             _cg_point_for_closed_arc(body,arc,shifted)];
 
 /***
- * @function _cg_final_outline_from_placements(body, arc, perimeter, placements, tooth_pitch, prepared_boundaries)
+ * @function _cg_final_outline_from_placements
  * @brief Replace canonical body intervals with ordered placed teeth.
  * @param body {array} Canonical body boundary points.
  * @param arc {array} Body arc-length table.
@@ -115,7 +115,7 @@ function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_p
             for(p=interval) p
     ];
 
-/*** @function _cg_has_zero_edge(points)
+/*** @function _cg_has_zero_edge
  * @brief Detect zero-length edges in a closed point list.
  * @param points {array} Closed polygon points.
  * @return {boolean} True when any adjacent edge is below the length tolerance.
@@ -123,7 +123,7 @@ function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_p
 function _cg_has_zero_edge(points) =
     max([for(i=[0:len(points)-1])
         _cg_vlen(_cg_vsub(points[(i+1)%len(points)],points[i])) <= _cg_eps_len() ? 1 : 0]) == 1;
-/*** @function _cg_has_immediate_backtrack(points)
+/*** @function _cg_has_immediate_backtrack
  * @brief Detect an immediate two-edge reversal in a point list.
  * @param points {array} Closed polygon points.
  * @return {boolean} True when a point immediately backtracks to its predecessor.
@@ -131,7 +131,7 @@ function _cg_has_zero_edge(points) =
 function _cg_has_immediate_backtrack(points) =
     len(points)<3 ? false : max([for(i=[0:len(points)-1])
         _cg_vlen(_cg_vsub(points[i],points[(i+2)%len(points)])) <= _cg_eps_intersect() ? 1 : 0]) == 1;
-/*** @function _cg_same_edge(a, b, c, d)
+/*** @function _cg_same_edge
  * @brief Compare two undirected line segments within the positional tolerance.
  * @param a {array} First endpoint of the first segment.
  * @param b {array} Second endpoint of the first segment.
@@ -142,7 +142,7 @@ function _cg_has_immediate_backtrack(points) =
 function _cg_same_edge(a,b,c,d) =
     (_cg_vlen(_cg_vsub(a,c))<=_cg_eps_len() && _cg_vlen(_cg_vsub(b,d))<=_cg_eps_len())
     || (_cg_vlen(_cg_vsub(a,d))<=_cg_eps_len() && _cg_vlen(_cg_vsub(b,c))<=_cg_eps_len());
-/*** @function _cg_has_duplicate_edge_direct(points)
+/*** @function _cg_has_duplicate_edge_direct
  * @brief Detect non-adjacent duplicate edges in a closed point list.
  * @param points {array} Closed polygon points.
  * @return {boolean} True when a non-adjacent edge is duplicated.
@@ -155,7 +155,7 @@ function _cg_has_duplicate_edge_direct(points) =
                 && _cg_same_edge(points[i],points[(i+1)%len(points)],points[j],points[(j+1)%len(points)]))
         duplicate ? 1 : 0]) == 1;
 /**
- * @function _cg_has_duplicate_edge(points)
+ * @function _cg_has_duplicate_edge
  * @brief Detect every non-adjacent duplicate edge through exact bounds traversal.
  * @param points {array} Closed polygon points.
  * @return {boolean} True when a non-adjacent edge is duplicated.
@@ -170,7 +170,7 @@ function _cg_has_duplicate_edge(points) =
            && _cg_same_edge(a,b,points[j],points[(j+1)%len(points)])) 1
     ])>0;
 
-/*** @function _cg_merge_point_count(points, target)
+/*** @function _cg_merge_point_count
  * @brief Count points that coincide with a target within the merge tolerance.
  * @param points {array} Point list.
  * @param target {array} Target point.
@@ -179,7 +179,7 @@ function _cg_has_duplicate_edge(points) =
 function _cg_merge_point_count(points,target) = len([for(p=points) if(_cg_vlen(_cg_vsub(p,target))<=_cg_eps_len()) 1]);
 
 /***
- * @function _cg_assembled_component_failures(outline, placements, prepared_boundaries)
+ * @function _cg_assembled_component_failures
  * @brief Check tooth/body ownership before final polygon scans.
  * @param outline {array} Assembled outline points.
  * @param placements {array} Placement records.
@@ -232,7 +232,7 @@ function _cg_point_near_any(point,points,radius) =
     len([for(candidate=points) if(_cg_vlen(_cg_vsub(point,candidate))<=radius) 1])>0;
 
 /***
- * @function _cg_gear_2d_from_pitch_points(points, modul, tooth_number, bore, ...)
+ * @function _cg_gear_2d_from_pitch_points
  * @brief Build and validate one two-dimensional gear boundary from pitch points.
  * @param points {array} Closed sampled pitch-curve points.
  * @param modul {number > 0} Tooth module in mm.
@@ -328,7 +328,7 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
 }
 
 /***
- * @function _cg_gear_from_pitch_points(points, modul, tooth_number, width, bore, ...)
+ * @function _cg_gear_from_pitch_points
  * @brief Extrude a validated two-dimensional gear boundary.
  * @param points {array} Closed sampled pitch-curve points.
  * @param modul {number > 0} Tooth module in mm.

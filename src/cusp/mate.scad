@@ -2,7 +2,7 @@ include <gear.scad>
 include <../common/mate/envelope.scad>
 
 /***
- * @function _cg_cusp_envelope_driver_outline(state)
+ * @function _cg_cusp_envelope_driver_outline
  * @brief Extract the complete placed driver outline from its validated state.
  * @param state {array} Validated cusp tooth-geometry state.
  * @return {array of points} Closed outline in millimetres.
@@ -10,7 +10,7 @@ include <../common/mate/envelope.scad>
 function _cg_cusp_envelope_driver_outline(state) = len(state)>=12 ? state[7] : [];
 
 /***
- * @function _cg_cusp_envelope_mate_outer_radius(geometry, modul)
+ * @function _cg_cusp_envelope_mate_outer_radius
  * @brief Calculate the swept-envelope mate's outer blank radius.
  * @param geometry {array} Cusp pitch and motion geometry state.
  * @param modul {number > 0} Tooth module in millimetres.
@@ -20,7 +20,7 @@ function _cg_cusp_envelope_mate_outer_radius(geometry,modul) =
     geometry[3]-min(geometry[1])+_cg_addendum(modul);
 
 /***
- * @function _cg_cusp_envelope_mate_from_geometry(geometry, modul, width, bore, sweep_steps=360, max_pose_step=0.5, sweep_clearance=0.08, phase=0)
+ * @function _cg_cusp_envelope_mate_from_geometry
  * @brief Build the cusp mate by sweeping the complete validated driver outline.
  * @param geometry {array} Validated cusp pitch and motion state.
  * @param modul {number > 0} Tooth module in millimetres.
@@ -42,7 +42,7 @@ module _cg_cusp_envelope_mate_from_geometry(geometry,modul,width,bore,sweep_step
 }
 
 /***
- * @function curve_gear_cusp_mate(modul, tooth_number, width, bore, ...)
+ * @function curve_gear_cusp_mate
  * @brief Build the standalone swept-envelope mate for a cusp gear.
  * Alternative 2 uses the contrasting controls described in the gear example.
  * @image ../images/functions/cusp/curve_gear_cusp_mate.png Cusp mate 1
@@ -72,7 +72,7 @@ module curve_gear_cusp_mate(modul,tooth_number,width,bore,pressure_angle=20,back
 }
 
 /***
- * @function curve_gear_cusp_centre_distance(modul, tooth_number, samples=720, cusps=3)
+ * @function curve_gear_cusp_centre_distance
  * @brief Return the solved pitch-curve centre distance for a cusp pair.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Shared tooth count.
@@ -84,7 +84,7 @@ function curve_gear_cusp_centre_distance(modul,tooth_number,samples=720,cusps=3)
     _cg_cusp_pair_motion_geometry(modul,tooth_number,20,undef,undef,samples,cusps)[3];
 
 /***
- * @function curve_gear_cusp_mate_rotation(modul, tooth_number, samples=720, phase=0, cusps=3)
+ * @function curve_gear_cusp_mate_rotation
  * @brief Return the integrated mate angle at one driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Shared tooth count.

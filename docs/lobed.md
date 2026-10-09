@@ -23,34 +23,34 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 **Functions**:
 
-> [`curve_gear_lobed(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobedmodul-tooth_number-width-bore-): Build a lobed non-circular gear.
+> [`curve_gear_lobed`](#function-curve_gear_lobed): Build a lobed non-circular gear.
 
 > [`curve_gear_lobed_2d`](#function-curve_gear_lobed_2d): Emit the complete lobed gear profile as 2D geometry.
 
-> [`curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_bodymodul-tooth_number-width-bore-): Build the lobed body solid without teeth.
+> [`curve_gear_lobed_body`](#function-curve_gear_lobed_body): Build the lobed body solid without teeth.
 
 > [`curve_gear_lobed_body_2d`](#function-curve_gear_lobed_body_2d): Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
 
-> [`curve_gear_lobed_centre_distance(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_centre_distancemodul-tooth_number-lobes-lobe_depth-): Return the mathematical centre distance for a lobed pair.
+> [`curve_gear_lobed_centre_distance`](#function-curve_gear_lobed_centre_distance): Return the mathematical centre distance for a lobed pair.
 
-> [`curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_matemodul-tooth_number-width-bore-): Build the standalone lobed mate boundary at the origin.
+> [`curve_gear_lobed_mate`](#function-curve_gear_lobed_mate): Build the standalone lobed mate boundary at the origin.
 
-> [`curve_gear_lobed_mate_rotation(modul, tooth_number, lobes, lobe_depth, ...)`](#function-curve_gear_lobed_mate_rotationmodul-tooth_number-lobes-lobe_depth-): Return the conjugate lobed mate rotation for a driver phase.
+> [`curve_gear_lobed_mate_rotation`](#function-curve_gear_lobed_mate_rotation): Return the conjugate lobed mate rotation for a driver phase.
 
-> [`curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`](#function-curve_gear_lobed_pairmodul-tooth_number-width-bore-): Build a meshed or separated lobed pair.
+> [`curve_gear_lobed_pair`](#function-curve_gear_lobed_pair): Build a meshed or separated lobed pair.
 
-> [`_cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_lobed_buildmodultooth_numberwidthborelobes4lobe_depth013pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal lobed construction dispatcher.
+> [`_cg_lobed_build`](#function-_cg_lobed_build): Internal lobed construction dispatcher.
 
-> [`_cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_lobed_pair_buildmodultooth_numberwidthborelobes4lobe_depth013pressure_angle20samples720phase0together_builttruebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal lobed pair construction dispatcher.
+> [`_cg_lobed_pair_build`](#function-_cg_lobed_pair_build): Internal lobed pair construction dispatcher.
 
-> [`_cg_lobed_unit_radius(lobes, lobe_depth, theta)`](#function-_cg_lobed_unit_radiuslobes-lobe_depth-theta): Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
+> [`_cg_lobed_unit_radius`](#function-_cg_lobed_unit_radius): Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
 
 
 ## Functions
 
 The module `Lobed` defines the following functions.
 
-### Function `curve_gear_lobed(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_lobed`
 
 | Lobed gear 1 | Lobed gear 2 |
 | --- | --- |
@@ -124,7 +124,7 @@ curve_gear_lobed_2d(0.8, 34, 4.8);
 
 Back to [module description](#module-lobed).
 
-### Function `curve_gear_lobed_body(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_lobed_body`
 
 | Lobed body 1 | Lobed body 2 |
 | --- | --- |
@@ -196,7 +196,7 @@ curve_gear_lobed_body_2d(0.8, 34, 4.8, body_offset=-2);
 
 Back to [module description](#module-lobed).
 
-### Function `curve_gear_lobed_centre_distance(modul, tooth_number, lobes, lobe_depth, ...)`
+### Function `curve_gear_lobed_centre_distance`
 
 
 Return the mathematical centre distance for a lobed pair.
@@ -215,7 +215,7 @@ Return the mathematical centre distance for a lobed pair.
 
 Back to [module description](#module-lobed).
 
-### Function `curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_lobed_mate`
 
 | Lobed mate 1 | Lobed mate 2 |
 | --- | --- |
@@ -244,7 +244,7 @@ No return
 
 Back to [module description](#module-lobed).
 
-### Function `curve_gear_lobed_mate_rotation(modul, tooth_number, lobes, lobe_depth, ...)`
+### Function `curve_gear_lobed_mate_rotation`
 
 
 Return the conjugate lobed mate rotation for a driver phase.
@@ -264,7 +264,7 @@ Return the conjugate lobed mate rotation for a driver phase.
 
 Back to [module description](#module-lobed).
 
-### Function `curve_gear_lobed_pair(modul, tooth_number, width, bore, ...)`
+### Function `curve_gear_lobed_pair`
 
 | Lobed pair 1 | Lobed pair 2 |
 | --- | --- |
@@ -277,18 +277,18 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 
 **Parameters:**
 
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `width`: {number > 0} Extrusion width in mm.
-- `bore`: {number >= 0} Centre bore diameter in mm.
+- `modul`: {number > 0, default .8} Tooth module in mm.
+- `tooth_number`: {integer >= 3, default 34} Number of teeth.
+- `width`: {number > 0, default 4} Extrusion width in mm.
+- `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `lobes`: {integer >= 2, default 4} Number of lobes.
 - `lobe_depth`: {0 < depth < 0.5, default 0.13} Lobe depth as a fraction of the mean radius.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `phase`: {angle, default 0} Pair motion phase in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
@@ -305,7 +305,7 @@ curve_gear_lobed_pair(1, 24, 4, 8);
 
 Back to [module description](#module-lobed).
 
-### Function `_cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`
+### Function `_cg_lobed_build`
 
 
 Internal lobed construction dispatcher.
@@ -332,7 +332,7 @@ Internal lobed construction dispatcher.
 
 Back to [module description](#module-lobed).
 
-### Function `_cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`
+### Function `_cg_lobed_pair_build`
 
 
 Internal lobed pair construction dispatcher.
@@ -361,7 +361,7 @@ Internal lobed pair construction dispatcher.
 
 Back to [module description](#module-lobed).
 
-### Function `_cg_lobed_unit_radius(lobes, lobe_depth, theta)`
+### Function `_cg_lobed_unit_radius`
 
 
 Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
