@@ -81,6 +81,12 @@ class OutputTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'failed OpenSCAD log'):
             check(self.output, 'empty')
 
+    def test_partial_mesh_with_assertion_cannot_pass(self):
+        self.output.write_text('partial exported geometry')
+        self.log.write_text('ERROR: Assertion failed in the omitted mate\nTop level object is a 3D object (manifold)\n')
+        with self.assertRaisesRegex(ValueError, 'failed OpenSCAD log'):
+            check(self.output, 'mesh')
+
     def test_empty_probe_requires_diagnostic_and_absent_mesh(self):
         self.log.write_text('Current top level object is empty.\n')
         check(self.output, 'empty')

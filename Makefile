@@ -396,7 +396,10 @@ endef
 
 $(foreach family,$(FAMILIES),$(eval $(call FULL_PIPELINE_RENDER,$(family))))
 
-test-full: $(if $(strip $(REGRESSION_FAMILIES)),$(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DIR)/full_$(family).stl),$(FULL_PIPELINE_OUTPUTS))
+FULL_PIPELINE_SELECTED_OUTPUTS := $(if $(strip $(REGRESSION_FAMILIES)),$(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DIR)/full_$(family).stl),$(FULL_PIPELINE_OUTPUTS))
+
+test-full: $(FULL_PIPELINE_SELECTED_OUTPUTS)
+	@for output in $(FULL_PIPELINE_SELECTED_OUTPUTS); do $(PYTHON) -m utils.check_build_output mesh "$$output" || exit 1; done
 	@echo 'PASS: full maintained family renders'
 
 check: test check-docs
