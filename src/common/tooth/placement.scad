@@ -405,19 +405,40 @@ function _cg_splice_relation(a,b) =
         ? "SPLICE_INTERVAL_INTERLEAVED" : "SPLICE_INTERVAL_OVERLAP";
 
 /**
- * @function _cg_splice_failures
- * @brief Validate every accepted replacement interval.
- * @param intervals {array} Accepted replacement intervals.
- * @return {array} Splice validation failures.
+ * @function _cg_join_adjacent_root_boundaries(previous, current)
+ * @brief Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
+ * @param previous {array of points} Previous trimmed tooth boundary.
+ * @param current {array of points} Current trimmed tooth boundary.
+ * @return {array} One segment/segment/point record, or an empty unsupported junction.
  */
-function _cg_splice_failures(placements,perimeter,tooth_pitch=undef) =
+function _cg_join_adjacent_root_boundaries(previous,current) =
+    let(hits=[for(hit=_cg_tooth_pair_collisions(previous,current))
+        if(hit[0]>floor((len(previous)-1)/2) && hit[0]<len(previous)-1
+            && hit[1]<floor((len(current)-1)/2)) hit])
+    len(hits)==1 ? hits[0] : [];
+
+/**
+ * @function _cg_splice_failures
+ * @brief Validate replacement intervals, allowing only proved exposed unions of neighbouring roots.
+ * @param placements {array} Canonical placement records.
+ * @param perimeter {number > 0} Closed body perimeter in millimetres.
+ * @param tooth_pitch {number or undef} Optional pitch-cell clipping interval.
+ * @param prepared_boundaries {array or undef} Actual trimmed boundaries for proving a unique neighbouring root junction.
+ * @return {array} Failures in the original stable diagnostic order. Nested, non-neighbouring and unsupported overlaps remain failures.
+ */
+function _cg_splice_failures(placements,perimeter,tooth_pitch=undef,prepared_boundaries=undef) =
     let(placed=[for(p=placements) if(p[0]=="placed") p],intervals=[for(p=placed) _cg_splice_interval(p,perimeter,tooth_pitch)])
     len(intervals)==0 ? [] : concat(
         [for(i=[0:len(intervals)-1])
             if(intervals[i][1]-intervals[i][0] <= _cg_eps_len()) ["SPLICE_INTERVAL_ZERO_LENGTH",intervals[i],[]]],
         len(intervals)<2 ? [] : [for(i=[0:len(intervals)-2]) for(j=[i+1:len(intervals)-1])
-            let(relation=_cg_splice_relation(intervals[i],intervals[j]))
-            if(relation!="PASS") [relation,intervals[i],intervals[j]]],
+            let(relation=_cg_splice_relation(intervals[i],intervals[j]),
+                exposed_join=is_undef(prepared_boundaries) ? false :
+                    relation=="SPLICE_INTERVAL_INTERLEAVED" && j==i+1
+                    && placed[j][2]==placed[i][2]+1
+                    && len(prepared_boundaries)==len(placed)
+                    && len(_cg_join_adjacent_root_boundaries(prepared_boundaries[i],prepared_boundaries[j]))>0)
+            if(relation!="PASS" && !exposed_join) [relation,intervals[i],intervals[j]]],
         len(intervals)<2 ? [] : [for(i=[0:len(intervals)-2])
             if(intervals[i][0] > intervals[i+1][0]+_cg_eps_intersect()) ["SPLICE_ORDER_INVALID",intervals[i],intervals[i+1]]]
     );

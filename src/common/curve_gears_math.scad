@@ -67,19 +67,6 @@ function _cg_body_interval_before(body,arc,perimeter,start_s,end_s) =
         if(shifted>start_s+_cg_eps_len() && shifted<end_s-_cg_eps_len())
             _cg_point_for_closed_arc(body,arc,shifted)];
 
-/**
- * @function _cg_join_adjacent_root_boundaries(previous, current)
- * @brief Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
- * @param previous {array of points} Previous trimmed tooth boundary.
- * @param current {array of points} Current trimmed tooth boundary.
- * @return {array} One segment/segment/point record, or an empty unsupported junction.
- */
-function _cg_join_adjacent_root_boundaries(previous,current) =
-    let(hits=[for(hit=_cg_tooth_pair_collisions(previous,current))
-        if(hit[0]>floor((len(previous)-1)/2) && hit[0]<len(previous)-1
-            && hit[1]<floor((len(current)-1)/2)) hit])
-    len(hits)==1 ? hits[0] : [];
-
 /***
  * @function _cg_final_outline_from_placements(body, arc, perimeter, placements, tooth_pitch, prepared_boundaries)
  * @brief Replace canonical body intervals with ordered placed teeth.
@@ -87,7 +74,7 @@ function _cg_join_adjacent_root_boundaries(previous,current) =
  * @param arc {array} Body arc-length table.
  * @param perimeter {number > 0} Body perimeter in mm.
  * @param placements {array} Placement records.
- * @param tooth_pitch {number > 0} Arc-length pitch used to clip each splice cell.
+ * @param tooth_pitch {number or undef} Optional arc-length pitch-cell clipping; radial roots use their actual exposed union.
  * @param prepared_boundaries {array or undef} Reusable placed-tooth boundaries.
  * @return {array} Final assembled outline points.
  */
@@ -98,7 +85,8 @@ function _cg_final_outline_from_placements(body,arc,perimeter,placements,tooth_p
         joins=[for(i=[0:len(placed)-1])
             let(previous=(i-1+len(placed))%len(placed),
                 shift=raw_intervals[i][3]<=raw_intervals[previous][3] ? perimeter : 0)
-            len(placed)>1 && !is_undef(tooth_pitch)
+            len(placed)>1
+                && (!is_undef(tooth_pitch) || (placed[i][2]-placed[previous][2]+len(placements))%len(placements)==1)
                 && raw_intervals[previous][1]>raw_intervals[i][0]+shift+_cg_eps_intersect()
                 ? _cg_join_adjacent_root_boundaries(boundaries[previous],boundaries[i]) : []])
     len(placed)==0 ? body :
@@ -302,7 +290,7 @@ module _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_ang
             str("stage=collision severity=error code=TOOTH_ORDER_CONFLICT message=placement order is not monotone first=",order_failures[0][1]," second=",order_failures[0][2]));
         tooth_pitch=perimeter/tooth_number;
         splice_pitch=radial_root ? undef : tooth_pitch;
-        splice_failures=_cg_splice_failures(placements,perimeter,splice_pitch);
+        splice_failures=_cg_splice_failures(placements,perimeter,splice_pitch,trimmed_boundaries);
         splice_failure=len(splice_failures)>0 ? splice_failures[0] : ["PASS",[],[]];
         assert(len(splice_failures)==0,
             str("stage=splice severity=error code=",splice_failure[0]," first=",splice_failure[1]," second=",splice_failure[2]," eps_len=",_cg_eps_len()," eps_intersect=",_cg_eps_intersect()));

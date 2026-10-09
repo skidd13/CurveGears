@@ -55,6 +55,8 @@ permitted.
 
 > [`_cg_hit_seen_before(hits, index)`](#function-_cg_hit_seen_beforehits-index): Check whether an intersection point has already occurred.
 
+> [`_cg_join_adjacent_root_boundaries(previous, current)`](#function-_cg_join_adjacent_root_boundariesprevious-current): Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
+
 > [`_cg_local_body_hits(hits, arc, perimeter, target, tooth_pitch)`](#function-_cg_local_body_hitshits-arc-perimeter-target-tooth_pitch): Retain body intersections within the local tooth interval.
 
 > [`_cg_local_frame_for_closed_arc`](#function-_cg_local_frame_for_closed_arc): Return point, tangent, outward normal and winding at an arc position.
@@ -89,7 +91,7 @@ permitted.
 
 > [`_cg_segment_hits_polygon(a, b, polygon_points, prepared_bounds)`](#function-_cg_segment_hits_polygona-b-polygon_points-prepared_bounds): Test whether a segment enters or intersects a polygon.
 
-> [`_cg_splice_failures`](#function-_cg_splice_failures): Validate every accepted replacement interval.
+> [`_cg_splice_failures`](#function-_cg_splice_failures): Validate replacement intervals, allowing only proved exposed unions of neighbouring roots.
 
 > [`_cg_splice_interval`](#function-_cg_splice_interval): Return one placed tooth's body replacement interval.
 
@@ -381,6 +383,22 @@ Check whether an intersection point has already occurred.
 **Returns:**
 
 - `{boolean}`: True when an earlier record is coincident.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_join_adjacent_root_boundaries(previous, current)`
+
+
+Find a unique right-flank/left-flank crossing for the exposed union of overlapping adjacent roots.
+
+**Parameters:**
+
+- `previous`: {array of points} Previous trimmed tooth boundary.
+- `current`: {array of points} Current trimmed tooth boundary.
+
+**Returns:**
+
+- `{array}`: One segment/segment/point record, or an empty unsupported junction.
 
 Back to [module description](#module-tooth-placement).
 
@@ -703,15 +721,18 @@ Back to [module description](#module-tooth-placement).
 ### Function `_cg_splice_failures`
 
 
-Validate every accepted replacement interval.
+Validate replacement intervals, allowing only proved exposed unions of neighbouring roots.
 
 **Parameters:**
 
-- `intervals`: {array} Accepted replacement intervals.
+- `placements`: {array} Canonical placement records.
+- `perimeter`: {number > 0} Closed body perimeter in millimetres.
+- `tooth_pitch`: {number or undef} Optional pitch-cell clipping interval.
+- `prepared_boundaries`: {array or undef} Actual trimmed boundaries for proving a unique neighbouring root junction.
 
 **Returns:**
 
-- `{array}`: Splice validation failures.
+- `{array}`: Failures in the original stable diagnostic order. Nested, non-neighbouring and unsupported overlaps remain failures.
 
 Back to [module description](#module-tooth-placement).
 
