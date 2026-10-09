@@ -5,7 +5,5 @@
  * @image ../images/functions/lobed/curve_gear_lobed_pair.png curve_gear_lobed_pair example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/lobed/pair.scad>;
-include <../../palette.scad>;
-$fn=64;
-curve_gear_lobed_pair(.8,34,4,4.8,lobes=4,lobe_depth=.13,samples=240,phase=37,driver_color=example_driver_color,mate_color=example_mate_color);
+use <curve_gear_lobed.scad>;
+_main_example_lobed_view("pair");

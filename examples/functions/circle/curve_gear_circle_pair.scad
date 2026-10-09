@@ -5,6 +5,5 @@
  * @image ../images/functions/circle/curve_gear_circle_pair.png curve gear circle pair preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/circle/pair.scad>
-include <../../palette.scad>;
-curve_gear_circle_pair(.8,34,4,4.8,driver_color=example_driver_color,mate_color=example_mate_color);
+use <curve_gear_circle.scad>;
+_main_example_circle_view("pair");

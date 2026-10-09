@@ -5,13 +5,6 @@
  * @image ../images/functions/bezier/curve_gear_bezier_pair.png curve_gear_bezier_pair example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/bezier/pair.scad>;
-include <../../palette.scad>;
+use <curve_gear_bezier.scad>;
 $fn=64;
-example_controls=[
-    [1.25,0],[1.25,.65],[.85,1.15],[0,1.15],
-    [-.85,1.15],[-1.25,.65],[-1.25,0],
-    [-1.25,-.45],[-.65,-.8],[0,-.8],
-    [.65,-.8],[1.25,-.45],[1.25,0]
-];
-curve_gear_bezier_pair(.8,34,4,4.8,control_points=example_controls,samples=240,together_built=true,driver_color=example_driver_color,mate_color=example_mate_color);
+_main_example_bezier_view("pair");

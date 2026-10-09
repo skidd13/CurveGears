@@ -1,7 +1,6 @@
 /***
  * @function curve_gear_cosine_quintic_mate_example
- */
-include <../../../src/cosine_quintic/mate.scad>
-include <../../palette.scad>;
-color(example_mate_color)
-curve_gear_cosine_quintic_mate(.8,34,4,4.8,samples=240);
+  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_mate.png cosine quintic mate example preview
+*/
+use <curve_gear_cosine_quintic.scad>;
+_main_example_cosine_quintic_view("mate");

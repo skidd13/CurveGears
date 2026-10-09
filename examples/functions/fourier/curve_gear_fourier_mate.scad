@@ -5,8 +5,5 @@
  * @image ../images/functions/fourier/curve_gear_fourier_mate.png curve_gear_fourier_mate example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/fourier/mate.scad>;
-include <../../palette.scad>;
-$fn=64;
-color(example_mate_color)
-curve_gear_fourier_mate(.8,34,4,4.8,coefficients=[[2,.22,0],[3,.08,30]],samples=240);
+use <curve_gear_fourier.scad>;
+_main_example_fourier_view("mate");

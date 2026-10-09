@@ -5,7 +5,5 @@
  * @image ../images/functions/cassini/curve_gear_cassini_body_2d.png cassini 2D body outline
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
-include <../../../src/cassini/gear.scad>;
-include <../../palette.scad>;
-color(example_driver_color)
-curve_gear_cassini_body_2d(0.8, 34, 4.8, focus_ratio=0.92, samples=360);
+use <curve_gear_cassini.scad>;
+_main_example_cassini_view("body_2d");

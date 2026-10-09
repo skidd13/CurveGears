@@ -1,7 +1,6 @@
 /***
  * @function curve_gear_temple_fay_2d_example
- */
-include <../../../src/temple_fay/gear.scad>
-include <../../palette.scad>;
-color(example_driver_color)
-curve_gear_temple_fay_2d(.8,34,4.8,samples=240);
+  * @image ../images/functions/temple_fay/curve_gear_temple_fay_2d.png temple fay 2d example preview
+*/
+use <curve_gear_temple_fay.scad>;
+_main_example_temple_fay_view("gear_2d");

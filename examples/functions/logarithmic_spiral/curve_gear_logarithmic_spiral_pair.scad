@@ -5,7 +5,5 @@
  * @image ../images/functions/logarithmic_spiral/curve_gear_logarithmic_spiral_pair.png curve_gear_logarithmic_spiral_pair example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/logarithmic_spiral/pair.scad>;
-include <../../palette.scad>;
-$fn=64;
-curve_gear_logarithmic_spiral_pair(.8,34,4,4.8,sectors=1,growth_rate=1.17,samples=240,driver_color=example_driver_color,mate_color=example_mate_color);
+use <curve_gear_logarithmic_spiral.scad>;
+_main_example_logarithmic_spiral_view("pair");

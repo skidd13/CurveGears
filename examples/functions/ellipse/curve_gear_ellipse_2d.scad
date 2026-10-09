@@ -5,7 +5,5 @@
  * @image ../images/functions/ellipse/curve_gear_ellipse_2d.png ellipse 2D gear outline
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
-include <../../../src/ellipse/gear.scad>;
-include <../../palette.scad>;
-color(example_driver_color)
-curve_gear_ellipse_2d(0.8, 34, 4.8, eccentricity=0.72, samples=240);
+use <curve_gear_ellipse.scad>;
+_main_example_ellipse_view("gear_2d");

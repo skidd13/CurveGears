@@ -5,8 +5,5 @@
  * @image ../images/functions/ellipse/curve_gear_ellipse_body.png curve_gear_ellipse_body example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/ellipse/mate.scad>;
-include <../../palette.scad>;
-$fn=64;
-color(example_driver_color)
-curve_gear_ellipse_body(.8,34,4,4.8,eccentricity=.72,samples=240);
+use <curve_gear_ellipse.scad>;
+_main_example_ellipse_view("body");

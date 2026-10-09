@@ -5,7 +5,5 @@
  * @image ../images/functions/superformula/curve_gear_superformula_pair.png curve_gear_superformula_pair example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/superformula/pair.scad>;
-include <../../palette.scad>;
-$fn=64;
-curve_gear_superformula_pair(.5,80,4,4.8,symmetry=5,n1=.9,n2=3.4,n3=3.4,samples=240,phase=37,backlash=.3,driver_color=example_driver_color,mate_color=example_mate_color);
+use <curve_gear_superformula.scad>;
+_main_example_superformula_view("pair");

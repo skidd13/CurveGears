@@ -5,8 +5,5 @@
  * @image ../images/functions/pascal/curve_gear_pascal_mate.png curve_gear_pascal_mate example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/pascal/mate.scad>;
-include <../../palette.scad>;
-$fn=64;
-color(example_mate_color)
-curve_gear_pascal_mate(.8,34,4,4.8,eccentricity=.60,samples=240);
+use <curve_gear_pascal.scad>;
+_main_example_pascal_view("mate");

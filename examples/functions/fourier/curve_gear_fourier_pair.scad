@@ -5,7 +5,5 @@
  * @image ../images/functions/fourier/curve_gear_fourier_pair.png curve_gear_fourier_pair example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/fourier/pair.scad>;
-include <../../palette.scad>;
-$fn=64;
-curve_gear_fourier_pair(.8,34,4,4.8,coefficients=[[2,.22,0],[3,.08,30]],samples=240,phase=37,backlash=.15,driver_color=example_driver_color,mate_color=example_mate_color);
+use <curve_gear_fourier.scad>;
+_main_example_fourier_view("pair");

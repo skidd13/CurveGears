@@ -5,7 +5,5 @@
  * @image ../images/functions/circle/curve_gear_circle_mate.png curve gear circle mate preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/circle/mate.scad>
-include <../../palette.scad>;
-color(example_mate_color)
-curve_gear_circle_mate(.8,34,4,4.8);
+use <curve_gear_circle.scad>;
+_main_example_circle_view("mate");

@@ -5,7 +5,5 @@
  * @image ../images/functions/pascal/curve_gear_pascal_pair.png curve_gear_pascal_pair example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/pascal/pair.scad>;
-include <../../palette.scad>;
-$fn=64;
-curve_gear_pascal_pair(.8,34,4,4.8,eccentricity=.60,samples=240,phase=37,experimental_nonconvex=true,driver_color=example_driver_color,mate_color=example_mate_color);
+use <curve_gear_pascal.scad>;
+_main_example_pascal_view("pair");

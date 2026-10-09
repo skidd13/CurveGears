@@ -5,7 +5,5 @@
  * @image ../images/functions/circle/curve_gear_circle_body_2d.png circle 2D body outline
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
-include <../../../src/circle/gear.scad>;
-include <../../palette.scad>;
-color(example_driver_color)
-curve_gear_circle_body_2d(0.8, 34, 4.8);
+use <curve_gear_circle.scad>;
+_main_example_circle_view("body_2d");

@@ -5,7 +5,5 @@
  * @image ../images/functions/lobed/curve_gear_lobed_body_2d.png lobed 2D body outline
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
-include <../../../src/lobed/gear.scad>;
-include <../../palette.scad>;
-color(example_driver_color)
-curve_gear_lobed_body_2d(0.8, 34, 4.8, lobes=4, lobe_depth=0.13, samples=240);
+use <curve_gear_lobed.scad>;
+_main_example_lobed_view("body_2d");

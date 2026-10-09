@@ -5,7 +5,5 @@
  * @image ../images/functions/hypotrochoid/curve_gear_hypotrochoid_2d.png hypotrochoid 2D gear outline
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
-include <../../../src/hypotrochoid/gear.scad>;
-include <../../palette.scad>;
-color(example_driver_color)
-curve_gear_hypotrochoid_2d(0.8, 34, 4.8, samples=360);
+use <curve_gear_hypotrochoid.scad>;
+_main_example_hypotrochoid_view("gear_2d");

@@ -5,8 +5,5 @@
  * @image ../images/functions/superformula/curve_gear_superformula_body.png curve_gear_superformula_body example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/superformula/mate.scad>;
-include <../../palette.scad>;
-$fn=64;
-color(example_driver_color)
-curve_gear_superformula_body(.5,80,4,4.8,symmetry=5,n1=.9,n2=3.4,n3=3.4,samples=240);
+use <curve_gear_superformula.scad>;
+_main_example_superformula_view("body");

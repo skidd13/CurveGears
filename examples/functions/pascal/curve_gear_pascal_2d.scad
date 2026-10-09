@@ -5,7 +5,5 @@
  * @image ../images/functions/pascal/curve_gear_pascal_2d.png pascal 2D gear outline
  * @image ../utils/doxydown-support/table-spacer-512.png ⠀
  */
-include <../../../src/pascal/gear.scad>;
-include <../../palette.scad>;
-color(example_driver_color)
-curve_gear_pascal_2d(0.8, 34, 4.8, eccentricity=0.60, samples=240);
+use <curve_gear_pascal.scad>;
+_main_example_pascal_view("gear_2d");

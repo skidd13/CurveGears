@@ -5,8 +5,5 @@
  * @image ../images/functions/epitrochoid/curve_gear_epitrochoid_body.png curve_gear_epitrochoid_body example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/epitrochoid/mate.scad>;
-include <../../palette.scad>;
-$fn=64;
-color(example_driver_color)
-curve_gear_epitrochoid_body(.8,34,4,4.8,major_ratio=4,rolling_ratio=1,offset_ratio=.5,samples=240);
+use <curve_gear_epitrochoid.scad>;
+_main_example_epitrochoid_view("body");

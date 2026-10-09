@@ -1,6 +1,6 @@
 /***
  * @function curve_gear_cosine_quintic_pair_example
- */
-include <../../../src/cosine_quintic/pair.scad>
-include <../../palette.scad>;
-curve_gear_cosine_quintic_pair(.8,34,4,4.8,samples=240,together_built=true,driver_color=example_driver_color,mate_color=example_mate_color);
+  * @image ../images/functions/cosine_quintic/curve_gear_cosine_quintic_pair.png cosine quintic pair example preview
+*/
+use <curve_gear_cosine_quintic.scad>;
+_main_example_cosine_quintic_view("pair");

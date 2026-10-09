@@ -5,8 +5,5 @@
  * @image ../images/functions/cassini/curve_gear_cassini_body.png curve_gear_cassini_body example preview
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
-include <../../../src/cassini/gear.scad>;
-include <../../palette.scad>;
-$fn=64;
-color(example_driver_color)
-curve_gear_cassini_body(.8,34,4,4.8,focus_ratio=.92,samples=360);
+use <curve_gear_cassini.scad>;
+_main_example_cassini_view("body");
