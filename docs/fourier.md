@@ -45,21 +45,7 @@ https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`_cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_fourier_buildmodultooth_numberwidthborecoefficients2100pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal fourier construction dispatcher.
 
-> [`_cg_fourier_centre_distance`](#function-_cg_fourier_centre_distance): Solve the Fourier conjugate centre distance.
-
 > [`_cg_fourier_coefficients_valid`](#function-_cg_fourier_coefficients_valid): Validate integer harmonics and bounded positive-radius amplitudes.
-
-> [`_cg_fourier_driver_radii(base, coefficients, n=360)`](#function-_cg_fourier_driver_radiibase-coefficients-n360): Evaluate Fourier radii at direct mate-construction angles.
-
-> [`_cg_fourier_mate_points`](#function-_cg_fourier_mate_points): Build Fourier mate pitch points and their shared motion table.
-
-> [`_cg_fourier_mate_points_from_driver`](#function-_cg_fourier_mate_points_from_driver): Build Fourier mate pitch points by advancing driver angle directly.
-
-> [`_cg_fourier_max_radius`](#function-_cg_fourier_max_radius): Estimate the maximum Fourier radius for the centre-distance bracket.
-
-> [`_cg_fourier_motion_radii`](#function-_cg_fourier_motion_radii): Evaluate Fourier radii at integration midpoints.
-
-> [`_cg_fourier_motion_table`](#function-_cg_fourier_motion_table): Build the shared Fourier phase-motion table.
 
 > [`_cg_fourier_point`](#function-_cg_fourier_point): Evaluate a Fourier pitch point in Cartesian coordinates.
 
@@ -334,23 +320,6 @@ Internal fourier construction dispatcher.
 
 Back to [module description](#module-fourier).
 
-### Function `_cg_fourier_centre_distance`
-
-
-Solve the Fourier conjugate centre distance.
-
-**Parameters:**
-
-- `base`: {number > 0} Base polar radius.
-- `coefficients`: {array of [integer, number, angle]} Polar harmonics.
-- `n`: {integer >= 1, default 360} Number of motion intervals.
-
-**Returns:**
-
-- `{number}`: Conjugate centre distance.
-
-Back to [module description](#module-fourier).
-
 ### Function `_cg_fourier_coefficients_valid`
 
 
@@ -363,111 +332,6 @@ Validate integer harmonics and bounded positive-radius amplitudes.
 **Returns:**
 
 - `{boolean}`: True when the coefficient list is valid.
-
-Back to [module description](#module-fourier).
-
-### Function `_cg_fourier_driver_radii(base, coefficients, n=360)`
-
-
-Evaluate Fourier radii at direct mate-construction angles.
-
-**Parameters:**
-
-- `base`: {number > 0} Base polar radius.
-- `coefficients`: {array of [integer, number, angle]} Polar harmonics.
-- `n`: {integer >= 1, default 360} Number of boundary samples.
-
-**Returns:**
-
-- `{array of number}`: Driver radii in angular order.
-
-Back to [module description](#module-fourier).
-
-### Function `_cg_fourier_mate_points`
-
-
-Build Fourier mate pitch points and their shared motion table.
-
-**Parameters:**
-
-- `base`: {number > 0} Base polar radius.
-- `coefficients`: {array of [integer, number, angle]} Polar harmonics.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-fourier).
-
-### Function `_cg_fourier_mate_points_from_driver`
-
-
-Build Fourier mate pitch points by advancing driver angle directly.
-
-**Parameters:**
-
-- `base`: {number > 0} Base polar radius.
-- `coefficients`: {array of [integer, number, angle]} Polar harmonics.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-fourier).
-
-### Function `_cg_fourier_max_radius`
-
-
-Estimate the maximum Fourier radius for the centre-distance bracket.
-
-**Parameters:**
-
-- `base`: {number > 0} Base polar radius.
-- `coefficients`: {array of [integer, number, angle]} Polar harmonics.
-- `n`: {integer >= 1, default 720} Number of samples.
-
-**Returns:**
-
-- `{number}`: Maximum sampled polar radius.
-
-Back to [module description](#module-fourier).
-
-### Function `_cg_fourier_motion_radii`
-
-
-Evaluate Fourier radii at integration midpoints.
-
-**Parameters:**
-
-- `base`: {number > 0} Base polar radius.
-- `coefficients`: {array of [integer, number, angle]} Polar harmonics.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array of number}`: Sampled radii in angular order.
-
-Back to [module description](#module-fourier).
-
-### Function `_cg_fourier_motion_table`
-
-
-Build the shared Fourier phase-motion table.
-
-**Parameters:**
-
-- `base`: {number > 0} Base polar radius.
-- `coefficients`: {array of [integer, number, angle]} Polar harmonics.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array}`: Monotonic driver-to-mate phase-motion table.
 
 Back to [module description](#module-fourier).
 
