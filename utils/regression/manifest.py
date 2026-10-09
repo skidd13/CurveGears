@@ -5,6 +5,18 @@ from __future__ import annotations
 from pathlib import Path
 
 
+def source_family(relative: Path) -> str:
+    """Classify any fixture by its owning shared responsibility or family."""
+    family = relative.parts[0]
+    if family == "common":
+        return "common_math"
+    if family == "tooth":
+        return "_".join(relative.parts[:2])
+    if family == "mate":
+        return "mate_motion"
+    return family
+
+
 def load(path: Path, root: Path) -> list[tuple[str, Path, Path]]:
     """Load ``family, source, output`` assignments without rendering anything."""
     assert path.exists(), f"missing Makefile smoke manifest: {path}"
@@ -22,13 +34,7 @@ def load(path: Path, root: Path) -> list[tuple[str, Path, Path]]:
         sources.add(source)
         outputs.add(output)
         relative = source.relative_to(root / "tests")
-        family = relative.parts[0]
-        if family == "common":
-            family = "common_math"
-        elif family == "tooth":
-            family = "_".join(relative.parts[:2])
-        elif family == "mate":
-            family = "mate_motion"
+        family = source_family(relative)
         cases.append((family, source, output))
     return cases
 

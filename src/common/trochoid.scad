@@ -6,7 +6,7 @@
  * `epitrochoid/` and `hypotrochoid/`; the rolling equations remain in those
  * family modules. This layer contains only the shared curve post-processing.
  */
-include <../curve_gears_math.scad>
+include <curve_gears_math.scad>
 
 /** @function _cg_trochoid_scale_from_points
  * @brief Scale a sampled unit curve to the requested tooth pitch.
@@ -26,6 +26,20 @@ function _cg_trochoid_curve_radius_from_point(scale,point) = scale*_cg_trochoid_
  * @brief Scale sampled unit-curve points.
  */
 function _cg_trochoid_points_scaled_from_points(scale,points) = _cg_scale_points(scale,points);
+
+/**
+ * @function _cg_trochoid_shape
+ * @brief Bind a sampled trochoid polygon to the shared physical-angle shape contract.
+ * @param unit_points {array of 2D points} Unit-scale driver polygon.
+ * @param scale {number > 0} Perimeter-derived physical scale.
+ * @param lower {number} Solver lower bound.
+ * @param upper {number} Solver upper bound.
+ * @param radial_root {boolean, default false} Use radial-root tooth placement.
+ * @return {array} `[driver points, physical radius function, lower, upper, radial_root]`.
+ */
+function _cg_trochoid_shape(unit_points,scale,lower,upper,radial_root=false) =
+    let(points=_cg_trochoid_points_scaled_from_points(scale,unit_points),table=_cg_trochoid_polar_table(points))
+    [points,function(theta) _cg_trochoid_radius_at_polar_angle(table,theta),lower,upper,radial_root];
 
 /**
  * @function _cg_trochoid_polar_table(points)

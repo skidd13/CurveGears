@@ -42,9 +42,7 @@ module _cg_ellipse_build(modul,tooth_number,width,bore,eccentricity=0.62,pressur
  * @return {geometry} Constructed family geometry.
  */
     assert(eccentricity >= 0 && eccentricity < 1,"elliptical_gear: eccentricity must satisfy 0 <= e < 1");
-    axes=_cg_ellipse_axes(modul,tooth_number,eccentricity);
-    a=axes[0]; b=axes[1];
-    points=[for(i=[0:samples-1]) _cg_ellipse_driver_point(a,b,360*i/samples)];
+    points=_cg_ellipse_shape(modul,tooth_number,eccentricity,samples)[0];
 
     _cg_assert_samples(samples);
     rotate([0,0,orientation]) {

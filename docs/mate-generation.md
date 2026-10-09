@@ -28,6 +28,8 @@ It requires curve_gears_math.scad to have been loaded first.
 
 > [`_cg_mate_pitch_diagnostics`](#function-_cg_mate_pitch_diagnostics): Return the required numerical and geometric mate diagnostics.
 
+> [`_cg_polar_mate`](#function-_cg_polar_mate): Prepare and emit a named polar shape's validated standalone mate.
+
 
 ## Functions
 
@@ -76,6 +78,30 @@ Return the required numerical and geometric mate diagnostics.
 **Returns:**
 
 - `{array}`: Named diagnostic records suitable for echo or test output.
+
+Back to [module description](#module-mate-generation).
+
+### Function `_cg_polar_mate`
+
+
+Prepare and emit a named polar shape's validated standalone mate.
+
+**Parameters:**
+
+- `shape`: {array} Physical driver points, radius law, bounds and root policy.
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `width`: {number > 0} Extrusion width in mm.
+- `bore`: {number >= 0} Bore diameter in mm.
+- `pressure_angle`: {angle, default 20} Involute pressure angle.
+- `tooth_phase`: {angle, default 0} Tooth placement phase.
+- `backlash`: {undef or >= 0} Tangential thickness reduction.
+- `clearance`: {undef or >= 0} Extra root clearance.
+- `samples`: {integer >= 120, default 720} Motion intervals.
+
+**Returns:**
+
+- `{geometry}`: Validated standalone conjugate mate.
 
 Back to [module description](#module-mate-generation).
 

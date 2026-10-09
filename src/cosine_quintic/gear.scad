@@ -5,12 +5,8 @@ module _cg_cosine_quintic_build(modul,tooth_number,width,bore,depth=.19,harmonic
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"cosine_quintic_gear: tooth_number must be an integer >= 3");
     assert(_cg_cosine_quintic_parameters_valid(depth,harmonic),"cosine_quintic_gear: invalid curve parameters");
     _cg_assert_samples(samples,"cosine_quintic_gear: samples must be an integer >= 120");
-    points=_cg_cosine_quintic_points(modul,tooth_number,samples,depth,harmonic);
-    rotate([0,0,orientation])
-        if(is_2d)
-            _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only,undef,body_offset);
-        else
-            _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
+    points=_cg_cosine_quintic_shape(modul,tooth_number,depth,harmonic,samples)[0];
+    _cg_curve_gear(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only,orientation,is_2d,body_offset);
 }
 
 /***

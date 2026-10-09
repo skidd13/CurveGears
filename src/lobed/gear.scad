@@ -46,9 +46,7 @@ module _cg_lobed_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pre
     assert(lobes >= 2 && floor(lobes)==lobes,"lobed_gear: lobes must be an integer >= 2");
     assert(lobe_depth > 0 && lobe_depth < 0.5,"lobed_gear: lobe_depth must satisfy 0 < lobe_depth < 0.5");
 
-    unit_points=_cg_lobed_unit_points(lobes,lobe_depth,samples);
-    scale=_cg_pitch_scale_from_points(modul,tooth_number,unit_points,_cg_pi);
-    points=_cg_scale_points(scale,unit_points);
+    points=_cg_lobed_shape(modul,tooth_number,lobes,lobe_depth,samples)[0];
 
     _cg_assert_samples(samples);
     rotate([0,0,orientation]) {

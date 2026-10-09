@@ -45,19 +45,7 @@ include <../common/pair/assembly.scad>
 module _cg_cassini_pair_build(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
     assert(_cg_cassini_focus_ratio_valid(focus_ratio),"cassini_gear_pair: focus_ratio must satisfy 0 <= focus_ratio < 1");
     _cg_assert_samples(samples,"cassini_gear_pair: samples must be an integer >= 120");
-    unit_points=_cg_cassini_points(1,focus_ratio,samples);
-    scale=_cg_cassini_scale(modul,tooth_number,focus_ratio,samples,unit_points);
-    mid_radii=_cg_cassini_motion_radii(scale,focus_ratio,samples);
-    mx=_cg_cassini_max_radius(scale,focus_ratio,max(1440,samples));
-    D=_cg_solve_mate_distance(mid_radii,mx+.01,4*mx);
-    driver_radii=_cg_cassini_driver_radii(scale,focus_ratio,samples);
-    integration_state=_cg_motion_integration_state(driver_radii,mid_radii,D);
-    motion=integration_state[2];
-    closure_error=_cg_motion_closure_error(motion);
-    assert(abs(closure_error) < .08,"cassini_gear_pair: conjugate closure error too large");
-    driver=_cg_scale_points(scale,unit_points);
-    mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
-    _cg_pair_assembly(D,motion,phase,together_built,_cg_pair_point_extent(driver),_cg_pair_point_extent(mate),modul,driver,mate,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,false,false,driver_color,mate_color);
+    _cg_polar_pair(_cg_cassini_shape(modul,tooth_number,focus_ratio,samples),modul,tooth_number,width,bore,pressure_angle,samples,phase,together_built,backlash,clearance,tooth_phase,driver_color,mate_color);
 }
 
 module curve_gear_cassini_pair(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {

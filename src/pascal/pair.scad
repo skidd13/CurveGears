@@ -51,27 +51,15 @@ module _cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pre
     assert(eccentricity >= 0 && eccentricity < 1,"pascal_gear_pair: eccentricity must satisfy 0 <= eccentricity < 1");
     assert(eccentricity < 0.5 || experimental_nonconvex,"pascal_gear_pair: eccentricity >= 0.5 requires experimental_nonconvex=true");
     _cg_assert_samples(samples,"pascal_gear_pair: samples must be an integer >= 120");
-    unit_points=_cg_pascal_points(1,eccentricity,samples);
-    scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples,unit_points);
+    shape=_cg_pascal_shape(modul,tooth_number,eccentricity,samples);
+    driver=shape[0];
+    scale=shape[1](0)/(1+eccentricity);
     min_r=_cg_pascal_min_radius(scale,eccentricity);
     if(bore > 0)
         assert(min_r > bore/2,"pascal_gear_pair: bore exceeds the minimum driver pitch radius; reduce bore or eccentricity");
-    mx=_cg_pascal_max_radius(scale,eccentricity);
-    mid_radii=_cg_pascal_motion_radii(scale,eccentricity,samples);
-    D=_cg_solve_mate_distance(mid_radii,mx+.01,4*mx);
-    driver_radii=_cg_pascal_driver_radii(scale,eccentricity,samples);
-    integration_state=_cg_motion_integration_state(driver_radii,mid_radii,D);
-    motion=integration_state[2];
-    closure_error=_cg_motion_closure_error(motion);
-    assert(abs(closure_error) < 0.08,"pascal_gear_pair: conjugate closure error too large");
-    driver=_cg_scale_points(scale,unit_points);
-    mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
-    radial_root=_cg_pascal_requires_radial_root(eccentricity);
-
     if(eccentricity >= 0.5)
         echo("pascal_gear_pair: non-convex Pascal pair uses the direct calculated mate boundary; dense validation is required for new parameter sets");
-
-    _cg_pair_assembly(D,motion,phase,together_built,_cg_pair_point_extent(driver),_cg_pair_point_extent(mate),modul,driver,mate,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,radial_root,radial_root,driver_color,mate_color);
+    _cg_polar_pair(shape,modul,tooth_number,width,bore,pressure_angle,samples,phase,together_built,backlash,clearance,tooth_phase,driver_color,mate_color);
 }
 
 module curve_gear_pascal_pair(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,samples=360,phase=0,together_built=true,experimental_nonconvex=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {

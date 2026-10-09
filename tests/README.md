@@ -310,11 +310,19 @@ Shared mate-motion and tooth-phase regression fixtures.
 
 **Functions**:
 
+> [`mate_invalid_preparation_bracket`](#function-mate_invalid_preparation_bracket): Reject exterior bounds which do not enclose rolling closure.
+
+> [`mate_invalid_preparation_lengths`](#function-mate_invalid_preparation_lengths): Reject mismatched boundary and midpoint radius arrays.
+
+> [`mate_invalid_preparation_radius`](#function-mate_invalid_preparation_radius): Reject non-positive physical radii before integration.
+
 > [`mate_motion_direct_cases`](#function-mate_motion_direct_cases): Direct conjugate-mate construction regression.
 
 > [`mate_motion_phase_cases`](#function-mate_motion_phase_cases): Shared mate-motion phase regression.
 
 > [`mate_phase_forwarding`](#function-mate_phase_forwarding): Verify that mate tooth phase reaches the shared placement engine.
+
+> [`mate_preparation`](#function-mate_preparation): Prove circular and harmonic rolling invariants and shared preparation consistency.
 
 > [`mate_trochoid_polar_radii`](#function-mate_trochoid_polar_radii): Compare indexed motion radii with independent full-outline ray scans for both trochoid families.
 
@@ -322,6 +330,51 @@ Shared mate-motion and tooth-phase regression fixtures.
 ## Functions
 
 The module `Mate motion and phase` defines the following functions.
+
+### Function `mate_invalid_preparation_bracket`
+
+
+Source: [`mate/invalid_preparation_bracket.scad`](mate/invalid_preparation_bracket.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-mate-motion-and-phase).
+
+### Function `mate_invalid_preparation_lengths`
+
+
+Source: [`mate/invalid_preparation_lengths.scad`](mate/invalid_preparation_lengths.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-mate-motion-and-phase).
+
+### Function `mate_invalid_preparation_radius`
+
+
+Source: [`mate/invalid_preparation_radius.scad`](mate/invalid_preparation_radius.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-mate-motion-and-phase).
 
 ### Function `mate_motion_direct_cases`
 
@@ -372,6 +425,21 @@ No parameters
 **Returns:**
 
 - `{geometry}`: Small validation solid.
+
+Back to [module description](#module-mate-motion-and-phase).
+
+### Function `mate_preparation`
+
+
+Source: [`mate/preparation.scad`](mate/preparation.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-mate-motion-and-phase).
 
@@ -444,6 +512,10 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`circle_full_pipeline`](#function-circle_full_pipeline): Verify the complete Circle gear, mate, and pair entry points.
 
+> [`common_harmonic_equivalence`](#function-common_harmonic_equivalence): Check named harmonic adapters against their independent analytic laws and retain distinct scaling policies.
+
+> [`common_saturating_equivalence`](#function-common_saturating_equivalence): Check Logistic and Tanh adapters across small, canonical and extreme finite gains.
+
 > [`common_tanh_limits`](#function-common_tanh_limits): Verify finite saturation, odd symmetry and continuity of the shared tanh helper.
 
 > [`cosine_quintic_full_pipeline`](#function-cosine_quintic_full_pipeline): Verify the complete Cosine Quintic gear, mate and pair entry points.
@@ -476,6 +548,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`ellipse_pair_pipeline`](#function-ellipse_pair_pipeline): Verify Ellipse pair assembly and conjugate mate placement.
 
+> [`ellipse_shape_policy`](#function-ellipse_shape_policy): Preserve analytical axes, physical radii and solver bounds across sampling densities.
+
 > [`ellipse_tooth_pipeline`](#function-ellipse_tooth_pipeline): Verify Ellipse tooth placement through the shared tooth pipeline.
 
 > [`epitrochoid_contact`](#function-epitrochoid_contact): Verify Epitrochoid contact geometry and pitch diagnostics.
@@ -493,6 +567,8 @@ existing resolution and colours; CI reduction does not replace them.
 > [`fourier_full_pipeline`](#function-fourier_full_pipeline): Verify the complete Fourier gear, mate, and pair entry points.
 
 > [`fourier_invalid_coefficients`](#function-fourier_invalid_coefficients): Deliberately non-positive-radius coefficient envelope.
+
+> [`fourier_shape_policy`](#function-fourier_shape_policy): Preserve midpoint maximum-radius sampling and the existing distance bracket.
 
 > [`hypotrochoid_full_pipeline`](#function-hypotrochoid_full_pipeline): Verify the complete Hypotrochoid gear, mate, and pair entry points.
 
@@ -550,6 +626,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`pascal_pair_pipeline`](#function-pascal_pair_pipeline): Verify Pascal pair assembly and conjugate mate placement.
 
+> [`pascal_radial_root_join`](#function-pascal_radial_root_join): Verify the previously failing radial mate junction and retain rejection of unsupported splice overlaps.
+
 > [`pascal_tooth_pipeline`](#function-pascal_tooth_pipeline): Verify Pascal tooth placement through the shared tooth pipeline.
 
 > [`superformula_accessibility_cases`](#function-superformula_accessibility_cases): Focused accessibility checks: shallow concavity remains usable, while a
@@ -562,6 +640,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`superformula_pair_pipeline`](#function-superformula_pair_pipeline): Verify Superformula pair assembly and conjugate mate placement.
 
+> [`superformula_shape_policy`](#function-superformula_shape_policy): Preserve perimeter scaling and the fixed 720-sample solver-bound policy.
+
 > [`superformula_tooth_pipeline`](#function-superformula_tooth_pipeline): Verify Superformula tooth placement through the shared tooth pipeline.
 
 > [`tanh_triad_full_pipeline`](#function-tanh_triad_full_pipeline): Verify the complete Tanh Triad gear, mate and pair entry points.
@@ -573,6 +653,8 @@ existing resolution and colours; CI reduction does not replace them.
 > [`tanh_triad_invalid_mate_rotation_parameters`](#function-tanh_triad_invalid_mate_rotation_parameters): Reject invalid curve controls consistently at the mate_rotation entry point.
 
 > [`tanh_triad_invalid_pair_parameters`](#function-tanh_triad_invalid_pair_parameters): Reject invalid curve controls consistently at the pair entry point.
+
+> [`tanh_triad_solver_bounds`](#function-tanh_triad_solver_bounds): Retain an exterior solver bracket when the corrective harmonic exceeds the crest estimate.
 
 > [`temple_fay_defaults`](#function-temple_fay_defaults): Bind default reference spacing to the pitch curve emitted by the default gear.
 
@@ -726,6 +808,36 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`circle/full_pipeline.scad`](circle/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `common_harmonic_equivalence`
+
+
+Source: [`common/harmonic_equivalence.scad`](common/harmonic_equivalence.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `common_saturating_equivalence`
+
+
+Source: [`common/saturating_equivalence.scad`](common/saturating_equivalence.scad)
 
 **Parameters:**
 
@@ -977,6 +1089,21 @@ No return
 
 Back to [module description](#module-family-integration).
 
+### Function `ellipse_shape_policy`
+
+
+Source: [`ellipse/shape_policy.scad`](ellipse/shape_policy.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
 ### Function `ellipse_tooth_pipeline`
 
 
@@ -1101,6 +1228,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`fourier/invalid_coefficients.scad`](fourier/invalid_coefficients.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `fourier_shape_policy`
+
+
+Source: [`fourier/shape_policy.scad`](fourier/shape_policy.scad)
 
 **Parameters:**
 
@@ -1534,6 +1676,21 @@ No return
 
 Back to [module description](#module-family-integration).
 
+### Function `pascal_radial_root_join`
+
+
+Source: [`pascal/radial_root_join.scad`](pascal/radial_root_join.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
 ### Function `pascal_tooth_pipeline`
 
 
@@ -1626,6 +1783,21 @@ No return
 
 Back to [module description](#module-family-integration).
 
+### Function `superformula_shape_policy`
+
+
+Source: [`superformula/shape_policy.scad`](superformula/shape_policy.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
 ### Function `superformula_tooth_pipeline`
 
 
@@ -1705,6 +1877,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`tanh_triad/invalid_pair_parameters.scad`](tanh_triad/invalid_pair_parameters.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `tanh_triad_solver_bounds`
+
+
+Source: [`tanh_triad/solver_bounds.scad`](tanh_triad/solver_bounds.scad)
 
 **Parameters:**
 

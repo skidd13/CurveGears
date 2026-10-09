@@ -1,56 +1,7 @@
 include <gear.scad>
+include <../common/mate/preparation.scad>
 include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
-
-/**
- * @function _cg_pascal_motion_radii
- * @brief Evaluate Pascal radii at integration midpoints.
- * @param scale {number > 0} Base radial scale.
- * @param eccentricity {number} Pascal curve eccentricity.
- * @param n {integer >= 1, default 360} Number of midpoint samples.
- * @return {array of number} Sampled radii in angular order.
- */
-function _cg_pascal_motion_radii(scale,eccentricity,n=360) = [for(i=[0:n-1]) _cg_pascal_radius(scale,eccentricity,360*(i+.5)/n)];
-/**
- * @function _cg_pascal_driver_radii(scale, eccentricity, n=360)
- * @brief Evaluate Pascal radii at direct mate-construction angles.
- * @param scale {number > 0} Base radial scale in millimetres.
- * @param eccentricity {number} Pascal curve eccentricity.
- * @param n {integer >= 1, default 360} Number of boundary intervals.
- * @return {array of number} Driver radii in angular order.
- */
-function _cg_pascal_driver_radii(scale,eccentricity,n=360) = [for(i=[0:n-1]) _cg_pascal_radius(scale,eccentricity,360*i/n)];
-/**
- * @function _cg_pascal_motion_table
- * @brief Build the shared Pascal phase-motion table.
- * @param scale {number > 0} Base radial scale.
- * @param eccentricity {number} Pascal curve eccentricity.
- * @param D {number > 0} Driver-to-mate centre distance.
- * @param n {integer >= 1, default 360} Number of midpoint samples.
- * @return {array} Monotonic driver-to-mate phase-motion table.
- */
-function _cg_pascal_motion_table(scale,eccentricity,D,n=360) = _cg_motion_table_from_mid_radii(_cg_pascal_motion_radii(scale,eccentricity,n),D);
-/**
- * @function _cg_pascal_mate_points_from_driver
- * @brief Build Pascal mate pitch points by advancing driver angle directly.
- * @param scale {number > 0} Base radial scale.
- * @param eccentricity {number} Pascal curve eccentricity.
- * @param D {number > 0} Driver-to-mate centre distance.
- * @param n {integer >= 1, default 360} Number of output points.
- * @return {array of points} Cartesian mate pitch points.
- */
-function _cg_pascal_mate_points_from_driver(scale,eccentricity,D,n=360) =
-    _cg_mate_points_from_radius_samples(_cg_pascal_driver_radii(scale,eccentricity,n),_cg_pascal_motion_radii(scale,eccentricity,n),D);
-/**
- * @function _cg_pascal_mate_points
- * @brief Build Pascal mate pitch points and their shared motion table.
- * @param scale {number > 0} Base radial scale.
- * @param eccentricity {number} Pascal curve eccentricity.
- * @param D {number > 0} Driver-to-mate centre distance.
- * @param n {integer >= 1, default 360} Number of output points.
- * @return {array of points} Cartesian mate pitch points.
- */
-function _cg_pascal_mate_points(scale,eccentricity,D,n=360) = _cg_pascal_mate_points_from_driver(scale,eccentricity,D,n);
 
 /***
  * @function curve_gear_pascal_mate(modul, tooth_number, width, bore, ...)
@@ -72,11 +23,7 @@ function _cg_pascal_mate_points(scale,eccentricity,D,n=360) = _cg_pascal_mate_po
 module curve_gear_pascal_mate(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360) {
     assert(eccentricity >= 0 && eccentricity < 1,"pascal_gear_mate: eccentricity must satisfy 0 <= e < 1");
     _cg_assert_samples(samples,"pascal_gear_mate: samples must be an integer >= 120");
-    scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples);
-    D=_cg_solve_mate_distance(_cg_pascal_motion_radii(scale,eccentricity,samples),_cg_pascal_max_radius(scale,eccentricity)+.01,4*_cg_pascal_max_radius(scale,eccentricity));
-    mate=_cg_pascal_mate_points(scale,eccentricity,D,samples);
-    radial_root=_cg_pascal_requires_radial_root(eccentricity);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance);
+    _cg_polar_mate(_cg_pascal_shape(modul,tooth_number,eccentricity,samples),modul,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,samples);
 }
 
 /***
@@ -88,7 +35,7 @@ module curve_gear_pascal_mate(modul,tooth_number,width,bore,eccentricity=0.25,pr
  * @param samples {integer >= 120, default 360} Pitch-curve sampling density.
  * @return {number} Pair centre distance in mm.
  */
-function curve_gear_pascal_centre_distance(modul,tooth_number,eccentricity=0.25,samples=360) = let(scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples),mx=_cg_pascal_max_radius(scale,eccentricity)) _cg_solve_mate_distance(_cg_pascal_motion_radii(scale,eccentricity,samples),mx+.01,4*mx);
+function curve_gear_pascal_centre_distance(modul,tooth_number,eccentricity=0.25,samples=360) = _cg_polar_mate_distance(_cg_pascal_shape(modul,tooth_number,eccentricity,samples),samples);
 
 /***
  * @function curve_gear_pascal_mate_rotation(modul, tooth_number, eccentricity, ...)
@@ -100,4 +47,4 @@ function curve_gear_pascal_centre_distance(modul,tooth_number,eccentricity=0.25,
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @return {angle} Mate rotation in degrees.
  */
-function curve_gear_pascal_mate_rotation(modul,tooth_number,eccentricity=0.25,samples=360,phase=0) = let(scale=_cg_pascal_scale(modul,tooth_number,eccentricity,samples),mx=_cg_pascal_max_radius(scale,eccentricity),D=_cg_solve_mate_distance(_cg_pascal_motion_radii(scale,eccentricity,samples),mx+.01,4*mx),motion=_cg_pascal_motion_table(scale,eccentricity,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
+function curve_gear_pascal_mate_rotation(modul,tooth_number,eccentricity=0.25,samples=360,phase=0) = _cg_polar_mate_rotation(_cg_pascal_shape(modul,tooth_number,eccentricity,samples),samples,phase);

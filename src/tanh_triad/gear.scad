@@ -5,12 +5,8 @@ module _cg_tanh_triad_build(modul,tooth_number,width,bore,transition=1.8,crest=.
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"tanh_triad_gear: tooth_number must be an integer >= 3");
     assert(_cg_tanh_triad_parameters_valid(transition,crest,correction),"tanh_triad_gear: invalid curve parameters");
     _cg_assert_samples(samples,"tanh_triad_gear: samples must be an integer >= 120");
-    points=_cg_tanh_triad_points(modul,tooth_number,samples,transition,crest,correction);
-    rotate([0,0,orientation])
-        if(is_2d)
-            _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only,undef,body_offset);
-        else
-            _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
+    points=_cg_tanh_triad_shape(modul,tooth_number,transition,crest,correction,samples)[0];
+    _cg_curve_gear(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only,orientation,is_2d,body_offset);
 }
 
 /**

@@ -68,6 +68,17 @@ class InventoryTests(unittest.TestCase):
             self.assertIn(f'-o "{relative}/cusp/mate_3.stl"', result.stdout)
             self.assertIn('utils.check_build_output empty', result.stdout)
 
+    def test_shared_mate_selection_runs_its_invalid_inputs(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / 'build') as directory:
+            relative = Path(directory).relative_to(ROOT)
+            result = subprocess.run(['make', '-n', 'test', 'family=mate_motion',
+                                     f'REGRESSION_DIR={relative}', 'OPENSCAD=openscad'],
+                                    cwd=ROOT, capture_output=True, text=True, check=True)
+            for name in ['lengths', 'bracket', 'radius']:
+                self.assertIn(f'tests/mate/invalid_preparation_{name}.scad', result.stdout)
+            self.assertNotIn('tests/circle/invalid_backlash.scad', result.stdout)
+            self.assertIn('--family mate_motion', result.stdout)
+
 
 class OutputTests(unittest.TestCase):
     def setUp(self):

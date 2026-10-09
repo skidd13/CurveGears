@@ -1,3 +1,4 @@
+include <../mate/preparation.scad>
 /***
  * @module Pair assembly
  * @brief Place already-defined driver and mate modules as a pair.
@@ -99,4 +100,29 @@ module _cg_static_pair_assembly(reference_distance,together_built=true,driver_ro
         rotate([0,0,driver_rotation]) children(0);
         translate([display_distance,0,0]) rotate([0,0,mate_rotation]) children(1);
     }
+}
+
+/**
+ * @function _cg_polar_pair
+ * @brief Prepare and assemble a named shape's driver and conjugate mate once.
+ * @param shape {array} Physical driver points, radius law, bounds and root policy.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in mm.
+ * @param bore {number >= 0} Bore diameter in mm.
+ * @param pressure_angle {angle, default 20} Involute pressure angle.
+ * @param samples {integer >= 120, default 720} Motion intervals.
+ * @param phase {angle, default 0} Driver phase.
+ * @param together_built {boolean, default true} Assemble or display separated.
+ * @param backlash {undef or >= 0} Tangential thickness reduction.
+ * @param clearance {undef or >= 0} Extra root clearance.
+ * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param driver_color {colour, default SteelBlue} Driver display colour.
+ * @param mate_color {colour, default Gold} Mate display colour.
+ * @return {geometry} Validated pair preserving the actual driver polygon.
+ */
+module _cg_polar_pair(shape,modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold",mate_root_support=.25) {
+    data=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3]);
+    assert(abs(_cg_motion_closure_error(data[1]))<.08,"polar_pair: conjugate closure error too large");
+    _cg_pair_assembly(data[0],data[1],phase,together_built,_cg_pair_point_extent(shape[0]),_cg_pair_point_extent(data[2]),modul,shape[0],data[2],tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,shape[4],shape[4],driver_color,mate_color,mate_root_support);
 }

@@ -70,6 +70,8 @@ Botany 90 (2003), 333–338.
 
 > [`_cg_superformula_scale(modul, tooth_number, symmetry, a, b, n1, n2, n3, n, unit_points=undef)`](#function-_cg_superformula_scalemodul-tooth_number-symmetry-a-b-n1-n2-n3-n-unit_pointsundef): Scale a superformula curve to the requested tooth pitch.
 
+> [`_cg_superformula_shape`](#function-_cg_superformula_shape): Bind the sampled superformula polygon and its physical radius law.
+
 > [`_cg_superformula_unit_radius(symmetry, a, b, n1, n2, n3, theta)`](#function-_cg_superformula_unit_radiussymmetry-a-b-n1-n2-n3-theta): Evaluate the unit Gielis superformula radius.
 
 
@@ -693,6 +695,21 @@ Scale a superformula curve to the requested tooth pitch.
 **Returns:**
 
 - `{number}`: Mean pitch-radius scale in mm.
+
+Back to [module description](#module-superformula).
+
+### Function `_cg_superformula_shape`
+
+
+Bind the sampled superformula polygon and its physical radius law.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-superformula).
 

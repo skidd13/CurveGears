@@ -199,12 +199,12 @@ DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/cosine_quintic.m
 FORCE:
 
 define DOXYDOC_PAGE
-$(1): $(3) $(4) $(5) $(6) $(7) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
+$(1): $(3) $(4) $(5) $(6) $(7) $(8) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@mkdir -p "$$(@D)"
 	@printf '%s\n' '# $(2)' '' '## Documentation navigation' '' > "$$@"
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
-	@$(DOCGEN) -g -e c -l c "$(3)" "$(4)" "$(5)" "$(6)" $(if $(7),"$(7)") >> "$$@"
+	@$(DOCGEN) -g -e c -l c "$(3)" "$(4)" "$(5)" "$(6)" $(if $(7),"$(7)") $(if $(8),"$(8)") >> "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -214,7 +214,7 @@ $(1): $(3) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@printf '%s\n' '# $(2)' '' '## Documentation navigation' '' > "$$@"
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
-	@$(DOCGEN) -g -e c -l c "$(3)" >> "$$@"
+	@$(DOCGEN) -g -e c -l c $(3) >> "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -231,22 +231,22 @@ endef
 $(eval $(call DOXYDOC_PAGE,docs/circle.md,Circle,src/circle/base.scad,src/circle/gear.scad,src/circle/mate.scad,src/circle/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/cusp.md,Cusp,src/cusp/base.scad,src/cusp/gear.scad,src/cusp/mate.scad,src/cusp/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/ellipse.md,Ellipse,src/ellipse/base.scad,src/ellipse/gear.scad,src/ellipse/mate.scad,src/ellipse/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/lobed.md,Lobed,src/lobed/base.scad,src/lobed/gear.scad,src/lobed/mate.scad,src/lobed/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/lobed.md,Lobed,src/lobed/base.scad,src/lobed/gear.scad,src/lobed/mate.scad,src/lobed/pair.scad,src/common/harmonic.scad))
 $(eval $(call DOXYDOC_PAGE,docs/superformula.md,Superformula,src/superformula/base.scad,src/superformula/gear.scad,src/superformula/mate.scad,src/superformula/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/pascal.md,Pascal,src/pascal/base.scad,src/pascal/gear.scad,src/pascal/mate.scad,src/pascal/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/fourier.md,Fourier,src/fourier/base.scad,src/fourier/gear.scad,src/fourier/mate.scad,src/fourier/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/pascal.md,Pascal,src/pascal/base.scad,src/pascal/gear.scad,src/pascal/mate.scad,src/pascal/pair.scad,src/common/harmonic.scad))
+$(eval $(call DOXYDOC_PAGE,docs/fourier.md,Fourier,src/fourier/base.scad,src/fourier/gear.scad,src/fourier/mate.scad,src/fourier/pair.scad,src/common/harmonic.scad))
 $(eval $(call DOXYDOC_PAGE,docs/bezier.md,Bézier,src/bezier/base.scad,src/bezier/gear.scad,src/bezier/mate.scad,src/bezier/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/cassini.md,Cassini,src/cassini/base.scad,src/cassini/gear.scad,src/cassini/mate.scad,src/cassini/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/hypotrochoid.md,Hypotrochoid,src/hypotrochoid/base.scad,src/hypotrochoid/gear.scad,src/hypotrochoid/mate.scad,src/hypotrochoid/pair.scad,src/common/trochoid/base.scad))
+$(eval $(call DOXYDOC_PAGE,docs/hypotrochoid.md,Hypotrochoid,src/hypotrochoid/base.scad,src/hypotrochoid/gear.scad,src/hypotrochoid/mate.scad,src/hypotrochoid/pair.scad,src/common/trochoid.scad))
 $(eval $(call DOXYDOC_PAGE,docs/logarithmic_spiral.md,Logarithmic Spiral,src/logarithmic_spiral/base.scad,src/logarithmic_spiral/gear.scad,src/logarithmic_spiral/mate.scad,src/logarithmic_spiral/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/epitrochoid.md,Epitrochoid,src/epitrochoid/base.scad,src/epitrochoid/gear.scad,src/epitrochoid/mate.scad,src/epitrochoid/pair.scad,src/common/trochoid/base.scad))
-$(eval $(call DOXYDOC_PAGE,docs/tanh_triad.md,Tanh Triad,src/tanh_triad/base.scad,src/tanh_triad/gear.scad,src/tanh_triad/mate.scad,src/tanh_triad/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/logistic_dwell.md,Logistic Dwell,src/logistic_dwell/base.scad,src/logistic_dwell/gear.scad,src/logistic_dwell/mate.scad,src/logistic_dwell/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/cosine_quintic.md,Cosine Quintic,src/cosine_quintic/base.scad,src/cosine_quintic/gear.scad,src/cosine_quintic/mate.scad,src/cosine_quintic/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/temple_fay.md,Temple Fay,src/temple_fay/base.scad,src/temple_fay/gear.scad,src/temple_fay/mate.scad,src/temple_fay/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/epitrochoid.md,Epitrochoid,src/epitrochoid/base.scad,src/epitrochoid/gear.scad,src/epitrochoid/mate.scad,src/epitrochoid/pair.scad,src/common/trochoid.scad))
+$(eval $(call DOXYDOC_PAGE,docs/tanh_triad.md,Tanh Triad,src/tanh_triad/base.scad,src/tanh_triad/gear.scad,src/tanh_triad/mate.scad,src/tanh_triad/pair.scad,src/common/mate/preparation.scad,src/common/saturating.scad))
+$(eval $(call DOXYDOC_PAGE,docs/logistic_dwell.md,Logistic Dwell,src/logistic_dwell/base.scad,src/logistic_dwell/gear.scad,src/logistic_dwell/mate.scad,src/logistic_dwell/pair.scad,src/common/mate/preparation.scad,src/common/saturating.scad))
+$(eval $(call DOXYDOC_PAGE,docs/cosine_quintic.md,Cosine Quintic,src/cosine_quintic/base.scad,src/cosine_quintic/gear.scad,src/cosine_quintic/mate.scad,src/cosine_quintic/pair.scad,src/common/mate/preparation.scad,src/common/harmonic.scad))
+$(eval $(call DOXYDOC_PAGE,docs/temple_fay.md,Temple Fay,src/temple_fay/base.scad,src/temple_fay/gear.scad,src/temple_fay/mate.scad,src/temple_fay/pair.scad,src/common/harmonic.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-construction.md,Tooth construction,src/common/tooth/generation.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-placement.md,Tooth placement,src/common/tooth/placement.scad))
-$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-motion.md,Mate motion,src/common/mate/motion.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-motion.md,Mate motion,src/common/mate/motion.scad src/common/mate/preparation.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-generation.md,Mate generation,src/common/mate/placement.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/pair-assembly.md,Pair assembly,src/common/pair/assembly.scad))
 
@@ -318,7 +318,7 @@ $(eval $(call REGRESSION_EXPECT_SUCCESS,accessibility_cases,tests/superformula/a
 
 REGRESSION_INVALID_SOURCES := $(shell find tests -type f -name 'invalid_*.scad' -print | sort)
 REGRESSION_INVALID_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/invalid/%.failed,$(REGRESSION_INVALID_SOURCES))
-REGRESSION_INVALID_OUTPUTS := $(if $(strip $(REGRESSION_FAMILIES)),$(filter $(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DIR)/invalid/$(family)/%),$(REGRESSION_INVALID_ALL)),$(REGRESSION_INVALID_ALL))
+REGRESSION_INVALID_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(filter $(foreach family,$(REGRESSION_SELECTED_FAMILIES),$(REGRESSION_DIR)/invalid/$(if $(filter common_math,$(family)),common,$(if $(filter mate_motion,$(family)),mate,$(if $(filter tooth_generation tooth_placement,$(family)),$(subst _,/,$(family)),$(family))))/%),$(REGRESSION_INVALID_ALL)),$(REGRESSION_INVALID_ALL))
 
 $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad
 	@mkdir -p "$(@D)"

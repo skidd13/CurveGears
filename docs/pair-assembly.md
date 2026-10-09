@@ -103,12 +103,42 @@ Back to [top](#).
 
 **Functions**:
 
+> [`_cg_polar_pair`](#function-_cg_polar_pair): Prepare and assemble a named shape's driver and conjugate mate once.
+
 > [`_cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)`](#function-_cg_static_pair_assemblyreference_distance-together_built-driver_rotation-mate_rotation-): Places a statically classified reference pair without implying conjugate motion.
 
 
 ## Functions
 
 The module `_cg_pair_assembly` defines the following functions.
+
+### Function `_cg_polar_pair`
+
+
+Prepare and assemble a named shape's driver and conjugate mate once.
+
+**Parameters:**
+
+- `shape`: {array} Physical driver points, radius law, bounds and root policy.
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `width`: {number > 0} Extrusion width in mm.
+- `bore`: {number >= 0} Bore diameter in mm.
+- `pressure_angle`: {angle, default 20} Involute pressure angle.
+- `samples`: {integer >= 120, default 720} Motion intervals.
+- `phase`: {angle, default 0} Driver phase.
+- `together_built`: {boolean, default true} Assemble or display separated.
+- `backlash`: {undef or >= 0} Tangential thickness reduction.
+- `clearance`: {undef or >= 0} Extra root clearance.
+- `tooth_phase`: {angle, default 0} Tooth placement phase.
+- `driver_color`: {colour, default SteelBlue} Driver display colour.
+- `mate_color`: {colour, default Gold} Mate display colour.
+
+**Returns:**
+
+- `{geometry}`: Validated pair preserving the actual driver polygon.
+
+Back to [module description](#module-_cg_pair_assembly).
 
 ### Function `_cg_static_pair_assembly(reference_distance, together_built, driver_rotation, mate_rotation, ...)`
 

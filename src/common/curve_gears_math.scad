@@ -369,3 +369,28 @@ module _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_
 module _cg_gear_from_state(state,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false) {
     _cg_gear_from_pitch_points(state[0],modul,tooth_number,width,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only,state);
 }
+
+/**
+ * @function _cg_curve_gear
+ * @brief Orient and emit an already-defined curve as a body or complete 2D/3D gear.
+ * @param points {array of 2D points} Actual physical pitch polygon.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number} Extrusion width, unused for 2D.
+ * @param bore {number >= 0} Bore diameter in mm.
+ * @param pressure_angle {angle, default 20} Involute pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param radial_root {boolean, default false} Family-selected root policy.
+ * @param backlash {undef or >= 0} Tangential thickness reduction.
+ * @param clearance {undef or >= 0} Extra root clearance.
+ * @param body_only {boolean, default false} Emit the body alone.
+ * @param orientation {angle, default 0} Whole-gear orientation.
+ * @param is_2d {boolean, default false} Emit planar geometry.
+ * @param body_offset {number, default 0} Signed 2D body-contour offset.
+ * @return {geometry} Oriented geometry through the existing validated boundary owners.
+ */
+module _cg_curve_gear(points,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef,body_only=false,orientation=0,is_2d=false,body_offset=0) {
+    rotate([0,0,orientation])
+        if(is_2d) _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only,undef,body_offset);
+        else _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,body_only);
+}

@@ -170,3 +170,55 @@ function _cg_interp_y_for_x(tab,target) =
  * Logarithmic spiral: https://mathworld.wolfram.com/LogarithmicSpiral.html
  * Epitrochoid: https://mathworld.wolfram.com/Epitrochoid.html
  */
+
+/**
+ * @function _cg_sample_polar_radii
+ * @brief Sample a physical polar radius law at boundaries or integration midpoints.
+ * @param radius_function {function} Physical radius in mm for a polar angle in degrees.
+ * @param n {integer >= 3} Number of intervals.
+ * @param midpoint {boolean, default false} Select interval midpoints.
+ * @return {array of number} Ordered physical radii.
+ */
+function _cg_sample_polar_radii(radius_function,n,midpoint=false) =
+    assert(n>=3 && floor(n)==n,"polar_samples: samples must be an integer >= 3")
+    [for(i=[0:n-1]) radius_function(360*(i+(midpoint ? .5 : 0))/n)];
+
+/**
+ * @function _cg_polar_points_from_radii
+ * @brief Convert uniformly sampled physical-angle radii into their Cartesian polygon.
+ * @param radii {array of number} Radii in increasing polar-angle order, excluding a duplicate closing row.
+ * @return {array of 2D points} Cartesian polygon at the same physical angles.
+ */
+function _cg_polar_points_from_radii(radii) =
+    [for(i=[0:len(radii)-1]) _cg_polar([radii[i],360*i/len(radii)])];
+
+/**
+ * @function _cg_polar_shape
+ * @brief Bind one physical polar law to the shared sampled shape contract.
+ * @param radius_function {function} Unit-radius law in degrees.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param samples {integer >= 3} Boundary sampling count.
+ * @param bounds_function {function} Return `[lower, upper]` mate bounds for the scale.
+ * @param radial_root {boolean, default false} Use radial-root tooth placement.
+ * @param circumference {number, default pi} Perimeter normalisation constant.
+ * @return {array} `[points, physical_radius_function, lower, upper, radial_root]`.
+ */
+function _cg_polar_shape(radius_function,modul,tooth_number,samples,bounds_function,radial_root=false,circumference=_cg_pi) =
+    let(unit=_cg_polar_points_from_radii(_cg_sample_polar_radii(radius_function,samples)),
+        scale=_cg_pitch_scale_from_points(modul,tooth_number,unit,circumference),
+        bounds=bounds_function(scale))
+    [_cg_scale_points(scale,unit),function(theta) scale*radius_function(theta),bounds[0],bounds[1],radial_root];
+
+/**
+ * @function _cg_polar_shape_from_points
+ * @brief Bind an already-scaled polar polygon and its physical radius law.
+ * @param points {array of 2D points} Driver pitch polygon.
+ * @param radius_function {function} Physical radius law in degrees.
+ * @param lower {number or function} Mate solver lower bound.
+ * @param upper {number} Mate solver upper bound.
+ * @param radial_root {boolean, default false} Use radial-root tooth placement.
+ * @return {array} Shared polar shape descriptor.
+ */
+function _cg_polar_shape_from_points(points,radius_function,lower,upper,radial_root=false) =
+    [points,radius_function,lower,upper,radial_root];

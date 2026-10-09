@@ -41,33 +41,13 @@ https://mathshistory.st-andrews.ac.uk/Curves/Limacon/.
 
 > [`_cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)`](#function-_cg_pascal_buildmodultooth_numberwidthboreeccentricity025pressure_angle20tooth_phase0backlashundefclearanceundefsamples720orientation0body_onlyfalse): Internal pascal construction dispatcher.
 
-> [`_cg_pascal_centre_distance(scale, eccentricity)`](#function-_cg_pascal_centre_distancescale-eccentricity): Calculate the mathematical Pascal pair centre distance.
-
-> [`_cg_pascal_driver_radii(scale, eccentricity, n=360)`](#function-_cg_pascal_driver_radiiscale-eccentricity-n360): Evaluate Pascal radii at direct mate-construction angles.
-
-> [`_cg_pascal_mate_points`](#function-_cg_pascal_mate_points): Build Pascal mate pitch points and their shared motion table.
-
-> [`_cg_pascal_mate_points_from_driver`](#function-_cg_pascal_mate_points_from_driver): Build Pascal mate pitch points by advancing driver angle directly.
-
 > [`_cg_pascal_max_radius(scale, eccentricity)`](#function-_cg_pascal_max_radiusscale-eccentricity): Calculate the maximum Pascal pitch-curve radius.
 
 > [`_cg_pascal_min_radius(scale, eccentricity)`](#function-_cg_pascal_min_radiusscale-eccentricity): Calculate the minimum Pascal pitch-curve radius.
 
-> [`_cg_pascal_motion_radii`](#function-_cg_pascal_motion_radii): Evaluate Pascal radii at integration midpoints.
-
-> [`_cg_pascal_motion_table`](#function-_cg_pascal_motion_table): Build the shared Pascal phase-motion table.
-
 > [`_cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,samples=360,phase=0,together_built=true,experimental_nonconvex=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`](#function-_cg_pascal_pair_buildmodultooth_numberwidthboreeccentricity025pressure_angle20samples360phase0together_builttrueexperimental_nonconvexfalsebacklashundefclearanceundeftooth_phase0driver_colorsteelbluemate_colorgold): Internal pascal pair construction dispatcher.
 
-> [`_cg_pascal_point(scale, eccentricity, phi)`](#function-_cg_pascal_pointscale-eccentricity-phi): Evaluate one Cartesian point on a scaled Pascal curve.
-
-> [`_cg_pascal_points(scale, eccentricity, n)`](#function-_cg_pascal_pointsscale-eccentricity-n): Sample one complete Pascal pitch curve.
-
-> [`_cg_pascal_radius(scale, eccentricity, phi)`](#function-_cg_pascal_radiusscale-eccentricity-phi): Evaluate a scaled Pascal pitch-curve radius.
-
 > [`_cg_pascal_requires_radial_root(eccentricity)`](#function-_cg_pascal_requires_radial_rooteccentricity): Determine whether the Pascal curve requires radial-root tooth construction.
-
-> [`_cg_pascal_scale(modul, tooth_number, eccentricity, n, unit_points=undef)`](#function-_cg_pascal_scalemodul-tooth_number-eccentricity-n-unit_pointsundef): Scale a Pascal curve to the requested tooth pitch.
 
 > [`_cg_pascal_unit_radius(eccentricity, phi)`](#function-_cg_pascal_unit_radiuseccentricity-phi): Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-convex cases remain experimental.
 
@@ -350,75 +330,6 @@ Internal pascal construction dispatcher.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_centre_distance(scale, eccentricity)`
-
-
-Calculate the mathematical Pascal pair centre distance.
-
-**Parameters:**
-
-- `scale`: {number > 0} Mean pitch-radius scale in mm.
-- `eccentricity`: {0 <= e < 1} Pascal curve eccentricity.
-
-**Returns:**
-
-- `{number}`: Pair centre distance in mm.
-
-Back to [module description](#module-pascal).
-
-### Function `_cg_pascal_driver_radii(scale, eccentricity, n=360)`
-
-
-Evaluate Pascal radii at direct mate-construction angles.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale in millimetres.
-- `eccentricity`: {number} Pascal curve eccentricity.
-- `n`: {integer >= 1, default 360} Number of boundary intervals.
-
-**Returns:**
-
-- `{array of number}`: Driver radii in angular order.
-
-Back to [module description](#module-pascal).
-
-### Function `_cg_pascal_mate_points`
-
-
-Build Pascal mate pitch points and their shared motion table.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `eccentricity`: {number} Pascal curve eccentricity.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-pascal).
-
-### Function `_cg_pascal_mate_points_from_driver`
-
-
-Build Pascal mate pitch points by advancing driver angle directly.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `eccentricity`: {number} Pascal curve eccentricity.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of output points.
-
-**Returns:**
-
-- `{array of points}`: Cartesian mate pitch points.
-
-Back to [module description](#module-pascal).
-
 ### Function `_cg_pascal_max_radius(scale, eccentricity)`
 
 
@@ -451,41 +362,6 @@ Calculate the minimum Pascal pitch-curve radius.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_motion_radii`
-
-
-Evaluate Pascal radii at integration midpoints.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `eccentricity`: {number} Pascal curve eccentricity.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array of number}`: Sampled radii in angular order.
-
-Back to [module description](#module-pascal).
-
-### Function `_cg_pascal_motion_table`
-
-
-Build the shared Pascal phase-motion table.
-
-**Parameters:**
-
-- `scale`: {number > 0} Base radial scale.
-- `eccentricity`: {number} Pascal curve eccentricity.
-- `D`: {number > 0} Driver-to-mate centre distance.
-- `n`: {integer >= 1, default 360} Number of midpoint samples.
-
-**Returns:**
-
-- `{array}`: Monotonic driver-to-mate phase-motion table.
-
-Back to [module description](#module-pascal).
-
 ### Function `_cg_pascal_pair_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,samples=360,phase=0,together_built=true,experimental_nonconvex=false,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold")`
 
 
@@ -515,57 +391,6 @@ Internal pascal pair construction dispatcher.
 
 Back to [module description](#module-pascal).
 
-### Function `_cg_pascal_point(scale, eccentricity, phi)`
-
-
-Evaluate one Cartesian point on a scaled Pascal curve.
-
-**Parameters:**
-
-- `scale`: {number > 0} Mean pitch-radius scale in mm.
-- `eccentricity`: {0 <= e < 1} Pascal curve eccentricity.
-- `phi`: {angle} Polar angle in degrees.
-
-**Returns:**
-
-- `{array}`: Cartesian point `[x, y]` in mm.
-
-Back to [module description](#module-pascal).
-
-### Function `_cg_pascal_points(scale, eccentricity, n)`
-
-
-Sample one complete Pascal pitch curve.
-
-**Parameters:**
-
-- `scale`: {number > 0} Mean pitch-radius scale in mm.
-- `eccentricity`: {0 <= e < 1} Pascal curve eccentricity.
-- `n`: {integer >= 1, default 720} Number of samples.
-
-**Returns:**
-
-- `{array}`: Closed list of sampled Cartesian points.
-
-Back to [module description](#module-pascal).
-
-### Function `_cg_pascal_radius(scale, eccentricity, phi)`
-
-
-Evaluate a scaled Pascal pitch-curve radius.
-
-**Parameters:**
-
-- `scale`: {number > 0} Mean pitch-radius scale in mm.
-- `eccentricity`: {0 <= e < 1} Pascal curve eccentricity.
-- `phi`: {angle} Polar angle in degrees.
-
-**Returns:**
-
-- `{number}`: Radius in mm.
-
-Back to [module description](#module-pascal).
-
 ### Function `_cg_pascal_requires_radial_root(eccentricity)`
 
 
@@ -578,25 +403,6 @@ Determine whether the Pascal curve requires radial-root tooth construction.
 **Returns:**
 
 - `{boolean}`: True when the non-convex threshold is reached.
-
-Back to [module description](#module-pascal).
-
-### Function `_cg_pascal_scale(modul, tooth_number, eccentricity, n, unit_points=undef)`
-
-
-Scale a Pascal curve to the requested tooth pitch.
-
-**Parameters:**
-
-- `modul`: {number > 0} Tooth module in mm.
-- `tooth_number`: {integer >= 3} Number of teeth.
-- `eccentricity`: {0 <= e < 1} Pascal curve eccentricity.
-- `n`: {integer >= 1, default 720} Number of samples used for arc length.
-- `unit_points`: {array of points, default undef} Optional pre-sampled unit curve.
-
-**Returns:**
-
-- `{number}`: Mean pitch-radius scale in mm.
 
 Back to [module description](#module-pascal).
 
@@ -615,6 +421,43 @@ Evaluate the unit radial form r=s(1+e cos(phi)) of the Pascal limaçon; non-conv
 - `{number}`: Unit radius at the requested angle.
 
 Back to [module description](#module-pascal).
+
+
+Back to [top](#).
+
+## Module `Harmonic common`
+
+
+Coefficients are [harmonic, amplitude, phase in degrees]. Family adapters
+own admissibility, pitch scaling and sampling; this evaluator does not
+inherit the public Fourier family's coefficient-domain restrictions.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_harmonic_unit_radius`](#function-_cg_harmonic_unit_radius): Evaluate a finite cosine series around unit mean radius.
+
+
+## Functions
+
+The module `Harmonic common` defines the following functions.
+
+### Function `_cg_harmonic_unit_radius`
+
+
+Evaluate a finite cosine series around unit mean radius.
+
+**Parameters:**
+
+- `coefficients`: {array} Harmonic, amplitude and phase rows.
+- `theta`: {angle} Physical polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Unit radius before family-specific scaling.
+
+Back to [module description](#module-harmonic-common).
 
 
 Back to [top](#).

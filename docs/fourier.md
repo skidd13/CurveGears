@@ -525,6 +525,43 @@ Back to [module description](#module-fourier).
 
 Back to [top](#).
 
+## Module `Harmonic common`
+
+
+Coefficients are [harmonic, amplitude, phase in degrees]. Family adapters
+own admissibility, pitch scaling and sampling; this evaluator does not
+inherit the public Fourier family's coefficient-domain restrictions.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_harmonic_unit_radius`](#function-_cg_harmonic_unit_radius): Evaluate a finite cosine series around unit mean radius.
+
+
+## Functions
+
+The module `Harmonic common` defines the following functions.
+
+### Function `_cg_harmonic_unit_radius`
+
+
+Evaluate a finite cosine series around unit mean radius.
+
+**Parameters:**
+
+- `coefficients`: {array} Harmonic, amplitude and phase rows.
+- `theta`: {angle} Physical polar angle in degrees.
+
+**Returns:**
+
+- `{number}`: Unit radius before family-specific scaling.
+
+Back to [module description](#module-harmonic-common).
+
+
+Back to [top](#).
+
 ---
 
 [Back to the CurveGears README](../README.md)

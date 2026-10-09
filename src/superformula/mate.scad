@@ -1,5 +1,6 @@
 include <gear.scad>
 include <../common/mate/motion.scad>
+include <../common/mate/preparation.scad>
 include <../common/mate/placement.scad>
 
 /**
@@ -122,10 +123,9 @@ module curve_gear_superformula_mate(modul,tooth_number,width,bore,symmetry=4,a=1
     assert(a>0 && b>0 && n1>0 && n2>0 && n3>0,"superformula_gear_mate: a,b,n1,n2,n3 must be positive");
     assert(_cg_superformula_odd_valid(symmetry,a,b,n2,n3),"superformula_gear_mate: odd symmetry requires a=b and n2=n3 for 360-degree continuity");
     _cg_assert_samples(samples,"superformula_gear_mate: samples must be an integer >= 120");
-    scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples);
-    D=_cg_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,samples);
-    mate=_cg_superformula_mate_points(scale,symmetry,a,b,n1,n2,n3,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
+    shape=_cg_superformula_shape(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples);
+    data=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3]);
+    _cg_mate_boundary_from_pitch_points(data[2],modul,tooth_number,width,bore,pressure_angle,tooth_phase,shape[4],backlash,clearance);
 }
 
 /***
@@ -142,7 +142,7 @@ module curve_gear_superformula_mate(modul,tooth_number,width,bore,symmetry=4,a=1
  * @param samples {integer >= 120, default 360} Pitch-curve sampling density.
  * @return {number} Pair centre distance in mm.
  */
-function curve_gear_superformula_centre_distance(modul,tooth_number,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,samples=360) = let(scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples)) _cg_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,samples);
+function curve_gear_superformula_centre_distance(modul,tooth_number,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,samples=360) = _cg_polar_mate_distance(_cg_superformula_shape(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples),samples);
 
 /***
  * @function curve_gear_superformula_mate_rotation(modul, tooth_number, symmetry, a, b, n1, n2, n3, ...)
@@ -159,4 +159,4 @@ function curve_gear_superformula_centre_distance(modul,tooth_number,symmetry=4,a
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @return {angle} Mate rotation in degrees.
  */
-function curve_gear_superformula_mate_rotation(modul,tooth_number,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,samples=360,phase=0) = let(scale=_cg_superformula_scale(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples),D=_cg_superformula_centre_distance(scale,symmetry,a,b,n1,n2,n3,samples),motion=_cg_superformula_motion_table(scale,symmetry,a,b,n1,n2,n3,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
+function curve_gear_superformula_mate_rotation(modul,tooth_number,symmetry=4,a=1,b=1,n1=2.4,n2=2.4,n3=2.4,samples=360,phase=0) = _cg_polar_mate_rotation(_cg_superformula_shape(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples),samples,phase);

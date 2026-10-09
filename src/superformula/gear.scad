@@ -56,9 +56,8 @@ module _cg_superformula_build(modul,tooth_number,width,bore,symmetry=4,a=1,b=1,n
     assert(a>0 && b>0 && n1>0 && n2>0 && n3>0,"superformula_gear: a,b,n1,n2,n3 must be positive");
     assert(_cg_superformula_odd_valid(symmetry,a,b,n2,n3),"superformula_gear: odd symmetry requires a=b and n2=n3 for 360-degree continuity");
 
-    unit_points=_cg_superformula_points(1,symmetry,a,b,n1,n2,n3,samples);
-    scale=_cg_pitch_scale_from_points(modul,tooth_number,unit_points,_cg_pi);
-    points=_cg_scale_points(scale,unit_points);
+    shape=_cg_superformula_shape(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples);
+    points=shape[0];
 
     _cg_assert_samples(samples);
     rotate([0,0,orientation]) {

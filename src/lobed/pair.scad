@@ -51,18 +51,7 @@ module _cg_lobed_pair_build(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.1
     assert(lobes >= 2 && floor(lobes)==lobes,"lobed_gear_pair: lobes must be an integer >= 2");
     assert(lobe_depth > 0 && lobe_depth < 0.5,"lobed_gear_pair: lobe_depth must satisfy 0 < lobe_depth < 0.5");
     _cg_assert_samples(samples,"lobed_gear_pair: samples must be an integer >= 120");
-    unit_points=_cg_lobed_unit_points(lobes,lobe_depth,samples);
-    scale=_cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,samples,unit_points);
-    mid_radii=_cg_lobed_motion_radii(scale,lobes,lobe_depth,samples);
-    D=_cg_solve_mate_distance(mid_radii,scale*(1+lobe_depth)+.01,3*scale);
-    driver_radii=[for(i=[0:samples-1]) _cg_lobed_radius(scale,lobes,lobe_depth,360*i/samples)];
-    integration_state=_cg_motion_integration_state(driver_radii,mid_radii,D);
-    motion=integration_state[2];
-    closure_error=_cg_motion_closure_error(motion);
-    assert(abs(closure_error) < 0.08,"lobed_gear_pair: conjugate closure error too large");
-    driver=_cg_scale_points(scale,unit_points);
-    mate=_cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state);
-    _cg_pair_assembly(D,motion,phase,together_built,_cg_pair_point_extent(driver),_cg_pair_point_extent(mate),modul,driver,mate,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,false,false,driver_color,mate_color);
+    _cg_polar_pair(_cg_lobed_shape(modul,tooth_number,lobes,lobe_depth,samples),modul,tooth_number,width,bore,pressure_angle,samples,phase,together_built,backlash,clearance,tooth_phase,driver_color,mate_color);
 }
 
 module curve_gear_lobed_pair(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.13,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {

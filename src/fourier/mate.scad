@@ -1,4 +1,5 @@
 include <gear.scad>
+include <../common/mate/preparation.scad>
 include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
 
@@ -89,9 +90,8 @@ function _cg_fourier_mate_points(base,coefficients,D,n=360) = _cg_fourier_mate_p
 module curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360) {
     assert(_cg_fourier_coefficients_valid(coefficients),"fourier_gear_mate: invalid coefficients");
     _cg_assert_samples(samples,"fourier_gear_mate: samples must be an integer >= 120");
-    base=modul*tooth_number/2;
-    D=_cg_fourier_centre_distance(base,coefficients,samples);
-    mate=_cg_fourier_mate_points(base,coefficients,D,samples);
+    shape=_cg_fourier_shape(modul,tooth_number,coefficients,samples);
+    mate=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3])[2];
     _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
 }
 
@@ -104,7 +104,7 @@ module curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients=[[2,.1
  * @param samples {integer >= 120, default 360} Motion-table sampling density.
  * @return {number} Pair centre distance in mm.
  */
-function curve_gear_fourier_centre_distance(modul,tooth_number,coefficients=[[2,.10,0]],samples=360) = _cg_fourier_centre_distance(modul*tooth_number/2,coefficients,samples);
+function curve_gear_fourier_centre_distance(modul,tooth_number,coefficients=[[2,.10,0]],samples=360) = _cg_polar_mate_distance(_cg_fourier_shape(modul,tooth_number,coefficients,samples),samples);
 /***
  * @function curve_gear_fourier_mate_rotation(modul, tooth_number, coefficients, samples, phase)
  * @brief Return Fourier mate rotation for a driver phase.
@@ -115,4 +115,4 @@ function curve_gear_fourier_centre_distance(modul,tooth_number,coefficients=[[2,
  * @param phase {angle, default 0} Driver phase in degrees; negative and full-turn phases remain unwrapped.
  * @return {angle} Mate rotation in degrees.
  */
-function curve_gear_fourier_mate_rotation(modul,tooth_number,coefficients=[[2,.10,0]],samples=360,phase=0) = let(base=modul*tooth_number/2,D=_cg_fourier_centre_distance(base,coefficients,samples),motion=_cg_fourier_motion_table(base,coefficients,D,samples)) _cg_mate_rotation_for_phase(motion,phase);
+function curve_gear_fourier_mate_rotation(modul,tooth_number,coefficients=[[2,.10,0]],samples=360,phase=0) = _cg_polar_mate_rotation(_cg_fourier_shape(modul,tooth_number,coefficients,samples),samples,phase);

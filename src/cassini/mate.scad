@@ -1,5 +1,6 @@
 include <gear.scad>
 include <../common/mate/motion.scad>
+include <../common/mate/preparation.scad>
 include <../common/mate/placement.scad>
 
 /**
@@ -84,10 +85,9 @@ function _cg_cassini_mate_points(scale,focus_ratio,D,n=720) = _cg_cassini_mate_p
 module curve_gear_cassini_mate(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     assert(_cg_cassini_focus_ratio_valid(focus_ratio),"cassini_gear_mate: focus_ratio must satisfy 0 <= focus_ratio < 1");
     _cg_assert_samples(samples,"cassini_gear_mate: samples must be an integer >= 120");
-    scale=_cg_cassini_scale(modul,tooth_number,focus_ratio,samples);
-    D=_cg_cassini_centre_distance(scale,focus_ratio,samples);
-    mate=_cg_cassini_mate_points(scale,focus_ratio,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
+    shape=_cg_cassini_shape(modul,tooth_number,focus_ratio,samples);
+    data=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3]);
+    _cg_mate_boundary_from_pitch_points(data[2],modul,tooth_number,width,bore,pressure_angle,tooth_phase,shape[4],backlash,clearance);
 }
 
 /**
@@ -100,7 +100,7 @@ module curve_gear_cassini_mate(modul,tooth_number,width,bore,focus_ratio=.78,pre
  * @return {number} Pair centre distance in mm.
  */
 function curve_gear_cassini_centre_distance(modul,tooth_number,focus_ratio=.78,samples=720) =
-    let(scale=_cg_cassini_scale(modul,tooth_number,focus_ratio,samples)) _cg_cassini_centre_distance(scale,focus_ratio,samples);
+    _cg_polar_mate_distance(_cg_cassini_shape(modul,tooth_number,focus_ratio,samples),samples);
 
 /**
  * @function curve_gear_cassini_mate_rotation
@@ -113,5 +113,4 @@ function curve_gear_cassini_centre_distance(modul,tooth_number,focus_ratio=.78,s
  * @return {angle} Mate display rotation.
  */
 function curve_gear_cassini_mate_rotation(modul,tooth_number,focus_ratio=.78,samples=720,phase=0) =
-    let(scale=_cg_cassini_scale(modul,tooth_number,focus_ratio,samples),D=_cg_cassini_centre_distance(scale,focus_ratio,samples),motion=_cg_cassini_motion_table(scale,focus_ratio,D,samples))
-    _cg_mate_rotation_for_phase(motion,phase);
+    _cg_polar_mate_rotation(_cg_cassini_shape(modul,tooth_number,focus_ratio,samples),samples,phase);

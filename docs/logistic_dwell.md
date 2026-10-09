@@ -40,6 +40,8 @@ Reference: https://en.wikipedia.org/wiki/Logistic_function.
 
 > [`_cg_logistic_dwell_parameters_valid(gain,depth)`](#function-_cg_logistic_dwell_parameters_validgaindepth): Check the shared curve-parameter contract for every family entry point.
 
+> [`_cg_logistic_dwell_shape`](#function-_cg_logistic_dwell_shape): Bind the named curve once for driver, mate and numeric consumers.
+
 
 ## Functions
 
@@ -306,6 +308,174 @@ Check the shared curve-parameter contract for every family entry point.
 - `{boolean}`: True when all curve parameters are supported.
 
 Back to [module description](#module-logistic-dwell).
+
+### Function `_cg_logistic_dwell_shape`
+
+
+Bind the named curve once for driver, mate and numeric consumers.
+
+**Parameters:**
+
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Number of teeth.
+- `gain`: {number} Named curve control.
+- `depth`: {number} Named curve control.
+- `samples`: {integer, default 720} Curve and motion sampling count.
+
+**Returns:**
+
+- `{array}`: Shared polar shape descriptor; the family owns only its mathematical controls.
+
+Back to [module description](#module-logistic-dwell).
+
+
+Back to [top](#).
+
+## Module `Mate preparation`
+
+
+Families own their radius laws, sampling and distance bounds. This layer
+composes the existing solver and integration once per invocation.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_mate_distance_from_radii`](#function-_cg_mate_distance_from_radii): Solve the existing rolling equation after checking its physical bracket.
+
+> [`_cg_mate_preparation`](#function-_cg_mate_preparation): Share distance, motion integration and conjugate pitch construction.
+
+> [`_cg_mate_radii_valid`](#function-_cg_mate_radii_valid): Check finite positive physical radii without building geometry.
+
+> [`_cg_polar_mate_distance`](#function-_cg_polar_mate_distance): Solve one named shape's physical centre distance without building unused geometry.
+
+> [`_cg_polar_mate_rotation`](#function-_cg_polar_mate_rotation): Solve distance and integrated rolling motion for a named shape and phase.
+
+
+## Functions
+
+The module `Mate preparation` defines the following functions.
+
+### Function `_cg_mate_distance_from_radii`
+
+
+Solve the existing rolling equation after checking its physical bracket.
+
+**Parameters:**
+
+- `mid_radii`: {array of number} Physical radii at integration midpoints.
+- `lower`: {number or function} Lower distance bound strictly above the midpoint radii.
+- `upper`: {number} Upper distance bound enclosing one-turn closure.
+
+**Returns:**
+
+- `{number}`: Solved centre distance in millimetres.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_mate_preparation`
+
+
+Share distance, motion integration and conjugate pitch construction.
+
+**Parameters:**
+
+- `driver_radii`: {array of number} Radii at output angle boundaries.
+- `mid_radii`: {array of number} Radii at the corresponding interval midpoints.
+- `lower`: {number, function or undef} Family-selected lower solver bound.
+- `upper`: {number or undef} Family-selected upper solver bound.
+- `distance`: {number or undef} Optional already solved centre distance.
+
+**Returns:**
+
+- `{array}`: `[distance, motion table, mate pitch points]`, consumed by shared geometry operators.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_mate_radii_valid`
+
+
+Check finite positive physical radii without building geometry.
+
+**Parameters:**
+
+- `radii`: {array of number} Boundary or midpoint radii in millimetres.
+
+**Returns:**
+
+- `{boolean}`: True for at least three finite positive radii.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_polar_mate_distance`
+
+
+Solve one named shape's physical centre distance without building unused geometry.
+
+**Parameters:**
+
+- `shape`: {array} `[driver points, radius function, lower bound, upper bound, radial root]`.
+- `n`: {integer >= 3} Number of motion intervals.
+
+**Returns:**
+
+- `{number}`: Centre distance in millimetres.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_polar_mate_rotation`
+
+
+Solve distance and integrated rolling motion for a named shape and phase.
+
+**Parameters:**
+
+- `shape`: {array} Physical shape and bound descriptor.
+- `n`: {integer >= 3} Number of motion intervals.
+- `phase`: {angle} Unwrapped driver phase in degrees.
+
+**Returns:**
+
+- `{angle}`: Mate display rotation in degrees.
+
+Back to [module description](#module-mate-preparation).
+
+
+Back to [top](#).
+
+## Module `Saturating common`
+
+
+Family adapters own parameter validation, correction harmonics and scaling.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_saturating_unit_radius`](#function-_cg_saturating_unit_radius): Evaluate a bounded tanh modulation around unit mean radius.
+
+
+## Functions
+
+The module `Saturating common` defines the following functions.
+
+### Function `_cg_saturating_unit_radius`
+
+
+Evaluate a bounded tanh modulation around unit mean radius.
+
+**Parameters:**
+
+- `theta`: {angle} Physical polar angle in degrees.
+- `harmonic`: {integer > 0} Number of modulation periods per turn.
+- `transition`: {number > 0} Saturation transition gain.
+- `amplitude`: {number} Signed modulation amplitude.
+
+**Returns:**
+
+- `{number}`: Unit radius using the existing non-overflowing tanh helper.
+
+Back to [module description](#module-saturating-common).
 
 
 Back to [top](#).

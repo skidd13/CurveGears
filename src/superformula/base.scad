@@ -106,6 +106,15 @@ function _cg_superformula_radius(scale,symmetry,a,b,n1,n2,n3,theta) = scale*_cg_
  */
 function _cg_superformula_max_radius(scale,symmetry,a,b,n1,n2,n3,n=360) =
     max([for(i=[0:n-1]) _cg_superformula_radius(scale,symmetry,a,b,n1,n2,n3,360*i/n)]);
+
+/** @function _cg_superformula_shape
+ *  @brief Bind the sampled superformula polygon and its physical radius law.
+ */
+function _cg_superformula_shape(modul,tooth_number,symmetry,a,b,n1,n2,n3,samples=360) =
+    _cg_polar_shape(
+        function(theta) _cg_superformula_unit_radius(symmetry,a,b,n1,n2,n3,theta),
+        modul,tooth_number,samples,
+        function(scale) let(mx=_cg_superformula_max_radius(scale,symmetry,a,b,n1,n2,n3,720)) [mx+.01,4*mx]);
 /***
  * @function _cg_superformula_odd_valid(symmetry, a, b, n2, n3, tol)
  * @brief Check the continuity constraints for odd superformula symmetry.

@@ -17,6 +17,7 @@ import subprocess
 
 from .manifest import families as manifest_families
 from .manifest import load as load_manifest
+from .manifest import source_family
 from .stl import assert_closed_mesh, compare_reference_tooth, sha
 
 
@@ -150,7 +151,7 @@ def check_invalid(families: list[str]) -> list[dict]:
     rows = []
     for source in sorted((ROOT / "tests").rglob("invalid_*.scad")):
         relative = source.relative_to(ROOT / "tests")
-        family = relative.parts[0]
+        family = source_family(relative)
         if family not in families:
             continue
         marker = (BUILD / "invalid" / relative).with_suffix(".failed")

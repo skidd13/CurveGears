@@ -7,6 +7,7 @@
  * Reference: https://en.wikipedia.org/wiki/Power_function.
  */
 include <../common/curve_gears_math.scad>
+include <../common/harmonic.scad>
 
 /**
  * @function _cg_cosine_quintic_parameters_valid(depth,harmonic)
@@ -19,15 +20,20 @@ function _cg_cosine_quintic_parameters_valid(depth,harmonic) = depth>0 && depth<
 
 function _cg_cosine_quintic_unit_radius(theta,depth=.19,harmonic=2) =
     assert(_cg_cosine_quintic_parameters_valid(depth,harmonic),"cosine_quintic: invalid curve parameters")
-    let(c=cos(harmonic*theta)) 1+depth*(c>=0 ? pow(c,5) : -pow(-c,5));
+    _cg_harmonic_unit_radius([[harmonic,10*depth/16,0],[3*harmonic,5*depth/16,0],[5*harmonic,depth/16,0]],theta);
 
-function _cg_cosine_quintic_unit_points(samples=720,depth=.19,harmonic=2) =
-    [for(i=[0:samples-1]) let(theta=360*i/samples,r=_cg_cosine_quintic_unit_radius(theta,depth,harmonic)) [r*cos(theta),r*sin(theta)]];
-
-function _cg_cosine_quintic_scale(modul,tooth_number,samples=720,depth=.19,harmonic=2,unit_points=undef) =
-    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_cosine_quintic_unit_points(samples,depth,harmonic) : unit_points,_cg_pi);
-
-function _cg_cosine_quintic_points(modul,tooth_number,samples=720,depth=.19,harmonic=2,unit_points=undef) =
-    let(u=is_undef(unit_points) ? _cg_cosine_quintic_unit_points(samples,depth,harmonic) : unit_points,
-        scale=_cg_cosine_quintic_scale(modul,tooth_number,samples,depth,harmonic,u))
-    _cg_scale_points(scale,u);
+/**
+ * @function _cg_cosine_quintic_shape
+ * @brief Bind the named curve once for driver, mate and numeric consumers.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param depth {number} Named curve control.
+ * @param harmonic {number} Named curve control.
+ * @param samples {integer, default 720} Curve and motion sampling count.
+ * @return {array} Shared polar shape descriptor; the family owns only its mathematical controls.
+ */
+function _cg_cosine_quintic_shape(modul,tooth_number,depth=.19,harmonic=2,samples=720) =
+    _cg_polar_shape(
+        function(theta) _cg_cosine_quintic_unit_radius(theta,depth,harmonic),
+        modul,tooth_number,samples,
+        function(scale) [scale*(1+depth)+.01,3*scale]);

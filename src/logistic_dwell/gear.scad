@@ -5,12 +5,8 @@ module _cg_logistic_dwell_build(modul,tooth_number,width,bore,gain=8,depth=.2,pr
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"logistic_dwell_gear: tooth_number must be an integer >= 3");
     assert(_cg_logistic_dwell_parameters_valid(gain,depth),"logistic_dwell_gear: invalid curve parameters");
     _cg_assert_samples(samples,"logistic_dwell_gear: samples must be an integer >= 120");
-    points=_cg_logistic_dwell_points(modul,tooth_number,samples,gain,depth);
-    rotate([0,0,orientation])
-        if(is_2d)
-            _cg_gear_2d_from_pitch_points(points,modul,tooth_number,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only,undef,body_offset);
-        else
-            _cg_gear_from_pitch_points(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only);
+    points=_cg_logistic_dwell_shape(modul,tooth_number,gain,depth,samples)[0];
+    _cg_curve_gear(points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,body_only,orientation,is_2d,body_offset);
 }
 
 /***

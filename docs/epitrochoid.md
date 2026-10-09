@@ -622,6 +622,8 @@ family modules. This layer contains only the shared curve post-processing.
 
 > [`_cg_trochoid_scale_from_points`](#function-_cg_trochoid_scale_from_points): Scale a sampled unit curve to the requested tooth pitch.
 
+> [`_cg_trochoid_shape`](#function-_cg_trochoid_shape): Bind a sampled trochoid polygon to the shared physical-angle shape contract.
+
 
 ## Functions
 
@@ -732,6 +734,25 @@ No parameters
 **Returns:**
 
 No return
+
+Back to [module description](#module-trochoid-common).
+
+### Function `_cg_trochoid_shape`
+
+
+Bind a sampled trochoid polygon to the shared physical-angle shape contract.
+
+**Parameters:**
+
+- `unit_points`: {array of 2D points} Unit-scale driver polygon.
+- `scale`: {number > 0} Perimeter-derived physical scale.
+- `lower`: {number} Solver lower bound.
+- `upper`: {number} Solver upper bound.
+- `radial_root`: {boolean, default false} Use radial-root tooth placement.
+
+**Returns:**
+
+- `{array}`: `[driver points, physical radius function, lower, upper, radial_root]`.
 
 Back to [module description](#module-trochoid-common).
 

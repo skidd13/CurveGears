@@ -264,6 +264,118 @@ Back to [module description](#module-mate-motion).
 
 Back to [top](#).
 
+## Module `Mate preparation`
+
+
+Families own their radius laws, sampling and distance bounds. This layer
+composes the existing solver and integration once per invocation.
+
+### Brief content:
+
+**Functions**:
+
+> [`_cg_mate_distance_from_radii`](#function-_cg_mate_distance_from_radii): Solve the existing rolling equation after checking its physical bracket.
+
+> [`_cg_mate_preparation`](#function-_cg_mate_preparation): Share distance, motion integration and conjugate pitch construction.
+
+> [`_cg_mate_radii_valid`](#function-_cg_mate_radii_valid): Check finite positive physical radii without building geometry.
+
+> [`_cg_polar_mate_distance`](#function-_cg_polar_mate_distance): Solve one named shape's physical centre distance without building unused geometry.
+
+> [`_cg_polar_mate_rotation`](#function-_cg_polar_mate_rotation): Solve distance and integrated rolling motion for a named shape and phase.
+
+
+## Functions
+
+The module `Mate preparation` defines the following functions.
+
+### Function `_cg_mate_distance_from_radii`
+
+
+Solve the existing rolling equation after checking its physical bracket.
+
+**Parameters:**
+
+- `mid_radii`: {array of number} Physical radii at integration midpoints.
+- `lower`: {number or function} Lower distance bound strictly above the midpoint radii.
+- `upper`: {number} Upper distance bound enclosing one-turn closure.
+
+**Returns:**
+
+- `{number}`: Solved centre distance in millimetres.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_mate_preparation`
+
+
+Share distance, motion integration and conjugate pitch construction.
+
+**Parameters:**
+
+- `driver_radii`: {array of number} Radii at output angle boundaries.
+- `mid_radii`: {array of number} Radii at the corresponding interval midpoints.
+- `lower`: {number, function or undef} Family-selected lower solver bound.
+- `upper`: {number or undef} Family-selected upper solver bound.
+- `distance`: {number or undef} Optional already solved centre distance.
+
+**Returns:**
+
+- `{array}`: `[distance, motion table, mate pitch points]`, consumed by shared geometry operators.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_mate_radii_valid`
+
+
+Check finite positive physical radii without building geometry.
+
+**Parameters:**
+
+- `radii`: {array of number} Boundary or midpoint radii in millimetres.
+
+**Returns:**
+
+- `{boolean}`: True for at least three finite positive radii.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_polar_mate_distance`
+
+
+Solve one named shape's physical centre distance without building unused geometry.
+
+**Parameters:**
+
+- `shape`: {array} `[driver points, radius function, lower bound, upper bound, radial root]`.
+- `n`: {integer >= 3} Number of motion intervals.
+
+**Returns:**
+
+- `{number}`: Centre distance in millimetres.
+
+Back to [module description](#module-mate-preparation).
+
+### Function `_cg_polar_mate_rotation`
+
+
+Solve distance and integrated rolling motion for a named shape and phase.
+
+**Parameters:**
+
+- `shape`: {array} Physical shape and bound descriptor.
+- `n`: {integer >= 3} Number of motion intervals.
+- `phase`: {angle} Unwrapped driver phase in degrees.
+
+**Returns:**
+
+- `{angle}`: Mate display rotation in degrees.
+
+Back to [module description](#module-mate-preparation).
+
+
+Back to [top](#).
+
 ---
 
 [Back to the CurveGears README](../README.md)

@@ -7,6 +7,7 @@
  * Reference: https://en.wikipedia.org/wiki/Hyperbolic_function.
  */
 include <../common/curve_gears_math.scad>
+include <../common/saturating.scad>
 
 /**
  * @function _cg_tanh_triad_parameters_valid(transition,crest,correction)
@@ -20,15 +21,21 @@ function _cg_tanh_triad_parameters_valid(transition,crest,correction) = transiti
 
 function _cg_tanh_triad_unit_radius(theta,transition=1.8,crest=.13,correction=.03) =
     assert(_cg_tanh_triad_parameters_valid(transition,crest,correction),"tanh_triad: invalid curve parameters")
-    1+crest*_cg_tanh(transition*sin(3*theta))+correction*cos(6*theta+20);
+    _cg_saturating_unit_radius(theta,3,transition,crest)+correction*cos(6*theta+20);
 
-function _cg_tanh_triad_unit_points(samples=720,transition=1.8,crest=.13,correction=.03) =
-    [for(i=[0:samples-1]) let(theta=360*i/samples,r=_cg_tanh_triad_unit_radius(theta,transition,crest,correction)) [r*cos(theta),r*sin(theta)]];
-
-function _cg_tanh_triad_scale(modul,tooth_number,samples=720,transition=1.8,crest=.13,correction=.03,unit_points=undef) =
-    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_tanh_triad_unit_points(samples,transition,crest,correction) : unit_points,_cg_pi);
-
-function _cg_tanh_triad_points(modul,tooth_number,samples=720,transition=1.8,crest=.13,correction=.03,unit_points=undef) =
-    let(u=is_undef(unit_points) ? _cg_tanh_triad_unit_points(samples,transition,crest,correction) : unit_points,
-        scale=_cg_tanh_triad_scale(modul,tooth_number,samples,transition,crest,correction,u))
-    _cg_scale_points(scale,u);
+/**
+ * @function _cg_tanh_triad_shape
+ * @brief Bind the named curve once for driver, mate and numeric consumers.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param transition {number} Named curve control.
+ * @param crest {number} Named curve control.
+ * @param correction {number} Named curve control.
+ * @param samples {integer, default 720} Curve and motion sampling count.
+ * @return {array} Shared polar shape descriptor; the family owns only its mathematical controls.
+ */
+function _cg_tanh_triad_shape(modul,tooth_number,transition=1.8,crest=.13,correction=.03,samples=720) =
+    _cg_polar_shape(
+        function(theta) _cg_tanh_triad_unit_radius(theta,transition,crest,correction),
+        modul,tooth_number,samples,
+        function(scale) [function(mid) let(bound=scale*(1+crest)+.01) bound>max(mid) ? bound : max(mid)+.01,3*scale]);

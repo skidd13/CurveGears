@@ -10,7 +10,7 @@
  * generation.
  * Reference: https://encyclopediaofmath.org/wiki/Epitrochoid.
  */
-include <../common/trochoid/base.scad>
+include <../common/trochoid.scad>
 
 /***
  * @function _cg_epitrochoid_point(R, r, d, theta)
@@ -77,3 +77,7 @@ function _cg_epitrochoid_curve_radius(scale,R,r,d,theta) = _cg_trochoid_curve_ra
  * @return {array} Closed list of sampled Cartesian points in mm.
  */
 function _cg_epitrochoid_points_scaled(scale,R,r,d,n=720) = _cg_trochoid_points_scaled_from_points(scale,_cg_epitrochoid_points(R,r,d,n));
+
+function _cg_epitrochoid_shape(modul,tooth_number,R=3,r=1,d=2,samples=720) =
+    let(unit=_cg_epitrochoid_points(R,r,d,samples),scale=_cg_trochoid_scale_from_points(modul,tooth_number,unit),mx=max([for(p=_cg_epitrochoid_points_scaled(scale,R,r,d,720)) _cg_vlen(p)]))
+    _cg_trochoid_shape(unit,scale,mx+.01,4*mx);

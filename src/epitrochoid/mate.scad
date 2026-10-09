@@ -1,4 +1,5 @@
 include <gear.scad>
+include <../common/mate/preparation.scad>
 include <../common/mate/motion.scad>
 include <../common/mate/placement.scad>
 
@@ -96,9 +97,9 @@ function _cg_epitrochoid_mate_points(scale,R,r,d,D,n=360) = _cg_epitrochoid_mate
  */
 module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     _cg_assert_samples(samples,"epitrochoid_gear_mate: samples must be an integer >= 120");
-    scale=_cg_epitrochoid_scale(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples);
-    D=_cg_epitrochoid_centre_distance(scale,major_ratio,rolling_ratio,offset_ratio,samples);
-    mate=_cg_epitrochoid_mate_points(scale,major_ratio,rolling_ratio,offset_ratio,D,samples);
+    shape=_cg_epitrochoid_shape(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples);
+    D=_cg_polar_mate_distance(shape,samples);
+    mate=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3])[2];
     // Deeper hidden support reaches the body at the corrected high-curvature waist.
     state=_cg_tooth_geometry_state(mate,modul,tooth_number,pressure_angle,tooth_phase,false,backlash,clearance,false,true,root_support=.5);
     _cg_gear_from_state(state,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance,false);
@@ -115,7 +116,7 @@ module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,r
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  * @return {number} Pair centre distance in mm.
  */
-function curve_gear_epitrochoid_centre_distance(modul,tooth_number,major_ratio=3,rolling_ratio=1,offset_ratio=.35,samples=720) = let(scale=_cg_epitrochoid_scale(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples)) _cg_epitrochoid_centre_distance(scale,major_ratio,rolling_ratio,offset_ratio,samples);
+function curve_gear_epitrochoid_centre_distance(modul,tooth_number,major_ratio=3,rolling_ratio=1,offset_ratio=.35,samples=720) = _cg_polar_mate_distance(_cg_epitrochoid_shape(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples),samples);
 
 /***
  * @function curve_gear_epitrochoid_mate_rotation(modul, tooth_number, major_ratio, rolling_ratio, offset_ratio, ...)
@@ -129,4 +130,4 @@ function curve_gear_epitrochoid_centre_distance(modul,tooth_number,major_ratio=3
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @return {angle} Mate rotation in degrees.
  */
-function curve_gear_epitrochoid_mate_rotation(modul,tooth_number,major_ratio=3,rolling_ratio=1,offset_ratio=.35,samples=720,phase=0) = let(scale=_cg_epitrochoid_scale(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples),D=_cg_epitrochoid_centre_distance(scale,major_ratio,rolling_ratio,offset_ratio,samples),motion=_cg_epitrochoid_motion_table(scale,major_ratio,rolling_ratio,offset_ratio,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
+function curve_gear_epitrochoid_mate_rotation(modul,tooth_number,major_ratio=3,rolling_ratio=1,offset_ratio=.35,samples=720,phase=0) = _cg_polar_mate_rotation(_cg_epitrochoid_shape(modul,tooth_number,major_ratio,rolling_ratio,offset_ratio,samples),samples,phase);

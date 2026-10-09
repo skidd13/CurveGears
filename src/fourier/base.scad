@@ -12,6 +12,7 @@
  * https://mathworld.wolfram.com/FourierSeries.html.
  */
 include <../common/curve_gears_math.scad>
+include <../common/harmonic.scad>
 
 /**
  * @function _cg_fourier_radius
@@ -22,7 +23,7 @@ include <../common/curve_gears_math.scad>
  * @return {number} Polar radius.
  */
 function _cg_fourier_radius(base,coefficients,theta) =
-    base*(1+_cg_sum([for(c=coefficients) c[1]*cos(c[0]*theta+c[2])]));
+    base*_cg_harmonic_unit_radius(coefficients,theta);
 
 /**
  * @function _cg_fourier_point
@@ -55,6 +56,10 @@ function _cg_fourier_coefficients_valid(coefficients) =
     && min([for(c=coefficients) len(c)==3 && c[0]>=1 && floor(c[0])==c[0] ? 1 : 0])==1
     && _cg_sum([for(c=coefficients) abs(c[1])])<.9;
 
+function _cg_fourier_shape(modul,tooth_number,coefficients=[[2,.10,0]],samples=720) =
+    let(base=modul*tooth_number/2,points=_cg_fourier_points(base,coefficients,samples),mx=max(_cg_sample_polar_radii(function(theta) _cg_fourier_radius(base,coefficients,theta),max(720,samples),true)))
+    _cg_polar_shape_from_points(points,function(theta) _cg_fourier_radius(base,coefficients,theta),mx+.01,4*mx);
+
 module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
 /***
  * @function _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false)
@@ -77,7 +82,7 @@ module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],
     assert(tooth_number>=3 && floor(tooth_number)==tooth_number,"fourier_gear: tooth_number must be an integer >= 3");
     assert(_cg_fourier_coefficients_valid(coefficients),"fourier_gear: coefficients must be [positive_integer_harmonic, amplitude, phase] with sum(abs(amplitude)) < 0.9");
     _cg_assert_samples(samples,"fourier_gear: samples must be an integer >= 120");
-    points=_cg_fourier_points(modul*tooth_number/2,coefficients,samples);
+    points=_cg_fourier_shape(modul,tooth_number,coefficients,samples)[0];
     rotate([0,0,orientation]) {
         if (is_2d)
             _cg_gear_2d_from_pitch_points(points, modul, tooth_number, bore, pressure_angle, tooth_phase, false, backlash, clearance, body_only, undef, body_offset);

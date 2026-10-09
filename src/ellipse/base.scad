@@ -45,3 +45,9 @@ function _cg_ellipse_radius(a,b,theta) = a*b/sqrt(pow(b*cos(theta),2)+pow(a*sin(
  * @return {array} Cartesian point `[x, y]` in mm.
  */
 function _cg_ellipse_driver_point(a,b,theta) = let(r=_cg_ellipse_radius(a,b,theta)) [r*cos(theta),r*sin(theta)];
+
+function _cg_ellipse_shape(modul,tooth_number,eccentricity,samples=480) =
+    let(axes=_cg_ellipse_axes(modul,tooth_number,eccentricity),a=axes[0],b=axes[1])
+    _cg_polar_shape_from_points(
+        [for(i=[0:samples-1]) _cg_ellipse_driver_point(a,b,360*i/samples)],
+        function(theta) _cg_ellipse_radius(a,b,theta),a+.01,3*a);

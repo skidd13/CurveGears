@@ -1,5 +1,6 @@
 include <gear.scad>
 include <../common/mate/motion.scad>
+include <../common/mate/preparation.scad>
 include <../common/mate/placement.scad>
 
 /**
@@ -81,11 +82,9 @@ function _cg_ellipse_mate_points(a,b,D,n=480) = _cg_ellipse_mate_points_from_dri
 module curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480) {
     assert(eccentricity >= 0 && eccentricity < 1,"elliptical_gear_mate: eccentricity must satisfy 0 <= e < 1");
     _cg_assert_samples(samples,"elliptical_gear_mate: samples must be an integer >= 120");
-    axes=_cg_ellipse_axes(modul,tooth_number,eccentricity);
-    a=axes[0]; b=axes[1];
-    D=_cg_ellipse_centre_distance(a,b,samples);
-    mate=_cg_ellipse_mate_points(a,b,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
+    shape=_cg_ellipse_shape(modul,tooth_number,eccentricity,samples);
+    data=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3]);
+    _cg_mate_boundary_from_pitch_points(data[2],modul,tooth_number,width,bore,pressure_angle,tooth_phase,shape[4],backlash,clearance);
 }
 
 /***
@@ -97,7 +96,7 @@ module curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity=0.62,p
  * @param samples {integer >= 120, default 480} Motion-table sampling density.
  * @return {number} Pair centre distance in mm.
  */
-function curve_gear_ellipse_centre_distance(modul,tooth_number,eccentricity=0.62,samples=480) = let(ax=_cg_ellipse_axes(modul,tooth_number,eccentricity)) _cg_ellipse_centre_distance(ax[0],ax[1],samples);
+function curve_gear_ellipse_centre_distance(modul,tooth_number,eccentricity=0.62,samples=480) = _cg_polar_mate_distance(_cg_ellipse_shape(modul,tooth_number,eccentricity,samples),samples);
 
 /***
  * @function curve_gear_ellipse_mate_rotation(modul, tooth_number, eccentricity, ...)
@@ -109,4 +108,4 @@ function curve_gear_ellipse_centre_distance(modul,tooth_number,eccentricity=0.62
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @return {angle} Mate rotation in degrees.
  */
-function curve_gear_ellipse_mate_rotation(modul,tooth_number,eccentricity=0.62,samples=480,phase=0) = let(ax=_cg_ellipse_axes(modul,tooth_number,eccentricity),D=_cg_ellipse_centre_distance(ax[0],ax[1],samples),motion=_cg_ellipse_motion_table(ax[0],ax[1],D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
+function curve_gear_ellipse_mate_rotation(modul,tooth_number,eccentricity=0.62,samples=480,phase=0) = _cg_polar_mate_rotation(_cg_ellipse_shape(modul,tooth_number,eccentricity,samples),samples,phase);

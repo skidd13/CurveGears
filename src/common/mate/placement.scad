@@ -61,3 +61,23 @@ function _cg_mate_pitch_diagnostics(driver_radii,mid_radii,D,mate_points) =
 module _cg_mate_boundary_from_pitch_points(mate_points,modul,tooth_number,width,bore,pressure_angle,tooth_phase=0,radial_root=false,backlash=undef,clearance=undef) {
     _cg_gear_from_pitch_points(mate_points,modul,tooth_number,width,bore,pressure_angle,tooth_phase,radial_root,backlash,clearance,false);
 }
+
+/**
+ * @function _cg_polar_mate
+ * @brief Prepare and emit a named polar shape's validated standalone mate.
+ * @param shape {array} Physical driver points, radius law, bounds and root policy.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in mm.
+ * @param bore {number >= 0} Bore diameter in mm.
+ * @param pressure_angle {angle, default 20} Involute pressure angle.
+ * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param backlash {undef or >= 0} Tangential thickness reduction.
+ * @param clearance {undef or >= 0} Extra root clearance.
+ * @param samples {integer >= 120, default 720} Motion intervals.
+ * @return {geometry} Validated standalone conjugate mate.
+ */
+module _cg_polar_mate(shape,modul,tooth_number,width,bore,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
+    data=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3]);
+    _cg_mate_boundary_from_pitch_points(data[2],modul,tooth_number,width,bore,pressure_angle,tooth_phase,shape[4],backlash,clearance);
+}

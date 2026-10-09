@@ -7,6 +7,7 @@
  * Reference: https://en.wikipedia.org/wiki/Logistic_function.
  */
 include <../common/curve_gears_math.scad>
+include <../common/saturating.scad>
 
 /**
  * @function _cg_logistic_dwell_parameters_valid(gain,depth)
@@ -19,15 +20,20 @@ function _cg_logistic_dwell_parameters_valid(gain,depth) = gain>0 && depth>0 && 
 
 function _cg_logistic_dwell_unit_radius(theta,gain=8,depth=.2) =
     assert(_cg_logistic_dwell_parameters_valid(gain,depth),"logistic_dwell: invalid curve parameters")
-    1+depth/(1+exp(-gain*sin(2*theta)))-depth/2;
+    _cg_saturating_unit_radius(theta,2,gain/2,depth/2);
 
-function _cg_logistic_dwell_unit_points(samples=720,gain=8,depth=.2) =
-    [for(i=[0:samples-1]) let(theta=360*i/samples,r=_cg_logistic_dwell_unit_radius(theta,gain,depth)) [r*cos(theta),r*sin(theta)]];
-
-function _cg_logistic_dwell_scale(modul,tooth_number,samples=720,gain=8,depth=.2,unit_points=undef) =
-    _cg_pitch_scale_from_points(modul,tooth_number,is_undef(unit_points) ? _cg_logistic_dwell_unit_points(samples,gain,depth) : unit_points,_cg_pi);
-
-function _cg_logistic_dwell_points(modul,tooth_number,samples=720,gain=8,depth=.2,unit_points=undef) =
-    let(u=is_undef(unit_points) ? _cg_logistic_dwell_unit_points(samples,gain,depth) : unit_points,
-        scale=_cg_logistic_dwell_scale(modul,tooth_number,samples,gain,depth,u))
-    _cg_scale_points(scale,u);
+/**
+ * @function _cg_logistic_dwell_shape
+ * @brief Bind the named curve once for driver, mate and numeric consumers.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param gain {number} Named curve control.
+ * @param depth {number} Named curve control.
+ * @param samples {integer, default 720} Curve and motion sampling count.
+ * @return {array} Shared polar shape descriptor; the family owns only its mathematical controls.
+ */
+function _cg_logistic_dwell_shape(modul,tooth_number,gain=8,depth=.2,samples=720) =
+    _cg_polar_shape(
+        function(theta) _cg_logistic_dwell_unit_radius(theta,gain,depth),
+        modul,tooth_number,samples,
+        function(scale) [scale*(1+depth/2)+.01,3*scale]);

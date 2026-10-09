@@ -6,9 +6,13 @@
 include <../../src/pascal/mate.scad>
 
 m=.8;z=34;e=.68;n=120;
-scale=_cg_pascal_scale(m,z,e,n);
-D=_cg_solve_mate_distance(_cg_pascal_motion_radii(scale,e,n),_cg_pascal_max_radius(scale,e)+.01,4*_cg_pascal_max_radius(scale,e));
-pitch=_cg_pascal_mate_points(scale,e,D,n);
+shape=_cg_pascal_shape(m,z,e,n);
+scale=shape[1](0)/(1+e);
+mx=scale*(1+e);
+assert(abs(shape[2]-(mx+.01))<1e-10 && abs(shape[3]-4*mx)<1e-10,"Pascal distance bracket changed");
+D=curve_gear_pascal_centre_distance(m,z,e,n);
+prepared=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],n),_cg_sample_polar_radii(shape[1],n,true),shape[2],shape[3]);
+pitch=prepared[2];
 state=_cg_tooth_geometry_state(pitch,m,z,20,0,true,undef,undef,false,true);
 assert(_cg_tooth_geometry_state_valid(state),"corrected radial mate is not valid");
 assert(len([for(p=state[5]) if(p[0]=="placed") p])==34,"radial correction lost a tooth");

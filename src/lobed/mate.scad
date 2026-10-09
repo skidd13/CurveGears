@@ -1,71 +1,7 @@
 include <gear.scad>
-include <../common/mate/motion.scad>
+include <../common/mate/preparation.scad>
 include <../common/mate/placement.scad>
-
-/**
- * @function _cg_lobed_motion_radii
- * @brief Evaluate lobed radii at integration midpoints.
- * @param scale {number > 0} Base radial scale.
- * @param lobes {integer >= 2} Number of radial lobes.
- * @param lobe_depth {number} Normalised lobe amplitude.
- * @param n {integer >= 1, default 360} Number of midpoint samples.
- * @return {array of number} Sampled radii in angular order.
- */
-function _cg_lobed_motion_radii(scale,lobes,lobe_depth,n=360) = [for(i=[0:n-1]) _cg_lobed_radius(scale,lobes,lobe_depth,360*(i+.5)/n)];
-/**
- * @function _cg_lobed_driver_radii(scale, lobes, lobe_depth, n=360)
- * @brief Evaluate lobed radii at direct mate-construction angles.
- * @param scale {number > 0} Base radial scale in millimetres.
- * @param lobes {integer >= 2} Number of radial lobes.
- * @param lobe_depth {number} Normalised lobe amplitude.
- * @param n {integer >= 1, default 360} Number of boundary intervals.
- * @return {array of number} Driver radii in angular order.
- */
-function _cg_lobed_driver_radii(scale,lobes,lobe_depth,n=360) = [for(i=[0:n-1]) _cg_lobed_radius(scale,lobes,lobe_depth,360*i/n)];
-/**
- * @function _cg_lobed_centre_distance
- * @brief Solve the lobed conjugate centre distance.
- * @param scale {number > 0} Base radial scale.
- * @param lobes {integer >= 2} Number of radial lobes.
- * @param lobe_depth {number} Normalised lobe amplitude.
- * @param n {integer >= 1, default 360} Number of motion intervals.
- * @return {number} Conjugate centre distance.
- */
-function _cg_lobed_centre_distance(scale,lobes,lobe_depth,n=360) = _cg_solve_mate_distance(_cg_lobed_motion_radii(scale,lobes,lobe_depth,n),scale*(1+lobe_depth)+0.01,3*scale);
-/**
- * @function _cg_lobed_motion_table
- * @brief Build the shared lobed phase-motion table.
- * @param scale {number > 0} Base radial scale.
- * @param lobes {integer >= 2} Number of radial lobes.
- * @param lobe_depth {number} Normalised lobe amplitude.
- * @param D {number > 0} Driver-to-mate centre distance.
- * @param n {integer >= 1, default 360} Number of midpoint samples.
- * @return {array} Monotonic driver-to-mate phase-motion table.
- */
-function _cg_lobed_motion_table(scale,lobes,lobe_depth,D,n=360) = _cg_motion_table_from_mid_radii(_cg_lobed_motion_radii(scale,lobes,lobe_depth,n),D);
-/**
- * @function _cg_lobed_mate_points_from_driver
- * @brief Build lobed mate pitch points by advancing driver angle directly.
- * @param scale {number > 0} Base radial scale.
- * @param lobes {integer >= 2} Number of radial lobes.
- * @param lobe_depth {number} Normalised lobe amplitude.
- * @param D {number > 0} Driver-to-mate centre distance.
- * @param n {integer >= 1, default 360} Number of output points.
- * @return {array of points} Cartesian mate pitch points.
- */
-function _cg_lobed_mate_points_from_driver(scale,lobes,lobe_depth,D,n=360) =
-    _cg_mate_points_from_radius_samples(_cg_lobed_driver_radii(scale,lobes,lobe_depth,n),_cg_lobed_motion_radii(scale,lobes,lobe_depth,n),D);
-/**
- * @function _cg_lobed_mate_points
- * @brief Build lobed mate pitch points and their shared motion table.
- * @param scale {number > 0} Base radial scale.
- * @param lobes {integer >= 2} Number of radial lobes.
- * @param lobe_depth {number} Normalised lobe amplitude.
- * @param D {number > 0} Driver-to-mate centre distance.
- * @param n {integer >= 1, default 360} Number of output points.
- * @return {array of points} Cartesian mate pitch points.
- */
-function _cg_lobed_mate_points(scale,lobes,lobe_depth,D,n=360) = _cg_lobed_mate_points_from_driver(scale,lobes,lobe_depth,D,n);
+include <../common/mate/motion.scad>
 
 /***
  * @function curve_gear_lobed_mate(modul, tooth_number, width, bore, ...)
@@ -89,10 +25,7 @@ module curve_gear_lobed_mate(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.
     assert(lobes >= 2 && floor(lobes)==lobes,"lobed_gear_mate: lobes must be an integer >= 2");
     assert(lobe_depth > 0 && lobe_depth < 0.5,"lobed_gear_mate: lobe_depth must satisfy 0 < lobe_depth < 0.5");
     _cg_assert_samples(samples,"lobed_gear_mate: samples must be an integer >= 120");
-    scale=_cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,samples);
-    D=_cg_lobed_centre_distance(scale,lobes,lobe_depth,samples);
-    mate=_cg_lobed_mate_points(scale,lobes,lobe_depth,D,samples);
-    _cg_mate_boundary_from_pitch_points(mate,modul,tooth_number,width,bore,pressure_angle,tooth_phase,false,backlash,clearance);
+    _cg_polar_mate(_cg_lobed_shape(modul,tooth_number,lobes,lobe_depth,samples),modul,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,samples);
 }
 
 /***
@@ -105,7 +38,7 @@ module curve_gear_lobed_mate(modul,tooth_number,width,bore,lobes=4,lobe_depth=0.
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  * @return {number} Pair centre distance in mm.
  */
-function curve_gear_lobed_centre_distance(modul,tooth_number,lobes=4,lobe_depth=0.13,samples=720) = let(scale=_cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,samples)) _cg_lobed_centre_distance(scale,lobes,lobe_depth,samples);
+function curve_gear_lobed_centre_distance(modul,tooth_number,lobes=4,lobe_depth=0.13,samples=720) = _cg_polar_mate_distance(_cg_lobed_shape(modul,tooth_number,lobes,lobe_depth,samples),samples);
 
 /***
  * @function curve_gear_lobed_mate_rotation(modul, tooth_number, lobes, lobe_depth, ...)
@@ -118,4 +51,4 @@ function curve_gear_lobed_centre_distance(modul,tooth_number,lobes=4,lobe_depth=
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @return {angle} Mate rotation in degrees.
  */
-function curve_gear_lobed_mate_rotation(modul,tooth_number,lobes=4,lobe_depth=0.13,samples=720,phase=0) = let(scale=_cg_lobed_scale(modul,tooth_number,lobes,lobe_depth,samples),D=_cg_lobed_centre_distance(scale,lobes,lobe_depth,samples),motion=_cg_lobed_motion_table(scale,lobes,lobe_depth,D,samples)) 180-_cg_motion_y_unwrapped(motion,phase);
+function curve_gear_lobed_mate_rotation(modul,tooth_number,lobes=4,lobe_depth=0.13,samples=720,phase=0) = _cg_polar_mate_rotation(_cg_lobed_shape(modul,tooth_number,lobes,lobe_depth,samples),samples,phase);

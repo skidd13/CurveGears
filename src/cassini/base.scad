@@ -88,3 +88,6 @@ function _cg_cassini_radius(scale,focus_ratio,theta) = scale*_cg_cassini_unit_ra
  */
 function _cg_cassini_max_radius(scale,focus_ratio,n=1440) =
     scale*sqrt(1+focus_ratio*focus_ratio);
+
+function _cg_cassini_shape(modul,tooth_number,focus_ratio,samples=720) =
+    _cg_polar_shape(function(theta) _cg_cassini_unit_radius(focus_ratio,theta),modul,tooth_number,samples,function(scale) let(mx=_cg_cassini_max_radius(scale,focus_ratio,max(1440,samples))) [mx+.01,4*mx]);
