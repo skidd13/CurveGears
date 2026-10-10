@@ -475,7 +475,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`temple_fay_body_alternative`](#function-temple_fay_body_alternative): Temple Fay alternative: The contrasting family controls shown as a body.
 
-> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative: Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative: Wing 0.32 and fold 0.12 restore a pronounced butterfly-like standalone outline. The pair uses a reduced collision-free profile.
 
 > [`temple_fay_curve_gear_pair_alternative`](#function-temple_fay_curve_gear_pair_alternative): Temple Fay alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
@@ -4777,7 +4777,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_alternative.scad)
-Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+Standalone views use wing 0.32 and fold 0.12 for a pronounced butterfly-like outline. The meshed pair retains wing 0.05 and fold 0.01, the validated collision-free fixture.
 
 **Parameters:**
 
@@ -4797,7 +4797,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad)
-Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+The meshed alternative uses wing 0.05 and fold 0.01, the validated collision-free pair fixture. Its standalone comparison shows the stronger wing 0.32 and fold 0.12 profile.
 
 **Parameters:**
 

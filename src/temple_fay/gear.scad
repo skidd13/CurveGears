@@ -11,7 +11,7 @@ module _cg_temple_fay_build(modul,tooth_number,width,bore,wing=.18,fold=.05,pres
 /***
  * @function curve_gear_temple_fay
  * @brief Build a Temple Fay butterfly-inspired gear.
- * Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+ * The default profile uses wing 0.18 and fold 0.05. The example catalogue also shows a stronger standalone winged profile and a reduced pair fixture that passes the engaged-pair collision checks.
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.

@@ -2,7 +2,7 @@
  * @function temple_fay_curve_gear_pair_alternative
  * @brief Temple Fay alternative pair: The alternative curve and its mate meshed in contact for inspection.
  * Source: [`functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad)
- * Wing 0.05 and fold 0.01 provide a distinct but collision-free alternative to the canonical 0.18/0.05 form. The two Fourier harmonics are varied within the named family, without implying a literal butterfly curve.
+ * The meshed alternative uses wing 0.05 and fold 0.01, the validated collision-free pair fixture. Its standalone comparison shows the stronger wing 0.32 and fold 0.12 profile.
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png Temple Fay pair alternative
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */
