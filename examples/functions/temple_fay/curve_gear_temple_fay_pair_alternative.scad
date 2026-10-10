@@ -2,7 +2,7 @@
  * @function temple_fay_curve_gear_pair_alternative
  * @brief Temple Fay alternative pair: The alternative curve and its mate meshed in contact for inspection.
  * Source: [`functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad)
- * The meshed alternative uses wing 0.05 and fold 0.01, the validated collision-free pair fixture. Its standalone comparison shows the stronger wing 0.32 and fold 0.12 profile.
+ * This pair uses the same extreme wing 0.38 and fold 0.14 profile as all alternative gear examples.
  * @image ../images/functions/temple_fay/curve_gear_temple_fay_pair_alternative.png Temple Fay pair alternative
  * @image ../utils/doxydown-support/table-spacer.png ⠀
  */

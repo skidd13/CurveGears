@@ -475,7 +475,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`temple_fay_body_alternative`](#function-temple_fay_body_alternative): Temple Fay alternative: The contrasting family controls shown as a body.
 
-> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative: Wing 0.32 and fold 0.12 restore a pronounced butterfly-like standalone outline. The pair uses a reduced collision-free profile.
+> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay extreme butterfly alternative: Wing 0.38 and fold 0.14 create a deep waist and broad lobes.
 
 > [`temple_fay_curve_gear_pair_alternative`](#function-temple_fay_curve_gear_pair_alternative): Temple Fay alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
@@ -4777,7 +4777,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_alternative.scad)
-Standalone views use wing 0.32 and fold 0.12 for a pronounced butterfly-like outline. The meshed pair retains wing 0.05 and fold 0.01, the validated collision-free fixture.
+All alternative views use wing 0.38 and fold 0.14 for an extreme butterfly outline.
 
 **Parameters:**
 
@@ -4797,7 +4797,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_pair_alternative.scad)
-The meshed alternative uses wing 0.05 and fold 0.01, the validated collision-free pair fixture. Its standalone comparison shows the stronger wing 0.32 and fold 0.12 profile.
+This pair uses the same extreme wing 0.38 and fold 0.14 profile as all alternative gear examples.
 
 **Parameters:**
 

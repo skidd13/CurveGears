@@ -53,7 +53,7 @@ The module `Temple Fay` defines the following functions.
 | [![temple fay example preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![Temple Fay gear alternative](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png) |
 
 
-The default profile uses wing 0.18 and fold 0.05. The example catalogue also shows a stronger standalone winged profile and a reduced pair fixture that passes the engaged-pair collision checks.
+The main examples use the default wing 0.18 and fold 0.05 profile. Alternative standalone and pair examples share the extreme wing 0.38 and fold 0.14 profile.
 
 
 **Parameters:**
