@@ -8,6 +8,8 @@ from pathlib import Path
 import re
 import struct
 
+MESH_VERTEX_TOLERANCE = 0.001
+
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -33,6 +35,37 @@ def _triangles(path: Path) -> list[tuple[tuple[float, float, float], ...]]:
     )]
     assert len(vertices) % 3 == 0, f"invalid STL vertex count: {path}"
     return [tuple(vertices[index:index + 3]) for index in range(0, len(vertices), 3)]
+
+
+def _closed_with_tolerance(edge_counts: dict[tuple, int]) -> bool:
+    if all(count == 2 for count in edge_counts.values()):
+        return True
+    if any(count not in (1, 2) for count in edge_counts.values()):
+        return False
+    edges = [edge for edge, count in edge_counts.items() if count == 1]
+    if len(edges) % 2:
+        return False
+    tolerance_squared = MESH_VERTEX_TOLERANCE ** 2
+    buckets: dict[tuple[int, int, int], list[int]] = {}
+    matches: list[list[int]] = [[] for _ in edges]
+    for index, (first, second) in enumerate(edges):
+        midpoint = tuple((a + b) / 2 for a, b in zip(first, second))
+        cell = tuple(math.floor(value / MESH_VERTEX_TOLERANCE) for value in midpoint)
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    neighbour = (cell[0] + dx, cell[1] + dy, cell[2] + dz)
+                    for other_index in buckets.get(neighbour, ()):
+                        other_first, other_second = edges[other_index]
+                        direct = all(sum((a - b) ** 2 for a, b in zip(left, right)) <= tolerance_squared
+                                     for left, right in ((first, other_first), (second, other_second)))
+                        reverse = all(sum((a - b) ** 2 for a, b in zip(left, right)) <= tolerance_squared
+                                      for left, right in ((first, other_second), (second, other_first)))
+                        if direct or reverse:
+                            matches[index].append(other_index)
+                            matches[other_index].append(index)
+        buckets.setdefault(cell, []).append(index)
+    return all(len(partners) == 1 for partners in matches)
 
 
 def metrics(path: Path) -> dict:
@@ -61,7 +94,7 @@ def metrics(path: Path) -> dict:
             + a[2] * (b[0] * c[1] - b[1] * c[0])
         ) / 6
         for first, second in ((a, b), (b, c), (c, a)):
-            edge = tuple(sorted((tuple(round(value, 6) for value in first), tuple(round(value, 6) for value in second))))
+            edge = tuple(sorted((first, second)))
             edge_counts[edge] = edge_counts.get(edge, 0) + 1
     return {
         "triangles": len(triangles),
@@ -69,7 +102,7 @@ def metrics(path: Path) -> dict:
         "spans": tuple(high - low for low, high in bounds),
         "surface_area": surface_area,
         "volume": abs(signed_volume),
-        "closed": all(count == 2 for count in edge_counts.values()),
+        "closed": _closed_with_tolerance(edge_counts),
     }
 
 

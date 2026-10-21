@@ -9,6 +9,21 @@ from pathlib import Path
 from utils.build_inventory import ROOT, dependencies, examples, group, render_case, validate, write_if_changed
 from utils.check_build_output import check
 from utils.cusp_cache import snapshot
+from utils.regression.stl import MESH_VERTEX_TOLERANCE, metrics
+
+
+def tetrahedron_stl(scale, crack=0):
+    points = ((0, 0, 0), (scale, 0, 0), (0, scale, 0), (0, 0, scale))
+    faces = ((0, 2, 1), (0, 1, 3), (0, 3, 2), (1, 2, 3))
+    facets = []
+    for index, face in enumerate(faces):
+        triangle = [points[vertex] for vertex in face]
+        if index == 3:
+            triangle = [(x + crack, y, z) for x, y, z in triangle]
+        facets.extend('facet normal 0 0 0\nouter loop\n')
+        facets.extend(f'vertex {x:.12g} {y:.12g} {z:.12g}\n' for x, y, z in triangle)
+        facets.append('endloop\nendfacet\n')
+    return 'solid tetrahedron\n' + ''.join(facets) + 'endsolid tetrahedron\n'
 
 
 class InventoryTests(unittest.TestCase):
@@ -39,6 +54,7 @@ class InventoryTests(unittest.TestCase):
             (root / 'leaf.scad').unlink()
             with self.assertRaisesRegex(ValueError, 'missing OpenSCAD dependency'):
                 dependencies('entry.scad', root)
+
 
     def test_alternative_dependency_reaches_owning_wrapper(self):
         deps = dependencies('examples/functions/cusp/curve_gear_cusp_pair_alternative.scad')
@@ -78,6 +94,19 @@ class InventoryTests(unittest.TestCase):
                 self.assertIn(f'tests/mate/invalid_preparation_{name}.scad', result.stdout)
             self.assertNotIn('tests/circle/invalid_backlash.scad', result.stdout)
             self.assertIn('--family mate_motion', result.stdout)
+
+
+class MeshClosureTests(unittest.TestCase):
+    def test_vertex_tolerance_controls_mesh_closure(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'tetrahedron.stl'
+            for scale in (1, 0.01):
+                for crack, closed in ((0, True), (1e-8, True),
+                                       (MESH_VERTEX_TOLERANCE, True),
+                                       (MESH_VERTEX_TOLERANCE + 1e-7, False)):
+                    with self.subTest(scale=scale, crack=crack):
+                        output.write_text(tetrahedron_stl(scale, crack))
+                        self.assertEqual(closed, metrics(output)['closed'])
 
 
 class OutputTests(unittest.TestCase):
