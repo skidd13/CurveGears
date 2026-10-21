@@ -1,3 +1,4 @@
+// @regression: expected-assertion stage=extrusion severity=error code=EXTRUSION_HEIGHT_INVALID message=width must be positive
 /***
  * @function invalid_body_width
  * @brief Reject non-positive Cusp body extrusion width.

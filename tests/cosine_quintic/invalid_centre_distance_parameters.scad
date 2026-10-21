@@ -1,3 +1,4 @@
+// @regression: expected-assertion cosine_quintic: invalid curve parameters
 /***
  * @function cosine_quintic_invalid_centre_distance_parameters
  * @brief Reject invalid curve controls consistently at the centre_distance entry point.

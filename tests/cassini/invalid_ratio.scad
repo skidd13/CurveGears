@@ -1,3 +1,4 @@
+// @regression: expected-assertion cassini_gear: focus_ratio must satisfy 0 <= focus_ratio < 1
 /***
  * @function cassini_invalid_ratio
  * @brief Reject Cassini parameters outside the admissible radial range.

@@ -1,3 +1,4 @@
+// @regression: expected-assertion cusp_gear: cusps must be an integer >= 3
 /***
  * @function invalid_fractional_cusps
  * @brief Reject a non-integer cusp count.

@@ -1,3 +1,4 @@
+// @regression: expected-assertion logistic_dwell: invalid curve parameters
 /***
  * @function logistic_dwell_invalid_mate_parameters
  * @brief Reject invalid curve controls consistently at the mate entry point.

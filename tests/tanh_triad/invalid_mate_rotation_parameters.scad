@@ -1,3 +1,4 @@
+// @regression: expected-assertion tanh_triad: invalid curve parameters
 /***
  * @function tanh_triad_invalid_mate_rotation_parameters
  * @brief Reject invalid curve controls consistently at the mate_rotation entry point.

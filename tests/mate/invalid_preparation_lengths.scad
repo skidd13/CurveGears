@@ -1,3 +1,4 @@
+// @regression: expected-assertion mate_preparation: boundary and midpoint radii must be finite, positive and equally sized
 /***
  * @function mate_invalid_preparation_lengths
  * @brief Reject mismatched boundary and midpoint radius arrays.

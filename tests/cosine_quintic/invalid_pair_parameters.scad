@@ -1,3 +1,4 @@
+// @regression: expected-assertion cosine_quintic: invalid curve parameters
 /***
  * @function cosine_quintic_invalid_pair_parameters
  * @brief Reject invalid curve controls consistently at the pair entry point.

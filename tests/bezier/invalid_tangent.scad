@@ -1,3 +1,4 @@
+// @regression: expected-assertion bezier_gear: control points must form closed cubic segments with forward tangent continuity
 /***
  * @function bezier_invalid_tangent
  * @brief Deliberately zero incoming tangent at the segment join.

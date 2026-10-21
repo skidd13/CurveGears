@@ -1,3 +1,4 @@
+// @regression: expected-assertion cusp_gear: tooth_number must be an integer divisible by cusps
 /***
  * @function invalid_cusp_tooth_count
  * @brief Reject invalid cusp-count parameters before geometry construction.

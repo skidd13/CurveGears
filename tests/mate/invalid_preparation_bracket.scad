@@ -1,3 +1,4 @@
+// @regression: expected-assertion mate_preparation: distance bounds must bracket one-turn closure
 /***
  * @function mate_invalid_preparation_bracket
  * @brief Reject exterior bounds which do not enclose rolling closure.

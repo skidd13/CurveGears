@@ -1,3 +1,4 @@
+// @regression: expected-assertion cusp_gear: samples must be an integer >= 120 and divisible by cusps
 /***
  * @function invalid_cusp_samples
  * @brief Reject invalid cusp-count parameters before geometry construction.

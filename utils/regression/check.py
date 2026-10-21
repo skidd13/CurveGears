@@ -154,12 +154,21 @@ def check_invalid(families: list[str]) -> list[dict]:
         family = source_family(relative)
         if family not in families:
             continue
+        expected = re.findall(r"^// @regression: expected-assertion (\S[^\n]*)$",
+                              source.read_text(), re.MULTILINE)
+        assert len(expected) == 1, (source, "declare exactly one expected assertion")
         marker = (BUILD / "invalid" / relative).with_suffix(".failed")
         assert marker.exists(), f"missing invalid-input marker: {marker}"
         text = _read_render_log(marker)
-        assert "ERROR: Assertion" in text and "failed" in text, (source, "not an assertion failure", text[-2000:])
+        errors = [line for line in text.splitlines() if line.startswith("ERROR:")]
+        assert len(errors) == 1, (source, "expected one assertion error", text[-2000:])
+        assertion = re.match(r'^ERROR: Assertion.* failed: "(.*)"(?: in file |$)', errors[0])
+        assert assertion and expected[0] in assertion.group(1), \
+            (source, "wrong assertion diagnostic", expected[0], text[-2000:])
         assert not any(token in text for token in ("WARNING:", "Parser error")), (source, text[-2000:])
-        rows.append({"family": family, "name": str(source.relative_to(ROOT)), "expected_success": False})
+        rows.append({"family": family, "name": str(source.relative_to(ROOT)), "expected_success": False,
+                     "diagnostics": expected, "source_sha256": sha(source),
+                     "log_sha256": sha(marker.with_suffix('.log'))})
     return rows
 
 

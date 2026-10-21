@@ -1,3 +1,4 @@
+// @regression: expected-assertion hypotrochoid: require major_ratio > rolling_ratio > 0 and 0 < offset_ratio < rolling_ratio
 /***
  * @function hypotrochoid_invalid_ratio
  * @brief Reject Hypotrochoid parameters outside the admissible radial range.

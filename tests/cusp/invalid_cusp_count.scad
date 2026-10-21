@@ -1,3 +1,4 @@
+// @regression: expected-assertion cusp_gear: cusps must be an integer >= 3
 /***
  * @function invalid_cusp_count
  * @brief Reject invalid cusp-count parameters before geometry construction.

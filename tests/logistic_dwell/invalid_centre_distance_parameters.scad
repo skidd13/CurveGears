@@ -1,3 +1,4 @@
+// @regression: expected-assertion logistic_dwell: invalid curve parameters
 /***
  * @function logistic_dwell_invalid_centre_distance_parameters
  * @brief Reject invalid curve controls consistently at the centre_distance entry point.

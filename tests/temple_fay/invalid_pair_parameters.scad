@@ -1,3 +1,4 @@
+// @regression: expected-assertion temple_fay_gear_pair: invalid parameters
 /***
  * @function temple_fay_invalid_pair_parameters
  * @brief Retain rejection of invalid curve controls at the dynamic pair entry point.

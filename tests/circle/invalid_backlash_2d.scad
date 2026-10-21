@@ -1,3 +1,4 @@
+// @regression: expected-assertion backlash must be non-negative and below half the circular pitch
 /***
  * @function invalid_backlash_2d
  * @brief Reject unsupported backlash before tooth construction.

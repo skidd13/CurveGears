@@ -1,3 +1,4 @@
+// @regression: expected-assertion temple_fay_gear_pair: samples must be an integer >= 120
 /***
  * @function temple_fay_invalid_pair_samples
  * @brief Retain the minimum 120-sample requirement for dynamic pair construction.

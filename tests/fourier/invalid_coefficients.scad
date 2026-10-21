@@ -1,3 +1,4 @@
+// @regression: expected-assertion fourier_gear: coefficients must be [positive_integer_harmonic, amplitude, phase] with sum(abs(amplitude)) < 0.9
 /***
  * @function fourier_invalid_coefficients
  * @brief Deliberately non-positive-radius coefficient envelope.

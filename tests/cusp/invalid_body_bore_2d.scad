@@ -1,3 +1,4 @@
+// @regression: expected-assertion bore must be non-negative
 /***
  * @function invalid_body_bore_2d
  * @brief Reject a negative planar Cusp body bore.
