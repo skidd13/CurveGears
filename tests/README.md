@@ -498,6 +498,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`bezier_invalid_controls`](#function-bezier_invalid_controls): Deliberately open control list: the closure contract must reject it.
 
+> [`bezier_invalid_seam`](#function-bezier_invalid_seam): Deliberately non-collinear tangent at the closing Bézier seam.
+
 > [`bezier_invalid_tangent`](#function-bezier_invalid_tangent): Deliberately zero incoming tangent at the segment join.
 
 > [`bezier_mate_pipeline`](#function-bezier_mate_pipeline): Verify Bézier mate construction through the shared pair pipeline.
@@ -705,6 +707,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`bezier/invalid_controls.scad`](bezier/invalid_controls.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `bezier_invalid_seam`
+
+
+Source: [`bezier/invalid_seam.scad`](bezier/invalid_seam.scad)
 
 **Parameters:**
 

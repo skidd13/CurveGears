@@ -51,8 +51,8 @@ function _cg_bezier_controls_valid(control_points) =
     len(control_points)>=7
     && (len(control_points)-1)%3==0
     && _cg_vlen(_cg_vsub(control_points[0],control_points[len(control_points)-1]))<=1e-6
-    && min([for(i=[1:_cg_bezier_segment_count(control_points)-1])
-        let(j=3*i,incoming=_cg_vsub(control_points[j],control_points[j-1]),outgoing=_cg_vsub(control_points[j+1],control_points[j]))
+    && min([for(i=[0:_cg_bezier_segment_count(control_points)-1])
+        let(j=3*i,incoming=i==0 ? _cg_vsub(control_points[len(control_points)-1],control_points[len(control_points)-2]) : _cg_vsub(control_points[j],control_points[j-1]),outgoing=_cg_vsub(control_points[j+1],control_points[j]))
         _cg_vlen(incoming)>1e-6 && _cg_vlen(outgoing)>1e-6 && abs(_cg_cross2(incoming,outgoing))<=1e-5 && incoming[0]*outgoing[0]+incoming[1]*outgoing[1]>0 ? 1 : 0])==1;
 
 /**
