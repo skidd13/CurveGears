@@ -1,3 +1,4 @@
+// @regression: deliberate
 /***
  * @function tooth_placement_polygon_failure
  * @brief Expected-failure gate for the final polygon self-intersection validator.

@@ -1,3 +1,4 @@
+// @regression: manual
 /***
  * @function superformula_contact
  * @brief Verify Superformula contact geometry and pitch diagnostics.

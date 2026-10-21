@@ -1,3 +1,4 @@
+// @regression: deliberate
 /***
  * @function superformula_mate_pipeline
  * @brief Deliberately exercise the shared splice validator with an interleaved pair.

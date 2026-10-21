@@ -256,12 +256,7 @@ docs-pages: $(DOC_PAGES)
 
 docs: readme docs-pages images examples tests/README.md
 
-REGRESSION_SMOKE_SOURCES := $(shell find tests -type f -name '*.scad' \
-	! -name 'invalid_*.scad' ! -name '*_failure.scad' ! -name 'validation_cases.scad' \
-	! -name 'equivalence.scad' ! -name 'accessibility_cases.scad' ! -path 'tests/superformula/mate_pipeline.scad' \
-	! -name 'contact.scad' ! -name 'reference.scad' ! -exec rg -q '^// @regression: manual' {} \; -print | sort)
-REGRESSION_COMPILE_SOURCES := $(filter %/full_pipeline.scad,$(REGRESSION_SMOKE_SOURCES))
-REGRESSION_MESH_SOURCES := $(filter-out $(REGRESSION_COMPILE_SOURCES),$(REGRESSION_SMOKE_SOURCES))
+include utils/regression/fixtures.mk
 REGRESSION_SMOKE_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.stl,$(REGRESSION_MESH_SOURCES)) $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.csg,$(REGRESSION_COMPILE_SOURCES))
 REGRESSION_SELECTED_FAMILIES := $(foreach family,$(REGRESSION_FAMILIES),$(if $(filter common,$(family)),common_math tooth_generation tooth_placement mate_motion,$(family)))
 REGRESSION_SMOKE_common_math := $(filter $(REGRESSION_DIR)/smoke/common/%,$(REGRESSION_SMOKE_ALL))
@@ -273,11 +268,8 @@ REGRESSION_SMOKE_MANIFEST := $(REGRESSION_DIR)/smoke_manifest.tsv
 
 $(REGRESSION_SMOKE_MANIFEST): $(REGRESSION_SMOKE_SOURCES) FORCE
 	@mkdir -p "$(@D)"
-	@for source in $(REGRESSION_SMOKE_SOURCES); do \
-		relative=$${source#tests/}; relative=$${relative%.scad}; \
-		extension=stl; case "$$source" in */full_pipeline.scad) extension=csg ;; esac; \
-		printf '%s\t%s\n' "$$source" "$(REGRESSION_DIR)/smoke/$$relative.$$extension"; \
-	done > "$@"
+	@$(REGRESSION_PRINT_MANIFEST) > "$@.tmp"
+	@cmp -s "$@.tmp" "$@" && rm "$@.tmp" || mv "$@.tmp" "$@"
 
 $(REGRESSION_DIR)/smoke/%.stl: tests/%.scad
 	@mkdir -p "$(@D)"
@@ -318,7 +310,6 @@ $(eval $(call REGRESSION_EXPECT_FAILURE,polygon_failure,tests/tooth/placement/po
 $(eval $(call REGRESSION_EXPECT_FAILURE,splice_validation,tests/superformula/mate_pipeline.scad))
 $(eval $(call REGRESSION_EXPECT_SUCCESS,accessibility_cases,tests/superformula/accessibility_cases.scad))
 
-REGRESSION_INVALID_SOURCES := $(shell find tests -type f -name 'invalid_*.scad' -print | sort)
 REGRESSION_INVALID_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/invalid/%.failed,$(REGRESSION_INVALID_SOURCES))
 REGRESSION_INVALID_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(filter $(foreach family,$(REGRESSION_SELECTED_FAMILIES),$(REGRESSION_DIR)/invalid/$(if $(filter common_math,$(family)),common,$(if $(filter mate_motion,$(family)),mate,$(if $(filter tooth_generation tooth_placement,$(family)),$(subst _,/,$(family)),$(family))))/%),$(REGRESSION_INVALID_ALL)),$(REGRESSION_INVALID_ALL))
 

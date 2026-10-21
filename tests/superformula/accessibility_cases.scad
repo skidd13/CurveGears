@@ -1,3 +1,4 @@
+// @regression: deliberate
 /***
  * @function superformula_accessibility_cases
  * @brief Focused accessibility checks: shallow concavity remains usable, while a

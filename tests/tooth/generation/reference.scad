@@ -1,3 +1,4 @@
+// @regression: manual
 /***
  * @function tooth_generation_reference
  * @brief Compact mathematical oracle derived from the pinned reference source:

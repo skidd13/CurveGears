@@ -1,3 +1,4 @@
+// @regression: deliberate
 /***
  * @function tooth_generation_equivalence
  * @brief Keep the oracle export non-empty so the regression runner can execute it as

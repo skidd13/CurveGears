@@ -1,3 +1,4 @@
+// @regression: deliberate
 /***
  * @function tooth_placement_validation_cases
  * @brief Deliberate local and boundary failures.  Each assertion confirms that the

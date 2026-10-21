@@ -1,3 +1,4 @@
+// @regression: deliberate
 /***
  * @function tooth_placement_collision_failure
  * @brief Expected-failure gate for a complete placed-tooth collision.

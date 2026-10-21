@@ -1,3 +1,4 @@
+// @regression: manual
 /***
  * @function epitrochoid_contact
  * @brief Verify Epitrochoid contact geometry and pitch diagnostics.
