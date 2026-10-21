@@ -120,12 +120,16 @@ def check_smoke(cases: list[tuple[str, Path, Path]], families: list[str]) -> lis
                     ("GEOMETRY_EQUIVALENCE_FAILED",source,geometry["volume"])
         else:
             assert output.suffix == ".csg" and output.read_text().strip(), f"empty compilation: {output}"
-        references[source.name] = output
+        references[source.relative_to(ROOT).as_posix()] = output
         rows.append({"family": family, "name": str(source.relative_to(ROOT)), "source_sha256": sha(source), "output_sha256": sha(output), "verification": "mesh" if output.suffix == ".stl" else "compile"})
-    if "common" in families and {"reference_pipeline.scad", "candidate_pipeline.scad"} <= references.keys():
+    if "tooth_generation" in families:
+        reference = "tests/tooth/generation/reference_pipeline.scad"
+        candidate = "tests/tooth/generation/candidate_pipeline.scad"
+        assert {reference, candidate} <= references.keys(), \
+            "missing required tooth-generation reference/candidate comparison cases"
         rows.append({
-            "family": "common",
-            **compare_reference_tooth(references["reference_pipeline.scad"], references["candidate_pipeline.scad"]),
+            "family": "tooth_generation",
+            **compare_reference_tooth(references[reference], references[candidate]),
         })
     return rows
 
