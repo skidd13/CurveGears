@@ -1,6 +1,5 @@
 # Project-local configuration and generated OpenSCAD output.
 config.local.mk
-.codex/
 build/
 *.stl
 *.csg
@@ -37,8 +36,9 @@ htmlcov/
 .vscode/
 
 # Keep local agent instructions out of repository history.
+.agents/
 [aA][gG][eE][nN][tT][sS].[mM][dD]
 
 # BEGIN NORCAINE LOCAL DATA IGNORE
-/.codex/
+.codex/
 # END NORCAINE LOCAL DATA IGNORE

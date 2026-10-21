@@ -447,7 +447,7 @@ check-docs: docs-pages examples/README.md tests/README.md
 	@test -z "$$(rg -n -uu -g '*.md' -g '!examples/README.md' -e '\\]\\([^)]*\\.scad\\)' .)" || { echo 'individual example links found outside examples/README.md'; exit 1; }
 	@test -z "$$(find . -type f -name .git -print)" || { echo 'nested repository metadata is not allowed'; exit 1; }
 	@if rg -n -P -uu -e '$(ABSOLUTE_PATH_PATTERN)' README.md docs; then echo 'absolute environment path found'; exit 1; fi
-	@if rg -n -P -uu -g '!Makefile' -g '!build/**' -g '!.git/**' -g '!config.local.mk' -g '!utils/doxydown/**' -e '$(ABSOLUTE_PATH_PATTERN)' .; then echo 'absolute environment path found outside ignored local/build data'; exit 1; fi
+	@if rg -n -P --hidden -g '!Makefile' -g '!build/**' -g '!.git/**' -g '!config.local.mk' -g '!utils/doxydown/**' -e '$(ABSOLUTE_PATH_PATTERN)' .; then echo 'absolute environment path found outside ignored local/build data'; exit 1; fi
 	@if git grep -n -I -P -e '$(ABSOLUTE_PATH_PATTERN)' -- . ':(exclude)Makefile' ':(exclude)utils/doxydown/**'; then echo 'absolute environment path found in tracked files'; exit 1; fi
 	@if rg -n -uu '\]\(/|\]\(file:' README.md docs; then echo 'absolute Markdown link found'; exit 1; fi
 	@test -s "$(MAIN_IMAGE)"
