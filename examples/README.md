@@ -224,7 +224,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`curve_gear_temple_fay_centre_distance_example`](#function-curve_gear_temple_fay_centre_distance_example)
 
-> [`curve_gear_temple_fay_example`](#function-curve_gear_temple_fay_example): Temple Fay gear example.
+> [`curve_gear_temple_fay_example`](#function-curve_gear_temple_fay_example): Temple Fay butterfly gear example with broad lobes and a deep waist.
 
 > [`curve_gear_temple_fay_mate_example`](#function-curve_gear_temple_fay_mate_example)
 
@@ -476,7 +476,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`temple_fay_body_alternative`](#function-temple_fay_body_alternative): Temple Fay alternative: The contrasting family controls shown as a body.
 
-> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay extreme butterfly alternative: Wing 0.38 and fold 0.14 create a deep waist and broad lobes.
+> [`temple_fay_curve_gear_alternative`](#function-temple_fay_curve_gear_alternative): Temple Fay alternative with a narrower waist and more compact lobes.
 
 > [`temple_fay_curve_gear_pair_alternative`](#function-temple_fay_curve_gear_pair_alternative): Temple Fay alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
@@ -2296,12 +2296,12 @@ Back to [module description](#module-executable-examples).
 
 ### Function `curve_gear_temple_fay_example`
 
-| temple fay example preview | Full size |
+| temple fay butterfly example preview | Full size |
 | --- | --- |
-| [![temple fay example preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay.png) ![](../images/table-spacer.png) |
+| [![temple fay butterfly example preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [Open full-size image](../images/functions/temple_fay/curve_gear_temple_fay.png) ![](../images/table-spacer.png) |
 
 
-Temple Fay gear example.
+Temple Fay butterfly gear example with broad lobes and a deep waist.
 
 **Parameters:**
 
@@ -4778,7 +4778,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/temple_fay/curve_gear_temple_fay_alternative.scad`](functions/temple_fay/curve_gear_temple_fay_alternative.scad)
-All alternative views use wing 0.38 and fold 0.14 for an extreme butterfly outline.
+All alternative views use wing 0.18 and fold 0.05 for a restrained outline.
 
 **Parameters:**
 

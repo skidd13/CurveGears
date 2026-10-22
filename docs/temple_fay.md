@@ -55,10 +55,10 @@ The module `Temple Fay` defines the following functions.
 
 | Temple Fay gear 1 | Temple Fay gear 2 |
 | --- | --- |
-| [![temple fay example preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![Temple Fay gear alternative](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png) |
+| [![temple fay butterfly example preview](../images/functions/temple_fay/curve_gear_temple_fay.png)](../images/functions/temple_fay/curve_gear_temple_fay.png) | [![Temple Fay gear alternative](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png)](../images/functions/temple_fay/curve_gear_temple_fay_alternative.png) |
 
 
-The main examples use the default wing 0.18 and fold 0.05 profile. Alternative standalone and pair examples share the extreme wing 0.38 and fold 0.14 profile.
+The canonical example uses the broad wing 0.38 and fold 0.14 profile. Alternative standalone and pair examples use wing 0.18 and fold 0.05.
 
 
 **Parameters:**
