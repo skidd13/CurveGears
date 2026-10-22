@@ -2,6 +2,42 @@ include <mate.scad>
 include <../common/pair/assembly.scad>
 
 /***
+ * @function _cg_cusp_pair_member
+ * @brief Place one axial-centred member of a meshed or separated Cusp pair.
+ * @param member {driver or mate} Pair member to emit.
+ * @param geometry {array} Shared Cusp pair motion and geometry state.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Shared tooth count.
+ * @param width {number > 0} Shared extrusion width in mm.
+ * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param pressure_angle {angle} Tooth pressure angle.
+ * @param phase {angle} Driver motion phase.
+ * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param together_built {boolean} Use solved meshed placement when true.
+ * @param sweep_steps {integer >= 36} Base driver-phase intervals.
+ * @param max_pose_step {number > 0} Maximum member pose step in degrees.
+ * @param sweep_clearance {number > 0} Envelope cutter clearance in modules.
+ * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
+ * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
+ */
+module _cg_cusp_pair_member(member,geometry,modul,tooth_number,width,bore,pressure_angle,phase,backlash,clearance,together_built,sweep_steps,max_pose_step,sweep_clearance,driver_color="SteelBlue",mate_color="Gold") {
+    assert(member=="driver" || member=="mate","cusp_gear_pair: member must be driver or mate");
+    centre_distance=geometry[3];
+    driver_state=geometry[0];
+    driver_outline=_cg_cusp_envelope_driver_outline(driver_state);
+    mate_outer_radius=_cg_cusp_envelope_mate_outer_radius(geometry,modul);
+    display_distance=_cg_pair_display_separation(_cg_pair_point_extent(driver_outline),mate_outer_radius,modul);
+    if(member=="driver")
+        translate([together_built ? -centre_distance/2 : 0,0,-width/2])
+            rotate([0,0,phase]) color(driver_color)
+                _cg_gear_from_state(driver_state,modul,tooth_number,width,bore,pressure_angle,-90,true,backlash,clearance,false);
+    else
+        translate([together_built ? centre_distance/2 : display_distance,0,0]) color(mate_color)
+            _cg_cusp_envelope_mate_from_geometry(geometry,modul,width,bore,sweep_steps,max_pose_step,sweep_clearance,phase);
+}
+
+/***
  * @function _cg_cusp_pair_build
  * @brief Construct the cusp driver and swept-envelope mate as a pair.
  * @param modul {number > 0, default 1.2} Tooth module in millimetres.
@@ -28,25 +64,11 @@ module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,sampl
     _cg_assert_samples(samples,"cusp_gear_pair: samples must be an integer >= 720 for the validated swept mate",720);
     assert(samples%cusps==0,"cusp_gear_pair: samples must be divisible by cusps");
     geometry=_cg_cusp_pair_motion_geometry(modul,tooth_number,pressure_angle,backlash,clearance,samples,cusps);
-    driver_state=geometry[0];
-    centre_distance=geometry[3];
     motion=geometry[4][2];
     closure_error=_cg_motion_closure_error(motion);
     assert(abs(closure_error)<.08,"cusp_gear_pair: envelope motion closure error too large");
-    driver_outline=_cg_cusp_envelope_driver_outline(driver_state);
-    mate_outer_radius=_cg_cusp_envelope_mate_outer_radius(geometry,modul);
-    display_distance=_cg_pair_display_separation(_cg_pair_point_extent(driver_outline),mate_outer_radius,modul);
-    if(together_built) {
-        translate([-centre_distance/2,0,0]) rotate([0,0,phase]) color(driver_color)
-            _cg_gear_from_state(driver_state,modul,tooth_number,width,bore,pressure_angle,-90,true,backlash,clearance,false);
-        translate([centre_distance/2,0,0]) color(mate_color)
-            _cg_cusp_envelope_mate_from_geometry(geometry,modul,width,bore,sweep_steps,max_pose_step,sweep_clearance,phase);
-    } else {
-        rotate([0,0,phase]) color(driver_color)
-            _cg_gear_from_state(driver_state,modul,tooth_number,width,bore,pressure_angle,-90,true,backlash,clearance,false);
-        translate([display_distance,0,0]) color(mate_color)
-            _cg_cusp_envelope_mate_from_geometry(geometry,modul,width,bore,sweep_steps,max_pose_step,sweep_clearance,phase);
-    }
+    _cg_cusp_pair_member("driver",geometry,modul,tooth_number,width,bore,pressure_angle,phase,backlash,clearance,together_built,sweep_steps,max_pose_step,sweep_clearance,driver_color,mate_color);
+    _cg_cusp_pair_member("mate",geometry,modul,tooth_number,width,bore,pressure_angle,phase,backlash,clearance,together_built,sweep_steps,max_pose_step,sweep_clearance,driver_color,mate_color);
 }
 
 /***

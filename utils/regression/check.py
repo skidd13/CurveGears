@@ -118,6 +118,12 @@ def check_smoke(cases: list[tuple[str, Path, Path]], families: list[str]) -> lis
                     ("GEOMETRY_EQUIVALENCE_FAILED",source,geometry["bounds"])
                 assert abs(geometry["volume"]-edge**3)<=max(1e-12,edge**3*1e-5), \
                     ("GEOMETRY_EQUIVALENCE_FAILED",source,geometry["volume"])
+            z_bounds=re.search(r"^// @regression: z-bounds ([-+0-9.eE]+) ([-+0-9.eE]+)$",source.read_text(),re.MULTILINE)
+            if z_bounds:
+                expected=tuple(float(value) for value in z_bounds.groups())
+                actual=geometry["bounds"][2]
+                assert all(abs(actual[index]-expected[index])<=1e-5 for index in (0,1)), \
+                    ("AXIAL_BOUNDS_INVALID",source,actual,expected)
         else:
             assert output.suffix == ".csg" and output.read_text().strip(), f"empty compilation: {output}"
         references[source.relative_to(ROOT).as_posix()] = output

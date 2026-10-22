@@ -69,6 +69,8 @@ are documented together below.
 
 > [`_cg_cusp_pair_build`](#function-_cg_cusp_pair_build): Construct the cusp driver and swept-envelope mate as a pair.
 
+> [`_cg_cusp_pair_member`](#function-_cg_cusp_pair_member): Place one axial-centred member of a meshed or separated Cusp pair.
+
 > [`_cg_cusp_pair_motion_geometry`](#function-_cg_cusp_pair_motion_geometry): Build the validated cusp driver, radial motion data, solved distance, and motion table from the unmodified hypocycloid pitch curve.
 
 > [`_cg_cusp_parameter_for_body_y`](#function-_cg_cusp_parameter_for_body_y): Solve for the hypocycloid parameter at a requested body-branch height.
@@ -526,6 +528,36 @@ Construct the cusp driver and swept-envelope mate as a pair.
 - `max_pose_step`: {number > 0, default 0.5} Maximum member pose step in degrees.
 - `sweep_clearance`: {number > 0, default 0.08} Cutter clearance as a module fraction.
 - `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-cusp).
+
+### Function `_cg_cusp_pair_member`
+
+
+Place one axial-centred member of a meshed or separated Cusp pair.
+
+**Parameters:**
+
+- `member`: {driver or mate} Pair member to emit.
+- `geometry`: {array} Shared Cusp pair motion and geometry state.
+- `modul`: {number > 0} Tooth module in mm.
+- `tooth_number`: {integer >= 3} Shared tooth count.
+- `width`: {number > 0} Shared extrusion width in mm.
+- `bore`: {number >= 0} Centre bore diameter in mm.
+- `pressure_angle`: {angle} Tooth pressure angle.
+- `phase`: {angle} Driver motion phase.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `together_built`: {boolean} Use solved meshed placement when true.
+- `sweep_steps`: {integer >= 36} Base driver-phase intervals.
+- `max_pose_step`: {number > 0} Maximum member pose step in degrees.
+- `sweep_clearance`: {number > 0} Envelope cutter clearance in modules.
+- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
 
 **Returns:**
 

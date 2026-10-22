@@ -538,11 +538,19 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`cusp_full_pipeline`](#function-cusp_full_pipeline): Render the cusp gear, body, swept-envelope mate, and separated pair.
 
+> [`cusp_meshed_pair_driver_bounds`](#function-cusp_meshed_pair_driver_bounds): Verify the driver axial interval in a meshed Cusp pair.
+
+> [`cusp_meshed_pair_mate_bounds`](#function-cusp_meshed_pair_mate_bounds): Verify the mate axial interval in a meshed Cusp pair.
+
 > [`cusp_pair_pipeline`](#function-cusp_pair_pipeline): Render and validate the swept-envelope mate for a deltoid cusp driver.
 
 > [`cusp_parameter_controls_pipeline`](#function-cusp_parameter_controls_pipeline): Validate independent tooth counts, module and extrusion widths for four, five and six cusps.
 
 > [`cusp_parameter_pipeline`](#function-cusp_parameter_pipeline): Validate hypocycloid cusp counts, exact cusp anchors and five-cusp gear/body geometry.
+
+> [`cusp_separated_pair_driver_bounds`](#function-cusp_separated_pair_driver_bounds): Verify the driver axial interval in a separated Cusp pair.
+
+> [`cusp_separated_pair_mate_bounds`](#function-cusp_separated_pair_mate_bounds): Verify the mate axial interval in a separated Cusp pair.
 
 > [`cusp_tooth_pipeline`](#function-cusp_tooth_pipeline): Assert the cusp tip uses a validated, bounded regular-tooth profile.
 
@@ -1020,6 +1028,36 @@ No return
 
 Back to [module description](#module-family-integration).
 
+### Function `cusp_meshed_pair_driver_bounds`
+
+
+Source: [`cusp/meshed_pair_driver_bounds.scad`](cusp/meshed_pair_driver_bounds.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_meshed_pair_mate_bounds`
+
+
+Source: [`cusp/meshed_pair_mate_bounds.scad`](cusp/meshed_pair_mate_bounds.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
 ### Function `cusp_pair_pipeline`
 
 
@@ -1054,6 +1092,36 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`cusp/parameter_pipeline.scad`](cusp/parameter_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_separated_pair_driver_bounds`
+
+
+Source: [`cusp/separated_pair_driver_bounds.scad`](cusp/separated_pair_driver_bounds.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `cusp_separated_pair_mate_bounds`
+
+
+Source: [`cusp/separated_pair_mate_bounds.scad`](cusp/separated_pair_mate_bounds.scad)
 
 **Parameters:**
 
