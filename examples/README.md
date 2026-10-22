@@ -464,7 +464,7 @@ tooth scale or body proportions. Spiral pairs remain static references.
 
 > [`tanh_triad_body_alternative`](#function-tanh_triad_body_alternative): Tanh Triad alternative: The contrasting family controls shown as a body.
 
-> [`tanh_triad_curve_gear_alternative`](#function-tanh_triad_curve_gear_alternative): Tanh Triad alternative: A broad smooth triad with transition 0.8 and crest 0.08 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
+> [`tanh_triad_curve_gear_alternative`](#function-tanh_triad_curve_gear_alternative): Tanh Triad alternative: A broad smooth triad with transition 0.8 and crest 0.08 uses 18 teeth at module 1.6 for a coarser, more visible tooth profile while retaining its curve scale. Removing the sixth-harmonic correction isolates the three-lobed tanh law.
 
 > [`tanh_triad_curve_gear_pair_alternative`](#function-tanh_triad_curve_gear_pair_alternative): Tanh Triad alternative pair: The alternative curve and its mate meshed in contact for inspection.
 
@@ -4654,7 +4654,7 @@ Back to [module description](#module-executable-examples).
 
 
 Source: [`functions/tanh_triad/curve_gear_tanh_triad_alternative.scad`](functions/tanh_triad/curve_gear_tanh_triad_alternative.scad)
-A broad smooth triad with transition 0.8 and crest 0.08 replaces the canonical sharper, corrected triad. Removing the sixth-harmonic correction isolates the three-lobed tanh law; coarse teeth expose its boundary.
+A broad smooth triad with transition 0.8 and crest 0.08 uses 18 teeth at module 1.6 for a coarser, more visible tooth profile while retaining its curve scale. Removing the sixth-harmonic correction isolates the three-lobed tanh law.
 
 **Parameters:**
 
