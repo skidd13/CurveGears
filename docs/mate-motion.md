@@ -35,7 +35,7 @@ These equations define pitch geometry, not exact tooth-flank geometry.
 
 > [`_cg_mate_points_from_radius_samples_with_state`](#function-_cg_mate_points_from_radius_samples_with_state): Construct mate points from a previously integrated motion state.
 
-> [`_cg_mate_rotation_for_phase`](#function-_cg_mate_rotation_for_phase): Convert a motion-table phase into the mate display rotation.
+> [`_cg_mate_rotation_for_phase`](#function-_cg_mate_rotation_for_phase): Convert driver body rotation into the conjugate mate body rotation.
 
 > [`_cg_motion_closure_error`](#function-_cg_motion_closure_error): Return the final accumulated mate-angle error in degrees.
 
@@ -80,7 +80,9 @@ Back to [module description](#module-mate-motion).
 
 
 For each driver sample `theta_i`, the accumulated rolling angle `phi_i`
-is evaluated first and the mate radius is then `D-driver_radii[i]`.
+is evaluated first and the mate radius is then `D-driver_radii[i]`. Its
+local polar angle is `-phi_i`; reversing the sampled order restores the
+positive winding required by the gear-boundary construction.
 This is the primary mate-construction path for all radial families.
 
 **Parameters:**
@@ -115,7 +117,7 @@ Back to [module description](#module-mate-motion).
 ### Function `_cg_mate_rotation_for_phase`
 
 
-Convert a motion-table phase into the mate display rotation.
+Convert driver body rotation into the conjugate mate body rotation.
 
 **Parameters:**
 

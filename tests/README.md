@@ -185,7 +185,7 @@ fully render normal and alternative pairs and both outlined bodies.
 
 > [`mate_phase_forwarding`](#function-mate_phase_forwarding): Verify that mate tooth phase reaches the shared placement engine.
 
-> [`mate_preparation`](#function-mate_preparation): Prove circular and harmonic rolling invariants and shared preparation consistency.
+> [`mate_preparation`](#function-mate_preparation): Prove rolling closure, complementary radii, tangent conjugacy and shared preparation consistency.
 
 > [`mate_trochoid_polar_radii`](#function-mate_trochoid_polar_radii): Compare indexed motion radii with independent full-outline ray scans for both trochoid families.
 

@@ -96,7 +96,9 @@ function _cg_solve_mate_distance(mid_radii,lo,hi,i=0) =
  * @return {array of points} Directly generated Cartesian mate pitch points.
  *
  * For each driver sample `theta_i`, the accumulated rolling angle `phi_i`
- * is evaluated first and the mate radius is then `D-driver_radii[i]`.
+ * is evaluated first and the mate radius is then `D-driver_radii[i]`. Its
+ * local polar angle is `-phi_i`; reversing the sampled order restores the
+ * positive winding required by the gear-boundary construction.
  * This is the primary mate-construction path for all radial families.
  */
 function _cg_mate_points_from_radius_samples(driver_radii,mid_radii,D) =
@@ -111,7 +113,9 @@ function _cg_mate_points_from_radius_samples(driver_radii,mid_radii,D) =
  * @return {array of points} Directly generated Cartesian mate pitch points.
  */
 function _cg_mate_points_from_radius_samples_with_state(driver_radii,D,integration_state) =
-    [for(i=[0:len(driver_radii)-1]) _cg_mate_point_from_radius(driver_radii[i],D,integration_state[1][i])];
+    let(clockwise=[for(i=[0:len(driver_radii)-1])
+        _cg_mate_point_from_radius(driver_radii[i],D,-integration_state[1][i])])
+    [for(i=[0:len(clockwise)-1]) clockwise[(len(clockwise)-i)%len(clockwise)]];
 
 /***
  * @function _cg_mate_point_from_radius
@@ -138,12 +142,12 @@ function _cg_motion_y_unwrapped(tab,angle) =
 
 /***
  * @function _cg_mate_rotation_for_phase
- * @brief Convert a motion-table phase into the mate display rotation.
+ * @brief Convert driver body rotation into the conjugate mate body rotation.
  * @param tab {array} Table of `[driver phase, mate phase]` pairs.
  * @param phase {angle} Driver phase in degrees.
  * @return {angle} Mate display rotation in degrees.
  */
-function _cg_mate_rotation_for_phase(tab,phase) = 180 - _cg_motion_y_unwrapped(tab,phase);
+function _cg_mate_rotation_for_phase(tab,phase) = 180 + _cg_motion_y_unwrapped(tab,-phase);
 
 /**
  * @function _cg_motion_closure_error

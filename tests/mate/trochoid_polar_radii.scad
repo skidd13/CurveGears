@@ -29,7 +29,7 @@ for(family=[0,1],ratios=[[3,1,.35],[5,1,.35],[2,1,.65]]) {
     mate=_cg_mate_points_from_radius_samples_with_state(direct,D,integration);
     assert(abs(_cg_motion_closure_error(integration[2]))<.08,"correct physical-radius motion does not close");
     for(i=[0:13:n-1])
-        assert(abs(_cg_vlen(mate[i])+ray_radius(points,360*i/n)-D)<1e-8,"mate pitch radius does not complement the actual driver");
+        assert(abs(_cg_vlen(mate[(n-i)%n])+ray_radius(points,360*i/n)-D)<1e-8,"mate pitch radius does not complement the actual driver");
 }
 echo("PASS: exact physical-ray radii, phase wrapping and conjugate pitch distances for both trochoid families");
 cube(.01);
