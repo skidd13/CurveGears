@@ -17,12 +17,11 @@ REGRESSION_TEST_DEPS := $(shell find tests -type f -name '*.scad' -print | sort)
 ABSOLUTE_PATH_PATTERN := (^|[^[:alnum:]_./!])/(?:[^/[:space:]]+/){2,}|file://
 
 FAMILIES := $(notdir $(patsubst %/pair.scad,%,$(wildcard src/*/pair.scad)))
-CI_REGRESSION_GROUPS := common_math tooth_generation tooth_placement mate_motion $(FAMILIES)
 CI_EXAMPLE_RENDER_GROUPS := core overview $(FAMILIES)
 
 .DELETE_ON_ERROR:
 
-.PHONY: all help images api-images examples ci-example-manifest ci-render-examples ci-check-examples ci-example-group test-build-tools test-cusp-native ci-family-matrix ci-regression-groups readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
+.PHONY: all help images api-images examples ci-example-manifest ci-render-examples ci-check-examples ci-example-group test-build-tools test-cusp-native ci-family-matrix readme docs docs-pages FORCE test test-smoke test-deliberate test-full check check-docs clean
 
 MAIN_EXAMPLE := examples/main_curved_gear.scad
 MAIN_IMAGE := images/main_curved_gear.png
@@ -37,9 +36,6 @@ CI_EXAMPLES := $(MAIN_EXAMPLE) $(CORE_EXAMPLES) $(API_EXAMPLES)
 CI_EXAMPLE_MANIFEST := build/ci-images/manifest.tsv
 
 all: images examples readme docs-pages tests/README.md
-
-ci-regression-groups:
-	@printf '%s\n' $(CI_REGRESSION_GROUPS)
 
 ci-family-matrix:
 	@set -eu; \
@@ -62,7 +58,6 @@ help:
 	  '  ci-render-examples  Exhaustively render geometry examples in one group' \
 	  '  test-build-tools    Verify inventory, dependency and output checks' \
 	  '  ci-family-matrix    Print the JSON family matrix used by GitHub Actions' \
-	  '  ci-regression-groups Print the regression groups consumed by GitHub Actions' \
 	  '  examples            Generate the example index' \
 	  '  readme              Generate the main README and navigation' \
 	  '  docs                Generate documentation, examples and images' \
