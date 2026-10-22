@@ -128,20 +128,20 @@ ci-example-group: ci-example-manifest
 	@test -n "$(CI_SELECTED_EXAMPLES)"
 
 ci-check-examples: ci-example-group $(CI_COMPILE_OUTPUTS) $(CI_RENDER_OUTPUTS)
-	@for output in $(CI_COMPILE_OUTPUTS); do $(PYTHON) -m utils.check_build_output compile "$$output" --source "examples/$${output#build/ci-images/}" || exit 1; done
-	@for output in $(CI_RENDER_OUTPUTS); do $(PYTHON) -m utils.check_build_output image "$$output" --size $(CI_IMAGE_SIZE) || exit 1; done
+	@for output in $(CI_COMPILE_OUTPUTS); do $(PYTHON) -m utils.checks.check_compile "$$output" --source "examples/$${output#build/ci-images/}" || exit 1; done
+	@for output in $(CI_RENDER_OUTPUTS); do $(PYTHON) -m utils.checks.check_image "$$output" --size $(CI_IMAGE_SIZE) || exit 1; done
 	@echo 'PASS: all examples compile; pair/body boundary matrix renders'
 
 # Explicit exhaustive tier: numeric helpers are compiled, not blank PNGs.
 ci-render-examples: ci-example-group $(CI_NUMERIC_OUTPUTS) $(CI_ALL_RENDER_OUTPUTS)
-	@for output in $(CI_NUMERIC_OUTPUTS); do $(PYTHON) -m utils.check_build_output compile "$$output" --source "examples/$${output#build/ci-images/}" || exit 1; done
-	@for output in $(CI_ALL_RENDER_OUTPUTS); do $(PYTHON) -m utils.check_build_output image "$$output" --size $(CI_IMAGE_SIZE) || exit 1; done
+	@for output in $(CI_NUMERIC_OUTPUTS); do $(PYTHON) -m utils.checks.check_compile "$$output" --source "examples/$${output#build/ci-images/}" || exit 1; done
+	@for output in $(CI_ALL_RENDER_OUTPUTS); do $(PYTHON) -m utils.checks.check_image "$$output" --size $(CI_IMAGE_SIZE) || exit 1; done
 	@echo 'PASS: exhaustive example geometry renders'
 
 build/ci-images/%.csg: examples/%.scad build/renderer-config.txt
 	@mkdir -p "$(@D)"
 	$(OPENSCAD) -o "$(abspath $@)" "$<" > "$(@:.csg=.log)" 2>&1
-	@$(PYTHON) -m utils.check_build_output compile "$@" --source "$<"
+	@$(PYTHON) -m utils.checks.check_compile "$@" --source "$<"
 
 build/ci-images/%.png: CI_CAMERA=0,0,0,50,0,40,0
 $(patsubst examples/%.scad,build/ci-images/%.png,$(filter %_2d.scad,$(CI_EXAMPLES))): CI_CAMERA=0,0,0,0,0,0,0
@@ -149,7 +149,7 @@ $(patsubst examples/%.scad,build/ci-images/%.png,$(filter %_2d.scad,$(CI_EXAMPLE
 build/ci-images/%.png: examples/%.scad build/ci-image-config.txt
 	@mkdir -p "$(@D)"
 	$(OPENSCAD) -o "$@" --render --camera=$(CI_CAMERA) --colorscheme=Nature --projection=o --viewall --autocenter --imgsize=$(CI_IMAGE_SIZE) "$<" > "$(@:.png=.png.log)" 2>&1
-	@$(PYTHON) -m utils.check_build_output image "$@" --size $(CI_IMAGE_SIZE)
+	@$(PYTHON) -m utils.checks.check_image "$@" --size $(CI_IMAGE_SIZE)
 
 readme: README.md $(NAVIGATION_TEMPLATE) FORCE
 	@test -s README.md
@@ -270,7 +270,7 @@ $(REGRESSION_DIR)/smoke/%.stl: tests/%.scad
 $(REGRESSION_DIR)/smoke/%.csg: tests/%.scad build/renderer-config.txt
 	@mkdir -p "$(@D)"
 	$(OPENSCAD) -o "$(abspath $@)" "$<" > "$(@:.csg=.log)" 2>&1
-	@$(PYTHON) -m utils.check_build_output compile "$@" --source "$<"
+	@$(PYTHON) -m utils.checks.check_compile "$@" --source "$<"
 
 REGRESSION_DELIBERATE_tooth_generation := $(REGRESSION_DIR)/tooth_equivalence_deliberate.ok
 REGRESSION_DELIBERATE_tooth_placement := $(REGRESSION_DIR)/tooth_validation_cases_deliberate.ok $(REGRESSION_DIR)/collision_failure_deliberate.failed $(REGRESSION_DIR)/polygon_failure_deliberate.failed
@@ -323,25 +323,25 @@ CUSP_PROFILE_OUTPUTS := $(REGRESSION_DIR)/cusp/mate_3.dxf $(REGRESSION_DIR)/cusp
 $(CUSP_PROFILE_OUTPUTS): $(REGRESSION_DIR)/cusp/mate_%.dxf: tests/cusp/envelope_mate_fixture.scad build/renderer-config.txt $(CUSP_FIXTURE_DEPS)
 	@mkdir -p "$(@D)"
 	$(OPENSCAD) -o "$(abspath $@)" -D "cusps=$*" -D profile=true "$<" > "$(@:.dxf=.profile.log)" 2>&1
-	@$(PYTHON) -m utils.check_build_output profile "$@"
+	@$(PYTHON) -m utils.checks.check_profile "$@"
 
 $(CUSP_MATE_OUTPUTS): $(REGRESSION_DIR)/cusp/mate_%.stl: tests/cusp/envelope_mate_fixture.scad $(REGRESSION_DIR)/cusp/mate_%.dxf build/renderer-config.txt
-	@$(PYTHON) -m utils.check_build_output profile "$(REGRESSION_DIR)/cusp/mate_$*.dxf"
+	@$(PYTHON) -m utils.checks.check_profile "$(REGRESSION_DIR)/cusp/mate_$*.dxf"
 	$(OPENSCAD) -o "$@" -D 'mate_file="$(abspath $(REGRESSION_DIR)/cusp/mate_$*.dxf)"' "$<" > "$(@:.stl=.log)" 2>&1
-	@$(PYTHON) -m utils.check_build_output mesh "$@"
+	@$(PYTHON) -m utils.checks.check_mesh "$@"
 
 
 CUSP_SNAPSHOT_OUTPUTS := $(REGRESSION_DIR)/cusp/snapshot_3.scad $(REGRESSION_DIR)/cusp/snapshot_5.scad
 $(CUSP_SNAPSHOT_OUTPUTS): $(REGRESSION_DIR)/cusp/snapshot_%.scad: $(REGRESSION_DIR)/cusp/mate_%.dxf utils/cusp_cache.py
-	@$(PYTHON) -m utils.check_build_output profile "$<"
+	@$(PYTHON) -m utils.checks.check_profile "$<"
 	@$(PYTHON) -m utils.cusp_cache "$(REGRESSION_DIR)/cusp/mate_$*.profile.log" "$@"
 
 define CUSP_COLLISION_CHECK
 $(REGRESSION_DIR)/cusp/envelope_$(1)_$(2).ok: tests/cusp/envelope_solver_collision_probe.scad $(REGRESSION_DIR)/cusp/mate_$(1).stl $(REGRESSION_DIR)/cusp/mate_$(1).dxf $(REGRESSION_DIR)/cusp/snapshot_$(1).scad build/renderer-config.txt $(CUSP_PROBE_DEPS)
-	@$(PYTHON) -m utils.check_build_output mesh "$(REGRESSION_DIR)/cusp/mate_$(1).stl"
+	@$(PYTHON) -m utils.checks.check_mesh "$(REGRESSION_DIR)/cusp/mate_$(1).stl"
 	@rm -f "$$(@:.ok=.stl)" "$$@"
 	@$(OPENSCAD) -o "$$(@:.ok=.stl)" -D 'cusps=$(1)' -D 'phase=$(2)' -D 'mate_file="$(abspath $(REGRESSION_DIR)/cusp/mate_$(1).dxf)"' "$(REGRESSION_DIR)/cusp/snapshot_$(1).scad" > "$$(@:.ok=.log)" 2>&1 || true
-	@$(PYTHON) -m utils.check_build_output empty "$$(@:.ok=.stl)"
+	@$(PYTHON) -m utils.checks.check_empty_output "$$(@:.ok=.stl)"
 	@touch "$$@"
 endef
 $(foreach cusps,3 5,$(foreach phase,0.25 30.25 54.25,$(eval $(call CUSP_COLLISION_CHECK,$(cusps),$(phase)))))
@@ -353,12 +353,12 @@ $(REGRESSION_DIR)/cusp/native_envelope_$(1)_$(2).ok: tests/cusp/envelope_solver_
 	@mkdir -p "$$(@D)"
 	@rm -f "$$(@:.ok=.stl)" "$$@"
 	@$(OPENSCAD) -o "$$(@:.ok=.stl)" -D 'cusps=$(1)' -D 'phase=$(2)' "$$<" > "$$(@:.ok=.log)" 2>&1 || true
-	@$(PYTHON) -m utils.check_build_output empty "$$(@:.ok=.stl)"
+	@$(PYTHON) -m utils.checks.check_empty_output "$$(@:.ok=.stl)"
 	@touch "$$@"
 endef
 $(foreach cusps,3 5,$(foreach phase,0.25 30.25 54.25,$(eval $(call CUSP_NATIVE_COLLISION_CHECK,$(cusps),$(phase)))))
 test-cusp-native: $(CUSP_NATIVE_COLLISION_CASES)
-	@for output in $(CUSP_NATIVE_COLLISION_CASES:.ok=.stl); do $(PYTHON) -m utils.check_build_output empty "$$output" || exit 1; done
+	@for output in $(CUSP_NATIVE_COLLISION_CASES:.ok=.stl); do $(PYTHON) -m utils.checks.check_empty_output "$$output" || exit 1; done
 	@echo 'PASS: all six independent native Cusp envelope phases'
 
 test: $(CUSP_COLLISION_OUTPUTS) $(REGRESSION_SMOKE_OUTPUTS) $(REGRESSION_SMOKE_MANIFEST) $(REGRESSION_DELIBERATE_OUTPUTS) $(REGRESSION_INVALID_OUTPUTS)
@@ -384,7 +384,7 @@ $(foreach family,$(FAMILIES),$(eval $(call FULL_PIPELINE_RENDER,$(family))))
 FULL_PIPELINE_SELECTED_OUTPUTS := $(if $(strip $(REGRESSION_FAMILIES)),$(foreach family,$(REGRESSION_FAMILIES),$(REGRESSION_DIR)/full_$(family).stl),$(FULL_PIPELINE_OUTPUTS))
 
 test-full: $(FULL_PIPELINE_SELECTED_OUTPUTS)
-	@for output in $(FULL_PIPELINE_SELECTED_OUTPUTS); do $(PYTHON) -m utils.check_build_output mesh "$$output" || exit 1; done
+	@for output in $(FULL_PIPELINE_SELECTED_OUTPUTS); do $(PYTHON) -m utils.checks.check_mesh "$$output" || exit 1; done
 	@echo 'PASS: full maintained family renders'
 
 check: test check-docs

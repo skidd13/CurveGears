@@ -7,7 +7,11 @@ import zlib
 import subprocess
 from pathlib import Path
 from utils.build_inventory import ROOT, dependencies, examples, group, render_case, validate, write_if_changed
-from utils.check_build_output import check
+from utils.checks.check_compile import check as check_compile
+from utils.checks.check_empty_output import check as check_empty_output
+from utils.checks.check_image import check as check_image
+from utils.checks.check_mesh import check as check_mesh
+from utils.checks.check_profile import check as check_profile
 from utils.check_docs import check_markdown_modules, check_source_text
 from utils.cusp_cache import snapshot
 from utils.regression.stl import MESH_VERTEX_TOLERANCE, metrics
@@ -83,7 +87,7 @@ class InventoryTests(unittest.TestCase):
                                      f'REGRESSION_DIR={relative}', 'OPENSCAD=openscad'],
                                     cwd=ROOT, capture_output=True, text=True, check=True)
             self.assertIn(f'-o "{relative}/cusp/mate_3.stl"', result.stdout)
-            self.assertIn('utils.check_build_output empty', result.stdout)
+            self.assertIn('utils.checks.check_empty_output', result.stdout)
 
     def test_shared_mate_selection_runs_its_invalid_inputs(self):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as directory:
@@ -120,37 +124,37 @@ class OutputTests(unittest.TestCase):
     def test_missing_import_cannot_pass_as_empty(self):
         self.log.write_text('WARNING: Could not read file missing.stl\nCurrent top level object is empty.\n')
         with self.assertRaisesRegex(ValueError, 'failed OpenSCAD log'):
-            check(self.output, 'empty')
+            check_empty_output(self.output)
 
     def test_partial_mesh_with_assertion_cannot_pass(self):
         self.output.write_text('partial exported geometry')
         self.log.write_text('ERROR: Assertion failed in the omitted mate\nTop level object is a 3D object (manifold)\n')
         with self.assertRaisesRegex(ValueError, 'failed OpenSCAD log'):
-            check(self.output, 'mesh')
+            check_mesh(self.output)
 
     def test_empty_probe_requires_diagnostic_and_absent_mesh(self):
         self.log.write_text('Current top level object is empty.\n')
-        check(self.output, 'empty')
+        check_empty_output(self.output)
         self.output.write_text('unexpected geometry')
         with self.assertRaisesRegex(ValueError, 'not empty'):
-            check(self.output, 'empty')
+            check_empty_output(self.output)
         self.output.unlink()
         self.log.write_text('renderer crashed')
         with self.assertRaisesRegex(ValueError, 'not empty'):
-            check(self.output, 'empty')
+            check_empty_output(self.output)
 
     def test_numeric_helpers_need_finite_echo(self):
         output = self.output.with_suffix('.csg')
         output.write_text('\n')
         source = 'curve_gear_cusp_centre_distance.scad'
         self.log.write_text('ECHO: 40.25\n')
-        check(output, 'compile', source)
+        check_compile(output, source)
         self.log.write_text('ECHO: undef\n')
         with self.assertRaisesRegex(ValueError, 'invalid numeric'):
-            check(output, 'compile', source)
+            check_compile(output, source)
         self.log.write_text('')
         with self.assertRaisesRegex(ValueError, 'empty geometry'):
-            check(output, 'compile', 'curve_gear_cusp.scad')
+            check_compile(output, 'curve_gear_cusp.scad')
 
 
     def test_blank_image_and_wrong_dimensions_are_rejected(self):
@@ -161,11 +165,11 @@ class OutputTests(unittest.TestCase):
         header = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>IIBBBBB', 2, 1, 8, 2, 0, 0, 0))
         output.write_bytes(header + chunk(b'IDAT', zlib.compress(b'\0' + b'\xff' * 6)) + chunk(b'IEND', b''))
         with self.assertRaisesRegex(ValueError, 'blank image'):
-            check(output, 'image', size='2,1')
+            check_image(output, size='2,1')
         output.write_bytes(header + chunk(b'IDAT', zlib.compress(b'\0' + b'\xff' * 3 + b'\0' * 3)) + chunk(b'IEND', b''))
-        check(output, 'image', size='2,1')
+        check_image(output, size='2,1')
         with self.assertRaisesRegex(ValueError, 'incorrect PNG dimensions'):
-            check(output, 'image', size='3,1')
+            check_image(output, size='3,1')
 
 
     def test_planar_cache_requires_a_closed_finite_outline(self):
@@ -176,13 +180,13 @@ class OutputTests(unittest.TestCase):
         def write(groups):
             output.write_text(''.join(f'{code}\n{value}\n' for code,value in groups))
         write(pairs)
-        check(output, 'profile')
+        check_profile(output)
         write([(code,0 if code==70 else value) for code,value in pairs])
         with self.assertRaisesRegex(ValueError, 'open or incomplete'):
-            check(output, 'profile')
+            check_profile(output)
         write([(code,'nan' if code==20 else value) for code,value in pairs])
         with self.assertRaisesRegex(ValueError, 'invalid DXF edge'):
-            check(output, 'profile')
+            check_profile(output)
 
 
     def test_state_snapshot_rejects_missing_or_nonfinite_native_data(self):
@@ -203,10 +207,10 @@ class OutputTests(unittest.TestCase):
     def test_missing_or_invalid_mate_is_rejected(self):
         self.log.write_text('')
         with self.assertRaisesRegex(ValueError, 'missing/empty'):
-            check(self.output, 'mesh')
+            check_mesh(self.output)
         self.output.write_text('not a mesh')
         with self.assertRaises((AssertionError, ValueError)):
-            check(self.output, 'mesh')
+            check_mesh(self.output)
 
 
 class DocumentationTests(unittest.TestCase):

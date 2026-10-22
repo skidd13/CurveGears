@@ -5,7 +5,7 @@ import math
 import os
 from pathlib import Path
 from .build_inventory import ROOT, write_if_changed
-from .check_build_output import clean_log
+from .checks.logs import clean_log
 
 
 def snapshot(log, output):

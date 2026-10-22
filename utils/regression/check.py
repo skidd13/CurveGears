@@ -19,6 +19,9 @@ from .manifest import families as manifest_families
 from .manifest import load as load_manifest
 from .manifest import source_family
 from .stl import assert_closed_mesh, compare_reference_tooth, sha
+from ..checks.check_empty_output import check as check_empty_output
+from ..checks.check_mesh import check as check_mesh
+from ..checks.check_profile import check as check_profile
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -185,19 +188,18 @@ def check_invalid(families: list[str]) -> list[dict]:
 def check_cusp_collisions(families: list[str]) -> list[dict]:
     if "cusp" not in families:
         return []
-    from ..check_build_output import check
     rows = []
     for cusps in (3, 5):
         mate = BUILD / "cusp" / f"mate_{cusps}.stl"
         profile = mate.with_suffix(".dxf")
         snapshot = BUILD / "cusp" / f"snapshot_{cusps}.scad"
         assert snapshot.exists(), f"missing Cusp state snapshot: {snapshot}"
-        check(profile, "profile")
-        check(mate, "mesh")
+        check_profile(profile)
+        check_mesh(mate)
         for phase in (.25, 30.25, 54.25):
             output = BUILD / "cusp" / f"envelope_{cusps}_{phase}.stl"
             assert output.with_suffix(".ok").exists(), f"missing collision marker: {output}"
-            check(output, "empty")
+            check_empty_output(output)
             rows.append({"cusps": cusps, "phase": phase, "mate_sha256": sha(mate), "profile_sha256": sha(profile), "driver_motion_sha256": sha(snapshot), "empty": True})
     return rows
 
