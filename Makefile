@@ -68,14 +68,10 @@ help:
 	  '  docs                Generate documentation, examples and images' \
 	  '  docs-pages          Generate Doxydown documentation pages' \
 	  '  check-docs          Check documentation, example indexes and links' \
-	  '  test                Run smoke, deliberate and invalid-input regressions' \
-	  '  test-smoke          Run family smoke pipelines and manifest checks' \
-	  '  test-deliberate     Run deliberate geometry regression cases' \
-	  '  test-full           Run full family pipelines' \
-	  '  test-cusp-native    Audit all six Cusp phases with independent native sweeps' \
+	  '  test                Run the regression suite; family=<name> selects a family' \
 	  '  check               Run tests and documentation checks' \
 	  '  clean               Remove generated build and image artifacts' \
-	  'Test selection: make test family=cusp runs cusp checks; omit family to run all families.' \
+	  'Test selection: make test family=cusp runs Cusp checks; shared families are common, tooth and mate; omit family to run all.' \
 	  'OPENSCAD=<path> selects the OpenSCAD executable; PYTHON=<path> selects Python 3.' \
 	  'IMAGE_SIZE=<w,h> sets documentation images; API_2D_IMAGE_SIZE overrides outlined 2D renders; MAIN_IMAGE_SIZE overrides the overview; CI_IMAGE_SIZE sets smaller CI renders.' \
 	  'CAMERA=<translate-x,translate-y,translate-z,rotation-x,rotation-y,rotation-z,distance> and COLORSCHEME=<name> set image view; API_2D_COLORSCHEME=<name> selects the 2D outline palette.' \
@@ -249,7 +245,12 @@ docs: readme docs-pages images examples tests/README.md
 
 include utils/regression/fixtures.mk
 REGRESSION_SMOKE_ALL := $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.stl,$(REGRESSION_MESH_SOURCES)) $(patsubst tests/%.scad,$(REGRESSION_DIR)/smoke/%.csg,$(REGRESSION_COMPILE_SOURCES))
-REGRESSION_SELECTED_FAMILIES := $(foreach family,$(REGRESSION_FAMILIES),$(if $(filter common,$(family)),common_math tooth_generation tooth_placement mate_motion,$(family)))
+# Public family names group shared fixtures; the regression checker keeps its
+# narrower responsibility IDs so each case remains assigned exactly once.
+REGRESSION_FAMILY_GROUPS_common := common_math tooth_generation tooth_placement mate_motion
+REGRESSION_FAMILY_GROUPS_tooth := tooth_generation tooth_placement
+REGRESSION_FAMILY_GROUPS_mate := mate_motion
+REGRESSION_SELECTED_FAMILIES := $(foreach family,$(REGRESSION_FAMILIES),$(if $(REGRESSION_FAMILY_GROUPS_$(family)),$(REGRESSION_FAMILY_GROUPS_$(family)),$(family)))
 REGRESSION_SMOKE_common_math := $(filter $(REGRESSION_DIR)/smoke/common/%,$(REGRESSION_SMOKE_ALL))
 REGRESSION_SMOKE_tooth_generation := $(filter $(REGRESSION_DIR)/smoke/tooth/generation/%,$(REGRESSION_SMOKE_ALL))
 REGRESSION_SMOKE_tooth_placement := $(filter $(REGRESSION_DIR)/smoke/tooth/placement/%,$(REGRESSION_SMOKE_ALL))
