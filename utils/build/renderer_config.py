@@ -2,7 +2,7 @@
 from pathlib import Path
 import shutil
 import sys
-from .build_inventory import write_if_changed
+from .write_if_changed import write_if_changed
 
 
 def main():

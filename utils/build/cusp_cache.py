@@ -4,8 +4,10 @@ import json
 import math
 import os
 from pathlib import Path
-from .build_inventory import ROOT, write_if_changed
-from .checks.logs import clean_log
+from .write_if_changed import write_if_changed
+from ..checks.logs import clean_log
+
+ROOT = Path(__file__).resolve().parents[2]
 
 
 def snapshot(log, output):

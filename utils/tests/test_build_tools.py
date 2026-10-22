@@ -6,14 +6,16 @@ import json
 import zlib
 import subprocess
 from pathlib import Path
-from utils.build_inventory import ROOT, dependencies, examples, group, render_case, validate, write_if_changed
+from utils.inventory.scad_dependencies import ROOT, dependencies
+from utils.inventory.check_examples import validate
+from utils.build.write_if_changed import write_if_changed
 from utils.checks.check_compile import check as check_compile
 from utils.checks.check_empty_output import check as check_empty_output
 from utils.checks.check_image import check as check_image
 from utils.checks.check_mesh import check as check_mesh
 from utils.checks.check_profile import check as check_profile
-from utils.check_docs import check_markdown_modules, check_source_text
-from utils.cusp_cache import snapshot
+from utils.checks.check_docs import check_markdown_modules, check_source_text
+from utils.build.cusp_cache import snapshot
 from utils.regression.stl import MESH_VERTEX_TOLERANCE, metrics
 
 
@@ -33,13 +35,19 @@ def tetrahedron_stl(scale, crack=0):
 
 class InventoryTests(unittest.TestCase):
     def test_actual_api_and_boundary_matrix(self):
-        sources = validate()
+        subprocess.run(['make', '-s', 'ci-example-manifest'], cwd=ROOT, check=True)
+        manifest = ROOT / 'build/ci-images/manifest.tsv'
+        rows = [line.split('\t') for line in manifest.read_text().splitlines()]
+        sources = [source for source, _ in rows]
         self.assertEqual(len(sources), len(set(sources)))
-        families = {group(p) for p in sources} - {'core', 'overview'}
+        validate([source for source in sources if source.startswith('examples/functions/')], ROOT / 'src')
+        families = {Path(p).parts[2] for p in sources if len(Path(p).parts) > 2 and Path(p).parts[1] == 'functions'}
         for family in families:
-            selected = [p for p in sources if group(p) == family and render_case(p)]
+            selected = [output for source, output in rows if f'functions/{family}/' in source and output.endswith('.png')]
             self.assertEqual(4, len(selected), (family, selected))
             self.assertEqual(2, sum('_alternative' in p for p in selected))
+        self.assertEqual(229, len(rows))
+        self.assertEqual(71, sum(output.endswith('.png') for _, output in rows))
 
     def test_removed_canonical_example_is_detected(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -47,7 +55,7 @@ class InventoryTests(unittest.TestCase):
             (root / 'src').mkdir()
             (root / 'src/new.scad').write_text('module curve_gear_new() {}')
             with self.assertRaisesRegex(ValueError, 'missing='):
-                validate(root)
+                validate([], root / 'src')
 
     def test_transitive_includes_cycles_and_comments(self):
         with tempfile.TemporaryDirectory() as directory:

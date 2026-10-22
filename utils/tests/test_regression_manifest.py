@@ -4,7 +4,7 @@ import tempfile
 import unittest
 import subprocess
 
-from utils.build_inventory import ROOT
+ROOT = Path(__file__).resolve().parents[2]
 from utils.regression.manifest import load, smoke_assignments
 
 

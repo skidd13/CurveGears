@@ -105,7 +105,7 @@ def merge(page: Path, panels: dict[str, list[tuple[str, str]]]) -> None:
 def main() -> int:
     if len(sys.argv) < 2:
         raise SystemExit("usage: merge_example_images.py DOC_PAGE [...]")
-    root = Path(__file__).resolve().parent.parent
+    root = Path(__file__).resolve().parents[2]
     panels = image_panels(root)
     for name in sys.argv[1:]:
         merge(Path(name), panels)

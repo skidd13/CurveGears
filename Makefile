@@ -33,7 +33,7 @@ CORE_IMAGES := $(patsubst examples/%.scad,images/%.png,$(CORE_EXAMPLES))
 API_EXAMPLES := $(shell find examples/functions -type f -name '*.scad' -print | sort)
 API_GEOMETRY_EXAMPLES := $(filter-out %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(API_EXAMPLES))
 API_IMAGES := $(patsubst examples/%.scad,images/%.png,$(API_GEOMETRY_EXAMPLES))
-CI_EXAMPLES := $(sort $(MAIN_EXAMPLE) $(CORE_EXAMPLES) $(API_EXAMPLES))
+CI_EXAMPLES := $(MAIN_EXAMPLE) $(CORE_EXAMPLES) $(API_EXAMPLES)
 CI_EXAMPLE_MANIFEST := build/ci-images/manifest.tsv
 
 all: images examples readme docs-pages tests/README.md
@@ -107,21 +107,30 @@ examples: examples/README.md
 	@test -s examples/README.md
 	@test -s "$(MAIN_EXAMPLE)"
 	@for example in $(CORE_EXAMPLES); do test -s "$$example" || { echo "missing core example: $$example"; exit 1; }; done
-	@$(PYTHON) -m utils.build_inventory
+	@$(PYTHON) -m utils.inventory.check_examples --source-root src $(API_EXAMPLES)
 	@for example in $(API_EXAMPLES); do test -s "$$example" || { echo "missing API example: $$example"; exit 1; }; done
 	@echo 'PASS: every documented public callable has one API example'
 
 # Compilation covers every callable and every alternative. Full geometry is
 # checked on both pair variants and both outlined bodies in each family.
 CI_SELECTED_EXAMPLES := $(if $(filter core,$(group)),$(CORE_EXAMPLES),$(if $(filter overview,$(group)),$(MAIN_EXAMPLE),$(filter examples/functions/$(group)/%,$(API_EXAMPLES))))
-CI_MATRIX_EXAMPLES := $(shell $(PYTHON) -m utils.build_inventory --render-sources)
+CI_MATRIX_EXAMPLES := $(MAIN_EXAMPLE) $(CORE_EXAMPLES) $(filter %_pair.scad %_pair_alternative.scad %_body_2d.scad %_body_alternative_2d.scad,$(API_EXAMPLES))
 CI_COMPILE_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.csg,$(filter-out $(CI_MATRIX_EXAMPLES),$(CI_SELECTED_EXAMPLES)))
 CI_NUMERIC_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.csg,$(filter %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(CI_SELECTED_EXAMPLES)))
 CI_RENDER_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.png,$(filter $(CI_MATRIX_EXAMPLES),$(CI_SELECTED_EXAMPLES)))
 CI_ALL_RENDER_OUTPUTS := $(patsubst examples/%.scad,build/ci-images/%.png,$(filter-out %_centre_distance.scad %_mate_rotation.scad %_reference_separation.scad,$(CI_SELECTED_EXAMPLES)))
 
 ci-example-manifest:
-	@$(PYTHON) -m utils.build_inventory --manifest "$(CI_EXAMPLE_MANIFEST)"
+	@mkdir -p "$(dir $(CI_EXAMPLE_MANIFEST))"
+	@set -eu; { \
+	  for source in $(CI_EXAMPLES); do \
+	    case " $(CI_MATRIX_EXAMPLES) " in *" $$source "*) extension=png ;; *) extension=csg ;; esac; \
+	    relative=$${source#examples/}; relative=$${relative%.scad}; \
+	    printf '%s\tbuild/ci-images/%s.%s\n' "$$source" "$$relative" "$$extension"; \
+	  done; \
+	} > "$(CI_EXAMPLE_MANIFEST).tmp"
+	@cmp -s "$(CI_EXAMPLE_MANIFEST).tmp" "$(CI_EXAMPLE_MANIFEST)" && rm "$(CI_EXAMPLE_MANIFEST).tmp" || mv "$(CI_EXAMPLE_MANIFEST).tmp" "$(CI_EXAMPLE_MANIFEST)"
+	@echo 'PASS: inventory contains $(words $(CI_EXAMPLES)) examples, $(words $(CI_MATRIX_EXAMPLES)) routine full renders'
 
 ci-example-group: ci-example-manifest
 	@case " $(CI_EXAMPLE_RENDER_GROUPS) " in *" $(group) "*) ;; *) echo "unknown CI example group: $(group)"; exit 2 ;; esac
@@ -188,7 +197,7 @@ $(1): $(3) $(4) $(5) $(6) $(7) $(8) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FO
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
 	@$(DOCGEN) -g -e c -l c "$(3)" "$(4)" "$(5)" "$(6)" $(if $(7),"$(7)") $(if $(8),"$(8)") >> "$$@"
-	@$(PYTHON) utils/merge_example_images.py "$$@"
+	@$(PYTHON) -m utils.docs.merge_example_images "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -199,7 +208,7 @@ $(1): $(3) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@sed -e 's|@README@|../README.md|g' -e 's|@DOCS@||g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@|../tests/|g' "$(NAVIGATION_TEMPLATE)" >> "$$@"
 	@printf '\n\n' >> "$$@"
 	@$(DOCGEN) -g -e c -l c $(3) >> "$$@"
-	@$(PYTHON) utils/merge_example_images.py "$$@"
+	@$(PYTHON) -m utils.docs.merge_example_images "$$@"
 	@sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)" >> "$$@"
 endef
 
@@ -281,14 +290,14 @@ REGRESSION_DELIBERATE_ALL := $(REGRESSION_DELIBERATE_tooth_generation) $(REGRESS
 REGRESSION_DELIBERATE_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(foreach family,$(REGRESSION_SELECTED_FAMILIES),$(REGRESSION_DELIBERATE_$(family))),$(REGRESSION_DELIBERATE_ALL))
 
 define REGRESSION_EXPECT_SUCCESS
-$(REGRESSION_DIR)/$(1)_deliberate.ok: $(2) $(shell $(PYTHON) -m utils.build_inventory --source $(2))
+$(REGRESSION_DIR)/$(1)_deliberate.ok: $(2) $(shell $(PYTHON) -m utils.inventory.scad_dependencies $(2))
 	@mkdir -p "$$(@D)"
 	$(OPENSCAD) -o "$(REGRESSION_DIR)/$(1)_deliberate.stl" "$$<" > "$(REGRESSION_DIR)/$(1)_deliberate.log" 2>&1
 	@touch "$$@"
 endef
 
 define REGRESSION_EXPECT_FAILURE
-$(REGRESSION_DIR)/$(1)_deliberate.failed: $(2) $(shell $(PYTHON) -m utils.build_inventory --source $(2))
+$(REGRESSION_DIR)/$(1)_deliberate.failed: $(2) $(shell $(PYTHON) -m utils.inventory.scad_dependencies $(2))
 	@mkdir -p "$$(@D)"
 	@rm -f "$(REGRESSION_DIR)/$(1)_deliberate.stl"
 	@set +e; $(OPENSCAD) -o "$(REGRESSION_DIR)/$(1)_deliberate.stl" "$$<" > "$(REGRESSION_DIR)/$(1)_deliberate.log" 2>&1; status=$$$$?; test $$$$status -ne 0
@@ -316,8 +325,8 @@ $(REGRESSION_DIR)/invalid/%.failed: tests/%.scad
 CUSP_COLLISION_CASES := $(foreach cusps,3 5,$(foreach phase,0.25 30.25 54.25,$(REGRESSION_DIR)/cusp/envelope_$(cusps)_$(phase).ok))
 CUSP_COLLISION_OUTPUTS := $(if $(strip $(REGRESSION_SELECTED_FAMILIES)),$(if $(filter cusp,$(REGRESSION_SELECTED_FAMILIES)),$(CUSP_COLLISION_CASES)),$(CUSP_COLLISION_CASES))
 
-CUSP_FIXTURE_DEPS := $(shell $(PYTHON) -m utils.build_inventory --source tests/cusp/envelope_mate_fixture.scad)
-CUSP_PROBE_DEPS := $(shell $(PYTHON) -m utils.build_inventory --source tests/cusp/envelope_solver_collision_probe.scad)
+CUSP_FIXTURE_DEPS := $(shell $(PYTHON) -m utils.inventory.scad_dependencies tests/cusp/envelope_mate_fixture.scad)
+CUSP_PROBE_DEPS := $(shell $(PYTHON) -m utils.inventory.scad_dependencies tests/cusp/envelope_solver_collision_probe.scad)
 CUSP_MATE_OUTPUTS := $(REGRESSION_DIR)/cusp/mate_3.stl $(REGRESSION_DIR)/cusp/mate_5.stl
 CUSP_PROFILE_OUTPUTS := $(REGRESSION_DIR)/cusp/mate_3.dxf $(REGRESSION_DIR)/cusp/mate_5.dxf
 $(CUSP_PROFILE_OUTPUTS): $(REGRESSION_DIR)/cusp/mate_%.dxf: tests/cusp/envelope_mate_fixture.scad build/renderer-config.txt $(CUSP_FIXTURE_DEPS)
@@ -332,9 +341,9 @@ $(CUSP_MATE_OUTPUTS): $(REGRESSION_DIR)/cusp/mate_%.stl: tests/cusp/envelope_mat
 
 
 CUSP_SNAPSHOT_OUTPUTS := $(REGRESSION_DIR)/cusp/snapshot_3.scad $(REGRESSION_DIR)/cusp/snapshot_5.scad
-$(CUSP_SNAPSHOT_OUTPUTS): $(REGRESSION_DIR)/cusp/snapshot_%.scad: $(REGRESSION_DIR)/cusp/mate_%.dxf utils/cusp_cache.py
+$(CUSP_SNAPSHOT_OUTPUTS): $(REGRESSION_DIR)/cusp/snapshot_%.scad: $(REGRESSION_DIR)/cusp/mate_%.dxf utils/build/cusp_cache.py
 	@$(PYTHON) -m utils.checks.check_profile "$<"
-	@$(PYTHON) -m utils.cusp_cache "$(REGRESSION_DIR)/cusp/mate_$*.profile.log" "$@"
+	@$(PYTHON) -m utils.build.cusp_cache "$(REGRESSION_DIR)/cusp/mate_$*.profile.log" "$@"
 
 define CUSP_COLLISION_CHECK
 $(REGRESSION_DIR)/cusp/envelope_$(1)_$(2).ok: tests/cusp/envelope_solver_collision_probe.scad $(REGRESSION_DIR)/cusp/mate_$(1).stl $(REGRESSION_DIR)/cusp/mate_$(1).dxf $(REGRESSION_DIR)/cusp/snapshot_$(1).scad build/renderer-config.txt $(CUSP_PROBE_DEPS)
@@ -391,7 +400,7 @@ check: test check-docs
 
 check-docs: readme docs-pages examples/README.md tests/README.md
 	@test -s README.md
-	@$(PYTHON) utils/check_docs.py
+	@$(PYTHON) -m utils.checks.check_docs
 	@test -s examples/README.md
 	@test -s "$(NAVIGATION_TEMPLATE)"
 	@test -s "$(FOOTER_TEMPLATE)"
@@ -453,17 +462,17 @@ clean:
 # A write-if-changed configuration stamp invalidates outputs when the selected
 # renderer or render flags change, without defeating a no-op Make invocation.
 build/renderer-config.txt: FORCE
-	@$(PYTHON) -m utils.build_config "$@" "$(OPENSCAD)"
+	@$(PYTHON) -m utils.build.renderer_config "$@" "$(OPENSCAD)"
 build/ci-image-config.txt: build/renderer-config.txt FORCE
-	@$(PYTHON) -m utils.build_config "$@" "$(OPENSCAD)" "$(CI_IMAGE_SIZE)" Nature
+	@$(PYTHON) -m utils.build.renderer_config "$@" "$(OPENSCAD)" "$(CI_IMAGE_SIZE)" Nature
 
 build/ci-2d-config.txt: build/renderer-config.txt FORCE
-	@$(PYTHON) -m utils.build_config "$@" "$(OPENSCAD)" "$(CI_IMAGE_SIZE)" Nature 0,0,0,0,0,0,0
+	@$(PYTHON) -m utils.build.renderer_config "$@" "$(OPENSCAD)" "$(CI_IMAGE_SIZE)" Nature 0,0,0,0,0,0,0
 
 $(REGRESSION_SMOKE_ALL) $(REGRESSION_INVALID_ALL) $(REGRESSION_DELIBERATE_ALL) $(FULL_PIPELINE_OUTPUTS): build/renderer-config.txt
 
 # Generated dependency rules contain only transitive literal use/include inputs.
-DEPENDENCY_STATUS := $(shell $(PYTHON) -m utils.build_inventory --dependencies "$(REGRESSION_DIR)/source-dependencies.mk" --regression-dir "$(REGRESSION_DIR)" && echo PASS)
+DEPENDENCY_STATUS := $(shell $(PYTHON) -m utils.inventory.scad_dependencies --output "$(REGRESSION_DIR)/source-dependencies.mk" --regression-dir "$(REGRESSION_DIR)" --examples $(CI_EXAMPLES) --tests $(REGRESSION_TEST_DEPS) && echo PASS)
 ifneq ($(DEPENDENCY_STATUS),PASS)
 $(error OpenSCAD dependency discovery failed)
 endif
