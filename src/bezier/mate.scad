@@ -121,11 +121,11 @@ function _cg_bezier_mate_centre_distance(control_points,scale,n) =
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
- * @param control_points {closed array grouped as 3n+1 points} Bézier controls.
+ * @param control_points {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Bézier controls.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 720} Adapter and pitch sampling density.
  */
 module curve_gear_bezier_mate(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
@@ -145,7 +145,7 @@ module curve_gear_bezier_mate(modul,tooth_number,width,bore,control_points=_cg_b
  * @brief Return the conjugate centre distance for an admissible Bézier curve.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
- * @param control_points {closed array grouped as 3n+1 points} Bézier controls.
+ * @param control_points {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Bézier controls.
  * @param samples {integer >= 120, default 720} Adapter and pitch sampling density.
  * @return {number} Conjugate centre distance in mm.
  */
@@ -157,7 +157,7 @@ function curve_gear_bezier_mate_centre_distance(modul,tooth_number,control_point
  * @brief Return the conjugate mate rotation for a driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
- * @param control_points {closed array grouped as 3n+1 points} Bézier controls.
+ * @param control_points {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Bézier controls.
  * @param samples {integer >= 120, default 720} Adapter and pitch sampling density.
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @return {angle} Conjugate mate rotation in degrees.

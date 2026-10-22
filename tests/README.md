@@ -8,485 +8,22 @@
   - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Logistic Dwell](../docs/logistic_dwell.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md) · [Temple Fay](../docs/temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](README.md)
-  - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
+  - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate preparation](../docs/mate-preparation.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
+  - [Harmonic common](../docs/harmonic-common.md) · [Trochoid common](../docs/trochoid-common.md) · [Saturating common](../docs/saturating-common.md)
 
 
-Fixtures are catalogued by responsibility: shared mathematics, tooth generation, tooth placement and validation, mate motion and phase, and family integration. Make discovers fixtures and assigns mirrored regression outputs automatically; generated meshes and reports remain under the ignored build directory.
+Fixtures are grouped by their source paths: common mathematics, tooth generation, tooth placement, mate motion, and family integration. Make discovers every fixture and assigns mirrored regression outputs automatically; generated meshes and reports remain under the ignored build directory.
 
-## Module `Common mathematics`
+## Module `Regression fixtures`
 
-Shared mathematical and ordinary-variant regression fixtures.
-
-### Brief content:
-
-**Functions**:
-
-> [`common_ordinary_variants`](#function-common_ordinary_variants): Ordinary circular cases covering more than one module/tooth-count pair.
-
-
-## Functions
-
-The module `Common mathematics` defines the following functions.
-
-### Function `common_ordinary_variants`
-
-
-Source: [`common/ordinary_variants.scad`](common/ordinary_variants.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-common-mathematics).
-
-
-Back to [top](#).
-
-## Module `Tooth generation`
-
-Shared tooth-construction and equivalence regression fixtures.
-
-### Brief content:
-
-**Functions**:
-
-> [`tooth_generation_candidate_pipeline`](#function-tooth_generation_candidate_pipeline): Render the current cached candidate tooth in the same local frame.
-
-> [`tooth_generation_equivalence`](#function-tooth_generation_equivalence): Keep the oracle export non-empty so the regression runner can execute it as
-
-> [`tooth_generation_include`](#function-tooth_generation_include): Direct include smoke test for the standalone tooth-generation layer.
-
-> [`tooth_generation_library`](#function-tooth_generation_library): Focused contract test for the reusable tooth-generation library.
-
-> [`tooth_generation_reference`](#function-tooth_generation_reference): Compact mathematical oracle derived from the pinned reference source:
-
-> [`tooth_generation_reference_pipeline`](#function-tooth_generation_reference_pipeline): Render the compact mathematical reference tooth for STL comparison.
-
-> [`tooth_generation_segment_bounds_equivalence`](#function-tooth_generation_segment_bounds_equivalence): Prove ordered broad-phase and exact validation equivalence for crossing, duplicate and near-tolerance polygons.
-
-
-## Functions
-
-The module `Tooth generation` defines the following functions.
-
-### Function `tooth_generation_candidate_pipeline`
-
-
-Source: [`tooth/generation/candidate_pipeline.scad`](tooth/generation/candidate_pipeline.scad)
-
-The inward support segment exists only to establish curved-body splices.
-Compare the active reference involute/top profile, including its historical
-centre sentinel, so this STL remains a mathematical equivalence check.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-generation).
-
-### Function `tooth_generation_equivalence`
-
-
-Source: [`tooth/generation/equivalence.scad`](tooth/generation/equivalence.scad)
-
-an ordinary OpenSCAD case while the assertions remain the actual test.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-generation).
-
-### Function `tooth_generation_include`
-
-
-Source: [`tooth/generation/include.scad`](tooth/generation/include.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-generation).
-
-### Function `tooth_generation_library`
-
-
-Source: [`tooth/generation/library.scad`](tooth/generation/library.scad)
-
-Exercise both the calculated polygon and the legacy compatibility module.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-generation).
-
-### Function `tooth_generation_reference`
-
-
-Source: [`tooth/generation/reference.scad`](tooth/generation/reference.scad)
-
-https://github.com/chrisspen/gears/tree/15793cf3377773e417f52dc91ea7f28a2d25dde0
-This project does not vendor the upstream gears.scad repository.
-
-This is a deliberately small, renderable reference tooth. It preserves the
-pinned involute equations while leaving the production candidate and its
-placement/validation code under test.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-generation).
-
-### Function `tooth_generation_reference_pipeline`
-
-
-Source: [`tooth/generation/reference_pipeline.scad`](tooth/generation/reference_pipeline.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-generation).
-
-### Function `tooth_generation_segment_bounds_equivalence`
-
-
-Source: [`tooth/generation/segment_bounds_equivalence.scad`](tooth/generation/segment_bounds_equivalence.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-generation).
-
-
-Back to [top](#).
-
-## Module `Tooth placement and validation`
-
-Shared placement, collision and diagnostic regression fixtures.
-
-### Brief content:
-
-**Functions**:
-
-> [`tooth_placement_assembly_ownership`](#function-tooth_placement_assembly_ownership): Preserve missing and duplicate tooth detection using exposed tops as root unions hide internal splice points.
-
-> [`tooth_placement_collision_failure`](#function-tooth_placement_collision_failure): Expected-failure gate for a complete placed-tooth collision.
-
-> [`tooth_placement_include`](#function-tooth_placement_include): Direct include smoke test for the standalone tooth-placement layer.
-
-> [`tooth_placement_polygon_failure`](#function-tooth_placement_polygon_failure): Expected-failure gate for the final polygon self-intersection validator.
-
-> [`tooth_placement_validation_cases`](#function-tooth_placement_validation_cases): Deliberate local and boundary failures.  Each assertion confirms that the
-
-
-## Functions
-
-The module `Tooth placement and validation` defines the following functions.
-
-### Function `tooth_placement_assembly_ownership`
-
-
-Source: [`tooth/placement/assembly_ownership.scad`](tooth/placement/assembly_ownership.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-placement-and-validation).
-
-### Function `tooth_placement_collision_failure`
-
-
-Source: [`tooth/placement/collision_failure.scad`](tooth/placement/collision_failure.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-placement-and-validation).
-
-### Function `tooth_placement_include`
-
-
-Source: [`tooth/placement/include.scad`](tooth/placement/include.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-placement-and-validation).
-
-### Function `tooth_placement_polygon_failure`
-
-
-Source: [`tooth/placement/polygon_failure.scad`](tooth/placement/polygon_failure.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-placement-and-validation).
-
-### Function `tooth_placement_validation_cases`
-
-
-Source: [`tooth/placement/validation_cases.scad`](tooth/placement/validation_cases.scad)
-
-expected diagnostic classification is produced rather than repaired away.
-
-The assertions are the test; the final OpenSCAD export is kept valid so the
-fixture can still be rendered normally.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-tooth-placement-and-validation).
-
-
-Back to [top](#).
-
-## Module `Mate motion and phase`
-
-Shared mate-motion and tooth-phase regression fixtures.
-
-### Brief content:
-
-**Functions**:
-
-> [`mate_invalid_preparation_bracket`](#function-mate_invalid_preparation_bracket): Reject exterior bounds which do not enclose rolling closure.
-
-> [`mate_invalid_preparation_lengths`](#function-mate_invalid_preparation_lengths): Reject mismatched boundary and midpoint radius arrays.
-
-> [`mate_invalid_preparation_radius`](#function-mate_invalid_preparation_radius): Reject non-positive physical radii before integration.
-
-> [`mate_motion_direct_cases`](#function-mate_motion_direct_cases): Direct conjugate-mate construction regression.
-
-> [`mate_motion_phase_cases`](#function-mate_motion_phase_cases): Shared mate-motion phase regression.
-
-> [`mate_phase_forwarding`](#function-mate_phase_forwarding): Verify that mate tooth phase reaches the shared placement engine.
-
-> [`mate_preparation`](#function-mate_preparation): Prove circular and harmonic rolling invariants and shared preparation consistency.
-
-> [`mate_trochoid_polar_radii`](#function-mate_trochoid_polar_radii): Compare indexed motion radii with independent full-outline ray scans for both trochoid families.
-
-
-## Functions
-
-The module `Mate motion and phase` defines the following functions.
-
-### Function `mate_invalid_preparation_bracket`
-
-
-Source: [`mate/invalid_preparation_bracket.scad`](mate/invalid_preparation_bracket.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-mate-motion-and-phase).
-
-### Function `mate_invalid_preparation_lengths`
-
-
-Source: [`mate/invalid_preparation_lengths.scad`](mate/invalid_preparation_lengths.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-mate-motion-and-phase).
-
-### Function `mate_invalid_preparation_radius`
-
-
-Source: [`mate/invalid_preparation_radius.scad`](mate/invalid_preparation_radius.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-mate-motion-and-phase).
-
-### Function `mate_motion_direct_cases`
-
-
-Source: [`mate/motion/direct_cases.scad`](mate/motion/direct_cases.scad)
-
-The mate points are generated from driver-angle samples and the integrated
-rolling increments.  No inverse motion-table lookup is involved.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-mate-motion-and-phase).
-
-### Function `mate_motion_phase_cases`
-
-
-Source: [`mate/motion/phase_cases.scad`](mate/motion/phase_cases.scad)
-
-This is intentionally a small analytic fixture. It checks that every
-dynamic family accepts negative, zero, positive and full-turn phases while
-retaining the continuous wraparound convention used by pair assembly.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-mate-motion-and-phase).
-
-### Function `mate_phase_forwarding`
-
-
-Verify that mate tooth phase reaches the shared placement engine.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-- `{geometry}`: Small validation solid.
-
-Back to [module description](#module-mate-motion-and-phase).
-
-### Function `mate_preparation`
-
-
-Source: [`mate/preparation.scad`](mate/preparation.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-mate-motion-and-phase).
-
-### Function `mate_trochoid_polar_radii`
-
-
-Source: [`mate/trochoid_polar_radii.scad`](mate/trochoid_polar_radii.scad)
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-mate-motion-and-phase).
-
-
-Back to [top](#).
-
-## Module `Family integration`
-
-`make test family=<name>` exports dedicated tooth/pair/parameter fixtures as
-closed meshes and compiles the composite `full_pipeline.scad` fixture. The
-composite repeats those components; `make test-full family=<name>` retains
-its full geometry export as an explicit exhaustive tier.
-Cusp checks retain all three intermediate phases for both three and five
-cusps. Make builds each complete swept-envelope planar outline once, checks
-its closed DXF edges and extruded mesh, and records the validated driver
-outline and motion table at nine decimal places. Each phase reuses that
-state with the relative mate rotation before extruding the intersection. No envelope sampling
-or geometric checks are relaxed. `make test-cusp-native` retains an
-independent full-envelope audit for all six phases. DXF serialisation uses
-the renderer's decimal precision; native overlap witnesses validate its
-effect before the cached path is accepted. Cached outputs depend on their actual
-transitive `use`/`include` sources and the selected renderer.
-`make test-build-tools` checks source inventory, dependency discovery and
-rejection of missing, invalid or warning-producing cached geometry.
-CI uses `make ci-check-examples group=<family|core|overview>`: each example
-either compiles or fully renders. Every family fully renders both normal
-and alternative pairs, plus both outlined bodies to cover body offsets.
-Core examples and the overview fully render. Numerical helpers must echo
-finite results; they do not generate empty images. Full exports remain
-available with `make ci-render-examples group=<family|core|overview>`.
-Documentation images remain available through `make images` with their
-existing resolution and colours; CI reduction does not replace them.
+Fixtures are grouped by source path. `make test family=<name>` exports dedicated
+tooth, pair and parameter fixtures and compiles the composite `full_pipeline.scad`.
+Cusp tests retain all intermediate phases for three- and five-cusp gears; the
+independent `make test-cusp-native` audit checks every phase without relaxing
+envelope sampling or geometric tolerances. `make test-build-tools` checks
+source inventory, dependency discovery and rejection of invalid cached geometry.
+CI uses `make ci-check-examples group=<family|core|overview>`; family groups
+fully render normal and alternative pairs and both outlined bodies.
 
 ### Brief content:
 
@@ -517,6 +54,8 @@ existing resolution and colours; CI reduction does not replace them.
 > [`circle_invalid_phase90_pair`](#function-circle_invalid_phase90_pair): Reject the measured overlap in a phase-shifted Circle gear pair.
 
 > [`common_harmonic_equivalence`](#function-common_harmonic_equivalence): Check named harmonic adapters against their independent analytic laws and retain distinct scaling policies.
+
+> [`common_ordinary_variants`](#function-common_ordinary_variants): Ordinary circular cases covering more than one module/tooth-count pair.
 
 > [`common_saturating_equivalence`](#function-common_saturating_equivalence): Check Logistic and Tanh adapters across small, canonical and extreme finite gains.
 
@@ -634,6 +173,22 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`logistic_dwell_invalid_pair_parameters`](#function-logistic_dwell_invalid_pair_parameters): Reject invalid curve controls consistently at the pair entry point.
 
+> [`mate_invalid_preparation_bracket`](#function-mate_invalid_preparation_bracket): Reject exterior bounds which do not enclose rolling closure.
+
+> [`mate_invalid_preparation_lengths`](#function-mate_invalid_preparation_lengths): Reject mismatched boundary and midpoint radius arrays.
+
+> [`mate_invalid_preparation_radius`](#function-mate_invalid_preparation_radius): Reject non-positive physical radii before integration.
+
+> [`mate_motion_direct_cases`](#function-mate_motion_direct_cases): Direct conjugate-mate construction regression.
+
+> [`mate_motion_phase_cases`](#function-mate_motion_phase_cases): Shared mate-motion phase regression.
+
+> [`mate_phase_forwarding`](#function-mate_phase_forwarding): Verify that mate tooth phase reaches the shared placement engine.
+
+> [`mate_preparation`](#function-mate_preparation): Prove circular and harmonic rolling invariants and shared preparation consistency.
+
+> [`mate_trochoid_polar_radii`](#function-mate_trochoid_polar_radii): Compare indexed motion radii with independent full-outline ray scans for both trochoid families.
+
 > [`pascal_full_pipeline`](#function-pascal_full_pipeline): Verify the complete Pascal gear, mate, and pair entry points.
 
 > [`pascal_pair_pipeline`](#function-pascal_pair_pipeline): Verify Pascal pair assembly and conjugate mate placement.
@@ -678,10 +233,34 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`temple_fay_phase_equivalence`](#function-temple_fay_phase_equivalence): Compare the public dynamic helpers with the shared preparation contract.
 
+> [`tooth_generation_candidate_pipeline`](#function-tooth_generation_candidate_pipeline): Render the current cached candidate tooth in the same local frame.
+
+> [`tooth_generation_equivalence`](#function-tooth_generation_equivalence): Keep the oracle export non-empty so the regression runner can execute it as
+
+> [`tooth_generation_include`](#function-tooth_generation_include): Direct include smoke test for the standalone tooth-generation layer.
+
+> [`tooth_generation_library`](#function-tooth_generation_library): Focused contract test for the reusable tooth-generation library.
+
+> [`tooth_generation_reference`](#function-tooth_generation_reference): Compact mathematical oracle derived from the pinned reference source:
+
+> [`tooth_generation_reference_pipeline`](#function-tooth_generation_reference_pipeline): Render the compact mathematical reference tooth for STL comparison.
+
+> [`tooth_generation_segment_bounds_equivalence`](#function-tooth_generation_segment_bounds_equivalence): Prove ordered broad-phase and exact validation equivalence for crossing, duplicate and near-tolerance polygons.
+
+> [`tooth_placement_assembly_ownership`](#function-tooth_placement_assembly_ownership): Preserve missing and duplicate tooth detection using exposed tops as root unions hide internal splice points.
+
+> [`tooth_placement_collision_failure`](#function-tooth_placement_collision_failure): Expected-failure gate for a complete placed-tooth collision.
+
+> [`tooth_placement_include`](#function-tooth_placement_include): Direct include smoke test for the standalone tooth-placement layer.
+
+> [`tooth_placement_polygon_failure`](#function-tooth_placement_polygon_failure): Expected-failure gate for the final polygon self-intersection validator.
+
+> [`tooth_placement_validation_cases`](#function-tooth_placement_validation_cases): Deliberate local and boundary failures.  Each assertion confirms that the
+
 
 ## Functions
 
-The module `Family integration` defines the following functions.
+The module `Regression fixtures` defines the following functions.
 
 ### Function `bezier_control_sets`
 
@@ -696,7 +275,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `bezier_full_pipeline`
 
@@ -711,7 +290,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `bezier_invalid_controls`
 
@@ -726,7 +305,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `bezier_invalid_seam`
 
@@ -741,7 +320,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `bezier_invalid_tangent`
 
@@ -756,7 +335,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `bezier_mate_pipeline`
 
@@ -771,7 +350,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cassini_full_pipeline`
 
@@ -786,7 +365,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cassini_invalid_ratio`
 
@@ -803,7 +382,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cassini_pair_pipeline`
 
@@ -818,7 +397,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cassini_tooth_pipeline`
 
@@ -833,7 +412,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `circle_full_pipeline`
 
@@ -848,7 +427,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `circle_invalid_phase90_pair`
 
@@ -863,7 +442,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `common_harmonic_equivalence`
 
@@ -878,7 +457,22 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
+
+### Function `common_ordinary_variants`
+
+
+Source: [`common/ordinary_variants.scad`](common/ordinary_variants.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
 
 ### Function `common_saturating_equivalence`
 
@@ -893,7 +487,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `common_tanh_limits`
 
@@ -908,7 +502,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cosine_quintic_full_pipeline`
 
@@ -923,7 +517,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cosine_quintic_invalid_centre_distance_parameters`
 
@@ -938,7 +532,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cosine_quintic_invalid_mate_parameters`
 
@@ -953,7 +547,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cosine_quintic_invalid_mate_rotation_parameters`
 
@@ -968,7 +562,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cosine_quintic_invalid_pair_parameters`
 
@@ -983,7 +577,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_envelope_collision_probe`
 
@@ -998,7 +592,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_envelope_mate_fixture`
 
@@ -1013,7 +607,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_five_cusp_pair_pipeline`
 
@@ -1028,7 +622,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_full_pipeline`
 
@@ -1043,7 +637,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_meshed_pair_driver_bounds`
 
@@ -1058,7 +652,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_meshed_pair_mate_bounds`
 
@@ -1073,7 +667,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_pair_pipeline`
 
@@ -1088,7 +682,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_parameter_controls_pipeline`
 
@@ -1103,7 +697,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_parameter_pipeline`
 
@@ -1118,7 +712,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_separated_pair_driver_bounds`
 
@@ -1133,7 +727,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_separated_pair_mate_bounds`
 
@@ -1148,7 +742,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `cusp_tooth_pipeline`
 
@@ -1163,7 +757,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `ellipse_full_pipeline`
 
@@ -1178,7 +772,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `ellipse_pair_pipeline`
 
@@ -1193,7 +787,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `ellipse_shape_policy`
 
@@ -1208,7 +802,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `ellipse_tooth_pipeline`
 
@@ -1223,7 +817,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `epitrochoid_contact`
 
@@ -1238,7 +832,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `epitrochoid_full_pipeline`
 
@@ -1253,7 +847,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `epitrochoid_mate_alternative_pipeline`
 
@@ -1268,7 +862,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `epitrochoid_pair_pipeline`
 
@@ -1283,7 +877,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `epitrochoid_tooth_pipeline`
 
@@ -1298,7 +892,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `fourier_coefficient_sets`
 
@@ -1313,7 +907,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `fourier_full_pipeline`
 
@@ -1328,7 +922,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `fourier_invalid_coefficients`
 
@@ -1343,7 +937,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `fourier_shape_policy`
 
@@ -1358,7 +952,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `hypotrochoid_full_pipeline`
 
@@ -1373,7 +967,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `hypotrochoid_invalid_ratio`
 
@@ -1388,7 +982,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `hypotrochoid_pair_pipeline`
 
@@ -1403,7 +997,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `hypotrochoid_tooth_pipeline`
 
@@ -1418,7 +1012,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_backlash`
 
@@ -1433,7 +1027,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_backlash_2d`
 
@@ -1448,7 +1042,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_backlash_upper`
 
@@ -1463,7 +1057,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_body_bore`
 
@@ -1478,7 +1072,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_body_bore_2d`
 
@@ -1493,7 +1087,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_body_width`
 
@@ -1508,7 +1102,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_cusp_count`
 
@@ -1523,7 +1117,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_cusp_samples`
 
@@ -1538,7 +1132,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_cusp_tooth_count`
 
@@ -1553,7 +1147,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `invalid_fractional_cusps`
 
@@ -1568,7 +1162,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `lobed_full_pipeline`
 
@@ -1583,7 +1177,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `lobed_pair_pipeline`
 
@@ -1598,7 +1192,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `lobed_tooth_pipeline`
 
@@ -1613,7 +1207,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logarithmic_spiral_full_pipeline`
 
@@ -1628,7 +1222,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logarithmic_spiral_pair_pipeline`
 
@@ -1643,7 +1237,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logarithmic_spiral_tooth_pipeline`
 
@@ -1658,7 +1252,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logarithmic_spiral_wraparound`
 
@@ -1675,7 +1269,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logistic_dwell_full_pipeline`
 
@@ -1690,7 +1284,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logistic_dwell_invalid_centre_distance_parameters`
 
@@ -1705,7 +1299,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logistic_dwell_invalid_mate_parameters`
 
@@ -1720,7 +1314,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logistic_dwell_invalid_mate_rotation_parameters`
 
@@ -1735,7 +1329,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `logistic_dwell_invalid_pair_parameters`
 
@@ -1750,7 +1344,134 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_invalid_preparation_bracket`
+
+
+Source: [`mate/invalid_preparation_bracket.scad`](mate/invalid_preparation_bracket.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_invalid_preparation_lengths`
+
+
+Source: [`mate/invalid_preparation_lengths.scad`](mate/invalid_preparation_lengths.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_invalid_preparation_radius`
+
+
+Source: [`mate/invalid_preparation_radius.scad`](mate/invalid_preparation_radius.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_motion_direct_cases`
+
+
+Source: [`mate/motion/direct_cases.scad`](mate/motion/direct_cases.scad)
+
+The mate points are generated from driver-angle samples and the integrated
+rolling increments.  No inverse motion-table lookup is involved.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_motion_phase_cases`
+
+
+Source: [`mate/motion/phase_cases.scad`](mate/motion/phase_cases.scad)
+
+This is intentionally a small analytic fixture. It checks that every
+dynamic family accepts negative, zero, positive and full-turn phases while
+retaining the continuous wraparound convention used by pair assembly.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_phase_forwarding`
+
+
+Verify that mate tooth phase reaches the shared placement engine.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+- `{geometry}`: Small validation solid.
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_preparation`
+
+
+Source: [`mate/preparation.scad`](mate/preparation.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `mate_trochoid_polar_radii`
+
+
+Source: [`mate/trochoid_polar_radii.scad`](mate/trochoid_polar_radii.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
 
 ### Function `pascal_full_pipeline`
 
@@ -1765,7 +1486,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `pascal_pair_pipeline`
 
@@ -1780,7 +1501,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `pascal_radial_root_join`
 
@@ -1795,7 +1516,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `pascal_tooth_pipeline`
 
@@ -1810,7 +1531,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `superformula_accessibility_cases`
 
@@ -1827,7 +1548,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `superformula_contact`
 
@@ -1842,7 +1563,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `superformula_full_pipeline`
 
@@ -1857,7 +1578,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `superformula_mate_pipeline`
 
@@ -1872,7 +1593,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `superformula_pair_pipeline`
 
@@ -1887,7 +1608,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `superformula_shape_policy`
 
@@ -1902,7 +1623,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `superformula_tooth_pipeline`
 
@@ -1917,7 +1638,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `tanh_triad_full_pipeline`
 
@@ -1932,7 +1653,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `tanh_triad_invalid_centre_distance_parameters`
 
@@ -1947,7 +1668,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `tanh_triad_invalid_mate_parameters`
 
@@ -1962,7 +1683,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `tanh_triad_invalid_mate_rotation_parameters`
 
@@ -1977,7 +1698,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `tanh_triad_invalid_pair_parameters`
 
@@ -1992,7 +1713,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `tanh_triad_solver_bounds`
 
@@ -2007,7 +1728,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `temple_fay_defaults`
 
@@ -2022,7 +1743,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `temple_fay_full_pipeline`
 
@@ -2037,7 +1758,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `temple_fay_invalid_pair_parameters`
 
@@ -2052,7 +1773,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `temple_fay_invalid_pair_samples`
 
@@ -2067,7 +1788,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
 
 ### Function `temple_fay_phase_equivalence`
 
@@ -2082,7 +1803,207 @@ No parameters
 
 No return
 
-Back to [module description](#module-family-integration).
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_generation_candidate_pipeline`
+
+
+Source: [`tooth/generation/candidate_pipeline.scad`](tooth/generation/candidate_pipeline.scad)
+
+The inward support segment exists only to establish curved-body splices.
+Compare the active reference involute/top profile, including its historical
+centre sentinel, so this STL remains a mathematical equivalence check.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_generation_equivalence`
+
+
+Source: [`tooth/generation/equivalence.scad`](tooth/generation/equivalence.scad)
+
+an ordinary OpenSCAD case while the assertions remain the actual test.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_generation_include`
+
+
+Source: [`tooth/generation/include.scad`](tooth/generation/include.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_generation_library`
+
+
+Source: [`tooth/generation/library.scad`](tooth/generation/library.scad)
+
+Exercise both the calculated polygon and the legacy compatibility module.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_generation_reference`
+
+
+Source: [`tooth/generation/reference.scad`](tooth/generation/reference.scad)
+
+https://github.com/chrisspen/gears/tree/15793cf3377773e417f52dc91ea7f28a2d25dde0
+This project does not vendor the upstream gears.scad repository.
+
+This is a deliberately small, renderable reference tooth. It preserves the
+pinned involute equations while leaving the production candidate and its
+placement/validation code under test.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_generation_reference_pipeline`
+
+
+Source: [`tooth/generation/reference_pipeline.scad`](tooth/generation/reference_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_generation_segment_bounds_equivalence`
+
+
+Source: [`tooth/generation/segment_bounds_equivalence.scad`](tooth/generation/segment_bounds_equivalence.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_placement_assembly_ownership`
+
+
+Source: [`tooth/placement/assembly_ownership.scad`](tooth/placement/assembly_ownership.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_placement_collision_failure`
+
+
+Source: [`tooth/placement/collision_failure.scad`](tooth/placement/collision_failure.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_placement_include`
+
+
+Source: [`tooth/placement/include.scad`](tooth/placement/include.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_placement_polygon_failure`
+
+
+Source: [`tooth/placement/polygon_failure.scad`](tooth/placement/polygon_failure.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
+
+### Function `tooth_placement_validation_cases`
+
+
+Source: [`tooth/placement/validation_cases.scad`](tooth/placement/validation_cases.scad)
+
+expected diagnostic classification is produced rather than repaired away.
+
+The assertions are the test; the final OpenSCAD export is kept valid so the
+fixture can still be rendered normally.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-regression-fixtures).
 
 
 Back to [top](#).

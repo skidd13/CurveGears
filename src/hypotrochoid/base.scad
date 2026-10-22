@@ -73,6 +73,9 @@ function _cg_hypotrochoid_curve_radius(scale,R,r,d,theta) = _cg_trochoid_curve_r
  */
 function _cg_hypotrochoid_points_scaled(scale,R,r,d,n=720) = _cg_trochoid_points_scaled_from_points(scale,_cg_hypotrochoid_points(R,r,d,n));
 
+/*** @function _cg_hypotrochoid_shape
+ * @brief Build the sampled hypotrochoid pitch shape and radial bounds.
+ */
 function _cg_hypotrochoid_shape(modul,tooth_number,R=3,r=1,d=.35,samples=720) =
     assert(R>r && r>0 && d>0 && d<r,"hypotrochoid: require major_ratio > rolling_ratio > 0 and 0 < offset_ratio < rolling_ratio")
     let(unit=_cg_hypotrochoid_points(R,r,d,samples),scale=_cg_trochoid_scale_from_points(modul,tooth_number,unit),mx=max([for(p=_cg_hypotrochoid_points_scaled(scale,R,r,d,1440)) _cg_vlen(p)]))

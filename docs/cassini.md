@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Cassini`
@@ -56,6 +57,8 @@ Reference: https://mathworld.wolfram.com/CassiniOvals.html.
 
 > [`_cg_cassini_scale`](#function-_cg_cassini_scale): Scale a Cassini curve to the requested tooth pitch.
 
+> [`_cg_cassini_shape`](#function-_cg_cassini_shape): Build the sampled Cassini pitch shape and supported radial bounds.
+
 > [`_cg_cassini_unit_radius`](#function-_cg_cassini_unit_radius): Evaluate the normalised positive Cassini polar branch.
 
 
@@ -79,11 +82,11 @@ The supported branch is a positive single loop. `focus_ratio >= 1` is rejected.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `focus_ratio`: {0 <= number < 1, default 0.78} Focal half-distance divided by the Cassini product parameter.
+- `focus_ratio`: {0 <= number < 1, default .78} Focal half-distance divided by the Cassini product parameter.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation.
 
@@ -113,13 +116,13 @@ Emit the complete cassini gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `focus_ratio`: {value} Same family-specific parameter as curve_gear_cassini.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_cassini.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_cassini.
-- `backlash`: {value} Same family-specific parameter as curve_gear_cassini.
-- `clearance`: {value} Same family-specific parameter as curve_gear_cassini.
-- `samples`: {value} Same family-specific parameter as curve_gear_cassini.
-- `orientation`: {value} Rotation in degrees.
+- `focus_ratio`: {value, default .78} Same family-specific parameter as curve_gear_cassini.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_cassini.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_cassini.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_cassini.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_cassini.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_cassini.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -148,11 +151,11 @@ Build the Cassini body solid without teeth.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `focus_ratio`: {0 <= number < 1, default 0.78} Focal half-distance divided by the Cassini product parameter.
+- `focus_ratio`: {0 <= number < 1, default .78} Focal half-distance divided by the Cassini product parameter.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation.
 
@@ -182,14 +185,14 @@ Emit the cassini body as 2D geometry with an optional signed outer-contour offse
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `focus_ratio`: {value} Same family-specific parameter as curve_gear_cassini_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_cassini_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_cassini_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_cassini_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_cassini_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_cassini_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `focus_ratio`: {value, default .78} Same family-specific parameter as curve_gear_cassini_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_cassini_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_cassini_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_cassini_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_cassini_body.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_cassini_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -212,7 +215,7 @@ Return the mathematical centre distance for a Cassini pair.
 
 - `modul`: {number > 0} Tooth module in mm.
 - `tooth_number`: {integer >= 3} Number of teeth.
-- `focus_ratio`: {0 <= number < 1, default 0.78} Cassini focal ratio.
+- `focus_ratio`: {0 <= number < 1, default .78} Cassini focal ratio.
 - `samples`: {integer >= 120, default 720} Motion sampling density.
 
 **Returns:**
@@ -236,11 +239,11 @@ Build the standalone conjugate mate for a Cassini driver.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `focus_ratio`: {0 <= number < 1, default 0.78} Cassini focal ratio.
+- `focus_ratio`: {0 <= number < 1, default .78} Cassini focal ratio.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 
 **Returns:**
@@ -258,7 +261,7 @@ Return the conjugate Cassini mate rotation for a driver phase.
 
 - `modul`: {number > 0} Tooth module in mm.
 - `tooth_number`: {integer >= 3} Number of teeth.
-- `focus_ratio`: {0 <= number < 1, default 0.78} Cassini focal ratio.
+- `focus_ratio`: {0 <= number < 1, default .78} Cassini focal ratio.
 - `samples`: {integer >= 120, default 720} Motion sampling density.
 - `phase`: {angle, default 0} Driver motion phase.
 
@@ -283,7 +286,7 @@ Build a meshed or separated Cassini driver/mate pair.
 - `tooth_number`: {integer >= 3, default 34} Number of teeth.
 - `width`: {number > 0, default 4} Extrusion width in mm.
 - `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
-- `focus_ratio`: {0 <= number < 1, default 0.78} Cassini focal ratio.
+- `focus_ratio`: {0 <= number < 1, default .78} Cassini focal ratio.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `samples`: {integer >= 120, default 720} Pitch-curve and motion sampling density.
 - `phase`: {angle, default 0} Driver motion phase.
@@ -291,8 +294,8 @@ Build a meshed or separated Cassini driver/mate pair.
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 
@@ -461,6 +464,21 @@ Scale a Cassini curve to the requested tooth pitch.
 **Returns:**
 
 - `{number}`: Curve scale in mm.
+
+Back to [module description](#module-cassini).
+
+### Function `_cg_cassini_shape`
+
+
+Build the sampled Cassini pitch shape and supported radial bounds.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-cassini).
 

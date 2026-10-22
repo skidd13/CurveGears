@@ -105,16 +105,7 @@ images/%.png: examples/%.scad
 NAVIGATION_TEMPLATE := utils/doxydown-support/navigation.md
 FOOTER_TEMPLATE := utils/doxydown-support/footer.md
 EXAMPLES_CATALOGUE_HEADER := examples/.doxydown_module.md
-TEST_COMMON_MATH_HEADER := tests/.doxydown_common_math.md
-TEST_TOOTH_GENERATION_HEADER := tests/.doxydown_tooth_generation.md
-TEST_TOOTH_PLACEMENT_HEADER := tests/.doxydown_tooth_placement.md
-TEST_MATE_MOTION_HEADER := tests/.doxydown_mate_motion.md
-TEST_FAMILY_HEADER := tests/.doxydown_family_integration.md
-TEST_COMMON_MATH_SOURCES := tests/common/ordinary_variants.scad
-TEST_TOOTH_GENERATION_SOURCES := $(shell find tests/tooth/generation -type f -name '*.scad' -print | sort)
-TEST_TOOTH_PLACEMENT_SOURCES := $(shell find tests/tooth/placement -type f -name '*.scad' -print | sort)
-TEST_MATE_MOTION_SOURCES := $(shell find tests/mate -type f -name '*.scad' -print | sort)
-TEST_FAMILY_SOURCES := $(filter-out $(TEST_COMMON_MATH_SOURCES) $(TEST_TOOTH_GENERATION_SOURCES) $(TEST_TOOTH_PLACEMENT_SOURCES) $(TEST_MATE_MOTION_SOURCES),$(REGRESSION_TEST_DEPS))
+TEST_CATALOGUE_HEADER := tests/.doxydown_test_fixtures.md
 
 examples: examples/README.md
 	@test -s examples/README.md
@@ -181,20 +172,16 @@ examples/README.md: $(API_EXAMPLES) $(CORE_EXAMPLES) $(EXAMPLES_CATALOGUE_HEADER
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
-tests/README.md: $(REGRESSION_TEST_DEPS) $(TEST_COMMON_MATH_HEADER) $(TEST_TOOTH_GENERATION_HEADER) $(TEST_TOOTH_PLACEMENT_HEADER) $(TEST_MATE_MOTION_HEADER) $(TEST_FAMILY_HEADER) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
+tests/README.md: $(REGRESSION_TEST_DEPS) $(TEST_CATALOGUE_HEADER) $(NAVIGATION_TEMPLATE) $(FOOTER_TEMPLATE) FORCE
 	@{ \
 		printf '%s\n\n' '# Test catalogue' '## Documentation navigation'; \
 		sed -e 's|@README@|../README.md|g' -e 's|@DOCS@|../docs/|g' -e 's|@EXAMPLES@|../examples/|g' -e 's|@TESTS@||g' "$(NAVIGATION_TEMPLATE)"; \
-		printf '%s\n\n' '' 'Fixtures are catalogued by responsibility: shared mathematics, tooth generation, tooth placement and validation, mate motion and phase, and family integration. Make discovers fixtures and assigns mirrored regression outputs automatically; generated meshes and reports remain under the ignored build directory.'; \
-		$(DOCGEN) -g -e c -l c "$(TEST_COMMON_MATH_HEADER)" $(TEST_COMMON_MATH_SOURCES); \
-		$(DOCGEN) -g -e c -l c "$(TEST_TOOTH_GENERATION_HEADER)" $(TEST_TOOTH_GENERATION_SOURCES); \
-		$(DOCGEN) -g -e c -l c "$(TEST_TOOTH_PLACEMENT_HEADER)" $(TEST_TOOTH_PLACEMENT_SOURCES); \
-		$(DOCGEN) -g -e c -l c "$(TEST_MATE_MOTION_HEADER)" $(TEST_MATE_MOTION_SOURCES); \
-		$(DOCGEN) -g -e c -l c "$(TEST_FAMILY_HEADER)" $(TEST_FAMILY_SOURCES); \
+		printf '%s\n\n' '' 'Fixtures are grouped by their source paths: common mathematics, tooth generation, tooth placement, mate motion, and family integration. Make discovers every fixture and assigns mirrored regression outputs automatically; generated meshes and reports remain under the ignored build directory.'; \
+		$(DOCGEN) -g -e c -l c "$(TEST_CATALOGUE_HEADER)" $(REGRESSION_TEST_DEPS); \
 		sed -e 's|@README@|../README.md|g' "$(FOOTER_TEMPLATE)"; \
 	} > "$@"
 
-DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/cosine_quintic.md docs/cusp.md docs/ellipse.md docs/epitrochoid.md docs/fourier.md docs/hypotrochoid.md docs/lobed.md docs/logarithmic_spiral.md docs/logistic_dwell.md docs/pascal.md docs/superformula.md docs/tanh_triad.md docs/temple_fay.md docs/tooth-construction.md docs/tooth-placement.md docs/mate-motion.md docs/mate-generation.md docs/pair-assembly.md
+DOC_PAGES := docs/bezier.md docs/cassini.md docs/circle.md docs/cosine_quintic.md docs/cusp.md docs/ellipse.md docs/epitrochoid.md docs/fourier.md docs/hypotrochoid.md docs/lobed.md docs/logarithmic_spiral.md docs/logistic_dwell.md docs/pascal.md docs/superformula.md docs/tanh_triad.md docs/temple_fay.md docs/tooth-construction.md docs/tooth-placement.md docs/mate-motion.md docs/mate-preparation.md docs/mate-generation.md docs/pair-assembly.md docs/harmonic-common.md docs/trochoid-common.md docs/saturating-common.md
 
 FORCE:
 
@@ -233,24 +220,28 @@ endef
 $(eval $(call DOXYDOC_PAGE,docs/circle.md,Circle,src/circle/base.scad,src/circle/gear.scad,src/circle/mate.scad,src/circle/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/cusp.md,Cusp,src/cusp/base.scad,src/cusp/gear.scad,src/cusp/mate.scad,src/cusp/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/ellipse.md,Ellipse,src/ellipse/base.scad,src/ellipse/gear.scad,src/ellipse/mate.scad,src/ellipse/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/lobed.md,Lobed,src/lobed/base.scad,src/lobed/gear.scad,src/lobed/mate.scad,src/lobed/pair.scad,src/common/harmonic.scad))
+$(eval $(call DOXYDOC_PAGE,docs/lobed.md,Lobed,src/lobed/base.scad,src/lobed/gear.scad,src/lobed/mate.scad,src/lobed/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/superformula.md,Superformula,src/superformula/base.scad,src/superformula/gear.scad,src/superformula/mate.scad,src/superformula/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/pascal.md,Pascal,src/pascal/base.scad,src/pascal/gear.scad,src/pascal/mate.scad,src/pascal/pair.scad,src/common/harmonic.scad))
-$(eval $(call DOXYDOC_PAGE,docs/fourier.md,Fourier,src/fourier/base.scad,src/fourier/gear.scad,src/fourier/mate.scad,src/fourier/pair.scad,src/common/harmonic.scad))
+$(eval $(call DOXYDOC_PAGE,docs/pascal.md,Pascal,src/pascal/base.scad,src/pascal/gear.scad,src/pascal/mate.scad,src/pascal/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/fourier.md,Fourier,src/fourier/base.scad,src/fourier/gear.scad,src/fourier/mate.scad,src/fourier/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/bezier.md,Bézier,src/bezier/base.scad,src/bezier/gear.scad,src/bezier/mate.scad,src/bezier/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/cassini.md,Cassini,src/cassini/base.scad,src/cassini/gear.scad,src/cassini/mate.scad,src/cassini/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/hypotrochoid.md,Hypotrochoid,src/hypotrochoid/base.scad,src/hypotrochoid/gear.scad,src/hypotrochoid/mate.scad,src/hypotrochoid/pair.scad,src/common/trochoid.scad))
+$(eval $(call DOXYDOC_PAGE,docs/hypotrochoid.md,Hypotrochoid,src/hypotrochoid/base.scad,src/hypotrochoid/gear.scad,src/hypotrochoid/mate.scad,src/hypotrochoid/pair.scad))
 $(eval $(call DOXYDOC_PAGE,docs/logarithmic_spiral.md,Logarithmic Spiral,src/logarithmic_spiral/base.scad,src/logarithmic_spiral/gear.scad,src/logarithmic_spiral/mate.scad,src/logarithmic_spiral/pair.scad))
-$(eval $(call DOXYDOC_PAGE,docs/epitrochoid.md,Epitrochoid,src/epitrochoid/base.scad,src/epitrochoid/gear.scad,src/epitrochoid/mate.scad,src/epitrochoid/pair.scad,src/common/trochoid.scad))
-$(eval $(call DOXYDOC_PAGE,docs/tanh_triad.md,Tanh Triad,src/tanh_triad/base.scad,src/tanh_triad/gear.scad,src/tanh_triad/mate.scad,src/tanh_triad/pair.scad,src/common/mate/preparation.scad,src/common/saturating.scad))
-$(eval $(call DOXYDOC_PAGE,docs/logistic_dwell.md,Logistic Dwell,src/logistic_dwell/base.scad,src/logistic_dwell/gear.scad,src/logistic_dwell/mate.scad,src/logistic_dwell/pair.scad,src/common/mate/preparation.scad,src/common/saturating.scad))
-$(eval $(call DOXYDOC_PAGE,docs/cosine_quintic.md,Cosine Quintic,src/cosine_quintic/base.scad,src/cosine_quintic/gear.scad,src/cosine_quintic/mate.scad,src/cosine_quintic/pair.scad,src/common/mate/preparation.scad,src/common/harmonic.scad))
-$(eval $(call DOXYDOC_PAGE,docs/temple_fay.md,Temple Fay,src/temple_fay/base.scad,src/temple_fay/gear.scad,src/temple_fay/mate.scad,src/temple_fay/pair.scad,src/common/harmonic.scad))
+$(eval $(call DOXYDOC_PAGE,docs/epitrochoid.md,Epitrochoid,src/epitrochoid/base.scad,src/epitrochoid/gear.scad,src/epitrochoid/mate.scad,src/epitrochoid/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/tanh_triad.md,Tanh Triad,src/tanh_triad/base.scad,src/tanh_triad/gear.scad,src/tanh_triad/mate.scad,src/tanh_triad/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/logistic_dwell.md,Logistic Dwell,src/logistic_dwell/base.scad,src/logistic_dwell/gear.scad,src/logistic_dwell/mate.scad,src/logistic_dwell/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/cosine_quintic.md,Cosine Quintic,src/cosine_quintic/base.scad,src/cosine_quintic/gear.scad,src/cosine_quintic/mate.scad,src/cosine_quintic/pair.scad))
+$(eval $(call DOXYDOC_PAGE,docs/temple_fay.md,Temple Fay,src/temple_fay/base.scad,src/temple_fay/gear.scad,src/temple_fay/mate.scad,src/temple_fay/pair.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-construction.md,Tooth construction,src/common/tooth/generation.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/tooth-placement.md,Tooth placement,src/common/tooth/placement.scad))
-$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-motion.md,Mate motion,src/common/mate/motion.scad src/common/mate/preparation.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-motion.md,Mate motion,src/common/mate/motion.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-preparation.md,Mate preparation,src/common/mate/preparation.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/mate-generation.md,Mate generation,src/common/mate/placement.scad))
 $(eval $(call DOXYDOC_SINGLE_PAGE,docs/pair-assembly.md,Pair assembly,src/common/pair/assembly.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/harmonic-common.md,Harmonic common,src/common/harmonic.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/trochoid-common.md,Trochoid common,src/common/trochoid.scad))
+$(eval $(call DOXYDOC_SINGLE_PAGE,docs/saturating-common.md,Saturating common,src/common/saturating.scad))
 
 docs-pages: $(DOC_PAGES)
 
@@ -397,37 +388,25 @@ test-full: $(FULL_PIPELINE_SELECTED_OUTPUTS)
 
 check: test check-docs
 
-check-docs: docs-pages examples/README.md tests/README.md
+check-docs: readme docs-pages examples/README.md tests/README.md
 	@test -s README.md
-	@$(PYTHON) utils/check_public_params.py
-	@$(PYTHON) utils/check_pair_example_invariants.py
+	@$(PYTHON) utils/check_docs.py
 	@test -s examples/README.md
 	@test -s "$(NAVIGATION_TEMPLATE)"
 	@test -s "$(FOOTER_TEMPLATE)"
 	@test -s "$(EXAMPLES_CATALOGUE_HEADER)"
-	@test -s "$(TEST_COMMON_MATH_HEADER)"
-	@test -s "$(TEST_TOOTH_GENERATION_HEADER)"
-	@test -s "$(TEST_TOOTH_PLACEMENT_HEADER)"
-	@test -s "$(TEST_MATE_MOTION_HEADER)"
-	@test -s "$(TEST_FAMILY_HEADER)"
+	@test -s "$(TEST_CATALOGUE_HEADER)"
 	@test -z "$$(rg -n '@function[[:space:]]+[^[:space:](]+\(' src -g '*.scad' || true)"
 	@test -z "$$(rg -n '^> \[`[^]]+\([^)]+' docs examples/README.md tests/README.md -g '*.md' || true)"
 	@test -z "$$(rg -n '^### (Function|Method) `[^`]+\(' docs examples/README.md tests/README.md -g '*.md' || true)"
 	@test -z "$$(rg -n '@image' src -g '*.scad' || true)"
-	@test ! -e utils/test_catalogue.py
-	@test ! -e utils/example_catalogue.py
 	@test ! -e utils/doxydown-support/docs-navigation.md
 	@test ! -e utils/doxydown-support/docs-footer.md
 	@test ! -e utils/doxydown-support/readme-navigation.md
 	@test ! -e utils/doxydown-support/examples-navigation.md
 	@test ! -e utils/doxydown-support/examples-footer.md
 	@test -z "$$(rg -n '@(README|DOCS|EXAMPLES|TESTS)@' README.md docs examples/README.md tests/README.md || true)"
-	@test "$$(rg -c '^## Module `Common mathematics`$$' tests/README.md)" -eq 1
-	@test "$$(rg -c '^## Module `Tooth generation`$$' tests/README.md)" -eq 1
-	@test "$$(rg -c '^## Module `Tooth placement and validation`$$' tests/README.md)" -eq 1
-	@test "$$(rg -c '^## Module `Mate motion and phase`$$' tests/README.md)" -eq 1
-	@test "$$(rg -c '^## Module `Family integration`$$' tests/README.md)" -eq 1
-	@test "$$(rg -c '^## Module ' tests/README.md)" -eq 5
+	@test "$$(rg -c '^## Module ' tests/README.md)" -eq 1
 	@test "$$(rg -c '^### Function `' tests/README.md)" -eq "$$(find tests -type f -name '*.scad' -print | wc -l | tr -d ' ')"
 	@test "$$(rg -c '^## Module `Executable examples`$$' examples/README.md)" -eq 1
 	@test "$$(rg -c '^## Module ' examples/README.md)" -eq 1

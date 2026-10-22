@@ -16,8 +16,8 @@ include <../common/pair/assembly.scad>
  * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
  * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param driver_color {colour, default SteelBlue} Driver gear colour.
- * @param mate_color {colour, default Gold} Mate gear colour.
+ * @param driver_color {colour, default "SteelBlue"} Driver gear colour.
+ * @param mate_color {colour, default "Gold"} Mate gear colour.
  */
 module curve_gear_bezier_pair(modul,tooth_number,width,bore,control_points=_cg_bezier_default_control_points,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
     _cg_assert_samples(samples,"bezier_gear_pair: samples must be an integer >= 120");

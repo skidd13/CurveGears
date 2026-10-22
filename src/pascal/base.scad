@@ -18,6 +18,9 @@ include <../common/harmonic.scad>
  * @return {number} Unit radius at the requested angle.
  */
 function _cg_pascal_unit_radius(eccentricity,phi) = _cg_harmonic_unit_radius([[1,eccentricity,0]],phi);
+/*** @function _cg_pascal_shape
+ * @brief Build the sampled Pascal pitch shape and radial bounds.
+ */
 function _cg_pascal_shape(modul,tooth_number,eccentricity=.25,samples=720) =
     _cg_polar_shape(
         function(theta) _cg_pascal_unit_radius(eccentricity,theta),

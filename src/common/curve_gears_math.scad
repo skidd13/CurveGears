@@ -228,6 +228,9 @@ function _cg_adjacent_contact_points(placements,modul,prepared_boundaries=undef)
                     for(hit=hits) hit[2]
     ];
 
+/*** @function _cg_point_near_any
+ * @brief Test whether a point lies within a radius of any listed point.
+ */
 function _cg_point_near_any(point,points,radius) =
     len([for(candidate=points) if(_cg_vlen(_cg_vsub(point,candidate))<=radius) 1])>0;
 

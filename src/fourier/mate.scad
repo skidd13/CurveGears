@@ -9,11 +9,11 @@ include <../common/mate/placement.scad>
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
- * @param coefficients {array of [harmonic, amplitude, phase]} Same polar coefficients as the driver.
+ * @param coefficients {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same polar coefficients as the driver.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 360} Pitch-curve sampling density.
  */
 module curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360) {
@@ -27,7 +27,7 @@ module curve_gear_fourier_mate(modul,tooth_number,width,bore,coefficients=[[2,.1
  * @brief Return the Fourier conjugate pair centre distance.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
- * @param coefficients {array of [harmonic, amplitude, phase]} Same coefficients as the driver.
+ * @param coefficients {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same coefficients as the driver.
  * @param samples {integer >= 120, default 360} Motion-table sampling density.
  * @return {number} Pair centre distance in mm.
  */
@@ -39,7 +39,7 @@ function curve_gear_fourier_centre_distance(modul,tooth_number,coefficients=[[2,
  * @brief Return Fourier mate rotation for a driver phase.
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3} Number of teeth.
- * @param coefficients {array of [harmonic, amplitude, phase]} Same coefficients as the driver.
+ * @param coefficients {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same coefficients as the driver.
  * @param samples {integer >= 120, default 360} Motion-table sampling density.
  * @param phase {angle, default 0} Driver phase in degrees; negative and full-turn phases remain unwrapped.
  * @return {angle} Mate rotation in degrees.

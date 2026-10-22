@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Cusp`
@@ -114,8 +115,8 @@ The mate is derived from the full placed driver outline and closed motion table.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Standard-flank pressure angle.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 720, divisible by cusps, default 720} Hypocycloid pitch-curve sampling density for validated cusp teeth.
 - `orientation`: {angle, default 0} Whole-gear display rotation in degrees.
 - `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
@@ -141,9 +142,9 @@ Emit the complete cusp gear profile as 2D geometry.
 - `tooth_number`: {integer >= 3, divisible by cusps} Tooth count.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {angle, default 20} Standard-flank pressure angle.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
-- `clearance`: {undef or >= 0} Additional radial root clearance.
-- `samples`: {integer >= 720, divisible by cusps} Hypocycloid curve sampling density.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Hypocycloid curve sampling density.
 - `orientation`: {angle, default 0} Whole-gear rotation in degrees.
 - `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
@@ -198,7 +199,7 @@ Emit the integrated-tip cusp body as 2D geometry with an optional inward offset.
 - `modul`: {number > 0} Tooth module in mm.
 - `tooth_number`: {integer >= 3, divisible by cusps} Tooth count.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `samples`: {integer >= 720, divisible by cusps} Hypocycloid curve sampling density.
+- `samples`: {integer >= 720, divisible by cusps, default 720} Hypocycloid curve sampling density.
 - `orientation`: {angle, default 0} Whole-body rotation in degrees.
 - `body_offset`: {number, default 0} Signed offset in mm; negative shrinks the outer contour and preserves the bore.
 - `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
@@ -249,12 +250,12 @@ Build the standalone swept-envelope mate for a cusp gear.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Tooth pressure angle.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
-- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance.
 - `samples`: {integer >= 720, divisible by cusps, default 720} Motion and pitch-curve sampling density for the validated cusp outline.
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
-- `max_pose_step`: {number > 0, default 0.5} Maximum angular step of either member in degrees.
-- `sweep_clearance`: {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
+- `max_pose_step`: {number > 0, default .5} Maximum angular step of either member in degrees.
+- `sweep_clearance`: {number > 0, default .08} Envelope cutter clearance as a module fraction.
 - `phase`: {angle, default 0} Driver phase used to orient the displayed mate.
 - `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
@@ -304,11 +305,11 @@ Build a meshed or separated hypocycloid cusp gear pair with a swept-envelope mat
 - `together_built`: {boolean, default true} Place gears at the solved pitch distance when true.
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate colour.
 - `sweep_steps`: {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
-- `max_pose_step`: {number > 0, default 0.5} Maximum angular step of either member in degrees.
-- `sweep_clearance`: {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
+- `max_pose_step`: {number > 0, default .5} Maximum angular step of either member in degrees.
+- `sweep_clearance`: {number > 0, default .08} Envelope cutter clearance as a module fraction.
 - `cusps`: {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
 
 **Returns:**

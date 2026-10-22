@@ -16,8 +16,8 @@ include <../common/pair/assembly.scad>
  * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
  * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
- * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
+ * @param driver_color {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+ * @param mate_color {OpenSCAD colour, default "Gold"} Mate display colour.
  * @example c
  * curve_gear_fourier_pair(1, 24, 4, 8, [[2, .10, 0], [3, .04, 30]]);
  */

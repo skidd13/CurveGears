@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Bezier`
@@ -94,11 +95,11 @@ An elongated asymmetric oval replaces the compact canonical outline. Unequal lef
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `control_points`: {closed array grouped as 3n+1 points} Segment endpoints and handles; final point must equal first.
+- `control_points`: {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Segment endpoints and handles; final point must equal first.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -128,13 +129,13 @@ Emit the complete bezier gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `control_points`: {value} Same family-specific parameter as curve_gear_bezier.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_bezier.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_bezier.
-- `backlash`: {value} Same family-specific parameter as curve_gear_bezier.
-- `clearance`: {value} Same family-specific parameter as curve_gear_bezier.
-- `samples`: {value} Same family-specific parameter as curve_gear_bezier.
-- `orientation`: {value} Rotation in degrees.
+- `control_points`: {value, default _cg_bezier_default_control_points} Same family-specific parameter as curve_gear_bezier.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_bezier.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_bezier.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_bezier.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_bezier.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_bezier.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -163,11 +164,11 @@ Build the closed Bézier body without teeth.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `control_points`: {closed array grouped as 3n+1 points} Segment endpoints and handles; final point must equal first.
+- `control_points`: {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Segment endpoints and handles; final point must equal first.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -191,14 +192,14 @@ Emit the bezier body as 2D geometry with an optional signed outer-contour offset
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `control_points`: {value} Same family-specific parameter as curve_gear_bezier_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_bezier_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_bezier_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_bezier_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_bezier_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_bezier_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `control_points`: {value, default _cg_bezier_default_control_points} Same family-specific parameter as curve_gear_bezier_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_bezier_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_bezier_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_bezier_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_bezier_body.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_bezier_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -227,11 +228,11 @@ Build a conjugate mate for an admissible radial Bézier pitch curve.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `control_points`: {closed array grouped as 3n+1 points} Bézier controls.
+- `control_points`: {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Bézier controls.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Adapter and pitch sampling density.
 
 **Returns:**
@@ -249,7 +250,7 @@ Return the conjugate centre distance for an admissible Bézier curve.
 
 - `modul`: {number > 0} Tooth module in mm.
 - `tooth_number`: {integer >= 3} Number of teeth.
-- `control_points`: {closed array grouped as 3n+1 points} Bézier controls.
+- `control_points`: {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Bézier controls.
 - `samples`: {integer >= 120, default 720} Adapter and pitch sampling density.
 
 **Returns:**
@@ -267,7 +268,7 @@ Return the conjugate mate rotation for a driver phase.
 
 - `modul`: {number > 0} Tooth module in mm.
 - `tooth_number`: {integer >= 3} Number of teeth.
-- `control_points`: {closed array grouped as 3n+1 points} Bézier controls.
+- `control_points`: {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Bézier controls.
 - `samples`: {integer >= 120, default 720} Adapter and pitch sampling density.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 
@@ -300,8 +301,8 @@ Build a meshed or separated pair using the admissible Bézier radial-mate adapte
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `driver_color`: {colour, default SteelBlue} Driver gear colour.
-- `mate_color`: {colour, default Gold} Mate gear colour.
+- `driver_color`: {colour, default "SteelBlue"} Driver gear colour.
+- `mate_color`: {colour, default "Gold"} Mate gear colour.
 
 **Returns:**
 

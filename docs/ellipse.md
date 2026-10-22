@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Ellipse`
@@ -50,6 +51,8 @@ Reference: https://mathworld.wolfram.com/Ellipse.html.
 
 > [`_cg_ellipse_radius`](#function-_cg_ellipse_radius): Evaluate the ellipse radius at an angular position.
 
+> [`_cg_ellipse_shape`](#function-_cg_ellipse_shape): Build the sampled ellipse pitch shape and its radial bounds.
+
 
 ## Functions
 
@@ -76,8 +79,8 @@ The gear is centred on X=0,Y=0 with its lower face at Z=0.
 - `eccentricity`: {0 <= e < 1, default 0.62} Ellipse eccentricity; zero is circular.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 480} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -107,13 +110,13 @@ Emit the complete ellipse gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `eccentricity`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `backlash`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `clearance`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `samples`: {value} Same family-specific parameter as curve_gear_ellipse.
-- `orientation`: {value} Rotation in degrees.
+- `eccentricity`: {value, default 0.62} Same family-specific parameter as curve_gear_ellipse.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_ellipse.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_ellipse.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_ellipse.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_ellipse.
+- `samples`: {value, default 480} Same family-specific parameter as curve_gear_ellipse.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -145,8 +148,8 @@ Build the elliptical body solid without teeth.
 - `eccentricity`: {0 <= e < 1, default 0.62} Ellipse eccentricity.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 480} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -176,14 +179,14 @@ Emit the ellipse body as 2D geometry with an optional signed outer-contour offse
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `eccentricity`: {value} Same family-specific parameter as curve_gear_ellipse_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_ellipse_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_ellipse_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_ellipse_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_ellipse_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_ellipse_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `eccentricity`: {value, default 0.62} Same family-specific parameter as curve_gear_ellipse_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_ellipse_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_ellipse_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_ellipse_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_ellipse_body.
+- `samples`: {value, default 480} Same family-specific parameter as curve_gear_ellipse_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -233,8 +236,8 @@ Build the standalone elliptical mate boundary at the origin.
 - `eccentricity`: {0 <= e < 1, default 0.62} Ellipse eccentricity.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 480} Pitch-curve sampling density.
 
 **Returns:**
@@ -286,8 +289,8 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 
@@ -403,6 +406,21 @@ Evaluate the ellipse radius at an angular position.
 **Returns:**
 
 - `{number}`: Radius in mm.
+
+Back to [module description](#module-ellipse).
+
+### Function `_cg_ellipse_shape`
+
+
+Build the sampled ellipse pitch shape and its radial bounds.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-ellipse).
 

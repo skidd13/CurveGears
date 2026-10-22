@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Superformula`
@@ -94,8 +95,8 @@ The gear is centred on X=0,Y=0 with its lower face at Z=0.
 - `n3`: {number > 0, default 2.4} Superformula shape exponent.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -125,18 +126,18 @@ Emit the complete superformula gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `symmetry`: {value} Same family-specific parameter as curve_gear_superformula.
-- `a`: {value} Same family-specific parameter as curve_gear_superformula.
-- `b`: {value} Same family-specific parameter as curve_gear_superformula.
-- `n1`: {value} Same family-specific parameter as curve_gear_superformula.
-- `n2`: {value} Same family-specific parameter as curve_gear_superformula.
-- `n3`: {value} Same family-specific parameter as curve_gear_superformula.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_superformula.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_superformula.
-- `backlash`: {value} Same family-specific parameter as curve_gear_superformula.
-- `clearance`: {value} Same family-specific parameter as curve_gear_superformula.
-- `samples`: {value} Same family-specific parameter as curve_gear_superformula.
-- `orientation`: {value} Rotation in degrees.
+- `symmetry`: {value, default 4} Same family-specific parameter as curve_gear_superformula.
+- `a`: {value, default 1} Same family-specific parameter as curve_gear_superformula.
+- `b`: {value, default 1} Same family-specific parameter as curve_gear_superformula.
+- `n1`: {value, default 2.4} Same family-specific parameter as curve_gear_superformula.
+- `n2`: {value, default 2.4} Same family-specific parameter as curve_gear_superformula.
+- `n3`: {value, default 2.4} Same family-specific parameter as curve_gear_superformula.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_superformula.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_superformula.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_superformula.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_superformula.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_superformula.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -173,8 +174,8 @@ Build the superformula body solid without teeth.
 - `n3`: {number > 0, default 2.4} Superformula shape exponent.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -204,19 +205,19 @@ Emit the superformula body as 2D geometry with an optional signed outer-contour 
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `symmetry`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `a`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `b`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `n1`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `n2`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `n3`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_superformula_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `symmetry`: {value, default 4} Same family-specific parameter as curve_gear_superformula_body.
+- `a`: {value, default 1} Same family-specific parameter as curve_gear_superformula_body.
+- `b`: {value, default 1} Same family-specific parameter as curve_gear_superformula_body.
+- `n1`: {value, default 2.4} Same family-specific parameter as curve_gear_superformula_body.
+- `n2`: {value, default 2.4} Same family-specific parameter as curve_gear_superformula_body.
+- `n3`: {value, default 2.4} Same family-specific parameter as curve_gear_superformula_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_superformula_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_superformula_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_superformula_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_superformula_body.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_superformula_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -276,8 +277,8 @@ Build the standalone superformula mate boundary at the origin.
 - `n3`: {number > 0, default 2.4} Superformula shape exponent.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 360} Pitch-curve sampling density.
 
 **Returns:**
@@ -339,8 +340,8 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 

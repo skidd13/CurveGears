@@ -1,3 +1,6 @@
+
+include <mate.scad>
+include <../common/pair/assembly.scad>
 /**
  * @function curve_gear_hypotrochoid_pair
  * @brief Build a meshed or separated hypotrochoid driver/mate pair.
@@ -8,7 +11,7 @@
  * @param bore {number >= 0, default 4.8} Centre bore diameter in mm.
  * @param major_ratio {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
  * @param rolling_ratio {number > 0, default 1} Rolling-circle ratio.
- * @param offset_ratio {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+ * @param offset_ratio {0 < offset < rolling_ratio, default .35} Pen offset ratio.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  * @param phase {angle, default 0} Driver motion phase in degrees.
@@ -16,11 +19,10 @@
  * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
  * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
- * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
+ * @param driver_color {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+ * @param mate_color {OpenSCAD colour, default "Gold"} Mate display colour.
  */
-include <mate.scad>
-include <../common/pair/assembly.scad>
+
 
 module curve_gear_hypotrochoid_pair(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
     assert(major_ratio > rolling_ratio && rolling_ratio > 0 && offset_ratio > 0 && offset_ratio < rolling_ratio,"hypotrochoid: require major_ratio > rolling_ratio > 0 and 0 < offset_ratio < rolling_ratio");

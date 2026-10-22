@@ -84,11 +84,11 @@ module _cg_cusp_pair_build(modul,tooth_number,width,bore,pressure_angle=20,sampl
  * @param together_built {boolean, default true} Place gears at the solved pitch distance when true.
  * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction.
  * @param clearance {undef or >= 0, default undef} Additional radial root clearance.
- * @param driver_color {OpenSCAD colour, default SteelBlue} Driver colour.
- * @param mate_color {OpenSCAD colour, default Gold} Mate colour.
+ * @param driver_color {OpenSCAD colour, default "SteelBlue"} Driver colour.
+ * @param mate_color {OpenSCAD colour, default "Gold"} Mate colour.
  * @param sweep_steps {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
- * @param max_pose_step {number > 0, default 0.5} Maximum angular step of either member in degrees.
- * @param sweep_clearance {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
+ * @param max_pose_step {number > 0, default .5} Maximum angular step of either member in degrees.
+ * @param sweep_clearance {number > 0, default .08} Envelope cutter clearance as a module fraction.
  * @param cusps {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
  */
 module curve_gear_cusp_pair(modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,driver_color="SteelBlue",mate_color="Gold",sweep_steps=360,max_pose_step=.5,sweep_clearance=.08,cusps=3) {

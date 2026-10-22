@@ -23,14 +23,14 @@ module _cg_tanh_triad_build(modul,tooth_number,width,bore,transition=1.8,crest=.
  *
  * @param transition {number > 0, default 1.8} Transition steepness.
  *
- * @param crest {0 < number < 0.5, default 0.13} Main radial modulation.
+ * @param crest {0 < number < 0.5, default .13} Main radial modulation.
  *
- * @param correction {0 <= number < 0.2, default 0.03} Sixth-harmonic correction.
+ * @param correction {0 <= number < 0.2, default .03} Sixth-harmonic correction.
  *
  * @param pressure_angle {angle, default 20} Pressure angle.
  * @param tooth_phase {angle, default 0} Tooth phase.
- * @param backlash {undef or >= 0} Backlash.
- * @param clearance {undef or >= 0} Clearance.
+ * @param backlash {undef or >= 0, default undef} Backlash.
+ * @param clearance {undef or >= 0, default undef} Clearance.
  * @param samples {integer >= 120, default 720} Samples.
  * @param orientation {angle, default 0} Orientation.
  */
@@ -50,23 +50,23 @@ module curve_gear_tanh_triad(modul,tooth_number,width,bore,transition=1.8,crest=
  *
  * @param bore {number} Bore.
  *
- * @param transition {number} Transition.
+ * @param transition {number, default 1.8} Transition.
  *
- * @param crest {number} Crest.
+ * @param crest {number, default .13} Crest.
  *
- * @param correction {number} Correction.
+ * @param correction {number, default .03} Correction.
  *
- * @param pressure_angle {number} Pressure angle.
+ * @param pressure_angle {number, default 20} Pressure angle.
  *
- * @param tooth_phase {number} Tooth phase.
+ * @param tooth_phase {number, default 0} Tooth phase.
  *
- * @param backlash {number} Backlash.
+ * @param backlash {number, default undef} Backlash.
  *
- * @param clearance {number} Clearance.
+ * @param clearance {number, default undef} Clearance.
  *
- * @param samples {integer} Samples.
+ * @param samples {integer, default 720} Samples.
  *
- * @param orientation {number} Orientation.
+ * @param orientation {number, default 0} Orientation.
  */
 module curve_gear_tanh_triad_body(modul,tooth_number,width,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_tanh_triad_build(modul,tooth_number,width,bore,transition,crest,correction,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
@@ -82,23 +82,23 @@ module curve_gear_tanh_triad_body(modul,tooth_number,width,bore,transition=1.8,c
  *
  * @param bore {number} Bore.
  *
- * @param transition {number} Transition.
+ * @param transition {number, default 1.8} Transition.
  *
- * @param crest {number} Crest.
+ * @param crest {number, default .13} Crest.
  *
- * @param correction {number} Correction.
+ * @param correction {number, default .03} Correction.
  *
- * @param pressure_angle {number} Pressure angle.
+ * @param pressure_angle {number, default 20} Pressure angle.
  *
- * @param tooth_phase {number} Tooth phase.
+ * @param tooth_phase {number, default 0} Tooth phase.
  *
- * @param backlash {number} Backlash.
+ * @param backlash {number, default undef} Backlash.
  *
- * @param clearance {number} Clearance.
+ * @param clearance {number, default undef} Clearance.
  *
- * @param samples {integer} Samples.
+ * @param samples {integer, default 720} Samples.
  *
- * @param orientation {number} Orientation.
+ * @param orientation {number, default 0} Orientation.
  */
 module curve_gear_tanh_triad_2d(modul,tooth_number,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_tanh_triad_build(modul,tooth_number,0,bore,transition,crest,correction,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false,true);
@@ -114,25 +114,25 @@ module curve_gear_tanh_triad_2d(modul,tooth_number,bore,transition=1.8,crest=.13
  *
  * @param bore {number} Bore.
  *
- * @param transition {number} Transition.
+ * @param transition {number, default 1.8} Transition.
  *
- * @param crest {number} Crest.
+ * @param crest {number, default .13} Crest.
  *
- * @param correction {number} Correction.
+ * @param correction {number, default .03} Correction.
  *
- * @param pressure_angle {number} Pressure angle.
+ * @param pressure_angle {number, default 20} Pressure angle.
  *
- * @param tooth_phase {number} Tooth phase.
+ * @param tooth_phase {number, default 0} Tooth phase.
  *
- * @param backlash {number} Backlash.
+ * @param backlash {number, default undef} Backlash.
  *
- * @param clearance {number} Clearance.
+ * @param clearance {number, default undef} Clearance.
  *
- * @param samples {integer} Samples.
+ * @param samples {integer, default 720} Samples.
  *
- * @param orientation {number} Orientation.
+ * @param orientation {number, default 0} Orientation.
  *
- * @param body_offset {number} Body offset.
+ * @param body_offset {number, default 0} Body offset.
  */
 module curve_gear_tanh_triad_body_2d(modul,tooth_number,bore,transition=1.8,crest=.13,correction=.03,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_offset=0) {
     _cg_tanh_triad_build(modul,tooth_number,0,bore,transition,crest,correction,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true,true,body_offset);

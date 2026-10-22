@@ -9,13 +9,13 @@ include <../common/mate/placement.scad>
  * @param tooth_number {integer} Tooth count.
  * @param width {number} Width.
  * @param bore {number} Bore.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
  */
 module curve_gear_temple_fay_mate(modul,tooth_number,width,bore,wing=.18,fold=.05,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     assert(wing>0 && wing<.5 && fold>=0 && fold<.2,"temple_fay_gear_mate: invalid parameters");
@@ -28,9 +28,10 @@ module curve_gear_temple_fay_mate(modul,tooth_number,width,bore,wing=.18,fold=.0
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param samples {integer} Samples.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param samples {integer, default 720} Samples.
+ * @return {number} Mathematical centre distance in mm.
  */
 function curve_gear_temple_fay_centre_distance(modul,tooth_number,wing=.18,fold=.05,samples=720) = _cg_polar_mate_distance(_cg_temple_fay_shape(modul,tooth_number,wing,fold,samples),samples);
 
@@ -39,9 +40,10 @@ function curve_gear_temple_fay_centre_distance(modul,tooth_number,wing=.18,fold=
  *
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param samples {integer} Samples.
- * @param phase {number} Driver phase.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param samples {integer, default 720} Samples.
+ * @param phase {number, default 0} Driver phase.
+ * @return {angle} Mate rotation in degrees.
  */
 function curve_gear_temple_fay_mate_rotation(modul,tooth_number,wing=.18,fold=.05,samples=720,phase=0) = _cg_polar_mate_rotation(_cg_temple_fay_shape(modul,tooth_number,wing,fold,samples),samples,phase);

@@ -109,11 +109,11 @@ module _cg_bezier_build(modul,tooth_number,width,bore,control_points=_cg_bezier_
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
- * @param control_points {closed array grouped as 3n+1 points} Segment endpoints and handles; final point must equal first.
+ * @param control_points {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Segment endpoints and handles; final point must equal first.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 720} Curve sampling density.
  * @param orientation {angle, default 0} Single-gear display rotation in degrees.
  * @example c
@@ -130,11 +130,11 @@ module curve_gear_bezier(modul,tooth_number,width,bore,control_points=_cg_bezier
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
- * @param control_points {closed array grouped as 3n+1 points} Segment endpoints and handles; final point must equal first.
+ * @param control_points {closed array grouped as 3n+1 points, default _cg_bezier_default_control_points} Segment endpoints and handles; final point must equal first.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 720} Curve sampling density.
  * @param orientation {angle, default 0} Single-gear display rotation in degrees.
  */
@@ -148,13 +148,13 @@ module curve_gear_bezier_body(modul,tooth_number,width,bore,control_points=_cg_b
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
- * @param control_points {value} Same family-specific parameter as curve_gear_bezier.
- * @param pressure_angle {value} Same family-specific parameter as curve_gear_bezier.
- * @param tooth_phase {value} Same family-specific parameter as curve_gear_bezier.
- * @param backlash {value} Same family-specific parameter as curve_gear_bezier.
- * @param clearance {value} Same family-specific parameter as curve_gear_bezier.
- * @param samples {value} Same family-specific parameter as curve_gear_bezier.
- * @param orientation {value} Rotation in degrees.
+ * @param control_points {value, default _cg_bezier_default_control_points} Same family-specific parameter as curve_gear_bezier.
+ * @param pressure_angle {value, default 20} Same family-specific parameter as curve_gear_bezier.
+ * @param tooth_phase {value, default 0} Same family-specific parameter as curve_gear_bezier.
+ * @param backlash {value, default undef} Same family-specific parameter as curve_gear_bezier.
+ * @param clearance {value, default undef} Same family-specific parameter as curve_gear_bezier.
+ * @param samples {value, default 720} Same family-specific parameter as curve_gear_bezier.
+ * @param orientation {value, default 0} Rotation in degrees.
  * @example c
  * curve_gear_bezier_2d(0.8, 34, 4.8);
  */
@@ -168,14 +168,14 @@ module curve_gear_bezier_2d(modul, tooth_number, bore, control_points=_cg_bezier
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
- * @param control_points {value} Same family-specific parameter as curve_gear_bezier_body.
- * @param pressure_angle {value} Same family-specific parameter as curve_gear_bezier_body.
- * @param tooth_phase {value} Same family-specific parameter as curve_gear_bezier_body.
- * @param backlash {value} Same family-specific parameter as curve_gear_bezier_body.
- * @param clearance {value} Same family-specific parameter as curve_gear_bezier_body.
- * @param samples {value} Same family-specific parameter as curve_gear_bezier_body.
- * @param orientation {value} Rotation in degrees.
- * @param body_offset {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+ * @param control_points {value, default _cg_bezier_default_control_points} Same family-specific parameter as curve_gear_bezier_body.
+ * @param pressure_angle {value, default 20} Same family-specific parameter as curve_gear_bezier_body.
+ * @param tooth_phase {value, default 0} Same family-specific parameter as curve_gear_bezier_body.
+ * @param backlash {value, default undef} Same family-specific parameter as curve_gear_bezier_body.
+ * @param clearance {value, default undef} Same family-specific parameter as curve_gear_bezier_body.
+ * @param samples {value, default 720} Same family-specific parameter as curve_gear_bezier_body.
+ * @param orientation {value, default 0} Rotation in degrees.
+ * @param body_offset {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
  * @example c
  * curve_gear_bezier_body_2d(0.8, 34, 4.8, body_offset=-2);
  */

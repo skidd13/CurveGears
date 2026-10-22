@@ -18,6 +18,9 @@ include <../common/harmonic.scad>
  */
 function _cg_cosine_quintic_parameters_valid(depth,harmonic) = depth>0 && depth<.5 && harmonic>=1 && floor(harmonic)==harmonic;
 
+/*** @function _cg_cosine_quintic_unit_radius
+ * @brief Evaluate the signed fifth-power cosine radius law.
+ */
 function _cg_cosine_quintic_unit_radius(theta,depth=.19,harmonic=2) =
     assert(_cg_cosine_quintic_parameters_valid(depth,harmonic),"cosine_quintic: invalid curve parameters")
     _cg_harmonic_unit_radius([[harmonic,10*depth/16,0],[3*harmonic,5*depth/16,0],[5*harmonic,depth/16,0]],theta);

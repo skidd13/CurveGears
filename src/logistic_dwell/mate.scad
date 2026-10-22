@@ -10,13 +10,13 @@ include <../common/mate/placement.scad>
  * @param tooth_number {integer} Tooth count.
  * @param width {number} Width.
  * @param bore {number} Bore.
- * @param gain {number} Logistic gain.
- * @param depth {number} Dwell depth.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
+ * @param gain {number, default 8} Logistic gain.
+ * @param depth {number, default .2} Dwell depth.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
  */
 module curve_gear_logistic_dwell_mate(modul,tooth_number,width,bore,gain=8,depth=.2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
     _cg_assert_samples(samples,"logistic_dwell_gear_mate: samples must be an integer >= 120");
@@ -30,11 +30,12 @@ module curve_gear_logistic_dwell_mate(modul,tooth_number,width,bore,gain=8,depth
  *
  * @param tooth_number {integer} Tooth count.
  *
- * @param gain {number} Logistic gain.
+ * @param gain {number, default 8} Logistic gain.
  *
- * @param depth {number} Dwell depth.
+ * @param depth {number, default .2} Dwell depth.
  *
- * @param samples {integer} Samples.
+ * @param samples {integer, default 720} Samples.
+ * @return {number} Mathematical centre distance in mm.
  */
 function curve_gear_logistic_dwell_centre_distance(modul,tooth_number,gain=8,depth=.2,samples=720) = _cg_polar_mate_distance(_cg_logistic_dwell_shape(modul,tooth_number,gain,depth,samples),samples);
 
@@ -45,12 +46,13 @@ function curve_gear_logistic_dwell_centre_distance(modul,tooth_number,gain=8,dep
  *
  * @param tooth_number {integer} Tooth count.
  *
- * @param gain {number} Logistic gain.
+ * @param gain {number, default 8} Logistic gain.
  *
- * @param depth {number} Dwell depth.
+ * @param depth {number, default .2} Dwell depth.
  *
- * @param samples {integer} Samples.
+ * @param samples {integer, default 720} Samples.
  *
- * @param phase {number} Driver phase.
+ * @param phase {number, default 0} Driver phase.
+ * @return {angle} Mate rotation in degrees.
  */
 function curve_gear_logistic_dwell_mate_rotation(modul,tooth_number,gain=8,depth=.2,samples=720,phase=0) = _cg_polar_mate_rotation(_cg_logistic_dwell_shape(modul,tooth_number,gain,depth,samples),samples,phase);

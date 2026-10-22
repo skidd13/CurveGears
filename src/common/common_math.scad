@@ -123,6 +123,9 @@ function _cg_pitch_scale_from_points(modul,tooth_number,unit_points,circumferenc
  */
 function _cg_scale_points(scale,points) = [for(p=points) [scale*p[0],scale*p[1]]];
 
+/*** @function _cg_upper_bound_column
+ * @brief Find the last table row whose selected column does not exceed a target.
+ */
 function _cg_upper_bound_column(tab,target,column,lo,hi) =
     lo>=hi ? max(0,lo) :
     let(mid=floor((lo+hi+1)/2))

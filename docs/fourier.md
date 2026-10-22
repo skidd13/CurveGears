@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Fourier`
@@ -53,6 +54,8 @@ https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`_cg_fourier_radius`](#function-_cg_fourier_radius): Evaluate a Fourier polar radius at an angle.
 
+> [`_cg_fourier_shape`](#function-_cg_fourier_shape): Build the sampled Fourier pitch shape with validated radial bounds.
+
 
 ## Functions
 
@@ -73,11 +76,11 @@ A single strong third harmonic produces three clear lobes instead of the canonic
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `coefficients`: {array of [harmonic, amplitude, phase]} Polar harmonics relative to the mean pitch radius.
+- `coefficients`: {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Polar harmonics relative to the mean pitch radius.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -107,13 +110,13 @@ Emit the complete fourier gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `coefficients`: {value} Same family-specific parameter as curve_gear_fourier.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_fourier.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_fourier.
-- `backlash`: {value} Same family-specific parameter as curve_gear_fourier.
-- `clearance`: {value} Same family-specific parameter as curve_gear_fourier.
-- `samples`: {value} Same family-specific parameter as curve_gear_fourier.
-- `orientation`: {value} Rotation in degrees.
+- `coefficients`: {value, default [[2,.10,0]]} Same family-specific parameter as curve_gear_fourier.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_fourier.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_fourier.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_fourier.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_fourier.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_fourier.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -142,11 +145,11 @@ Build the Fourier body without teeth.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `coefficients`: {array of [harmonic, amplitude, phase]} Polar harmonics relative to the mean pitch radius.
+- `coefficients`: {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Polar harmonics relative to the mean pitch radius.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -170,14 +173,14 @@ Emit the fourier body as 2D geometry with an optional signed outer-contour offse
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `coefficients`: {value} Same family-specific parameter as curve_gear_fourier_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_fourier_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_fourier_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_fourier_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_fourier_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_fourier_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `coefficients`: {value, default [[2,.10,0]]} Same family-specific parameter as curve_gear_fourier_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_fourier_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_fourier_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_fourier_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_fourier_body.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_fourier_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -200,7 +203,7 @@ Return the Fourier conjugate pair centre distance.
 
 - `modul`: {number > 0} Tooth module in mm.
 - `tooth_number`: {integer >= 3} Number of teeth.
-- `coefficients`: {array of [harmonic, amplitude, phase]} Same coefficients as the driver.
+- `coefficients`: {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same coefficients as the driver.
 - `samples`: {integer >= 120, default 360} Motion-table sampling density.
 
 **Returns:**
@@ -224,11 +227,11 @@ Build the standalone dynamically conjugate Fourier mate.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
-- `coefficients`: {array of [harmonic, amplitude, phase]} Same polar coefficients as the driver.
+- `coefficients`: {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same polar coefficients as the driver.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 360} Pitch-curve sampling density.
 
 **Returns:**
@@ -246,7 +249,7 @@ Return Fourier mate rotation for a driver phase.
 
 - `modul`: {number > 0} Tooth module in mm.
 - `tooth_number`: {integer >= 3} Number of teeth.
-- `coefficients`: {array of [harmonic, amplitude, phase]} Same coefficients as the driver.
+- `coefficients`: {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Same coefficients as the driver.
 - `samples`: {integer >= 120, default 360} Motion-table sampling density.
 - `phase`: {angle, default 0} Driver phase in degrees; negative and full-turn phases remain unwrapped.
 
@@ -279,8 +282,8 @@ Build a meshed or separated Fourier pair using one shared motion table.
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 
@@ -386,42 +389,20 @@ Evaluate a Fourier polar radius at an angle.
 
 Back to [module description](#module-fourier).
 
-
-Back to [top](#).
-
-## Module `Harmonic common`
+### Function `_cg_fourier_shape`
 
 
-Coefficients are [harmonic, amplitude, phase in degrees]. Family adapters
-own admissibility, pitch scaling and sampling; this evaluator does not
-inherit the public Fourier family's coefficient-domain restrictions.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_harmonic_unit_radius`](#function-_cg_harmonic_unit_radius): Evaluate a finite cosine series around unit mean radius.
-
-
-## Functions
-
-The module `Harmonic common` defines the following functions.
-
-### Function `_cg_harmonic_unit_radius`
-
-
-Evaluate a finite cosine series around unit mean radius.
+Build the sampled Fourier pitch shape with validated radial bounds.
 
 **Parameters:**
 
-- `coefficients`: {array} Harmonic, amplitude and phase rows.
-- `theta`: {angle} Physical polar angle in degrees.
+No parameters
 
 **Returns:**
 
-- `{number}`: Unit radius before family-specific scaling.
+No return
 
-Back to [module description](#module-harmonic-common).
+Back to [module description](#module-fourier).
 
 
 Back to [top](#).

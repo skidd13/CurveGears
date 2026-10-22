@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Cosine Quintic`
@@ -42,6 +43,8 @@ Reference: https://en.wikipedia.org/wiki/Power_function.
 
 > [`_cg_cosine_quintic_shape`](#function-_cg_cosine_quintic_shape): Bind the named curve once for driver, mate and numeric consumers.
 
+> [`_cg_cosine_quintic_unit_radius`](#function-_cg_cosine_quintic_unit_radius): Evaluate the signed fifth-power cosine radius law.
+
 
 ## Functions
 
@@ -63,14 +66,14 @@ Three pronounced signed-cosine plateaux replace the canonical two-harmonic form.
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `depth`: {number} Quintic depth.
-- `harmonic`: {integer} Cosine harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `depth`: {number, default .19} Quintic depth.
+- `harmonic`: {integer, default 2} Cosine harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -92,14 +95,14 @@ Back to [module description](#module-cosine-quintic).
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
 - `bore`: {number} Bore.
-- `depth`: {number} Quintic depth.
-- `harmonic`: {integer} Cosine harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `depth`: {number, default .19} Quintic depth.
+- `harmonic`: {integer, default 2} Cosine harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -122,14 +125,14 @@ Back to [module description](#module-cosine-quintic).
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `depth`: {number} Quintic depth.
-- `harmonic`: {integer} Cosine harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `depth`: {number, default .19} Quintic depth.
+- `harmonic`: {integer, default 2} Cosine harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -151,15 +154,15 @@ Back to [module description](#module-cosine-quintic).
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
 - `bore`: {number} Bore.
-- `depth`: {number} Quintic depth.
-- `harmonic`: {integer} Cosine harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
-- `body_offset`: {number} Body offset.
+- `depth`: {number, default .19} Quintic depth.
+- `harmonic`: {integer, default 2} Cosine harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
+- `body_offset`: {number, default 0} Body offset.
 
 **Returns:**
 
@@ -176,13 +179,13 @@ Back to [module description](#module-cosine-quintic).
 
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
-- `depth`: {number} Quintic depth.
-- `harmonic`: {integer} Cosine harmonic.
-- `samples`: {integer} Samples.
+- `depth`: {number, default .19} Quintic depth.
+- `harmonic`: {integer, default 2} Cosine harmonic.
+- `samples`: {integer, default 720} Samples.
 
 **Returns:**
 
-No return
+- `{number}`: Mathematical centre distance in mm.
 
 Back to [module description](#module-cosine-quintic).
 
@@ -201,13 +204,13 @@ Back to [module description](#module-cosine-quintic).
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `depth`: {number} Quintic depth.
-- `harmonic`: {integer} Cosine harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
+- `depth`: {number, default .19} Quintic depth.
+- `harmonic`: {integer, default 2} Cosine harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
 
 **Returns:**
 
@@ -224,14 +227,14 @@ Back to [module description](#module-cosine-quintic).
 
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
-- `depth`: {number} Quintic depth.
-- `harmonic`: {integer} Cosine harmonic.
-- `samples`: {integer} Samples.
-- `phase`: {number} Driver phase.
+- `depth`: {number, default .19} Quintic depth.
+- `harmonic`: {integer, default 2} Cosine harmonic.
+- `samples`: {integer, default 720} Samples.
+- `phase`: {number, default 0} Driver phase.
 
 **Returns:**
 
-No return
+- `{angle}`: Mate rotation in degrees.
 
 Back to [module description](#module-cosine-quintic).
 
@@ -303,154 +306,20 @@ Bind the named curve once for driver, mate and numeric consumers.
 
 Back to [module description](#module-cosine-quintic).
 
-
-Back to [top](#).
-
-## Module `Mate preparation`
+### Function `_cg_cosine_quintic_unit_radius`
 
 
-Families own their radius laws, sampling and distance bounds. This layer
-composes the existing solver and integration once per invocation.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_mate_distance_from_radii`](#function-_cg_mate_distance_from_radii): Solve the existing rolling equation after checking its physical bracket.
-
-> [`_cg_mate_preparation`](#function-_cg_mate_preparation): Share distance, motion integration and conjugate pitch construction.
-
-> [`_cg_mate_radii_valid`](#function-_cg_mate_radii_valid): Check finite positive physical radii without building geometry.
-
-> [`_cg_polar_mate_distance`](#function-_cg_polar_mate_distance): Solve one named shape's physical centre distance without building unused geometry.
-
-> [`_cg_polar_mate_rotation`](#function-_cg_polar_mate_rotation): Solve distance and integrated rolling motion for a named shape and phase.
-
-
-## Functions
-
-The module `Mate preparation` defines the following functions.
-
-### Function `_cg_mate_distance_from_radii`
-
-
-Solve the existing rolling equation after checking its physical bracket.
+Evaluate the signed fifth-power cosine radius law.
 
 **Parameters:**
 
-- `mid_radii`: {array of number} Physical radii at integration midpoints.
-- `lower`: {number or function} Lower distance bound strictly above the midpoint radii.
-- `upper`: {number} Upper distance bound enclosing one-turn closure.
+No parameters
 
 **Returns:**
 
-- `{number}`: Solved centre distance in millimetres.
+No return
 
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_mate_preparation`
-
-
-Share distance, motion integration and conjugate pitch construction.
-
-**Parameters:**
-
-- `driver_radii`: {array of number} Radii at output angle boundaries.
-- `mid_radii`: {array of number} Radii at the corresponding interval midpoints.
-- `lower`: {number, function or undef} Family-selected lower solver bound.
-- `upper`: {number or undef} Family-selected upper solver bound.
-- `distance`: {number or undef} Optional already solved centre distance.
-
-**Returns:**
-
-- `{array}`: `[distance, motion table, mate pitch points]`, consumed by shared geometry operators.
-
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_mate_radii_valid`
-
-
-Check finite positive physical radii without building geometry.
-
-**Parameters:**
-
-- `radii`: {array of number} Boundary or midpoint radii in millimetres.
-
-**Returns:**
-
-- `{boolean}`: True for at least three finite positive radii.
-
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_polar_mate_distance`
-
-
-Solve one named shape's physical centre distance without building unused geometry.
-
-**Parameters:**
-
-- `shape`: {array} `[driver points, radius function, lower bound, upper bound, radial root]`.
-- `n`: {integer >= 3} Number of motion intervals.
-
-**Returns:**
-
-- `{number}`: Centre distance in millimetres.
-
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_polar_mate_rotation`
-
-
-Solve distance and integrated rolling motion for a named shape and phase.
-
-**Parameters:**
-
-- `shape`: {array} Physical shape and bound descriptor.
-- `n`: {integer >= 3} Number of motion intervals.
-- `phase`: {angle} Unwrapped driver phase in degrees.
-
-**Returns:**
-
-- `{angle}`: Mate display rotation in degrees.
-
-Back to [module description](#module-mate-preparation).
-
-
-Back to [top](#).
-
-## Module `Harmonic common`
-
-
-Coefficients are [harmonic, amplitude, phase in degrees]. Family adapters
-own admissibility, pitch scaling and sampling; this evaluator does not
-inherit the public Fourier family's coefficient-domain restrictions.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_harmonic_unit_radius`](#function-_cg_harmonic_unit_radius): Evaluate a finite cosine series around unit mean radius.
-
-
-## Functions
-
-The module `Harmonic common` defines the following functions.
-
-### Function `_cg_harmonic_unit_radius`
-
-
-Evaluate a finite cosine series around unit mean radius.
-
-**Parameters:**
-
-- `coefficients`: {array} Harmonic, amplitude and phase rows.
-- `theta`: {angle} Physical polar angle in degrees.
-
-**Returns:**
-
-- `{number}`: Unit radius before family-specific scaling.
-
-Back to [module description](#module-harmonic-common).
+Back to [module description](#module-cosine-quintic).
 
 
 Back to [top](#).

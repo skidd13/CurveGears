@@ -15,8 +15,8 @@ include <../common/mate/placement.scad>
  * @param growth_rate {number > 1, default 1.17} Exponential growth base in the sector formula.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 360} Spiral sampling density.
  */
 module curve_gear_logarithmic_spiral_mate(modul,tooth_number,width,bore,sectors=1,growth_rate=1.17,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=360) {

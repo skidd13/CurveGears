@@ -28,7 +28,7 @@ function _cg_pair_display_separation(driver_extent,mate_extent,modul) =
 function _cg_pair_point_extent(points) = max([for(p=points) _cg_vlen(p)]);
 
 /**
- * @module _cg_assert_pair_gap_failures
+ * @function _cg_assert_pair_gap_failures
  * @brief Raise the canonical opposing-tooth gap diagnostic when needed.
  * @param failures {array} Pair gap failure records.
  */
@@ -38,7 +38,7 @@ module _cg_assert_pair_gap_failures(failures) {
 }
 
 /**
- * @module _cg_pair_assembly
+ * @function _cg_pair_assembly
  * @brief Prepare once, validate once, and render both pair gears from shared states.
  * @param centre_distance {number > 0} Mathematical centre distance.
  * @param motion {motion table} Family motion table.

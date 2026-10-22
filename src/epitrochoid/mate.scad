@@ -85,11 +85,11 @@ function _cg_epitrochoid_mate_points(scale,R,r,d,D,n=360) = _cg_epitrochoid_mate
  * @param bore {number >= 0} Centre bore diameter in mm.
  * @param major_ratio {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
  * @param rolling_ratio {number > 0, default 1} Rolling-circle ratio.
- * @param offset_ratio {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+ * @param offset_ratio {0 < offset < rolling_ratio, default .35} Pen offset ratio.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  */
 module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,rolling_ratio=1,offset_ratio=.35,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720) {
@@ -109,7 +109,7 @@ module curve_gear_epitrochoid_mate(modul,tooth_number,width,bore,major_ratio=3,r
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param major_ratio {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
  * @param rolling_ratio {number > 0, default 1} Rolling-circle ratio.
- * @param offset_ratio {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+ * @param offset_ratio {0 < offset < rolling_ratio, default .35} Pen offset ratio.
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  * @return {number} Pair centre distance in mm.
  */
@@ -122,7 +122,7 @@ function curve_gear_epitrochoid_centre_distance(modul,tooth_number,major_ratio=3
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param major_ratio {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
  * @param rolling_ratio {number > 0, default 1} Rolling-circle ratio.
- * @param offset_ratio {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+ * @param offset_ratio {0 < offset < rolling_ratio, default .35} Pen offset ratio.
  * @param samples {integer >= 120, default 720} Motion-table sampling density.
  * @param phase {angle, default 0} Driver motion phase in degrees.
  * @return {angle} Mate rotation in degrees.

@@ -1,23 +1,4 @@
-/**
- * @function curve_gear_cassini_pair
- * @brief Build a meshed or separated Cassini driver/mate pair.
- * @param modul {number > 0, default .8} Tooth module in mm.
- * @param tooth_number {integer >= 3, default 34} Number of teeth.
- * @param width {number > 0, default 4} Extrusion width in mm.
- * @param bore {number >= 0, default 4.8} Centre bore diameter in mm.
- * @param focus_ratio {0 <= number < 1, default 0.78} Cassini focal ratio.
- * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
- * @param samples {integer >= 120, default 720} Pitch-curve and motion sampling density.
- * @param phase {angle, default 0} Driver motion phase.
- * @param tooth_phase {angle, default 0} Tooth placement phase.
- * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
- * @param together_built {boolean, default true} Place the pair meshed when true.
- * @param driver_color {OpenSCAD colour, default SteelBlue} Driver display colour.
- * @param mate_color {OpenSCAD colour, default Gold} Mate display colour.
- * @example c
- * curve_gear_cassini_pair(1, 24, 4, 8);
- */
+
 include <mate.scad>
 include <../common/pair/assembly.scad>
 
@@ -44,6 +25,27 @@ module _cg_cassini_pair_build(modul,tooth_number,width,bore,focus_ratio=.78,pres
     _cg_assert_samples(samples,"cassini_gear_pair: samples must be an integer >= 120");
     _cg_polar_pair(_cg_cassini_shape(modul,tooth_number,focus_ratio,samples),modul,tooth_number,width,bore,pressure_angle,samples,phase,together_built,backlash,clearance,tooth_phase,driver_color,mate_color);
 }
+/**
+ * @function curve_gear_cassini_pair
+ * @brief Build a meshed or separated Cassini driver/mate pair.
+ * @param modul {number > 0, default .8} Tooth module in mm.
+ * @param tooth_number {integer >= 3, default 34} Number of teeth.
+ * @param width {number > 0, default 4} Extrusion width in mm.
+ * @param bore {number >= 0, default 4.8} Centre bore diameter in mm.
+ * @param focus_ratio {0 <= number < 1, default .78} Cassini focal ratio.
+ * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
+ * @param samples {integer >= 120, default 720} Pitch-curve and motion sampling density.
+ * @param phase {angle, default 0} Driver motion phase.
+ * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
+ * @param together_built {boolean, default true} Place the pair meshed when true.
+ * @param driver_color {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+ * @param mate_color {OpenSCAD colour, default "Gold"} Mate display colour.
+ * @example c
+ * curve_gear_cassini_pair(1, 24, 4, 8);
+ */
+
 
 module curve_gear_cassini_pair(modul,tooth_number,width,bore,focus_ratio=.78,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold") {
     _cg_cassini_pair_build(modul,tooth_number,width,bore,focus_ratio,pressure_angle,samples,phase,together_built,backlash,clearance,tooth_phase,driver_color,mate_color);

@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Logarithmic Spiral`
@@ -86,8 +87,8 @@ The gear is centred on X=0,Y=0 with its lower face at Z=0.
 - `growth_rate`: {number > 1, default 1.17} Exponential growth base in the sector formula.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 360} Spiral sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -117,14 +118,14 @@ Emit the complete logarithmic_spiral gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `sectors`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
-- `growth_rate`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
-- `backlash`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
-- `clearance`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
-- `samples`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral.
-- `orientation`: {value} Rotation in degrees.
+- `sectors`: {value, default 1} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `growth_rate`: {value, default 1.17} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `samples`: {value, default 360} Same family-specific parameter as curve_gear_logarithmic_spiral.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -157,8 +158,8 @@ Build the logarithmic-spiral body solid without teeth.
 - `growth_rate`: {number > 1, default 1.17} Exponential growth base in the sector formula.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 360} Spiral sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -188,15 +189,15 @@ Emit the logarithmic_spiral body as 2D geometry with an optional signed outer-co
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `sectors`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
-- `growth_rate`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `sectors`: {value, default 1} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `growth_rate`: {value, default 1.17} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `samples`: {value, default 360} Same family-specific parameter as curve_gear_logarithmic_spiral_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -230,8 +231,8 @@ module does not claim dynamic conjugacy.
 - `growth_rate`: {number > 1, default 1.17} Exponential growth base in the sector formula.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 360} Spiral sampling density.
 
 **Returns:**
@@ -265,8 +266,8 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
 - `samples`: {integer >= 120, default 360} Spiral sampling density.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 

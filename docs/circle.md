@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Circle`
@@ -62,8 +63,8 @@ Twelve coarse teeth replace the fine-toothed reference; the bore remains 4.8 mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 480} Circular pitch-curve sampling density.
 
 **Returns:**
@@ -88,8 +89,8 @@ Emit the complete circular gear profile as 2D geometry.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {angle, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
-- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance.
 - `samples`: {integer >= 120, default 480} Pitch-curve sampling density.
 
 **Returns:**
@@ -189,8 +190,8 @@ Build the circular reference mate boundary at the origin.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 480} Circular pitch-curve sampling density.
 
 **Returns:**
@@ -221,8 +222,8 @@ Build a meshed or separated circular reference pair.
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 

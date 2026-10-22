@@ -12,7 +12,13 @@
 include <../common/curve_gears_math.scad>
 include <../common/harmonic.scad>
 
+/*** @function _cg_temple_fay_unit_radius
+ * @brief Evaluate the project two-harmonic Temple Fay radius law.
+ */
 function _cg_temple_fay_unit_radius(theta,wing=.18,fold=.05) = _cg_harmonic_unit_radius([[2,wing,-90],[4,fold,-90]],theta);
+/*** @function _cg_temple_fay_shape
+ * @brief Build the sampled Temple Fay pitch shape and radial bounds.
+ */
 function _cg_temple_fay_shape(modul,tooth_number,wing=.18,fold=.05,samples=720) =
     _cg_polar_shape(
         function(theta) _cg_temple_fay_unit_radius(theta,wing,fold),

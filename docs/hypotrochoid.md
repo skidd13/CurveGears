@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Hypotrochoid`
@@ -63,6 +64,8 @@ circle. The documented ratio constraints reject cusp and loop cases.
 
 > [`_cg_hypotrochoid_scale`](#function-_cg_hypotrochoid_scale): Scale the hypotrochoid to the requested module and tooth count.
 
+> [`_cg_hypotrochoid_shape`](#function-_cg_hypotrochoid_shape): Build the sampled hypotrochoid pitch shape and radial bounds.
+
 
 ## Functions
 
@@ -85,11 +88,11 @@ A 5:1 rolling ratio and offset 0.35 produce five-fold shaping rather than the ca
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
-- `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+- `offset_ratio`: {0 < offset < rolling_ratio, default .35} Pen offset ratio.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation.
 
@@ -119,15 +122,15 @@ Emit the complete hypotrochoid gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `major_ratio`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `rolling_ratio`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `offset_ratio`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `backlash`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `clearance`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `samples`: {value} Same family-specific parameter as curve_gear_hypotrochoid.
-- `orientation`: {value} Rotation in degrees.
+- `major_ratio`: {value, default 3} Same family-specific parameter as curve_gear_hypotrochoid.
+- `rolling_ratio`: {value, default 1} Same family-specific parameter as curve_gear_hypotrochoid.
+- `offset_ratio`: {value, default .35} Same family-specific parameter as curve_gear_hypotrochoid.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_hypotrochoid.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_hypotrochoid.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_hypotrochoid.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_hypotrochoid.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_hypotrochoid.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -158,11 +161,11 @@ Build the hypotrochoid body solid without teeth.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
-- `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+- `offset_ratio`: {0 < offset < rolling_ratio, default .35} Pen offset ratio.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation.
 
@@ -186,16 +189,16 @@ Emit the hypotrochoid body as 2D geometry with an optional signed outer-contour 
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `major_ratio`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `rolling_ratio`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `offset_ratio`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_hypotrochoid_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `major_ratio`: {value, default 3} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `rolling_ratio`: {value, default 1} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `offset_ratio`: {value, default .35} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_hypotrochoid_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -220,7 +223,7 @@ Return the mathematical centre distance for a hypotrochoid pair.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
-- `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+- `offset_ratio`: {0 < offset < rolling_ratio, default .35} Pen offset ratio.
 - `samples`: {integer >= 120, default 720} Motion sampling density.
 
 **Returns:**
@@ -246,11 +249,11 @@ Build the standalone conjugate mate for a hypotrochoid driver.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
-- `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+- `offset_ratio`: {0 < offset < rolling_ratio, default .35} Pen offset ratio.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 
 **Returns:**
@@ -270,7 +273,7 @@ Return the conjugate hypotrochoid mate rotation for a driver phase.
 - `tooth_number`: {integer >= 3} Number of teeth.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
-- `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+- `offset_ratio`: {0 < offset < rolling_ratio, default .35} Pen offset ratio.
 - `samples`: {integer >= 120, default 720} Motion sampling density.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
 
@@ -297,7 +300,7 @@ Back to [module description](#module-hypotrochoid).
 - `bore`: {number >= 0, default 4.8} Centre bore diameter in mm.
 - `major_ratio`: {number > rolling_ratio, default 3} Fixed-to-rolling circle ratio.
 - `rolling_ratio`: {number > 0, default 1} Rolling-circle ratio.
-- `offset_ratio`: {0 < offset < rolling_ratio, default 0.35} Pen offset ratio.
+- `offset_ratio`: {0 < offset < rolling_ratio, default .35} Pen offset ratio.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `phase`: {angle, default 0} Driver motion phase in degrees.
@@ -305,8 +308,8 @@ Back to [module description](#module-hypotrochoid).
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 
@@ -572,45 +575,10 @@ Scale the hypotrochoid to the requested module and tooth count.
 
 Back to [module description](#module-hypotrochoid).
 
-
-Back to [top](#).
-
-## Module `Trochoid common`
+### Function `_cg_hypotrochoid_shape`
 
 
-This file is an implementation detail. Public family APIs live in
-`epitrochoid/` and `hypotrochoid/`; the rolling equations remain in those
-family modules. This layer contains only the shared curve post-processing.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_trochoid_curve_radius_from_point`](#function-_cg_trochoid_curve_radius_from_point): Evaluate the radial distance of a scaled curve point.
-
-> [`_cg_trochoid_points_scaled_from_points`](#function-_cg_trochoid_points_scaled_from_points): Scale sampled unit-curve points.
-
-> [`_cg_trochoid_polar_radii`](#function-_cg_trochoid_polar_radii): Sample the emitted driver polygon at uniformly spaced physical polar angles.
-
-> [`_cg_trochoid_polar_table`](#function-_cg_trochoid_polar_table): Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
-
-> [`_cg_trochoid_radius_at_polar_angle`](#function-_cg_trochoid_radius_at_polar_angle): Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
-
-> [`_cg_trochoid_radius_from_point`](#function-_cg_trochoid_radius_from_point): Evaluate the radial distance of a unit-curve point.
-
-> [`_cg_trochoid_scale_from_points`](#function-_cg_trochoid_scale_from_points): Scale a sampled unit curve to the requested tooth pitch.
-
-> [`_cg_trochoid_shape`](#function-_cg_trochoid_shape): Bind a sampled trochoid polygon to the shared physical-angle shape contract.
-
-
-## Functions
-
-The module `Trochoid common` defines the following functions.
-
-### Function `_cg_trochoid_curve_radius_from_point`
-
-
-Evaluate the radial distance of a scaled curve point.
+Build the sampled hypotrochoid pitch shape and radial bounds.
 
 **Parameters:**
 
@@ -620,119 +588,7 @@ No parameters
 
 No return
 
-Back to [module description](#module-trochoid-common).
-
-### Function `_cg_trochoid_points_scaled_from_points`
-
-
-Scale sampled unit-curve points.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-trochoid-common).
-
-### Function `_cg_trochoid_polar_radii`
-
-
-Sample the emitted driver polygon at uniformly spaced physical polar angles.
-
-**Parameters:**
-
-- `points`: {array of 2D points} Closed star-shaped driver polygon.
-- `n`: {integer >= 3} Number of motion intervals.
-- `midpoint`: {boolean, default false} Use integration midpoints instead of phase boundaries.
-
-**Returns:**
-
-- `{array of number}`: Physical pitch radii in increasing angular order.
-
-Back to [module description](#module-trochoid-common).
-
-### Function `_cg_trochoid_polar_table`
-
-
-Index a finite star-shaped driver polygon by monotonically increasing physical polar angle.
-
-**Parameters:**
-
-- `points`: {array of 2D points} Closed polygon starting on the positive X ray.
-
-**Returns:**
-
-- `{array}`: Angle/point rows with an explicit closing row at 360 degrees.
-
-Back to [module description](#module-trochoid-common).
-
-### Function `_cg_trochoid_radius_at_polar_angle`
-
-
-Intersect a physical polar ray with the indexed polygon segment, without interpolating curve parameters.
-
-**Parameters:**
-
-- `table`: {array} Validated angle/point table.
-- `theta`: {angle} Physical polar angle in degrees.
-
-**Returns:**
-
-- `{number}`: Radius of the exact sampled driver polygon at that angle.
-
-Back to [module description](#module-trochoid-common).
-
-### Function `_cg_trochoid_radius_from_point`
-
-
-Evaluate the radial distance of a unit-curve point.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-trochoid-common).
-
-### Function `_cg_trochoid_scale_from_points`
-
-
-Scale a sampled unit curve to the requested tooth pitch.
-
-**Parameters:**
-
-No parameters
-
-**Returns:**
-
-No return
-
-Back to [module description](#module-trochoid-common).
-
-### Function `_cg_trochoid_shape`
-
-
-Bind a sampled trochoid polygon to the shared physical-angle shape contract.
-
-**Parameters:**
-
-- `unit_points`: {array of 2D points} Unit-scale driver polygon.
-- `scale`: {number > 0} Perimeter-derived physical scale.
-- `lower`: {number} Solver lower bound.
-- `upper`: {number} Solver upper bound.
-- `radial_root`: {boolean, default false} Use radial-root tooth placement.
-
-**Returns:**
-
-- `{array}`: `[driver points, physical radius function, lower, upper, radial_root]`.
-
-Back to [module description](#module-trochoid-common).
+Back to [module description](#module-hypotrochoid).
 
 
 Back to [top](#).

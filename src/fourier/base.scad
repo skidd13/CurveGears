@@ -56,6 +56,9 @@ function _cg_fourier_coefficients_valid(coefficients) =
     && min([for(c=coefficients) len(c)==3 && c[0]>=1 && floor(c[0])==c[0] ? 1 : 0])==1
     && _cg_sum([for(c=coefficients) abs(c[1])])<.9;
 
+/*** @function _cg_fourier_shape
+ * @brief Build the sampled Fourier pitch shape with validated radial bounds.
+ */
 function _cg_fourier_shape(modul,tooth_number,coefficients=[[2,.10,0]],samples=720) =
     let(base=modul*tooth_number/2,points=_cg_fourier_points(base,coefficients,samples),mx=max(_cg_sample_polar_radii(function(theta) _cg_fourier_radius(base,coefficients,theta),max(720,samples),true)))
     _cg_polar_shape_from_points(points,function(theta) _cg_fourier_radius(base,coefficients,theta),mx+.01,4*mx);
@@ -99,11 +102,11 @@ module _cg_fourier_build(modul,tooth_number,width,bore,coefficients=[[2,.10,0]],
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
- * @param coefficients {array of [harmonic, amplitude, phase]} Polar harmonics relative to the mean pitch radius.
+ * @param coefficients {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Polar harmonics relative to the mean pitch radius.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  * @param orientation {angle, default 0} Single-gear display rotation in degrees.
  * @example c
@@ -120,11 +123,11 @@ module curve_gear_fourier(modul,tooth_number,width,bore,coefficients=[[2,.10,0]]
  * @param tooth_number {integer >= 3} Number of teeth.
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
- * @param coefficients {array of [harmonic, amplitude, phase]} Polar harmonics relative to the mean pitch radius.
+ * @param coefficients {array of [harmonic, amplitude, phase], default [[2,.10,0]]} Polar harmonics relative to the mean pitch radius.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 720} Pitch-curve sampling density.
  * @param orientation {angle, default 0} Single-gear display rotation in degrees.
  */
@@ -138,13 +141,13 @@ module curve_gear_fourier_body(modul,tooth_number,width,bore,coefficients=[[2,.1
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
- * @param coefficients {value} Same family-specific parameter as curve_gear_fourier.
- * @param pressure_angle {value} Same family-specific parameter as curve_gear_fourier.
- * @param tooth_phase {value} Same family-specific parameter as curve_gear_fourier.
- * @param backlash {value} Same family-specific parameter as curve_gear_fourier.
- * @param clearance {value} Same family-specific parameter as curve_gear_fourier.
- * @param samples {value} Same family-specific parameter as curve_gear_fourier.
- * @param orientation {value} Rotation in degrees.
+ * @param coefficients {value, default [[2,.10,0]]} Same family-specific parameter as curve_gear_fourier.
+ * @param pressure_angle {value, default 20} Same family-specific parameter as curve_gear_fourier.
+ * @param tooth_phase {value, default 0} Same family-specific parameter as curve_gear_fourier.
+ * @param backlash {value, default undef} Same family-specific parameter as curve_gear_fourier.
+ * @param clearance {value, default undef} Same family-specific parameter as curve_gear_fourier.
+ * @param samples {value, default 720} Same family-specific parameter as curve_gear_fourier.
+ * @param orientation {value, default 0} Rotation in degrees.
  * @example c
  * curve_gear_fourier_2d(0.8, 34, 4.8);
  */
@@ -158,14 +161,14 @@ module curve_gear_fourier_2d(modul, tooth_number, bore, coefficients=[[2,.10,0]]
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
- * @param coefficients {value} Same family-specific parameter as curve_gear_fourier_body.
- * @param pressure_angle {value} Same family-specific parameter as curve_gear_fourier_body.
- * @param tooth_phase {value} Same family-specific parameter as curve_gear_fourier_body.
- * @param backlash {value} Same family-specific parameter as curve_gear_fourier_body.
- * @param clearance {value} Same family-specific parameter as curve_gear_fourier_body.
- * @param samples {value} Same family-specific parameter as curve_gear_fourier_body.
- * @param orientation {value} Rotation in degrees.
- * @param body_offset {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+ * @param coefficients {value, default [[2,.10,0]]} Same family-specific parameter as curve_gear_fourier_body.
+ * @param pressure_angle {value, default 20} Same family-specific parameter as curve_gear_fourier_body.
+ * @param tooth_phase {value, default 0} Same family-specific parameter as curve_gear_fourier_body.
+ * @param backlash {value, default undef} Same family-specific parameter as curve_gear_fourier_body.
+ * @param clearance {value, default undef} Same family-specific parameter as curve_gear_fourier_body.
+ * @param samples {value, default 720} Same family-specific parameter as curve_gear_fourier_body.
+ * @param orientation {value, default 0} Rotation in degrees.
+ * @param body_offset {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
  * @example c
  * curve_gear_fourier_body_2d(0.8, 34, 4.8, body_offset=-2);
  */

@@ -24,15 +24,15 @@ module _cg_logistic_dwell_build(modul,tooth_number,width,bore,gain=8,depth=.2,pr
  *
  * @param gain {number > 0, default 8} Logistic transition gain.
  *
- * @param depth {0 < number < 0.5, default 0.2} Radial dwell depth.
+ * @param depth {0 < number < 0.5, default .2} Radial dwell depth.
  *
  * @param pressure_angle {angle, default 20} Pressure angle.
  *
  * @param tooth_phase {angle, default 0} Tooth phase.
  *
- * @param backlash {undef or >= 0} Backlash.
+ * @param backlash {undef or >= 0, default undef} Backlash.
  *
- * @param clearance {undef or >= 0} Clearance.
+ * @param clearance {undef or >= 0, default undef} Clearance.
  *
  * @param samples {integer >= 120, default 720} Samples.
  *
@@ -49,14 +49,14 @@ module curve_gear_logistic_dwell(modul,tooth_number,width,bore,gain=8,depth=.2,p
  * @param tooth_number {integer} Tooth count.
  * @param width {number} Width.
  * @param bore {number} Bore.
- * @param gain {number} Logistic gain.
- * @param depth {number} Dwell depth.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
- * @param orientation {number} Orientation.
+ * @param gain {number, default 8} Logistic gain.
+ * @param depth {number, default .2} Dwell depth.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
+ * @param orientation {number, default 0} Orientation.
  */
 module curve_gear_logistic_dwell_body(modul,tooth_number,width,bore,gain=8,depth=.2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_logistic_dwell_build(modul,tooth_number,width,bore,gain,depth,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true);
@@ -68,14 +68,14 @@ module curve_gear_logistic_dwell_body(modul,tooth_number,width,bore,gain=8,depth
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
  * @param bore {number} Bore.
- * @param gain {number} Logistic gain.
- * @param depth {number} Dwell depth.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
- * @param orientation {number} Orientation.
+ * @param gain {number, default 8} Logistic gain.
+ * @param depth {number, default .2} Dwell depth.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
+ * @param orientation {number, default 0} Orientation.
  */
 module curve_gear_logistic_dwell_2d(modul,tooth_number,bore,gain=8,depth=.2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_logistic_dwell_build(modul,tooth_number,0,bore,gain,depth,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false,true);
@@ -87,15 +87,15 @@ module curve_gear_logistic_dwell_2d(modul,tooth_number,bore,gain=8,depth=.2,pres
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
  * @param bore {number} Bore.
- * @param gain {number} Logistic gain.
- * @param depth {number} Dwell depth.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
- * @param orientation {number} Orientation.
- * @param body_offset {number} Body offset.
+ * @param gain {number, default 8} Logistic gain.
+ * @param depth {number, default .2} Dwell depth.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
+ * @param orientation {number, default 0} Orientation.
+ * @param body_offset {number, default 0} Body offset.
  */
 module curve_gear_logistic_dwell_body_2d(modul,tooth_number,bore,gain=8,depth=.2,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_offset=0) {
     _cg_logistic_dwell_build(modul,tooth_number,0,bore,gain,depth,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true,true,body_offset);

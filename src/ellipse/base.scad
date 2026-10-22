@@ -46,6 +46,9 @@ function _cg_ellipse_radius(a,b,theta) = a*b/sqrt(pow(b*cos(theta),2)+pow(a*sin(
  */
 function _cg_ellipse_driver_point(a,b,theta) = let(r=_cg_ellipse_radius(a,b,theta)) [r*cos(theta),r*sin(theta)];
 
+/*** @function _cg_ellipse_shape
+ * @brief Build the sampled ellipse pitch shape and its radial bounds.
+ */
 function _cg_ellipse_shape(modul,tooth_number,eccentricity,samples=480) =
     let(axes=_cg_ellipse_axes(modul,tooth_number,eccentricity),a=axes[0],b=axes[1])
     _cg_polar_shape_from_points(

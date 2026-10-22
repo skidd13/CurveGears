@@ -18,6 +18,9 @@ include <../common/saturating.scad>
  */
 function _cg_logistic_dwell_parameters_valid(gain,depth) = gain>0 && depth>0 && depth<.5;
 
+/*** @function _cg_logistic_dwell_unit_radius
+ * @brief Evaluate the stable bounded Logistic Dwell radius law.
+ */
 function _cg_logistic_dwell_unit_radius(theta,gain=8,depth=.2) =
     assert(_cg_logistic_dwell_parameters_valid(gain,depth),"logistic_dwell: invalid curve parameters")
     _cg_saturating_unit_radius(theta,2,gain/2,depth/2);

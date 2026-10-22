@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Temple Fay`
@@ -41,6 +42,10 @@ https://en.wikipedia.org/wiki/Fourier_series.
 
 > [`curve_gear_temple_fay_pair`](#function-curve_gear_temple_fay_pair): Build a Temple Fay driver and dynamically solved conjugate mate, separated by default.
 
+> [`_cg_temple_fay_shape`](#function-_cg_temple_fay_shape): Build the sampled Temple Fay pitch shape and radial bounds.
+
+> [`_cg_temple_fay_unit_radius`](#function-_cg_temple_fay_unit_radius): Evaluate the project two-harmonic Temple Fay radius law.
+
 
 ## Functions
 
@@ -62,14 +67,14 @@ The main examples use the default wing 0.18 and fold 0.05 profile. Alternative s
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -91,14 +96,14 @@ Back to [module description](#module-temple-fay).
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
 - `bore`: {number} Bore.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -121,14 +126,14 @@ Back to [module description](#module-temple-fay).
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -150,15 +155,15 @@ Back to [module description](#module-temple-fay).
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
 - `bore`: {number} Bore.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
-- `body_offset`: {number} Body offset.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
+- `body_offset`: {number, default 0} Body offset.
 
 **Returns:**
 
@@ -175,13 +180,13 @@ Back to [module description](#module-temple-fay).
 
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `samples`: {integer} Samples.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `samples`: {integer, default 720} Samples.
 
 **Returns:**
 
-No return
+- `{number}`: Mathematical centre distance in mm.
 
 Back to [module description](#module-temple-fay).
 
@@ -200,13 +205,13 @@ Back to [module description](#module-temple-fay).
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
 
 **Returns:**
 
@@ -223,14 +228,14 @@ Back to [module description](#module-temple-fay).
 
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
-- `wing`: {number} Wing amplitude.
-- `fold`: {number} Fold harmonic.
-- `samples`: {integer} Samples.
-- `phase`: {number} Driver phase.
+- `wing`: {number, default .18} Wing amplitude.
+- `fold`: {number, default .05} Fold harmonic.
+- `samples`: {integer, default 720} Samples.
+- `phase`: {number, default 0} Driver phase.
 
 **Returns:**
 
-No return
+- `{angle}`: Mate rotation in degrees.
 
 Back to [module description](#module-temple-fay).
 
@@ -267,42 +272,35 @@ No return
 
 Back to [module description](#module-temple-fay).
 
-
-Back to [top](#).
-
-## Module `Harmonic common`
+### Function `_cg_temple_fay_shape`
 
 
-Coefficients are [harmonic, amplitude, phase in degrees]. Family adapters
-own admissibility, pitch scaling and sampling; this evaluator does not
-inherit the public Fourier family's coefficient-domain restrictions.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_harmonic_unit_radius`](#function-_cg_harmonic_unit_radius): Evaluate a finite cosine series around unit mean radius.
-
-
-## Functions
-
-The module `Harmonic common` defines the following functions.
-
-### Function `_cg_harmonic_unit_radius`
-
-
-Evaluate a finite cosine series around unit mean radius.
+Build the sampled Temple Fay pitch shape and radial bounds.
 
 **Parameters:**
 
-- `coefficients`: {array} Harmonic, amplitude and phase rows.
-- `theta`: {angle} Physical polar angle in degrees.
+No parameters
 
 **Returns:**
 
-- `{number}`: Unit radius before family-specific scaling.
+No return
 
-Back to [module description](#module-harmonic-common).
+Back to [module description](#module-temple-fay).
+
+### Function `_cg_temple_fay_unit_radius`
+
+
+Evaluate the project two-harmonic Temple Fay radius law.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-temple-fay).
 
 
 Back to [top](#).

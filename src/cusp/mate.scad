@@ -49,12 +49,12 @@ module _cg_cusp_envelope_mate_from_geometry(geometry,modul,width,bore,sweep_step
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
  * @param pressure_angle {0 < angle < 90, default 20} Tooth pressure angle.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
- * @param clearance {undef or >= 0} Additional radial root clearance.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance.
  * @param samples {integer >= 720, divisible by cusps, default 720} Motion and pitch-curve sampling density for the validated cusp outline.
  * @param sweep_steps {integer >= 36, default 360} Base driver-phase intervals for envelope construction.
- * @param max_pose_step {number > 0, default 0.5} Maximum angular step of either member in degrees.
- * @param sweep_clearance {number > 0, default 0.08} Envelope cutter clearance as a module fraction.
+ * @param max_pose_step {number > 0, default .5} Maximum angular step of either member in degrees.
+ * @param sweep_clearance {number > 0, default .08} Envelope cutter clearance as a module fraction.
  * @param phase {angle, default 0} Driver phase used to orient the displayed mate.
  * @param cusps {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
  */

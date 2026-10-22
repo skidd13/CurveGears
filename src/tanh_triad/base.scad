@@ -19,6 +19,9 @@ include <../common/saturating.scad>
  */
 function _cg_tanh_triad_parameters_valid(transition,crest,correction) = transition>0 && crest>0 && crest<.5 && correction>=0 && correction<.2;
 
+/*** @function _cg_tanh_triad_unit_radius
+ * @brief Evaluate the stable bounded Tanh Triad radius law.
+ */
 function _cg_tanh_triad_unit_radius(theta,transition=1.8,crest=.13,correction=.03) =
     assert(_cg_tanh_triad_parameters_valid(transition,crest,correction),"tanh_triad: invalid curve parameters")
     _cg_saturating_unit_radius(theta,3,transition,crest)+correction*cos(6*theta+20);

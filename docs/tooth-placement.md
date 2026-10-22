@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Tooth Placement`
@@ -38,6 +39,8 @@ permitted.
 > [`_cg_arc_segment_is_discrete_return`](#function-_cg_arc_segment_is_discrete_return): Detect long discrete return segments in an arc table.
 
 > [`_cg_body_arc_for_intersection`](#function-_cg_body_arc_for_intersection): Convert a body intersection record to its arc position.
+
+> [`_cg_canonical_body_point_from_frame`](#function-_cg_canonical_body_point_from_frame): Project a tooth frame point onto its canonical dedendum boundary.
 
 > [`_cg_canonical_body_polyline`](#function-_cg_canonical_body_polyline): Build the closed canonical body before teeth merge.
 
@@ -254,6 +257,21 @@ Convert a body intersection record to its arc position.
 **Returns:**
 
 - `{number}`: Intersection arc position in mm.
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_canonical_body_point_from_frame`
+
+
+Project a tooth frame point onto its canonical dedendum boundary.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
 
 Back to [module description](#module-tooth-placement).
 

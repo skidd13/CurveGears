@@ -1,24 +1,4 @@
-/***
- * Public single-gear construction for the pascal family.
- * @function curve_gear_pascal
- * @brief Build a Pascal-curve non-circular gear.
- * Eccentricity 0.28 gives a convex egg-like outline instead of the canonical non-convex 0.60 limacon. Twenty coarse teeth emphasise the body contour. This contrasts the regular conjugate domain with the experimental dimpled case.
- * @param modul {number > 0} Tooth module in mm.
- * @param tooth_number {integer >= 3} Number of teeth.
- * @param width {number > 0} Extrusion width in mm.
- * @param bore {number >= 0} Centre bore diameter in mm.
- * @param eccentricity {0 <= e < 1, default 0.25} Pascal curve eccentricity; e >= 0.5 is non-convex.
- * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
- * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
- * @param samples {integer >= 120, default 720} Curve sampling density.
- * @param orientation {angle, default 0} Single-gear display rotation in degrees.
- * The gear is centred on X=0,Y=0 with its lower face at Z=0.
-  * @see curve_gear_pascal_body
- * @example c
- * curve_gear_pascal(1, 24, 4, 8);
- */
+
 include <base.scad>
 
 module _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_only=false,is_2d=false,body_offset=0) {
@@ -58,6 +38,28 @@ module _cg_pascal_build(modul,tooth_number,width,bore,eccentricity=0.25,pressure
             _cg_gear_from_pitch_points(points, modul, tooth_number, width, bore, pressure_angle, tooth_phase, _cg_pascal_requires_radial_root(eccentricity), backlash, clearance, body_only);
     }
 }
+/***
+ * Public single-gear construction for the pascal family.
+ * @function curve_gear_pascal
+ * @brief Build a Pascal-curve non-circular gear.
+ * Eccentricity 0.28 gives a convex egg-like outline instead of the canonical non-convex 0.60 limacon. Twenty coarse teeth emphasise the body contour. This contrasts the regular conjugate domain with the experimental dimpled case.
+ * @param modul {number > 0} Tooth module in mm.
+ * @param tooth_number {integer >= 3} Number of teeth.
+ * @param width {number > 0} Extrusion width in mm.
+ * @param bore {number >= 0} Centre bore diameter in mm.
+ * @param eccentricity {0 <= e < 1, default 0.25} Pascal curve eccentricity; e >= 0.5 is non-convex.
+ * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle in degrees.
+ * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
+ * @param samples {integer >= 120, default 720} Curve sampling density.
+ * @param orientation {angle, default 0} Single-gear display rotation in degrees.
+ * The gear is centred on X=0,Y=0 with its lower face at Z=0.
+  * @see curve_gear_pascal_body
+ * @example c
+ * curve_gear_pascal(1, 24, 4, 8);
+ */
+
 
 module curve_gear_pascal(modul,tooth_number,width,bore,eccentricity=0.25,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) {
     _cg_pascal_build(modul,tooth_number,width,bore,eccentricity,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false);
@@ -73,8 +75,8 @@ module curve_gear_pascal(modul,tooth_number,width,bore,eccentricity=0.25,pressur
  * @param eccentricity {0 <= e < 1, default 0.25} Pascal curve eccentricity.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 720} Curve sampling density.
  * @param orientation {angle, default 0} Single-gear display rotation in degrees.
  * @example c
@@ -90,13 +92,13 @@ module curve_gear_pascal_body(modul,tooth_number,width,bore,eccentricity=0.25,pr
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
- * @param eccentricity {value} Same family-specific parameter as curve_gear_pascal.
- * @param pressure_angle {value} Same family-specific parameter as curve_gear_pascal.
- * @param tooth_phase {value} Same family-specific parameter as curve_gear_pascal.
- * @param backlash {value} Same family-specific parameter as curve_gear_pascal.
- * @param clearance {value} Same family-specific parameter as curve_gear_pascal.
- * @param samples {value} Same family-specific parameter as curve_gear_pascal.
- * @param orientation {value} Rotation in degrees.
+ * @param eccentricity {value, default 0.25} Same family-specific parameter as curve_gear_pascal.
+ * @param pressure_angle {value, default 20} Same family-specific parameter as curve_gear_pascal.
+ * @param tooth_phase {value, default 0} Same family-specific parameter as curve_gear_pascal.
+ * @param backlash {value, default undef} Same family-specific parameter as curve_gear_pascal.
+ * @param clearance {value, default undef} Same family-specific parameter as curve_gear_pascal.
+ * @param samples {value, default 720} Same family-specific parameter as curve_gear_pascal.
+ * @param orientation {value, default 0} Rotation in degrees.
  * @example c
  * curve_gear_pascal_2d(0.8, 34, 4.8);
  */
@@ -110,14 +112,14 @@ module curve_gear_pascal_2d(modul, tooth_number, bore, eccentricity=0.25, pressu
  * @param modul {value} Tooth module in mm.
  * @param tooth_number {value} Number of teeth.
  * @param bore {value} Centre bore diameter in mm.
- * @param eccentricity {value} Same family-specific parameter as curve_gear_pascal_body.
- * @param pressure_angle {value} Same family-specific parameter as curve_gear_pascal_body.
- * @param tooth_phase {value} Same family-specific parameter as curve_gear_pascal_body.
- * @param backlash {value} Same family-specific parameter as curve_gear_pascal_body.
- * @param clearance {value} Same family-specific parameter as curve_gear_pascal_body.
- * @param samples {value} Same family-specific parameter as curve_gear_pascal_body.
- * @param orientation {value} Rotation in degrees.
- * @param body_offset {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+ * @param eccentricity {value, default 0.25} Same family-specific parameter as curve_gear_pascal_body.
+ * @param pressure_angle {value, default 20} Same family-specific parameter as curve_gear_pascal_body.
+ * @param tooth_phase {value, default 0} Same family-specific parameter as curve_gear_pascal_body.
+ * @param backlash {value, default undef} Same family-specific parameter as curve_gear_pascal_body.
+ * @param clearance {value, default undef} Same family-specific parameter as curve_gear_pascal_body.
+ * @param samples {value, default 720} Same family-specific parameter as curve_gear_pascal_body.
+ * @param orientation {value, default 0} Rotation in degrees.
+ * @param body_offset {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
  * @example c
  * curve_gear_pascal_body_2d(0.8, 34, 4.8, body_offset=-2);
  */

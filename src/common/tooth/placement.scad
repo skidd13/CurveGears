@@ -137,6 +137,9 @@ function _cg_profile_point_at_frame(local_point,pitch_point,normal,tangent,pitch
         pitch_point[1]+normal[1]*(local_point[0]-pitch_radius)+tangent[1]*local_point[1]
     ];
 
+/*** @function _cg_canonical_body_point_from_frame
+ * @brief Project a tooth frame point onto its canonical dedendum boundary.
+ */
 function _cg_canonical_body_point_from_frame(frame,dedendum,radial_root=false) =
     let(p=frame[0],normal=frame[2],radius=_cg_vlen(p),radial=_cg_vunit(p),
         root_radius=max(radius-dedendum,.02*dedendum))

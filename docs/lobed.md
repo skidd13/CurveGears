@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Lobed`
@@ -43,6 +44,8 @@ Reference: https://mathworld.wolfram.com/FourierSeries.html.
 
 > [`_cg_lobed_pair_build`](#function-_cg_lobed_pair_build): Internal lobed pair construction dispatcher.
 
+> [`_cg_lobed_shape`](#function-_cg_lobed_shape): Build a sampled Lobed pitch shape from its harmonic parameters.
+
 > [`_cg_lobed_unit_radius`](#function-_cg_lobed_unit_radius): Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch curve, whose teeth are placed by arc length.
 
 
@@ -72,8 +75,8 @@ The gear is centred on X=0,Y=0 with its lower face at Z=0.
 - `lobe_depth`: {0 < depth < 0.5, default 0.13} Normalised lobe amplitude.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle in degrees.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -103,14 +106,14 @@ Emit the complete lobed gear profile as 2D geometry.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `lobes`: {value} Same family-specific parameter as curve_gear_lobed.
-- `lobe_depth`: {value} Same family-specific parameter as curve_gear_lobed.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_lobed.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_lobed.
-- `backlash`: {value} Same family-specific parameter as curve_gear_lobed.
-- `clearance`: {value} Same family-specific parameter as curve_gear_lobed.
-- `samples`: {value} Same family-specific parameter as curve_gear_lobed.
-- `orientation`: {value} Rotation in degrees.
+- `lobes`: {value, default 4} Same family-specific parameter as curve_gear_lobed.
+- `lobe_depth`: {value, default 0.13} Same family-specific parameter as curve_gear_lobed.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_lobed.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_lobed.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_lobed.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_lobed.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_lobed.
+- `orientation`: {value, default 0} Rotation in degrees.
 
 **Returns:**
 
@@ -143,8 +146,8 @@ Build the lobed body solid without teeth.
 - `lobe_depth`: {0 < depth < 0.5, default 0.13} Normalised lobe amplitude.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 - `orientation`: {angle, default 0} Single-gear display rotation in degrees.
 
@@ -174,15 +177,15 @@ Emit the lobed body as 2D geometry with an optional signed outer-contour offset.
 - `modul`: {value} Tooth module in mm.
 - `tooth_number`: {value} Number of teeth.
 - `bore`: {value} Centre bore diameter in mm.
-- `lobes`: {value} Same family-specific parameter as curve_gear_lobed_body.
-- `lobe_depth`: {value} Same family-specific parameter as curve_gear_lobed_body.
-- `pressure_angle`: {value} Same family-specific parameter as curve_gear_lobed_body.
-- `tooth_phase`: {value} Same family-specific parameter as curve_gear_lobed_body.
-- `backlash`: {value} Same family-specific parameter as curve_gear_lobed_body.
-- `clearance`: {value} Same family-specific parameter as curve_gear_lobed_body.
-- `samples`: {value} Same family-specific parameter as curve_gear_lobed_body.
-- `orientation`: {value} Rotation in degrees.
-- `body_offset`: {value} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
+- `lobes`: {value, default 4} Same family-specific parameter as curve_gear_lobed_body.
+- `lobe_depth`: {value, default 0.13} Same family-specific parameter as curve_gear_lobed_body.
+- `pressure_angle`: {value, default 20} Same family-specific parameter as curve_gear_lobed_body.
+- `tooth_phase`: {value, default 0} Same family-specific parameter as curve_gear_lobed_body.
+- `backlash`: {value, default undef} Same family-specific parameter as curve_gear_lobed_body.
+- `clearance`: {value, default undef} Same family-specific parameter as curve_gear_lobed_body.
+- `samples`: {value, default 720} Same family-specific parameter as curve_gear_lobed_body.
+- `orientation`: {value, default 0} Rotation in degrees.
+- `body_offset`: {value, default 0} Signed offset in mm; negative values shrink the outer body contour while preserving the bore.
 
 **Returns:**
 
@@ -234,8 +237,8 @@ Build the standalone lobed mate boundary at the origin.
 - `lobe_depth`: {0 < depth < 0.5, default 0.13} Normalised lobe amplitude.
 - `pressure_angle`: {0 < angle < 90, default 20} Involute pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth placement phase in degrees.
-- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction in mm.
-- `clearance`: {undef or >= 0} Additional radial root clearance in mm.
+- `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+- `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `samples`: {integer >= 120, default 720} Pitch-curve sampling density.
 
 **Returns:**
@@ -289,8 +292,8 @@ Pair geometry uses the single-gear parameters documented in gear.scad.
 - `backlash`: {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
 - `clearance`: {undef or >= 0, default undef} Additional radial root clearance in mm.
 - `together_built`: {boolean, default true} Place the pair meshed when true, separated when false.
-- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver display colour.
-- `mate_color`: {OpenSCAD colour, default Gold} Mate display colour.
+- `driver_color`: {OpenSCAD colour, default "SteelBlue"} Driver display colour.
+- `mate_color`: {OpenSCAD colour, default "Gold"} Mate display colour.
 
 **Returns:**
 
@@ -360,6 +363,21 @@ Internal lobed pair construction dispatcher.
 
 Back to [module description](#module-lobed).
 
+### Function `_cg_lobed_shape`
+
+
+Build a sampled Lobed pitch shape from its harmonic parameters.
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-lobed).
+
 ### Function `_cg_lobed_unit_radius`
 
 
@@ -376,43 +394,6 @@ Evaluate the unit radial modulation r=s(1+d cos(kθ)) of a harmonic lobed pitch 
 - `{number}`: Unit radius at the requested angle.
 
 Back to [module description](#module-lobed).
-
-
-Back to [top](#).
-
-## Module `Harmonic common`
-
-
-Coefficients are [harmonic, amplitude, phase in degrees]. Family adapters
-own admissibility, pitch scaling and sampling; this evaluator does not
-inherit the public Fourier family's coefficient-domain restrictions.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_harmonic_unit_radius`](#function-_cg_harmonic_unit_radius): Evaluate a finite cosine series around unit mean radius.
-
-
-## Functions
-
-The module `Harmonic common` defines the following functions.
-
-### Function `_cg_harmonic_unit_radius`
-
-
-Evaluate a finite cosine series around unit mean radius.
-
-**Parameters:**
-
-- `coefficients`: {array} Harmonic, amplitude and phase rows.
-- `theta`: {angle} Physical polar angle in degrees.
-
-**Returns:**
-
-- `{number}`: Unit radius before family-specific scaling.
-
-Back to [module description](#module-harmonic-common).
 
 
 Back to [top](#).

@@ -26,6 +26,9 @@ include <motion.scad>
  * @param phase {angle, default 0} Driver phase for the displayed mate pose.
  * @return {geometry} Circular blank with the driver's sampled swept path removed.
  */
+/*** @function _cg_mate_envelope_motion_valid
+ * @brief Validate a finite, monotonic one-turn driver-to-mate motion table.
+ */
 function _cg_mate_envelope_motion_valid(motion) = len(motion)<2 ? false :
     _cg_polyline_finite(motion)
     && abs(motion[0][0])<_cg_tolerance && abs(motion[0][1])<_cg_tolerance
@@ -33,18 +36,30 @@ function _cg_mate_envelope_motion_valid(motion) = len(motion)<2 ? false :
     && min([for(i=[0:len(motion)-2]) motion[i+1][0]>motion[i][0] ? 1 : 0])==1
     && min([for(i=[0:len(motion)-2]) motion[i+1][1]>=motion[i][1]-_cg_tolerance ? 1 : 0])==1
     && abs(_cg_motion_closure_error(motion))<.08;
+/*** @function _cg_mate_sweep_max_motion_slope_from
+ * @brief Find the greatest mate-motion slope from an interval index onward.
+ */
 function _cg_mate_sweep_max_motion_slope_from(motion,driver1,index) =
     index>=len(motion)-1 || motion[index][0]>=driver1 ? 0 :
     max(abs((motion[index+1][1]-motion[index][1])/(motion[index+1][0]-motion[index][0])),
         _cg_mate_sweep_max_motion_slope_from(motion,driver1,index+1));
+/*** @function _cg_mate_sweep_max_motion_slope
+ * @brief Find the greatest mate-motion slope over a driver interval.
+ */
 function _cg_mate_sweep_max_motion_slope(motion,driver0,driver1) =
     _cg_mate_sweep_max_motion_slope_from(motion,driver1,
         max(0,_cg_upper_bound_column(motion,driver0,0,0,len(motion)-1)));
+/*** @function _cg_mate_sweep_subdivisions
+ * @brief Choose enough samples per driver interval to bound angular motion.
+ */
 function _cg_mate_sweep_subdivisions(motion,sweep_steps,max_pose_step) =
     [for(i=[0:sweep_steps-1])
         let(driver0=360*i/sweep_steps,driver1=360*(i+1)/sweep_steps,
             mate_step=_cg_mate_sweep_max_motion_slope(motion,driver0,driver1)*(driver1-driver0))
         max(1,ceil(max(driver1-driver0,mate_step)/max_pose_step))];
+/*** @function _cg_mate_sweep_pose_count
+ * @brief Count the sampled poses required for one complete motion sweep.
+ */
 function _cg_mate_sweep_pose_count(motion,sweep_steps=360,max_pose_step=.5) =
     _cg_sum(_cg_mate_sweep_subdivisions(motion,sweep_steps,max_pose_step));
 

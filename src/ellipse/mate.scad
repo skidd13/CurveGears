@@ -12,8 +12,8 @@ include <../common/mate/placement.scad>
  * @param eccentricity {0 <= e < 1, default 0.62} Ellipse eccentricity.
  * @param pressure_angle {0 < angle < 90, default 20} Involute pressure angle.
  * @param tooth_phase {angle, default 0} Tooth placement phase in degrees.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 120, default 480} Pitch-curve sampling density.
  */
 module curve_gear_ellipse_mate(modul,tooth_number,width,bore,eccentricity=0.62,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=480) {

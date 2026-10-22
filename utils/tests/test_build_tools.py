@@ -8,6 +8,7 @@ import subprocess
 from pathlib import Path
 from utils.build_inventory import ROOT, dependencies, examples, group, render_case, validate, write_if_changed
 from utils.check_build_output import check
+from utils.check_docs import check_markdown_modules, check_source_text
 from utils.cusp_cache import snapshot
 from utils.regression.stl import MESH_VERTEX_TOLERANCE, metrics
 
@@ -206,6 +207,65 @@ class OutputTests(unittest.TestCase):
         self.output.write_text('not a mesh')
         with self.assertRaises((AssertionError, ValueError)):
             check(self.output, 'mesh')
+
+
+class DocumentationTests(unittest.TestCase):
+    def test_public_parameters_require_types_and_matching_optional_defaults(self):
+        source = '''/**
+ * @function curve_gear_sample
+ * @brief Build a sample shape.
+ * @param required {number > 0} Required value.
+ * @param optional {integer, default 4} Optional value.
+ * @return {number} The input value.
+ */
+function curve_gear_sample(required, optional=4) = required + optional;
+'''
+        self.assertEqual([], check_source_text(source, 'sample.scad'))
+
+    def test_missing_type_or_mismatched_default_is_reported(self):
+        source = '''/**
+ * @function curve_gear_sample
+ * @brief Build a sample shape.
+ * @param required Required value.
+ * @param optional {integer, default 3} Optional value.
+ * @return {number} The input value.
+ */
+function curve_gear_sample(required, optional=4) = required + optional;
+'''
+        findings = check_source_text(source, 'sample.scad')
+        self.assertTrue(any('required' in finding and 'type' in finding for finding in findings))
+        self.assertTrue(any('optional' in finding and 'default' in finding for finding in findings))
+
+    def test_required_parameter_may_document_a_canonical_example_value(self):
+        source = '''/**
+ * @function curve_gear_sample
+ * @brief Build a sample shape.
+ * @param required {number > 0, default 0.8} Canonical example value.
+ * @return {number} The input value.
+ */
+function curve_gear_sample(required) = required;
+'''
+        self.assertEqual([], check_source_text(source, 'sample.scad'))
+
+    def test_every_definition_needs_its_own_documentation_entry(self):
+        source = '''/**
+ * @module Sample
+ * @brief A source group.
+ */
+function _cg_undocumented(value) = value;
+'''
+        findings = check_source_text(source, 'sample.scad')
+        self.assertTrue(any('_cg_undocumented' in finding for finding in findings))
+
+    def test_markdown_allows_zero_or_one_module_and_rejects_multiple(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'plain.md').write_text('# Readme\n')
+            (root / 'single.md').write_text('## Module `One`\n')
+            (root / 'multiple.md').write_text('## Module `One`\n## Module `Two`\n')
+            findings = check_markdown_modules(root)
+            self.assertEqual(1, len(findings))
+            self.assertIn('multiple.md', findings[0])
 
 
 if __name__ == '__main__':

@@ -8,7 +8,8 @@
   - [Fourier](../docs/fourier.md) · [Hypotrochoid](../docs/hypotrochoid.md) · [Lobed](../docs/lobed.md) · [Logarithmic spiral](../docs/logarithmic_spiral.md) · [Logistic Dwell](../docs/logistic_dwell.md) · [Pascal](../docs/pascal.md) · [Superformula](../docs/superformula.md) · [Tanh Triad](../docs/tanh_triad.md) · [Temple Fay](../docs/temple_fay.md)
 - Shared
   - [Examples catalogue](README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
+  - [Tooth construction](../docs/tooth-construction.md) · [Tooth placement](../docs/tooth-placement.md) · [Mate motion](../docs/mate-motion.md) · [Mate preparation](../docs/mate-preparation.md) · [Mate generation](../docs/mate-generation.md) · [Pair assembly](../docs/pair-assembly.md)
+  - [Harmonic common](../docs/harmonic-common.md) · [Trochoid common](../docs/trochoid-common.md) · [Saturating common](../docs/saturating-common.md)
 
 
 Each entry is catalogued as a function in one Doxydown examples module. The source link is authoritative; generated images remain beside the corresponding example.

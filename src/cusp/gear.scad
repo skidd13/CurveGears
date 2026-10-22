@@ -329,8 +329,8 @@ module _cg_cusp_build(modul,tooth_number,width,bore,pressure_angle=20,backlash=u
  * @param width {number > 0} Extrusion width in mm.
  * @param bore {number >= 0} Centre bore diameter in mm.
  * @param pressure_angle {0 < angle < 90, default 20} Standard-flank pressure angle.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction in mm.
- * @param clearance {undef or >= 0} Additional radial root clearance in mm.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction in mm.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance in mm.
  * @param samples {integer >= 720, divisible by cusps, default 720} Hypocycloid pitch-curve sampling density for validated cusp teeth.
  * @param orientation {angle, default 0} Whole-gear display rotation in degrees.
  * The common candidate validator accepts the full regular radial-root profile. Each cusp tooth is translated inward until its root width meets the local cusp-branch width; the cusp interval is then cropped and replaced by that unchanged tooth profile.
@@ -363,9 +363,9 @@ module curve_gear_cusp_body(modul,tooth_number,width,bore,samples=720,orientatio
  * @param tooth_number {integer >= 3, divisible by cusps} Tooth count.
  * @param bore {number >= 0} Centre bore diameter in mm.
  * @param pressure_angle {angle, default 20} Standard-flank pressure angle.
- * @param backlash {undef or >= 0} Tangential tooth-thickness reduction.
- * @param clearance {undef or >= 0} Additional radial root clearance.
- * @param samples {integer >= 720, divisible by cusps} Hypocycloid curve sampling density.
+ * @param backlash {undef or >= 0, default undef} Tangential tooth-thickness reduction.
+ * @param clearance {undef or >= 0, default undef} Additional radial root clearance.
+ * @param samples {integer >= 720, divisible by cusps, default 720} Hypocycloid curve sampling density.
  * @param orientation {angle, default 0} Whole-gear rotation in degrees.
  * @param cusps {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.
  * @example c
@@ -381,7 +381,7 @@ module curve_gear_cusp_2d(modul,tooth_number,bore,pressure_angle=20,backlash=und
  * @param modul {number > 0} Tooth module in mm.
  * @param tooth_number {integer >= 3, divisible by cusps} Tooth count.
  * @param bore {number >= 0} Centre bore diameter in mm.
- * @param samples {integer >= 720, divisible by cusps} Hypocycloid curve sampling density.
+ * @param samples {integer >= 720, divisible by cusps, default 720} Hypocycloid curve sampling density.
  * @param orientation {angle, default 0} Whole-body rotation in degrees.
  * @param body_offset {number, default 0} Signed offset in mm; negative shrinks the outer contour and preserves the bore.
  * @param cusps {integer >= 3, default 3} Number of equally spaced hypocycloid cusps; tooth count and samples must be divisible by it.

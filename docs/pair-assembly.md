@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Pair assembly`
@@ -22,14 +23,72 @@ an explicit visual gap.
 
 **Functions**:
 
+> [`_cg_assert_pair_gap_failures`](#function-_cg_assert_pair_gap_failures): Raise the canonical opposing-tooth gap diagnostic when needed.
+
+> [`_cg_pair_assembly`](#function-_cg_pair_assembly): Prepare once, validate once, and render both pair gears from shared states.
+
 > [`_cg_pair_display_separation`](#function-_cg_pair_display_separation): Return the explicit non-meshed display separation for two extents.
 
 > [`_cg_pair_point_extent`](#function-_cg_pair_point_extent): Return the maximum radial extent of a sampled pitch curve.
+
+> [`_cg_polar_pair`](#function-_cg_polar_pair): Prepare and assemble a named shape's driver and conjugate mate once.
+
+> [`_cg_static_pair_assembly`](#function-_cg_static_pair_assembly): Places a statically classified reference pair without implying conjugate motion.
 
 
 ## Functions
 
 The module `Pair assembly` defines the following functions.
+
+### Function `_cg_assert_pair_gap_failures`
+
+
+Raise the canonical opposing-tooth gap diagnostic when needed.
+
+**Parameters:**
+
+- `failures`: {array} Pair gap failure records.
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-pair-assembly).
+
+### Function `_cg_pair_assembly`
+
+
+Prepare once, validate once, and render both pair gears from shared states.
+
+**Parameters:**
+
+- `centre_distance`: {number > 0} Mathematical centre distance.
+- `motion`: {motion table} Family motion table.
+- `phase`: {angle, default 0} Driver motion phase.
+- `together_built`: {boolean, default true} Use meshed placement when true.
+- `driver_extent`: {number > 0} Driver display extent.
+- `mate_extent`: {number > 0} Mate display extent.
+- `modul`: {number > 0} Tooth module.
+- `driver_points`: {array of points} Driver pitch curve.
+- `mate_points`: {array of points} Mate pitch curve.
+- `tooth_number`: {integer >= 3} Shared tooth count.
+- `width`: {number > 0} Extrusion width.
+- `bore`: {number >= 0} Centre bore diameter.
+- `pressure_angle`: {angle, default 20} Involute pressure angle.
+- `tooth_phase`: {angle, default 0} Tooth placement phase.
+- `backlash`: {undef or >= 0} Tangential tooth-thickness reduction.
+- `clearance`: {undef or >= 0} Additional radial root clearance.
+- `driver_radial_root`: {boolean, default false} Driver radial-root construction.
+- `mate_radial_root`: {boolean, default false} Mate radial-root construction.
+- `driver_color`: {OpenSCAD colour, default SteelBlue} Driver colour.
+- `mate_color`: {OpenSCAD colour, default Gold} Mate colour.
+- `mate_root_support`: {number >= 0, default 0.25} Inward mate-candidate support in modules.
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-pair-assembly).
 
 ### Function `_cg_pair_display_separation`
 
@@ -63,55 +122,6 @@ Return the maximum radial extent of a sampled pitch curve.
 
 Back to [module description](#module-pair-assembly).
 
-
-Back to [top](#).
-
-## Module `_cg_assert_pair_gap_failures`
-
-@param failures {array} Pair gap failure records.
-
-### Brief content:
-
-
-Back to [top](#).
-
-## Module `_cg_pair_assembly`
-
-@param centre_distance {number > 0} Mathematical centre distance.
-@param motion {motion table} Family motion table.
-@param phase {angle, default 0} Driver motion phase.
-@param together_built {boolean, default true} Use meshed placement when true.
-@param driver_extent {number > 0} Driver display extent.
-@param mate_extent {number > 0} Mate display extent.
-@param modul {number > 0} Tooth module.
-@param driver_points {array of points} Driver pitch curve.
-@param mate_points {array of points} Mate pitch curve.
-@param tooth_number {integer >= 3} Shared tooth count.
-@param width {number > 0} Extrusion width.
-@param bore {number >= 0} Centre bore diameter.
-@param pressure_angle {angle, default 20} Involute pressure angle.
-@param tooth_phase {angle, default 0} Tooth placement phase.
-@param backlash {undef or >= 0} Tangential tooth-thickness reduction.
-@param clearance {undef or >= 0} Additional radial root clearance.
-@param driver_radial_root {boolean, default false} Driver radial-root construction.
-@param mate_radial_root {boolean, default false} Mate radial-root construction.
-@param driver_color {OpenSCAD colour, default SteelBlue} Driver colour.
-@param mate_color {OpenSCAD colour, default Gold} Mate colour.
-@param mate_root_support {number >= 0, default 0.25} Inward mate-candidate support in modules.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_polar_pair`](#function-_cg_polar_pair): Prepare and assemble a named shape's driver and conjugate mate once.
-
-> [`_cg_static_pair_assembly`](#function-_cg_static_pair_assembly): Places a statically classified reference pair without implying conjugate motion.
-
-
-## Functions
-
-The module `_cg_pair_assembly` defines the following functions.
-
 ### Function `_cg_polar_pair`
 
 
@@ -138,7 +148,7 @@ Prepare and assemble a named shape's driver and conjugate mate once.
 
 - `{geometry}`: Validated pair preserving the actual driver polygon.
 
-Back to [module description](#module-_cg_pair_assembly).
+Back to [module description](#module-pair-assembly).
 
 ### Function `_cg_static_pair_assembly`
 
@@ -159,7 +169,7 @@ Places a statically classified reference pair without implying conjugate motion.
 
 - `{geometry}`: The two child modules in reference or separated placement.
 
-Back to [module description](#module-_cg_pair_assembly).
+Back to [module description](#module-pair-assembly).
 
 
 Back to [top](#).

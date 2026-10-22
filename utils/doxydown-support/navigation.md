@@ -4,4 +4,5 @@
   - [Fourier](@DOCS@fourier.md) · [Hypotrochoid](@DOCS@hypotrochoid.md) · [Lobed](@DOCS@lobed.md) · [Logarithmic spiral](@DOCS@logarithmic_spiral.md) · [Logistic Dwell](@DOCS@logistic_dwell.md) · [Pascal](@DOCS@pascal.md) · [Superformula](@DOCS@superformula.md) · [Tanh Triad](@DOCS@tanh_triad.md) · [Temple Fay](@DOCS@temple_fay.md)
 - Shared
   - [Examples catalogue](@EXAMPLES@README.md) · [Test layout](@TESTS@README.md)
-  - [Tooth construction](@DOCS@tooth-construction.md) · [Tooth placement](@DOCS@tooth-placement.md) · [Mate motion](@DOCS@mate-motion.md) · [Mate generation](@DOCS@mate-generation.md) · [Pair assembly](@DOCS@pair-assembly.md)
+  - [Tooth construction](@DOCS@tooth-construction.md) · [Tooth placement](@DOCS@tooth-placement.md) · [Mate motion](@DOCS@mate-motion.md) · [Mate preparation](@DOCS@mate-preparation.md) · [Mate generation](@DOCS@mate-generation.md) · [Pair assembly](@DOCS@pair-assembly.md)
+  - [Harmonic common](@DOCS@harmonic-common.md) · [Trochoid common](@DOCS@trochoid-common.md) · [Saturating common](@DOCS@saturating-common.md)

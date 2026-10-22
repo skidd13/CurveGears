@@ -19,6 +19,9 @@ include <../common/harmonic.scad>
  * @return {number} Unit radius at the requested angle.
  */
 function _cg_lobed_unit_radius(lobes,lobe_depth,theta) = _cg_harmonic_unit_radius([[lobes,lobe_depth,0]],theta);
+/*** @function _cg_lobed_shape
+ * @brief Build a sampled Lobed pitch shape from its harmonic parameters.
+ */
 function _cg_lobed_shape(modul,tooth_number,lobes,lobe_depth,samples=720) =
     _cg_polar_shape(
         function(theta) _cg_lobed_unit_radius(lobes,lobe_depth,theta),

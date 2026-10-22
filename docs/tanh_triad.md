@@ -8,7 +8,8 @@
   - [Fourier](fourier.md) · [Hypotrochoid](hypotrochoid.md) · [Lobed](lobed.md) · [Logarithmic spiral](logarithmic_spiral.md) · [Logistic Dwell](logistic_dwell.md) · [Pascal](pascal.md) · [Superformula](superformula.md) · [Tanh Triad](tanh_triad.md) · [Temple Fay](temple_fay.md)
 - Shared
   - [Examples catalogue](../examples/README.md) · [Test layout](../tests/README.md)
-  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Tooth construction](tooth-construction.md) · [Tooth placement](tooth-placement.md) · [Mate motion](mate-motion.md) · [Mate preparation](mate-preparation.md) · [Mate generation](mate-generation.md) · [Pair assembly](pair-assembly.md)
+  - [Harmonic common](harmonic-common.md) · [Trochoid common](trochoid-common.md) · [Saturating common](saturating-common.md)
 
 
 ## Module `Tanh Triad`
@@ -42,6 +43,8 @@ Reference: https://en.wikipedia.org/wiki/Hyperbolic_function.
 
 > [`_cg_tanh_triad_shape`](#function-_cg_tanh_triad_shape): Bind the named curve once for driver, mate and numeric consumers.
 
+> [`_cg_tanh_triad_unit_radius`](#function-_cg_tanh_triad_unit_radius): Evaluate the stable bounded Tanh Triad radius law.
+
 
 ## Functions
 
@@ -70,12 +73,12 @@ The module `Tanh Triad` defines the following functions.
 - `width`: {number > 0} Extrusion width in mm.
 - `bore`: {number >= 0} Centre bore diameter in mm.
 - `transition`: {number > 0, default 1.8} Transition steepness.
-- `crest`: {0 < number < 0.5, default 0.13} Main radial modulation.
-- `correction`: {0 <= number < 0.2, default 0.03} Sixth-harmonic correction.
+- `crest`: {0 < number < 0.5, default .13} Main radial modulation.
+- `correction`: {0 <= number < 0.2, default .03} Sixth-harmonic correction.
 - `pressure_angle`: {angle, default 20} Pressure angle.
 - `tooth_phase`: {angle, default 0} Tooth phase.
-- `backlash`: {undef or >= 0} Backlash.
-- `clearance`: {undef or >= 0} Clearance.
+- `backlash`: {undef or >= 0, default undef} Backlash.
+- `clearance`: {undef or >= 0, default undef} Clearance.
 - `samples`: {integer >= 120, default 720} Samples.
 - `orientation`: {angle, default 0} Orientation.
 
@@ -110,15 +113,15 @@ Back to [module description](#module-tanh-triad).
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
 - `bore`: {number} Bore.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `transition`: {number, default 1.8} Transition.
+- `crest`: {number, default .13} Crest.
+- `correction`: {number, default .03} Correction.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -153,15 +156,15 @@ Back to [module description](#module-tanh-triad).
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
+- `transition`: {number, default 1.8} Transition.
+- `crest`: {number, default .13} Crest.
+- `correction`: {number, default .03} Correction.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
 
 **Returns:**
 
@@ -195,16 +198,16 @@ Back to [module description](#module-tanh-triad).
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
 - `bore`: {number} Bore.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
-- `orientation`: {number} Orientation.
-- `body_offset`: {number} Body offset.
+- `transition`: {number, default 1.8} Transition.
+- `crest`: {number, default .13} Crest.
+- `correction`: {number, default .03} Correction.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
+- `orientation`: {number, default 0} Orientation.
+- `body_offset`: {number, default 0} Body offset.
 
 **Returns:**
 
@@ -221,10 +224,10 @@ Return the solved centre distance for a Tanh Triad pair.
 
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `samples`: {integer} Samples.
+- `transition`: {number, default 1.8} Transition.
+- `crest`: {number, default .13} Crest.
+- `correction`: {number, default .03} Correction.
+- `samples`: {integer, default 720} Samples.
 
 **Returns:**
 
@@ -258,14 +261,14 @@ Back to [module description](#module-tanh-triad).
 - `tooth_number`: {integer} Tooth count.
 - `width`: {number} Width.
 - `bore`: {number} Bore.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `pressure_angle`: {number} Pressure angle.
-- `tooth_phase`: {number} Tooth phase.
-- `backlash`: {number} Backlash.
-- `clearance`: {number} Clearance.
-- `samples`: {integer} Samples.
+- `transition`: {number, default 1.8} Transition.
+- `crest`: {number, default .13} Crest.
+- `correction`: {number, default .03} Correction.
+- `pressure_angle`: {number, default 20} Pressure angle.
+- `tooth_phase`: {number, default 0} Tooth phase.
+- `backlash`: {number, default undef} Backlash.
+- `clearance`: {number, default undef} Clearance.
+- `samples`: {integer, default 720} Samples.
 
 **Returns:**
 
@@ -282,11 +285,11 @@ Return the mate rotation at a requested Tanh Triad driver phase.
 
 - `modul`: {number} Tooth module.
 - `tooth_number`: {integer} Tooth count.
-- `transition`: {number} Transition.
-- `crest`: {number} Crest.
-- `correction`: {number} Correction.
-- `samples`: {integer} Samples.
-- `phase`: {number} Driver phase.
+- `transition`: {number, default 1.8} Transition.
+- `crest`: {number, default .13} Crest.
+- `correction`: {number, default .03} Correction.
+- `samples`: {integer, default 720} Samples.
+- `phase`: {number, default 0} Driver phase.
 
 **Returns:**
 
@@ -380,154 +383,20 @@ Bind the named curve once for driver, mate and numeric consumers.
 
 Back to [module description](#module-tanh-triad).
 
-
-Back to [top](#).
-
-## Module `Mate preparation`
+### Function `_cg_tanh_triad_unit_radius`
 
 
-Families own their radius laws, sampling and distance bounds. This layer
-composes the existing solver and integration once per invocation.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_mate_distance_from_radii`](#function-_cg_mate_distance_from_radii): Solve the existing rolling equation after checking its physical bracket.
-
-> [`_cg_mate_preparation`](#function-_cg_mate_preparation): Share distance, motion integration and conjugate pitch construction.
-
-> [`_cg_mate_radii_valid`](#function-_cg_mate_radii_valid): Check finite positive physical radii without building geometry.
-
-> [`_cg_polar_mate_distance`](#function-_cg_polar_mate_distance): Solve one named shape's physical centre distance without building unused geometry.
-
-> [`_cg_polar_mate_rotation`](#function-_cg_polar_mate_rotation): Solve distance and integrated rolling motion for a named shape and phase.
-
-
-## Functions
-
-The module `Mate preparation` defines the following functions.
-
-### Function `_cg_mate_distance_from_radii`
-
-
-Solve the existing rolling equation after checking its physical bracket.
+Evaluate the stable bounded Tanh Triad radius law.
 
 **Parameters:**
 
-- `mid_radii`: {array of number} Physical radii at integration midpoints.
-- `lower`: {number or function} Lower distance bound strictly above the midpoint radii.
-- `upper`: {number} Upper distance bound enclosing one-turn closure.
+No parameters
 
 **Returns:**
 
-- `{number}`: Solved centre distance in millimetres.
+No return
 
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_mate_preparation`
-
-
-Share distance, motion integration and conjugate pitch construction.
-
-**Parameters:**
-
-- `driver_radii`: {array of number} Radii at output angle boundaries.
-- `mid_radii`: {array of number} Radii at the corresponding interval midpoints.
-- `lower`: {number, function or undef} Family-selected lower solver bound.
-- `upper`: {number or undef} Family-selected upper solver bound.
-- `distance`: {number or undef} Optional already solved centre distance.
-
-**Returns:**
-
-- `{array}`: `[distance, motion table, mate pitch points]`, consumed by shared geometry operators.
-
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_mate_radii_valid`
-
-
-Check finite positive physical radii without building geometry.
-
-**Parameters:**
-
-- `radii`: {array of number} Boundary or midpoint radii in millimetres.
-
-**Returns:**
-
-- `{boolean}`: True for at least three finite positive radii.
-
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_polar_mate_distance`
-
-
-Solve one named shape's physical centre distance without building unused geometry.
-
-**Parameters:**
-
-- `shape`: {array} `[driver points, radius function, lower bound, upper bound, radial root]`.
-- `n`: {integer >= 3} Number of motion intervals.
-
-**Returns:**
-
-- `{number}`: Centre distance in millimetres.
-
-Back to [module description](#module-mate-preparation).
-
-### Function `_cg_polar_mate_rotation`
-
-
-Solve distance and integrated rolling motion for a named shape and phase.
-
-**Parameters:**
-
-- `shape`: {array} Physical shape and bound descriptor.
-- `n`: {integer >= 3} Number of motion intervals.
-- `phase`: {angle} Unwrapped driver phase in degrees.
-
-**Returns:**
-
-- `{angle}`: Mate display rotation in degrees.
-
-Back to [module description](#module-mate-preparation).
-
-
-Back to [top](#).
-
-## Module `Saturating common`
-
-
-Family adapters own parameter validation, correction harmonics and scaling.
-
-### Brief content:
-
-**Functions**:
-
-> [`_cg_saturating_unit_radius`](#function-_cg_saturating_unit_radius): Evaluate a bounded tanh modulation around unit mean radius.
-
-
-## Functions
-
-The module `Saturating common` defines the following functions.
-
-### Function `_cg_saturating_unit_radius`
-
-
-Evaluate a bounded tanh modulation around unit mean radius.
-
-**Parameters:**
-
-- `theta`: {angle} Physical polar angle in degrees.
-- `harmonic`: {integer > 0} Number of modulation periods per turn.
-- `transition`: {number > 0} Saturation transition gain.
-- `amplitude`: {number} Signed modulation amplitude.
-
-**Returns:**
-
-- `{number}`: Unit radius using the existing non-overflowing tanh helper.
-
-Back to [module description](#module-saturating-common).
+Back to [module description](#module-tanh-triad).
 
 
 Back to [top](#).

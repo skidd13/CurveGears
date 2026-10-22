@@ -17,14 +17,14 @@ module _cg_temple_fay_build(modul,tooth_number,width,bore,wing=.18,fold=.05,pres
  * @param tooth_number {integer} Tooth count.
  * @param width {number} Width.
  * @param bore {number} Bore.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
- * @param orientation {number} Orientation.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
+ * @param orientation {number, default 0} Orientation.
  */
 module curve_gear_temple_fay(modul,tooth_number,width,bore,wing=.18,fold=.05,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) { _cg_temple_fay_build(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false); }
 
@@ -35,14 +35,14 @@ module curve_gear_temple_fay(modul,tooth_number,width,bore,wing=.18,fold=.05,pre
  * @param tooth_number {integer} Tooth count.
  * @param width {number} Width.
  * @param bore {number} Bore.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
- * @param orientation {number} Orientation.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
+ * @param orientation {number, default 0} Orientation.
  */
 module curve_gear_temple_fay_body(modul,tooth_number,width,bore,wing=.18,fold=.05,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) { _cg_temple_fay_build(modul,tooth_number,width,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true); }
 
@@ -52,14 +52,14 @@ module curve_gear_temple_fay_body(modul,tooth_number,width,bore,wing=.18,fold=.0
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
  * @param bore {number} Bore.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
- * @param orientation {number} Orientation.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
+ * @param orientation {number, default 0} Orientation.
  */
 module curve_gear_temple_fay_2d(modul,tooth_number,bore,wing=.18,fold=.05,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0) { _cg_temple_fay_build(modul,tooth_number,0,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,false,true); }
 
@@ -69,14 +69,14 @@ module curve_gear_temple_fay_2d(modul,tooth_number,bore,wing=.18,fold=.05,pressu
  * @param modul {number} Tooth module.
  * @param tooth_number {integer} Tooth count.
  * @param bore {number} Bore.
- * @param wing {number} Wing amplitude.
- * @param fold {number} Fold harmonic.
- * @param pressure_angle {number} Pressure angle.
- * @param tooth_phase {number} Tooth phase.
- * @param backlash {number} Backlash.
- * @param clearance {number} Clearance.
- * @param samples {integer} Samples.
- * @param orientation {number} Orientation.
- * @param body_offset {number} Body offset.
+ * @param wing {number, default .18} Wing amplitude.
+ * @param fold {number, default .05} Fold harmonic.
+ * @param pressure_angle {number, default 20} Pressure angle.
+ * @param tooth_phase {number, default 0} Tooth phase.
+ * @param backlash {number, default undef} Backlash.
+ * @param clearance {number, default undef} Clearance.
+ * @param samples {integer, default 720} Samples.
+ * @param orientation {number, default 0} Orientation.
+ * @param body_offset {number, default 0} Body offset.
  */
 module curve_gear_temple_fay_body_2d(modul,tooth_number,bore,wing=.18,fold=.05,pressure_angle=20,tooth_phase=0,backlash=undef,clearance=undef,samples=720,orientation=0,body_offset=0) { _cg_temple_fay_build(modul,tooth_number,0,bore,wing,fold,pressure_angle,tooth_phase,backlash,clearance,samples,orientation,true,true,body_offset); }
