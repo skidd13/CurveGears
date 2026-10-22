@@ -401,6 +401,7 @@ check: test check-docs
 check-docs: readme docs-pages examples/README.md tests/README.md
 	@test -s README.md
 	@$(PYTHON) -m utils.checks.check_docs
+	@$(PYTHON) -m utils.checks.check_pair_examples
 	@test -s examples/README.md
 	@test -s "$(NAVIGATION_TEMPLATE)"
 	@test -s "$(FOOTER_TEMPLATE)"
