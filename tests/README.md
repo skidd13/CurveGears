@@ -514,6 +514,8 @@ existing resolution and colours; CI reduction does not replace them.
 
 > [`circle_full_pipeline`](#function-circle_full_pipeline): Verify the complete Circle gear, mate, and pair entry points.
 
+> [`circle_invalid_phase90_pair`](#function-circle_invalid_phase90_pair): Reject the measured overlap in a phase-shifted Circle gear pair.
+
 > [`common_harmonic_equivalence`](#function-common_harmonic_equivalence): Check named harmonic adapters against their independent analytic laws and retain distinct scaling policies.
 
 > [`common_saturating_equivalence`](#function-common_saturating_equivalence): Check Logistic and Tanh adapters across small, canonical and extreme finite gains.
@@ -837,6 +839,21 @@ Back to [module description](#module-family-integration).
 
 
 Source: [`circle/full_pipeline.scad`](circle/full_pipeline.scad)
+
+**Parameters:**
+
+No parameters
+
+**Returns:**
+
+No return
+
+Back to [module description](#module-family-integration).
+
+### Function `circle_invalid_phase90_pair`
+
+
+Source: [`circle/invalid_phase90_pair.scad`](circle/invalid_phase90_pair.scad)
 
 **Parameters:**
 

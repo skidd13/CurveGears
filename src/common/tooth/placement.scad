@@ -856,12 +856,35 @@ function _cg_pair_transform_point(point,centre,rotation) =
      centre[1]+point[0]*sin(rotation)+point[1]*cos(rotation)];
 
 /**
+ * @function _cg_pair_has_constant_radius
+ * @brief Identify a sampled constant-radius driver contour.
+ * @param points {array of points} Sampled driver pitch contour.
+ * @return {boolean} True when all radii agree within the intersection tolerance.
+ */
+function _cg_pair_has_constant_radius(points) =
+    len(points)>0
+    && max([for(point=points) _cg_vlen(point)])-min([for(point=points) _cg_vlen(point)])<=_cg_eps_intersect();
+
+/**
+ * @function _cg_pair_contact_region
+ * @brief Classify one tooth pair as a local nominal pitch contact.
+ * @param hits {array} Opposing-tooth boundary intersection records.
+ * @param contact {point} Midpoint of the opposing pitch points.
+ * @param modul {number > 0} Tooth module in mm.
+ * @return {boolean} True when every witness lies within the pitch-contact allowance.
+ */
+function _cg_pair_contact_region(hits,contact,modul) =
+    len(hits)>0
+    && len([for(hit=hits)
+        if(_cg_vlen(_cg_vsub(hit[2],contact))<=1.1*modul) 1])==len(hits);
+
+/**
  * @function _cg_pair_gap_failures_from_states
  * @brief Check opposing placed teeth while reusing common collision tests.
  *
- * Intended pitch contact is permitted within a small module-scaled
- * neighbourhood of the opposing pitch-point midpoint. Any additional
- * boundary interference is a failure.
+ * Pitch-point proximity alone is not sufficient for constant-radius gears:
+ * more than three simultaneous local contact regions indicate interference.
+ * Noncircular pairs retain their motion-specific contact allowance.
  * @param driver_state {array} Prepared driver geometry state.
  * @param mate_state {array} Prepared mate geometry state.
  * @param clearance {undef or >= 0} Additional radial root clearance.
@@ -872,12 +895,16 @@ function _cg_pair_gap_failures_from_states(driver_state,mate_state,modul,centre_
         placed_d=[for(p=d) if(p[0]=="placed") p],placed_m=[for(p=m) if(p[0]=="placed") p],
         pairs=[for(a=placed_d,b=placed_m)
             let(ap=_cg_pair_transform_point(a[4][0],[-centre_distance/2,0],driver_rotation),bp=_cg_pair_transform_point(b[4][0],[centre_distance/2,0],mate_rotation))
-            if(_cg_vlen(_cg_vsub(ap,bp))<=2*(_cg_dedendum(modul,clearance)+_cg_addendum(modul))) [a,b,ap,bp]],
-        failures=[for(pair=pairs)
-            let(a=pair[0],b=pair[1],contact=_cg_vlerp(pair[2],pair[3],.5),
+            if(_cg_vlen(_cg_vsub(ap,bp))<=2*(_cg_dedendum(modul,clearance)+_cg_addendum(modul)))
+            let(contact=_cg_vlerp(ap,bp,.5),
                 ab=[for(p=a[6]) _cg_pair_transform_point(p,[-centre_distance/2,0],driver_rotation)],
                 bb=[for(p=b[6]) _cg_pair_transform_point(p,[centre_distance/2,0],mate_rotation)],
-                hits=_cg_tooth_non_top_collisions(ab,bb),
-                remaining=[for(hit=hits) if(_cg_vlen(_cg_vsub(hit[2],contact))>1.1*modul) hit])
+                hits=_cg_tooth_non_top_collisions(ab,bb))
+            [a,b,contact,hits,_cg_pair_contact_region(hits,contact,modul)]],
+        contact_pair_count=len([for(pair=pairs) if(pair[4]) 1]),
+        excessive_circular_contacts=_cg_pair_has_constant_radius(driver_state[0]) && contact_pair_count>3,
+        failures=[for(pair=pairs)
+            let(a=pair[0],b=pair[1],contact=pair[2],hits=pair[3],
+                remaining=pair[4] && !excessive_circular_contacts ? [] : hits)
             for(hit=remaining) ["MATE_TOOTH_GAP_INSUFFICIENT",a[2],b[2],hit,_cg_vlen(_cg_vsub(hit[2],contact)),contact]])
     failures;

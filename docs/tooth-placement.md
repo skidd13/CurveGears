@@ -65,7 +65,11 @@ permitted.
 
 > [`_cg_outward_normal_from_winding`](#function-_cg_outward_normal_from_winding): Return the outward normal for a tangent and known contour winding.
 
+> [`_cg_pair_contact_region`](#function-_cg_pair_contact_region): Classify one tooth pair as a local nominal pitch contact.
+
 > [`_cg_pair_gap_failures_from_states`](#function-_cg_pair_gap_failures_from_states): Check opposing placed teeth while reusing common collision tests.
+
+> [`_cg_pair_has_constant_radius`](#function-_cg_pair_has_constant_radius): Identify a sampled constant-radius driver contour.
 
 > [`_cg_pair_transform_point`](#function-_cg_pair_transform_point): Transform a local point into a pair placement.
 
@@ -470,13 +474,30 @@ Return the outward normal for a tangent and known contour winding.
 
 Back to [module description](#module-tooth-placement).
 
+### Function `_cg_pair_contact_region`
+
+
+Classify one tooth pair as a local nominal pitch contact.
+
+**Parameters:**
+
+- `hits`: {array} Opposing-tooth boundary intersection records.
+- `contact`: {point} Midpoint of the opposing pitch points.
+- `modul`: {number > 0} Tooth module in mm.
+
+**Returns:**
+
+- `{boolean}`: True when every witness lies within the pitch-contact allowance.
+
+Back to [module description](#module-tooth-placement).
+
 ### Function `_cg_pair_gap_failures_from_states`
 
 
 
-Intended pitch contact is permitted within a small module-scaled
-neighbourhood of the opposing pitch-point midpoint. Any additional
-boundary interference is a failure.
+Pitch-point proximity alone is not sufficient for constant-radius gears:
+more than three simultaneous local contact regions indicate interference.
+Noncircular pairs retain their motion-specific contact allowance.
 
 **Parameters:**
 
@@ -487,6 +508,21 @@ boundary interference is a failure.
 **Returns:**
 
 No return
+
+Back to [module description](#module-tooth-placement).
+
+### Function `_cg_pair_has_constant_radius`
+
+
+Identify a sampled constant-radius driver contour.
+
+**Parameters:**
+
+- `points`: {array of points} Sampled driver pitch contour.
+
+**Returns:**
+
+- `{boolean}`: True when all radii agree within the intersection tolerance.
 
 Back to [module description](#module-tooth-placement).
 
