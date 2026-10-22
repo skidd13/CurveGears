@@ -61,21 +61,23 @@ module _cg_assert_pair_gap_failures(failures) {
  * @param driver_color {OpenSCAD colour, default SteelBlue} Driver colour.
  * @param mate_color {OpenSCAD colour, default Gold} Mate colour.
  * @param mate_root_support {number >= 0, default 0.25} Inward mate-candidate support in modules.
+ * @param mate_tooth_phase {angle or undef} Mate tooth-placement phase; defaults to the driver phase.
  */
-module _cg_pair_assembly(centre_distance,motion,phase,together_built,driver_extent,mate_extent,modul,driver_points,mate_points,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,driver_radial_root,mate_radial_root,driver_color,mate_color,mate_root_support=.25) {
+module _cg_pair_assembly(centre_distance,motion,phase,together_built,driver_extent,mate_extent,modul,driver_points,mate_points,tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,driver_radial_root,mate_radial_root,driver_color,mate_color,mate_root_support=.25,mate_tooth_phase=undef) {
     mate_rotation=_cg_mate_rotation_for_phase(motion,phase);
+    mate_phase=is_undef(mate_tooth_phase) ? tooth_phase : mate_tooth_phase;
     display_distance=_cg_pair_display_separation(driver_extent,mate_extent,modul);
     _cg_assert_gear_inputs(driver_points,modul,tooth_number,bore,pressure_angle,clearance,mate_points);
     driver_state=_cg_tooth_geometry_state(driver_points,modul,tooth_number,pressure_angle,tooth_phase,driver_radial_root,backlash,clearance,false,true);
-    mate_state=_cg_tooth_geometry_state(mate_points,modul,tooth_number,pressure_angle,tooth_phase,mate_radial_root,backlash,clearance,false,true,root_support=mate_root_support);
+    mate_state=_cg_tooth_geometry_state(mate_points,modul,tooth_number,pressure_angle,mate_phase,mate_radial_root,backlash,clearance,false,true,root_support=mate_root_support);
     gap_failures=together_built ? _cg_pair_gap_failures_from_states(driver_state,mate_state,modul,centre_distance,phase,mate_rotation,clearance) : [];
     _cg_assert_pair_gap_failures(gap_failures);
     if(together_built) {
         translate([-centre_distance/2,0,0]) rotate([0,0,phase]) color(driver_color) _cg_gear_from_state(driver_state,modul,tooth_number,width,bore,pressure_angle,tooth_phase,driver_radial_root,backlash,clearance,false);
-        translate([ centre_distance/2,0,0]) rotate([0,0,mate_rotation]) color(mate_color) _cg_gear_from_state(mate_state,modul,tooth_number,width,bore,pressure_angle,tooth_phase,mate_radial_root,backlash,clearance,false);
+        translate([ centre_distance/2,0,0]) rotate([0,0,mate_rotation]) color(mate_color) _cg_gear_from_state(mate_state,modul,tooth_number,width,bore,pressure_angle,mate_phase,mate_radial_root,backlash,clearance,false);
     } else {
         rotate([0,0,phase]) color(driver_color) _cg_gear_from_state(driver_state,modul,tooth_number,width,bore,pressure_angle,tooth_phase,driver_radial_root,backlash,clearance,false);
-        translate([display_distance,0,0]) rotate([0,0,180]) color(mate_color) _cg_gear_from_state(mate_state,modul,tooth_number,width,bore,pressure_angle,tooth_phase,mate_radial_root,backlash,clearance,false);
+        translate([display_distance,0,0]) rotate([0,0,180]) color(mate_color) _cg_gear_from_state(mate_state,modul,tooth_number,width,bore,pressure_angle,mate_phase,mate_radial_root,backlash,clearance,false);
     }
 }
 
@@ -117,12 +119,13 @@ module _cg_static_pair_assembly(reference_distance,together_built=true,driver_ro
  * @param backlash {undef or >= 0} Tangential thickness reduction.
  * @param clearance {undef or >= 0} Extra root clearance.
  * @param tooth_phase {angle, default 0} Tooth placement phase.
+ * @param mate_tooth_phase {angle or undef} Mate tooth-placement phase, defaulting to the driver phase.
  * @param driver_color {colour, default SteelBlue} Driver display colour.
  * @param mate_color {colour, default Gold} Mate display colour.
  * @return {geometry} Validated pair preserving the actual driver polygon.
  */
-module _cg_polar_pair(shape,modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold",mate_root_support=.25) {
+module _cg_polar_pair(shape,modul,tooth_number,width,bore,pressure_angle=20,samples=720,phase=0,together_built=true,backlash=undef,clearance=undef,tooth_phase=0,driver_color="SteelBlue",mate_color="Gold",mate_root_support=.25,mate_tooth_phase=undef) {
     data=_cg_mate_preparation(_cg_sample_polar_radii(shape[1],samples),_cg_sample_polar_radii(shape[1],samples,true),shape[2],shape[3]);
     assert(abs(_cg_motion_closure_error(data[1]))<.08,"polar_pair: conjugate closure error too large");
-    _cg_pair_assembly(data[0],data[1],phase,together_built,_cg_pair_point_extent(shape[0]),_cg_pair_point_extent(data[2]),modul,shape[0],data[2],tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,shape[4],shape[4],driver_color,mate_color,mate_root_support);
+    _cg_pair_assembly(data[0],data[1],phase,together_built,_cg_pair_point_extent(shape[0]),_cg_pair_point_extent(data[2]),modul,shape[0],data[2],tooth_number,width,bore,pressure_angle,tooth_phase,backlash,clearance,shape[4],shape[4],driver_color,mate_color,mate_root_support,mate_tooth_phase);
 }

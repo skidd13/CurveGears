@@ -262,9 +262,10 @@ Back to [module description](#module-temple-fay).
 - `together_built`: {boolean, default false} Use meshed placement when true, separated display placement otherwise.
 - `backlash`: {number, default undef} Backlash.
 - `clearance`: {number, default undef} Clearance.
-- `tooth_phase`: {number, default 0} Tooth phase.
+- `tooth_phase`: {number, default 0} Driver tooth-placement phase.
 - `driver_color`: {string, default "SteelBlue"} Driver colour.
 - `mate_color`: {string, default "Gold"} Mate colour.
+- `mate_tooth_phase_offset`: {number, default 0} Additional mate tooth-placement phase; 180 degrees is half a tooth.
 
 **Returns:**
 

@@ -83,6 +83,7 @@ Prepare once, validate once, and render both pair gears from shared states.
 - `driver_color`: {OpenSCAD colour, default SteelBlue} Driver colour.
 - `mate_color`: {OpenSCAD colour, default Gold} Mate colour.
 - `mate_root_support`: {number >= 0, default 0.25} Inward mate-candidate support in modules.
+- `mate_tooth_phase`: {angle or undef} Mate tooth-placement phase; defaults to the driver phase.
 
 **Returns:**
 
@@ -141,6 +142,7 @@ Prepare and assemble a named shape's driver and conjugate mate once.
 - `backlash`: {undef or >= 0} Tangential thickness reduction.
 - `clearance`: {undef or >= 0} Extra root clearance.
 - `tooth_phase`: {angle, default 0} Tooth placement phase.
+- `mate_tooth_phase`: {angle or undef} Mate tooth-placement phase, defaulting to the driver phase.
 - `driver_color`: {colour, default SteelBlue} Driver display colour.
 - `mate_color`: {colour, default Gold} Mate display colour.
 
